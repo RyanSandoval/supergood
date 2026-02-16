@@ -373,6 +373,62 @@ footer p { font-size: 0.8125rem; color: var(--text-3); }
 footer a { color: var(--text-3); text-decoration: none; }
 footer a:hover { color: var(--text-2); }
 
+/* Logos strip */
+.logos-strip {
+  padding: 48px 0;
+}
+.logos-strip .section-label { text-align: center; }
+.logos-row {
+  display: flex; justify-content: center; align-items: center;
+  gap: 48px; flex-wrap: wrap; margin-top: 24px;
+}
+.logos-row span {
+  font-family: var(--mono); font-size: 0.8125rem; font-weight: 500;
+  color: var(--text-3); letter-spacing: 0.02em;
+  opacity: 0.6; transition: opacity 0.3s;
+}
+.logos-row span:hover { opacity: 1; }
+
+/* About */
+.about-section { padding: 80px 0; }
+.about-inner {
+  display: flex; gap: 40px; align-items: center;
+  border: 1px solid var(--border); border-radius: 12px;
+  padding: 48px; background: var(--surface);
+}
+.about-avatar {
+  width: 80px; height: 80px; min-width: 80px;
+  border-radius: 50%; background: var(--surface-2);
+  border: 2px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2rem; font-weight: 800; color: var(--green);
+}
+.about-text h3 { font-size: 1.125rem; font-weight: 700; margin-bottom: 8px; }
+.about-text p { font-size: 0.9375rem; color: var(--text-2); line-height: 1.6; }
+.about-text .about-title {
+  font-family: var(--mono); font-size: 0.75rem; color: var(--text-3);
+  margin-bottom: 12px; letter-spacing: 0.03em;
+}
+
+/* Quick scan offer */
+.quick-scan {
+  margin-top: 32px;
+  border: 1px solid var(--border); border-radius: 12px;
+  padding: 40px 48px; background: var(--surface);
+  text-align: center;
+}
+.quick-scan h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 8px; }
+.quick-scan p { font-size: 0.9375rem; color: var(--text-2); max-width: 520px; margin: 0 auto; line-height: 1.6; }
+.quick-scan .price {
+  font-family: var(--mono); font-size: 0.875rem; color: var(--green);
+  margin-top: 16px; display: block;
+}
+
+@media (max-width: 768px) {
+  .about-inner { flex-direction: column; text-align: center; padding: 32px 24px; }
+  .logos-row { gap: 32px; }
+}
+
 /* Animations */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(16px); }
@@ -428,6 +484,19 @@ footer a:hover { color: var(--text-2); }
     </div>
   </div>
 </header>
+
+<div class="logos-strip">
+  <div class="container">
+    <div class="section-label" style="text-align:center;">Built on experience from</div>
+    <div class="logos-row">
+      <span>Viking Cruises</span>
+      <span>Live Nation</span>
+      <span>Ticketmaster</span>
+      <span>Logitech</span>
+      <span>Ultimate Ears</span>
+    </div>
+  </div>
+</div>
 
 <div class="divider"></div>
 
@@ -491,9 +560,9 @@ footer a:hover { color: var(--text-2); }
         <p>We map your ops, find the waste, and build automations that actually stick. Not a slide deck you'll forget by Thursday — working systems, running in production.</p>
       </div>
       <div class="pillar">
-        <div class="pillar-icon">products_</div>
-        <h3>Automation Playbooks</h3>
-        <p>Pre-built frameworks for the workflows every marketing team has. Plug in, configure, run. No six-month implementation. No committee meetings about committee meetings.</p>
+        <div class="pillar-icon">retainer_</div>
+        <h3>Monthly Automation Sprints</h3>
+        <p>We don't build it and bail. Monthly retainer: identify new workflows to automate, maintain what's running, train your team. Think of us as your ops immune system. No committee meetings about committee meetings.</p>
       </div>
       <div class="pillar">
         <div class="pillar-icon">relationships_</div>
@@ -533,7 +602,7 @@ footer a:hover { color: var(--text-2); }
       </div>
       <div class="step">
         <h3>Build</h3>
-        <p>We build the automations using your existing tools. No vendor lock-in, no proprietary black boxes, no "we'll need another 6 months." You own everything. All you need is love. And maybe a Power Automate license.</p>
+        <p>We build the automations using your existing tools. No vendor lock-in, no proprietary black boxes, no "we'll need another 6 months." You own everything.</p>
       </div>
       <div class="step">
         <h3>Run</h3>
@@ -545,12 +614,34 @@ footer a:hover { color: var(--text-2); }
 
 <div class="divider"></div>
 
+<section class="about-section">
+  <div class="container">
+    <div class="section-label reveal">Who's behind this</div>
+    <h2 class="reveal" style="margin-bottom: 32px;">A PM who got tired of watching smart people do dumb work.</h2>
+    <div class="about-inner reveal">
+      <div class="about-avatar">RS</div>
+      <div class="about-text">
+        <h3>Ryan Sandoval</h3>
+        <div class="about-title">Founder &amp; AI Automation Consultant</div>
+        <p>14 years building digital products at Viking Cruises, Live Nation, Ticketmaster, and Logitech. I've sat in enough standups to know that half the "work" people do isn't work — it's busywork wearing a lanyard. I started Supergood because I kept seeing the same problem everywhere: brilliant teams spending their days on tasks a well-configured flow could handle before breakfast. I don't sell AI hype. I find the manual processes killing your team and I make them disappear.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <section id="contact" class="cta-section">
   <div class="container">
     <div class="section-label reveal">Let's talk</div>
     <h2 class="reveal">Let's find your&nbsp;16&nbsp;hours.</h2>
-    <p class="reveal">30-minute call. We'll tell you exactly where you're bleeding time — even if you never talk to us again. No pitch, no pressure, no mojo lost.</p>
-    <a href="mailto:hello@supergood.solutions" class="btn btn-primary reveal">hello@supergood.solutions</a>
+    <p class="reveal">30 minutes. We'll tell you exactly where you're bleeding time — even if you never talk to us again. No pitch, no pressure. Seriously, what's the worst that happens? You learn something.</p>
+    <a href="https://calendar.app.google/PLACEHOLDER" class="btn btn-primary reveal">Book 30 minutes</a>
+    <div class="quick-scan reveal">
+      <h3>Not ready for a full audit?</h3>
+      <p>Try the Quick Scan — a 30-minute screen-share where we walk through your workflows live and give you 3 specific automation recommendations on the spot. Think of it as a doctor's visit for your ops. Except we won't make you wait 45 minutes in a paper gown.</p>
+      <span class="price">$500 · Results in 30 minutes, not 30 days</span>
+    </div>
   </div>
 </section>
 
