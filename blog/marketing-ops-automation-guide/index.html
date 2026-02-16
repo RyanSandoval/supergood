@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Marketing Ops Automation Guide: What to Automate First — Supergood Solutions</title>
+<meta name="description" content="A practical framework for identifying which marketing workflows to automate first, with ROI estimates and implementation guides using Power Automate, Office Scripts, and existing M365 tools.">
+<link rel="canonical" href="https://supergood.solutions/blog/marketing-ops-automation-guide/">
+<meta name="author" content="Ryan Sandoval">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Marketing Ops Automation Guide: What to Automate First (and What to Leave Alone)">
+<meta property="og:description" content="Every marketing team has the same 5 broken workflows. Here's how to find them, prioritize them, and automate them using tools you already pay for.">
+<meta property="og:url" content="https://supergood.solutions/blog/marketing-ops-automation-guide/">
+<meta property="og:image" content="https://supergood.solutions/og-image.png">
+<meta property="article:published_time" content="2026-02-15">
+<meta property="article:author" content="Ryan Sandoval">
+
+<!-- Schema.org Article + FAQ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The Marketing Ops Automation Guide: What to Automate First (and What to Leave Alone)",
+  "description": "A practical framework for identifying which marketing workflows to automate first, with ROI estimates and implementation approaches using existing tools.",
+  "author": {
+    "@type": "Person",
+    "name": "Ryan Sandoval",
+    "url": "https://linkedin.com/in/RyanSandoval",
+    "jobTitle": "AI Automation Consultant",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Supergood Solutions"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Supergood Solutions",
+    "url": "https://supergood.solutions"
+  },
+  "datePublished": "2026-02-15",
+  "dateModified": "2026-02-15",
+  "mainEntityOfPage": "https://supergood.solutions/blog/marketing-ops-automation-guide/",
+  "keywords": ["marketing automation", "workflow automation", "marketing ops", "Power Automate", "AI automation", "process automation"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What marketing workflows should I automate first?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Start with workflows that are high-frequency (daily or weekly), rule-based (follow consistent logic), multi-platform (data moves between tools), and time-intensive (take 2+ hours per cycle). The top candidates are: reporting and dashboard updates, lead routing and CRM data entry, campaign setup and QA, content publishing pipelines, and cross-platform data synchronization."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much time can marketing automation save per week?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Based on workflow audits across marketing and ops teams, the average marketing team of 5-15 people wastes 15-25 hours per week on manual, repetitive tasks that could be automated. The biggest time sinks are manual reporting (4-8 hours/week), data entry and CRM updates (3-6 hours/week), and cross-platform data transfers (3-5 hours/week). A single well-scoped automation project can typically recover 8-16 hours per week."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What tools should I use to automate marketing workflows?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Start with tools your organization already pays for. For Microsoft 365 environments: Power Automate for workflow orchestration and Office Scripts for Excel automation. For Google Workspace: Apps Script and Google Sheets automations. For cross-platform: Zapier or Make (Integromat) for simple integrations, or Power Automate Premium for enterprise-grade flows. Most marketing teams can automate their top 3-5 workflows using existing licenses at zero additional software cost."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I calculate the ROI of marketing automation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use this formula: (Hours saved per week × Average hourly cost of team member × 52 weeks) - Implementation cost = Annual ROI. For example: 16 hours/week saved × $45/hour × 52 weeks = $37,440 annual savings. If implementation costs $10,000, your first-year ROI is $27,440 or 274%. Most marketing automation projects pay for themselves within 2-4 months."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a marketing ops automation audit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A marketing ops automation audit is a systematic review of a marketing team's workflows to identify manual, repetitive processes that can be automated. The audit typically involves: mapping all recurring workflows, measuring time spent on each, scoring each workflow's automation potential (frequency × time × complexity), and producing a prioritized roadmap with ROI estimates. A typical audit takes 1-2 weeks and covers 15-30 distinct workflows."
+      }
+    }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #0a0a0b; --surface: #111113; --surface-2: #18181b; --border: #27272a;
+  --text: #fafafa; --text-2: #a1a1aa; --text-3: #71717a;
+  --green: #22c55e; --mono: 'JetBrains Mono', monospace;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+::selection { background: var(--green); color: var(--bg); }
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; background: rgba(10,10,11,0.8); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+nav .inner { max-width: 720px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
+.wordmark { font-weight: 800; font-size: 1.125rem; letter-spacing: -0.03em; color: var(--text); text-decoration: none; display: inline-flex; align-items: baseline; }
+.wordmark .oo-dot { display: inline-block; width: 0.45em; height: 0.45em; background: var(--green); border-radius: 50%; }
+.wordmark .oo-wrap { display: inline-flex; gap: 2px; align-items: center; }
+.wordmark .dot-period { color: var(--green); }
+nav a.back { font-size: 0.875rem; color: var(--text-3); text-decoration: none; }
+nav a.back:hover { color: var(--text); }
+
+article { max-width: 720px; margin: 0 auto; padding: 140px 24px 80px; }
+article .tag { font-family: var(--mono); font-size: 0.6875rem; color: var(--green); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; }
+article h1 { font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px; }
+article .subtitle { font-size: 1.25rem; color: var(--text-2); line-height: 1.6; margin-bottom: 24px; }
+article .meta { font-family: var(--mono); font-size: 0.75rem; color: var(--text-3); margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+article h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin: 56px 0 16px; }
+article h3 { font-size: 1.125rem; font-weight: 600; margin: 40px 0 12px; }
+article p { font-size: 1rem; color: var(--text-2); margin-bottom: 20px; }
+article strong { color: var(--text); }
+article ul, article ol { color: var(--text-2); margin-bottom: 20px; padding-left: 24px; }
+article li { margin-bottom: 8px; }
+article blockquote { border-left: 3px solid var(--green); padding: 16px 24px; margin: 28px 0; background: var(--surface); border-radius: 0 8px 8px 0; }
+article blockquote p { color: var(--text); margin-bottom: 0; font-style: italic; }
+article code { font-family: var(--mono); font-size: 0.875rem; background: var(--surface-2); padding: 2px 6px; border-radius: 4px; color: var(--green); }
+article .framework-box { border: 1px solid var(--border); border-radius: 12px; padding: 32px; background: var(--surface); margin: 28px 0; }
+article .framework-box h4 { font-size: 1rem; font-weight: 700; margin-bottom: 16px; color: var(--green); }
+article .stat-callout { font-size: 1.5rem; font-weight: 800; color: var(--text); text-align: center; padding: 40px; margin: 32px 0; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); }
+article .stat-callout span { color: var(--green); }
+article .formula { font-family: var(--mono); font-size: 0.875rem; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 20px 24px; margin: 20px 0; color: var(--text); overflow-x: auto; }
+article a { color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
+article a:hover { color: var(--text); }
+
+.faq-section { margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--border); }
+.faq-section h2 { margin-top: 0; }
+.faq-item { margin-bottom: 28px; }
+.faq-item h3 { font-size: 1rem; color: var(--text); margin: 0 0 8px; }
+.faq-item p { font-size: 0.9375rem; }
+
+.cta-box { border: 2px solid var(--green); border-radius: 12px; padding: 40px; margin: 48px 0; text-align: center; background: var(--surface); }
+.cta-box h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 8px; }
+.cta-box p { font-size: 0.9375rem; color: var(--text-2); margin-bottom: 20px; }
+.cta-box .btn { display: inline-flex; align-items: center; gap: 8px; font-family: 'Inter', sans-serif; font-size: 0.9375rem; font-weight: 600; padding: 14px 28px; border-radius: 8px; text-decoration: none; background: var(--text); color: var(--bg); transition: all 0.2s; }
+.cta-box .btn:hover { transform: translateY(-1px); }
+
+footer { border-top: 1px solid var(--border); padding: 40px 0; }
+footer .container { max-width: 720px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+footer p { font-size: 0.8125rem; color: var(--text-3); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <a href="/" class="wordmark">superg<span class="oo-wrap"><span class="oo-dot"></span><span class="oo-dot"></span></span>d<span class="dot-period">.</span></a>
+    <a href="/blog/" class="back">← All posts</a>
+  </div>
+</nav>
+
+<article>
+  <div class="tag">Guide · Marketing Ops</div>
+  <h1>The Marketing Ops Automation Guide: What to Automate First (and What to Leave Alone)</h1>
+  <p class="subtitle">Every marketing team has the same 5 broken workflows. Here's how to find yours, score them, and fix the ones worth fixing — using tools you already pay for.</p>
+  <div class="meta">By Ryan Sandoval · February 15, 2026 · 12 min read</div>
+
+  <p>Here's something nobody tells you about marketing automation: <strong>the problem isn't that you need better tools. The problem is that nobody's stopped to ask which manual processes shouldn't exist anymore.</strong></p>
+
+  <p>I've spent 14 years building digital products at companies like Viking Cruises, Live Nation, and Logitech. And in every single one, I found the same thing: smart, capable teams spending 15-25 hours a week on work that could be automated in a day.</p>
+
+  <p>Not because they were lazy. Because nobody had ever mapped it out, scored it, and said: "This one. Automate this one first."</p>
+
+  <p>That's what this guide does.</p>
+
+  <div class="stat-callout">The average marketing team of 5-15 people wastes <span>15–25 hours per week</span> on manual, repetitive tasks that could be automated.</div>
+
+  <h2>The 5 Workflows Every Marketing Team Has (And Shouldn't)</h2>
+
+  <p>After auditing marketing and ops teams across industries, the same five workflows show up every time. Yours probably has at least three of them.</p>
+
+  <h3>1. Manual Reporting and Dashboard Updates</h3>
+  <p><strong>Time wasted: 4–8 hours/week</strong></p>
+  <p>Someone on your team opens 3-4 platforms every Monday morning, exports CSVs, copies numbers into a spreadsheet, reformats it, and emails it to leadership. The data is stale by the time it hits their inbox. This is the single most common waste of time in marketing operations.</p>
+  <p><strong>The fix:</strong> Automated data pulls → formatted report → delivered to Slack/email before anyone gets to the office. Tools: Power Automate + Office Scripts, or Google Apps Script.</p>
+
+  <h3>2. Lead Routing and CRM Data Entry</h3>
+  <p><strong>Time wasted: 3–6 hours/week</strong></p>
+  <p>Leads come in through forms, get forwarded via email, sit in someone's inbox for hours, then get manually entered into the CRM with half the fields missing. By the time sales sees it, the lead has already gone cold and signed up with your competitor.</p>
+  <p><strong>The fix:</strong> Form submission → instant CRM entry → auto-assigned to the right rep based on territory/product/score → notification in Slack. Total human touch required: zero.</p>
+
+  <h3>3. Campaign Setup and QA</h3>
+  <p><strong>Time wasted: 3–5 hours/week</strong></p>
+  <p>Setting up email campaigns, ad campaigns, or landing pages involves copy-pasting the same information across multiple platforms. UTM parameters get mangled. Someone forgets to update the subject line in one variant. You catch it after it's live.</p>
+  <p><strong>The fix:</strong> Template-based setup with auto-populated fields from a single source of truth. QA checklist that runs automatically before launch.</p>
+
+  <h3>4. Content Publishing Pipelines</h3>
+  <p><strong>Time wasted: 2–4 hours/week</strong></p>
+  <p>Content gets written in Google Docs, then manually formatted and pasted into the CMS, then the metadata gets added by hand, then someone has to remember to schedule the social posts, then someone else has to update the content calendar spreadsheet. It's a relay race where everyone drops the baton.</p>
+  <p><strong>The fix:</strong> Content in structured format → auto-published to CMS with correct metadata → social posts scheduled → content calendar updated. One approval click, everything cascades.</p>
+
+  <h3>5. Cross-Platform Data Synchronization</h3>
+  <p><strong>Time wasted: 3–5 hours/week</strong></p>
+  <p>Your marketing stack has 6-12 tools and none of them talk to each other natively. So a human being becomes the integration layer — downloading from one, uploading to another, making sure the IDs match, deduplicating records, and praying nothing breaks.</p>
+  <p><strong>The fix:</strong> Automated sync flows between platforms. When data changes in one system, it updates everywhere else. The human integration layer gets promoted to doing actual human work.</p>
+
+  <h2>The Supergood Scoring Framework: How to Prioritize What to Automate</h2>
+
+  <p>You can't automate everything at once. And you shouldn't — some things aren't worth automating. Here's how to figure out what to tackle first.</p>
+
+  <div class="framework-box">
+    <h4>The FRTC Score (Frequency × Repetitiveness × Time × Complexity)</h4>
+    <p style="color: var(--text-2); margin-bottom: 16px;">Score each workflow on four dimensions (1-5 scale):</p>
+    <ul style="color: var(--text-2);">
+      <li><strong style="color: var(--text);">Frequency (F):</strong> How often does this happen? Daily = 5, Weekly = 4, Biweekly = 3, Monthly = 2, Quarterly = 1</li>
+      <li><strong style="color: var(--text);">Repetitiveness (R):</strong> How rule-based is it? Identical every time = 5, Mostly same = 4, Some variation = 3, Significant judgment = 2, Highly creative = 1</li>
+      <li><strong style="color: var(--text);">Time (T):</strong> How long does it take per cycle? 4+ hours = 5, 2-4 hours = 4, 1-2 hours = 3, 30-60 min = 2, Under 30 min = 1</li>
+      <li><strong style="color: var(--text);">Complexity (C):</strong> How hard is it to automate? Simple connectors = 5, Standard APIs = 4, Custom logic needed = 3, Multiple systems = 2, Legacy/no API = 1</li>
+    </ul>
+    <p style="color: var(--text-2); margin-top: 16px; margin-bottom: 0;"><strong style="color: var(--text);">FRTC Score = (F × R × T) ÷ (6 - C)</strong></p>
+    <p style="color: var(--text-3); font-size: 0.875rem; margin-top: 8px; margin-bottom: 0;">Higher score = automate first. The complexity divisor penalizes hard-to-automate workflows, pushing easy wins to the top.</p>
+  </div>
+
+  <h3>Example: Scoring a Weekly Reporting Workflow</h3>
+  <ul>
+    <li><strong>Frequency:</strong> Weekly = 4</li>
+    <li><strong>Repetitiveness:</strong> Identical every time = 5</li>
+    <li><strong>Time:</strong> 3 hours per cycle = 4</li>
+    <li><strong>Complexity:</strong> Standard APIs (pull from platforms, push to Sheets) = 4</li>
+  </ul>
+  <div class="formula">FRTC = (4 × 5 × 4) ÷ (6 - 4) = 80 ÷ 2 = <strong>40</strong> — High priority. Automate this.</div>
+
+  <h3>Example: Scoring a Quarterly Brand Strategy Review</h3>
+  <ul>
+    <li><strong>Frequency:</strong> Quarterly = 1</li>
+    <li><strong>Repetitiveness:</strong> Significant judgment required = 2</li>
+    <li><strong>Time:</strong> 8 hours = 5</li>
+    <li><strong>Complexity:</strong> No clear automation path = 1</li>
+  </ul>
+  <div class="formula">FRTC = (1 × 2 × 5) ÷ (6 - 1) = 10 ÷ 5 = <strong>2</strong> — Low priority. Leave this alone.</div>
+
+  <p>See the difference? The quarterly review takes more total time, but it's infrequent, requires judgment, and has no clean automation path. The weekly report is an easy win with massive compounding returns.</p>
+
+  <h2>How to Calculate the ROI of Marketing Automation</h2>
+
+  <p>You need numbers to get budget approval. Here's the formula:</p>
+
+  <div class="formula"><strong>Annual ROI</strong> = (Hours saved/week × Hourly cost × 52 weeks) - Implementation cost</div>
+
+  <h3>Real example:</h3>
+  <ul>
+    <li>Hours saved: 16/week</li>
+    <li>Average team member cost: $45/hour (fully loaded)</li>
+    <li>Annual savings: 16 × $45 × 52 = <strong>$37,440</strong></li>
+    <li>Implementation cost: $10,000</li>
+    <li>First-year ROI: <strong>$27,440 (274%)</strong></li>
+    <li>Payback period: <strong>~14 weeks</strong></li>
+  </ul>
+
+  <p>After year one, the implementation cost drops to maintenance only. That $37,440 in savings compounds every year. Over three years, a $10,000 project returns over $100,000 in recovered productivity.</p>
+
+  <div class="stat-callout">Most marketing automation projects pay for themselves in <span>2–4 months</span>.</div>
+
+  <h2>What Tools Should You Use?</h2>
+
+  <p><strong>The best tool is the one your company already pays for.</strong> Seriously. Before you evaluate any new software, check what's already in your stack.</p>
+
+  <h3>Microsoft 365 Environment</h3>
+  <ul>
+    <li><strong>Power Automate</strong> — workflow orchestration, connectors to 400+ services, approval flows</li>
+    <li><strong>Office Scripts</strong> — Excel automation (replaces VBA with modern TypeScript)</li>
+    <li><strong>Power Apps</strong> — lightweight internal tools and forms</li>
+    <li><strong>SharePoint</strong> — document workflows, approval chains</li>
+  </ul>
+
+  <h3>Google Workspace Environment</h3>
+  <ul>
+    <li><strong>Apps Script</strong> — automate Sheets, Docs, Gmail, Calendar</li>
+    <li><strong>Google Sheets formulas + triggers</strong> — surprisingly powerful for simple automations</li>
+    <li><strong>Looker Studio</strong> — automated reporting dashboards</li>
+  </ul>
+
+  <h3>Cross-Platform</h3>
+  <ul>
+    <li><strong>Zapier</strong> — simple integrations, fast to set up, scales to ~2,000 tasks/month on free tier</li>
+    <li><strong>Make (Integromat)</strong> — more complex logic, better for multi-step flows</li>
+    <li><strong>n8n</strong> — self-hosted, no per-task pricing, great for technical teams</li>
+  </ul>
+
+  <h3>AI-Enhanced</h3>
+  <ul>
+    <li><strong>OpenAI / Claude APIs</strong> — content classification, summarization, data extraction</li>
+    <li><strong>Microsoft Copilot</strong> — embedded AI in M365 tools</li>
+    <li><strong>Custom scripts</strong> — Python/Node for anything the no-code tools can't handle</li>
+  </ul>
+
+  <h2>What NOT to Automate</h2>
+
+  <p>This is the part most automation consultants skip — because they want to sell you more automation. But some things should stay manual:</p>
+
+  <ul>
+    <li><strong>Anything requiring brand judgment.</strong> AI can draft your social posts. It shouldn't decide your brand voice. Keep a human in the loop for creative decisions.</li>
+    <li><strong>Low-frequency, high-stakes decisions.</strong> Quarterly budget allocation, vendor negotiations, campaign strategy — these happen rarely and the cost of getting them wrong is high.</li>
+    <li><strong>Workflows that change constantly.</strong> If the process is different every time, automating it creates more maintenance than it saves. Wait until it stabilizes.</li>
+    <li><strong>Things your team actually enjoys doing.</strong> If someone on your team genuinely likes building the weekly report because it gives them insight into the business — don't take that away. Automate the parts they hate, not the parts they learn from.</li>
+  </ul>
+
+  <blockquote><p>A good automation consultant tells you what to automate. A great one tells you what to leave alone.</p></blockquote>
+
+  <h2>The Step-by-Step Automation Audit Process</h2>
+
+  <p>Here's exactly how to audit your own marketing ops. This is the same process I use with clients.</p>
+
+  <ol>
+    <li><strong>Map every recurring workflow.</strong> Spend one week documenting every task that happens on a repeating schedule. Daily standup? Write it down. Monday reporting? Write it down. Get granular — you'll find automations hiding inside tasks you thought were "just part of the job."</li>
+    <li><strong>Measure time spent.</strong> For each workflow, estimate (or better, track) how many hours it takes per cycle and who's involved. Be honest — people underestimate by 30-40%.</li>
+    <li><strong>Score with FRTC.</strong> Run each workflow through the scoring framework above. Sort by score, highest to lowest.</li>
+    <li><strong>Validate the top 5.</strong> For your highest-scoring workflows, ask: Is the data accessible via API? Are the rules consistent enough to codify? Does someone own this process who can help you test? If yes to all three, it's a go.</li>
+    <li><strong>Build the business case.</strong> Use the ROI formula for your top 3 candidates. Show leadership: "Here's 16 hours/week we can recover for $X investment, paid back in Y months."</li>
+    <li><strong>Start with one.</strong> Don't try to automate everything. Pick the #1 highest-scoring, highest-ROI workflow and nail it. Get it running in production, measure the results, and use that win to fund the next one.</li>
+  </ol>
+
+  <div class="cta-box">
+    <h3>Want someone to do this for you?</h3>
+    <p>The Supergood Quick Scan: 30 minutes, 3 specific automation recommendations, and an honest assessment of what's worth your time. If we can't find at least 10 hours/week of waste, the call is free.</p>
+    <a href="https://calendar.app.google/BkcFDB21jWhMwCiq7" class="btn">Book a Quick Scan →</a>
+  </div>
+
+  <div class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <h3>What marketing workflows should I automate first?</h3>
+      <p>Start with workflows that are high-frequency (daily or weekly), rule-based (follow consistent logic), multi-platform (data moves between tools), and time-intensive (take 2+ hours per cycle). The top candidates are: reporting and dashboard updates, lead routing and CRM data entry, campaign setup and QA, content publishing pipelines, and cross-platform data synchronization.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>How much time can marketing automation save per week?</h3>
+      <p>Based on workflow audits across marketing and ops teams, the average marketing team of 5-15 people wastes 15-25 hours per week on manual, repetitive tasks that could be automated. The biggest time sinks are manual reporting (4-8 hours/week), data entry and CRM updates (3-6 hours/week), and cross-platform data transfers (3-5 hours/week). A single well-scoped automation project can typically recover 8-16 hours per week.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>What tools should I use to automate marketing workflows?</h3>
+      <p>Start with tools your organization already pays for. For Microsoft 365: Power Automate for workflow orchestration and Office Scripts for Excel automation. For Google Workspace: Apps Script and Sheets automations. For cross-platform work: Zapier, Make (Integromat), or n8n. Most marketing teams can automate their top 3-5 workflows using existing licenses at zero additional software cost.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>How do I calculate the ROI of marketing automation?</h3>
+      <p>Use this formula: (Hours saved per week × Average hourly cost of team member × 52 weeks) - Implementation cost = Annual ROI. For example: 16 hours/week saved × $45/hour × 52 weeks = $37,440 annual savings. If implementation costs $10,000, your first-year ROI is $27,440 or 274%. Most marketing automation projects pay for themselves within 2-4 months.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>What is a marketing ops automation audit?</h3>
+      <p>A marketing ops automation audit is a systematic review of a marketing team's workflows to identify manual, repetitive processes that can be automated. The audit typically involves: mapping all recurring workflows, measuring time spent on each, scoring each workflow's automation potential using a framework like FRTC (Frequency × Repetitiveness × Time ÷ Complexity), and producing a prioritized roadmap with ROI estimates. A typical audit takes 1-2 weeks and covers 15-30 distinct workflows.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Should I hire an automation consultant or do it in-house?</h3>
+      <p>If your team has a technically curious PM or ops person with 5-10 hours/week to dedicate, you can start in-house using this guide. Hire a consultant when: you need results faster than your team can learn, the workflows involve complex multi-system integrations, or you need help building the business case for leadership. A good consultant pays for themselves within the first project — the 16 hours/week they recover is worth far more than their fee.</p>
+    </div>
+  </div>
+
+  <p style="margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); color: var(--text-3); font-size: 0.875rem;"><em>Ryan Sandoval is the founder of <a href="https://supergood.solutions">Supergood Solutions</a>, an AI automation consulting firm for marketing and ops teams. He's spent 14 years building digital products at Viking Cruises, Live Nation, Ticketmaster, and Logitech. He automates the work that shouldn't require humans — so humans can do the work that should.</em></p>
+
+</article>
+
+<footer>
+  <div class="container">
+    <p>© 2026 superg●●d.</p>
+    <p><a href="/" style="color: var(--text-3); text-decoration: none;">supergood.solutions</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Supergood Solutions</title>
+<meta name="description" content="Practical guides on automating marketing and ops workflows. No hype, no jargon — just the stuff that actually saves your team 20 hours a week.">
+<link rel="canonical" href="https://supergood.solutions/blog/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Blog — Supergood Solutions">
+<meta property="og:description" content="Practical guides on automating marketing and ops workflows using tools you already pay for.">
+<meta property="og:url" content="https://supergood.solutions/blog/">
+<meta property="og:image" content="https://supergood.solutions/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #0a0a0b; --surface: #111113; --surface-2: #18181b; --border: #27272a;
+  --text: #fafafa; --text-2: #a1a1aa; --text-3: #71717a;
+  --green: #22c55e; --mono: 'JetBrains Mono', monospace;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+::selection { background: var(--green); color: var(--bg); }
+.container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; background: rgba(10,10,11,0.8); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+nav .inner { max-width: 800px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
+.wordmark { font-weight: 800; font-size: 1.125rem; letter-spacing: -0.03em; color: var(--text); text-decoration: none; display: inline-flex; align-items: baseline; }
+.wordmark .oo-dot { display: inline-block; width: 0.45em; height: 0.45em; background: var(--green); border-radius: 50%; }
+.wordmark .oo-wrap { display: inline-flex; gap: 2px; align-items: center; }
+.wordmark .dot-period { color: var(--green); }
+nav a.back { font-size: 0.875rem; color: var(--text-3); text-decoration: none; }
+nav a.back:hover { color: var(--text); }
+.page-header { padding: 140px 0 60px; }
+.page-header h1 { font-size: 2.5rem; font-weight: 800; letter-spacing: -0.03em; }
+.page-header p { color: var(--text-2); font-size: 1.125rem; margin-top: 12px; }
+.post-list { padding: 0 0 100px; }
+.post-card { border: 1px solid var(--border); border-radius: 12px; padding: 36px; background: var(--surface); margin-bottom: 20px; transition: border-color 0.3s; text-decoration: none; display: block; }
+.post-card:hover { border-color: var(--text-3); }
+.post-card .tag { font-family: var(--mono); font-size: 0.6875rem; color: var(--green); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; }
+.post-card h2 { font-size: 1.375rem; font-weight: 700; letter-spacing: -0.02em; color: var(--text); margin-bottom: 8px; }
+.post-card p { font-size: 0.9375rem; color: var(--text-2); line-height: 1.6; }
+.post-card .meta { font-size: 0.75rem; color: var(--text-3); margin-top: 16px; font-family: var(--mono); }
+footer { border-top: 1px solid var(--border); padding: 40px 0; }
+footer .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+footer p { font-size: 0.8125rem; color: var(--text-3); }
+</style>
+</head>
+<body>
+<nav>
+  <div class="inner">
+    <a href="/" class="wordmark">superg<span class="oo-wrap"><span class="oo-dot"></span><span class="oo-dot"></span></span>d<span class="dot-period">.</span></a>
+    <a href="/" class="back">← Back to home</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="container">
+    <h1>Blog</h1>
+    <p>No fluff. No "10 ways AI will change everything" listicles. Just the stuff that actually works.</p>
+  </div>
+</div>
+
+<div class="post-list">
+  <div class="container">
+    <a href="/blog/marketing-ops-automation-guide/" class="post-card">
+      <div class="tag">Guide</div>
+      <h2>The Marketing Ops Automation Guide: What to Automate First (and What to Leave Alone)</h2>
+      <p>Every marketing team has the same 5 broken workflows. Here's how to identify them, prioritize them, and automate them — using tools you already pay for.</p>
+      <div class="meta">February 2026 · 12 min read</div>
+    </a>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <p>© 2026 superg●●d.</p>
+    <p><a href="/" style="color: var(--text-3); text-decoration: none;">supergood.solutions</a></p>
+  </div>
+</footer>
+</body>
+</html>
