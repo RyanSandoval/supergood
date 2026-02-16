@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://supergood.solutions/sitemap.xml
