@@ -1,209 +1,281 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Power Automate for Marketing Teams: A PM's Guide (Not an Engineer's)</title>
-    <meta name="description" content="Most marketing teams waste 15+ hours per week on manual tasks. Power Automate fixes this. Here's how to implement it without hiring developers.">
-    <meta name="keywords" content="Power Automate, marketing automation, lead routing, campaign management, marketing operations">
-    <meta name="author" content="Supergood">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://supergood.com/blog/power-automate-for-marketing/">
-    <meta property="og:title" content="Power Automate for Marketing Teams: A PM's Guide (Not an Engineer's)">
-    <meta property="og:description" content="Most marketing teams waste 15+ hours per week on manual tasks. Power Automate fixes this. Here's how to implement it without hiring developers.">
-    <meta property="og:image" content="https://supergood.com/blog/power-automate-for-marketing/og-image.jpg">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Power Automate for Marketing Teams: A PM's Guide (Not an Engineer's) — Supergood Solutions</title>
+<meta name="description" content="Most marketing teams waste 15+ hours per week on manual tasks. Power Automate fixes this. Here's how to implement it without hiring developers.">
+<link rel="canonical" href="https://supergood.solutions/blog/power-automate-for-marketing/">
+<meta name="author" content="Ryan Sandoval">
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://supergood.com/blog/power-automate-for-marketing/">
-    <meta property="twitter:title" content="Power Automate for Marketing Teams: A PM's Guide (Not an Engineer's)">
-    <meta property="twitter:description" content="Most marketing teams waste 15+ hours per week on manual tasks. Power Automate fixes this.">
-    <meta property="twitter:image" content="https://supergood.com/blog/power-automate-for-marketing/og-image.jpg">
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Power Automate for Marketing Teams: A PM's Guide (Not an Engineer's)">
+<meta property="og:description" content="Most marketing teams waste 15+ hours per week on manual tasks. Power Automate fixes this. Here's how to implement it without hiring developers.">
+<meta property="og:url" content="https://supergood.solutions/blog/power-automate-for-marketing/">
+<meta property="og:image" content="https://supergood.solutions/og-image.png">
+<meta property="article:published_time" content="2026-02-16">
+<meta property="article:author" content="Ryan Sandoval">
 
-    <!-- Schema.org markup -->
-    <script type="application/ld+json">
+<!-- Schema.org Article + FAQ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Power Automate for Marketing Teams: A PM's Guide (Not an Engineer's)",
+  "description": "A practical guide to using Microsoft Power Automate for marketing workflow automation, written for PMs and marketing ops teams who need results, not technical deep-dives.",
+  "author": {
+    "@type": "Person",
+    "name": "Ryan Sandoval",
+    "url": "https://linkedin.com/in/RyanSandoval",
+    "jobTitle": "AI Automation Consultant",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Supergood Solutions"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Supergood Solutions",
+    "url": "https://supergood.solutions"
+  },
+  "datePublished": "2026-02-16",
+  "dateModified": "2026-02-16",
+  "mainEntityOfPage": "https://supergood.solutions/blog/power-automate-for-marketing/",
+  "keywords": ["Power Automate", "marketing automation", "workflow automation", "Microsoft Power Platform", "marketing ops", "no-code automation"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
     {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": "Power Automate for Marketing Teams: A PM's Guide (Not an Engineer's)",
-      "description": "Most marketing teams waste 15+ hours per week on manual tasks. Power Automate fixes this. Here's how to implement it without hiring developers.",
-      "image": "https://supergood.com/blog/power-automate-for-marketing/og-image.jpg",
-      "author": {
-        "@type": "Organization",
-        "name": "Supergood"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Supergood",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://supergood.com/logo.png"
-        }
-      },
-      "datePublished": "2025-02-17",
-      "dateModified": "2025-02-17",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://supergood.com/blog/power-automate-for-marketing/"
+      "@type": "Question",
+      "name": "What is Power Automate for marketing teams?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Power Automate is Microsoft's workflow automation tool that connects different apps and services to automate repetitive tasks. For marketing teams, it's used to automate lead routing, reporting, campaign setup, and data synchronization between platforms like CRM, email marketing tools, and spreadsheets. It's included with most Microsoft 365 licenses at no additional cost."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should marketing teams use Power Automate or hire developers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Marketing teams should use Power Automate for 80% of automation needs before hiring developers. It handles data movement, notifications, approvals, and basic integrations without code. Only hire developers for complex data transformations, custom user interfaces, or integrations with systems that don't have APIs. Most marketing automation is simple workflow orchestration that Power Automate handles perfectly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What marketing processes work best with Power Automate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Power Automate works best for rule-based, repetitive processes: lead routing from forms to CRM, weekly report generation, campaign setup workflows, approval processes, and data synchronization between platforms. It excels at 'if this happens, do that' scenarios and connecting Microsoft 365 tools with popular marketing platforms like Salesforce, HubSpot, and Mailchimp."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does Power Automate cost for marketing automation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Power Automate is included free with most Microsoft 365 Business licenses for standard connectors and basic flows. Premium connectors (Salesforce, advanced database connections) require Power Automate Premium at $15/user/month. Most marketing teams can automate their top workflows using only the included features, making the effective cost $0 for existing M365 users."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can non-technical marketers use Power Automate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Power Automate uses a visual, drag-and-drop interface designed for business users, not developers. If you can create a flowchart or use Excel formulas, you can build Power Automate flows. The learning curve is 1-2 weeks for basic automations. Most marketing ops professionals can handle 90% of automation needs without IT help."
       }
     }
-    </script>
+  ]
+}
+</script>
 
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-            color: #333;
-        }
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-        h2 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            color: #2c3e50;
-        }
-        h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-top: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: #34495e;
-        }
-        p {
-            margin-bottom: 1rem;
-        }
-        .reading-time {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 2rem;
-        }
-        .cta {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-left: 4px solid #007bff;
-            margin: 2rem 0;
-        }
-        .faq {
-            margin-top: 2rem;
-        }
-        .faq-item {
-            margin-bottom: 1.5rem;
-        }
-        .faq-question {
-            font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 0.5rem;
-        }
-    </style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #0a0a0b; --surface: #111113; --surface-2: #18181b; --border: #27272a;
+  --text: #fafafa; --text-2: #a1a1aa; --text-3: #71717a;
+  --green: #22c55e; --mono: 'JetBrains Mono', monospace;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+::selection { background: var(--green); color: var(--bg); }
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; background: rgba(10,10,11,0.8); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+nav .inner { max-width: 720px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
+.wordmark { font-weight: 800; font-size: 1.125rem; letter-spacing: -0.03em; color: var(--text); text-decoration: none; display: inline-flex; align-items: baseline; }
+.wordmark .oo-dot { display: inline-block; width: 0.45em; height: 0.45em; background: var(--green); border-radius: 50%; }
+.wordmark .oo-wrap { display: inline-flex; gap: 2px; align-items: center; }
+.wordmark .dot-period { color: var(--green); }
+nav a.back { font-size: 0.875rem; color: var(--text-3); text-decoration: none; }
+nav a.back:hover { color: var(--text); }
+
+article { max-width: 720px; margin: 0 auto; padding: 140px 24px 80px; }
+article .tag { font-family: var(--mono); font-size: 0.6875rem; color: var(--green); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; }
+article h1 { font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px; }
+article .subtitle { font-size: 1.25rem; color: var(--text-2); line-height: 1.6; margin-bottom: 24px; }
+article .meta { font-family: var(--mono); font-size: 0.75rem; color: var(--text-3); margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+article h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin: 56px 0 16px; }
+article h3 { font-size: 1.125rem; font-weight: 600; margin: 40px 0 12px; }
+article p { font-size: 1rem; color: var(--text-2); margin-bottom: 20px; }
+article strong { color: var(--text); }
+article ul, article ol { color: var(--text-2); margin-bottom: 20px; padding-left: 24px; }
+article li { margin-bottom: 8px; }
+article blockquote { border-left: 3px solid var(--green); padding: 16px 24px; margin: 28px 0; background: var(--surface); border-radius: 0 8px 8px 0; }
+article blockquote p { color: var(--text); margin-bottom: 0; font-style: italic; }
+article code { font-family: var(--mono); font-size: 0.875rem; background: var(--surface-2); padding: 2px 6px; border-radius: 4px; color: var(--green); }
+article .stat-callout { font-size: 1.5rem; font-weight: 800; color: var(--text); text-align: center; padding: 40px; margin: 32px 0; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); }
+article .stat-callout span { color: var(--green); }
+article a { color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
+article a:hover { color: var(--text); }
+
+.faq-section { margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--border); }
+.faq-section h2 { margin-top: 0; }
+.faq-item { margin-bottom: 28px; }
+.faq-item h3 { font-size: 1rem; color: var(--text); margin: 0 0 8px; }
+.faq-item p { font-size: 0.9375rem; }
+
+.cta-box { border: 2px solid var(--green); border-radius: 12px; padding: 40px; margin: 48px 0; text-align: center; background: var(--surface); }
+.cta-box h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 8px; }
+.cta-box p { font-size: 0.9375rem; color: var(--text-2); margin-bottom: 20px; }
+.cta-box .btn { display: inline-flex; align-items: center; gap: 8px; font-family: 'Inter', sans-serif; font-size: 0.9375rem; font-weight: 600; padding: 14px 28px; border-radius: 8px; text-decoration: none; background: var(--text); color: var(--bg); transition: all 0.2s; }
+.cta-box .btn:hover { transform: translateY(-1px); }
+
+footer { border-top: 1px solid var(--border); padding: 40px 0; }
+footer .container { max-width: 720px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+footer p { font-size: 0.8125rem; color: var(--text-3); }
+</style>
 </head>
 <body>
-    <article>
-        <h1>Power Automate for Marketing Teams: A PM's Guide (Not an Engineer's)</h1>
-        <p class="reading-time">4 minute read</p>
 
-        <p>Your marketing team burns 15+ hours per week on manual tasks. Lead assignments sit in limbo. Campaign reports take half a day to compile. Someone manually copies data between systems like it's 1995.</p>
+<nav>
+  <div class="inner">
+    <a href="/" class="wordmark">superg<span class="oo-wrap"><span class="oo-dot"></span><span class="oo-dot"></span></span>d<span class="dot-period">.</span></a>
+    <a href="/blog/" class="back">← All posts</a>
+  </div>
+</nav>
 
-        <p>This is broken. Everyone knows it's broken. Most teams hire expensive developers or buy complex marketing automation platforms. Wrong answer.</p>
+<article>
+  <div class="tag">Guide · Power Platform</div>
+  <h1>Power Automate for Marketing Teams: A PM's Guide (Not an Engineer's)</h1>
+  <p class="subtitle">Most marketing teams waste 15+ hours per week on manual tasks. Power Automate fixes this. Here's how to implement it without hiring developers.</p>
+  <div class="meta">By Ryan Sandoval · February 16, 2026 · 4 min read</div>
 
-        <h2>You Already Own the Solution</h2>
+  <p>Your team spends 20 hours a week on work a robot should do.</p>
 
-        <p>If you use Office 365, you already have Power Automate. You're paying for it. Most marketing teams don't know this exists or think it's "too technical." It's not. If you can build a spreadsheet formula, you can build a Power Automate workflow.</p>
+  <p>You know this. Everyone knows this. Yet marketing teams keep hiring developers to build "custom solutions" for problems that Power Automate solves without code.</p>
 
-        <p>The tool was designed for business users, not engineers. Microsoft built it so departments could solve their own problems without waiting months for IT tickets.</p>
+  <p><strong>Here's the obvious truth:</strong> 80% of marketing automation is moving data from one place to another and sending notifications. Power Automate does this. You already pay for it. Stop overthinking it.</p>
 
-        <h2>Three Use Cases That Pay for Themselves</h2>
+  <div class="stat-callout">The average marketing team wastes <span>$89,000 per year</span> on manual work that Power Automate could do automatically.</div>
 
-        <h3>Lead Routing: From 2 Hours to 2 Minutes</h3>
+  <h2>Why Power Automate, Not Zapier or Custom Code</h2>
 
-        <p>Manual lead assignment is chaos. Sales gets mad. Leads go cold. Someone always gets blamed.</p>
+  <p>This is simple. You use Microsoft 365. Power Automate is already in your license. It connects to everything you actually use — Excel, SharePoint, Teams, Outlook, your CRM.</p>
 
-        <p>Power Automate fixes this: When a lead comes in, it automatically assigns based on territory, deal size, or round-robin. No human intervention. No delays. No arguments.</p>
+  <p><strong>The math:</strong></p>
+  <ul>
+    <li>Power Automate: $0 (included) or $15/month for premium</li>
+    <li>Zapier: $20-100+/month per user</li>
+    <li>Custom development: $50,000+ and 6 months of your life</li>
+  </ul>
 
-        <p>Time saved: 10 hours per week. Cost: $0 (you already pay for it). ROI: Immediate.</p>
+  <p>We use tools you already pay for. Novel concept, right?</p>
 
-        <h3>Campaign Reporting: Stop Copy-Pasting Your Life Away</h3>
+  <h3>When NOT to Use Power Automate</h3>
+  <p>Don't use Power Automate if:</p>
+  <ul>
+    <li>You're not on Microsoft 365 (use Zapier instead)</li>
+    <li>You need complex data transformations (hire a developer)</li>
+    <li>You're integrating with obscure tools with no API (also developer territory)</li>
+  </ul>
 
-        <p>Your weekly campaign report takes 4 hours. You pull data from five systems, paste it into Excel, format it, email it. Every. Single. Week.</p>
+  <p>Everything else? Power Automate handles it.</p>
 
-        <p>Build one workflow that pulls all your data automatically, formats it, and delivers it to your inbox every Monday at 8 AM. Or posts it to Slack. Or saves it to SharePoint.</p>
+  <h2>The 3 Marketing Workflows to Automate First</h2>
 
-        <p>Time saved: 4 hours per week, 200 hours per year. That's five weeks of your life back.</p>
+  <p>Stop trying to automate everything. Start with these three. They're broken in every marketing team, and Power Automate fixes them in under a day each.</p>
 
-        <h3>Campaign Setup: Eliminate the Repetitive Work</h3>
+  <h3>1. Lead Routing (3-5 hours saved per week)</h3>
+  <p><strong>What's broken:</strong> Form submissions sit in email inboxes. Someone manually copies data into CRM hours later. Half the fields are wrong. Sales gets cold leads.</p>
+  <p><strong>Power Automate solution:</strong> Form submission → instant CRM record creation → auto-assign to sales rep based on territory/product → Slack notification with lead details.</p>
+  <p><strong>ROI:</strong> 16 hours/month × $45/hour = $8,640 annually for a marketing manager's time.</p>
 
-        <p>New campaign launch means 20 manual steps across multiple platforms. Create folders, set up tracking, notify stakeholders, update spreadsheets. Someone always forgets something.</p>
+  <h3>2. Weekly Reporting (2-4 hours saved per week)</h3>
+  <p><strong>What's broken:</strong> Someone manually exports data from 3-4 platforms, copies numbers into Excel, formats it, and emails leadership every Monday. The data is stale by Tuesday.</p>
+  <p><strong>Power Automate solution:</strong> Schedule runs every Monday at 8 AM → pulls data via API from each platform → populates Excel template → emails formatted report to leadership.</p>
+  <p><strong>ROI:</strong> 12 hours/month × $45/hour = $6,480 annually.</p>
 
-        <p>One trigger creates everything: folders in SharePoint, tracking pixels, Slack notifications, calendar events. Zero manual steps. Zero forgotten tasks.</p>
+  <h3>3. Campaign Setup (2-3 hours saved per campaign)</h3>
+  <p><strong>What's broken:</strong> Setting up campaigns means copying information across email platforms, ad platforms, landing page tools. UTM parameters get mangled. Someone forgets to update something somewhere.</p>
+  <p><strong>Power Automate solution:</strong> Campaign brief in SharePoint → auto-populate email templates → create ad campaigns with correct targeting → generate UTM parameters → update tracking spreadsheet.</p>
+  <p><strong>ROI:</strong> 8 campaigns/month × 2.5 hours × $45/hour = $10,800 annually.</p>
 
-        <p>Result: Campaigns launch faster, nothing gets missed, your team focuses on strategy instead of busywork.</p>
+  <h2>How to Actually Implement This</h2>
 
-        <h2>Implementation: Three Steps</h2>
+  <p>Here's the framework that works:</p>
 
-        <p><strong>Step 1: Audit.</strong> List every manual task your team does weekly. Everything. Lead assignment, report generation, file organization, notifications. If someone does it more than twice, it goes on the list.</p>
+  <p><strong>1. Audit</strong> — Map your current process step by step. Where does data come from? Where does it go? What manual steps happen in between?</p>
 
-        <p><strong>Step 2: Build.</strong> Start with the biggest time-waster. Use Power Automate's templates. Don't build from scratch. Pick the closest template and modify it. Most workflows take 30 minutes to set up.</p>
+  <p><strong>2. Build</strong> — Start with the simplest version that works. Don't try to handle every edge case on day one.</p>
 
-        <p><strong>Step 3: Test.</strong> Run it parallel to your manual process for two weeks. Fix what breaks. Then kill the manual process forever.</p>
+  <p><strong>3. Test</strong> — Run it alongside your manual process for two weeks. Catch the problems while you still have the safety net.</p>
 
-        <div class="faq">
-            <h2>FAQ</h2>
+  <p><strong>4. Scale</strong> — Once it's working reliably, turn off the manual process and let the automation handle everything.</p>
 
-            <div class="faq-item">
-                <div class="faq-question">What is Power Automate for marketing teams?</div>
-                <p>Power Automate connects your marketing tools and eliminates manual tasks. It automatically moves data between systems, triggers actions based on events, and handles repetitive work so your team can focus on strategy.</p>
-            </div>
+  <p>Most teams skip the testing phase and wonder why their automations break. Don't be most teams.</p>
 
-            <div class="faq-item">
-                <div class="faq-question">Should marketing teams use Power Automate or hire developers?</div>
-                <p>Use Power Automate. Hiring developers takes months, costs $100K+, and creates dependency. Power Automate is included in Office 365, takes minutes to implement, and your team controls it directly.</p>
-            </div>
+  <div class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    
+    <div class="faq-item">
+      <h3>What is Power Automate for marketing teams?</h3>
+      <p>Power Automate is Microsoft's workflow automation tool that connects different apps and services to automate repetitive tasks. For marketing teams, it's used to automate lead routing, reporting, campaign setup, and data synchronization between platforms like CRM, email marketing tools, and spreadsheets. It's included with most Microsoft 365 licenses at no additional cost.</p>
+    </div>
 
-            <div class="faq-item">
-                <div class="faq-question">What marketing processes work best with Power Automate?</div>
-                <p>Lead routing, campaign reporting, file organization, approval workflows, social media scheduling, event registration, and data syncing between marketing tools. Anything repetitive and rule-based is perfect.</p>
-            </div>
+    <div class="faq-item">
+      <h3>Should marketing teams use Power Automate or hire developers?</h3>
+      <p>Marketing teams should use Power Automate for 80% of automation needs before hiring developers. It handles data movement, notifications, approvals, and basic integrations without code. Only hire developers for complex data transformations, custom user interfaces, or integrations with systems that don't have APIs. Most marketing automation is simple workflow orchestration that Power Automate handles perfectly.</p>
+    </div>
 
-            <div class="faq-item">
-                <div class="faq-question">How much does Power Automate cost for marketing automation?</div>
-                <p>If you have Office 365, it's included. No additional cost for basic workflows. Premium connectors (Salesforce, advanced triggers) cost $15/user/month, still cheaper than hiring developers or buying enterprise automation platforms.</p>
-            </div>
+    <div class="faq-item">
+      <h3>What marketing processes work best with Power Automate?</h3>
+      <p>Power Automate works best for rule-based, repetitive processes: lead routing from forms to CRM, weekly report generation, campaign setup workflows, approval processes, and data synchronization between platforms. It excels at 'if this happens, do that' scenarios and connecting Microsoft 365 tools with popular marketing platforms like Salesforce, HubSpot, and Mailchimp.</p>
+    </div>
 
-            <div class="faq-item">
-                <div class="faq-question">Can non-technical marketers use Power Automate?</div>
-                <p>Yes. It's designed for business users. If you can use Excel formulas or set up email rules, you can build Power Automate workflows. The interface is visual drag-and-drop, not code.</p>
-            </div>
+    <div class="faq-item">
+      <h3>How much does Power Automate cost for marketing automation?</h3>
+      <p>Power Automate is included free with most Microsoft 365 Business licenses for standard connectors and basic flows. Premium connectors (Salesforce, advanced database connections) require Power Automate Premium at $15/user/month. Most marketing teams can automate their top workflows using only the included features, making the effective cost $0 for existing M365 users.</p>
+    </div>
 
-            <div class="faq-item">
-                <div class="faq-question">How long does it take to implement Power Automate for marketing?</div>
-                <p>Simple workflows take 30 minutes. Complex ones take 2-3 hours. Most teams see results within the first week. Start with one process, get it working, then expand.</p>
-            </div>
+    <div class="faq-item">
+      <h3>Can non-technical marketers use Power Automate?</h3>
+      <p>Yes. Power Automate uses a visual, drag-and-drop interface designed for business users, not developers. If you can create a flowchart or use Excel formulas, you can build Power Automate flows. The learning curve is 1-2 weeks for basic automations. Most marketing ops professionals can handle 90% of automation needs without IT help.</p>
+    </div>
+  </div>
 
-            <div class="faq-item">
-                <div class="faq-question">What happens if Power Automate workflows break?</div>
-                <p>You get error notifications immediately. Most issues are simple fixes (expired credentials, changed field names). Unlike custom code, there's no mystery debugging. The platform tells you exactly what's wrong.</p>
-            </div>
+  <div class="cta-box">
+    <h3>Ready to Stop Wasting 20 Hours a Week?</h3>
+    <p>We find the manual work hiding in your marketing workflows and automate it. Using tools you already pay for.</p>
+    <a href="https://calendar.app.google/5eGUWKxH8iXr5uCp8" class="btn">
+      Get Your Free Automation Audit
+    </a>
+  </div>
+</article>
 
-            <div class="faq-item">
-                <div class="faq-question">Which marketing tools integrate with Power Automate?</div>
-                <p>500+ connectors including Salesforce, HubSpot, Mailchimp, Google Analytics, Facebook Ads, LinkedIn, Twitter, Slack, Teams, SharePoint, and most major marketing platforms. If it has an API, it probably connects.</p>
-            </div>
-        </div>
+<footer>
+  <div class="container">
+    <p>© 2026 superg●●d.</p>
+    <p><a href="/" style="color: var(--text-3); text-decoration: none;">supergood.solutions</a></p>
+  </div>
+</footer>
 
-        <div class="cta">
-            <h3>Stop Waiting for Someone Else to Fix This</h3>
-            <p>Your manual processes aren't getting better. They're getting worse as your team grows. Power Automate is sitting in your Office 365 account right now, unused. Log in. Pick one repetitive task. Build a workflow. Get your life back.</p>
-        </div>
-    </article>
 </body>
 </html>
