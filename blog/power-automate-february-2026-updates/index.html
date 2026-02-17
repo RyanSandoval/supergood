@@ -23,7 +23,7 @@
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "Power Automate's February 2026 Updates: What Marketing Teams Actually Need to Know",
-  "description": "Analysis of Microsoft Power Automate's latest updates and broader marketing automation trends for 2026, including AI-powered workflows and privacy-first personalization.",
+  "description": "Microsoft's latest Power Automate updates include ROI tracking and better automation. Plus the AI trends reshaping marketing automation in 2026.",
   "author": {
     "@type": "Person",
     "name": "Ryan Sandoval",
@@ -50,392 +50,179 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
-  --green: #22c55e;
-  --green-hover: #16a34a;
-  --dark: #0a0a0a;
-  --gray: #6b7280;
-  --light-gray: #f9fafb;
-  --border: #e5e7eb;
-  --gradient: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  --bg: #0a0a0b; --surface: #111113; --surface-2: #18181b; --border: #27272a;
+  --text: #fafafa; --text-2: #a1a1aa; --text-3: #71717a;
+  --green: #22c55e; --mono: 'JetBrains Mono', monospace;
 }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+::selection { background: var(--green); color: var(--bg); }
 
-html {
-  scroll-behavior: smooth;
-}
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; background: rgba(10,10,11,0.8); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+nav .inner { max-width: 720px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
+.wordmark { font-weight: 800; font-size: 1.125rem; letter-spacing: -0.03em; color: var(--text); text-decoration: none; display: inline-flex; align-items: baseline; }
+.wordmark .oo-dot { display: inline-block; width: 0.45em; height: 0.45em; background: var(--green); border-radius: 50%; }
+.wordmark .oo-wrap { display: inline-flex; gap: 2px; align-items: center; }
+.wordmark .dot-period { color: var(--green); }
+nav a.back { font-size: 0.875rem; color: var(--text-3); text-decoration: none; }
+nav a.back:hover { color: var(--text); }
 
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
-  color: var(--dark);
-  background: white;
-}
+article { max-width: 720px; margin: 0 auto; padding: 140px 24px 80px; }
+article .tag { font-family: var(--mono); font-size: 0.6875rem; color: var(--green); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; }
+article h1 { font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px; }
+article .subtitle { font-size: 1.25rem; color: var(--text-2); line-height: 1.6; margin-bottom: 24px; }
+article .meta { font-family: var(--mono); font-size: 0.75rem; color: var(--text-3); margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+article h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin: 56px 0 16px; }
+article h3 { font-size: 1.125rem; font-weight: 600; margin: 40px 0 12px; }
+article p { font-size: 1rem; color: var(--text-2); margin-bottom: 20px; }
+article strong { color: var(--text); }
+article ul, article ol { color: var(--text-2); margin-bottom: 20px; padding-left: 24px; }
+article li { margin-bottom: 8px; }
+article blockquote { border-left: 3px solid var(--green); padding: 16px 24px; margin: 28px 0; background: var(--surface); border-radius: 0 8px 8px 0; }
+article blockquote p { color: var(--text); margin-bottom: 0; font-style: italic; }
+article code { font-family: var(--mono); font-size: 0.875rem; background: var(--surface-2); padding: 2px 6px; border-radius: 4px; color: var(--green); }
+article .stat-callout { font-size: 1.5rem; font-weight: 800; color: var(--text); text-align: center; padding: 40px; margin: 32px 0; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); }
+article .stat-callout span { color: var(--green); }
+article a { color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
+article a:hover { color: var(--text); }
 
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
+.cta-box { border: 2px solid var(--green); border-radius: 12px; padding: 40px; margin: 48px 0; text-align: center; background: var(--surface); }
+.cta-box h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 8px; }
+.cta-box p { font-size: 0.9375rem; color: var(--text-2); margin-bottom: 20px; }
+.cta-box .btn { display: inline-flex; align-items: center; gap: 8px; font-family: 'Inter', sans-serif; font-size: 0.9375rem; font-weight: 600; padding: 14px 28px; border-radius: 8px; text-decoration: none; background: var(--text); color: var(--bg); transition: all 0.2s; }
+.cta-box .btn:hover { transform: translateY(-1px); }
 
-/* Header */
-header {
-  padding: 20px 0;
-  border-bottom: 1px solid var(--border);
-}
+.sources-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
+.sources-section h3 { font-size: 1rem; font-weight: 600; margin-bottom: 12px; color: var(--text); }
+.sources-section ul { list-style: none; padding: 0; }
+.sources-section li { margin-bottom: 8px; font-size: 0.875rem; }
+.sources-section a { font-size: 0.875rem; }
 
-.logo {
-  font-size: 24px;
-  font-weight: 700;
-  text-decoration: none;
-  color: var(--dark);
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.dots {
-  color: var(--green);
-  position: relative;
-}
-
-/* Article */
-.article-header {
-  padding: 60px 0 40px;
-  text-align: center;
-}
-
-.article-title {
-  font-size: 36px;
-  font-weight: 800;
-  line-height: 1.2;
-  margin-bottom: 16px;
-  color: var(--dark);
-}
-
-.article-subtitle {
-  font-size: 18px;
-  color: var(--gray);
-  margin-bottom: 32px;
-}
-
-.article-meta {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 24px;
-  font-size: 14px;
-  color: var(--gray);
-}
-
-.article-content {
-  max-width: 700px;
-  margin: 0 auto;
-  padding-bottom: 60px;
-}
-
-.article-content h2 {
-  font-size: 28px;
-  font-weight: 700;
-  margin: 40px 0 20px;
-  color: var(--dark);
-}
-
-.article-content h3 {
-  font-size: 22px;
-  font-weight: 600;
-  margin: 32px 0 16px;
-  color: var(--dark);
-}
-
-.article-content p {
-  margin-bottom: 20px;
-  font-size: 17px;
-  line-height: 1.7;
-}
-
-.article-content strong {
-  font-weight: 600;
-  color: var(--dark);
-}
-
-.article-content a {
-  color: var(--green);
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.article-content a:hover {
-  color: var(--green-hover);
-  text-decoration: underline;
-}
-
-.article-content ul {
-  margin: 20px 0;
-  padding-left: 24px;
-}
-
-.article-content li {
-  margin-bottom: 8px;
-  font-size: 17px;
-  line-height: 1.6;
-}
-
-/* Blockquotes for key insights */
-.article-content blockquote {
-  background: var(--light-gray);
-  border-left: 4px solid var(--green);
-  padding: 24px;
-  margin: 32px 0;
-  font-style: italic;
-  font-size: 18px;
-  border-radius: 0 8px 8px 0;
-}
-
-/* Call-to-action */
-.cta {
-  background: var(--gradient);
-  padding: 40px;
-  border-radius: 12px;
-  text-align: center;
-  color: white;
-  margin: 40px 0;
-}
-
-.cta h3 {
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 12px;
-}
-
-.cta p {
-  font-size: 18px;
-  margin-bottom: 24px;
-  opacity: 0.9;
-}
-
-.cta-button {
-  display: inline-block;
-  background: white;
-  color: var(--green);
-  padding: 12px 32px;
-  border-radius: 8px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: transform 0.2s;
-}
-
-.cta-button:hover {
-  transform: translateY(-2px);
-  color: var(--green-hover);
-}
-
-/* Footer */
-.article-footer {
-  border-top: 1px solid var(--border);
-  padding: 40px 0;
-  text-align: center;
-  color: var(--gray);
-  font-size: 14px;
-}
-
-.back-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--green);
-  text-decoration: none;
-  font-weight: 500;
-  margin-bottom: 24px;
-}
-
-.back-link:hover {
-  color: var(--green-hover);
-}
-
-/* Sources section */
-.sources {
-  margin-top: 40px;
-  padding-top: 32px;
-  border-top: 1px solid var(--border);
-}
-
-.sources h4 {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 12px;
-  color: var(--dark);
-}
-
-.sources ul {
-  list-style: none;
-  padding: 0;
-}
-
-.sources li {
-  margin-bottom: 8px;
-  font-size: 15px;
-}
+footer { border-top: 1px solid var(--border); padding: 40px 0; }
+footer .container { max-width: 720px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+footer p { font-size: 0.8125rem; color: var(--text-3); }
+footer a { color: var(--text-3); text-decoration: none; }
+footer a:hover { color: var(--text); }
 
 /* Mobile responsive */
 @media (max-width: 640px) {
-  .container {
-    padding: 0 16px;
-  }
-  
-  .article-title {
-    font-size: 28px;
-  }
-  
-  .article-subtitle {
-    font-size: 16px;
-  }
-  
-  .article-meta {
-    flex-direction: column;
-    gap: 12px;
-  }
-  
-  .cta {
-    padding: 32px 20px;
-  }
-  
-  .cta h3 {
-    font-size: 20px;
-  }
+  nav .inner { padding: 0 16px; }
+  article { padding: 120px 16px 60px; }
+  .cta-box { padding: 32px 20px; }
 }
 </style>
 </head>
 <body>
 
-<header>
-  <div class="container">
-    <a href="/" class="logo">
-      superg<span class="dots">●●</span>d.
-    </a>
+<nav>
+  <div class="inner">
+    <a href="/" class="wordmark">superg<span class="oo-wrap"><span class="oo-dot"></span><span class="oo-dot"></span></span>d<span class="dot-period">.</span></a>
+    <a href="/blog/" class="back">← All posts</a>
   </div>
-</header>
+</nav>
 
-<main>
-  <div class="container">
-    
-    <div class="article-header">
-      <h1 class="article-title">Power Automate's February 2026 Updates: What Marketing Teams Actually Need to Know</h1>
-      <p class="article-subtitle">Microsoft's latest updates include ROI tracking and better automation. Plus the AI trends reshaping marketing automation in 2026.</p>
-      <div class="article-meta">
-        <span>Published February 17, 2026</span>
-        <span>•</span>
-        <span>5 min read</span>
-        <span>•</span>
-        <span>By Ryan Sandoval</span>
-      </div>
-    </div>
-    
-    <div class="article-content">
-      
-      <p>Microsoft dropped their <a href="https://learn.microsoft.com/en-us/power-platform/release-plan/2025wave2/power-automate/planned-features">2025 Wave 2 release plan</a> last week, and buried in the technical jargon are three updates that marketing teams should actually care about. Plus, we're seeing some bigger trends in automation that'll reshape how you work this year.</p>
-      
-      <p>Let's cut through the noise.</p>
-      
-      <h2>The Updates That Matter</h2>
-      
-      <h3>1. Time and Money Savings Tracking (Already Live)</h3>
-      <p>Power Automate now <strong>quantifies exactly how much time and money your automations save</strong>. Not "estimated benefits" or vague ROI claims — actual tracked savings.</p>
-      
-      <p><strong>Why this matters:</strong> Your CFO has been asking for automation ROI data. Now you can show them "we saved 127 hours and $4,200 last month" instead of "it feels faster."</p>
-      
-      <p><strong>What to do:</strong> Enable this for your existing flows and start building the business case for more automation budget.</p>
-      
-      <h3>2. Better Desktop Flow Version Control (Coming March 2026)</h3>
-      <p>Desktop flows — the automations that run on your Windows machines — are getting proper version control. Think GitHub for your marketing automations.</p>
-      
-      <p><strong>Why this matters:</strong> Remember when Sarah updated the lead scoring flow and broke everything? Now you can roll back to the working version in seconds.</p>
-      
-      <h3>3. Browser Automation Without Extensions (Already Live)</h3>
-      <p>You can now automate Chrome, Edge, and Firefox without installing browser extensions. Power Automate talks directly to the browser.</p>
-      
-      <p><strong>Why this matters:</strong> IT finally stops complaining about security risks. And you can automate that annoying weekly report download without begging for permission.</p>
-      
-      <h2>The Bigger Picture: Marketing Automation Goes AI-First</h2>
-      
-      <p>While Microsoft adds features, the whole marketing automation space is shifting. According to <a href="https://www.klaviyo.com/blog/marketing-automation-trends">Klaviyo's 2026 trends report</a>, we're moving from "scheduled workflows to self-optimizing systems that plan, execute, and adjust campaigns across channels in real time."</p>
-      
-      <p>Translation: Your email sequences will start writing themselves.</p>
-      
-      <h3>What "AI Copilot" Actually Means</h3>
-      <p>Stefan Milicevic from Underground Ecom (one of the world's largest retention agencies) puts it this way: <strong>"AI will start recommending triggers, delays, and messaging angles after spotting trends and gaps in customer retention cycles."</strong></p>
-      
-      <p>Not just "send this email after 3 days." More like "send this specific message at 2:47 PM on Tuesday because that's when this customer segment historically converts best."</p>
-      
-      <h3>The Privacy Angle Everyone's Missing</h3>
-      <p>Here's the contrarian take: stricter privacy regulations aren't hurting automation — they're making it better.</p>
-      
-      <p>Marika Tselonis from Kulin nails it: <strong>"Zero-party data collection will become the defining competitive advantage in ecommerce automation."</strong></p>
-      
-      <p>When you can't spy on people with cookies, you have to actually ask what they want. Turns out, people will tell you if you give them something valuable in return.</p>
-      
-      <p>The brands winning in 2026 aren't the ones with the most data. They're the ones with the most <em>relevant</em> data.</p>
-      
-      <h2>What This Means for Your Team</h2>
-      
-      <p>Three practical takeaways:</p>
-      
-      <p><strong>1. Audit your current automations for ROI measurement</strong><br>
-      If you can't prove your workflows save time and money, you won't get budget for new ones. Enable tracking in Power Automate. Document manual processes before you automate them. Build the business case with actual numbers.</p>
-      
-      <p><strong>2. Start collecting zero-party data now</strong><br>
-      Stop guessing what your customers want. Ask them. Surveys, preference centers, interactive quizzes — anything that lets people tell you their preferences voluntarily.</p>
-      
-      <p>Then feed that data into your automation rules. "Send workout tips to people who said they're fitness-focused" beats "send generic health content to everyone."</p>
-      
-      <p><strong>3. Connect your tools (for real this time)</strong><br>
-      The unified data trend isn't just buzzword bingo. Christian Nørbjerg Enger from Segmento explains: <strong>"The brands that stand out will be those leveraging owned and earned data to optimize every stage of the customer journey."</strong></p>
-      
-      <p>If your email platform doesn't talk to your CRM, which doesn't talk to your website, you're automating in silos. Fix the plumbing before you add more features.</p>
-      
-      <div class="cta">
-        <h3>Ready to Automate Smarter?</h3>
-        <p>Most marketing teams waste 15+ hours per week on manual work that could be automated in days, not months.</p>
-        <a href="mailto:ryan@supergood.solutions" class="cta-button">Get Your Free Automation Audit</a>
-      </div>
-      
-      <h2>The Bottom Line</h2>
-      
-      <p>Power Automate's getting better at the basics — tracking ROI, version control, browser automation without headaches. That's table stakes.</p>
-      
-      <p>The real opportunity is in the AI shift happening across all marketing automation platforms. The tools are becoming smart enough to optimize themselves.</p>
-      
-      <p>Your job isn't to manage workflows anymore. It's to feed them better data and set the strategic direction.</p>
-      
-      <p>The winners in 2026 won't be the teams with the most complex automations. They'll be the ones with the clearest strategy and the cleanest data.</p>
-      
-      <hr>
-      
-      <p><strong>Your turn:</strong> What's the most manual process your marketing team still does every week? <a href="mailto:ryan@supergood.solutions">Email me</a> — I'll tell you exactly how to automate it.</p>
-      
-      <div class="sources">
-        <h4>Sources:</h4>
-        <ul>
-          <li>• <a href="https://learn.microsoft.com/en-us/power-platform/release-plan/2025wave2/power-automate/planned-features">Microsoft Power Platform Release Plan 2025 Wave 2</a></li>
-          <li>• <a href="https://www.klaviyo.com/blog/marketing-automation-trends">Klaviyo's 8 Marketing Automation Trends for 2026</a></li>
-        </ul>
-      </div>
-      
-    </div>
-    
+<article>
+  <div class="tag">Tech Tuesday · Updates</div>
+  <h1>Power Automate's February 2026 Updates: What Marketing Teams Actually Need to Know</h1>
+  <p class="subtitle">Microsoft's latest updates include ROI tracking and better automation. Plus the AI trends reshaping marketing automation in 2026.</p>
+  <div class="meta">By Ryan Sandoval · February 17, 2026 · 5 min read</div>
+
+  <p>Microsoft dropped their <a href="https://learn.microsoft.com/en-us/power-platform/release-plan/2025wave2/power-automate/planned-features">2025 Wave 2 release plan</a> last week, and buried in the technical jargon are three updates that marketing teams should actually care about. Plus, we're seeing some bigger trends in automation that'll reshape how you work this year.</p>
+  
+  <p>Let's cut through the noise.</p>
+  
+  <h2>The Updates That Matter</h2>
+  
+  <h3>1. Time and Money Savings Tracking (Already Live)</h3>
+  <p>Power Automate now <strong>quantifies exactly how much time and money your automations save</strong>. Not "estimated benefits" or vague ROI claims — actual tracked savings.</p>
+  
+  <p><strong>Why this matters:</strong> Your CFO has been asking for automation ROI data. Now you can show them "we saved 127 hours and $4,200 last month" instead of "it feels faster."</p>
+  
+  <p><strong>What to do:</strong> Enable this for your existing flows and start building the business case for more automation budget.</p>
+  
+  <h3>2. Better Desktop Flow Version Control (Coming March 2026)</h3>
+  <p>Desktop flows — the automations that run on your Windows machines — are getting proper version control. Think GitHub for your marketing automations.</p>
+  
+  <p><strong>Why this matters:</strong> Remember when Sarah updated the lead scoring flow and broke everything? Now you can roll back to the working version in seconds.</p>
+  
+  <h3>3. Browser Automation Without Extensions (Already Live)</h3>
+  <p>You can now automate Chrome, Edge, and Firefox without installing browser extensions. Power Automate talks directly to the browser.</p>
+  
+  <p><strong>Why this matters:</strong> IT finally stops complaining about security risks. And you can automate that annoying weekly report download without begging for permission.</p>
+  
+  <h2>The Bigger Picture: Marketing Automation Goes AI-First</h2>
+  
+  <p>While Microsoft adds features, the whole marketing automation space is shifting. According to <a href="https://www.klaviyo.com/blog/marketing-automation-trends">Klaviyo's 2026 trends report</a>, we're moving from "scheduled workflows to self-optimizing systems that plan, execute, and adjust campaigns across channels in real time."</p>
+  
+  <p>Translation: Your email sequences will start writing themselves.</p>
+  
+  <h3>What "AI Copilot" Actually Means</h3>
+  <p>Stefan Milicevic from Underground Ecom (one of the world's largest retention agencies) puts it this way: <strong>"AI will start recommending triggers, delays, and messaging angles after spotting trends and gaps in customer retention cycles."</strong></p>
+  
+  <p>Not just "send this email after 3 days." More like "send this specific message at 2:47 PM on Tuesday because that's when this customer segment historically converts best."</p>
+  
+  <h3>The Privacy Angle Everyone's Missing</h3>
+  <p>Here's the contrarian take: stricter privacy regulations aren't hurting automation — they're making it better.</p>
+  
+  <p>Marika Tselonis from Kulin nails it: <strong>"Zero-party data collection will become the defining competitive advantage in ecommerce automation."</strong></p>
+  
+  <p>When you can't spy on people with cookies, you have to actually ask what they want. Turns out, people will tell you if you give them something valuable in return.</p>
+  
+  <p>The brands winning in 2026 aren't the ones with the most data. They're the ones with the most <em>relevant</em> data.</p>
+  
+  <h2>What This Means for Your Team</h2>
+  
+  <p>Three practical takeaways:</p>
+  
+  <p><strong>1. Audit your current automations for ROI measurement</strong><br>
+  If you can't prove your workflows save time and money, you won't get budget for new ones. Enable tracking in Power Automate. Document manual processes before you automate them. Build the business case with actual numbers.</p>
+  
+  <p><strong>2. Start collecting zero-party data now</strong><br>
+  Stop guessing what your customers want. Ask them. Surveys, preference centers, interactive quizzes — anything that lets people tell you their preferences voluntarily.</p>
+  
+  <p>Then feed that data into your automation rules. "Send workout tips to people who said they're fitness-focused" beats "send generic health content to everyone."</p>
+  
+  <p><strong>3. Connect your tools (for real this time)</strong><br>
+  The unified data trend isn't just buzzword bingo. Christian Nørbjerg Enger from Segmento explains: <strong>"The brands that stand out will be those leveraging owned and earned data to optimize every stage of the customer journey."</strong></p>
+  
+  <p>If your email platform doesn't talk to your CRM, which doesn't talk to your website, you're automating in silos. Fix the plumbing before you add more features.</p>
+
+  <div class="cta-box">
+    <h3>Ready to Automate Smarter?</h3>
+    <p>Most marketing teams waste 15+ hours per week on manual work that could be automated in days, not months.</p>
+    <a href="mailto:ryan@supergood.solutions" class="btn">Get Your Free Automation Audit</a>
   </div>
-</main>
+  
+  <h2>The Bottom Line</h2>
+  
+  <p>Power Automate's getting better at the basics — tracking ROI, version control, browser automation without headaches. That's table stakes.</p>
+  
+  <p>The real opportunity is in the AI shift happening across all marketing automation platforms. The tools are becoming smart enough to optimize themselves.</p>
+  
+  <p>Your job isn't to manage workflows anymore. It's to feed them better data and set the strategic direction.</p>
+  
+  <p>The winners in 2026 won't be the teams with the most complex automations. They'll be the ones with the clearest strategy and the cleanest data.</p>
+  
+  <hr style="border: none; border-top: 1px solid var(--border); margin: 40px 0;">
+  
+  <p><strong>Your turn:</strong> What's the most manual process your marketing team still does every week? <a href="mailto:ryan@supergood.solutions">Email me</a> — I'll tell you exactly how to automate it.</p>
 
-<footer class="article-footer">
+  <div class="sources-section">
+    <h3>Sources:</h3>
+    <ul>
+      <li>• <a href="https://learn.microsoft.com/en-us/power-platform/release-plan/2025wave2/power-automate/planned-features">Microsoft Power Platform Release Plan 2025 Wave 2</a></li>
+      <li>• <a href="https://www.klaviyo.com/blog/marketing-automation-trends">Klaviyo's 8 Marketing Automation Trends for 2026</a></li>
+    </ul>
+  </div>
+
+</article>
+
+<footer>
   <div class="container">
-    <a href="/blog/" class="back-link">← Back to Blog</a>
-    <p><em>Want more marketing automation intelligence delivered weekly? I break down the tools, trends, and tactics that actually matter — no fluff, no vendor pitches, just what works.</em></p>
+    <p>© 2026 superg●●d.</p>
+    <p><a href="/blog/">← All posts</a></p>
   </div>
 </footer>
 
