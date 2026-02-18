@@ -48,344 +48,162 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* Blog post styles matching the dark site design */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
 :root {
-  --bg: #0a0a0b;
-  --surface: #111113;
-  --surface-2: #18181b;
-  --border: #27272a;
-  --text: #fafafa;
-  --text-2: #a1a1aa;
-  --text-3: #71717a;
-  --accent: #e4e4e7;
-  --green: #22c55e;
-  --green-dim: #16a34a;
-  --mono: 'JetBrains Mono', monospace;
+  --bg: #0a0a0b; --surface: #111113; --surface-2: #18181b; --border: #27272a;
+  --text: #fafafa; --text-2: #a1a1aa; --text-3: #71717a;
+  --green: #22c55e; --mono: 'JetBrains Mono', monospace;
 }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+::selection { background: var(--green); color: var(--bg); }
 
-body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  line-height: 1.6;
-  color: var(--text);
-  background: var(--bg);
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-}
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; background: rgba(10,10,11,0.8); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+nav .inner { max-width: 720px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
+.wordmark { font-weight: 800; font-size: 1.125rem; letter-spacing: -0.03em; color: var(--text); text-decoration: none; display: inline-flex; align-items: baseline; }
+.wordmark .oo-dot { display: inline-block; width: 0.45em; height: 0.45em; background: var(--green); border-radius: 50%; }
+.wordmark .oo-wrap { display: inline-flex; gap: 2px; align-items: center; }
+.wordmark .dot-period { color: var(--green); }
+nav a.back { font-size: 0.875rem; color: var(--text-3); text-decoration: none; }
+nav a.back:hover { color: var(--text); }
 
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
+article { max-width: 720px; margin: 0 auto; padding: 140px 24px 80px; }
+article .tag { font-family: var(--mono); font-size: 0.6875rem; color: var(--green); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; }
+article h1 { font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px; }
+article .subtitle { font-size: 1.25rem; color: var(--text-2); line-height: 1.6; margin-bottom: 24px; }
+article .meta { font-family: var(--mono); font-size: 0.75rem; color: var(--text-3); margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+article h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin: 56px 0 16px; }
+article h3 { font-size: 1.125rem; font-weight: 600; margin: 40px 0 12px; }
+article p { font-size: 1rem; color: var(--text-2); margin-bottom: 20px; }
+article strong { color: var(--text); }
+article ul, article ol { color: var(--text-2); margin-bottom: 20px; padding-left: 24px; }
+article li { margin-bottom: 8px; }
+article blockquote { border-left: 3px solid var(--green); padding: 16px 24px; margin: 28px 0; background: var(--surface); border-radius: 0 8px 8px 0; }
+article blockquote p { color: var(--text); margin-bottom: 0; font-style: italic; }
+article code { font-family: var(--mono); font-size: 0.875rem; background: var(--surface-2); padding: 2px 6px; border-radius: 4px; color: var(--green); }
+article a { color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
+article a:hover { color: var(--text); }
 
-header {
-  background: var(--surface);
-  padding: 20px 0;
-  border-bottom: 1px solid var(--border);
-}
+.cta-box { border: 2px solid var(--green); border-radius: 12px; padding: 40px; margin: 48px 0; text-align: center; background: var(--surface); }
+.cta-box p { font-size: 0.9375rem; color: var(--text); margin-bottom: 0; font-style: italic; }
 
-.header-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+.sources-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
+.sources-section h3 { font-size: 1rem; font-weight: 600; margin-bottom: 12px; color: var(--text); }
+.sources-section ul { list-style: none; padding: 0; }
+.sources-section li { margin-bottom: 8px; font-size: 0.875rem; }
 
-.logo {
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--text);
-  text-decoration: none;
-}
-
-.back-link {
-  color: var(--text-2);
-  text-decoration: none;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.back-link:hover {
-  color: var(--text);
-}
-
-main {
-  padding: 60px 0;
-}
-
-.article-header {
-  margin-bottom: 40px;
-  text-align: center;
-}
-
-.article-title {
-  font-size: 36px;
-  font-weight: 700;
-  line-height: 1.2;
-  color: var(--text);
-  margin-bottom: 16px;
-}
-
-.article-meta {
-  color: var(--text-2);
-  font-style: italic;
-  margin-bottom: 24px;
-}
-
-.article-intro {
-  font-size: 18px;
-  color: var(--text-2);
-  line-height: 1.6;
-  margin-bottom: 40px;
-  text-align: left;
-  max-width: 680px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.article-content {
-  max-width: 680px;
-  margin: 0 auto;
-}
-
-.article-content h2 {
-  font-size: 24px;
-  font-weight: 600;
-  margin: 32px 0 16px 0;
-  color: var(--text);
-}
-
-.article-content h3 {
-  font-size: 20px;
-  font-weight: 600;
-  margin: 24px 0 12px 0;
-  color: var(--text);
-}
-
-.article-content p {
-  margin-bottom: 16px;
-  line-height: 1.7;
-}
-
-.article-content ul {
-  margin: 16px 0;
-  padding-left: 24px;
-}
-
-.article-content li {
-  margin-bottom: 8px;
-  line-height: 1.6;
-}
-
-.article-content strong {
-  font-weight: 600;
-  color: var(--text);
-}
-
-.article-content a {
-  color: var(--green);
-  text-decoration: none;
-}
-
-.article-content a:hover {
-  text-decoration: underline;
-}
-
-.quick-hits {
-  background: var(--surface);
-  padding: 24px;
-  border-radius: 8px;
-  margin: 24px 0;
-  border-left: 4px solid var(--green);
-}
-
-.quick-hits ol {
-  padding-left: 20px;
-}
-
-.sources {
-  background: var(--surface);
-  padding: 24px;
-  border-radius: 8px;
-  margin: 40px 0;
-  border: 1px solid var(--border);
-}
-
-.sources h3 {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 12px;
-  color: var(--text);
-}
-
-.sources ul {
-  list-style: none;
-  padding: 0;
-}
-
-.sources li {
-  margin-bottom: 6px;
-  font-size: 14px;
-  color: var(--text-2);
-}
-
-.cta {
-  background: var(--green);
-  color: var(--bg);
-  padding: 24px;
-  border-radius: 8px;
-  margin: 40px 0;
-  text-align: center;
-  font-style: italic;
-  font-weight: 500;
-}
-
-footer {
-  background: var(--surface);
-  padding: 40px 0;
-  margin-top: 60px;
-  border-top: 1px solid var(--border);
-  text-align: center;
-  color: var(--text-2);
-  font-size: 14px;
-}
+footer { background: var(--surface); padding: 40px 0; margin-top: 80px; border-top: 1px solid var(--border); text-align: center; }
+footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
 
 @media (max-width: 768px) {
-  .container {
-    padding: 0 16px;
-  }
-  
-  .article-title {
-    font-size: 28px;
-  }
-  
-  main {
-    padding: 40px 0;
-  }
+  article { padding: 120px 20px 60px; }
+  article h1 { font-size: 2rem; }
+  nav .inner { padding: 0 20px; }
 }
 </style>
 </head>
 
 <body>
-<header>
-  <div class="container">
-    <div class="header-content">
-      <a href="https://supergood.solutions" class="logo">Supergood Solutions</a>
-      <a href="https://supergood.solutions/blog" class="back-link">← Back to Blog</a>
-    </div>
+<nav>
+  <div class="inner">
+    <a href="/" class="wordmark">superg<span class="oo-wrap"><span class="oo-dot"></span><span class="oo-dot"></span></span>d<span class="dot-period">.</span></a>
+    <a href="/blog/" class="back">← All posts</a>
   </div>
-</header>
+</nav>
 
-<main>
-  <div class="container">
-    <article>
-      <header class="article-header">
-        <h1 class="article-title">This Week in AI: 4 Updates Marketing Teams Actually Need to Know</h1>
-        <div class="article-meta">Published February 18, 2026 — Weekly AI roundup for marketing ops professionals</div>
-        <div class="article-intro">
-          The AI agent wars just got serious. This weekend brought the biggest acquisition news in months, plus developments that'll actually change how your team works. Here's what happened while you weren't doom-scrolling Twitter.
-        </div>
-      </header>
+<article>
+  <div class="tag">AI Wednesday · News</div>
+  <h1>This Week in AI: 4 Updates Marketing Teams Actually Need to Know</h1>
+  <p class="subtitle">The AI agent wars just got serious. This weekend brought the biggest acquisition news in months, plus developments that'll actually change how your team works.</p>
+  <div class="meta">Published February 18, 2026 — 6 min read</div>
 
-      <div class="article-content">
-        <div class="quick-hits">
-          <h2>The Quick Hits</h2>
-          <ol>
-            <li><strong>OpenAI Acquired OpenClaw</strong> - The viral AI agent that spooked security teams is now part of OpenAI</li>
-            <li><strong>DeepSeek V4 Coming Soon</strong> - The $6M model that embarrassed the big labs is getting an upgrade</li>
-            <li><strong>Gumloop Gains Traction</strong> - "Zapier meets ChatGPT" tool is winning over marketing teams</li>
-            <li><strong>Semrush Launches AI SEO Toolkit</strong> - $100/month to track your brand across AI search engines</li>
-          </ol>
-        </div>
+  <h2>The Quick Hits</h2>
+  <ol>
+    <li><strong>OpenAI Acquired OpenClaw</strong> - The viral AI agent that spooked security teams is now part of OpenAI</li>
+    <li><strong>DeepSeek V4 Coming Soon</strong> - The $6M model that embarrassed the big labs is getting an upgrade</li>
+    <li><strong>Gumloop Gains Traction</strong> - "Zapier meets ChatGPT" tool is winning over marketing teams</li>
+    <li><strong>Semrush Launches AI SEO Toolkit</strong> - $100/month to track your brand across AI search engines</li>
+  </ol>
 
-        <h2>Deep Dive: OpenAI Just Made the Agent War Personal</h2>
+  <h2>Deep Dive: OpenAI Just Made the Agent War Personal</h2>
 
-        <p>Remember OpenClaw? The open-source AI agent that went from weekend project to 190K GitHub stars in 90 days? <a href="https://venturebeat.com/technology/openais-acquisition-of-openclaw-signals-the-beginning-of-the-end-of-the">OpenAI just acquired it</a>.</p>
+  <p>Remember OpenClaw? The open-source AI agent that went from weekend project to 190K GitHub stars in 90 days? <a href="https://venturebeat.com/technology/openais-acquisition-of-openclaw-signals-the-beginning-of-the-end-of-the">OpenAI just acquired it</a>.</p>
 
-        <p>For marketing teams, this changes everything.</p>
+  <p>For marketing teams, this changes everything.</p>
 
-        <p><strong>What OpenClaw Actually Is:</strong> Think of it as Claude or ChatGPT that can actually DO things, not just talk about doing things. It runs on your computer, connects to your apps, executes code, remembers context, and works through messaging platforms like Telegram. You text it from your phone, it builds spreadsheets, sends emails, analyzes data, whatever.</p>
+  <p><strong>What OpenClaw Actually Is:</strong> Think of it as Claude or ChatGPT that can actually DO things, not just talk about doing things. It runs on your computer, connects to your apps, executes code, remembers context, and works through messaging platforms like Telegram. You text it from your phone, it builds spreadsheets, sends emails, analyzes data, whatever.</p>
 
-        <p><strong>Why This Matters for Marketing:</strong></p>
-        <ul>
-          <li>No more copy-pasting between ChatGPT and your CRM</li>
-          <li>Agents that actually complete workflows, not just suggest them</li>
-          <li>Integration with tools you already use, no new interfaces to learn</li>
-        </ul>
+  <p><strong>Why This Matters for Marketing:</strong></p>
+  <ul>
+    <li>No more copy-pasting between ChatGPT and your CRM</li>
+    <li>Agents that actually complete workflows, not just suggest them</li>
+    <li>Integration with tools you already use, no new interfaces to learn</li>
+  </ul>
 
-        <p><strong>The Plot Twist:</strong> OpenClaw originally worked best with Anthropic's Claude model. But when it went viral as "ClawdBot," <a href="https://www.msn.com/en-us/news/technology/clawdbot-creator-says-anthropic-forced-him-to-rename-the-viral-ai-agent-wasn-t-my-decision/ar-AA1V6kdQ">Anthropic sent a cease-and-desist letter</a> forcing a rebrand. Instead of embracing the community building on their platform, they pushed the hottest agent project straight into OpenAI's arms.</p>
+  <p><strong>The Plot Twist:</strong> OpenClaw originally worked best with Anthropic's Claude model. But when it went viral as "ClawdBot," <a href="https://www.msn.com/en-us/news/technology/clawdbot-creator-says-anthropic-forced-him-to-rename-the-viral-ai-agent-wasn-t-my-decision/ar-AA1V6kdQ">Anthropic sent a cease-and-desist letter</a> forcing a rebrand. Instead of embracing the community building on their platform, they pushed the hottest agent project straight into OpenAI's arms.</p>
 
-        <p><strong>What's Next:</strong> OpenAI's Sam Altman confirmed founder Peter Steinberger will "drive the next generation of personal agents." Translation: expect a sanitized, enterprise-ready version of OpenClaw to become part of the ChatGPT ecosystem soon.</p>
+  <p><strong>What's Next:</strong> OpenAI's Sam Altman confirmed founder Peter Steinberger will "drive the next generation of personal agents." Translation: expect a sanitized, enterprise-ready version of OpenClaw to become part of the ChatGPT ecosystem soon.</p>
 
-        <p>LangChain CEO Harrison Chase told VentureBeat that every enterprise wants a "safe version of OpenClaw." The race to build that just got a $300 billion head start.</p>
+  <p>LangChain CEO Harrison Chase told VentureBeat that every enterprise wants a "safe version of OpenClaw." The race to build that just got a $300 billion head start.</p>
 
-        <h2>DeepSeek V4: The $6 Million Model That Keeps Winning</h2>
+  <h2>DeepSeek V4: The $6 Million Model That Keeps Winning</h2>
 
-        <p>Speaking of disruption, DeepSeek isn't done. <a href="https://www.reddit.com/r/LocalLLaMA/comments/1q88hdc/the_information_deepseek_to_release_next_flagship/">The Information reports</a> they're releasing V4 with enhanced coding abilities.</p>
+  <p>Speaking of disruption, DeepSeek isn't done. <a href="https://www.reddit.com/r/LocalLLaMA/comments/1q88hdc/the_information_deepseek_to_release_next_flagship/">The Information reports</a> they're releasing V4 with enhanced coding abilities.</p>
 
-        <p><strong>Why Marketing Teams Care:</strong> DeepSeek V3 already matches GPT-4 performance at 1/10th the cost. V4 could make premium AI capabilities accessible to every marketing budget. That automated campaign analysis you couldn't justify at OpenAI pricing? Suddenly feasible.</p>
+  <p><strong>Why Marketing Teams Care:</strong> DeepSeek V3 already matches GPT-4 performance at 1/10th the cost. V4 could make premium AI capabilities accessible to every marketing budget. That automated campaign analysis you couldn't justify at OpenAI pricing? Suddenly feasible.</p>
 
-        <p>Plus, DeepSeek is <a href="https://www.cnbc.com/2025/02/04/deepseek-breakthrough-emboldens-open-source-ai-models-like-meta-llama.html">boosting the entire open-source AI ecosystem</a>, which means more options, lower costs, and less vendor lock-in for marketing ops teams.</p>
+  <p>Plus, DeepSeek is <a href="https://www.cnbc.com/2025/02/04/deepseek-breakthrough-emboldens-open-source-ai-models-like-meta-llama.html">boosting the entire open-source AI ecosystem</a>, which means more options, lower costs, and less vendor lock-in for marketing ops teams.</p>
 
-        <h2>The Tools That Actually Matter</h2>
+  <h2>The Tools That Actually Matter</h2>
 
-        <p><strong>Gumloop:</strong> <a href="https://www.marketermilk.com/blog/ai-marketing-tools">According to Marketer Milk</a>, this "Zapier meets ChatGPT" tool is winning over teams at Webflow, Instacart, and Shopify. Connect any LLM to your workflows without coding. Think automated lead scoring that actually understands context, not just keyword matching.</p>
+  <p><strong>Gumloop:</strong> <a href="https://www.marketermilk.com/blog/ai-marketing-tools">According to Marketer Milk</a>, this "Zapier meets ChatGPT" tool is winning over teams at Webflow, Instacart, and Shopify. Connect any LLM to your workflows without coding. Think automated lead scoring that actually understands context, not just keyword matching.</p>
 
-        <p><strong>Semrush AI SEO Toolkit:</strong> $100/month to track how your brand appears across ChatGPT, SearchGPT, Gemini, and Perplexity. <a href="https://selfmademillennials.com/ai-marketing-tools/">According to Self-Made Millennials</a>, it's worth it if you're serious about AI-powered search visibility.</p>
+  <p><strong>Semrush AI SEO Toolkit:</strong> $100/month to track how your brand appears across ChatGPT, SearchGPT, Gemini, and Perplexity. <a href="https://selfmademillennials.com/ai-marketing-tools/">According to Self-Made Millennials</a>, it's worth it if you're serious about AI-powered search visibility.</p>
 
-        <h2>What This Means for You</h2>
+  <h2>What This Means for You</h2>
 
-        <p>The chatbot era is ending. The agent era is here.</p>
+  <p>The chatbot era is ending. The agent era is here.</p>
 
-        <p>Your competition isn't just using AI to write blog posts anymore. They're using it to:</p>
-        <ul>
-          <li>Automatically segment leads based on behavioral data</li>
-          <li>Generate and A/B test ad copy at scale</li>
-          <li>Analyze customer feedback and adjust campaigns in real-time</li>
-          <li>Connect disparate marketing tools without custom development</li>
-        </ul>
+  <p>Your competition isn't just using AI to write blog posts anymore. They're using it to:</p>
+  <ul>
+    <li>Automatically segment leads based on behavioral data</li>
+    <li>Generate and A/B test ad copy at scale</li>
+    <li>Analyze customer feedback and adjust campaigns in real-time</li>
+    <li>Connect disparate marketing tools without custom development</li>
+  </ul>
 
-        <p>The teams that figure this out first win. The teams that wait for the "perfect enterprise solution" lose.</p>
+  <p>The teams that figure this out first win. The teams that wait for the "perfect enterprise solution" lose.</p>
 
-        <h2>Next Week's Watch List</h2>
+  <h2>Next Week's Watch List</h2>
 
-        <ul>
-          <li>OpenAI's Q1 earnings call (likely to detail agent roadmap)</li>
-          <li>DeepSeek V4 benchmark results vs. GPT-4o</li>
-          <li>Microsoft's response to the OpenClaw acquisition</li>
-          <li>What Anthropic does next (spoiler: probably panic)</li>
-        </ul>
+  <ul>
+    <li>OpenAI's Q1 earnings call (likely to detail agent roadmap)</li>
+    <li>DeepSeek V4 benchmark results vs. GPT-4o</li>
+    <li>Microsoft's response to the OpenClaw acquisition</li>
+    <li>What Anthropic does next (spoiler: probably panic)</li>
+  </ul>
 
-        <div class="sources">
-          <h3>Sources:</h3>
-          <ul>
-            <li><a href="https://venturebeat.com/technology/openais-acquisition-of-openclaw-signals-the-beginning-of-the-end-of-the">OpenAI's acquisition of OpenClaw signals the beginning of the end of the ChatGPT era | VentureBeat</a></li>
-            <li><a href="https://www.msn.com/en-us/news/technology/clawdbot-creator-says-anthropic-forced-him-to-rename-the-viral-ai-agent-wasn-t-my-decision/ar-AA1V6kdQ">ClawdBot creator says Anthropic forced him to rename the viral AI agent | MSN</a></li>
-            <li><a href="https://www.reddit.com/r/LocalLLaMA/comments/1q88hdc/the_information_deepseek_to_release_next_flagship/">DeepSeek To Release Next Flagship AI Model With Strong Coding Ability | Reddit</a></li>
-            <li><a href="https://www.cnbc.com/2025/02/04/deepseek-breakthrough-emboldens-open-source-ai-models-like-meta-llama.html">DeepSeek's breakthrough emboldens open-source AI models | CNBC</a></li>
-            <li><a href="https://www.marketermilk.com/blog/ai-marketing-tools">26 best AI marketing tools I'm using to get ahead in 2026 | Marketer Milk</a></li>
-            <li><a href="https://selfmademillennials.com/ai-marketing-tools/">I've Tried 10 AI Marketing Tools (Paid & Free): What Works | Self-Made Millennials</a></li>
-          </ul>
-        </div>
-
-        <div class="cta">
-          If your marketing team is still copying data between tools while your competitors are building AI agents, let's talk. DM me and I'll show you exactly how to catch up.
-        </div>
-      </div>
-    </article>
+  <div class="sources-section">
+    <h3>Sources:</h3>
+    <ul>
+      <li><a href="https://venturebeat.com/technology/openais-acquisition-of-openclaw-signals-the-beginning-of-the-end-of-the">OpenAI's acquisition of OpenClaw signals the beginning of the end of the ChatGPT era | VentureBeat</a></li>
+      <li><a href="https://www.msn.com/en-us/news/technology/clawdbot-creator-says-anthropic-forced-him-to-rename-the-viral-ai-agent-wasn-t-my-decision/ar-AA1V6kdQ">ClawdBot creator says Anthropic forced him to rename the viral AI agent | MSN</a></li>
+      <li><a href="https://www.reddit.com/r/LocalLLaMA/comments/1q88hdc/the_information_deepseek_to_release_next_flagship/">DeepSeek To Release Next Flagship AI Model With Strong Coding Ability | Reddit</a></li>
+      <li><a href="https://www.cnbc.com/2025/02/04/deepseek-breakthrough-emboldens-open-source-ai-models-like-meta-llama.html">DeepSeek's breakthrough emboldens open-source AI models | CNBC</a></li>
+      <li><a href="https://www.marketermilk.com/blog/ai-marketing-tools">26 best AI marketing tools I'm using to get ahead in 2026 | Marketer Milk</a></li>
+      <li><a href="https://selfmademillennials.com/ai-marketing-tools/">I've Tried 10 AI Marketing Tools (Paid & Free): What Works | Self-Made Millennials</a></li>
+    </ul>
   </div>
-</main>
+
+  <div class="cta-box">
+    <p>If your marketing team is still copying data between tools while your competitors are building AI agents, let's talk. DM me and I'll show you exactly how to catch up.</p>
+  </div>
+</article>
 
 <footer>
-  <div class="container">
-    <p>&copy; 2026 Supergood Solutions. Helping marketing teams automate smarter, not harder.</p>
-  </div>
+  <p>&copy; 2026 Supergood Solutions. Helping marketing teams automate smarter, not harder.</p>
 </footer>
 
 </body>
