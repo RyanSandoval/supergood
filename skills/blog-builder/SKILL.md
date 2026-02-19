@@ -1,12 +1,20 @@
 # Blog Builder Skill
 
-## Purpose
-Create blog posts for supergood.solutions that match the exact design system, typography, and brand voice. Ensures all posts use the dark theme and consistent styling from the main site.
+## ⚠️ CRITICAL RULE #1: USE THE TEMPLATE
 
-## When to Use
-- Creating new blog posts for the Supergood Solutions blog
-- Converting markdown content to properly formatted HTML blog posts
-- Updating existing blog posts to match design system
+**ALWAYS start with `supergood/BLOG-POST-TEMPLATE.html`**
+
+Do NOT improvise. Do NOT use old posts as reference. Do NOT create HTML from scratch.
+
+**Steps:**
+1. Copy `supergood/BLOG-POST-TEMPLATE.html` to `supergood/site/blog/{{SLUG}}/index.html`
+2. Replace ALL `{{PLACEHOLDERS}}` with actual content
+3. Deploy
+
+If you do not follow this, the blog post will have styling issues and we will have the same argument again tomorrow.
+
+## Purpose
+Create blog posts for supergood.solutions using the single authoritative template. Ensures 100% consistency across all posts.
 
 ## Design System Rules
 
@@ -93,6 +101,17 @@ See `template.html` in this directory for the complete template.
   <priority>0.8</priority>
 </url>
 ```
+
+## Template Checklist (DO THIS FIRST)
+- [ ] Started with `supergood/BLOG-POST-TEMPLATE.html` (not an old post)
+- [ ] Replaced ALL `{{PLACEHOLDERS}}` 
+- [ ] Nav shows "superg●●d." with green dots (not plain text)
+- [ ] Fixed positioning nav at top
+- [ ] Dark theme colors working
+- [ ] Article padding: 140px top, 80px bottom
+- [ ] Sources section included
+- [ ] CTA box included
+- [ ] Footer included
 
 ## Brand Voice Checklist
 Before publishing, verify:
