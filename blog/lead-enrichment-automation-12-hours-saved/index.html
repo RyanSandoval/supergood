@@ -6,6 +6,7 @@
 <title>12 Hours Saved Every Week: How We Automated Lead Enrichment for a SaaS Team — Supergood Solutions</title>
 <meta name="description" content="A mid-market SaaS company was spending 30 hours per week manually enriching leads. We built an automated pipeline that saved 12 hours/week for $49/month. 1,369% ROI in 30 days.">
 <link rel="canonical" href="https://supergood.solutions/blog/lead-enrichment-automation-12-hours-saved/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <meta name="author" content="Ryan Sandoval">
 
 <!-- Open Graph -->
@@ -48,507 +49,282 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* Blog post styles matching the dark site design */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
 :root {
-  --bg: #0a0a0b;
-  --surface: #111113;
-  --surface-2: #18181b;
-  --border: #27272a;
-  --text: #fafafa;
-  --text-2: #a1a1aa;
-  --text-3: #71717a;
-  --accent: #e4e4e7;
-  --green: #22c55e;
-  --green-dim: #16a34a;
-  --mono: 'JetBrains Mono', monospace;
+  --bg: #0a0a0b; --surface: #111113; --surface-2: #18181b; --border: #27272a;
+  --text: #fafafa; --text-2: #a1a1aa; --text-3: #71717a;
+  --green: #22c55e; --mono: 'JetBrains Mono', monospace;
 }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+::selection { background: var(--green); color: var(--bg); }
 
-body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  line-height: 1.6;
-  color: var(--text);
-  background: var(--bg);
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-}
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; background: rgba(10,10,11,0.8); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+nav .inner { max-width: 720px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
+.wordmark { font-weight: 800; font-size: 1.125rem; letter-spacing: -0.03em; color: var(--text); text-decoration: none; display: inline-flex; align-items: baseline; }
+.wordmark .oo-dot { display: inline-block; width: 0.45em; height: 0.45em; background: var(--green); border-radius: 50%; }
+.wordmark .oo-wrap { display: inline-flex; gap: 2px; align-items: center; }
+.wordmark .dot-period { color: var(--green); }
+nav a.back { font-size: 0.875rem; color: var(--text-3); text-decoration: none; }
+nav a.back:hover { color: var(--text); }
 
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
+article { max-width: 720px; margin: 0 auto; padding: 140px 24px 80px; }
+article .tag { font-family: var(--mono); font-size: 0.6875rem; color: var(--green); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; }
+article h1 { font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px; }
+article .subtitle { font-size: 1.25rem; color: var(--text-2); line-height: 1.6; margin-bottom: 24px; }
+article .meta { font-family: var(--mono); font-size: 0.75rem; color: var(--text-3); margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+article h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin: 56px 0 16px; }
+article h3 { font-size: 1.125rem; font-weight: 600; margin: 40px 0 12px; }
+article p { font-size: 1rem; color: var(--text-2); margin-bottom: 20px; }
+article strong { color: var(--text); }
+article ul, article ol { color: var(--text-2); margin-bottom: 20px; padding-left: 24px; }
+article li { margin-bottom: 8px; }
+article a { color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
+article a:hover { color: var(--text); }
 
-header {
-  background: var(--surface);
-  padding: 20px 0;
-  border-bottom: 1px solid var(--border);
-}
+.cta-box { border: 2px solid var(--green); border-radius: 12px; padding: 40px; margin: 48px 0; text-align: center; background: var(--surface); }
+.cta-box p { font-size: 0.9375rem; color: var(--text); margin-bottom: 0; font-style: italic; }
 
-.header-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+.sources-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
+.sources-section h3 { font-size: 1rem; font-weight: 600; margin-bottom: 12px; color: var(--text); }
+.sources-section ul { list-style: none; padding: 0; }
+.sources-section li { margin-bottom: 8px; font-size: 0.875rem; }
 
-.wordmark {
-  font-weight: 800;
-  font-size: 1.125rem;
-  letter-spacing: -0.03em;
-  color: var(--text);
-  text-decoration: none;
-  display: inline-flex;
-  align-items: baseline;
-}
-
-.wordmark .oo-dot {
-  display: inline-block;
-  width: 0.45em;
-  height: 0.45em;
-  background: var(--green);
-  border-radius: 50%;
-}
-
-.wordmark .oo-wrap {
-  display: inline-flex;
-  gap: 2px;
-  align-items: center;
-}
-
-.wordmark .dot-period {
-  color: var(--green);
-}
-
-.back-link {
-  color: var(--text-2);
-  text-decoration: none;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.back-link:hover {
-  color: var(--text);
-}
-
-main {
-  padding: 60px 0;
-}
-
-.article-header {
-  margin-bottom: 40px;
-  text-align: center;
-}
-
-.article-title {
-  font-size: 36px;
-  font-weight: 700;
-  line-height: 1.2;
-  color: var(--text);
-  margin-bottom: 16px;
-}
-
-.article-meta {
-  color: var(--text-2);
-  font-style: italic;
-  margin-bottom: 24px;
-}
-
-.article-intro {
-  font-size: 18px;
-  color: var(--text-2);
-  line-height: 1.6;
-  margin-bottom: 40px;
-  text-align: left;
-  max-width: 680px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.article-content {
-  max-width: 680px;
-  margin: 0 auto;
-}
-
-.article-content h2 {
-  font-size: 24px;
-  font-weight: 600;
-  margin: 32px 0 16px 0;
-  color: var(--text);
-}
-
-.article-content h3 {
-  font-size: 20px;
-  font-weight: 600;
-  margin: 24px 0 12px 0;
-  color: var(--text);
-}
-
-.article-content p {
-  margin-bottom: 16px;
-  line-height: 1.7;
-}
-
-.article-content ul, .article-content ol {
-  margin: 16px 0;
-  padding-left: 24px;
-}
-
-.article-content li {
-  margin-bottom: 8px;
-  line-height: 1.6;
-}
-
-.article-content strong {
-  font-weight: 600;
-  color: var(--text);
-}
-
-.article-content a {
-  color: var(--green);
-  text-decoration: none;
-}
-
-.article-content a:hover {
-  text-decoration: underline;
-}
-
-.quick-hits {
-  background: var(--surface);
-  padding: 24px;
-  border-radius: 8px;
-  margin: 24px 0;
-  border-left: 4px solid var(--green);
-}
-
-.quick-hits ol {
-  padding-left: 20px;
-}
-
-.sources {
-  background: var(--surface);
-  padding: 24px;
-  border-radius: 8px;
-  margin: 40px 0;
-  border: 1px solid var(--border);
-}
-
-.sources h3 {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 12px;
-  color: var(--text);
-}
-
-.sources ul {
-  list-style: none;
-  padding: 0;
-}
-
-.sources li {
-  margin-bottom: 6px;
-  font-size: 14px;
-  color: var(--text-2);
-}
-
-.cta {
-  background: var(--green);
-  color: var(--bg);
-  padding: 24px;
-  border-radius: 8px;
-  margin: 40px 0;
-  text-align: center;
-  font-style: italic;
-  font-weight: 500;
-}
-
-.highlight-box {
-  background: var(--surface);
-  padding: 20px;
-  border-radius: 8px;
-  margin: 24px 0;
-  border-left: 4px solid var(--green);
-}
-
-footer {
-  background: var(--surface);
-  padding: 40px 0;
-  margin-top: 60px;
-  border-top: 1px solid var(--border);
-  text-align: center;
-  color: var(--text-2);
-  font-size: 14px;
-}
+footer { background: var(--surface); padding: 40px 0; margin-top: 80px; border-top: 1px solid var(--border); text-align: center; }
+footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
 
 @media (max-width: 768px) {
-  .container {
-    padding: 0 16px;
-  }
-  
-  .article-title {
-    font-size: 28px;
-  }
-  
-  main {
-    padding: 40px 0;
-  }
+  article { padding: 120px 20px 60px; }
+  article h1 { font-size: 2rem; }
+  nav .inner { padding: 0 20px; }
 }
 </style>
 </head>
 
 <body>
-<header>
-  <div class="container">
-    <div class="header-content">
-      <a href="/" class="wordmark">superg<span class="oo-wrap"><span class="oo-dot"></span><span class="oo-dot"></span></span>d<span class="dot-period">.</span></a>
-      <a href="https://supergood.solutions/blog" class="back-link">← Back to Blog</a>
-    </div>
+<nav>
+  <div class="inner">
+    <a href="/" class="wordmark">superg<span class="oo-wrap"><span class="oo-dot"></span><span class="oo-dot"></span></span>d<span class="dot-period">.</span></a>
+    <a href="/blog/" class="back">← All posts</a>
   </div>
-</header>
+</nav>
 
-<main>
-  <div class="container">
-    <article>
-      <header class="article-header">
-        <h1 class="article-title">12 Hours Saved Every Week: How We Automated Lead Enrichment for a SaaS Team</h1>
-        <div class="article-meta">Case Study Thursday — Published February 19, 2026</div>
-        <div class="article-intro">
-          <strong>The Setup:</strong> A mid-market B2B SaaS company with 3 SDRs who were spending their mornings manually enriching leads instead of selling.
-        </div>
-      </header>
+<article>
+  <div class="tag">Case Study Thursday</div>
+  <h1>12 Hours Saved Every Week: How We Automated Lead Enrichment for a SaaS Team</h1>
+  <p class="subtitle"><strong>The Setup:</strong> A mid-market B2B SaaS company with 3 SDRs who were spending their mornings manually enriching leads instead of selling.</p>
+  <div class="meta">Published February 19, 2026 — 8 min read</div>
 
-      <div class="article-content">
-        <h2>The Before State</h2>
-        
-        <p>Every morning at 8 AM, three sales development reps logged into their CRM to find 40-60 new inbound leads from the previous day. Good news, right?</p>
-        
-        <p>Not quite.</p>
-        
-        <p>What followed was a 2-hour ritual nobody enjoyed:</p>
-        
-        <ol>
-          <li>Open lead record in HubSpot</li>
-          <li>Copy company domain</li>
-          <li>Search LinkedIn for company page</li>
-          <li>Manually add: employee count, industry, headquarters location</li>
-          <li>Google the company to find funding status</li>
-          <li>Search LinkedIn again to find the lead's actual title and seniority</li>
-          <li>Update CRM with all findings</li>
-          <li>Mark lead as "enriched" and ready for outreach</li>
-          <li>Repeat 40-60 times</li>
-        </ol>
-        
-        <p><strong>Total time investment:</strong> 6 hours per day (2 hours × 3 SDRs) = <strong>30 hours per week</strong> on pure data entry.</p>
-        
-        <p>At an average SDR salary of $60,000/year, that's roughly <strong>$900/week</strong> in labor cost just to make leads usable.</p>
-        
-        <p>And that's before we talk about the opportunity cost. According to <a href="https://mechabee.com/blog/marketing-challenges-2025-2026" target="_blank">MechaBee's 2025 marketing research</a>, marketers waste an average of <strong>328 hours per year duplicating work</strong> — and this team was on track to exceed that significantly.</p>
+  <h2>The Before State</h2>
+  
+  <p>Every morning at 8 AM, three sales development reps logged into their CRM to find 40-60 new inbound leads from the previous day. Good news, right?</p>
+  
+  <p>Not quite.</p>
+  
+  <p>What followed was a 2-hour ritual nobody enjoyed:</p>
+  
+  <ol>
+    <li>Open lead record in HubSpot</li>
+    <li>Copy company domain</li>
+    <li>Search LinkedIn for company page</li>
+    <li>Manually add: employee count, industry, headquarters location</li>
+    <li>Google the company to find funding status</li>
+    <li>Search LinkedIn again to find the lead's actual title and seniority</li>
+    <li>Update CRM with all findings</li>
+    <li>Mark lead as "enriched" and ready for outreach</li>
+    <li>Repeat 40-60 times</li>
+  </ol>
+  
+  <p><strong>Total time investment:</strong> 6 hours per day (2 hours × 3 SDRs) = <strong>30 hours per week</strong> on pure data entry.</p>
+  
+  <p>At an average SDR salary of $60,000/year, that's roughly <strong>$900/week</strong> in labor cost just to make leads usable.</p>
+  
+  <p>And that's before we talk about the opportunity cost. According to <a href="https://mechabee.com/blog/marketing-challenges-2025-2026">MechaBee's 2025 marketing research</a>, marketers waste an average of <strong>328 hours per year duplicating work</strong> — and this team was on track to exceed that significantly.</p>
 
-        <h2>The Challenge</h2>
-        
-        <p>The VP of Sales approached us with three constraints:</p>
-        
-        <ol>
-          <li><strong>Budget:</strong> No $50K/year data enrichment platform budget</li>
-          <li><strong>Tools:</strong> They already had HubSpot and weren't switching</li>
-          <li><strong>Timeline:</strong> Needed results within 2 weeks, not 2 months</li>
-        </ol>
-        
-        <p>The typical solution would be Clearbit or ZoomInfo. But at <a href="https://derrick-app.com/en/pricing-clearbit-2/" target="_blank">roughly $0.75 per enrichment</a>, enriching 1,000 leads per month would cost $750-900/month minimum — and that's assuming perfect data quality.</p>
-        
-        <p>Plus, these tools don't solve the workflow problem. They just automate the <em>lookup</em>. The SDRs would still need to manually trigger enrichments and review the data.</p>
+  <h2>The Challenge</h2>
+  
+  <p>The VP of Sales approached us with three constraints:</p>
+  
+  <ol>
+    <li><strong>Budget:</strong> No $50K/year data enrichment platform budget</li>
+    <li><strong>Tools:</strong> They already had HubSpot and weren't switching</li>
+    <li><strong>Timeline:</strong> Needed results within 2 weeks, not 2 months</li>
+  </ol>
+  
+  <p>The typical solution would be Clearbit or ZoomInfo. But at <a href="https://derrick-app.com/en/pricing-clearbit-2/">roughly $0.75 per enrichment</a>, enriching 1,000 leads per month would cost $750-900/month minimum — and that's assuming perfect data quality.</p>
+  
+  <p>Plus, these tools don't solve the workflow problem. They just automate the <em>lookup</em>. The SDRs would still need to manually trigger enrichments and review the data.</p>
 
-        <h2>The Solution</h2>
-        
-        <p>We built a three-stage automated enrichment pipeline using tools they already had (plus one free API):</p>
+  <h2>The Solution</h2>
+  
+  <p>We built a three-stage automated enrichment pipeline using tools they already had (plus one free API):</p>
 
-        <h3>Stage 1: Instant Company Enrichment (Power Automate + Clearbit Free Tier)</h3>
-        
-        <p>When a new lead enters HubSpot:</p>
-        <ul>
-          <li><strong>Trigger:</strong> New contact created</li>
-          <li><strong>Action:</strong> Extract company domain from email</li>
-          <li><strong>API Call:</strong> Clearbit Company API (free tier: 20 requests/day)</li>
-          <li><strong>Fallback:</strong> Hunter.io domain search (free tier: 50 requests/month)</li>
-          <li><strong>Update HubSpot</strong> with: company size, industry, location, tech stack</li>
-        </ul>
-        
-        <div class="highlight-box">
-          <p><strong>Implementation time:</strong> 3 hours<br>
-          <strong>Cost:</strong> $0/month (stayed within free tiers)</p>
-        </div>
+  <h3>Stage 1: Instant Company Enrichment (Power Automate + Clearbit Free Tier)</h3>
+  
+  <p>When a new lead enters HubSpot:</p>
+  <ul>
+    <li><strong>Trigger:</strong> New contact created</li>
+    <li><strong>Action:</strong> Extract company domain from email</li>
+    <li><strong>API Call:</strong> Clearbit Company API (free tier: 20 requests/day)</li>
+    <li><strong>Fallback:</strong> Hunter.io domain search (free tier: 50 requests/month)</li>
+    <li><strong>Update HubSpot</strong> with: company size, industry, location, tech stack</li>
+  </ul>
+  
+  <p><strong>Implementation time:</strong> 3 hours<br>
+  <strong>Cost:</strong> $0/month (stayed within free tiers)</p>
 
-        <h3>Stage 2: LinkedIn Profile Enrichment (OpenClaw + Apify)</h3>
-        
-        <p>For leads without complete job title data:</p>
-        <ul>
-          <li><strong>Trigger:</strong> Contact marked as "needs enrichment"</li>
-          <li><strong>OpenClaw agent</strong> orchestrates:
-            <ul>
-              <li>Apify LinkedIn scraper finds profile</li>
-              <li>Extracts current title, seniority level, tenure</li>
-              <li>Validates against common job title patterns</li>
-              <li>Updates HubSpot custom fields</li>
-            </ul>
-          </li>
-        </ul>
-        
-        <div class="highlight-box">
-          <p><strong>Implementation time:</strong> 5 hours<br>
-          <strong>Cost:</strong> $49/month (Apify actor usage)</p>
-        </div>
+  <h3>Stage 2: LinkedIn Profile Enrichment (OpenClaw + Apify)</h3>
+  
+  <p>For leads without complete job title data:</p>
+  <ul>
+    <li><strong>Trigger:</strong> Contact marked as "needs enrichment"</li>
+    <li><strong>OpenClaw agent</strong> orchestrates:
+      <ul>
+        <li>Apify LinkedIn scraper finds profile</li>
+        <li>Extracts current title, seniority level, tenure</li>
+        <li>Validates against common job title patterns</li>
+        <li>Updates HubSpot custom fields</li>
+      </ul>
+    </li>
+  </ul>
+  
+  <p><strong>Implementation time:</strong> 5 hours<br>
+  <strong>Cost:</strong> $49/month (Apify actor usage)</p>
 
-        <h3>Stage 3: Lead Scoring & Routing (HubSpot Workflows)</h3>
-        
-        <p>After enrichment completes:</p>
-        <ul>
-          <li><strong>Calculate lead score</strong> based on:
-            <ul>
-              <li>Company size (50-500 employees = +20 points)</li>
-              <li>Industry match (SaaS, fintech, consulting = +30 points)</li>
-              <li>Seniority (Director+ = +25 points)</li>
-              <li>Tech stack alignment (+15 points if using Salesforce or HubSpot)</li>
-            </ul>
-          </li>
-          <li><strong>Auto-assign</strong> to appropriate SDR based on territory and availability</li>
-          <li><strong>Send Slack notification</strong> with enriched lead summary</li>
-        </ul>
-        
-        <div class="highlight-box">
-          <p><strong>Implementation time:</strong> 2 hours<br>
-          <strong>Cost:</strong> $0 (native HubSpot functionality)</p>
-        </div>
+  <h3>Stage 3: Lead Scoring & Routing (HubSpot Workflows)</h3>
+  
+  <p>After enrichment completes:</p>
+  <ul>
+    <li><strong>Calculate lead score</strong> based on:
+      <ul>
+        <li>Company size (50-500 employees = +20 points)</li>
+        <li>Industry match (SaaS, fintech, consulting = +30 points)</li>
+        <li>Seniority (Director+ = +25 points)</li>
+        <li>Tech stack alignment (+15 points if using Salesforce or HubSpot)</li>
+      </ul>
+    </li>
+    <li><strong>Auto-assign</strong> to appropriate SDR based on territory and availability</li>
+    <li><strong>Send Slack notification</strong> with enriched lead summary</li>
+  </ul>
+  
+  <p><strong>Implementation time:</strong> 2 hours<br>
+  <strong>Cost:</strong> $0 (native HubSpot functionality)</p>
 
-        <h2>The Results</h2>
-        
-        <p><strong>Week 1 after go-live:</strong></p>
-        <ul>
-          <li><strong>96% of leads</strong> auto-enriched within 5 minutes of entering CRM</li>
-          <li><strong>4% required manual review</strong> (unusual job titles, private companies)</li>
-          <li><strong>Zero hours</strong> spent on manual data entry by SDRs</li>
-        </ul>
-        
-        <p><strong>After 1 month:</strong></p>
-        <ul>
-          <li><strong>Time saved:</strong> 12 hours/week → 48 hours/month</li>
-          <li><strong>Cost avoided:</strong> ~$720/month in SDR labor (12 hrs/week × 4 weeks × $15/hr blended cost)</li>
-          <li><strong>Tool cost:</strong> $49/month</li>
-          <li><strong>Net monthly savings:</strong> $671</li>
-          <li><strong>Annual ROI:</strong> $8,052 saved for a $588/year investment = <strong>1,369% ROI</strong></li>
-        </ul>
-        
-        <p>But the numbers don't tell the full story.</p>
+  <h2>The Results</h2>
+  
+  <p><strong>Week 1 after go-live:</strong></p>
+  <ul>
+    <li><strong>96% of leads</strong> auto-enriched within 5 minutes of entering CRM</li>
+    <li><strong>4% required manual review</strong> (unusual job titles, private companies)</li>
+    <li><strong>Zero hours</strong> spent on manual data entry by SDRs</li>
+  </ul>
+  
+  <p><strong>After 1 month:</strong></p>
+  <ul>
+    <li><strong>Time saved:</strong> 12 hours/week → 48 hours/month</li>
+    <li><strong>Cost avoided:</strong> ~$720/month in SDR labor (12 hrs/week × 4 weeks × $15/hr blended cost)</li>
+    <li><strong>Tool cost:</strong> $49/month</li>
+    <li><strong>Net monthly savings:</strong> $671</li>
+    <li><strong>Annual ROI:</strong> $8,052 saved for a $588/year investment = <strong>1,369% ROI</strong></li>
+  </ul>
+  
+  <p>But the numbers don't tell the full story.</p>
 
-        <h3>The Hidden Wins</h3>
-        
-        <p><strong>SDR morale improved dramatically.</strong> One rep told the VP: <em>"I forgot what it's like to start my day actually selling instead of playing detective on LinkedIn."</em></p>
-        
-        <p><strong>Lead response time dropped from 18 hours to 23 minutes.</strong> Leads were enriched, scored, and assigned before the SDRs even saw them.</p>
-        
-        <p><strong>Data quality improved.</strong> Humans make typos. APIs don't. The error rate on company data dropped from ~12% to &lt;2%.</p>
-        
-        <p><strong>Sales leadership got better visibility.</strong> For the first time, they could filter their pipeline by accurate firmographics and see which company profiles actually converted.</p>
+  <h3>The Hidden Wins</h3>
+  
+  <p><strong>SDR morale improved dramatically.</strong> One rep told the VP: <em>"I forgot what it's like to start my day actually selling instead of playing detective on LinkedIn."</em></p>
+  
+  <p><strong>Lead response time dropped from 18 hours to 23 minutes.</strong> Leads were enriched, scored, and assigned before the SDRs even saw them.</p>
+  
+  <p><strong>Data quality improved.</strong> Humans make typos. APIs don't. The error rate on company data dropped from ~12% to <2%.</p>
+  
+  <p><strong>Sales leadership got better visibility.</strong> For the first time, they could filter their pipeline by accurate firmographics and see which company profiles actually converted.</p>
 
-        <h2>Lessons Learned</h2>
+  <h2>Lessons Learned</h2>
 
-        <h3>What Worked</h3>
-        
-        <p><strong>1. Start with free tiers.</strong> We tested the entire workflow on Clearbit and Hunter.io's free plans before committing to paid tools.</p>
-        
-        <p><strong>2. Orchestration &gt; individual tools.</strong> OpenClaw as the coordinator meant we could swap out data providers without rebuilding workflows.</p>
-        
-        <p><strong>3. Prioritize accuracy over completeness.</strong> We enriched 96% of leads automatically but flagged the 4% edge cases for human review. That's better than enriching 100% with 20% garbage data.</p>
+  <h3>What Worked</h3>
+  
+  <p><strong>1. Start with free tiers.</strong> We tested the entire workflow on Clearbit and Hunter.io's free plans before committing to paid tools.</p>
+  
+  <p><strong>2. Orchestration > individual tools.</strong> OpenClaw as the coordinator meant we could swap out data providers without rebuilding workflows.</p>
+  
+  <p><strong>3. Prioritize accuracy over completeness.</strong> We enriched 96% of leads automatically but flagged the 4% edge cases for human review. That's better than enriching 100% with 20% garbage data.</p>
 
-        <h3>What Didn't Work (At First)</h3>
-        
-        <p><strong>LinkedIn scraping was fragile.</strong> Our first attempt used a brittle web scraper that broke every time LinkedIn updated their HTML. Switching to Apify's maintained actor solved this.</p>
-        
-        <p><strong>Lead scoring was arbitrary.</strong> Our initial scoring model was based on guesses. After 2 weeks, we revised it based on actual conversion data and the model got 30% more accurate.</p>
-        
-        <p><strong>We over-automated notifications.</strong> The first version sent a Slack message for <em>every single enriched lead</em>. The SDRs muted the channel after day 1. We changed it to send a <em>daily digest</em> instead.</p>
+  <h3>What Didn't Work (At First)</h3>
+  
+  <p><strong>LinkedIn scraping was fragile.</strong> Our first attempt used a brittle web scraper that broke every time LinkedIn updated their HTML. Switching to Apify's maintained actor solved this.</p>
+  
+  <p><strong>Lead scoring was arbitrary.</strong> Our initial scoring model was based on guesses. After 2 weeks, we revised it based on actual conversion data and the model got 30% more accurate.</p>
+  
+  <p><strong>We over-automated notifications.</strong> The first version sent a Slack message for <em>every single enriched lead</em>. The SDRs muted the channel after day 1. We changed it to send a <em>daily digest</em> instead.</p>
 
-        <h2>Your Turn: How to Implement This</h2>
-        
-        <p>If you're drowning in manual lead enrichment, here's your starting point:</p>
+  <h2>Your Turn: How to Implement This</h2>
+  
+  <p>If you're drowning in manual lead enrichment, here's your starting point:</p>
 
-        <h3>Week 1: Audit & Map</h3>
-        <ul>
-          <li>Track how much time your team actually spends on enrichment (use a timer, not estimates)</li>
-          <li>List the data fields you're manually filling in</li>
-          <li>Identify which fields actually matter for qualification vs. "nice to have"</li>
-        </ul>
+  <h3>Week 1: Audit & Map</h3>
+  <ul>
+    <li>Track how much time your team actually spends on enrichment (use a timer, not estimates)</li>
+    <li>List the data fields you're manually filling in</li>
+    <li>Identify which fields actually matter for qualification vs. "nice to have"</li>
+  </ul>
 
-        <h3>Week 2: Build the Basics</h3>
-        <ul>
-          <li>Set up a Power Automate (or Zapier) flow for company enrichment</li>
-          <li>Start with free API tiers to prove the concept</li>
-          <li>Test with 50 leads before going live</li>
-        </ul>
+  <h3>Week 2: Build the Basics</h3>
+  <ul>
+    <li>Set up a Power Automate (or Zapier) flow for company enrichment</li>
+    <li>Start with free API tiers to prove the concept</li>
+    <li>Test with 50 leads before going live</li>
+  </ul>
 
-        <h3>Week 3: Add Intelligence</h3>
-        <ul>
-          <li>Layer in lead scoring based on enriched data</li>
-          <li>Build auto-assignment rules</li>
-          <li>Add human-in-the-loop for edge cases</li>
-        </ul>
+  <h3>Week 3: Add Intelligence</h3>
+  <ul>
+    <li>Layer in lead scoring based on enriched data</li>
+    <li>Build auto-assignment rules</li>
+    <li>Add human-in-the-loop for edge cases</li>
+  </ul>
 
-        <h3>Week 4: Measure & Refine</h3>
-        <ul>
-          <li>Compare time spent before/after</li>
-          <li>Track data accuracy</li>
-          <li>Survey your team: "Is this actually better?"</li>
-        </ul>
-        
-        <p><strong>The whole project took us 10 hours to build and saved 12 hours per week.</strong> Payback period: less than one week.</p>
+  <h3>Week 4: Measure & Refine</h3>
+  <ul>
+    <li>Compare time spent before/after</li>
+    <li>Track data accuracy</li>
+    <li>Survey your team: "Is this actually better?"</li>
+  </ul>
+  
+  <p><strong>The whole project took us 10 hours to build and saved 12 hours per week.</strong> Payback period: less than one week.</p>
 
-        <hr style="border: none; border-top: 1px solid var(--border); margin: 40px 0;">
+  <h2>The Bottom Line</h2>
+  
+  <p>Lead enrichment is the perfect candidate for automation because:</p>
+  <ol>
+    <li>It's repetitive (same 8 steps for every lead)</li>
+    <li>It's rules-based (if domain exists, look up company data)</li>
+    <li>It's high-volume (happens dozens of times per day)</li>
+    <li>It's low-judgment (APIs can do 95% of it)</li>
+  </ol>
+  
+  <p>Your SDRs didn't go to sales training to become LinkedIn detectives. Let the robots handle the busywork.</p>
+  
+  <p>According to <a href="https://demandscience.com/press-releases/state-of-performance-marketing-2026-benchmark-report/">DemandScience's 2026 State of Performance Marketing report</a>, <strong>25% of marketing budget is wasted</strong> on efforts that fail to drive outcomes. Manual lead enrichment is a textbook example.</p>
 
-        <h2>The Bottom Line</h2>
-        
-        <p>Lead enrichment is the perfect candidate for automation because:</p>
-        <ol>
-          <li>It's repetitive (same 8 steps for every lead)</li>
-          <li>It's rules-based (if domain exists, look up company data)</li>
-          <li>It's high-volume (happens dozens of times per day)</li>
-          <li>It's low-judgment (APIs can do 95% of it)</li>
-        </ol>
-        
-        <p>Your SDRs didn't go to sales training to become LinkedIn detectives. Let the robots handle the busywork.</p>
-        
-        <p>According to <a href="https://demandscience.com/press-releases/state-of-performance-marketing-2026-benchmark-report/" target="_blank">DemandScience's 2026 State of Performance Marketing report</a>, <strong>25% of marketing budget is wasted</strong> on efforts that fail to drive outcomes. Manual lead enrichment is a textbook example.</p>
-        
-        <div class="cta">
-          If your team is still copying company names from email signatures into CRM fields, we should talk.
-        </div>
-
-        <div class="sources">
-          <h3>Sources</h3>
-          <ul>
-            <li>1. <a href="https://mechabee.com/blog/marketing-challenges-2025-2026" target="_blank">MechaBee: Top Marketing Challenges 2025-2026</a> — Statistics on manual work and time waste</li>
-            <li>2. <a href="https://demandscience.com/press-releases/state-of-performance-marketing-2026-benchmark-report/" target="_blank">DemandScience: 2026 State of Performance Marketing Report</a> — 25% budget waste finding</li>
-            <li>3. <a href="https://derrick-app.com/en/pricing-clearbit-2/" target="_blank">Derrick: Clearbit Pricing 2026</a> — Cost per enrichment analysis</li>
-            <li>4. <a href="https://superagi.com/from-data-entry-to-predictive-analytics-how-automation-is-revolutionizing-lead-enrichment/" target="_blank">SuperAGI: How Automation is Revolutionizing Lead Enrichment</a> — 25-30% ROI increase data</li>
-          </ul>
-        </div>
-
-        <hr style="border: none; border-top: 1px solid var(--border); margin: 40px 0;">
-
-        <p style="text-align: center; font-style: italic; color: var(--text-2);">Curious how this would work for your team? <a href="https://linkedin.com/in/RyanSandoval" target="_blank">DM me on LinkedIn</a> and I'll walk you through it. No sales pitch — just a 15-minute breakdown of your specific workflow.</p>
-
-      </div>
-    </article>
+  <div class="sources-section">
+    <h3>Sources:</h3>
+    <ul>
+      <li><a href="https://mechabee.com/blog/marketing-challenges-2025-2026">MechaBee: Top Marketing Challenges 2025-2026</a> — Statistics on manual work and time waste</li>
+      <li><a href="https://demandscience.com/press-releases/state-of-performance-marketing-2026-benchmark-report/">DemandScience: 2026 State of Performance Marketing Report</a> — 25% budget waste finding</li>
+      <li><a href="https://derrick-app.com/en/pricing-clearbit-2/">Derrick: Clearbit Pricing 2026</a> — Cost per enrichment analysis</li>
+      <li><a href="https://superagi.com/from-data-entry-to-predictive-analytics-how-automation-is-revolutionizing-lead-enrichment/">SuperAGI: How Automation is Revolutionizing Lead Enrichment</a> — 25-30% ROI increase data</li>
+    </ul>
   </div>
-</main>
+
+  <div class="cta-box">
+    <p>If your team is still copying company names from email signatures into CRM fields, we should talk. <a href="https://linkedin.com/in/RyanSandoval">DM me on LinkedIn</a> and I'll walk you through it.</p>
+  </div>
+</article>
 
 <footer>
-  <div class="container">
-    <p>&copy; 2026 Supergood Solutions. Helping marketing teams automate smarter, not harder.</p>
-  </div>
+  <p>&copy; 2026 Supergood Solutions. Helping marketing teams automate smarter, not harder.</p>
 </footer>
 
 </body>
