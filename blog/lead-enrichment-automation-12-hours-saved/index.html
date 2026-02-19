@@ -95,11 +95,32 @@ header {
   justify-content: space-between;
 }
 
-.logo {
-  font-size: 24px;
-  font-weight: 700;
+.wordmark {
+  font-weight: 800;
+  font-size: 1.125rem;
+  letter-spacing: -0.03em;
   color: var(--text);
   text-decoration: none;
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.wordmark .oo-dot {
+  display: inline-block;
+  width: 0.45em;
+  height: 0.45em;
+  background: var(--green);
+  border-radius: 50%;
+}
+
+.wordmark .oo-wrap {
+  display: inline-flex;
+  gap: 2px;
+  align-items: center;
+}
+
+.wordmark .dot-period {
+  color: var(--green);
 }
 
 .back-link {
@@ -284,7 +305,7 @@ footer {
 <header>
   <div class="container">
     <div class="header-content">
-      <a href="https://supergood.solutions" class="logo">Supergood Solutions</a>
+      <a href="/" class="wordmark">superg<span class="oo-wrap"><span class="oo-dot"></span><span class="oo-dot"></span></span>d<span class="dot-period">.</span></a>
       <a href="https://supergood.solutions/blog" class="back-link">← Back to Blog</a>
     </div>
   </div>
