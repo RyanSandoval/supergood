@@ -8,8 +8,20 @@
   </url>
   <url>
     <loc>https://supergood.solutions/blog/</loc>
-    <lastmod>2026-02-18</lastmod>
+    <lastmod>2026-02-20</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://supergood.solutions/blog/future-friday-agentic-workflows-2026/</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://supergood.solutions/blog/lead-enrichment-automation-12-hours-saved/</loc>
+    <lastmod>2026-02-19</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
