@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UTMs Are a Mess. Here’s the 30‑Minute Fix (and the Automation to Keep Them Clean) — Supergood Solutions</title>
+<meta name="description" content="A simple UTM governance system + a Power Automate flow that rejects bad links before they wreck your reporting.">
+<link rel="canonical" href="https://supergood.solutions/blog/utm-governance-automation/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="author" content="Ryan Sandoval">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="UTMs Are a Mess. Here’s the 30‑Minute Fix (and the Automation to Keep Them Clean)">
+<meta property="og:description" content="A simple UTM governance system + a Power Automate flow that rejects bad links before they wreck your reporting.">
+<meta property="og:url" content="https://supergood.solutions/blog/utm-governance-automation/">
+<meta property="og:image" content="https://supergood.solutions/og-image.png">
+<meta property="article:published_time" content="2026-02-21">
+<meta property="article:author" content="Ryan Sandoval">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="UTMs Are a Mess. Here’s the 30‑Minute Fix (and the Automation to Keep Them Clean)">
+<meta name="twitter:description" content="A simple UTM governance system + a Power Automate flow that rejects bad links before they wreck your reporting.">
+<meta name="twitter:image" content="https://supergood.solutions/og-image.png">
+
+<!-- Schema.org Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "UTMs Are a Mess. Here’s the 30‑Minute Fix (and the Automation to Keep Them Clean)",
+  "description": "A simple UTM governance system + a Power Automate flow that rejects bad links before they wreck your reporting.",
+  "author": {
+    "@type": "Person",
+    "name": "Ryan Sandoval",
+    "url": "https://linkedin.com/in/RyanSandoval",
+    "jobTitle": "AI Automation Consultant",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Supergood Solutions"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Supergood Solutions",
+    "url": "https://supergood.solutions"
+  },
+  "datePublished": "2026-02-21",
+  "dateModified": "2026-02-21",
+  "mainEntityOfPage": "https://supergood.solutions/blog/utm-governance-automation/",
+  "keywords": ["utm parameters","utm governance","marketing attribution","ga4","power automate","marketing ops","workflow automation"]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #0a0a0b; --surface: #111113; --surface-2: #18181b; --border: #27272a;
+  --text: #fafafa; --text-2: #a1a1aa; --text-3: #71717a;
+  --green: #22c55e; --mono: 'JetBrains Mono', monospace;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+::selection { background: var(--green); color: var(--bg); }
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; background: rgba(10,10,11,0.8); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+nav .inner { max-width: 720px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
+.wordmark { font-weight: 800; font-size: 1.125rem; letter-spacing: -0.03em; color: var(--text); text-decoration: none; display: inline-flex; align-items: baseline; }
+.wordmark .oo-dot { display: inline-block; width: 0.45em; height: 0.45em; background: var(--green); border-radius: 50%; }
+.wordmark .oo-wrap { display: inline-flex; gap: 2px; align-items: center; }
+.wordmark .dot-period { color: var(--green); }
+nav a.back { font-size: 0.875rem; color: var(--text-3); text-decoration: none; }
+nav a.back:hover { color: var(--text); }
+
+article { max-width: 720px; margin: 0 auto; padding: 140px 24px 80px; }
+article .tag { font-family: var(--mono); font-size: 0.6875rem; color: var(--green); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; }
+article h1 { font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px; }
+article .subtitle { font-size: 1.25rem; color: var(--text-2); line-height: 1.6; margin-bottom: 24px; }
+article .meta { font-family: var(--mono); font-size: 0.75rem; color: var(--text-3); margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+article h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin: 56px 0 16px; }
+article h3 { font-size: 1.125rem; font-weight: 600; margin: 40px 0 12px; }
+article p { font-size: 1rem; color: var(--text-2); margin-bottom: 20px; }
+article strong { color: var(--text); }
+article ul, article ol { color: var(--text-2); margin-bottom: 20px; padding-left: 24px; }
+article li { margin-bottom: 8px; }
+article a { color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
+article a:hover { color: var(--text); }
+
+.cta-box { border: 2px solid var(--green); border-radius: 12px; padding: 40px; margin: 48px 0; text-align: center; background: var(--surface); }
+.cta-box p { font-size: 0.9375rem; color: var(--text); margin-bottom: 0; font-style: italic; }
+
+.sources-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
+.sources-section h3 { font-size: 1rem; font-weight: 600; margin-bottom: 12px; color: var(--text); }
+.sources-section ul { list-style: none; padding: 0; }
+.sources-section li { margin-bottom: 8px; font-size: 0.875rem; }
+
+footer { background: var(--surface); padding: 40px 0; margin-top: 80px; border-top: 1px solid var(--border); text-align: center; }
+footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
+
+@media (max-width: 768px) {
+  article { padding: 120px 20px 60px; }
+  article h1 { font-size: 2rem; }
+  nav .inner { padding: 0 20px; }
+}
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="inner">
+    <a href="/" class="wordmark">superg<span class="oo-wrap"><span class="oo-dot"></span><span class="oo-dot"></span></span>d<span class="dot-period">.</span></a>
+    <a href="/blog/" class="back">← All posts</a>
+  </div>
+</nav>
+
+<article>
+  <div class="tag">Guide · Workflows</div>
+  <h1>UTMs Are a Mess. Here’s the 30‑Minute Fix (and the Automation to Keep Them Clean)</h1>
+  <p class="subtitle">A simple UTM governance system + a Power Automate flow that rejects bad links before they wreck your reporting.</p>
+  <div class="meta">Published February 21, 2026 — 7 min read</div>
+
+  <p>If you’ve ever tried to answer “which campaign drove pipeline?” and ended up in a spreadsheet argument… it’s not because GA4 is bad. It’s because your UTMs are chaos.</p>
+
+  <p>Real examples I see all the time:</p>
+  <ul>
+    <li><strong>utm_medium=email</strong> vs <strong>utm_medium=Email</strong> (same thing, different bucket)</li>
+    <li><strong>utm_source=LinkedIn</strong> vs <strong>utm_source=linkedin.com</strong> vs <strong>utm_source=paid-social</strong> (three “sources” for one channel)</li>
+    <li>Campaign names that mutate weekly: <strong>feb_launch</strong> → <strong>FebLaunch</strong> → <strong>Launch-Feb</strong></li>
+  </ul>
+
+  <p>The outcome is predictable: acquisition reports don’t match CRM reports, marketers stop trusting dashboards, and leadership decides attribution is “impossible.”</p>
+
+  <p>It’s not impossible. You just need two things:</p>
+  <ol>
+    <li><strong>A tiny UTM rulebook</strong> (one page, enforced)</li>
+    <li><strong>An automation gate</strong> that blocks bad UTMs before they ship</li>
+  </ol>
+
+  <h2>1) Stop Treating UTMs Like Free‑Text</h2>
+  <p>Google Analytics’ campaign URL builder exists for a reason: you add parameters like <strong>utm_source</strong>, <strong>utm_medium</strong>, and <strong>utm_campaign</strong> so Analytics can attribute traffic correctly.</p>
+
+  <p>That only works if those values are consistent.</p>
+
+  <h3>The 5 Rules (Copy/Paste This into Your Team Wiki)</h3>
+
+  <p><strong>Rule #1 — Only these mediums are allowed:</strong></p>
+  <ul>
+    <li>email</li>
+    <li>paid_social</li>
+    <li>organic_social</li>
+    <li>cpc</li>
+    <li>partner</li>
+    <li>referral</li>
+  </ul>
+
+  <p><strong>Rule #2 — Source is the platform, not a sentence.</strong><br>
+  Good: <strong>linkedin</strong>, <strong>google</strong>, <strong>hubspot</strong><br>
+  Bad: <strong>linkedin.com</strong>, <strong>paid-social</strong>, <strong>ryan-post</strong></p>
+
+  <p><strong>Rule #3 — Campaign names follow one format:</strong><br>
+  <strong>YYYYMM_theme_offer_audience</strong> (all lowercase, underscores only)<br>
+  Example: <strong>202602_leadenrichment_demo_smb</strong></p>
+
+  <p><strong>Rule #4 — No spaces. No title case. No special characters.</strong><br>
+  If you need to “make it readable,” use your actual campaign naming inside the ad platform. UTMs are for machines.</p>
+
+  <p><strong>Rule #5 — Every link lives in one place.</strong><br>
+  If your team is building links in Slack threads, you’ve already lost. You need a single source of truth (sheet, list, whatever) that automation can validate.</p>
+
+  <h2>2) Add an Automation Gate (So This Doesn’t Rely on Good Behavior)</h2>
+  <p>Here’s the boring truth: governance without enforcement is a suggestion.</p>
+
+  <p>So we enforce it with a simple Power Automate flow.</p>
+
+  <h3>The Flow (High Level)</h3>
+  <ol>
+    <li><strong>Input:</strong> a single “Campaign Links” table (Excel, SharePoint list, Airtable, whatever your team actually uses)</li>
+    <li><strong>Trigger:</strong> a scheduled run (every weekday morning) <em>and/or</em> “when a row is added/modified”</li>
+    <li><strong>Validate:</strong> check required UTMs, allowed values, naming format</li>
+    <li><strong>Fix what’s safe to fix:</strong> lowercasing, trimming, swapping spaces → underscores</li>
+    <li><strong>Reject what isn’t safe:</strong> missing campaign, unknown medium, nonsense source</li>
+    <li><strong>Notify:</strong> send the marketer a message with the exact field to fix</li>
+  </ol>
+
+  <h3>What You Validate (Minimum Viable)</h3>
+  <ul>
+    <li><strong>Required:</strong> utm_source, utm_medium, utm_campaign</li>
+    <li><strong>Optional (but useful):</strong> utm_content (creative), utm_term (keyword)</li>
+    <li><strong>Allowed mediums:</strong> your fixed list (see Rule #1)</li>
+    <li><strong>Campaign format:</strong> YYYYMM_theme_offer_audience</li>
+  </ul>
+
+  <p>This is also where you catch the stuff that quietly breaks attribution: links missing UTMs, or UTMs added after a second “?” in the URL, or someone pasting a URL that already has query parameters and forgetting to use “&amp;”.</p>
+
+  <h3>Why Scheduled Flows Work Well for This</h3>
+  <p>Most teams don’t need real-time policing. They need <em>predictable hygiene</em>. A scheduled cloud flow is perfect when you want something to run automatically on a cadence (daily, weekly, whatever) without somebody remembering to click a button.</p>
+
+  <h2>The Payoff: Your Dashboards Stop Lying</h2>
+  <p>When UTMs are consistent, you get three immediate benefits:</p>
+  <ol>
+    <li><strong>Cleaner acquisition reporting in GA4</strong> (channels don’t splinter into 14 nearly-identical buckets)</li>
+    <li><strong>Cleaner CRM attribution</strong> (you can map source/medium/campaign into properties reliably)</li>
+    <li><strong>Faster analysis</strong> (less “wait, what does ‘Linkedin’ mean?”)</li>
+  </ol>
+
+  <p>And yes: you’ll still have attribution gaps. That’s normal. But you’ve removed the dumb, preventable errors that make people give up.</p>
+
+  <h2>The Bottom Line</h2>
+  <p>UTMs aren’t “strategy.” They’re plumbing.</p>
+
+  <p>When the plumbing is broken, every report is a debate. When it’s clean, your team can finally argue about real things (offers, creative, targeting) instead of whether <strong>paid-social</strong> is a “source.”</p>
+
+  <p><strong>Your move:</strong> pick 6 mediums, pick 20 sources, pick one campaign format. Then automate enforcement. Your future self will thank you.</p>
+
+  <div class="sources-section">
+    <h3>Sources:</h3>
+    <ul>
+      <li>• <a href="https://support.google.com/analytics/answer/10917952?hl=en">Google Analytics Help — URL builders: Collect campaign data with custom URLs</a></li>
+      <li>• <a href="https://knowledge.hubspot.com/settings/how-do-i-create-a-tracking-url">HubSpot Knowledge Base — Create tracking URLs</a></li>
+      <li>• <a href="https://learn.microsoft.com/en-us/power-automate/run-scheduled-tasks">Microsoft Learn — Run a cloud flow on a schedule in Power Automate</a></li>
+      <li>• <a href="https://learn.microsoft.com/en-us/power-automate/get-started-with-cloud-flows">Microsoft Learn — Tutorial: Get started with cloud flows</a></li>
+    </ul>
+  </div>
+
+  <div class="cta-box">
+    <p>If your UTMs are already a dumpster fire: send me one messy export (GA4 + CRM), and I’ll tell you the exact rules + automation gate to fix it. Email <a href="mailto:ryan@supergood.solutions">ryan@supergood.solutions</a>.</p>
+  </div>
+</article>
+
+<footer>
+  <p>&copy; 2026 Supergood Solutions. Helping marketing teams automate smarter, not harder.</p>
+</footer>
+
+</body>
+</html>
