@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The AI Agent Ops Runbook: Guardrails, Logging, and Incident Response — Supergood Solutions</title>
+<meta name="description" content="If you’re putting AI agents into marketing ops, you need more than prompts. Here’s a practical ops runbook: boundaries, tool allowlists, approvals, logging, evals, and incident response.">
+<link rel="canonical" href="https://supergood.solutions/blog/systems-sunday-agent-ops-runbook/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="author" content="Ryan Sandoval">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="The AI Agent Ops Runbook: Guardrails, Logging, and Incident Response">
+<meta property="og:description" content="If you’re putting AI agents into marketing ops, you need more than prompts. Here’s a practical ops runbook: boundaries, tool allowlists, approvals, logging, evals, and incident response.">
+<meta property="og:url" content="https://supergood.solutions/blog/systems-sunday-agent-ops-runbook/">
+<meta property="og:image" content="https://supergood.solutions/og-image.png">
+<meta property="article:published_time" content="2026-02-22">
+<meta property="article:author" content="Ryan Sandoval">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The AI Agent Ops Runbook: Guardrails, Logging, and Incident Response">
+<meta name="twitter:description" content="If you’re putting AI agents into marketing ops, you need more than prompts. Here’s a practical ops runbook: boundaries, tool allowlists, approvals, logging, evals, and incident response.">
+<meta name="twitter:image" content="https://supergood.solutions/og-image.png">
+
+<!-- Schema.org Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The AI Agent Ops Runbook: Guardrails, Logging, and Incident Response",
+  "description": "If you’re putting AI agents into marketing ops, you need more than prompts. Here’s a practical ops runbook: boundaries, tool allowlists, approvals, logging, evals, and incident response.",
+  "author": {
+    "@type": "Person",
+    "name": "Ryan Sandoval",
+    "url": "https://linkedin.com/in/RyanSandoval",
+    "jobTitle": "AI Automation Consultant",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Supergood Solutions"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Supergood Solutions",
+    "url": "https://supergood.solutions"
+  },
+  "datePublished": "2026-02-22",
+  "dateModified": "2026-02-22",
+  "mainEntityOfPage": "https://supergood.solutions/blog/systems-sunday-agent-ops-runbook/",
+  "keywords": ["AI agents","agentic workflows","LLM security","guardrails","observability","audit logging","human-in-the-loop","incident response","marketing ops","automation"]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #0a0a0b; --surface: #111113; --surface-2: #18181b; --border: #27272a;
+  --text: #fafafa; --text-2: #a1a1aa; --text-3: #71717a;
+  --green: #22c55e; --mono: 'JetBrains Mono', monospace;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+::selection { background: var(--green); color: var(--bg); }
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; background: rgba(10,10,11,0.8); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+nav .inner { max-width: 720px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
+.wordmark { font-weight: 800; font-size: 1.125rem; letter-spacing: -0.03em; color: var(--text); text-decoration: none; display: inline-flex; align-items: baseline; }
+.wordmark .oo-dot { display: inline-block; width: 0.45em; height: 0.45em; background: var(--green); border-radius: 50%; }
+.wordmark .oo-wrap { display: inline-flex; gap: 2px; align-items: center; }
+.wordmark .dot-period { color: var(--green); }
+nav a.back { font-size: 0.875rem; color: var(--text-3); text-decoration: none; }
+nav a.back:hover { color: var(--text); }
+
+article { max-width: 720px; margin: 0 auto; padding: 140px 24px 80px; }
+article .tag { font-family: var(--mono); font-size: 0.6875rem; color: var(--green); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; }
+article h1 { font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px; }
+article .subtitle { font-size: 1.25rem; color: var(--text-2); line-height: 1.6; margin-bottom: 24px; }
+article .meta { font-family: var(--mono); font-size: 0.75rem; color: var(--text-3); margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+article h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin: 56px 0 16px; }
+article h3 { font-size: 1.125rem; font-weight: 600; margin: 40px 0 12px; }
+article p { font-size: 1rem; color: var(--text-2); margin-bottom: 20px; }
+article strong { color: var(--text); }
+article ul, article ol { color: var(--text-2); margin-bottom: 20px; padding-left: 24px; }
+article li { margin-bottom: 8px; }
+article a { color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
+article a:hover { color: var(--text); }
+
+.cta-box { border: 2px solid var(--green); border-radius: 12px; padding: 40px; margin: 48px 0; text-align: center; background: var(--surface); }
+.cta-box p { font-size: 0.9375rem; color: var(--text); margin-bottom: 0; font-style: italic; }
+
+.sources-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
+.sources-section h3 { font-size: 1rem; font-weight: 600; margin-bottom: 12px; color: var(--text); }
+.sources-section ul { list-style: none; padding: 0; }
+.sources-section li { margin-bottom: 8px; font-size: 0.875rem; }
+
+footer { background: var(--surface); padding: 40px 0; margin-top: 80px; border-top: 1px solid var(--border); text-align: center; }
+footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
+
+@media (max-width: 768px) {
+  article { padding: 120px 20px 60px; }
+  article h1 { font-size: 2rem; }
+  nav .inner { padding: 0 20px; }
+}
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="inner">
+    <a href="/" class="wordmark">superg<span class="oo-wrap"><span class="oo-dot"></span><span class="oo-dot"></span></span>d<span class="dot-period">.</span></a>
+    <a href="/blog/" class="back">← All posts</a>
+  </div>
+</nav>
+
+<article>
+  <div class="tag">Systems Sunday · Ops</div>
+  <h1>The AI Agent Ops Runbook: Guardrails, Logging, and Incident Response</h1>
+  <p class="subtitle">AI agents are being dropped into production like they’re just “smarter workflows.” They’re not. Treat them like production software: permissions, logs, evals, and a plan for when they do something weird at 2:13 AM.</p>
+  <div class="meta">Published February 22, 2026 — 8 min read</div>
+
+  <p>There are two ways most teams ship agentic automation:</p>
+  <ul>
+    <li><strong>Way #1:</strong> Someone connects an agent to a bunch of tools and says, “It’ll figure it out.”</li>
+    <li><strong>Way #2:</strong> Someone connects an agent to a bunch of tools and adds “Please be careful 🙏” to the prompt.</li>
+  </ul>
+
+  <p>Both are how you end up with a marketing ops incident report that starts with, “We don’t know exactly what happened.”</p>
+
+  <p>This post is a practical, vendor-neutral runbook for putting AI agents into real ops environments — especially marketing ops, where the data is messy, the permissions are wide, and the blast radius is… festive.</p>
+
+  <h2>First: define the agent boundary (in plain English)</h2>
+  <p>Before you talk about models, tools, or prompts, write one paragraph that answers:</p>
+  <ul>
+    <li>What decisions is the agent allowed to make?</li>
+    <li>What actions is it allowed to take?</li>
+    <li>What is <strong>explicitly forbidden</strong>?</li>
+  </ul>
+
+  <p>Example boundary statement:</p>
+  <p><strong>“This agent can classify inbound demo requests, enrich company data, and route the lead to the right queue. It cannot email prospects, modify lifecycle stages, change consent fields, or create ad audiences.”</strong></p>
+
+  <p>This is boring on purpose. “Boring” is how ops stays alive.</p>
+
+  <h2>Guardrail #1: least-privilege tools (not least-privilege vibes)</h2>
+  <p>Most agent failures aren’t “the model hallucinated.” They’re “the agent had permission to do something dumb.”</p>
+
+  <p>Practically, that means:</p>
+  <ul>
+    <li><strong>Split tools by capability</strong>: read-only tools vs write tools vs money-touching tools.</li>
+    <li><strong>Use allowlists</strong> (not “any API call”): the agent can call these functions, with these parameters.</li>
+    <li><strong>Use scoped credentials</strong>: separate service accounts for “draft” vs “publish,” and rotate them like any other production secret.</li>
+  </ul>
+
+  <p>If you want a modern security framing for this, Google’s Secure AI Framework (SAIF) pushes ideas like “prompts should be treated as code” and emphasizes agentic controls like identity propagation (<a href="https://cloud.google.com/blog/products/identity-security/cloud-ciso-perspectives-practical-guidance-building-with-SAIF">Google Cloud</a>).</p>
+
+  <h2>Guardrail #2: separate reasoning steps from deterministic steps</h2>
+  <p>A high-reliability pattern looks like this:</p>
+  <ul>
+    <li><strong>Deterministic path</strong>: validation, suppression checks, field mapping, dedupe, routing rules.</li>
+    <li><strong>Reasoning island</strong>: classification, summarization, draft generation, “best guess” enrichment.</li>
+  </ul>
+
+  <p>In other words: let the agent <em>think</em> where it adds value, and force it to <em>execute</em> through guardrailed steps where consistency matters.</p>
+
+  <p>This aligns with mainstream governance thinking: manage risk across design, development, and use — not just at the moment you hit “Run” (<a href="https://www.nist.gov/itl/ai-risk-management-framework">NIST AI RMF</a>).</p>
+
+  <h2>Guardrail #3: approvals for irreversible actions (human-in-the-loop, on purpose)</h2>
+  <p>Agents should not get a straight path to external impact. Add a human approval step for actions that are hard to undo:</p>
+  <ul>
+    <li>sending external emails</li>
+    <li>changing lifecycle stage / lead status</li>
+    <li>editing consent or preference fields</li>
+    <li>publishing ads or changing budgets</li>
+    <li>writing to contracts, pricing, or legal docs</li>
+  </ul>
+
+  <p>The trick is to keep this fast. Make the agent do the prep work (draft, summary, proposed change + rationale) and the human does the final commit.</p>
+
+  <h2>The thing teams forget: observability (you can’t fix what you can’t see)</h2>
+  <p>If you can’t answer “What did the agent do?” in under 60 seconds, it’s not production-ready.</p>
+
+  <h3>What to log for every run</h3>
+  <p>You do not need an enterprise SIEM to start. You need a consistent, queryable record.</p>
+  <ul>
+    <li><strong>Run ID</strong> (unique)</li>
+    <li><strong>Owner</strong> (who is accountable for this automation)</li>
+    <li><strong>Trigger</strong> (what event started it)</li>
+    <li><strong>Inputs</strong> (with sensitive fields masked)</li>
+    <li><strong>Tool calls</strong> (name, parameters, timestamps, results)</li>
+    <li><strong>Decisions</strong> (classification labels, confidence signals, routing choice)</li>
+    <li><strong>Outputs</strong> (what it wrote / drafted / proposed)</li>
+    <li><strong>Cost + latency</strong> (tokens, model, duration)</li>
+    <li><strong>Policy outcomes</strong> (approval required? blocked? escalated?)</li>
+  </ul>
+
+  <p>Note what’s missing: raw model chain-of-thought. You don’t need it for ops. You need <strong>inputs, tool calls, outputs, and decisions</strong> you can audit.</p>
+
+  <h3>Two dashboards that actually matter</h3>
+  <ul>
+    <li><strong>“Safety dashboard”</strong>: blocked runs, approval rate, policy violations, prompt injection detections.</li>
+    <li><strong>“Business dashboard”</strong>: time saved, SLA adherence, enrichment success rate, routing accuracy.</li>
+  </ul>
+
+  <p>The OWASP community has been documenting LLM-specific security risks since 2023, including issues like prompt injection and insecure tool use (<a href="https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/">OWASP Top 10 for LLM Applications (2025)</a>). Your logs are how you detect those risks in your environment — not in a slide deck.</p>
+
+  <h2>How to deploy agent changes without breaking production</h2>
+  <p>Most teams ship agent changes like they ship a Notion doc: edit it live and hope for the best.</p>
+
+  <p>Ship agent updates like software:</p>
+  <ol>
+    <li><strong>Offline evals:</strong> run the agent on a replay set of real tasks (sanitized) and score outcomes.</li>
+    <li><strong>Shadow mode:</strong> run the new version in parallel, but don’t let it write — just compare decisions.</li>
+    <li><strong>Canary release:</strong> route 5% of traffic to the new agent with tighter budgets and approvals.</li>
+    <li><strong>Rollback plan:</strong> one-click disable + credential revocation + queue reprocessing rules.</li>
+  </ol>
+
+  <p>Anthropic’s engineering write-ups on “Agent Skills” emphasize building composable, testable capabilities and treating agent behavior as something you iterate on with discipline (and portable procedural knowledge) (<a href="https://claude.com/blog/equipping-agents-for-the-real-world-with-agent-skills">Anthropic</a>).</p>
+
+  <h2>Incident response: assume it will happen</h2>
+  <p>“Our agent would never…” is how every incident begins.</p>
+
+  <p>Write a one-page incident plan that covers:</p>
+  <ul>
+    <li><strong>Kill switch:</strong> disable the agent and revoke tool credentials.</li>
+    <li><strong>Containment:</strong> stop outbound actions (email, ads, CRM writes) first.</li>
+    <li><strong>Scope:</strong> search by run ID / time window; list impacted records.</li>
+    <li><strong>Recovery:</strong> revert writes (or apply a correction workflow) from a known-good state.</li>
+    <li><strong>Prevention:</strong> add a guardrail or approval gate that would have stopped it.</li>
+  </ul>
+
+  <p>If you want a lifecycle-based governance frame, ISO/IEC 42001 is increasingly used as a management-system approach to AI governance — including monitoring, accountability, and continuous improvement across the AI lifecycle (<a href="https://aws.amazon.com/blogs/security/ai-lifecycle-risk-management-iso-iec-420012023-for-ai-governance/">AWS Security Blog</a>).</p>
+
+  <h2>A 60-minute checklist you can run this week</h2>
+  <ol>
+    <li><strong>Pick one agent/workflow</strong> that already runs without a human click.</li>
+    <li><strong>Write the boundary statement</strong> (allowed / forbidden actions).</li>
+    <li><strong>Create a tool allowlist</strong> with read vs write separation.</li>
+    <li><strong>Add an approval gate</strong> for the first irreversible action.</li>
+    <li><strong>Add logging</strong> for run ID, tool calls, outputs, and policy outcomes.</li>
+    <li><strong>Define a kill switch</strong> (where and who).</li>
+  </ol>
+
+  <p>If you do only those six things, you’ll be ahead of 90% of “agent deployments” I see in the wild.</p>
+
+  <div class="sources-section">
+    <h3>Sources:</h3>
+    <ul>
+      <li><a href="https://www.nist.gov/itl/ai-risk-management-framework">NIST — AI Risk Management Framework (AI RMF 1.0) + Generative AI Profile (NIST-AI-600-1)</a></li>
+      <li><a href="https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/">OWASP — Top 10 for LLM Applications (2025)</a></li>
+      <li><a href="https://cloud.google.com/blog/products/identity-security/cloud-ciso-perspectives-practical-guidance-building-with-SAIF">Google Cloud — Practical guidance on building with SAIF (Secure AI Framework)</a></li>
+      <li><a href="https://saif.google/">Google — Secure AI Framework (SAIF) overview</a></li>
+      <li><a href="https://aws.amazon.com/blogs/security/ai-lifecycle-risk-management-iso-iec-420012023-for-ai-governance/">AWS Security Blog — ISO/IEC 42001:2023 for AI governance (lifecycle + monitoring)</a></li>
+      <li><a href="https://claude.com/blog/equipping-agents-for-the-real-world-with-agent-skills">Anthropic — Equipping agents for the real world with Agent Skills</a></li>
+    </ul>
+  </div>
+
+  <div class="cta-box">
+    <p>If you want to deploy AI agents in marketing ops without giving them the keys to the kingdom, Supergood can help: boundaries, least-privilege tooling, approvals, logging, and a rollout plan that won’t ruin your Monday. Reach out via <a href="https://supergood.solutions/">supergood.solutions</a> or reply on LinkedIn.</p>
+  </div>
+</article>
+
+<footer>
+  <p>&copy; 2026 Supergood Solutions. Helping marketing teams automate smarter, not harder.</p>
+</footer>
+
+</body>
+</html>
