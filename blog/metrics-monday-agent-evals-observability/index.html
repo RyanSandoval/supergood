@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shipping AI Agents Without Evals Is Just Shipping Bugs (Here’s the Practical Fix) — Supergood Solutions</title>
+<meta name="description" content="A vendor-neutral playbook for agent reliability: eval sets, regression gates, shadow mode, tracing, and cost budgets — the minimum guardrails before an AI agent touches your ops stack.">
+<link rel="canonical" href="https://supergood.solutions/blog/metrics-monday-agent-evals-observability/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="author" content="Ryan Sandoval">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Shipping AI Agents Without Evals Is Just Shipping Bugs (Here’s the Practical Fix)">
+<meta property="og:description" content="A vendor-neutral playbook for agent reliability: eval sets, regression gates, shadow mode, tracing, and cost budgets — the minimum guardrails before an AI agent touches your ops stack.">
+<meta property="og:url" content="https://supergood.solutions/blog/metrics-monday-agent-evals-observability/">
+<meta property="og:image" content="https://supergood.solutions/og-image.png">
+<meta property="article:published_time" content="2026-02-23">
+<meta property="article:author" content="Ryan Sandoval">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Shipping AI Agents Without Evals Is Just Shipping Bugs (Here’s the Practical Fix)">
+<meta name="twitter:description" content="A vendor-neutral playbook for agent reliability: eval sets, regression gates, shadow mode, tracing, and cost budgets — the minimum guardrails before an AI agent touches your ops stack.">
+<meta name="twitter:image" content="https://supergood.solutions/og-image.png">
+
+<!-- Schema.org Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Shipping AI Agents Without Evals Is Just Shipping Bugs (Here’s the Practical Fix)",
+  "description": "A vendor-neutral playbook for agent reliability: eval sets, regression gates, shadow mode, tracing, and cost budgets — the minimum guardrails before an AI agent touches your ops stack.",
+  "author": {
+    "@type": "Person",
+    "name": "Ryan Sandoval",
+    "url": "https://linkedin.com/in/RyanSandoval",
+    "jobTitle": "AI Automation Consultant",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Supergood Solutions"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Supergood Solutions",
+    "url": "https://supergood.solutions"
+  },
+  "datePublished": "2026-02-23",
+  "dateModified": "2026-02-23",
+  "mainEntityOfPage": "https://supergood.solutions/blog/metrics-monday-agent-evals-observability/",
+  "keywords": ["AI agents","agent ops","evals","LLM evaluation","observability","tracing","audit logging","prompt injection","marketing ops","automation reliability"]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #0a0a0b; --surface: #111113; --surface-2: #18181b; --border: #27272a;
+  --text: #fafafa; --text-2: #a1a1aa; --text-3: #71717a;
+  --green: #22c55e; --mono: 'JetBrains Mono', monospace;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+::selection { background: var(--green); color: var(--bg); }
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; background: rgba(10,10,11,0.8); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+nav .inner { max-width: 720px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
+.wordmark { font-weight: 800; font-size: 1.125rem; letter-spacing: -0.03em; color: var(--text); text-decoration: none; display: inline-flex; align-items: baseline; }
+.wordmark .oo-dot { display: inline-block; width: 0.45em; height: 0.45em; background: var(--green); border-radius: 50%; }
+.wordmark .oo-wrap { display: inline-flex; gap: 2px; align-items: center; }
+.wordmark .dot-period { color: var(--green); }
+nav a.back { font-size: 0.875rem; color: var(--text-3); text-decoration: none; }
+nav a.back:hover { color: var(--text); }
+
+article { max-width: 720px; margin: 0 auto; padding: 140px 24px 80px; }
+article .tag { font-family: var(--mono); font-size: 0.6875rem; color: var(--green); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; }
+article h1 { font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px; }
+article .subtitle { font-size: 1.25rem; color: var(--text-2); line-height: 1.6; margin-bottom: 24px; }
+article .meta { font-family: var(--mono); font-size: 0.75rem; color: var(--text-3); margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+article h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin: 56px 0 16px; }
+article h3 { font-size: 1.125rem; font-weight: 600; margin: 40px 0 12px; }
+article p { font-size: 1rem; color: var(--text-2); margin-bottom: 20px; }
+article strong { color: var(--text); }
+article ul, article ol { color: var(--text-2); margin-bottom: 20px; padding-left: 24px; }
+article li { margin-bottom: 8px; }
+article a { color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
+article a:hover { color: var(--text); }
+
+.cta-box { border: 2px solid var(--green); border-radius: 12px; padding: 40px; margin: 48px 0; text-align: center; background: var(--surface); }
+.cta-box p { font-size: 0.9375rem; color: var(--text); margin-bottom: 0; font-style: italic; }
+
+.sources-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
+.sources-section h3 { font-size: 1rem; font-weight: 600; margin-bottom: 12px; color: var(--text); }
+.sources-section ul { list-style: none; padding: 0; }
+.sources-section li { margin-bottom: 8px; font-size: 0.875rem; }
+
+footer { background: var(--surface); padding: 40px 0; margin-top: 80px; border-top: 1px solid var(--border); text-align: center; }
+footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
+
+@media (max-width: 768px) {
+  article { padding: 120px 20px 60px; }
+  article h1 { font-size: 2rem; }
+  nav .inner { padding: 0 20px; }
+}
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="inner">
+    <a href="/" class="wordmark">superg<span class="oo-wrap"><span class="oo-dot"></span><span class="oo-dot"></span></span>d<span class="dot-period">.</span></a>
+    <a href="/blog/" class="back">← All posts</a>
+  </div>
+</nav>
+
+<article>
+  <div class="tag">Manual Work Monday · Workflows</div>
+  <h1>Shipping AI Agents Without Evals Is Just Shipping Bugs (Here’s the Practical Fix)</h1>
+  <p class="subtitle">“It worked in testing” doesn’t mean anything when your system is probabilistic, tool-connected, and one Slack message away from doing something creative in production.</p>
+  <div class="meta">Published February 23, 2026 — 8 min read</div>
+
+  <p>Here’s the uncomfortable truth: most teams don’t ship <strong>AI agents</strong>. They ship <strong>unobserved behavior</strong> and hope the logs will be “good enough” when something breaks.</p>
+
+  <p>If that sounds dramatic, consider what an agent actually is:</p>
+  <ul>
+    <li>a probabilistic decision-maker</li>
+    <li>with tool access (APIs, databases, CRMs, ad accounts)</li>
+    <li>running in messy real-world environments (bad inputs, weird edge cases, changing permissions)</li>
+  </ul>
+
+  <p>That is not a workflow. That is production software with a personality.</p>
+
+  <h2>The goal isn’t “perfect answers.” It’s predictable failure.</h2>
+  <p>Classic automations fail like clocks: the condition didn’t match, the API 500’d, a field changed. Annoying, but understandable.</p>
+
+  <p>Agents fail like interns: they misunderstand, overreach, get tricked by untrusted inputs, and occasionally take the longest possible path to the right result.</p>
+
+  <p>So the question isn’t “how do we stop failures?” The question is:</p>
+  <ul>
+    <li><strong>How do we detect failures quickly?</strong></li>
+    <li><strong>How do we limit blast radius?</strong></li>
+    <li><strong>How do we prevent regressions?</strong></li>
+  </ul>
+
+  <p>This is exactly the framing in modern AI risk guidance: risk management is continuous and spans the lifecycle — not something you do once at launch (<a href="https://airc.nist.gov/airmf-resources/airmf/5-sec-core/">NIST AI RMF</a>).</p>
+
+  <h2>Step 1: define “good” with a tiny eval set (not a thesis)</h2>
+  <p>You don’t need 10,000 labeled examples to start. You need 25–100 cases that represent your real world:</p>
+  <ul>
+    <li>the common path (the 80%)</li>
+    <li>the expensive path (anything that touches money, email, consent)</li>
+    <li>the embarrassing path (wrong segments, wrong accounts, wrong stakeholders)</li>
+    <li>the adversarial path (prompt injection and “helpful” docs with hidden instructions)</li>
+  </ul>
+
+  <p>For marketing ops, a starter set might include:</p>
+  <ul>
+    <li>10 inbound demo requests that should route cleanly</li>
+    <li>10 messy ones (incomplete info, weird job titles, multiple products mentioned)</li>
+    <li>5 that must be blocked (competitors, personal email domains, “unsubscribe” language)</li>
+    <li>5 that test tool-safety (agent tries to email externally, change lifecycle stage, or edit consent)</li>
+  </ul>
+
+  <p>Then you choose the metric that actually matters. Examples:</p>
+  <ul>
+    <li><strong>Decision accuracy</strong>: correct routing label / category</li>
+    <li><strong>Safety</strong>: % of runs that attempt forbidden actions</li>
+    <li><strong>Stability</strong>: variance across reruns (same input, same outcome)</li>
+    <li><strong>Cost + latency</strong>: tokens, tool calls, time</li>
+  </ul>
+
+  <p>Open-source frameworks exist for this (for example, <a href="https://github.com/openai/evals">OpenAI Evals</a>), but the tooling choice is not the point. The point is: <strong>write down what “pass” means</strong>.</p>
+
+  <h2>Step 2: turn evals into a release gate (yes, even for “just prompts”)</h2>
+  <p>Most teams treat prompts like content. That’s how you end up with prompt edits shipping on vibes.</p>
+
+  <p>A better pattern:</p>
+  <ol>
+    <li>Every prompt / policy / tool schema change runs the eval set</li>
+    <li>Results are stored with a version (date + hash + owner)</li>
+    <li>Production only updates if the run meets thresholds</li>
+  </ol>
+
+  <p>This is boring DevOps. Good. You want boring.</p>
+
+  <h3>Minimum viable thresholds</h3>
+  <ul>
+    <li><strong>Accuracy</strong>: no meaningful drop vs baseline</li>
+    <li><strong>Safety</strong>: 0% forbidden tool calls on the safety subset</li>
+    <li><strong>Cost</strong>: no >X% increase in average cost per run</li>
+  </ul>
+
+  <h2>Step 3: add “shadow mode” before you give write access</h2>
+  <p>If your agent currently writes to production systems on day one, you’re doing a trust fall with your CRM.</p>
+
+  <p>Shadow mode means:</p>
+  <ul>
+    <li>the agent runs on real triggers</li>
+    <li>it produces decisions and proposed actions</li>
+    <li>but it only writes to a log / draft store (not the real system)</li>
+  </ul>
+
+  <p>After a week, you’ll have the most valuable artifact in agent ops: a dataset of <strong>real inputs + real outputs + what humans would have done</strong>. That becomes your eval set v2.</p>
+
+  <h2>Step 4: instrument the agent like production software (because it is)</h2>
+  <p>If you can’t answer “what happened?” in under 60 seconds, you don’t have an agent. You have a mystery.</p>
+
+  <h3>What to log (every run)</h3>
+  <ul>
+    <li><strong>Run ID</strong> and correlation IDs (request, user, account)</li>
+    <li><strong>Inputs</strong> (with sensitive fields masked)</li>
+    <li><strong>Model + version</strong>, prompt/policy version, tool schema version</li>
+    <li><strong>Tool calls</strong> (name, parameters, timestamps, results)</li>
+    <li><strong>Decisions</strong> (labels, confidence signals, “why” summary)</li>
+    <li><strong>Policy outcomes</strong> (allowed, blocked, approval required)</li>
+    <li><strong>Cost + latency</strong> (tokens, time, tool call count)</li>
+  </ul>
+
+  <p>Standardization helps here: OpenTelemetry defines semantic conventions so telemetry uses consistent names across libraries and platforms (<a href="https://opentelemetry.io/docs/concepts/semantic-conventions/">OpenTelemetry</a>).</p>
+
+  <h2>Step 5: treat prompt injection like a real incident class</h2>
+  <p>Prompt injection isn’t a theoretical “AI risk.” It’s just input manipulation — and agents are input-powered.</p>
+
+  <p>OWASP maintains a dedicated Top 10 list for LLM applications because the failure modes aren’t the same as classic web apps (<a href="https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/">OWASP Top 10 for LLM Applications (2025)</a>).</p>
+
+  <p>Practically, for ops teams, this means:</p>
+  <ul>
+    <li><strong>separate instructions from data</strong> (treat external docs as untrusted)</li>
+    <li><strong>use allowlisted tools</strong> (agent can only call a small set of functions)</li>
+    <li><strong>validate outputs</strong> (schema + business rules) before any write</li>
+    <li><strong>log and alert</strong> on “attempted forbidden action” events</li>
+  </ul>
+
+  <h2>Step 6: put cost + rate limits on the agent (or it will explore)</h2>
+  <p>Agents don’t just answer. They try things. That’s what makes them useful — and expensive.</p>
+
+  <p>Minimum guardrails:</p>
+  <ul>
+    <li><strong>per-run caps</strong>: max tokens, max tool calls, max wall-clock time</li>
+    <li><strong>daily caps</strong>: total tokens, total spend, or total tool calls</li>
+    <li><strong>fail closed</strong>: when budgets are hit, stop and escalate (don’t half-update records)</li>
+  </ul>
+
+  <h2>The “Monday checklist” (what to implement this week)</h2>
+  <ol>
+    <li>Create a 50-case eval set from real tickets / requests</li>
+    <li>Define pass/fail thresholds (accuracy + safety + cost)</li>
+    <li>Run evals on every prompt/policy/tool change</li>
+    <li>Deploy in shadow mode for 7 days before granting write access</li>
+    <li>Add run IDs + tool-call logs + cost/latency metrics</li>
+    <li>Add an alert for “forbidden tool call attempted”</li>
+  </ol>
+
+  <p>Do those six things and you’ll be ahead of 90% of teams “doing agents.”</p>
+
+  <div class="sources-section">
+    <h3>Sources:</h3>
+    <ul>
+      <li><a href="https://airc.nist.gov/airmf-resources/airmf/5-sec-core/">NIST AI RMF Core (Govern, Map, Measure, Manage) — NIST Trustworthy &amp; Responsible AI Resource Center</a></li>
+      <li><a href="https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/">OWASP Top 10 for LLM Applications (2025) — OWASP GenAI</a></li>
+      <li><a href="https://opentelemetry.io/docs/concepts/semantic-conventions/">Semantic Conventions — OpenTelemetry</a></li>
+      <li><a href="https://github.com/openai/evals">openai/evals — evaluation framework and benchmark registry (GitHub)</a></li>
+      <li><a href="https://cloud.google.com/blog/products/identity-security/cloud-ciso-perspectives-practical-guidance-building-with-SAIF">Practical guidance building with SAIF — Google Cloud</a></li>
+    </ul>
+  </div>
+
+  <div class="cta-box">
+    <p>If you want help turning “agent demos” into production-grade automations (evals, guardrails, and observability included), tell me what your agent touches: CRM, email, ads, or data warehouse. I’ll tell you the safest first cut.</p>
+  </div>
+</article>
+
+<footer>
+  <p>&copy; 2026 Supergood Solutions. Helping marketing teams automate smarter, not harder.</p>
+</footer>
+
+</body>
+</html>
