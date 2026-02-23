@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI News Roundup — 2026-02-22 (Enterprise + Product) — Supergood Solutions</title>
+<meta name="description" content="Enterprise + product AI news roundup for 2026-02-22: Google Gemini 3.1 Pro rollout, Redpanda Agentic Data Plane and AI Gateway, Cloudflare BYOIP/BGP outage postmortem, GitHub Copilot coding agent updates, Salesforce Spring ’26 architecture changes, NIST AI Agent Standards Initiative, and Google’s Responsible AI Progress Report." />
+<link rel="canonical" href="https://supergood.solutions/blog/ai-news-roundup-2026-02-22-enterprise-product/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="author" content="Ryan Sandoval">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI News Roundup — 2026-02-22 (Enterprise + Product)">
+<meta property="og:description" content="Enterprise + product AI news roundup for 2026-02-22: Google Gemini 3.1 Pro rollout, Redpanda Agentic Data Plane and AI Gateway, Cloudflare BYOIP/BGP outage postmortem, GitHub Copilot coding agent updates, Salesforce Spring ’26 architecture changes, NIST AI Agent Standards Initiative, and Google’s Responsible AI Progress Report.">
+<meta property="og:url" content="https://supergood.solutions/blog/ai-news-roundup-2026-02-22-enterprise-product/">
+<meta property="og:image" content="https://supergood.solutions/og-image.png">
+<meta property="article:published_time" content="2026-02-22">
+<meta property="article:author" content="Ryan Sandoval">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI News Roundup — 2026-02-22 (Enterprise + Product)">
+<meta name="twitter:description" content="Enterprise + product AI news roundup for 2026-02-22: Google Gemini 3.1 Pro rollout, Redpanda Agentic Data Plane and AI Gateway, Cloudflare BYOIP/BGP outage postmortem, GitHub Copilot coding agent updates, Salesforce Spring ’26 architecture changes, NIST AI Agent Standards Initiative, and Google’s Responsible AI Progress Report.">
+<meta name="twitter:image" content="https://supergood.solutions/og-image.png">
+
+<!-- Schema.org Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "AI News Roundup — 2026-02-22 (Enterprise + Product)",
+  "description": "Enterprise + product AI news roundup for 2026-02-22: Google Gemini 3.1 Pro rollout, Redpanda Agentic Data Plane and AI Gateway, Cloudflare BYOIP/BGP outage postmortem, GitHub Copilot coding agent updates, Salesforce Spring ’26 architecture changes, NIST AI Agent Standards Initiative, and Google’s Responsible AI Progress Report.",
+  "author": {
+    "@type": "Person",
+    "name": "Ryan Sandoval",
+    "url": "https://linkedin.com/in/RyanSandoval",
+    "jobTitle": "AI Automation Consultant",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Supergood Solutions"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Supergood Solutions",
+    "url": "https://supergood.solutions"
+  },
+  "datePublished": "2026-02-22",
+  "dateModified": "2026-02-22",
+  "mainEntityOfPage": "https://supergood.solutions/blog/ai-news-roundup-2026-02-22-enterprise-product/",
+  "keywords": ["ai news roundup","enterprise ai","product management","google gemini 3.1 pro","github copilot coding agent","cloudflare outage","redpanda agentic data plane","salesforce spring 26","nist ai agent standards initiative","responsible ai"]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #0a0a0b; --surface: #111113; --surface-2: #18181b; --border: #27272a;
+  --text: #fafafa; --text-2: #a1a1aa; --text-3: #71717a;
+  --green: #22c55e; --mono: 'JetBrains Mono', monospace;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+::selection { background: var(--green); color: var(--bg); }
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; background: rgba(10,10,11,0.8); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+nav .inner { max-width: 720px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
+.wordmark { font-weight: 800; font-size: 1.125rem; letter-spacing: -0.03em; color: var(--text); text-decoration: none; display: inline-flex; align-items: baseline; }
+.wordmark .oo-dot { display: inline-block; width: 0.45em; height: 0.45em; background: var(--green); border-radius: 50%; }
+.wordmark .oo-wrap { display: inline-flex; gap: 2px; align-items: center; }
+.wordmark .dot-period { color: var(--green); }
+nav a.back { font-size: 0.875rem; color: var(--text-3); text-decoration: none; }
+nav a.back:hover { color: var(--text); }
+
+article { max-width: 720px; margin: 0 auto; padding: 140px 24px 80px; }
+article .tag { font-family: var(--mono); font-size: 0.6875rem; color: var(--green); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; }
+article h1 { font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px; }
+article .subtitle { font-size: 1.25rem; color: var(--text-2); line-height: 1.6; margin-bottom: 24px; }
+article .meta { font-family: var(--mono); font-size: 0.75rem; color: var(--text-3); margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+article h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin: 56px 0 16px; }
+article h3 { font-size: 1.125rem; font-weight: 600; margin: 40px 0 12px; }
+article p { font-size: 1rem; color: var(--text-2); margin-bottom: 20px; }
+article strong { color: var(--text); }
+article ul, article ol { color: var(--text-2); margin-bottom: 20px; padding-left: 24px; }
+article li { margin-bottom: 8px; }
+article a { color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
+article a:hover { color: var(--text); }
+
+.cta-box { border: 2px solid var(--green); border-radius: 12px; padding: 40px; margin: 48px 0; text-align: center; background: var(--surface); }
+.cta-box p { font-size: 0.9375rem; color: var(--text); margin-bottom: 0; font-style: italic; }
+
+.sources-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
+.sources-section h3 { font-size: 1rem; font-weight: 600; margin-bottom: 12px; color: var(--text); }
+.sources-section ul { list-style: none; padding: 0; }
+.sources-section li { margin-bottom: 8px; font-size: 0.875rem; }
+
+footer { background: var(--surface); padding: 40px 0; margin-top: 80px; border-top: 1px solid var(--border); text-align: center; }
+footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
+
+@media (max-width: 768px) {
+  article { padding: 120px 20px 60px; }
+  article h1 { font-size: 2rem; }
+  nav .inner { padding: 0 20px; }
+}
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="inner">
+    <a href="/" class="wordmark">superg<span class="oo-wrap"><span class="oo-dot"></span><span class="oo-dot"></span></span>d<span class="dot-period">.</span></a>
+    <a href="/blog/" class="back">← All posts</a>
+  </div>
+</nav>
+
+<article>
+  <div class="tag">AI News Roundup · Enterprise + Product</div>
+  <h1>AI News Roundup — 2026-02-22 (Enterprise + Product)</h1>
+  <p class="subtitle">A fast, source-linked roundup of what changed this week in AI for enterprise buyers and product teams.</p>
+  <div class="meta">Published February 22, 2026 — 6 min read</div>
+
+  <h2>TL;DR</h2>
+  <p>Google is accelerating Gemini 3.1 Pro availability across developer and enterprise channels, while platform operators (Cloudflare) and data-plane vendors (Redpanda) are publishing the “how to run it” details that matter in production. On the build side, GitHub Copilot’s coding agent is getting more enterprise-friendly (Windows environments + code referencing), and Salesforce is tightening integration security in Spring ’26 to match an agentic future.</p>
+
+  <h2>Top stories</h2>
+
+  <h3>Google releases Gemini 3.1 Pro in preview across the Gemini API, Vertex AI, Gemini Enterprise, and consumer apps</h3>
+  <p><strong>What happened:</strong> Google announced Gemini 3.1 Pro and began rolling it out in preview to developers via the Gemini API (Google AI Studio) and to enterprises via Vertex AI and Gemini Enterprise. Google also states Gemini 3.1 Pro is coming to the Gemini app and NotebookLM, and highlighted a verified ARC-AGI-2 score.</p>
+  <p><strong>Why it matters:</strong> For enterprise and product teams, model upgrades only become real when they land in the procurement and deployment surfaces you already use (Vertex AI, enterprise SKUs, admin controls). The practical question to test this week is not “is reasoning better?” but “does Gemini 3.1 Pro improve tool-use success rates in your workflows (edit→test loops, retrieval, and multi-step automation) without breaking output contracts?”</p>
+  <p><strong>Source:</strong> <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro/">https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro/</a></p>
+
+  <h3>Cloudflare publishes an in-depth postmortem for a BYOIP/BGP outage (and explicitly rules out a cyberattack)</h3>
+  <p><strong>What happened:</strong> Cloudflare published a post-incident report describing a February 20, 2026 incident in which a subset of customers using Cloudflare Bring Your Own IP (BYOIP) saw routes withdrawn via BGP. Cloudflare states the root cause was an internal change to the BYOIP pipeline and states the incident was not caused by malicious activity.</p>
+  <p><strong>Why it matters:</strong> Enterprise AI systems increasingly depend on edge routing, API gateways, and globally distributed networking for inference traffic and tool calls. This incident is a reminder to treat reliability as a product requirement: build graceful degradation (timeouts, retries, cache, queueing), define multi-provider failover for critical endpoints, and make “status behavior” part of the user experience design.</p>
+  <p><strong>Source:</strong> <a href="https://blog.cloudflare.com/cloudflare-outage-february-20-2026/">https://blog.cloudflare.com/cloudflare-outage-february-20-2026/</a></p>
+
+  <h3>Redpanda announces general availability for Redpanda Agentic Data Plane (ADP), including Redpanda AI Gateway</h3>
+  <p><strong>What happened:</strong> Redpanda announced Redpanda Agentic Data Plane (ADP) availability for approved design partners. The announcement describes ADP as a governed connectivity layer for enterprise agents, including an AI Gateway for centralized routing, policy enforcement, cost management, and observability across LLM and Model Context Protocol (MCP) traffic.</p>
+  <p><strong>Why it matters:</strong> Many “enterprise AI pilots fail” for operational reasons: no identity, no audit trails, unclear tool access, and no budget guardrails. A dedicated agentic data plane category (and products like Redpanda ADP) is a signal that the market is shifting from “build agents” to “run agents safely”: policy, spend controls, and traceability become first-class platform features.</p>
+  <p><strong>Source:</strong> <a href="https://www.redpanda.com/blog/redpanda-agentic-data-plane-adp-is-now-available">https://www.redpanda.com/blog/redpanda-agentic-data-plane-adp-is-now-available</a> · <a href="https://www.redpanda.com/agentic-data-plane">https://www.redpanda.com/agentic-data-plane</a></p>
+
+  <h3>Salesforce Spring ’26 release architecture changes push teams toward more secure integration patterns (External Client Apps)</h3>
+  <p><strong>What happened:</strong> Salesforce published Spring ’26 “architect highlights” outlining security and integration shifts, including restrictions on Connected App creation (by default) in favor of External Client Apps (ECAs) and continued deprecation of legacy authentication patterns. The post also flags changes that affect automation and certificate lifecycle planning.</p>
+  <p><strong>Why it matters:</strong> Agentic product roadmaps often assume frictionless access to SaaS data. Spring ’26 changes are a reminder that identity and integration patterns are the long pole: if your AI feature depends on legacy auth or ad hoc connected apps, your roadmap is brittle. Treat app registrations, OAuth flows, and certificate rotation as “AI platform plumbing” and automate them early.</p>
+  <p><strong>Source:</strong> <a href="https://www.salesforce.com/blog/spring-26-release-architect-highlights/?bc=OTH">https://www.salesforce.com/blog/spring-26-release-architect-highlights/?bc=OTH</a> · <a href="https://help.salesforce.com/s/articleView?id=release-notes.salesforce_release_notes.htm&release=218&type=5">https://help.salesforce.com/s/articleView?id=release-notes.salesforce_release_notes.htm&amp;release=218&amp;type=5</a></p>
+
+  <h2>Shipping &amp; platform updates</h2>
+
+  <h3>Gemini 3.1 Pro becomes selectable in GitHub Copilot (public preview rollout)</h3>
+  <p><strong>What happened:</strong> GitHub announced Gemini 3.1 Pro is rolling out in GitHub Copilot for Copilot Pro, Pro+, Business, and Enterprise users, with admin policy enablement required for Business and Enterprise. GitHub positions Gemini 3.1 Pro as strong on edit-then-test loops with high tool precision.</p>
+  <p><strong>Why it matters:</strong> “Model choice” is now an enterprise procurement and governance surface inside dev platforms. If your organization standardizes on GitHub Copilot, the decision moves from individual developers to admin policy: you can run controlled experiments by enabling Gemini 3.1 Pro for a subset of teams and measuring throughput, regression risk, and tool-call costs.</p>
+  <p><strong>Source:</strong> <a href="https://github.blog/changelog/2026-02-19-gemini-3-1-pro-is-now-in-public-preview-in-github-copilot/">https://github.blog/changelog/2026-02-19-gemini-3-1-pro-is-now-in-public-preview-in-github-copilot/</a></p>
+
+  <h3>GitHub Copilot coding agent now supports code referencing (links to matching public source code + licenses)</h3>
+  <p><strong>What happened:</strong> GitHub announced Copilot coding agent now works with Copilot code referencing. If the agent generates code that matches code in a public GitHub repository, GitHub highlights the match in session logs with a link to the original code and any license that may apply. GitHub also notes that “Suggestions matching public code” Block mode is not supported for Copilot coding agent.</p>
+  <p><strong>Why it matters:</strong> This is a governance upgrade: autonomous code generation needs better provenance and review ergonomics. However, the lack of Block mode for the coding agent means enterprise teams should update policy and review processes (session log checks, licensing review, and guardrails) before turning on background agent workflows broadly.</p>
+  <p><strong>Source:</strong> <a href="https://github.blog/changelog/2026-02-18-copilot-coding-agent-supports-code-referencing/">https://github.blog/changelog/2026-02-18-copilot-coding-agent-supports-code-referencing/</a> · <a href="https://docs.github.com/copilot/concepts/completions/code-referencing">https://docs.github.com/copilot/concepts/completions/code-referencing</a></p>
+
+  <h3>GitHub Copilot coding agent can be configured to use a Windows development environment (GitHub Actions)</h3>
+  <p><strong>What happened:</strong> GitHub announced that Copilot coding agent can now run in a Windows environment for Windows-targeted projects, configured via a <code>copilot-setup-steps.yml</code> file. GitHub also notes the coding agent integrated firewall is not compatible with Windows and recommends using self-hosted runners or larger runners with Azure private networking for network controls.</p>
+  <p><strong>Why it matters:</strong> Many enterprise codebases are Windows-first (.NET, desktop tooling, legacy build chains). This update makes “agentic PRs” more realistic for those environments — but it also makes network/security architecture more important. If you enable Windows runners for agentic workflows, you should explicitly design egress controls and secrets handling for the runner environment.</p>
+  <p><strong>Source:</strong> <a href="https://github.blog/changelog/2026-02-18-use-copilot-coding-agent-with-windows-projects/">https://github.blog/changelog/2026-02-18-use-copilot-coding-agent-with-windows-projects/</a></p>
+
+  <h3>Claude Sonnet 4.6 rolls out as a selectable model in GitHub Copilot</h3>
+  <p><strong>What happened:</strong> GitHub announced Claude Sonnet 4.6 is rolling out in GitHub Copilot for Copilot Pro, Pro+, Business, and Enterprise. GitHub notes a premium request multiplier and states rollout is gradual.</p>
+  <p><strong>Why it matters:</strong> For platform owners, model mix impacts cost and performance. For product leaders, “selectable models” implies you need an internal rubric: which workflows get premium models (agent mode, search-heavy tasks) and which should default to cheaper models (autocomplete, low-risk transformations). Treat model selection as a spend + risk policy, not a developer preference.</p>
+  <p><strong>Source:</strong> <a href="https://github.blog/changelog/2026-02-17-claude-sonnet-4-6-is-now-generally-available-in-github-copilot/">https://github.blog/changelog/2026-02-17-claude-sonnet-4-6-is-now-generally-available-in-github-copilot/</a></p>
+
+  <h3>GitHub Copilot deprecates selected model options (administrators may need to enable alternatives)</h3>
+  <p><strong>What happened:</strong> GitHub announced it deprecated several models across GitHub Copilot experiences on February 17, 2026, including Claude Opus 4.1, GPT-5, and GPT-5-Codex, and recommended alternatives such as Claude Opus 4.6, GPT-5.2, and GPT-5.2-Codex.</p>
+  <p><strong>Why it matters:</strong> In an agentic toolchain, “model availability” is a dependency that can break silently. If you use Copilot (or any orchestrator), build a deprecation playbook: define golden evaluation tasks, maintain a fallback model, and instrument behavior changes (format regressions, tool-call patterns, and test pass rates) when models roll.</p>
+  <p><strong>Source:</strong> <a href="https://github.blog/changelog/2026-02-19-selected-anthropic-and-openai-models-are-now-deprecated/">https://github.blog/changelog/2026-02-19-selected-anthropic-and-openai-models-are-now-deprecated/</a></p>
+
+  <h3>Salesforce highlights Agentforce Marketing features in Spring ’26 (Conversational Email and Multi-touch Attribution)</h3>
+  <p><strong>What happened:</strong> Salesforce published Spring ’26 marketing updates for Agentforce Marketing, including Conversational Email (agent-driven responses to inbound replies) and Multi-touch Attribution (built-in dashboards to assign credit across touchpoints).</p>
+  <p><strong>Why it matters:</strong> This is a pattern to watch: “agent-first features” are landing directly in business-user SaaS, not just developer platforms. For enterprise product and ops teams, the risk is uneven governance: a marketing org can ship agentic customer interactions faster than the company can set policies. Put a lightweight approval and monitoring loop around any customer-facing autonomous responses.</p>
+  <p><strong>Source:</strong> <a href="https://www.salesforce.com/blog/agentforce-marketing-spring-release/?bc=OTH">https://www.salesforce.com/blog/agentforce-marketing-spring-release/?bc=OTH</a> · <a href="https://help.salesforce.com/s/articleView?id=release-notes.rn_mktg_email.htm&release=260&type=5">https://help.salesforce.com/s/articleView?id=release-notes.rn_mktg_email.htm&amp;release=260&amp;type=5</a></p>
+
+  <h2>Policy, security, and governance</h2>
+
+  <h3>NIST launches the AI Agent Standards Initiative (interoperability + security, with RFIs and concept papers)</h3>
+  <p><strong>What happened:</strong> The U.S. National Institute of Standards and Technology (NIST), via the Center for AI Standards and Innovation (CAISI), announced an “AI Agent Standards Initiative” aimed at fostering industry-led standards and protocols so AI agents can interoperate securely across the digital ecosystem. NIST points stakeholders to CAISI’s Request for Information on AI Agent Security (due March 9) and NIST NCCoE work on AI agent identity and authorization (concept paper due April 2).</p>
+  <p><strong>Why it matters:</strong> Enterprise agent deployments are blocked less by model capability than by trust: identity, authorization, auditability, and cross-system interoperability. NIST’s work is a signal for product teams to start designing around agent identity and delegated authorization now (service accounts, scoped tokens, policy-as-code) rather than bolting it on after a pilot.</p>
+  <p><strong>Source:</strong> <a href="https://www.nist.gov/news-events/news/2026/02/announcing-ai-agent-standards-initiative-interoperable-and-secure">https://www.nist.gov/news-events/news/2026/02/announcing-ai-agent-standards-initiative-interoperable-and-secure</a> · <a href="https://www.nccoe.nist.gov/projects/software-and-ai-agent-identity-and-authorization">https://www.nccoe.nist.gov/projects/software-and-ai-agent-identity-and-authorization</a></p>
+
+  <h3>Google publishes its 2026 Responsible AI Progress Report (with a linked PDF)</h3>
+  <p><strong>What happened:</strong> Google published an update summarizing its 2026 Responsible AI Progress Report and linked to a PDF report. Google describes a multi-layer governance approach spanning the AI lifecycle (research through post-launch monitoring) and emphasizes testing and safeguards as models become more capable and multimodal.</p>
+  <p><strong>Why it matters:</strong> This is useful as a “what good looks like” reference when you are building internal governance: lifecycle processes, risk testing, monitoring, and remediation. If you sell AI features to enterprises, these reports also shape buyer expectations — you will increasingly be asked to explain your evaluation methods, safeguards, and incident response plans in procurement.</p>
+  <p><strong>Source:</strong> <a href="https://blog.google/innovation-and-ai/products/responsible-ai-2026-report-ongoing-work/">https://blog.google/innovation-and-ai/products/responsible-ai-2026-report-ongoing-work/</a> · <a href="https://ai.google/static/documents/ai-responsibility-update-2026.pdf">https://ai.google/static/documents/ai-responsibility-update-2026.pdf</a></p>
+
+  <h3>South Korea begins enforcing the AI Basic Act (national AI framework law), with guidance documents and support desk</h3>
+  <p><strong>What happened:</strong> CIO reported on the enforcement of South Korea’s AI Basic Act and described the government’s preparatory process, guidance documents, and an “AI Basic Act support desk.” The article contrasts the framework with the EU AI Act and discusses business concerns around ambiguity, scope, and compliance obligations.</p>
+  <p><strong>Why it matters:</strong> Global enterprises will operate under multiple AI regulatory regimes at once. The practical play is to build a reusable compliance “core” (disclosures, documentation, evaluation evidence, and audit logs) and then map local obligations (EU, South Korea, U.S. states) on top. Product teams should treat transparency and documentation as product requirements, not legal afterthoughts.</p>
+  <p><strong>Source:</strong> <a href="https://www.cio.com/article/4134658/the-era-of-the-ai-framework-act-begins-what-response-paths-are-proposed-by-legal-industry-and-academic-leaders.html">https://www.cio.com/article/4134658/the-era-of-the-ai-framework-act-begins-what-response-paths-are-proposed-by-legal-industry-and-academic-leaders.html</a> · <a href="https://aibasicact.kr/">https://aibasicact.kr/</a></p>
+
+  <h2>One take</h2>
+  <p>Enterprise AI is converging on an “operating model,” not a single vendor stack. The week’s updates split cleanly into two buckets: (1) capability supply (Gemini 3.1 Pro, Copilot model portfolios) and (2) operational correctness (network reliability at Cloudflare, policy and observability layers like Redpanda ADP, and integration hardening in Salesforce Spring ’26). The winners will be the teams that can ship agentic features while still meeting enterprise requirements: identity, cost controls, auditability, and predictable failure modes.</p>
+  <p><strong>What to do this week:</strong> (1) pick one production workflow and run an A/B evaluation across two models (quality + tool-use completion + cost), (2) write a model deprecation and fallback playbook (who owns the switch, what tests must pass), and (3) inventory where your agents touch external systems (OAuth apps, tokens, MCP servers, networking) and put policy + logging in front of those edges.</p>
+
+  <p><strong>Tags:</strong> AI news roundup, enterprise AI, product management, Google Gemini, GitHub Copilot, Copilot coding agent, Redpanda, Cloudflare, Salesforce Agentforce, NIST</p>
+
+  <div class="sources-section">
+    <h3>Sources:</h3>
+    <ul>
+      <li>• <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro/">Google — Gemini 3.1 Pro announcement</a></li>
+      <li>• <a href="https://blog.cloudflare.com/cloudflare-outage-february-20-2026/">Cloudflare — BYOIP/BGP outage postmortem</a></li>
+      <li>• <a href="https://www.redpanda.com/blog/redpanda-agentic-data-plane-adp-is-now-available">Redpanda — Redpanda Agentic Data Plane (ADP) availability</a></li>
+      <li>• <a href="https://www.salesforce.com/blog/spring-26-release-architect-highlights/?bc=OTH">Salesforce — Spring ’26 release architect highlights</a></li>
+      <li>• <a href="https://github.blog/changelog/2026-02-19-gemini-3-1-pro-is-now-in-public-preview-in-github-copilot/">GitHub Changelog — Gemini 3.1 Pro in GitHub Copilot</a></li>
+      <li>• <a href="https://github.blog/changelog/2026-02-18-copilot-coding-agent-supports-code-referencing/">GitHub Changelog — Copilot coding agent code referencing</a></li>
+      <li>• <a href="https://github.blog/changelog/2026-02-18-use-copilot-coding-agent-with-windows-projects/">GitHub Changelog — Copilot coding agent Windows environments</a></li>
+      <li>• <a href="https://github.blog/changelog/2026-02-17-claude-sonnet-4-6-is-now-generally-available-in-github-copilot/">GitHub Changelog — Claude Sonnet 4.6 in GitHub Copilot</a></li>
+      <li>• <a href="https://github.blog/changelog/2026-02-19-selected-anthropic-and-openai-models-are-now-deprecated/">GitHub Changelog — Copilot model deprecations</a></li>
+      <li>• <a href="https://www.salesforce.com/blog/agentforce-marketing-spring-release/?bc=OTH">Salesforce — Agentforce Marketing Spring ’26 release</a></li>
+      <li>• <a href="https://www.nist.gov/news-events/news/2026/02/announcing-ai-agent-standards-initiative-interoperable-and-secure">NIST — AI Agent Standards Initiative announcement</a></li>
+      <li>• <a href="https://blog.google/innovation-and-ai/products/responsible-ai-2026-report-ongoing-work/">Google — 2026 Responsible AI Progress Report post</a></li>
+      <li>• <a href="https://ai.google/static/documents/ai-responsibility-update-2026.pdf">Google — 2026 Responsible AI Progress Report (PDF)</a></li>
+      <li>• <a href="https://www.cio.com/article/4134658/the-era-of-the-ai-framework-act-begins-what-response-paths-are-proposed-by-legal-industry-and-academic-leaders.html">CIO — South Korea AI Basic Act coverage</a></li>
+      <li>• <a href="https://aibasicact.kr/">AI Basic Act — Official site</a></li>
+    </ul>
+  </div>
+
+  <div class="cta-box">
+    <p>If you want a weekly “enterprise AI change log” tailored to your stack (models, cloud, security posture): email <a href="mailto:ryan@supergood.solutions">ryan@supergood.solutions</a> with your top 5 tools, and I’ll send back a prioritized watchlist.</p>
+  </div>
+</article>
+
+<footer>
+  <p>&copy; 2026 Supergood Solutions. Helping marketing teams automate smarter, not harder.</p>
+</footer>
+
+</body>
+</html>
