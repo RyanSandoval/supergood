@@ -8,8 +8,14 @@
   </url>
   <url>
     <loc>https://supergood.solutions/blog/</loc>
-    <lastmod>2026-02-24</lastmod>
+    <lastmod>2026-02-25</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://supergood.solutions/blog/ai-wednesday-agent-memory-architecture-2026/</loc>
+    <lastmod>2026-02-25</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
