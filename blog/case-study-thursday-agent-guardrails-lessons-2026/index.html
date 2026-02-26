@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Actually Broke When We Deployed Our First AI Agent (And How We Fixed It) — Supergood Solutions</title>
+<meta name="description" content="A real-world case study on deploying an AI agent into marketing ops: three failure modes we hit in production, four guardrails that fixed them, and a practical checklist for teams about to ship their first agent.">
+<link rel="canonical" href="https://supergood.solutions/blog/case-study-thursday-agent-guardrails-lessons-2026/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="author" content="Ryan Sandoval">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="What Actually Broke When We Deployed Our First AI Agent (And How We Fixed It)">
+<meta property="og:description" content="A real-world case study on deploying an AI agent into marketing ops: three failure modes we hit in production, four guardrails that fixed them, and a practical checklist for teams about to ship their first agent.">
+<meta property="og:url" content="https://supergood.solutions/blog/case-study-thursday-agent-guardrails-lessons-2026/">
+<meta property="og:image" content="https://supergood.solutions/og-image.png">
+<meta property="article:published_time" content="2026-02-26">
+<meta property="article:author" content="Ryan Sandoval">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What Actually Broke When We Deployed Our First AI Agent (And How We Fixed It)">
+<meta name="twitter:description" content="Three real failure modes from a production AI agent deployment — and the four guardrails that fixed them.">
+<meta name="twitter:image" content="https://supergood.solutions/og-image.png">
+
+<!-- Schema.org Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "What Actually Broke When We Deployed Our First AI Agent (And How We Fixed It)",
+  "description": "A real-world case study on deploying an AI agent into marketing ops: three failure modes we hit in production, four guardrails that fixed them, and a practical checklist for teams about to ship their first agent.",
+  "author": {
+    "@type": "Person",
+    "name": "Ryan Sandoval",
+    "url": "https://linkedin.com/in/RyanSandoval",
+    "jobTitle": "AI Automation Consultant",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Supergood Solutions"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Supergood Solutions",
+    "url": "https://supergood.solutions"
+  },
+  "datePublished": "2026-02-26",
+  "dateModified": "2026-02-26",
+  "mainEntityOfPage": "https://supergood.solutions/blog/case-study-thursday-agent-guardrails-lessons-2026/",
+  "keywords": ["AI agents","agent guardrails","agent ops","prompt injection","LLM safety","AI production","marketing ops","automation","agentic AI","tool calling","AI tooling","observability","human-in-the-loop"]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #0a0a0b; --surface: #111113; --surface-2: #18181b; --border: #27272a;
+  --text: #fafafa; --text-2: #a1a1aa; --text-3: #71717a;
+  --green: #22c55e; --amber: #f59e0b; --red: #ef4444; --mono: 'JetBrains Mono', monospace;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+::selection { background: var(--green); color: var(--bg); }
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; background: rgba(10,10,11,0.8); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+nav .inner { max-width: 720px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
+.wordmark { font-weight: 800; font-size: 1.125rem; letter-spacing: -0.03em; color: var(--text); text-decoration: none; display: inline-flex; align-items: baseline; }
+.wordmark .oo-dot { display: inline-block; width: 0.45em; height: 0.45em; background: var(--green); border-radius: 50%; }
+.wordmark .oo-wrap { display: inline-flex; gap: 2px; align-items: center; }
+.wordmark .dot-period { color: var(--green); }
+nav a.back { font-size: 0.875rem; color: var(--text-3); text-decoration: none; }
+nav a.back:hover { color: var(--text); }
+
+article { max-width: 720px; margin: 0 auto; padding: 140px 24px 80px; }
+article .tag { font-family: var(--mono); font-size: 0.6875rem; color: var(--green); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; }
+article h1 { font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px; }
+article .subtitle { font-size: 1.25rem; color: var(--text-2); line-height: 1.6; margin-bottom: 24px; }
+article .meta { font-family: var(--mono); font-size: 0.75rem; color: var(--text-3); margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+article h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin: 56px 0 16px; }
+article h3 { font-size: 1.125rem; font-weight: 600; margin: 40px 0 12px; }
+article p { font-size: 1rem; color: var(--text-2); margin-bottom: 20px; }
+article strong { color: var(--text); }
+article ul, article ol { color: var(--text-2); margin-bottom: 20px; padding-left: 24px; }
+article li { margin-bottom: 8px; }
+article a { color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
+article a:hover { color: var(--text); }
+
+.callout { background: var(--surface-2); border-left: 3px solid var(--green); border-radius: 0 8px 8px 0; padding: 20px 24px; margin: 32px 0; }
+.callout p { margin-bottom: 0; font-size: 0.9375rem; }
+
+.failure-card { background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--red); border-radius: 0 12px 12px 0; padding: 28px 32px; margin: 32px 0; }
+.failure-card .failure-label { font-family: var(--mono); font-size: 0.6875rem; color: var(--red); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px; }
+.failure-card h3 { font-size: 1.0625rem; font-weight: 700; margin: 0 0 12px; color: var(--text); }
+.failure-card p { font-size: 0.9375rem; color: var(--text-2); margin-bottom: 10px; }
+.failure-card p:last-child { margin-bottom: 0; }
+
+.fix-card { background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--green); border-radius: 0 12px 12px 0; padding: 28px 32px; margin: 28px 0; }
+.fix-card .fix-label { font-family: var(--mono); font-size: 0.6875rem; color: var(--green); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px; }
+.fix-card h3 { font-size: 1.0625rem; font-weight: 700; margin: 0 0 12px; color: var(--text); }
+.fix-card p { font-size: 0.9375rem; color: var(--text-2); margin-bottom: 10px; }
+.fix-card p:last-child { margin-bottom: 0; }
+.fix-card ul { color: var(--text-2); padding-left: 20px; margin-bottom: 0; font-size: 0.9375rem; }
+
+.checklist { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 32px; margin: 32px 0; }
+.checklist h3 { font-family: var(--mono); font-size: 0.75rem; font-weight: 700; color: var(--green); margin: 0 0 20px; text-transform: uppercase; letter-spacing: 0.05em; }
+.checklist ul { list-style: none; padding: 0; margin: 0; }
+.checklist li { padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 0.9375rem; color: var(--text-2); display: flex; align-items: flex-start; gap: 12px; }
+.checklist li:last-child { border-bottom: none; }
+.checklist li::before { content: "□"; color: var(--green); font-family: var(--mono); flex-shrink: 0; margin-top: 1px; }
+
+.stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 32px 0; }
+.stat-box { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; text-align: center; }
+.stat-box .stat-num { font-size: 2rem; font-weight: 800; color: var(--green); font-family: var(--mono); letter-spacing: -0.03em; }
+.stat-box .stat-label { font-size: 0.8125rem; color: var(--text-3); margin-top: 4px; line-height: 1.4; }
+
+.cta-box { border: 2px solid var(--green); border-radius: 12px; padding: 40px; margin: 48px 0; text-align: center; background: var(--surface); }
+.cta-box p { font-size: 0.9375rem; color: var(--text); margin-bottom: 0; font-style: italic; }
+
+.sources-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
+.sources-section h3 { font-size: 1rem; font-weight: 600; margin-bottom: 12px; color: var(--text); }
+.sources-section ul { list-style: none; padding: 0; }
+.sources-section li { margin-bottom: 8px; font-size: 0.875rem; }
+
+footer { background: var(--surface); padding: 40px 0; margin-top: 80px; border-top: 1px solid var(--border); text-align: center; }
+footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
+
+@media (max-width: 768px) {
+  article { padding: 120px 20px 60px; }
+  article h1 { font-size: 2rem; }
+  nav .inner { padding: 0 20px; }
+  .stat-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="inner">
+    <a href="/" class="wordmark">superg<span class="oo-wrap"><span class="oo-dot"></span><span class="oo-dot"></span></span>d<span class="dot-period">.</span></a>
+    <a href="/blog/" class="back">← All posts</a>
+  </div>
+</nav>
+
+<article>
+  <div class="tag">Case Study Thursday · Agent Ops</div>
+  <h1>What Actually Broke When We Deployed Our First AI Agent (And How We Fixed It)</h1>
+  <p class="subtitle">Three failure modes we hit in production, four guardrails that fixed them, and a pre-ship checklist for teams about to deploy their first agent into real ops.</p>
+  <div class="meta">Published February 26, 2026 — 9 min read</div>
+
+  <p>The demo worked perfectly.</p>
+
+  <p>Of course it did. Demos always work. You control the inputs, you know the golden-path outputs, and nobody is feeding the agent anything weird. We ran the demo for stakeholders three times. It was smooth every time.</p>
+
+  <p>Two weeks into production, the agent had confidently written to a field it wasn't supposed to touch, hallucinated a vendor contact that didn't exist, and — in one memorable afternoon — gotten itself stuck in a loop that burned through more API tokens in four hours than we'd used in the entire testing phase.</p>
+
+  <p>This post is the debrief. What broke, why it broke, what we built to stop it from happening again, and the minimum viable guardrail layer your team should have in place before you ship.</p>
+
+  <p><em>Note: the details below are drawn from a composite of real client engagements. Names and specifics are generalized.</em></p>
+
+  <h2>The setup: an AI agent for content ops</h2>
+
+  <p>The client was a mid-size B2B SaaS company with a lean marketing ops team. They had a growing content library — product pages, case studies, help articles — that needed periodic enrichment: updating outdated stats, tagging content by persona and funnel stage, flagging gaps, and writing summary briefs for the sales team.</p>
+
+  <p>Doing this manually meant one person spending about 20 hours a week on a task that was mostly mechanical. A well-scoped AI agent felt like the right call.</p>
+
+  <p>The agent's job, in plain English:</p>
+  <ol>
+    <li>Pull a content record from the CMS queue</li>
+    <li>Analyze it against a set of criteria (accuracy, completeness, persona alignment)</li>
+    <li>Enrich it — update the metadata fields, write a brief, flag anything that needed human review</li>
+    <li>Write the result back to the CMS and move to the next record</li>
+  </ol>
+
+  <p>Straightforward. Tool calls to a CMS API. Structured outputs. A prompt with clear criteria. We tested it against 50 records, reviewed the outputs manually, and felt good about the accuracy.</p>
+
+  <p>Then we turned it loose on the real queue.</p>
+
+  <h2>Failure Mode #1: It edited things it wasn't supposed to touch</h2>
+
+  <div class="failure-card">
+    <div class="failure-label">Failure 01 / Scope Creep</div>
+    <h3>The agent rewrote fields it had read access to but shouldn't have written</h3>
+    <p>Our CMS API didn't have granular field-level write permissions at the time. The agent had a write token scoped to the content record — meaning it could technically update any field on that record, including the canonical URL slug, the original author attribution, and the publication date.</p>
+    <p>The prompt said "update metadata fields." The agent interpreted "metadata" broadly. It helpfully "corrected" a publication date it thought was wrong. It overwrote an author field because the original author's name didn't match a pattern it had been trained to associate with the company. Three content records got their slugs silently changed, breaking inbound links.</p>
+  </div>
+
+  <p>This is <strong>the blast radius problem</strong>. The agent wasn't doing anything malicious — it was doing exactly what it thought it was supposed to do. The failure was ours: we gave it write access to an entire record when it only needed write access to specific fields.</p>
+
+  <p>The NIST AC-6 principle — least privilege — applies directly here. An agent should have the minimum permissions needed to complete its task, not the maximum permissions its API token allows.</p>
+
+  <div class="fix-card">
+    <div class="fix-label">Fix 01</div>
+    <h3>Field-level allowlists, not record-level write tokens</h3>
+    <p>We rebuilt the write tool to accept an explicit allowlist of writable fields — the agent could only call <code>update_field(field_name, value)</code> for fields on the approved list. Any attempt to write to a non-listed field threw a hard error, logged the attempt, and flagged it for human review.</p>
+    <p>We also added a dry-run mode: before any write, the agent produces a structured diff of what it intends to change. A lightweight validator checks that diff against the allowlist before execution. If anything looks off, it stops and queues for human review instead of proceeding.</p>
+  </div>
+
+  <h2>Failure Mode #2: Hallucinated data got written as fact</h2>
+
+  <div class="failure-card">
+    <div class="failure-label">Failure 02 / Hallucination at Write Time</div>
+    <h3>The agent invented a vendor contact and wrote it to the CRM</h3>
+    <p>One task involved enriching a case study with the client contact's name and title. The record had a company name but no contact info. The agent — instructed to "complete the record where possible" — searched its context, found nothing, and then fabricated a plausible-sounding person: a "Director of Marketing" with a name that sounded right for the company.</p>
+    <p>That invented contact got written to the record. Two weeks later, a sales rep tried to reach out to a person who didn't exist.</p>
+  </div>
+
+  <p>This one is sneaky because it only happens on edge cases — records where the expected data isn't present. In testing, we'd used records that all had complete contact info. The "no data" case never surfaced.</p>
+
+  <div class="fix-card">
+    <div class="fix-label">Fix 02</div>
+    <h3>Structured outputs with explicit uncertainty handling</h3>
+    <p>We updated the output schema to include a <code>confidence</code> field and a <code>source</code> field for every populated value. The agent was re-prompted: if you don't have a reliable source for a value, return <code>null</code> and set <code>confidence: "low"</code>. Do not guess.</p>
+    <ul>
+      <li>Any field with <code>confidence: "low"</code> gets written as blank, not with the hallucinated value</li>
+      <li>A separate <code>needs_human_review</code> flag gets set to <code>true</code> on the record</li>
+      <li>The record goes into a human review queue instead of the completed queue</li>
+    </ul>
+    <p>The agent is still useful on these records — it can do the analysis, write the brief, update the tags — it just doesn't make things up to fill gaps it can't actually fill.</p>
+  </div>
+
+  <h2>Failure Mode #3: A retry loop that couldn't stop itself</h2>
+
+  <div class="failure-card">
+    <div class="failure-label">Failure 03 / Runaway Retry Loop</div>
+    <h3>A transient API error triggered 4 hours of retries and $340 in unexpected API costs</h3>
+    <p>The CMS API had a brief outage — about 40 minutes. During that window, the agent's write calls were returning 503s. The retry logic we'd built was simple: if a write fails, wait 5 seconds and try again. Reasonable for a momentary blip.</p>
+    <p>What we hadn't accounted for: the agent was also re-reading the record before each retry to "refresh its context." Each re-read was a separate API call. Each retry involved re-running the analysis step. The LLM calls added up fast. Over four hours — until someone noticed and manually killed the process — it had retried the same three records hundreds of times, burning through tokens at a rate we hadn't budgeted for.</p>
+  </div>
+
+  <div class="fix-card">
+    <div class="fix-label">Fix 03</div>
+    <h3>Circuit breakers, max retry caps, and cost budget enforcement</h3>
+    <ul>
+      <li><strong>Hard retry cap:</strong> Maximum 3 retries per record, with exponential backoff (5s, 30s, 2min). After 3 failures, the record gets flagged as "blocked" and the agent moves on.</li>
+      <li><strong>Circuit breaker:</strong> If more than 3 consecutive records fail on the same step, the agent pauses, sends an alert, and waits for human acknowledgment before resuming.</li>
+      <li><strong>Per-run cost budget:</strong> We set a token budget per run. When the budget is 80% consumed, the agent logs a warning. At 100%, it hard-stops and queues remaining records for the next run.</li>
+      <li><strong>Observability:</strong> We added OpenTelemetry traces to every agent step. Every tool call, every LLM invocation, every retry is logged with timestamps and token counts. The runaway loop would have been visible in the dashboard within minutes.</li>
+    </ul>
+  </div>
+
+  <h2>The four guardrails that actually stuck</h2>
+
+  <p>After the smoke cleared, we built these four layers into every agent we deploy now — regardless of the use case.</p>
+
+  <div class="fix-card">
+    <div class="fix-label">Guardrail 01</div>
+    <h3>Least-privilege tool design</h3>
+    <p>Every tool the agent can call is scoped to the minimum action needed. Read tools are separate from write tools. Write tools have field-level allowlists, not record-level access. Destructive actions (delete, overwrite) require a separate confirmation step. The agent's permission envelope is the first thing we design — not an afterthought.</p>
+  </div>
+
+  <div class="fix-card">
+    <div class="fix-label">Guardrail 02</div>
+    <h3>Structured outputs with explicit confidence and uncertainty</h3>
+    <p>Every output schema includes confidence levels and source fields. The agent never writes a null-handling guess as a real value. Low-confidence outputs get routed to a human review queue. This alone has prevented more embarrassing mistakes than any other single change.</p>
+  </div>
+
+  <div class="fix-card">
+    <div class="fix-label">Guardrail 03</div>
+    <h3>Circuit breakers and cost caps</h3>
+    <p>Retry logic is not enough. You need a maximum retry count, a circuit breaker that pauses on consecutive failures, and a hard per-run cost budget. If your agent can run indefinitely on a bad input, it will — eventually. Set the boundaries before you deploy.</p>
+  </div>
+
+  <div class="fix-card">
+    <div class="fix-label">Guardrail 04</div>
+    <h3>A second model for output validation</h3>
+    <p>We added a lightweight validation step after each write: a separate (cheaper, smaller) model reviews the agent's output against a rubric before it's committed. This is a pattern that teams with production experience keep recommending — as the Digits ML team put it: "Use a different LLM to evaluate responses. Never trust a single model to police itself." It catches schema drift, hallucinations, and out-of-scope writes before they become problems.</p>
+  </div>
+
+  <h2>What this cost to build (and what it saved)</h2>
+
+  <div class="stat-row">
+    <div class="stat-box">
+      <div class="stat-num">~3 days</div>
+      <div class="stat-label">to retrofit guardrails after the incidents</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">18 hrs/wk</div>
+      <div class="stat-label">saved in ongoing manual content ops</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">0</div>
+      <div class="stat-label">production incidents in 6 weeks post-fix</div>
+    </div>
+  </div>
+
+  <p>The agent is genuinely useful now. It processes 200–300 content records per week, flags about 15% for human review, and the team's manual time on content ops is down from ~20 hours to about 2 hours — the human review queue plus occasional spot checks.</p>
+
+  <p>But here's the honest accounting: if we'd built the guardrails before deployment instead of after, we'd have saved ourselves three incidents, one panicked stakeholder call, and $340 in wasted API spend. The retrofit cost more — in time and trust — than the original build would have.</p>
+
+  <h2>The pre-ship checklist</h2>
+
+  <p>Before you deploy an agent into any production workflow, run through this list:</p>
+
+  <div class="checklist">
+    <h3>Agent Production Readiness Checklist</h3>
+    <ul>
+      <li>Every write tool has an explicit field-level allowlist — the agent cannot write to anything not on the list</li>
+      <li>Destructive actions (delete, overwrite existing data) require a separate human-approval or confirmation step</li>
+      <li>Output schema includes a <code>confidence</code> field and a <code>source</code> field for every AI-populated value</li>
+      <li>Low-confidence outputs are routed to a review queue, not written as fact</li>
+      <li>Retry logic has a hard maximum (no more than 3–5 retries per task)</li>
+      <li>Circuit breaker pauses the agent after N consecutive failures and sends an alert</li>
+      <li>Per-run cost budget is set — agent hard-stops when the budget is hit</li>
+      <li>Every tool call and LLM invocation is logged with timestamps and token counts (OpenTelemetry or equivalent)</li>
+      <li>A second model or rule-based validator reviews outputs before they're committed</li>
+      <li>The agent has been tested on edge cases — empty inputs, malformed data, API timeouts</li>
+      <li>An incident response path exists: who gets alerted, how to pause the agent, how to roll back a bad write</li>
+    </ul>
+  </div>
+
+  <p>This isn't a comprehensive security posture — for that, the <a href="https://genai.owasp.org/llmrisk/llm01-prompt-injection/" target="_blank" rel="noopener noreferrer">OWASP LLM Top 10</a> is worth a full read, particularly around prompt injection (the #1 risk) and insecure output handling. But the checklist above catches the failure modes that are most likely to bite a team on their first real deployment.</p>
+
+  <div class="callout">
+    <p><strong>The uncomfortable truth about AI agents:</strong> the demo environment is not the production environment. The demo uses clean inputs, known edge cases, and a sympathetic reviewer. Production has weird data, users who phrase things oddly, APIs that go down at 2pm on a Tuesday, and a CMS that doesn't quite behave the way the docs say it does. Your guardrails need to be designed for that world, not the demo.</p>
+  </div>
+
+  <h2>One more thing: prompt injection is real</h2>
+
+  <p>We didn't run into this in the content ops case, but it's worth flagging: <strong>if your agent reads external content and then acts on it, prompt injection is a live threat</strong>.</p>
+
+  <p>Indirect prompt injection — where malicious instructions are embedded in content the agent reads — has moved from theoretical to documented in the wild. Real incidents include the Perplexity Comet data leak and zero-click RCE exploits in MCP-connected IDEs. If your agent reads emails, web pages, CMS records, or any other user-controlled content before taking actions, you need to treat that content as untrusted input.</p>
+
+  <p>Practical mitigation: separate the reading step from the action step. Have the agent summarize or extract structured data from external content first (in a sandboxed step with no tool access), then pass only that structured data to the action step. Don't let the agent read a web page and immediately act on whatever it finds there.</p>
+
+  <h2>The bottom line</h2>
+
+  <p>AI agents are genuinely useful for operations work. The content ops agent we deployed is saving 18 hours a week for a team that was drowning in manual tasks — and it's doing it reliably now.</p>
+
+  <p>But the "reliably" part didn't come for free. It came from three incidents, a few days of retrofit work, and a set of guardrails that should have been there from day one.</p>
+
+  <p>If you're about to ship your first agent into a production workflow: run the checklist, build the guardrails before you deploy, and treat the demo environment as what it is — a controlled simulation, not a proof of production-readiness.</p>
+
+  <p>Your future self will thank you.</p>
+
+  <div class="sources-section">
+    <h3>Sources:</h3>
+    <ul>
+      <li><a href="https://digits.com/blog/mlops-world-2025-slides/" target="_blank" rel="noopener noreferrer">Digits ML Team — "Agents in Production: Lessons from building AI systems that actually work," MLOps World 2025</a></li>
+      <li><a href="https://promptengineering.org/agents-at-work-the-2026-playbook-for-building-reliable-agentic-workflows/" target="_blank" rel="noopener noreferrer">Prompt Engineering — "Agents At Work: The 2026 Playbook for Building Reliable Agentic Workflows"</a></li>
+      <li><a href="https://genai.owasp.org/llmrisk/llm01-prompt-injection/" target="_blank" rel="noopener noreferrer">OWASP Gen AI Security Project — LLM01:2025 Prompt Injection</a></li>
+      <li><a href="https://www.lakera.ai/blog/indirect-prompt-injection" target="_blank" rel="noopener noreferrer">Lakera — "Indirect Prompt Injection: The Hidden Threat Breaking Modern AI Systems"</a></li>
+      <li><a href="https://orq.ai/blog/llm-guardrails" target="_blank" rel="noopener noreferrer">Orq.ai — "Mastering LLM Guardrails: Complete 2025 Guide"</a></li>
+      <li><a href="https://www.deloitte.com/us/en/insights/topics/technology-management/tech-trends/2026/agentic-ai-strategy.html" target="_blank" rel="noopener noreferrer">Deloitte Insights — "Agentic AI Strategy," Tech Trends 2026</a></li>
+    </ul>
+  </div>
+
+  <div class="cta-box">
+    <p>Deploying an AI agent into your ops stack and want to gut-check your guardrails before you go live? That's exactly what we do at Supergood Solutions — <a href="mailto:hello@supergood.solutions" style="color: var(--green);">reach out</a> and let's talk through your setup before production finds the edge cases for you.</p>
+  </div>
+</article>
+
+<footer>
+  <p>&copy; 2026 Supergood Solutions. Helping marketing teams automate smarter, not harder.</p>
+</footer>
+
+</body>
+</html>
