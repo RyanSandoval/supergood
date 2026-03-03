@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Interrupt Pattern: How to Design AI Agents That Know When to Stop — Supergood Solutions</title>
+<meta name="description" content="Most AI agents are wired to run until they finish — or crash. A practical guide to the interrupt pattern: the threshold design, escalation logic, and implementation mechanics that separate production-grade agents from expensive demos.">
+<link rel="canonical" href="https://supergood.solutions/blog/tech-tuesday-interrupt-pattern-agent-design-2026/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="author" content="Ryan Sandoval">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Interrupt Pattern: How to Design AI Agents That Know When to Stop">
+<meta property="og:description" content="Most AI agents are wired to run until they finish — or crash. A practical guide to the interrupt pattern: threshold design, escalation logic, and the mechanics that separate production agents from demos.">
+<meta property="og:url" content="https://supergood.solutions/blog/tech-tuesday-interrupt-pattern-agent-design-2026/">
+<meta property="og:image" content="https://supergood.solutions/og-image.png">
+<meta property="article:published_time" content="2026-03-03">
+<meta property="article:author" content="Ryan Sandoval">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Interrupt Pattern: How to Design AI Agents That Know When to Stop">
+<meta name="twitter:description" content="Most AI agents are wired to run until they finish — or crash. Here's the interrupt pattern that production teams actually use.">
+<meta name="twitter:image" content="https://supergood.solutions/og-image.png">
+
+<!-- Schema.org Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The Interrupt Pattern: How to Design AI Agents That Know When to Stop",
+  "description": "Most AI agents are wired to run until they finish — or crash. A practical guide to the interrupt pattern: the threshold design, escalation logic, and implementation mechanics that separate production-grade agents from expensive demos.",
+  "author": {
+    "@type": "Person",
+    "name": "Ryan Sandoval",
+    "url": "https://linkedin.com/in/RyanSandoval",
+    "jobTitle": "AI Automation Consultant",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Supergood Solutions"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Supergood Solutions",
+    "url": "https://supergood.solutions"
+  },
+  "datePublished": "2026-03-03",
+  "dateModified": "2026-03-03",
+  "mainEntityOfPage": "https://supergood.solutions/blog/tech-tuesday-interrupt-pattern-agent-design-2026/",
+  "keywords": ["AI agents","interrupt pattern","human-in-the-loop","agent guardrails","agentic AI","agent design","LangGraph","agent escalation","AI ops","production AI","agent reliability","automation"]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #0a0a0b; --surface: #111113; --surface-2: #18181b; --border: #27272a;
+  --text: #fafafa; --text-2: #a1a1aa; --text-3: #71717a;
+  --green: #22c55e; --mono: 'JetBrains Mono', monospace;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+::selection { background: var(--green); color: var(--bg); }
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; background: rgba(10,10,11,0.8); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+nav .inner { max-width: 720px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
+.wordmark { font-weight: 800; font-size: 1.125rem; letter-spacing: -0.03em; color: var(--text); text-decoration: none; display: inline-flex; align-items: baseline; }
+.wordmark .oo-dot { display: inline-block; width: 0.45em; height: 0.45em; background: var(--green); border-radius: 50%; }
+.wordmark .oo-wrap { display: inline-flex; gap: 2px; align-items: center; }
+.wordmark .dot-period { color: var(--green); }
+nav a.back { font-size: 0.875rem; color: var(--text-3); text-decoration: none; }
+nav a.back:hover { color: var(--text); }
+
+article { max-width: 720px; margin: 0 auto; padding: 140px 24px 80px; }
+article .tag { font-family: var(--mono); font-size: 0.6875rem; color: var(--green); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; }
+article h1 { font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px; }
+article .subtitle { font-size: 1.25rem; color: var(--text-2); line-height: 1.6; margin-bottom: 24px; }
+article .meta { font-family: var(--mono); font-size: 0.75rem; color: var(--text-3); margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+article h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin: 56px 0 16px; }
+article h3 { font-size: 1.125rem; font-weight: 600; margin: 40px 0 12px; }
+article p { font-size: 1rem; color: var(--text-2); margin-bottom: 20px; }
+article strong { color: var(--text); }
+article ul, article ol { color: var(--text-2); margin-bottom: 20px; padding-left: 24px; }
+article li { margin-bottom: 8px; }
+article a { color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
+article a:hover { color: var(--text); }
+article code { font-family: var(--mono); font-size: 0.875em; background: var(--surface-2); padding: 2px 6px; border-radius: 4px; color: var(--green); }
+
+.callout { background: var(--surface-2); border-left: 3px solid var(--green); border-radius: 0 8px 8px 0; padding: 20px 24px; margin: 32px 0; }
+.callout p { margin-bottom: 0; font-size: 0.9375rem; }
+
+.warning-callout { background: var(--surface-2); border-left: 3px solid #f59e0b; border-radius: 0 8px 8px 0; padding: 20px 24px; margin: 32px 0; }
+.warning-callout p { margin-bottom: 0; font-size: 0.9375rem; color: var(--text-2); }
+.warning-callout strong { color: #fbbf24; }
+
+.zone-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin: 32px 0; }
+.zone-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
+.zone-card .zone-label { font-family: var(--mono); font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; font-weight: 600; }
+.zone-card.green .zone-label { color: var(--green); }
+.zone-card.yellow .zone-label { color: #f59e0b; }
+.zone-card.red .zone-label { color: #ef4444; }
+.zone-card h4 { font-size: 0.9375rem; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+.zone-card p { font-size: 0.8125rem; color: var(--text-2); margin-bottom: 0; line-height: 1.5; }
+
+.checklist { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 32px; margin: 32px 0; }
+.checklist h3 { font-size: 1rem; font-weight: 600; margin-bottom: 16px; margin-top: 0; color: var(--text); }
+.checklist ul { list-style: none; padding: 0; margin: 0; }
+.checklist li { padding: 6px 0; font-size: 0.9375rem; color: var(--text-2); display: flex; gap: 10px; }
+.checklist li::before { content: "□"; font-family: var(--mono); color: var(--green); flex-shrink: 0; }
+
+.cta-box { border: 2px solid var(--green); border-radius: 12px; padding: 40px; margin: 48px 0; text-align: center; background: var(--surface); }
+.cta-box p { font-size: 0.9375rem; color: var(--text); margin-bottom: 0; font-style: italic; }
+
+.sources-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
+.sources-section h3 { font-size: 1rem; font-weight: 600; margin-bottom: 12px; color: var(--text); }
+.sources-section ul { list-style: none; padding: 0; }
+.sources-section li { margin-bottom: 8px; font-size: 0.875rem; }
+
+footer { background: var(--surface); padding: 40px 0; margin-top: 80px; border-top: 1px solid var(--border); text-align: center; }
+footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
+
+@media (max-width: 768px) {
+  article { padding: 120px 20px 60px; }
+  article h1 { font-size: 2rem; }
+  nav .inner { padding: 0 20px; }
+  .zone-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="inner">
+    <a href="/" class="wordmark">superg<span class="oo-wrap"><span class="oo-dot"></span><span class="oo-dot"></span></span>d<span class="dot-period">.</span></a>
+    <a href="/blog/" class="back">← All posts</a>
+  </div>
+</nav>
+
+<article>
+  <div class="tag">Tech Tuesday · Agent Design</div>
+  <h1>The Interrupt Pattern: How to Design AI Agents That Know When to Stop</h1>
+  <p class="subtitle">Most AI agents are wired to run until they finish — or crash. A practical guide to the interrupt pattern: the threshold design, escalation logic, and implementation mechanics that separate production-grade agents from expensive demos.</p>
+  <div class="meta">Published March 3, 2026 — 9 min read</div>
+
+  <p>There's a statistic that should stop every team currently building AI agents: according to McKinsey's late-2025 survey, <strong>62% of enterprises are actively experimenting with agentic AI</strong>. Deloitte's research puts the number with anything actually running in production at 14%. And Gartner's projection is bluntest of all — more than 40% of agentic AI projects will be cancelled outright by the end of 2027, not because the underlying technology failed, but because the foundation underneath the deployment was never right.</p>
+
+  <p>That gap isn't a capability gap. Models are capable. The gap is almost always an architecture gap — specifically, teams that ship agents designed to <em>run</em> rather than agents designed to <em>decide when not to run</em>.</p>
+
+  <p>The pattern that separates the 14% from the 86% isn't a smarter model or a fancier framework. It's something much more boring: a well-designed interrupt mechanism. The ability for an agent to recognize when it's about to do something it shouldn't be doing autonomously, and stop to ask.</p>
+
+  <p>This post is the practical guide to building that.</p>
+
+  <h2>Why Agents Default to "Just Run"</h2>
+
+  <p>The default behavior for most agent implementations is greedy execution: the agent receives a goal, plans a sequence of steps, and executes them until completion or failure. This works beautifully in demos — the demo author has carefully scoped the task to avoid ambiguous cases, and the "failure" case just means the agent says something apologetic and stops.</p>
+
+  <p>In production, the demo assumptions collapse immediately. Users give agents underspecified goals. Tools return partial data. Real systems have edge cases the agent wasn't designed for. The agent encounters a decision point where two paths are plausible, picks one, and executes — potentially writing a CRM record, sending an email, or deleting a row from a database based on a coin-flip between two reasonable interpretations of what the user actually wanted.</p>
+
+  <div class="warning-callout">
+    <p><strong>The core production failure mode:</strong> Giving AI agents the power to act without giving them rules for when not to act. Governance in agentic AI isn't about restricting what the agent can do — it's about specifying the conditions under which it does it autonomously versus the conditions under which it stops and involves a human.</p>
+  </div>
+
+  <p>The agents running reliably in production right now share a common design principle: <strong>autonomy is a dial, not a switch</strong>. You don't set an agent to "fully autonomous" and hope for the best. You design specific thresholds, and the agent operates within them until a threshold is crossed — at which point it interrupts, presents what it knows, and waits.</p>
+
+  <h2>What the Interrupt Pattern Actually Is</h2>
+
+  <p>The interrupt pattern is a structured mechanism for an agent to pause execution, surface its current state to a human, and wait for explicit instruction before proceeding. It's not a fallback for when things go wrong — it's a first-class design feature built into the agent's execution loop.</p>
+
+  <p>The pattern has five components:</p>
+
+  <ol>
+    <li><strong>Plan:</strong> The agent reasons about the task and produces a proposed action sequence before executing anything</li>
+    <li><strong>Evaluate:</strong> Before executing, the agent scores each planned action against configured thresholds (reversibility, confidence, scope, cost)</li>
+    <li><strong>Interrupt or proceed:</strong> If any action exceeds a threshold, the agent pauses and surfaces the plan for review. If all actions are below threshold, it executes.</li>
+    <li><strong>Present:</strong> The human sees the proposed plan — what the agent intends to do, why, and what it's uncertain about</li>
+    <li><strong>Approve, edit, or reject:</strong> The human explicitly unlocks execution, modifies the plan, or cancels it entirely</li>
+  </ol>
+
+  <p>The key insight is step 2 — the pre-execution scoring pass. Most agent implementations skip this entirely. The agent decides what to do and does it in the same reasoning step, with no gate between intention and action. Adding even a simple threshold check between those two phases changes the reliability profile of the entire system.</p>
+
+  <h2>Designing Your Interrupt Thresholds</h2>
+
+  <p>The hardest design question isn't <em>whether</em> to add interrupts — it's <em>what triggers them</em>. Threshold too tight and you've built an annoying approval machine that humans start rubber-stamping. Threshold too loose and you're back to "just run."</p>
+
+  <p>There are four dimensions worth evaluating for every action an agent might take:</p>
+
+  <h3>1. Reversibility</h3>
+  <p>Can the action be undone? Reading a record is trivially reversible (it has no side effect). Sending an email is not. Deleting a database row may or may not be depending on your backup posture. <strong>Any irreversible action — a send, a delete, a publish, a payment — should almost always require explicit approval</strong>, at least until your agent has a strong reliability track record on that specific action type.</p>
+
+  <h3>2. Confidence</h3>
+  <p>How certain is the agent about the right interpretation of the user's request? This is harder to measure directly, but there are practical proxies: does the agent find multiple plausible plans and have to pick one? Did it receive ambiguous or incomplete input? Is it operating outside the distribution of tasks it was originally designed and tested for? Low confidence — even if the agent "picks" an action confidently — is a flag for an interrupt.</p>
+
+  <h3>3. Scope</h3>
+  <p>How many records, systems, or downstream effects are affected? An agent updating one contact record is scoped. An agent about to bulk-update 2,000 contacts because the user said "fix the phone number format" is a very different risk profile — even if each individual update looks reasonable. Scope multipliers should trigger interrupts even when the per-action confidence is high.</p>
+
+  <h3>4. Cost</h3>
+  <p>Both monetary and reputational. If an agent action consumes significant API budget, triggers a paid downstream service call, or reaches a threshold that would require human cleanup if wrong — that's an interrupt candidate. Agents touching financial data, customer-facing content, or anything that shows up in reports should have cost-based interrupts regardless of confidence.</p>
+
+  <div class="callout">
+    <p><strong>A useful rule of thumb from practitioners in the field:</strong> "Low-risk actions can happen automatically. Everything else needs a confidence threshold that determines when to escalate versus act." The same principle applies whether you're building a security operations agent or a marketing data pipeline — the taxonomy of what's "low risk" varies by domain, but the threshold structure is universal.</p>
+  </div>
+
+  <h2>The Three-Zone Model</h2>
+
+  <p>Once you've defined your dimensions, the simplest useful model is a three-zone framework. Every potential agent action falls into one of three zones:</p>
+
+  <div class="zone-grid">
+    <div class="zone-card green">
+      <div class="zone-label">Zone 1 — Auto</div>
+      <h4>Proceed Silently</h4>
+      <p>Reversible, high-confidence, narrow scope, low cost. The agent executes, logs the action, and moves on. Examples: reading data, drafting content for human review, querying an API.</p>
+    </div>
+    <div class="zone-card yellow">
+      <div class="zone-label">Zone 2 — Interrupt</div>
+      <h4>Show and Wait</h4>
+      <p>At least one threshold exceeded — irreversible, ambiguous, broad scope, or material cost. The agent surfaces its plan and pauses. Examples: sending external comms, bulk writes, publishing, API calls with financial implications.</p>
+    </div>
+    <div class="zone-card red">
+      <div class="zone-label">Zone 3 — Hard Stop</div>
+      <h4>Refuse and Escalate</h4>
+      <p>Outside the agent's defined operating envelope entirely. The agent doesn't just pause — it declines and flags for human review. Examples: actions it was never authorized to perform, detected ambiguity that exceeds a defined ceiling, any action where it cannot determine reversibility.</p>
+    </div>
+  </div>
+
+  <p>Zone assignment isn't a static classification — it can be dynamic based on context. An agent that's been reliably handling a specific task type for 30 days with zero correction might have its Zone 2 threshold relaxed for that task class based on observed reliability. One that's never handled a task type before defaults to Zone 2 or Zone 3 until it earns trust on that specific action.</p>
+
+  <h2>What "Show and Wait" Actually Looks Like</h2>
+
+  <p>The quality of the interrupt surface matters as much as the trigger logic. An interrupt that just says "Are you sure?" is nearly useless — it degrades into rubber-stamp approval within a week. An interrupt that surfaces what the agent knows, what it's proposing, what it's uncertain about, and what the alternatives are is a genuine collaboration checkpoint.</p>
+
+  <p>Good interrupt surfaces include:</p>
+
+  <ul>
+    <li><strong>The proposed action in concrete terms</strong> — not "update the contact" but "set phone field to +1-555-8820 for Ryan Sandoval (contact ID 4421)"</li>
+    <li><strong>Why the agent chose this action</strong> — which part of the user's instruction it's responding to, and what evidence it used</li>
+    <li><strong>What it's uncertain about</strong> — if there were two plausible interpretations, show both</li>
+    <li><strong>The reversibility status</strong> — "this action cannot be undone" is worth stating explicitly</li>
+    <li><strong>Scope summary</strong> — "this will affect 847 records" is worth stating before approval, not after</li>
+  </ul>
+
+  <p>Teams building with LangGraph can implement this directly using the framework's <code>interrupt()</code> primitive, which pauses the graph execution at a defined node and hands control back to the application layer. The human review surface can be as simple as a Slack message with approve/reject buttons, or as rich as a dedicated UI showing the full plan graph. The mechanism is the same — the presentation layer is a product decision.</p>
+
+  <p>For teams building framework-agnostic or custom agent loops, the same pattern applies: the agent's "decide" step should produce a structured plan object before any execution begins, and a pre-execution policy check should evaluate that plan against configured thresholds before allowing the execution loop to start.</p>
+
+  <h2>The Build Order That Actually Works</h2>
+
+  <p>One of the most useful observations from practitioners building production agents in 2026 is a specific recommended build sequence: <strong>tool contracts first, then state management, then evals, then interrupts and guardrails</strong>.</p>
+
+  <p>The reasoning is counterintuitive at first. Why add interrupts last if they're so important? Because interrupts need to know what "right" looks like. If your tool contracts are fuzzy and your state transitions aren't deterministic, you can't reliably score actions for Zone 1 vs Zone 2 — you're just adding a speed bump on top of an unreliable system.</p>
+
+  <p>The sequence:</p>
+
+  <ol>
+    <li><strong>Define typed tool contracts</strong> — every tool the agent can call has explicit input/output schemas, typed arguments, and documented side effects (read-only vs. write, reversible vs. not)</li>
+    <li><strong>Make state transitions deterministic</strong> — what does "task complete" mean? What does "needs human review" mean? These need to be code, not vibes in a system prompt</li>
+    <li><strong>Add trace-level observability</strong> — before you can set interrupt thresholds intelligently, you need to observe actual agent behavior across real tasks. Blind threshold-setting is guesswork.</li>
+    <li><strong>Ship evaluation in CI</strong> — your interrupt logic should be tested the same way any conditional logic is tested: with known inputs and expected outputs</li>
+    <li><strong>Layer in interrupt thresholds</strong> — now, with real observability data and tested state transitions, you can set thresholds that reflect actual risk rather than theoretical ones</li>
+  </ol>
+
+  <div class="callout">
+    <p><strong>The sequence avoids the most common trap:</strong> shipping a "smart" agent that's impossible to debug because nothing about its decision-making is instrumented. If you can't see what your agent is doing and why, you can't tune your interrupts — and you can't tell a human what to approve.</p>
+  </div>
+
+  <h2>One Pattern Worth Stealing: The Plan-First Architecture</h2>
+
+  <p>A pattern gaining adoption among teams running agents in production is what's sometimes called "plan-and-execute with explicit approval" — distinct from a standard ReAct loop where reasoning and action happen in tight iteration.</p>
+
+  <p>In the plan-first architecture, the agent has two distinct phases separated by a hard boundary:</p>
+
+  <ul>
+    <li><strong>Phase 1 — Planning only:</strong> The agent is allowed to read, query, and reason — but no write operations, no sends, no irreversible actions. It produces a structured plan as output: an ordered list of proposed steps with justification and risk classification for each.</li>
+    <li><strong>Phase 2 — Execution:</strong> The plan is reviewed (by a human if any step is Zone 2 or 3, automatically if all steps are Zone 1). Execution only begins after the plan is explicitly approved.</li>
+  </ul>
+
+  <p>The main benefit isn't just safety — it's <strong>debuggability</strong>. When something goes wrong in execution, you have a pre-execution plan to compare against. You can see whether the execution followed the plan, whether the plan was correct given the available information, or whether the human approval step missed something. Each of those failure modes has a different fix.</p>
+
+  <p>The secondary benefit is trust-building. Teams that show users the plan before executing consistently report higher user confidence in the system overall — even when the underlying model and tool set are identical to an approach that just runs silently. Making the agent's reasoning visible makes it feel more trustworthy, because it is: a system that shows its work before acting is structurally more auditable than one that doesn't.</p>
+
+  <h2>What to Watch Out For</h2>
+
+  <p>A few failure modes in interrupt implementation that are worth knowing:</p>
+
+  <h3>Approval fatigue</h3>
+  <p>If interrupts fire too frequently, humans stop reading them carefully. The result is a system that's theoretically supervised but practically running unchecked — with the added problem that someone hit "approve" on every incident. Calibrate thresholds to interrupt only when the decision is genuinely consequential, and track approval time as a metric. If humans are approving in under 3 seconds, your interrupts aren't adding value.</p>
+
+  <h3>Interrupt bypass under pressure</h3>
+  <p>When an agent is running a long workflow and interrupts start accumulating, users will often look for a way to skip them. Build your approval flow with this in mind: make it fast to review and act when the agent is right, and hard to bulk-approve without reading. One useful pattern is requiring explicit confirmation for Zone 2 steps rather than a passive timeout ("approve" button rather than "auto-approves in 10 minutes").</p>
+
+  <h3>Stale plan execution</h3>
+  <p>In plan-first architectures, there's a timing problem: the agent plans at T=0, a human approves at T=5 minutes, and the agent executes at T=5:01 — but the underlying data changed between T=0 and T=5:01. Build staleness checks into your execution phase: before running an approved action, verify that the state the plan was based on still holds. If it doesn't, re-interrupt rather than executing against stale assumptions.</p>
+
+  <h2>The Bottom Line</h2>
+
+  <p>The interrupt pattern isn't glamorous. It doesn't make your agent smarter. It doesn't unlock new capabilities. What it does is make your agent's autonomy appropriate to its reliability — which is the actual requirement for running agents against real systems without causing incidents.</p>
+
+  <p>The teams with production agents that actually stay in production have all arrived at some version of this: <strong>define what the agent can do alone, define what requires a human, build a clear handoff between the two, and instrument everything so you can adjust the boundary as confidence grows</strong>.</p>
+
+  <p>Autonomy should be earned incrementally. The interrupt pattern is how you build that earning process into the system architecture rather than hoping the model gets it right by default.</p>
+
+  <p>If you've already got your evals and observability layer in place (see <a href="/blog/metrics-monday-agent-evals-observability/">this post on agent evals</a> and <a href="/blog/systems-sunday-agent-ops-runbook/">the agent ops runbook</a>) and you've standardized your tool connectivity via MCP (see <a href="/blog/tech-tuesday-mcp-practical-guide-2026/">last week's MCP guide</a>), interrupt design is the next logical layer to add. It's where the architecture becomes a system you can actually stake production workflows on.</p>
+
+  <div class="checklist">
+    <h3>Interrupt Pattern Implementation Checklist</h3>
+    <ul>
+      <li>Define reversibility classification for every tool in your agent's toolset (read-only, reversible write, irreversible write)</li>
+      <li>Set explicit Zone 1 / Zone 2 / Zone 3 classifications for each action type — in code, not just in docs</li>
+      <li>Implement a pre-execution policy check that evaluates the proposed action plan before execution begins</li>
+      <li>Build the interrupt surface to show: proposed action in concrete terms, justification, uncertainty, scope, and reversibility status</li>
+      <li>Require explicit approval (not passive timeout) for Zone 2 actions</li>
+      <li>Add staleness checks in plan-first architectures — verify state hasn't changed between plan approval and execution</li>
+      <li>Track approval time as a metric — sub-3-second approvals signal approval fatigue, not real review</li>
+      <li>Log all interrupt events (triggered, shown, approved, modified, rejected) with timestamps for threshold calibration</li>
+      <li>Review interrupt logs monthly — adjust zone thresholds based on observed approval patterns and incident data</li>
+    </ul>
+  </div>
+
+  <div class="sources-section">
+    <h3>Sources:</h3>
+    <ul>
+      <li><a href="https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027" target="_blank" rel="noopener">Gartner: Over 40% of Agentic AI Projects Will Be Canceled by End of 2027</a></li>
+      <li><a href="https://www.ampcome.com/post/why-agentic-ai-projects-fail" target="_blank" rel="noopener">Why Agentic AI Projects Fail: The #1 Enterprise Problem in 2026 — Ampcome</a></li>
+      <li><a href="https://andriifurmanets.com/blogs/ai-agents-2026-practical-architecture-tools-memory-evals-guardrails" target="_blank" rel="noopener">AI Agents in 2026: Practical Architecture for Tools, Memory, Evals, and Guardrails — Andrii Furmanets</a></li>
+      <li><a href="https://www.marktechpost.com/2026/02/16/how-to-build-human-in-the-loop-plan-and-execute-ai-agents-with-explicit-user-approval-using-langgraph-and-streamlit/" target="_blank" rel="noopener">How to Build Human-in-the-Loop Plan-and-Execute AI Agents with Explicit User Approval — MarkTechPost (February 2026)</a></li>
+      <li><a href="https://customgpt.ai/what-is-agentic-ai-2026/" target="_blank" rel="noopener">What Is Agentic AI? The Essential 2026 Guide — CustomGPT</a></li>
+      <li><a href="https://securityboulevard.com/2026/03/agentic-ai-in-the-wild-real-world-use-cases-you-should-know/" target="_blank" rel="noopener">Agentic AI in the Wild: Real-World Use Cases You Should Know — Security Boulevard (March 2026)</a></li>
+      <li><a href="https://www.cequence.ai/blog/ai/agentic-ai-security-guardrails/" target="_blank" rel="noopener">AI Guardrails: Why Security is Essential for Agentic AI Enablement — Cequence</a></li>
+      <li><a href="https://pub.towardsai.net/ai-agent-guardrails-stop-your-agent-from-doing-stupid-things-a-complete-practical-guide-bf2e14e98dd4" target="_blank" rel="noopener">AI Agent Guardrails: A Complete Practical Guide — Towards AI (February 2026)</a></li>
+      <li><a href="https://ucstrategies.com/news/40-of-enterprise-apps-will-run-ai-agents-by-2026-but-most-companies-cant-control-the-swarm/" target="_blank" rel="noopener">40% of Enterprise Apps Will Run AI Agents by 2026 — But Most Companies Can't Control the Swarm — UC Strategies</a></li>
+      <li><a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai" target="_blank" rel="noopener">The State of AI — McKinsey &amp; Company, 2025</a></li>
+    </ul>
+  </div>
+
+  <div class="cta-box">
+    <p>Trying to figure out where the guardrails belong in your agent architecture? We help ops and marketing teams design agentic workflows with the interrupt logic, approval flows, and observability to actually trust them in production. <strong>supergood.solutions</strong></p>
+  </div>
+</article>
+
+<footer>
+  <p>&copy; 2026 Supergood Solutions. Helping marketing teams automate smarter, not harder.</p>
+</footer>
+
+</body>
+</html>
