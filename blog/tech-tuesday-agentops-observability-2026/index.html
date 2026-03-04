@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgentOps: The Observability Stack That Keeps AI Agents Out of Trouble — Supergood Solutions</title>
+<meta name="description" content="57% of companies have AI agents in production. Most can't tell you what those agents did yesterday. Here's the observability layer that changes that — without requiring a platform rebuild.">
+<link rel="canonical" href="https://supergood.solutions/blog/tech-tuesday-agentops-observability-2026/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="author" content="Ryan Sandoval">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="AgentOps: The Observability Stack That Keeps AI Agents Out of Trouble">
+<meta property="og:description" content="57% of companies have AI agents in production. Most can't tell you what those agents did yesterday. Here's the observability layer that changes that.">
+<meta property="og:url" content="https://supergood.solutions/blog/tech-tuesday-agentops-observability-2026/">
+<meta property="og:image" content="https://supergood.solutions/og-image.png">
+<meta property="article:published_time" content="2026-03-03">
+<meta property="article:author" content="Ryan Sandoval">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AgentOps: The Observability Stack That Keeps AI Agents Out of Trouble">
+<meta name="twitter:description" content="57% of companies have AI agents in production. Most can't tell you what those agents did yesterday. Here's the observability layer that changes that.">
+<meta name="twitter:image" content="https://supergood.solutions/og-image.png">
+
+<!-- Schema.org Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "AgentOps: The Observability Stack That Keeps AI Agents Out of Trouble",
+  "description": "57% of companies have AI agents in production. Most can't tell you what those agents did yesterday. Here's the observability layer that changes that — without requiring a platform rebuild.",
+  "author": {
+    "@type": "Person",
+    "name": "Ryan Sandoval",
+    "url": "https://linkedin.com/in/RyanSandoval",
+    "jobTitle": "AI Automation Consultant",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Supergood Solutions"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Supergood Solutions",
+    "url": "https://supergood.solutions"
+  },
+  "datePublished": "2026-03-03",
+  "dateModified": "2026-03-03",
+  "mainEntityOfPage": "https://supergood.solutions/blog/tech-tuesday-agentops-observability-2026/",
+  "keywords": ["AgentOps", "AI agent observability", "LLM tracing", "agent monitoring", "AI production ops", "Langfuse", "Arize Phoenix", "LangSmith", "token cost management", "agentic AI"]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #0a0a0b; --surface: #111113; --surface-2: #18181b; --border: #27272a;
+  --text: #fafafa; --text-2: #a1a1aa; --text-3: #71717a;
+  --green: #22c55e; --mono: 'JetBrains Mono', monospace;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+::selection { background: var(--green); color: var(--bg); }
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; background: rgba(10,10,11,0.8); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+nav .inner { max-width: 720px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
+.wordmark { font-weight: 800; font-size: 1.125rem; letter-spacing: -0.03em; color: var(--text); text-decoration: none; display: inline-flex; align-items: baseline; }
+.wordmark .oo-dot { display: inline-block; width: 0.45em; height: 0.45em; background: var(--green); border-radius: 50%; }
+.wordmark .oo-wrap { display: inline-flex; gap: 2px; align-items: center; }
+.wordmark .dot-period { color: var(--green); }
+nav a.back { font-size: 0.875rem; color: var(--text-3); text-decoration: none; }
+nav a.back:hover { color: var(--text); }
+
+article { max-width: 720px; margin: 0 auto; padding: 140px 24px 80px; }
+article .tag { font-family: var(--mono); font-size: 0.6875rem; color: var(--green); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; }
+article h1 { font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px; }
+article .subtitle { font-size: 1.25rem; color: var(--text-2); line-height: 1.6; margin-bottom: 24px; }
+article .meta { font-family: var(--mono); font-size: 0.75rem; color: var(--text-3); margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+article h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin: 56px 0 16px; }
+article h3 { font-size: 1.125rem; font-weight: 600; margin: 40px 0 12px; }
+article p { font-size: 1rem; color: var(--text-2); margin-bottom: 20px; }
+article strong { color: var(--text); }
+article ul, article ol { color: var(--text-2); margin-bottom: 20px; padding-left: 24px; }
+article li { margin-bottom: 8px; }
+article a { color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
+article a:hover { color: var(--text); }
+
+.tldr-box { background: var(--surface-2); border-left: 3px solid var(--green); border-radius: 0 8px 8px 0; padding: 24px 28px; margin: 0 0 48px; }
+.tldr-box .tldr-label { font-family: var(--mono); font-size: 0.6875rem; color: var(--green); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; }
+.tldr-box p { color: var(--text-2); margin-bottom: 0; font-size: 0.9375rem; line-height: 1.65; }
+
+.callout { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 20px 24px; margin: 32px 0; }
+.callout p { margin-bottom: 0; font-size: 0.9375rem; }
+
+.tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+.tool-card { background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 20px; }
+.tool-card .tool-name { font-family: var(--mono); font-size: 0.75rem; color: var(--green); margin-bottom: 6px; }
+.tool-card p { font-size: 0.875rem; color: var(--text-2); margin-bottom: 0; }
+
+.faq-section { margin-top: 64px; padding-top: 40px; border-top: 1px solid var(--border); }
+.faq-section > h2 { margin-top: 0; }
+.faq-section h3 { font-size: 1rem; font-weight: 600; margin: 36px 0 10px; color: var(--text); }
+.faq-section p { font-size: 0.9375rem; }
+
+.cta-box { border: 2px solid var(--green); border-radius: 12px; padding: 40px; margin: 48px 0; text-align: center; background: var(--surface); }
+.cta-box p { font-size: 0.9375rem; color: var(--text); margin-bottom: 0; font-style: italic; }
+
+.sources-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
+.sources-section h3 { font-size: 1rem; font-weight: 600; margin-bottom: 12px; color: var(--text); }
+.sources-section ul { list-style: none; padding: 0; }
+.sources-section li { margin-bottom: 8px; font-size: 0.875rem; }
+
+footer { background: var(--surface); padding: 40px 0; margin-top: 80px; border-top: 1px solid var(--border); text-align: center; }
+footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
+
+@media (max-width: 768px) {
+  article { padding: 120px 20px 60px; }
+  article h1 { font-size: 2rem; }
+  nav .inner { padding: 0 20px; }
+  .tool-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="inner">
+    <a href="/" class="wordmark">superg<span class="oo-wrap"><span class="oo-dot"></span><span class="oo-dot"></span></span>d<span class="dot-period">.</span></a>
+    <a href="/blog/" class="back">← All posts</a>
+  </div>
+</nav>
+
+<article>
+  <div class="tag">Tech Tuesday · Agent Ops</div>
+  <h1>AgentOps: The Observability Stack That Keeps AI Agents Out of Trouble</h1>
+  <p class="subtitle">57% of companies have AI agents running in production. Most can't tell you what those agents did yesterday — what tools they called, what data they touched, or why a run cost three times more than expected. That's not an agent problem. It's an observability problem.</p>
+  <div class="meta">Published March 3, 2026 — 9 min read</div>
+
+  <div class="tldr-box">
+    <div class="tldr-label">TL;DR</div>
+    <p>AgentOps — the discipline of monitoring, tracing, and governing AI agents in production — is becoming as foundational as DevOps once was. Teams that ship agents without observability are flying blind: no visibility into tool call sequences, token costs, failure modes, or behavioral drift over time. The good news is that a practical AgentOps stack doesn't require a platform rip-and-replace. You need four things: distributed tracing via OpenTelemetry-compatible tooling (Langfuse, Arize Phoenix, or LangSmith), a cost baseline per agent run, anomaly alerting on latency and token usage, and a defined human-in-the-loop escalation path for high-impact actions. Start there before you add agents, not after something breaks.</p>
+  </div>
+
+  <h2>Why "Ship and Hope" Stopped Working</h2>
+
+  <p>The jump from AI demo to production agent sounds straightforward. It rarely is. <a href="https://company.g2.com/news/2025-ai-agent-report" target="_blank" rel="noopener">G2's 2025 AI Agents Insights report</a> found that 57% of companies already have AI agents in production — but anecdotally, the failure stories are everywhere. Runaway costs. Agents that hallucinate tool parameters. Loops that retry indefinitely because nobody defined a stopping condition.</p>
+
+  <p>The underlying problem is almost always the same: <strong>teams treat agents like software they deploy and forget</strong>. But agents aren't deterministic processes. They're probabilistic reasoners that make decisions at runtime — and those decisions change when the model updates, when context shifts, or when an upstream API starts returning unexpected data.</p>
+
+  <p>Wang et al. (2025) formalized this challenge in their survey <a href="https://arxiv.org/abs/2503.xxxxx" target="_blank" rel="noopener">"A Survey on AgentOps"</a>, proposing a four-stage operational framework — <strong>monitoring, anomaly detection, root cause analysis, and resolution</strong> — specifically built for LLM-powered systems. It's the most useful framing I've seen for operationalizing agents at scale, and it maps cleanly to tooling that exists today.</p>
+
+  <h2>What AgentOps Actually Covers</h2>
+
+  <p>AgentOps borrows from DevOps and MLOps, but it has its own distinct concerns. Here's how they break down in practice:</p>
+
+  <h3>1. Distributed Tracing</h3>
+
+  <p>Every agent run is a tree of decisions. An agent receives a task, reasons about it, calls a tool, receives output, reasons again, calls another tool. Each of these steps — called a <strong>span</strong> — should be captured and linked to the parent trace. Without this, debugging is archaeology: you know something went wrong, but you can't reconstruct why.</p>
+
+  <p><a href="https://github.com/Arize-ai/phoenix" target="_blank" rel="noopener">Arize Phoenix</a> and <a href="https://langfuse.com" target="_blank" rel="noopener">Langfuse</a> both use OpenTelemetry-based instrumentation for this. You get sessions → traces → spans → LLM calls, captured end-to-end. LangSmith does something similar with a tighter LangChain integration. The important thing isn't which tool you pick — it's that every production agent run is traceable by default, not just when something breaks.</p>
+
+  <h3>2. Cost Baselining and Anomaly Alerting</h3>
+
+  <p>Token cost is the most underappreciated operational metric in agentic AI. A single misbehaving retry loop can run up hundreds of dollars in an afternoon. <a href="https://www.ovaledge.com/blog/ai-observability-tools" target="_blank" rel="noopener">Modern observability platforms</a> track cost per trace in real time — and more importantly, can alert when a run exceeds a configured threshold.</p>
+
+  <p>The right baseline isn't a flat dollar limit. It's a <strong>per-task cost envelope</strong>: what should this agent spend, on average, to complete this type of task? If a lead enrichment agent normally costs $0.04/run and you're seeing $0.40 runs, that's a signal — either the task scope changed, the model is struggling, or something upstream broke and the agent is retrying into a dead end.</p>
+
+  <div class="callout">
+    <p><strong>Practical threshold rule:</strong> Set alerts at 3× the P75 cost for your agent's most common task type. Anything above that gets flagged for manual review before the next billing cycle, not after.</p>
+  </div>
+
+  <h3>3. Behavioral Drift Detection</h3>
+
+  <p>This one is subtle but critical. <strong>Agents drift</strong> — not because you changed anything, but because the model provider silently updated the underlying weights, a dependency API changed its response format, or input data characteristics shifted over weeks.</p>
+
+  <p><a href="https://arize.com/blog/best-ai-observability-tools-for-autonomous-agents-in-2026/" target="_blank" rel="noopener">Galileo's Signals engine</a> automates failure mode analysis by scanning production traces and identifying drift patterns — then prescribing specific fixes for prompt engineering or retrieval strategies. Arize's own platform does similar work through ML monitoring principles applied to LLM outputs. The manual version of this is running a fixed eval suite weekly against your production agent and charting whether scores hold.</p>
+
+  <h3>4. Human-in-the-Loop Escalation</h3>
+
+  <p>Observability surfaces problems. Escalation handles them. <a href="https://www.uipath.com/blog/ai/agent-ops-operationalizing-ai-agents-for-enterprise" target="_blank" rel="noopener">UiPath's AgentOps guide</a> frames this clearly: every production agent needs a defined escalation model for high-impact actions and exceptions. What triggers a human review? Who gets notified? What's the SLA for a human response before the agent times out?</p>
+
+  <p>This isn't just about safety — it's about trust. Teams that can show auditors a clean trace of every action an agent took, plus a log of every escalation and approval, have a dramatically easier time expanding agent scope over time.</p>
+
+  <h2>The Tooling Landscape (Practical Tier List)</h2>
+
+  <p>There's no shortage of platforms competing in this space. Here's how I'd categorize them for teams at different stages:</p>
+
+  <div class="tool-grid">
+    <div class="tool-card">
+      <div class="tool-name">Langfuse</div>
+      <p>Best open-source option. Self-hostable, strong prompt management, integrates with most frameworks. Good starting point if you want data sovereignty.</p>
+    </div>
+    <div class="tool-card">
+      <div class="tool-name">Arize Phoenix</div>
+      <p>OpenTelemetry-native, strong on evals and drift detection. Best for teams already in the ML observability ecosystem.</p>
+    </div>
+    <div class="tool-card">
+      <div class="tool-name">LangSmith</div>
+      <p>Tightly coupled to LangChain/LangGraph. Excellent DX if that's your stack. Less useful if you're framework-agnostic.</p>
+    </div>
+    <div class="tool-card">
+      <div class="tool-name">Braintrust</div>
+      <p>Strong on evaluation + tracing together. Good for teams that want automated regression testing baked into the observability layer.</p>
+    </div>
+  </div>
+
+  <p>The common thread: <strong>all of them expose spans via OpenTelemetry</strong>, which means you can forward traces to your existing monitoring stack (New Relic, Datadog, Snowflake) without a full migration. Pick based on your framework, your self-hosting appetite, and whether you need evals baked in or separate.</p>
+
+  <h2>An AgentOps Checklist You Can Actually Use</h2>
+
+  <p>Adapted from <a href="https://www.uipath.com/blog/ai/agent-ops-operationalizing-ai-agents-for-enterprise" target="_blank" rel="noopener">UiPath's enterprise AgentOps checklist</a> and the <a href="https://camunda.com/blog/2026/01/guardrails-and-best-practices-for-agentic-orchestration/" target="_blank" rel="noopener">Camunda agentic orchestration guide</a>, these are the questions every team should be able to answer before putting an agent into production:</p>
+
+  <ul>
+    <li><strong>Ownership:</strong> Do we know what each agent is responsible for, and who owns it when it breaks?</li>
+    <li><strong>Tool control:</strong> Can we list exactly which tools the agent is allowed to call, and with which inputs?</li>
+    <li><strong>Auditability:</strong> Can we reproduce what the agent did on any given run — tool call sequence, data accessed, decisions made?</li>
+    <li><strong>Pre-release validation:</strong> Can we validate tool choice and execution path before release, not just outcome?</li>
+    <li><strong>Drift detection:</strong> Do we have evals running on a schedule that would catch regression before users notice?</li>
+    <li><strong>Cost forecasting:</strong> Can we bound and project cost by task type, model, and context size?</li>
+    <li><strong>Rollback path:</strong> Do we have version control and environment promotion for agent configs and prompts?</li>
+    <li><strong>Escalation model:</strong> Is there a clear, tested human-in-the-loop process for high-stakes actions?</li>
+  </ul>
+
+  <p>If you can't answer "yes" to all eight, you're not running production agents — you're running experiments in production. The difference matters more than most teams realize until something goes wrong.</p>
+
+  <h2>The Sequencing That Actually Works</h2>
+
+  <p>Most teams build observability as an afterthought, after they've already shipped the agent. That's backward. The right build order:</p>
+
+  <ol>
+    <li><strong>Instrument first.</strong> Add tracing before you write agent logic. Every LLM call, every tool invocation, every decision branch should emit a span from day one.</li>
+    <li><strong>Establish your baseline.</strong> Run your agent against a fixed eval set before going to production. That's your regression anchor.</li>
+    <li><strong>Set cost and latency thresholds.</strong> Know your P50 and P95 run cost and time before you see production traffic. Alerts are useless without a baseline.</li>
+    <li><strong>Define the escalation path.</strong> Who gets paged when the agent hits a confidence threshold that requires human review? Document it before the agent ships.</li>
+    <li><strong>Run evals on a schedule.</strong> Weekly minimum. More often if you're on a model provider that does frequent releases.</li>
+  </ol>
+
+  <p><a href="https://www.nibzard.com/agentic-handbook" target="_blank" rel="noopener">Nikola Balić's Agentic AI Handbook</a> captures this well: "The hard part isn't getting a demo — it's making the loop reliable." Reliability doesn't come from the model. It comes from the operational scaffolding around it.</p>
+
+  <h2>The Bottom Line</h2>
+
+  <p>AgentOps isn't a vendor category — it's a discipline. The tooling is maturing fast (Langfuse, Arize, Galileo, Braintrust, LangSmith are all legitimate options in 2026), but the discipline has to come from the team building the system. That means: trace everything, baseline costs before you have incidents, run evals on a schedule, and design your escalation path before the agent ships.</p>
+
+  <p>Teams that do this can expand agent scope confidently, because they have evidence. Teams that skip it spend every week firefighting something they can't fully explain. The gap between those two groups will define which organizations actually benefit from agentic AI — and which ones quietly deprecate their agents and go back to scripts.</p>
+
+  <div class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+
+    <h3>What is AgentOps and how is it different from MLOps?</h3>
+    <p>AgentOps is the practice of monitoring, governing, and operating AI agents throughout their production lifecycle. While MLOps focuses on model training pipelines, versioning, and deployment, AgentOps extends those concerns to the runtime behavior of LLM-powered agents — specifically non-deterministic tool use, context-dependent reasoning, and dynamic decision sequences that traditional ML monitoring can't address. Wang et al. (2025) propose a four-stage AgentOps framework: monitoring, anomaly detection, root cause analysis, and resolution, specifically adapted for agentic systems.</p>
+
+    <h3>Which AI agent observability tools are most widely used in 2026?</h3>
+    <p>The leading platforms in 2026 are Langfuse (open-source, self-hostable, strong prompt management), Arize Phoenix (OpenTelemetry-native, best for drift detection and evals), LangSmith (tight LangChain integration, excellent DX), Braintrust (evaluation + tracing combined), and Galileo (automated failure mode analysis via its Signals engine). All five support OpenTelemetry-compatible tracing, meaning spans can be forwarded to existing observability stacks like Datadog or New Relic. See <a href="https://www.getmaxim.ai/articles/top-5-ai-observability-platforms-for-production-ai-systems-in-2026/" target="_blank" rel="noopener">Maxim AI's 2026 platform comparison</a> for a detailed breakdown.</p>
+
+    <h3>How do I detect behavioral drift in a production AI agent?</h3>
+    <p>Behavioral drift in AI agents occurs when outputs change over time without explicit code changes — due to model provider updates, shifting input data distributions, or upstream API changes. The most reliable detection approach is running a fixed evaluation suite (a curated set of representative inputs with expected outputs) on a weekly or bi-weekly schedule and charting pass rates over time. Galileo's Signals engine automates this by scanning production traces for failure patterns and prescribing remediation. Arize Phoenix provides similar drift detection using ML monitoring principles applied to LLM outputs.</p>
+
+    <h3>How should I set token cost thresholds for AI agents?</h3>
+    <p>Flat dollar limits are a poor fit for agentic systems because task complexity varies. A better approach is defining a per-task cost envelope: calculate the P75 cost for your agent's most common task type during a baseline period, then set an alert at 3× that value. Anything above threshold gets flagged for manual review before the next billing cycle. Modern observability platforms like Langfuse and Braintrust track cost per trace in real time, so you can establish these baselines within the first week of instrumented production traffic.</p>
+
+    <h3>What does a human-in-the-loop escalation model look like for AI agents?</h3>
+    <p>A production-grade escalation model defines three things: the trigger conditions (what agent confidence level, action type, or cost threshold routes a decision to a human), the notification path (who gets alerted and via what channel), and the timeout policy (what happens if no human responds within a defined window). This is distinct from a simple "pause and ask" pattern — it should be a documented, tested process that the agent always routes through for high-impact or irreversible actions. UiPath's AgentOps guide recommends defining this before the agent ships, not after the first incident. For implementation mechanics, see our earlier post on <a href="https://supergood.solutions/blog/tech-tuesday-interrupt-pattern-agent-design-2026/" target="_blank" rel="noopener">the Interrupt Pattern</a>.</p>
+
+    <h3>What are the most common reasons AI agents fail in production?</h3>
+    <p>The most common production failure modes for AI agents are: (1) no defined stopping condition, causing retry loops that run until they exhaust budgets or context windows; (2) missing observability, which means teams can't diagnose what went wrong or when drift started; (3) tool calling errors that aren't caught and retried gracefully; and (4) misaligned cost expectations, where teams discover their per-run cost is an order of magnitude higher than estimated only after a billing alert fires. <a href="https://www.nibzard.com/agentic-handbook" target="_blank" rel="noopener">The Agentic AI Handbook</a> (nibzard.com) catalogs 113 patterns from real production systems specifically to address this demo-to-production gap.</p>
+  </div>
+
+  <div class="sources-section">
+    <h3>Sources:</h3>
+    <ul>
+      <li><a href="https://company.g2.com/news/2025-ai-agent-report" target="_blank" rel="noopener">G2 — 2025 AI Agents Insights Report</a></li>
+      <li><a href="https://www.uipath.com/blog/ai/agent-ops-operationalizing-ai-agents-for-enterprise" target="_blank" rel="noopener">UiPath — AgentOps and Operationalizing AI Agents for the Enterprise (2026)</a></li>
+      <li><a href="https://www.nibzard.com/agentic-handbook" target="_blank" rel="noopener">Nikola Balić — The Agentic AI Handbook: Production-Ready Patterns (Jan 2026)</a></li>
+      <li><a href="https://arize.com/blog/best-ai-observability-tools-for-autonomous-agents-in-2026/" target="_blank" rel="noopener">Arize AI — Best AI Observability Tools for Autonomous Agents in 2026</a></li>
+      <li><a href="https://github.com/Arize-ai/phoenix" target="_blank" rel="noopener">Arize Phoenix — AI Observability & Evaluation (GitHub)</a></li>
+      <li><a href="https://langfuse.com" target="_blank" rel="noopener">Langfuse — Open-Source LLM Observability</a></li>
+      <li><a href="https://www.getmaxim.ai/articles/top-5-ai-observability-platforms-for-production-ai-systems-in-2026/" target="_blank" rel="noopener">Maxim AI — Top 5 AI Observability Platforms for Production AI Systems in 2026</a></li>
+      <li><a href="https://camunda.com/blog/2026/01/guardrails-and-best-practices-for-agentic-orchestration/" target="_blank" rel="noopener">Camunda — Guardrails and Best Practices for Agentic Orchestration (Jan 2026)</a></li>
+      <li><a href="https://www.ovaledge.com/blog/ai-observability-tools" target="_blank" rel="noopener">OvalEdge — AI Observability Tools: Top Platforms & Use Cases 2026</a></li>
+      <li><a href="https://www.braintrust.dev/articles/best-ai-observability-tools-2026" target="_blank" rel="noopener">Braintrust — AI Observability Tools: A Buyer's Guide (2026)</a></li>
+    </ul>
+  </div>
+
+  <div class="cta-box">
+    <p>Running AI agents in production without observability is like deploying software without logs. If you're building agentic workflows and want to instrument them before they bite you, <a href="https://supergood.solutions" style="color: var(--green);">let's talk</a>. We help teams set up the operational scaffolding that makes agents trustworthy, not just functional.</p>
+  </div>
+</article>
+
+<footer>
+  <p>&copy; 2026 Supergood Solutions. Helping marketing teams automate smarter, not harder.</p>
+</footer>
+
+</body>
+</html>
