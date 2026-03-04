@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Context Engineering: The Art of Deciding What Your Agent Actually Needs to Know — Supergood Solutions</title>
+<meta name="description" content="A bigger context window doesn't fix bad context management. Here's the emerging discipline of context engineering — compression strategies, selective injection, multi-agent handoffs, and a production checklist.">
+<link rel="canonical" href="https://supergood.solutions/blog/ai-wednesday-context-engineering-2026/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="author" content="Ryan Sandoval">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Context Engineering: The Art of Deciding What Your Agent Actually Needs to Know">
+<meta property="og:description" content="A bigger context window doesn't fix bad context management. Here's the emerging discipline of context engineering — compression strategies, selective injection, multi-agent handoffs, and a production checklist.">
+<meta property="og:url" content="https://supergood.solutions/blog/ai-wednesday-context-engineering-2026/">
+<meta property="og:image" content="https://supergood.solutions/og-image.png">
+<meta property="article:published_time" content="2026-03-04">
+<meta property="article:author" content="Ryan Sandoval">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Context Engineering: The Art of Deciding What Your Agent Actually Needs to Know">
+<meta name="twitter:description" content="A bigger context window doesn't fix bad context management. Here's the discipline that actually works.">
+<meta name="twitter:image" content="https://supergood.solutions/og-image.png">
+
+<!-- Schema.org Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Context Engineering: The Art of Deciding What Your Agent Actually Needs to Know",
+  "description": "A bigger context window doesn't fix bad context management. Here's the emerging discipline of context engineering — compression strategies, selective injection, multi-agent handoffs, and a production checklist.",
+  "author": {
+    "@type": "Person",
+    "name": "Ryan Sandoval",
+    "url": "https://linkedin.com/in/RyanSandoval",
+    "jobTitle": "AI Automation Consultant",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Supergood Solutions"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Supergood Solutions",
+    "url": "https://supergood.solutions"
+  },
+  "datePublished": "2026-03-04",
+  "dateModified": "2026-03-04",
+  "mainEntityOfPage": "https://supergood.solutions/blog/ai-wednesday-context-engineering-2026/",
+  "keywords": ["context engineering","AI agents","LLM context window","context compression","context management","prompt engineering","agentic AI","multi-agent systems","Google ADK","Factory.ai","AI ops","context window management","token management","AI tooling","production AI"]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #0a0a0b; --surface: #111113; --surface-2: #18181b; --border: #27272a;
+  --text: #fafafa; --text-2: #a1a1aa; --text-3: #71717a;
+  --green: #22c55e; --mono: 'JetBrains Mono', monospace;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+::selection { background: var(--green); color: var(--bg); }
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; background: rgba(10,10,11,0.8); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+nav .inner { max-width: 720px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
+.wordmark { font-weight: 800; font-size: 1.125rem; letter-spacing: -0.03em; color: var(--text); text-decoration: none; display: inline-flex; align-items: baseline; }
+.wordmark .oo-dot { display: inline-block; width: 0.45em; height: 0.45em; background: var(--green); border-radius: 50%; }
+.wordmark .oo-wrap { display: inline-flex; gap: 2px; align-items: center; }
+.wordmark .dot-period { color: var(--green); }
+nav a.back { font-size: 0.875rem; color: var(--text-3); text-decoration: none; }
+nav a.back:hover { color: var(--text); }
+
+article { max-width: 720px; margin: 0 auto; padding: 140px 24px 80px; }
+article .tag { font-family: var(--mono); font-size: 0.6875rem; color: var(--green); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; }
+article h1 { font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px; }
+article .subtitle { font-size: 1.25rem; color: var(--text-2); line-height: 1.6; margin-bottom: 24px; }
+article .meta { font-family: var(--mono); font-size: 0.75rem; color: var(--text-3); margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+article h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin: 56px 0 16px; }
+article h3 { font-size: 1.125rem; font-weight: 600; margin: 40px 0 12px; }
+article p { font-size: 1rem; color: var(--text-2); margin-bottom: 20px; }
+article strong { color: var(--text); }
+article ul, article ol { color: var(--text-2); margin-bottom: 20px; padding-left: 24px; }
+article li { margin-bottom: 8px; }
+article a { color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
+article a:hover { color: var(--text); }
+
+.tldr-box { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--green); border-radius: 0 12px 12px 0; padding: 28px 32px; margin: 32px 0 48px; }
+.tldr-box .tldr-label { font-family: var(--mono); font-size: 0.6875rem; color: var(--green); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 14px; }
+.tldr-box ul { color: var(--text-2); padding-left: 20px; margin-bottom: 0; }
+.tldr-box li { margin-bottom: 10px; font-size: 0.9375rem; }
+.tldr-box li:last-child { margin-bottom: 0; }
+
+.callout { background: var(--surface-2); border-left: 3px solid var(--green); border-radius: 0 8px 8px 0; padding: 20px 24px; margin: 32px 0; }
+.callout p { margin-bottom: 0; font-size: 0.9375rem; }
+
+.warning-callout { background: var(--surface-2); border-left: 3px solid #f59e0b; border-radius: 0 8px 8px 0; padding: 20px 24px; margin: 32px 0; }
+.warning-callout p { margin-bottom: 0; font-size: 0.9375rem; color: var(--text-2); }
+.warning-callout strong { color: #fbbf24; }
+
+.technique-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 32px; margin: 28px 0; }
+.technique-card .technique-label { font-family: var(--mono); font-size: 0.6875rem; color: var(--green); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px; }
+.technique-card h3 { font-size: 1.125rem; font-weight: 700; margin: 0 0 12px; color: var(--text); }
+.technique-card p { font-size: 0.9375rem; color: var(--text-2); margin-bottom: 12px; }
+.technique-card p:last-child { margin-bottom: 0; }
+.technique-card ul { color: var(--text-2); padding-left: 20px; margin-bottom: 0; font-size: 0.9375rem; }
+
+.checklist { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 32px; margin: 32px 0; }
+.checklist h3 { font-size: 0.75rem; font-weight: 700; color: var(--green); margin: 0 0 20px; font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.05em; }
+.checklist ul { list-style: none; padding: 0; margin: 0; }
+.checklist li { padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 0.9375rem; color: var(--text-2); display: flex; align-items: flex-start; gap: 12px; }
+.checklist li:last-child { border-bottom: none; }
+.checklist li::before { content: "□"; color: var(--green); font-family: var(--mono); flex-shrink: 0; margin-top: 1px; }
+
+.faq-section { margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--border); }
+.faq-section > h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 32px; }
+.faq-item { margin-bottom: 36px; }
+.faq-item h3 { font-size: 1.0625rem; font-weight: 600; color: var(--text); margin-bottom: 12px; }
+.faq-item p { font-size: 0.9375rem; color: var(--text-2); margin-bottom: 0; }
+
+.cta-box { border: 2px solid var(--green); border-radius: 12px; padding: 40px; margin: 48px 0; text-align: center; background: var(--surface); }
+.cta-box p { font-size: 0.9375rem; color: var(--text); margin-bottom: 0; font-style: italic; }
+
+.sources-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
+.sources-section h3 { font-size: 1rem; font-weight: 600; margin-bottom: 12px; color: var(--text); }
+.sources-section ul { list-style: none; padding: 0; }
+.sources-section li { margin-bottom: 8px; font-size: 0.875rem; }
+
+footer { background: var(--surface); padding: 40px 0; margin-top: 80px; border-top: 1px solid var(--border); text-align: center; }
+footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
+
+@media (max-width: 768px) {
+  article { padding: 120px 20px 60px; }
+  article h1 { font-size: 2rem; }
+  nav .inner { padding: 0 20px; }
+}
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="inner">
+    <a href="/" class="wordmark">superg<span class="oo-wrap"><span class="oo-dot"></span><span class="oo-dot"></span></span>d<span class="dot-period">.</span></a>
+    <a href="/blog/" class="back">← All posts</a>
+  </div>
+</nav>
+
+<article>
+  <div class="tag">AI Wednesday · AI Tooling</div>
+  <h1>Context Engineering: The Art of Deciding What Your Agent Actually Needs to Know</h1>
+  <p class="subtitle">A bigger context window doesn't fix bad context management. Here's the emerging discipline — compression strategies, selective injection, multi-agent handoffs, and the production checklist that keeps your agents sharp instead of confused.</p>
+  <div class="meta">Published March 4, 2026 — 10 min read</div>
+
+  <p>There's a failure mode that almost every team hits around six weeks into running a production AI agent. The agent starts out sharp, fast, and surprisingly useful. Then, over time, it gets worse. Slower. More likely to repeat itself, miss the obvious, or confidently answer a question it should know is stale.</p>
+
+  <p>Nine times out of ten, the root cause isn't the model. It's the context.</p>
+
+  <p>Specifically: teams added information to the context window without a plan for removing it, compressing it, or deciding whether it belonged there in the first place. The model isn't getting dumber — it's getting overwhelmed. Buried under accumulated session history, verbose tool outputs, duplicate retrieved documents, and a system prompt that grew from 200 tokens to 4,000 tokens over three sprints.</p>
+
+  <p>This is the problem that <strong>context engineering</strong> is trying to solve. And in early 2026, it's becoming one of the most actively discussed disciplines in production AI development — because bigger context windows, it turns out, don't fix bad context management. They just let the problem scale further before it breaks.</p>
+
+  <div class="tldr-box">
+    <div class="tldr-label">TL;DR</div>
+    <ul>
+      <li>Context engineering is the practice of deliberately deciding what information enters an LLM's context window — not just storing it, but shaping it at runtime for relevance, density, and cost efficiency.</li>
+      <li>The naive "append everything" approach fails under three compounding pressures: cost and latency spirals, signal degradation (the "lost in the middle" problem), and physical token limits that even 200K-token windows can't outrun at scale.</li>
+      <li>Five core techniques address the problem: RAG for retrieval, prompt compression, selective context injection, semantic chunking, and hierarchical summarization. Production systems combine all five.</li>
+      <li>Multi-agent systems introduce a new wrinkle: context handoff — how much of a parent agent's working memory should flow to a sub-agent, and in what form. This is now a first-class design decision in frameworks like Google ADK.</li>
+      <li>The practical starting point: treat your context window like a whiteboard, not a filing cabinet. Only the stuff you actively need for the current task should be on it.</li>
+    </ul>
+  </div>
+
+  <h2>Why "just use a bigger context window" is a trap</h2>
+
+  <p>The standard response to context management problems is to reach for a model with a larger context window. GPT-4o at 128K tokens. Claude at 200K. Gemini Pro at 1M. Surely if we just give the agent enough space, the problem goes away?</p>
+
+  <p>It doesn't — and <a href="https://developers.googleblog.com/architecting-efficient-context-aware-multi-agent-framework-for-production/">Google's engineering team put it plainly</a> in their Agent Development Kit architecture documentation: "Simply giving agents more space to paste text cannot be the single scaling strategy." There are three compounding pressures that make the "big window" approach untenable in production:</p>
+
+  <h3>1. Cost and latency spirals</h3>
+
+  <p>Model cost and time-to-first-token grow roughly linearly (sometimes super-linearly) with context size. "Shoveling" raw conversation history, verbose tool outputs, and uncompressed document retrievals into the window makes agents slow and expensive — fast. An agent running 100 requests per day at 80K tokens per request is burning through a very different budget than one at 8K tokens. The economics flip against you quickly.</p>
+
+  <h3>2. Signal degradation</h3>
+
+  <p>Larger doesn't mean better. <a href="https://arxiv.org/abs/2307.03172">The "lost in the middle" research</a> (Liu et al., 2023) demonstrated that LLM retrieval accuracy drops significantly for information positioned in the center of very long contexts. Models are better at attending to the beginning and end of their context window than the middle — which means a bloated context doesn't just cost more, it actively makes answers worse. A context flooded with stale tool outputs, deprecated state, and irrelevant session history distracts the model from the current instruction.</p>
+
+  <h3>3. Real-world workloads hit physical limits anyway</h3>
+
+  <p>In long-running agents — the kind doing complex research, multi-step data processing, or extended user conversations — <a href="https://factory.ai/news/evaluating-compression">Factory.ai's research</a> found that sessions can generate millions of tokens of conversation history. No context window is big enough for that. At some point, every production agent has to decide what to keep and what to compress or discard. The question is whether that decision is intentional or left to truncation by default.</p>
+
+  <div class="warning-callout">
+    <p><strong>The real failure mode:</strong> Naïve truncation — cutting context when it overflows the window, from the oldest entries forward — is the worst possible strategy. It discards initialization context, user preferences, and the reasoning that led to current decisions, while keeping verbose intermediate steps that are no longer relevant. If this is your current approach, you're losing the most valuable information first.</p>
+  </div>
+
+  <h2>What context engineering actually is</h2>
+
+  <p>Context engineering is the practice of treating the context window as a <em>managed resource</em>, not an append-only log. Google's ADK team defines it as "treating context as a first-class system with its own architecture, lifecycle, and constraints."</p>
+
+  <p>That's a useful framing. It means context has a design, just like your database schema or your API surface. You decide what goes in, when it goes in, in what form, and when it gets replaced, compressed, or removed.</p>
+
+  <p>In practice, context engineering involves five core techniques — and production systems almost always need a combination of all five:</p>
+
+  <div class="technique-card">
+    <div class="technique-label">Technique 1</div>
+    <h3>Retrieval-Augmented Generation (RAG) for Fresh, Relevant Knowledge</h3>
+    <p>Instead of stuffing your entire knowledge base into the system prompt, retrieve only what's relevant to the current query at runtime. RAG is now table stakes for any production agent that needs grounded answers — but execution quality varies enormously.</p>
+    <ul>
+      <li><strong>Hybrid retrieval outperforms pure vector search</strong> on exact-match and keyword-heavy queries. Combining vector embeddings with BM25 keyword matching catches what each misses alone.</li>
+      <li><strong>Agentic RAG</strong> — where the agent decides whether to retrieve, what query to run, and whether to retrieve again — consistently outperforms naive "always retrieve once" patterns. The agent treats retrieval as a tool, not a mandatory preprocessing step.</li>
+      <li><strong>Chunk size matters</strong>: smaller chunks (256–512 tokens) improve precision; larger chunks (1K–2K) improve context coherence. The right answer depends on your content type. Most teams start with 512 and tune from there.</li>
+    </ul>
+  </div>
+
+  <div class="technique-card">
+    <div class="technique-label">Technique 2</div>
+    <h3>Prompt Compression</h3>
+    <p>Prompt compression reduces the token count of content before it enters the context window — without losing the information that matters. This is distinct from summarization (which rewrites content) and from truncation (which deletes it).</p>
+    <p>The practical approach: remove filler language, collapse verbose tool outputs to their essential facts, and use structured formats (JSON, bullet lists) instead of prose wherever the model doesn't need natural language reasoning over the content.</p>
+    <ul>
+      <li>Tool call results are a major compression target. A raw API response that returns 3,000 tokens of JSON often contains 50 tokens of information the agent actually needs. Extract and format those 50 tokens.</li>
+      <li>System prompts tend to grow unbounded. Audit yours. Every sentence should earn its token cost — if you've added instructions that haven't changed agent behavior in 30 days, cut them.</li>
+      <li>Libraries like <a href="https://github.com/microsoft/LLMLingua">LLMLingua</a> (Microsoft Research) offer automated prompt compression that can reduce prompt length by 2–5x with minimal performance degradation on many tasks — worth evaluating before hand-engineering compression logic.</li>
+    </ul>
+  </div>
+
+  <div class="technique-card">
+    <div class="technique-label">Technique 3</div>
+    <h3>Selective Context Injection</h3>
+    <p>Not everything your agent <em>could</em> know needs to be in context right now. Selective injection means loading context conditionally based on the current task, the current step in a workflow, or the current user's profile — rather than always loading the same full context.</p>
+    <p>This is especially powerful in multi-step agent workflows, where early steps need different context than later ones. A research step needs broad retrieval context; a writing step needs a focused brief and style guide; a review step needs the output and the rubric. Different step, different context load.</p>
+    <ul>
+      <li>Implement context "slots" or structured sections in your system prompt: one slot for user preferences, one for task context, one for current working data. Load each slot independently, and only when needed for the current step.</li>
+      <li>In multi-agent systems: sub-agents shouldn't receive the full parent context by default. Only pass what the sub-agent needs to complete its scoped task. Google ADK's <code>include_contents</code> handoff control is one example of this pattern made explicit in a framework.</li>
+    </ul>
+  </div>
+
+  <div class="technique-card">
+    <div class="technique-label">Technique 4</div>
+    <h3>Semantic Chunking for Document Preprocessing</h3>
+    <p>When your agent works with documents — reports, contracts, knowledge base articles — how you chunk them before embedding and retrieval determines what the agent actually sees. Fixed-size chunking (every 512 tokens, regardless of content) breaks semantic units apart. Semantic chunking splits at natural boundaries: paragraphs, sections, logical units.</p>
+    <p>The quality difference in retrieval between fixed-size and semantic chunking is substantial for structured content. A contract clause split mid-sentence across two chunks loses its legal meaning. A section header separated from its body is noise.</p>
+    <ul>
+      <li>Use document structure when available: HTML heading tags, Markdown headings, PDF section metadata, JSON schema boundaries.</li>
+      <li>For unstructured prose, sentence-level embedding similarity (splitting when cosine distance spikes) outperforms fixed-size chunking on most retrieval benchmarks.</li>
+      <li>Always include metadata with each chunk: source URL, last-updated timestamp, section header. That metadata filters retrieval and tells the model how to weight what it's reading.</li>
+    </ul>
+  </div>
+
+  <div class="technique-card">
+    <div class="technique-label">Technique 5</div>
+    <h3>Hierarchical Summarization for Conversation History</h3>
+    <p>This is the most impactful technique for long-running agents — and the one most teams implement last, usually after a production incident.</p>
+    <p>Rather than keeping a full verbatim transcript of a long agent session, hierarchical summarization compresses older conversation segments into structured summaries while preserving the full recent context. The right optimization target, as <a href="https://factory.ai/news/evaluating-compression">Factory.ai's compression research</a> found, is <em>tokens per task</em> — not tokens per request. A well-structured summary that lets the agent avoid re-reading files and re-exploring dead ends is worth more than raw transcript fidelity.</p>
+    <ul>
+      <li><strong>The "3-2-1" pattern</strong>: Keep the first 2 turns verbatim (initialization context matters), keep the last 5–10 turns verbatim (recency matters), and compress everything in the middle into a structured summary. This is the same pattern Anthropic uses in Claude's extended thinking sessions.</li>
+      <li>Structured summaries — explicit sections for "files modified," "decisions made," "approaches tried," "current goal" — dramatically outperform free-form prose summaries for agent continuation tasks, per Factory.ai's probe-based evaluation framework.</li>
+      <li>Test your compression strategy with probes: after compression, ask the agent "which files have we modified?" or "what approach did we already try?" If it can't answer, your summary isn't capturing the right information.</li>
+    </ul>
+  </div>
+
+  <h2>The multi-agent context handoff problem</h2>
+
+  <p>If you're running multi-agent pipelines — and increasingly, production teams are — context engineering gets more complex. When a root agent hands off a task to a sub-agent, a new question arises: how much context should travel with the handoff?</p>
+
+  <p>Too little, and the sub-agent lacks the background it needs to do its job. Too much, and you're paying to send context the sub-agent will never use, while also risking that it gets confused by irrelevant parent-level state.</p>
+
+  <p><a href="https://developers.googleblog.com/architecting-efficient-context-aware-multi-agent-framework-for-production/">Google's ADK architecture guidance</a> describes this as a first-class design decision: their framework exposes an <code>include_contents</code> parameter on sub-agent handoffs that controls how much of the parent's working context flows down. The three modes — full context, summary only, or no inherited context — map to different task types:</p>
+
+  <ul>
+    <li><strong>Full context</strong>: Use when the sub-agent's task is deeply dependent on understanding what the parent already did. Code review agents need the full diff context. Debugging agents need the full trace.</li>
+    <li><strong>Structured summary</strong>: Use when the sub-agent needs task framing but not full history. A writing sub-agent might need "we've decided to target CMOs with a focus on cost reduction" — not the 40-turn conversation that produced that conclusion.</li>
+    <li><strong>Clean slate</strong>: Use when the sub-agent's task is genuinely independent. A web search sub-agent doesn't need to know the parent's previous session history to run a query.</li>
+  </ul>
+
+  <p>The principle: <strong>design your context handoff like an API contract</strong>. Define what the sub-agent needs, pass exactly that, and treat everything else as out of scope.</p>
+
+  <h2>Context engineering in practice: what production teams actually do</h2>
+
+  <p>Across teams shipping agents at scale in early 2026, a few consistent patterns have emerged:</p>
+
+  <h3>Context budgeting</h3>
+
+  <p>Teams that run agents cost-effectively treat the context window like a budget: the system prompt gets a fixed allocation, user context gets a fixed allocation, retrieved content gets a cap, and conversation history is whatever is left. When a section wants more than its allocation, it compresses — it doesn't push everything else out.</p>
+
+  <p>Concretely: a 32K token context window might be budgeted as 4K system prompt, 2K user profile, 8K retrieval, 16K conversation history (with compression kicking in when history exceeds that cap). These numbers are team-specific, but the discipline of having them matters enormously.</p>
+
+  <h3>Context tracing</h3>
+
+  <p>You cannot improve what you cannot see. Production context engineering requires logging: not just "how many tokens did we use" but "which sections consumed what, and was what we retrieved actually useful?" Tools like <a href="https://www.agentops.ai">AgentOps</a>, <a href="https://www.langfuse.com">Langfuse</a>, and <a href="https://docs.smith.langchain.com">LangSmith</a> all offer context-level tracing. If you're not running one of them (or equivalent custom logging), you're flying blind.</p>
+
+  <h3>The whiteboard mental model</h3>
+
+  <p>The most useful framing for context engineering: treat the context window like a whiteboard. Only the stuff you actively need for the current task should be on it. When a task step is complete, wipe the parts that are no longer relevant. When you move to a new phase, set up the whiteboard for that phase. The whiteboard is not permanent storage — that's what your memory layer and external databases are for. (<a href="/blog/ai-wednesday-agent-memory-architecture-2026/">We covered the full three-layer memory architecture last week</a> if you want the storage side of the equation.)</p>
+
+  <div class="checklist">
+    <h3>Context Engineering Production Checklist</h3>
+    <ul>
+      <li>Audit your system prompt — every instruction should earn its token cost; set a hard cap (e.g., 4K tokens) and stick to it</li>
+      <li>Implement hybrid retrieval (vector + BM25 keyword) — pure vector search fails on exact-match and specific-term queries</li>
+      <li>Add a last-updated timestamp to every chunk and filter retrievals by freshness — stale content is noise with confidence</li>
+      <li>Compress tool call results before injecting them — extract the signal, discard the raw API response verbosity</li>
+      <li>Implement the 3-2-1 pattern for conversation history: first 2 turns verbatim, last 5–10 verbatim, everything in between as a structured summary</li>
+      <li>Use structured summaries (not prose) when compressing history — include explicit sections for decisions made, files/resources modified, approaches tried, and current goal</li>
+      <li>Test your compression with probes: after compression, ask the agent task-completion questions and verify the answers are still correct</li>
+      <li>Define context budgets per section (system prompt, user context, retrieval, history) and enforce them at the framework level — not via ad-hoc trimming</li>
+      <li>Design multi-agent handoffs explicitly: for each sub-agent, specify whether it gets full parent context, a structured summary, or a clean slate</li>
+      <li>Log token consumption per section per request from day one — this is the only way to identify your biggest cost and quality levers</li>
+    </ul>
+  </div>
+
+  <h2>Where this is heading</h2>
+
+  <p>Context engineering is still a young discipline, and most of the tooling is either hand-rolled or early-stage. But the problem it addresses — the gap between "technically possible" and "reliably useful" in production AI — is real and immediate.</p>
+
+  <p>The teams doing this well aren't necessarily the ones with the most capable models. They're the ones who treat context as infrastructure: designed, budgeted, traced, and continuously improved. The ones who ask "what should the agent know right now?" instead of "what can we fit in the window?"</p>
+
+  <p>That discipline — applying engineering rigor to something that feels soft and subjective — is what separates the demos from the products.</p>
+
+  <div class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <h3>What is context engineering in AI agents?</h3>
+      <p>Context engineering is the practice of deliberately managing what information flows into an LLM's context window at runtime — rather than treating the context window as an append-only log. It includes techniques like prompt compression, selective context injection, retrieval-augmented generation, semantic chunking, and hierarchical summarization. The goal is to maximize the signal-to-noise ratio in what the model actually reads, which improves both answer quality and cost efficiency. For a deeper dive, see <a href="https://developers.googleblog.com/architecting-efficient-context-aware-multi-agent-framework-for-production/">Google's ADK context engineering writeup</a>.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Why does a bigger context window not solve context management problems?</h3>
+      <p>Larger context windows allow more information to fit, but they don't fix the underlying problems: cost grows with context size, model attention quality degrades for content buried in the middle of long contexts (the <a href="https://arxiv.org/abs/2307.03172">"lost in the middle" effect</a>), and real-world long-running agent sessions can generate millions of tokens that exceed even the largest windows. The right answer is intentional context management — treating what goes in the window as a design decision, not a default accumulation.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>What is the best strategy for managing conversation history in a long-running AI agent?</h3>
+      <p>The most effective strategy is hierarchical summarization with the "3-2-1" pattern: keep the first 2 turns verbatim (initialization matters), keep the last 5–10 turns verbatim (recency matters), and compress everything in the middle into a structured summary with explicit sections for decisions made, resources modified, and approaches already tried. <a href="https://factory.ai/news/evaluating-compression">Factory.ai's research</a> found that structured summaries significantly outperform free-form prose summaries for agent task continuation — the agent retains the ability to answer "what have we already done?" far more reliably.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>How does context handoff work in multi-agent AI systems?</h3>
+      <p>In multi-agent systems, context handoff refers to how much of a parent agent's working context flows to a sub-agent when a task is delegated. The best practice is to treat it as an explicit API contract: define what the sub-agent needs (full context, structured summary, or clean slate), and pass exactly that. Frameworks like <a href="https://github.com/google/adk-python">Google ADK</a> expose handoff controls that make this decision explicit. The goal is to give sub-agents enough context to work effectively without loading them with irrelevant parent-level history that wastes tokens and can cause confusion.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>What tools exist for context tracing and observability in AI agents?</h3>
+      <p>Several observability tools now support context-level tracing for AI agents, including <a href="https://www.agentops.ai">AgentOps</a>, <a href="https://www.langfuse.com">Langfuse</a>, and <a href="https://docs.smith.langchain.com">LangSmith</a>. These tools log which sections of context were loaded, how many tokens each consumed, what was retrieved and whether it was actually used, and how costs break down per request. This kind of visibility is the prerequisite for any meaningful context optimization — you can't improve what you can't measure.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>What is the difference between context engineering and prompt engineering?</h3>
+      <p>Prompt engineering focuses on the wording and structure of instructions given to a model — how to phrase a task, what format to request, which examples to include. Context engineering is broader: it's the discipline of managing everything that enters the context window, including retrieved documents, conversation history, tool outputs, user profiles, and the prompts themselves. Prompt engineering is a component of context engineering — but context engineering also covers retrieval strategy, compression, memory architecture, and handoff design. As agents become more complex, context engineering is becoming the more consequential discipline.</p>
+    </div>
+  </div>
+
+  <div class="sources-section">
+    <h3>Sources:</h3>
+    <ul>
+      <li><a href="https://developers.googleblog.com/architecting-efficient-context-aware-multi-agent-framework-for-production/">Architecting Efficient Context-Aware Multi-Agent Framework for Production — Google Developers Blog (December 2025)</a></li>
+      <li><a href="https://factory.ai/news/evaluating-compression">Evaluating Context Compression for AI Agents — Factory.ai Research (December 2025)</a></li>
+      <li><a href="https://thenewstack.io/context-is-ai-codings-real-bottleneck-in-2026/">Context is AI Coding's Real Bottleneck in 2026 — The New Stack (January 2026)</a></li>
+      <li><a href="https://www.getmaxim.ai/articles/context-window-management-strategies-for-long-context-ai-agents-and-chatbots/">Context Window Management: Strategies for Long-Context AI Agents — Maxim AI (November 2025)</a></li>
+      <li><a href="https://arxiv.org/abs/2307.03172">Lost in the Middle: How Language Models Use Long Contexts — arXiv, Liu et al. (2023)</a></li>
+      <li><a href="https://airbyte.com/agentic-data/ai-context-window-optimization-techniques">5 AI Context Window Optimization Techniques — Airbyte</a></li>
+      <li><a href="https://github.com/microsoft/LLMLingua">LLMLingua: Prompt Compression for LLMs — Microsoft Research, GitHub</a></li>
+      <li><a href="https://github.com/google/adk-python">Google Agent Development Kit (ADK) — GitHub</a></li>
+    </ul>
+  </div>
+
+  <div class="cta-box">
+    <p>Running AI agents in production and hitting context-related bottlenecks? <a href="https://supergood.solutions">Supergood Solutions</a> helps marketing and ops teams build agents that stay sharp at scale — not just in the demo. Let's talk.</p>
+  </div>
+
+</article>
+
+<footer>
+  <p>&copy; 2026 Supergood Solutions. Helping marketing teams automate smarter, not harder.</p>
+</footer>
+
+</body>
+</html>
