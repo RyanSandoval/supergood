@@ -147,6 +147,10 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
   <p class="subtitle">Most AI agents are wired to run until they finish — or crash. A practical guide to the interrupt pattern: the threshold design, escalation logic, and implementation mechanics that separate production-grade agents from expensive demos.</p>
   <div class="meta">Published March 3, 2026 — 9 min read</div>
 
+  <div class="callout">
+    <p><strong>TL;DR:</strong> Most AI agents fail in production not because the model is wrong, but because there's no mechanism for the agent to stop and ask. The interrupt pattern adds a structured pause between intention and action — a pre-execution policy check that routes low-risk actions automatically, surfaces higher-risk actions for human approval, and refuses anything outside the agent's operating envelope. Teams that build this in from the start ship agents that stay in production; teams that skip it spend their time firefighting.</p>
+  </div>
+
   <p>There's a statistic that should stop every team currently building AI agents: according to McKinsey's late-2025 survey, <strong>62% of enterprises are actively experimenting with agentic AI</strong>. Deloitte's research puts the number with anything actually running in production at 14%. And Gartner's projection is bluntest of all — more than 40% of agentic AI projects will be cancelled outright by the end of 2027, not because the underlying technology failed, but because the foundation underneath the deployment was never right.</p>
 
   <p>That gap isn't a capability gap. Models are capable. The gap is almost always an architecture gap — specifically, teams that ship agents designed to <em>run</em> rather than agents designed to <em>decide when not to run</em>.</p>
@@ -318,6 +322,28 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
       <li>Log all interrupt events (triggered, shown, approved, modified, rejected) with timestamps for threshold calibration</li>
       <li>Review interrupt logs monthly — adjust zone thresholds based on observed approval patterns and incident data</li>
     </ul>
+  </div>
+
+  <div class="sources-section" style="margin-top:48px; padding-top:32px; border-top:1px solid var(--border);">
+    <h2 style="margin-top:0; margin-bottom:24px;">Frequently Asked Questions</h2>
+
+    <h3>What is the interrupt pattern in AI agents?</h3>
+    <p>The interrupt pattern is a design approach that adds a structured pause between an agent's decision-making and its execution. Before taking any action, the agent evaluates the proposed step against configured thresholds — for reversibility, confidence, scope, and cost — and either proceeds automatically, surfaces the plan for human approval, or refuses entirely. It's a first-class design feature, not a fallback for when things go wrong.</p>
+
+    <h3>Why do most AI agents fail in production?</h3>
+    <p>The failure is almost always architectural, not a model capability problem. Agents default to greedy execution — they plan and act in the same step with no gate between intention and action. When the task is underspecified, data is ambiguous, or scope is larger than expected, the agent still executes. In production, that means CRM records overwritten, emails sent to the wrong segment, or bulk operations run on thousands of rows before anyone realizes something went wrong.</p>
+
+    <h3>How do I decide what should trigger an interrupt?</h3>
+    <p>Evaluate every potential agent action across four dimensions: reversibility (can it be undone?), confidence (is the agent certain about the right interpretation?), scope (how many records or systems are affected?), and cost (monetary or reputational). Any action that scores high on even one dimension — especially irreversibility — should trigger an interrupt until the agent has a demonstrated reliability track record on that specific action type.</p>
+
+    <h3>What's the difference between Zone 2 (interrupt) and Zone 3 (hard stop)?</h3>
+    <p>Zone 2 means the agent pauses, surfaces its plan with full context, and waits for explicit human approval before proceeding. Zone 3 means the agent declines to act at all and escalates — it's triggered when the requested action is outside the agent's authorized operating envelope, when ambiguity exceeds a defined ceiling, or when the agent can't determine reversibility. Zone 2 is a collaboration checkpoint; Zone 3 is a refusal with an explanation.</p>
+
+    <h3>What is approval fatigue and how do I prevent it?</h3>
+    <p>Approval fatigue happens when interrupts fire too frequently, causing humans to rubber-stamp approvals without actually reviewing them. The result is a system that's theoretically supervised but practically running unchecked. Prevent it by calibrating thresholds to fire only for genuinely consequential decisions, requiring explicit approval (not passive timeout), and tracking approval time as a metric — if humans are approving in under 3 seconds on average, your interrupts aren't generating real review.</p>
+
+    <h3>What does a good interrupt surface look like?</h3>
+    <p>A useful interrupt shows: the proposed action in concrete terms (specific field, specific record, specific value — not just "update the contact"), the reasoning behind the choice, what the agent is uncertain about, the reversibility status, and the scope summary. Vague "Are you sure?" prompts degrade into rubber-stamp approvals within days. The interrupt surface should give a human everything they need to make a real decision in under 30 seconds.</p>
   </div>
 
   <div class="sources-section">
