@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>We Wired Two AI Agents Together. Here's What Kept Breaking at the Handoff. — Supergood Solutions</title>
+<meta name="description" content="A real-world case study on building a two-agent review pipeline: the four failure modes that hit us at the handoff seam, the fixes that made it production-stable, and a practical checklist for teams designing multi-agent workflows.">
+<link rel="canonical" href="https://supergood.solutions/blog/case-study-thursday-two-agent-handoff-2026/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="author" content="Ryan Sandoval">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="We Wired Two AI Agents Together. Here's What Kept Breaking at the Handoff.">
+<meta property="og:description" content="A real-world case study on building a two-agent review pipeline: four failure modes at the handoff seam, the fixes that made it production-stable, and a practical checklist for teams designing multi-agent workflows.">
+<meta property="og:url" content="https://supergood.solutions/blog/case-study-thursday-two-agent-handoff-2026/">
+<meta property="og:image" content="https://supergood.solutions/og-image.png">
+<meta property="article:published_time" content="2026-03-05">
+<meta property="article:author" content="Ryan Sandoval">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="We Wired Two AI Agents Together. Here's What Kept Breaking at the Handoff.">
+<meta name="twitter:description" content="Four failure modes that hit us at the agent handoff seam — and the typed-state contract that fixed them.">
+<meta name="twitter:image" content="https://supergood.solutions/og-image.png">
+
+<!-- Schema.org Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "We Wired Two AI Agents Together. Here's What Kept Breaking at the Handoff.",
+  "description": "A real-world case study on building a two-agent review pipeline: the four failure modes that hit us at the handoff seam, the fixes that made it production-stable, and a practical checklist for teams designing multi-agent workflows.",
+  "author": {
+    "@type": "Person",
+    "name": "Ryan Sandoval",
+    "url": "https://linkedin.com/in/RyanSandoval",
+    "jobTitle": "AI Automation Consultant",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Supergood Solutions"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Supergood Solutions",
+    "url": "https://supergood.solutions"
+  },
+  "datePublished": "2026-03-05",
+  "dateModified": "2026-03-05",
+  "mainEntityOfPage": "https://supergood.solutions/blog/case-study-thursday-two-agent-handoff-2026/",
+  "keywords": ["multi-agent AI","agent handoff","LangGraph","agent orchestration","agentic AI","agent state schema","AI ops","agent pipeline","human-in-the-loop","agent debugging","AI agent production","typed state","AI automation","agent design patterns"]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #0a0a0b; --surface: #111113; --surface-2: #18181b; --border: #27272a;
+  --text: #fafafa; --text-2: #a1a1aa; --text-3: #71717a;
+  --green: #22c55e; --amber: #f59e0b; --red: #ef4444; --mono: 'JetBrains Mono', monospace;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+::selection { background: var(--green); color: var(--bg); }
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; background: rgba(10,10,11,0.8); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+nav .inner { max-width: 720px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
+.wordmark { font-weight: 800; font-size: 1.125rem; letter-spacing: -0.03em; color: var(--text); text-decoration: none; display: inline-flex; align-items: baseline; }
+.wordmark .oo-dot { display: inline-block; width: 0.45em; height: 0.45em; background: var(--green); border-radius: 50%; }
+.wordmark .oo-wrap { display: inline-flex; gap: 2px; align-items: center; }
+.wordmark .dot-period { color: var(--green); }
+nav a.back { font-size: 0.875rem; color: var(--text-3); text-decoration: none; }
+nav a.back:hover { color: var(--text); }
+
+article { max-width: 720px; margin: 0 auto; padding: 140px 24px 80px; }
+article .tag { font-family: var(--mono); font-size: 0.6875rem; color: var(--green); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; }
+article h1 { font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px; }
+article .subtitle { font-size: 1.25rem; color: var(--text-2); line-height: 1.6; margin-bottom: 24px; }
+article .meta { font-family: var(--mono); font-size: 0.75rem; color: var(--text-3); margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+article h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin: 56px 0 16px; }
+article h3 { font-size: 1.125rem; font-weight: 600; margin: 40px 0 12px; }
+article p { font-size: 1rem; color: var(--text-2); margin-bottom: 20px; }
+article strong { color: var(--text); }
+article ul, article ol { color: var(--text-2); margin-bottom: 20px; padding-left: 24px; }
+article li { margin-bottom: 8px; }
+article a { color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
+article a:hover { color: var(--text); }
+article code { font-family: var(--mono); font-size: 0.875em; background: var(--surface-2); padding: 2px 6px; border-radius: 4px; color: var(--green); }
+
+.tldr { background: var(--surface-2); border: 1px solid var(--border); border-left: 4px solid var(--amber); border-radius: 0 12px 12px 0; padding: 28px 32px; margin: 32px 0 48px; }
+.tldr .tldr-label { font-family: var(--mono); font-size: 0.6875rem; color: var(--amber); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; }
+.tldr p { font-size: 0.9375rem; color: var(--text-2); margin-bottom: 10px; }
+.tldr p:last-child { margin-bottom: 0; }
+
+.callout { background: var(--surface-2); border-left: 3px solid var(--green); border-radius: 0 8px 8px 0; padding: 20px 24px; margin: 32px 0; }
+.callout p { margin-bottom: 0; font-size: 0.9375rem; }
+
+.failure-card { background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--red); border-radius: 0 12px 12px 0; padding: 28px 32px; margin: 32px 0; }
+.failure-card .failure-label { font-family: var(--mono); font-size: 0.6875rem; color: var(--red); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px; }
+.failure-card h3 { font-size: 1.0625rem; font-weight: 700; margin: 0 0 12px; color: var(--text); }
+.failure-card p { font-size: 0.9375rem; color: var(--text-2); margin-bottom: 10px; }
+.failure-card p:last-child { margin-bottom: 0; }
+.failure-card code { font-family: var(--mono); font-size: 0.875em; background: var(--surface-2); padding: 2px 6px; border-radius: 4px; color: var(--red); }
+
+.fix-card { background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--green); border-radius: 0 12px 12px 0; padding: 28px 32px; margin: 28px 0; }
+.fix-card .fix-label { font-family: var(--mono); font-size: 0.6875rem; color: var(--green); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px; }
+.fix-card h3 { font-size: 1.0625rem; font-weight: 700; margin: 0 0 12px; color: var(--text); }
+.fix-card p { font-size: 0.9375rem; color: var(--text-2); margin-bottom: 10px; }
+.fix-card p:last-child { margin-bottom: 0; }
+.fix-card ul { color: var(--text-2); padding-left: 20px; margin-bottom: 0; font-size: 0.9375rem; }
+.fix-card code { font-family: var(--mono); font-size: 0.875em; background: var(--surface-2); padding: 2px 6px; border-radius: 4px; color: var(--green); }
+
+.diagram { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 32px; margin: 32px 0; font-family: var(--mono); font-size: 0.8125rem; color: var(--text-2); line-height: 1.8; }
+.diagram .diagram-label { font-size: 0.6875rem; color: var(--green); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; }
+.diagram .arrow { color: var(--green); }
+.diagram .agent-box { color: var(--text); font-weight: 700; }
+.diagram .state-box { color: var(--amber); }
+
+.stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 32px 0; }
+.stat-box { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; text-align: center; }
+.stat-box .stat-num { font-size: 2rem; font-weight: 800; color: var(--green); font-family: var(--mono); letter-spacing: -0.03em; }
+.stat-box .stat-label { font-size: 0.8125rem; color: var(--text-3); margin-top: 4px; line-height: 1.4; }
+
+.checklist { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 32px; margin: 32px 0; }
+.checklist h3 { font-family: var(--mono); font-size: 0.75rem; font-weight: 700; color: var(--green); margin: 0 0 20px; text-transform: uppercase; letter-spacing: 0.05em; }
+.checklist ul { list-style: none; padding: 0; margin: 0; }
+.checklist li { padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 0.9375rem; color: var(--text-2); display: flex; align-items: flex-start; gap: 12px; }
+.checklist li:last-child { border-bottom: none; }
+.checklist li::before { content: "□"; color: var(--green); font-family: var(--mono); flex-shrink: 0; margin-top: 1px; }
+
+.faq-section { margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--border); }
+.faq-section > h2 { margin-top: 0; }
+.faq-section h3 { font-size: 1rem; font-weight: 600; margin: 32px 0 10px; color: var(--text); }
+.faq-section p { font-size: 0.9375rem; color: var(--text-2); }
+
+.sources-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
+.sources-section h3 { font-size: 1rem; font-weight: 600; margin-bottom: 12px; color: var(--text); }
+.sources-section ul { list-style: none; padding: 0; }
+.sources-section li { margin-bottom: 8px; font-size: 0.875rem; }
+
+.cta-box { border: 2px solid var(--green); border-radius: 12px; padding: 40px; margin: 48px 0; text-align: center; background: var(--surface); }
+.cta-box p { font-size: 0.9375rem; color: var(--text); margin-bottom: 0; font-style: italic; }
+
+footer { background: var(--surface); padding: 40px 0; margin-top: 80px; border-top: 1px solid var(--border); text-align: center; }
+footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
+
+@media (max-width: 768px) {
+  article { padding: 120px 20px 60px; }
+  article h1 { font-size: 2rem; }
+  nav .inner { padding: 0 20px; }
+  .stat-row { grid-template-columns: 1fr; }
+  .diagram { overflow-x: auto; }
+}
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="inner">
+    <a href="/" class="wordmark">superg<span class="oo-wrap"><span class="oo-dot"></span><span class="oo-dot"></span></span>d<span class="dot-period">.</span></a>
+    <a href="/blog/" class="back">← All posts</a>
+  </div>
+</nav>
+
+<article>
+  <div class="tag">Case Study Thursday · Agent Architecture</div>
+  <h1>We Wired Two AI Agents Together. Here's What Kept Breaking at the Handoff.</h1>
+  <p class="subtitle">A real-world case study on building a two-agent review pipeline: four failure modes we hit at the seam between agents, the typed-state contract that fixed them, and a pre-build checklist for any team designing multi-agent workflows.</p>
+  <div class="meta">Published March 5, 2026 — 10 min read</div>
+
+  <p>Single-agent failures are annoying. You ship, something breaks, you find it in the logs, you fix the prompt, you redeploy. Painful, but traceable.</p>
+
+  <p>Multi-agent failures are a different category of problem entirely. When two agents are wired together and something goes wrong, the failure often doesn't happen where either agent actually ran — it happens <em>between</em> them. In the seam. In the thing nobody thought to design carefully because everyone was focused on what the agents would do individually.</p>
+
+  <p>This is the story of what we learned building a two-agent pipeline for a client's proposal review workflow. The agents themselves worked fine. The handoff between them was the part that kept breaking.</p>
+
+  <p><em>Details below are drawn from a composite of real client engagements. Specifics are generalized.</em></p>
+
+  <div class="tldr">
+    <div class="tldr-label">TL;DR</div>
+    <p>We built a two-agent pipeline where Agent 1 drafted enriched proposals and Agent 2 reviewed and scored them. The individual agents performed well in isolation. In production, we hit four distinct failure modes — all at the handoff boundary: format mismatches, context loss, conflicting ground truth assumptions, and silent partial failures that looked like successes. The fix was a typed state schema that both agents agreed to upfront, explicit handoff payloads with required fields, and observability instrumented specifically at the seam. Multi-agent systems fail at the seams, not the centers. Design the contract between agents as carefully as you design the agents themselves.</p>
+  </div>
+
+  <h2>The setup: a two-agent proposal review pipeline</h2>
+
+  <p>The client was a professional services firm — about 60 people — that responded to a large volume of RFPs and client briefs. Their proposal process was bottlenecked at review: a senior consultant would draft, then two other people would review for completeness, tone, and alignment with the client's stated criteria. That review cycle averaged two days per proposal and was the single biggest drag on their capacity to respond to new opportunities.</p>
+
+  <p>The proposed solution: a two-agent pipeline to handle first-pass review automatically.</p>
+
+  <ul>
+    <li><strong>Agent 1 (the Enricher):</strong> Takes the raw proposal draft and a brief with client criteria. Enriches the draft — identifies gaps, adds supporting data points, flags thin sections, and produces a structured output with the enriched text plus an annotated gap list.</li>
+    <li><strong>Agent 2 (the Reviewer):</strong> Takes the Enricher's output and the original client brief. Scores the proposal across five dimensions (completeness, tone, specificity, criteria alignment, competitive differentiation). Produces a structured review with scores, specific improvement notes, and a go/no-go recommendation.</li>
+  </ul>
+
+  <p>A human reviewer would then look at the Reviewer's output and decide whether to approve, revise, or escalate. The goal was to compress that two-day review cycle to two hours — with the human's attention focused on the Reviewer's scorecard rather than reading every word of the draft.</p>
+
+  <div class="diagram">
+    <div class="diagram-label">Pipeline Architecture</div>
+    <div>
+      <span class="state-box">[Client Brief + Draft]</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="arrow">↓</span><br>
+      <span class="agent-box">Agent 1: Enricher</span>&nbsp;&nbsp;<span style="color:var(--text-3);">(enriched text + gap list)</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="arrow">↓ handoff payload</span><br>
+      <span class="agent-box">Agent 2: Reviewer</span>&nbsp;&nbsp;<span style="color:var(--text-3);">(scorecard + recommendation)</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="arrow">↓</span><br>
+      <span class="state-box">[Human Review Queue]</span>
+    </div>
+  </div>
+
+  <p>In testing, it worked beautifully. We ran it against 30 historical proposals — ones where we already had human review notes — and the Reviewer's scores correlated well with the human reviewers' assessments. The stakeholders were happy. We went to production.</p>
+
+  <p>Two weeks later, the human reviewers were confused about what the agents were actually doing. Four failure modes had crept in, and none of them were obvious until we started digging.</p>
+
+  <h2>Failure Mode #1: Format drift at the handoff boundary</h2>
+
+  <div class="failure-card">
+    <div class="failure-label">Failure 01 / Schema Mismatch</div>
+    <h3>Agent 2 was reading a different shape of output than Agent 1 was producing</h3>
+    <p>Agent 1 was prompted to produce a structured output with two top-level keys: <code>enriched_draft</code> (the full text) and <code>gap_list</code> (an array of gap objects, each with a <code>section</code>, a <code>severity</code>, and a <code>description</code>). Agent 2 was prompted to read that structure and use the gap list as input to its scoring.</p>
+    <p>What we hadn't accounted for: LLM outputs are not deterministic. On some proposals, Agent 1 returned <code>gaps</code> instead of <code>gap_list</code>. On others, it returned <code>gap_list</code> as a flat string instead of an array. When severity was not immediately obvious from the text, it sometimes omitted the <code>severity</code> field entirely.</p>
+    <p>Agent 2, reading this variable-shape output, would silently adapt — sometimes reading the <code>gaps</code> key, sometimes failing to find either and defaulting to "no gaps identified." The Reviewer was scoring proposals as complete when the Enricher had flagged significant gaps that simply didn't survive the handoff in a readable format.</p>
+  </div>
+
+  <p>This is the single most common multi-agent failure mode we've seen. When Agent A's output is Agent B's input, and that contract is defined only in natural language inside each agent's prompt, drift is inevitable. LLMs are probabilistic. They won't produce the exact same field names, nesting structures, or data types on every run — especially when the content varies.</p>
+
+  <div class="fix-card">
+    <div class="fix-label">Fix 01</div>
+    <h3>A typed state schema, defined once and enforced at both ends</h3>
+    <p>We defined a single shared state schema — a Pydantic model — that both agents were required to validate against. Agent 1's output was parsed through the schema before being passed to Agent 2. If the parse failed, the run stopped and an error was logged. Agent 2 received a guaranteed-shape object, not a raw LLM string.</p>
+    <p>The schema also served as explicit documentation: every field, its type, whether it was required or optional, and a one-line description. Both agent prompts referenced it directly: "Your output must conform to the <code>EnricherOutput</code> schema. Required fields: <code>enriched_draft</code> (string), <code>gap_list</code> (array of GapItem objects). Do not invent field names."</p>
+    <ul>
+      <li>Schema validation failures go to a separate error queue — not the human review queue</li>
+      <li>The Enricher's prompt includes the full schema definition, not just field names</li>
+      <li>Schema version is logged with every run; any schema change triggers a re-test pass</li>
+    </ul>
+  </div>
+
+  <h2>Failure Mode #2: Context loss — Agent 2 didn't know what Agent 1 knew</h2>
+
+  <div class="failure-card">
+    <div class="failure-label">Failure 02 / Context Truncation</div>
+    <h3>The Reviewer was scoring drafts without the context the Enricher had used to enrich them</h3>
+    <p>The Enricher had access to the original client brief, the draft, and a context document with firm-specific positioning data. It used all three to produce its enriched output. The handoff payload we passed to the Reviewer, however, was just the enriched draft and the gap list.</p>
+    <p>The Reviewer had the enriched draft — but not the original brief or the positioning context. It was scoring alignment with "client criteria" that it had to infer from the draft text, because we hadn't passed the actual criteria document. On proposals where the Enricher had done a lot of work — reframing language, adding specifics — the Reviewer would score the criteria alignment as "excellent" based on the enriched text, even when the original brief had criteria that the draft still didn't address.</p>
+    <p>The Reviewer was being asked to evaluate alignment with a target it couldn't see.</p>
+  </div>
+
+  <div class="fix-card">
+    <div class="fix-label">Fix 02</div>
+    <h3>Explicit context forwarding in the handoff payload</h3>
+    <p>We expanded the handoff schema to include a <code>context</code> object: the original client brief (not just the draft), the positioning context document reference, and a <code>enricher_notes</code> field — a structured summary of what the Enricher had changed and why.</p>
+    <p>The <code>enricher_notes</code> field turned out to be more valuable than we expected. It gave the Reviewer explicit visibility into the Enricher's reasoning — "I strengthened the competitive differentiation section based on the client's stated preference for outcome-oriented language" — which let the Reviewer evaluate the quality of the enrichment, not just the quality of the resulting text.</p>
+    <p>This is a pattern we now call <strong>the annotated handoff</strong>: the first agent passes not just its output, but a summary of its reasoning and the key decisions it made. The second agent can use that reasoning as context for its own evaluation, rather than reverse-engineering it from the output text alone.</p>
+  </div>
+
+  <h2>Failure Mode #3: Conflicting ground truth — two agents, two sets of facts</h2>
+
+  <div class="failure-card">
+    <div class="failure-label">Failure 03 / Divergent Grounding</div>
+    <h3>The Enricher and Reviewer were using different versions of the firm's capability statements</h3>
+    <p>The firm's positioning context — the document describing their capabilities, differentiators, and client references — was stored in a knowledge base. Both agents retrieved from it via a RAG step. The problem: they weren't necessarily retrieving the same chunks.</p>
+    <p>The Enricher might retrieve and use a client reference from Q4 2025. The Reviewer, doing its own retrieval pass, might retrieve a different (or contradictory) set of references. On three proposals, the Reviewer flagged the Enricher's client references as "unverified" — because the Reviewer's own retrieval hadn't surfaced the same reference. The Enricher had good data; the Reviewer just hadn't seen it.</p>
+    <p>The two agents were grounded in different subsets of the same knowledge base. Their outputs were internally consistent but externally inconsistent with each other.</p>
+  </div>
+
+  <div class="fix-card">
+    <div class="fix-label">Fix 03</div>
+    <h3>Shared retrieval: the Enricher fetches, the Reviewer reads from the same payload</h3>
+    <p>We changed the architecture so that the Enricher performs all knowledge base retrieval for a given proposal run. The retrieved chunks are included in the handoff payload under a <code>retrieved_context</code> key. The Reviewer reads from that same set of chunks — it does not perform its own retrieval pass.</p>
+    <p>This has two benefits: consistency (both agents operate from the same retrieved facts) and traceability (every run's behavior is reproducible from the same inputs). The retrieved context is logged as part of the run record, which means you can replay any past run exactly. This is the same principle that frameworks like <a href="https://python.langchain.com/docs/langgraph/" target="_blank" rel="noopener noreferrer">LangGraph</a> bake into their state model — a single shared state that flows through the graph, rather than each node fetching its own.</p>
+    <p>The Reviewer can still flag low-confidence references — but it's now flagging them because the retrieved context itself is weak, not because it pulled different context than the Enricher did.</p>
+  </div>
+
+  <h2>Failure Mode #4: Silent partial success — the run looked fine but wasn't</h2>
+
+  <div class="failure-card">
+    <div class="failure-label">Failure 04 / Phantom Success</div>
+    <h3>The pipeline reported success on runs where the Reviewer had quietly skipped scoring dimensions it couldn't evaluate</h3>
+    <p>The Reviewer was asked to score across five dimensions. When it couldn't confidently score a dimension — because the relevant section was missing, or the context was insufficient — it would assign a midpoint score (3 out of 5) and move on. It didn't flag this. It didn't raise an error. The run completed. The scorecard looked complete. The human reviewer would act on a 3/5 score in "competitive differentiation" not knowing that the agent had essentially abstained rather than evaluated.</p>
+    <p>This is a variant of the hallucination problem from <a href="/blog/case-study-thursday-agent-guardrails-lessons-2026/">our earlier case study</a> — but more subtle. The agent wasn't making things up; it was quietly defaulting to a neutral value when it lacked the information to score honestly. From the outside, the output looked complete and confident.</p>
+  </div>
+
+  <div class="fix-card">
+    <div class="fix-label">Fix 04</div>
+    <h3>Explicit abstention scores + confidence metadata on every dimension</h3>
+    <p>We updated the Reviewer's output schema to include, for each scoring dimension: a <code>score</code> (1–5), a <code>confidence</code> field (<code>"high"</code>, <code>"medium"</code>, <code>"low"</code>, or <code>"abstain"</code>), and a <code>rationale</code> string. The agent was re-prompted: "If you cannot evaluate a dimension with reasonable confidence, set confidence to 'abstain' and score to null. Do not guess. A visible abstention is more useful than a false midpoint score."</p>
+    <ul>
+      <li>Any dimension with <code>confidence: "abstain"</code> is highlighted in the human review queue with a visual indicator</li>
+      <li>A run with more than two abstentions on a single proposal is flagged as "incomplete review" and routed to a different queue for fuller human evaluation</li>
+      <li>The overall review report shows a "confidence distribution" — how many dimensions were scored at high, medium, low, or abstain — so reviewers can calibrate how much to trust the automated scorecard</li>
+    </ul>
+  </div>
+
+  <h2>The pattern underneath all four failures</h2>
+
+  <p>Looking back at all four, there's a single underlying cause: we designed the agents but we didn't design the interface between them.</p>
+
+  <p>Every software engineer knows that APIs have contracts — explicit definitions of what goes in, what comes out, what errors look like, and what the caller can rely on. We designed two agents without writing a contract between them. We assumed the prompts would keep both sides in sync. They didn't.</p>
+
+  <div class="callout">
+    <p><strong>The handoff is the product.</strong> In a single-agent system, you design the agent's behavior. In a multi-agent system, you design the agent's behavior <em>and</em> the contract between agents. If you only design the former, you'll spend your production debugging time on the latter.</p>
+  </div>
+
+  <p>The LangChain team's <a href="https://www.langchain.com/state-of-agent-engineering" target="_blank" rel="noopener noreferrer">2026 State of Agent Engineering report</a> surveyed 1,300+ practitioners and found that quality — not cost, not latency — is now the top barrier to production agent deployment, cited by 32% of respondents. Our experience maps directly to this. The quality problems that block production confidence aren't in the agents' individual performance. They're in the seams between components — the parts that don't show up in a single-agent benchmark.</p>
+
+  <h2>What the fixed pipeline actually looks like</h2>
+
+  <p>After retrofitting all four fixes, the pipeline has now been running in production for eight weeks. Here's how it's structured:</p>
+
+  <ol>
+    <li><strong>Retrieval step (pre-Enricher):</strong> A dedicated retrieval step pulls all relevant chunks from the knowledge base for this proposal. Output: a <code>retrieved_context</code> object with chunk IDs and text. This step runs once and its output flows through the entire pipeline.</li>
+    <li><strong>Enricher step:</strong> Agent 1 receives the draft, the client brief, and the <code>retrieved_context</code>. It produces an output conforming to the <code>EnricherOutput</code> Pydantic schema. Output is parsed and validated before proceeding. Parse failures go to an error queue.</li>
+    <li><strong>Handoff payload assembly:</strong> A deterministic step (no LLM) assembles the full handoff payload: enriched draft, gap list, enricher notes, original brief, retrieved context. This step is pure data transformation — it just structures what the Enricher produced plus the original inputs.</li>
+    <li><strong>Reviewer step:</strong> Agent 2 receives the assembled handoff payload. It produces a scorecard conforming to the <code>ReviewOutput</code> Pydantic schema, with per-dimension confidence levels. Abstentions are explicit fields, not nulls.</li>
+    <li><strong>Output routing:</strong> A deterministic routing step inspects the Reviewer's output and routes to the appropriate human queue: standard review, incomplete review (too many abstentions), or error review (schema validation failures).</li>
+  </ol>
+
+  <p>The observability layer is instrumented at every step, with particular attention to the handoff boundaries — input size, output size, schema parse result, and wall-clock time are logged at each transition. When something goes wrong, the trace immediately shows which step and which field caused the issue.</p>
+
+  <h2>The results</h2>
+
+  <div class="stat-row">
+    <div class="stat-box">
+      <div class="stat-num">~6 hrs</div>
+      <div class="stat-label">saved per proposal vs. full manual review</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">91%</div>
+      <div class="stat-label">of proposals clear human review in ≤ 45 min</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">0</div>
+      <div class="stat-label">silent partial-success failures in 8 weeks post-fix</div>
+    </div>
+  </div>
+
+  <p>The human reviewers now describe their job as "reviewing the agent's review" rather than doing the review themselves. On a typical proposal, they spend about 20–30 minutes checking the Reviewer's scorecard, reading the flagged gaps, and making a final call. The two-day cycle is gone. Complex proposals still need deeper human attention — but the routing step identifies those automatically.</p>
+
+  <p>The more important number: before the fixes, the team had lost confidence in the pipeline after the first two weeks of confusing outputs. After the fixes, confidence recovered and the team actually uses it now. A multi-agent system that works in theory but loses user trust in practice is not a working system.</p>
+
+  <h2>The handoff design checklist</h2>
+
+  <div class="checklist">
+    <h3>Multi-Agent Handoff Design Checklist</h3>
+    <ul>
+      <li>Define a typed state schema (Pydantic, TypeScript interface, or equivalent) before writing either agent's prompt — the schema is the contract</li>
+      <li>Parse and validate every agent output against the schema before passing it to the next agent — never pass raw LLM strings across agent boundaries</li>
+      <li>Schema validation failures route to an error queue, not the next step — a partial output is worse than a visible failure</li>
+      <li>The handoff payload includes not just the agent's output but its reasoning notes ("annotated handoff") — downstream agents shouldn't reverse-engineer upstream logic from output text</li>
+      <li>Shared retrieval: if multiple agents read from the same knowledge base, do the retrieval once and pass the chunks through the state — don't let each agent retrieve independently</li>
+      <li>Every scoring or evaluation output includes a confidence level per dimension — explicit abstention is always better than a false neutral score</li>
+      <li>Observability is instrumented at the seam, not just inside each agent — log input size, output size, schema parse result, and latency at every handoff boundary</li>
+      <li>A deterministic routing step (no LLM) handles the output dispatch — don't ask an agent to decide where its own output should go</li>
+      <li>The pipeline is tested with adversarial inputs: missing fields, wrong types, truncated outputs, and API timeouts at each step</li>
+      <li>Schema changes require a re-test pass against a regression set — you can't just update one agent's prompt without checking the downstream agent still reads the new structure correctly</li>
+    </ul>
+  </div>
+
+  <p>A note on frameworks: the patterns above work regardless of which agent framework you use. <a href="https://python.langchain.com/docs/langgraph/" target="_blank" rel="noopener noreferrer">LangGraph</a> makes some of this easier through its explicit shared state model and durable execution — failures can be replayed from exact stopping points rather than restarted from scratch, which is enormously useful for debugging handoff failures. <a href="https://www.crewai.com/" target="_blank" rel="noopener noreferrer">CrewAI</a> takes a different approach with role-based agents passing structured task outputs, which also enforces some of this discipline implicitly. But the underlying principle — define the contract, validate the boundary, instrument the seam — is framework-agnostic.</p>
+
+  <h2>What this means for your next multi-agent build</h2>
+
+  <p>If you're building a two-agent or multi-agent pipeline, here's the one thing to internalize before you write a single line of prompt: <strong>the hardest part will not be making each agent work — it will be making them work together.</strong></p>
+
+  <p>Individual agents are hard. But they're hard in ways that have well-understood fixes: better prompts, retrieval tuning, output constraints, evals. Multi-agent handoff failures are harder because they don't announce themselves. The run completes. The output looks plausible. The problems surface downstream — when a reviewer acts on a score the agent actually abstained on, when a gap list that should have been an array arrives as a string, when two agents operating on different retrieved context reach contradictory conclusions neither of them flags.</p>
+
+  <p>The investment is worth it. A well-designed two-agent pipeline can do things that no single agent can — parallel reasoning, specialized expertise, built-in self-review. But the investment is in the seam, not just the agents. Design the contract first. Build the schema before the prompts. Instrument the boundary as carefully as you instrument the steps.</p>
+
+  <p>Your human reviewers — the ones who have to trust the output — will thank you.</p>
+
+  <div class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+
+    <h3>What is an agent handoff in a multi-agent AI system?</h3>
+    <p>An agent handoff is the point where one AI agent passes its output to another agent as input. Unlike a simple function call, the handoff in a multi-agent system involves transferring not just data but context, reasoning state, and any retrieved information the downstream agent needs to continue the task. Poorly designed handoffs — where the output format or content doesn't match what the downstream agent expects — are one of the leading causes of quality failures in production multi-agent pipelines.</p>
+
+    <h3>Why do multi-agent AI systems fail at the handoff between agents?</h3>
+    <p>LLM outputs are non-deterministic, meaning the same prompt can produce slightly different output structures across runs — different field names, different nesting, different data types. If Agent A's output is Agent B's input and there's no enforced schema between them, format drift accumulates over time. Downstream agents adapt silently, filling gaps with defaults or assumptions rather than raising errors. The result is a pipeline that looks like it's working while producing quietly incorrect outputs.</p>
+
+    <h3>What is a typed state schema in the context of AI agent pipelines?</h3>
+    <p>A typed state schema (commonly implemented with Pydantic in Python or TypeScript interfaces in JS/TS) is a formal definition of the data structure that flows between agents in a pipeline. It specifies every field, its type, whether it's required or optional, and validation constraints. Agent outputs are parsed against the schema before being passed to the next agent — if the parse fails, the run stops and an error is logged rather than passing malformed data downstream. This is the most effective single fix for multi-agent format drift failures.</p>
+
+    <h3>What is the "annotated handoff" pattern for multi-agent AI systems?</h3>
+    <p>The annotated handoff is a pattern where the first agent passes not just its output but a structured summary of its reasoning and key decisions alongside the output data. For example, an Enricher agent might include a field like <code>enricher_notes</code> explaining which sections it strengthened and why. The downstream Reviewer agent can then evaluate the quality of the enrichment process, not just the final text — which produces more accurate and actionable reviews. It also significantly helps with debugging, since the upstream agent's reasoning is explicit rather than having to be reverse-engineered from the output.</p>
+
+    <h3>How should I instrument observability for a multi-agent AI pipeline?</h3>
+    <p>Standard agent observability (tracing LLM calls, logging token counts, timing steps) is necessary but not sufficient for multi-agent systems. You also need to instrument specifically at the handoff boundaries: log input size and output size at each agent boundary, record schema parse results (success/failure and which fields failed), and track per-dimension confidence levels if your agents produce scored outputs. Tools like <a href="https://smith.langchain.com/" target="_blank" rel="noopener noreferrer">LangSmith</a>, <a href="https://arize.com/" target="_blank" rel="noopener noreferrer">Arize Phoenix</a>, and <a href="https://braintrust.dev/" target="_blank" rel="noopener noreferrer">Braintrust</a> all support multi-step trace visualization; the goal is to make the seam between agents as visible as the agents themselves.</p>
+
+    <h3>Should multiple agents in a pipeline each retrieve from the knowledge base independently?</h3>
+    <p>Generally no — if multiple agents in a pipeline need to reason about the same set of facts, it's safer to retrieve once (typically before the first agent step) and pass the retrieved chunks as part of the shared state through the entire pipeline. Independent retrieval by each agent introduces divergent grounding: two agents may retrieve different subsets of the knowledge base and reach contradictory conclusions neither of them flags as inconsistent. Single-retrieval pipelines are also more reproducible, since the same inputs will produce the same retrieved context and therefore more consistent behavior across runs. See the <a href="https://python.langchain.com/docs/langgraph/" target="_blank" rel="noopener noreferrer">LangGraph documentation</a> on shared state for a framework-level implementation of this pattern.</p>
+  </div>
+
+  <div class="sources-section">
+    <h3>Sources</h3>
+    <ul>
+      <li><a href="https://www.langchain.com/state-of-agent-engineering" target="_blank" rel="noopener noreferrer">LangChain — State of Agent Engineering 2026 (survey of 1,300+ practitioners)</a></li>
+      <li><a href="https://aws.amazon.com/blogs/machine-learning/evaluating-ai-agents-real-world-lessons-from-building-agentic-systems-at-amazon/" target="_blank" rel="noopener noreferrer">AWS Blog — "Evaluating AI Agents: Real-world lessons from building agentic systems at Amazon," February 2026</a></li>
+      <li><a href="https://zircon.tech/blog/agentic-frameworks-in-2026-what-actually-works-in-production/" target="_blank" rel="noopener noreferrer">Zircon.tech — "Agentic Frameworks in 2026: What Actually Works in Production," February 2026</a></li>
+      <li><a href="https://python.langchain.com/docs/langgraph/" target="_blank" rel="noopener noreferrer">LangGraph Documentation — Graph API, shared state, and durable execution</a></li>
+      <li><a href="https://galileo.ai/blog/debug-ai-agents" target="_blank" rel="noopener noreferrer">Galileo — "How to Debug AI Agents: 10 Failure Modes + Fixes," October 2025</a></li>
+      <li><a href="https://bytebridge.medium.com/from-human-in-the-loop-to-human-on-the-loop-evolving-ai-agent-autonomy-c0ae62c3bf91" target="_blank" rel="noopener noreferrer">ByteBridge — "From Human-in-the-Loop to Human-on-the-Loop: Evolving AI Agent Autonomy," January 2026</a></li>
+    </ul>
+  </div>
+
+  <div class="cta-box">
+    <p>Designing a multi-agent pipeline and want to stress-test the seams before you hit production? That's exactly the kind of architecture review we do at Supergood Solutions. <a href="mailto:hello@supergood.solutions" style="color: var(--green);">Drop us a line</a> and let's map out your handoff contracts before the agents find the gaps for you.</p>
+  </div>
+</article>
+
+<footer>
+  <p>&copy; 2026 Supergood Solutions. Helping marketing teams automate smarter, not harder.</p>
+</footer>
+
+</body>
+</html>
