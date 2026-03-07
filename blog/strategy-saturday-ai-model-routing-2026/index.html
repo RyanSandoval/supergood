@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stop Using One Model for Everything: A Practical Guide to AI Model Routing — Supergood Solutions</title>
+<meta name="description" content="Your AI stack doesn't need a single best model — it needs a router. Here's the practical guide to routing requests across multiple LLMs by cost, capability, and compliance, with the real tooling that makes it work.">
+<link rel="canonical" href="https://supergood.solutions/blog/strategy-saturday-ai-model-routing-2026/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="author" content="Ryan Sandoval">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Stop Using One Model for Everything: A Practical Guide to AI Model Routing">
+<meta property="og:description" content="Your AI stack doesn't need a single best model — it needs a router. Here's the practical guide to routing requests across multiple LLMs by cost, capability, and compliance.">
+<meta property="og:url" content="https://supergood.solutions/blog/strategy-saturday-ai-model-routing-2026/">
+<meta property="og:image" content="https://supergood.solutions/og-image.png">
+<meta property="article:published_time" content="2026-03-07">
+<meta property="article:author" content="Ryan Sandoval">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Stop Using One Model for Everything: A Practical Guide to AI Model Routing">
+<meta name="twitter:description" content="Your AI stack doesn't need a single best model — it needs a router. Here's the practical guide to routing requests across multiple LLMs.">
+<meta name="twitter:image" content="https://supergood.solutions/og-image.png">
+
+<!-- Schema.org Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Stop Using One Model for Everything: A Practical Guide to AI Model Routing",
+  "description": "Your AI stack doesn't need a single best model — it needs a router. Here's the practical guide to routing requests across multiple LLMs by cost, capability, and compliance, with the real tooling that makes it work.",
+  "author": {
+    "@type": "Person",
+    "name": "Ryan Sandoval",
+    "url": "https://linkedin.com/in/RyanSandoval",
+    "jobTitle": "AI Automation Consultant",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Supergood Solutions"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Supergood Solutions",
+    "url": "https://supergood.solutions"
+  },
+  "datePublished": "2026-03-07",
+  "dateModified": "2026-03-07",
+  "mainEntityOfPage": "https://supergood.solutions/blog/strategy-saturday-ai-model-routing-2026/",
+  "keywords": ["AI model routing", "LLM routing", "multi-model AI", "AI gateway", "LiteLLM", "Portkey", "RouteLLM", "AI cost optimization", "agent ops", "AI production"]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #0a0a0b; --surface: #111113; --surface-2: #18181b; --border: #27272a;
+  --text: #fafafa; --text-2: #a1a1aa; --text-3: #71717a;
+  --green: #22c55e; --mono: 'JetBrains Mono', monospace;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+::selection { background: var(--green); color: var(--bg); }
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; background: rgba(10,10,11,0.8); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+nav .inner { max-width: 720px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
+.wordmark { font-weight: 800; font-size: 1.125rem; letter-spacing: -0.03em; color: var(--text); text-decoration: none; display: inline-flex; align-items: baseline; }
+.wordmark .oo-dot { display: inline-block; width: 0.45em; height: 0.45em; background: var(--green); border-radius: 50%; }
+.wordmark .oo-wrap { display: inline-flex; gap: 2px; align-items: center; }
+.wordmark .dot-period { color: var(--green); }
+nav a.back { font-size: 0.875rem; color: var(--text-3); text-decoration: none; }
+nav a.back:hover { color: var(--text); }
+
+article { max-width: 720px; margin: 0 auto; padding: 140px 24px 80px; }
+article .tag { font-family: var(--mono); font-size: 0.6875rem; color: var(--green); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; }
+article h1 { font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px; }
+article .subtitle { font-size: 1.25rem; color: var(--text-2); line-height: 1.6; margin-bottom: 24px; }
+article .meta { font-family: var(--mono); font-size: 0.75rem; color: var(--text-3); margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+article h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin: 56px 0 16px; }
+article h3 { font-size: 1.125rem; font-weight: 600; margin: 40px 0 12px; }
+article p { font-size: 1rem; color: var(--text-2); margin-bottom: 20px; }
+article strong { color: var(--text); }
+article ul, article ol { color: var(--text-2); margin-bottom: 20px; padding-left: 24px; }
+article li { margin-bottom: 8px; }
+article a { color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
+article a:hover { color: var(--text); }
+.tl-dr { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--green); border-radius: 8px; padding: 24px 28px; margin: 32px 0 48px; }
+.tl-dr .label { font-family: var(--mono); font-size: 0.6875rem; color: var(--green); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; }
+.tl-dr p { margin-bottom: 0; font-size: 0.9375rem; }
+.callout { background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 20px 24px; margin: 24px 0; }
+.callout p { margin-bottom: 0; font-size: 0.9375rem; }
+.routing-table { width: 100%; border-collapse: collapse; margin: 24px 0 32px; font-size: 0.875rem; }
+.routing-table th { font-family: var(--mono); font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-3); padding: 10px 14px; border-bottom: 1px solid var(--border); text-align: left; }
+.routing-table td { padding: 12px 14px; border-bottom: 1px solid var(--border); color: var(--text-2); vertical-align: top; }
+.routing-table tr:last-child td { border-bottom: none; }
+.routing-table td:first-child { color: var(--text); font-weight: 500; }
+.cta-box { border: 2px solid var(--green); border-radius: 12px; padding: 40px; margin: 48px 0; text-align: center; background: var(--surface); }
+.cta-box p { font-size: 0.9375rem; color: var(--text); margin-bottom: 0; font-style: italic; }
+.sources-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
+.sources-section h3 { font-size: 1rem; font-weight: 600; margin-bottom: 12px; color: var(--text); }
+.sources-section ul { list-style: none; padding: 0; }
+.sources-section li { margin-bottom: 8px; font-size: 0.875rem; }
+.faq-section { margin-top: 64px; padding-top: 40px; border-top: 1px solid var(--border); }
+.faq-section > h2 { margin-top: 0; }
+footer { background: var(--surface); padding: 40px 0; margin-top: 80px; border-top: 1px solid var(--border); text-align: center; }
+footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
+@media (max-width: 768px) {
+  article { padding: 120px 20px 60px; }
+  article h1 { font-size: 2rem; }
+  nav .inner { padding: 0 20px; }
+  .routing-table { font-size: 0.8125rem; }
+  .routing-table th, .routing-table td { padding: 8px 10px; }
+}
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="inner">
+    <a href="/" class="wordmark">superg<span class="oo-wrap"><span class="oo-dot"></span><span class="oo-dot"></span></span>d<span class="dot-period">.</span></a>
+    <a href="/blog/" class="back">← All posts</a>
+  </div>
+</nav>
+
+<article>
+  <div class="tag">Strategy Saturday · AI Tooling</div>
+  <h1>Stop Using One Model for Everything: A Practical Guide to AI Model Routing</h1>
+  <p class="subtitle">Your AI stack doesn't need a single "best" model — it needs a router. Here's how to intelligently dispatch requests across multiple LLMs based on cost, complexity, and compliance, without rebuilding your stack every time a better model ships.</p>
+  <div class="meta">Published March 7, 2026 — 10 min read</div>
+
+  <div class="tl-dr">
+    <div class="label">TL;DR</div>
+    <p>Most teams send every AI request to one premium model, then complain about the bill. Model routing — automatically dispatching each request to the most appropriate LLM based on complexity, cost, and latency requirements — can cut token costs by 30–70% while maintaining quality. <strong>IDC forecasts that by 2028, 70% of top AI-driven enterprises will use multi-model routing architectures.</strong> The tooling to do this today is mature: <a href="https://docs.litellm.ai/docs/routing">LiteLLM</a>, <a href="https://portkey.ai">Portkey</a>, <a href="https://github.com/lm-sys/RouteLLM">RouteLLM</a>, and <a href="https://github.com/Not-Diamond/awesome-ai-model-routing">Not-Diamond</a> all ship production-ready routing. The catch is that routing adds a new layer of complexity — and if you don't instrument it properly, you'll create new failure modes faster than you fix old ones.</p>
+  </div>
+
+  <h2>The One-Model Trap</h2>
+
+  <p>When teams first ship an AI feature, they pick a model, wire it in, and ship. It works. Then the bill comes. Then the model gets deprecated. Then a new capability they need only exists in a different provider's API. Then a compliance requirement shows up saying certain data can't leave a specific cloud region.</p>
+
+  <p>By the time most teams realize they need flexibility, they've hardcoded model names across dozens of call sites. Switching anything requires a project.</p>
+
+  <p>The root problem is that <strong>no single model is optimal for every request</strong>. A simple "summarize this paragraph" task doesn't need the same model as a multi-step reasoning pipeline that writes and validates a financial analysis. Treating them the same way burns money and creates unnecessary latency.</p>
+
+  <p>The answer isn't to find a better single model. It's to build a routing layer — a traffic controller that looks at each incoming request and dispatches it to the right model for that specific job.</p>
+
+  <h2>Why Model Routing Is Now a First-Class Architecture Decision</h2>
+
+  <p>Two years ago, routing was a nice-to-have. Now it's structural. A few forces are converging:</p>
+
+  <ul>
+    <li><strong>The model landscape exploded.</strong> You no longer have three viable options. You have GPT-5 variants, Claude Sonnet/Opus/Haiku, Gemini Pro/Flash/Nano, DeepSeek R2, Llama 4, Mistral, and dozens of fine-tuned vertical models. Each has a different cost profile, latency, and capability ceiling.</li>
+    <li><strong>Reasoning tokens are expensive.</strong> Chain-of-thought and extended thinking modes can inflate your monthly token bill by 3x on the same query volume, according to <a href="https://www.companyofagents.ai/blog/en/ai-agent-roi-failure-2026-guide">Company of Agents' 2026 analysis</a>. If your agent uses a reasoning model for tasks that don't need it, you're paying a premium for nothing.</li>
+    <li><strong>Enterprise LLM spend is real money now.</strong> Enterprise LLM spending hit $8.4 billion in the first half of 2025, with nearly 40% of enterprises spending over $250,000 annually on language models. At that scale, a 30% reduction through intelligent routing saves $75,000+ per year.</li>
+    <li><strong>Compliance requirements are fragmenting the landscape.</strong> Data sovereignty rules increasingly require that certain request types stay within specific cloud regions or on-premise deployments. A routing layer is how you enforce that without writing custom logic into every feature.</li>
+  </ul>
+
+  <p><a href="https://www.idc.com/resource-center/blog/the-future-of-ai-is-model-routing/">IDC's 2026 AI and Automation FutureScape</a> puts it plainly: by 2028, 70% of top AI-driven enterprises will use advanced multi-tool architectures to dynamically and autonomously manage model routing across diverse models. The teams building this now are getting ahead of a structural shift that's coming regardless.</p>
+
+  <h2>Three Routing Strategies (and When to Use Each)</h2>
+
+  <h3>1. Rule-Based Routing</h3>
+
+  <p>The simplest approach: write explicit conditions that map request characteristics to models. Short prompt + no tool use → lightweight model. Long context + structured output requirement → capable model. Contains financial data → on-premise or compliant-region model only.</p>
+
+  <p>Rule-based routing is fast to implement and easy to audit. The downside is brittleness — conditions need to be maintained as your use cases evolve, and they don't generalize well to novel request types.</p>
+
+  <p><strong>Best for:</strong> Teams just starting with routing. High-compliance environments where behavior must be deterministic and auditable. Stable workflows with well-understood request types.</p>
+
+  <h3>2. Semantic Routing</h3>
+
+  <p>Instead of matching on surface features, semantic routing embeds the incoming request and compares it against a set of pre-defined route definitions using vector similarity. A request semantically close to "generate code" gets routed differently than one close to "summarize legal document," even if neither matches a keyword rule exactly.</p>
+
+  <p><a href="https://docs.litellm.ai/docs/proxy/auto_routing">LiteLLM's auto-routing</a> uses an embedding model to semantically match input against utterances you define in a YAML config. This is more flexible than keyword rules and handles ambiguous requests better — but it adds an extra embedding call per request, and the route definitions still need human curation.</p>
+
+  <p><strong>Best for:</strong> Varied request types within a defined domain. Teams that can invest time in defining route categories. Workflows where "close enough" routing is acceptable and performance can be measured against ground truth.</p>
+
+  <h3>3. ML-Based Routing</h3>
+
+  <p>The most sophisticated approach: train a small classifier (or use a pre-trained routing model) that predicts which model will produce the best outcome for a given request, based on historical performance data. The router learns from your actual usage — which model got better evals, which finished faster, which cost less for equivalent quality.</p>
+
+  <p><strong>RouteLLM</strong> (from LMSYS, the group behind Chatbot Arena) is an open-source framework for this. Their research showed that trained routing models can <a href="https://github.com/lm-sys/RouteLLM">reduce calls to expensive frontier models by 40–75% with minimal quality degradation</a> on standard benchmarks. <strong>Not-Diamond</strong> takes a similar approach with a managed service layer — their router is trained on real model performance data and claims up to 30% cost reduction without writing a single routing rule yourself.</p>
+
+  <p><strong>Best for:</strong> Teams with sufficient request volume to generate training data. Workflows where quality is measurable and you can close the feedback loop. Production systems where you're willing to invest in routing infrastructure as a first-class component.</p>
+
+  <div class="callout">
+    <p><strong>Practical note:</strong> Most teams start with rule-based routing and evolve toward semantic or ML-based as complexity grows. Don't over-engineer the routing layer before you've shipped — a simple YAML config with three tiers (lightweight / standard / capable) beats a fancy ML router you haven't tuned yet.</p>
+  </div>
+
+  <h2>The Fallback Chain: Your Safety Net</h2>
+
+  <p>Routing doesn't eliminate provider failures — it makes handling them systematic. A fallback chain defines what happens when a model is unavailable, rate-limited, or returns an error: automatically retry with the next model in the chain.</p>
+
+  <p><a href="https://docs.litellm.ai/docs/routing-load-balancing">LiteLLM's routing-load-balancing documentation</a> covers this well: you define a priority order of models, and the router tries them in sequence on failure. LiteLLM uses Redis to track cooldown state across deployments, so a model that just hit a rate limit doesn't keep getting hammered.</p>
+
+  <p>A production fallback chain for a typical ops workflow might look like this:</p>
+
+  <ul>
+    <li><strong>Primary:</strong> Gemini Flash (fast, cheap, handles most requests)</li>
+    <li><strong>Fallback 1:</strong> Claude Haiku (different provider, same cost tier)</li>
+    <li><strong>Fallback 2:</strong> GPT-4o Mini (third provider, still affordable)</li>
+    <li><strong>Escalation:</strong> Claude Sonnet or GPT-4o (only if the request is complex enough to warrant it)</li>
+  </ul>
+
+  <p>The escalation threshold is the key design decision. Too aggressive, and you'll route complex requests to cheap models that hallucinate. Too conservative, and you've rebuilt the one-model-for-everything problem.</p>
+
+  <h2>The Tooling Landscape</h2>
+
+  <table class="routing-table">
+    <thead>
+      <tr>
+        <th>Tool</th>
+        <th>Routing Type</th>
+        <th>Best Fit</th>
+        <th>Trade-offs</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="https://docs.litellm.ai/docs/routing">LiteLLM</a></td>
+        <td>Rule-based + semantic + load balancing</td>
+        <td>Python-native teams who want full control</td>
+        <td>Most flexible; highest setup overhead. Self-hosted.</td>
+      </tr>
+      <tr>
+        <td><a href="https://portkey.ai">Portkey</a></td>
+        <td>Rule-based + semantic + gateway-level routing</td>
+        <td>Teams wanting routing + observability + guardrails in one layer</td>
+        <td>Managed service. Adds a dependency; excellent dashboard.</td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/lm-sys/RouteLLM">RouteLLM</a></td>
+        <td>ML-based (trained classifier)</td>
+        <td>Teams with volume who want to minimize frontier model usage</td>
+        <td>Open-source, research-grade. Needs training data to tune.</td>
+      </tr>
+      <tr>
+        <td><a href="https://www.notdiamond.ai">Not-Diamond</a></td>
+        <td>ML-based (managed, pre-trained)</td>
+        <td>Teams that want ML routing without training infrastructure</td>
+        <td>Managed API. Less customizable than RouteLLM.</td>
+      </tr>
+      <tr>
+        <td><a href="https://www.helicone.ai">Helicone</a></td>
+        <td>Rule-based + load balancing</td>
+        <td>Observability-first teams; Rust-based performance</td>
+        <td>11 µs overhead. Better as observability gateway than pure router.</td>
+      </tr>
+      <tr>
+        <td><a href="https://developers.cloudflare.com/ai-gateway/">Cloudflare AI Gateway</a></td>
+        <td>Rule-based + caching + rate limiting</td>
+        <td>Edge-deployed apps; low-latency global routing</td>
+        <td>Best for latency optimization; less sophisticated on routing logic.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Compliance and Data Sovereignty Routing</h2>
+
+  <p>This is the routing use case that non-technical stakeholders care most about — and it's frequently underbuilt.</p>
+
+  <p>Enterprises handling regulated data (healthcare, financial, legal) increasingly need guarantees that specific request types don't transit certain networks or get processed by models hosted in non-compliant regions. A routing layer is the enforcement point for these policies.</p>
+
+  <p>Practically, this means adding metadata to requests — a "data classification" field on each request that the router reads and uses to enforce model selection rules. A request tagged <code>contains-PII</code> routes to an on-premise model or a provider with a signed DPA. An untagged request gets the normal cost-optimized path.</p>
+
+  <p>Portkey supports this natively through its gateway config. LiteLLM supports it through custom routing callbacks. If you're building compliance routing from scratch, treat the classification tag as a first-class input, not an afterthought.</p>
+
+  <h2>What Good Routing Instrumentation Looks Like</h2>
+
+  <p>A routing layer you can't observe is just a black box you added to your stack. At minimum, instrument these signals:</p>
+
+  <ul>
+    <li><strong>Route distribution</strong> — what percentage of requests are going to each model? If 90% are hitting your expensive frontier model, your routing rules aren't doing their job.</li>
+    <li><strong>Fallback rate</strong> — how often is the primary model unavailable or erroring? A rising fallback rate is an early signal of provider instability.</li>
+    <li><strong>Quality delta by route</strong> — are requests routed to cheaper models producing measurably worse outputs? Use your eval framework to track this separately per route.</li>
+    <li><strong>Cost per request by route</strong> — not just aggregate token cost, but the per-route breakdown. This is how you find routes that are routing wrong.</li>
+    <li><strong>Latency by model</strong> — the fastest model isn't always the cheapest, and vice versa. Track both.</li>
+  </ul>
+
+  <p>This connects directly to the AgentOps observability stack covered in last week's <a href="/blog/tech-tuesday-agentops-observability-2026/">Tech Tuesday post</a> — routing metrics should flow into the same tracing infrastructure as the rest of your agent pipeline.</p>
+
+  <h2>The Decision Tree: Do You Need a Router Yet?</h2>
+
+  <p>Not every team needs a routing layer on day one. Here's a simple filter:</p>
+
+  <ul>
+    <li><strong>Monthly LLM spend &lt; $500:</strong> Probably don't need one yet. Pick one model, ship, optimize later.</li>
+    <li><strong>Monthly LLM spend $500–$5,000:</strong> Rule-based routing is likely worth the 1-2 days of setup. A simple three-tier config (lightweight / standard / capable) will pay for itself quickly.</li>
+    <li><strong>Monthly LLM spend &gt; $5,000 or compliance requirements:</strong> Invest properly in the routing layer. ML-based routing or a managed gateway (Portkey, Not-Diamond) is worth evaluating alongside LiteLLM self-hosted.</li>
+    <li><strong>Multi-agent architecture:</strong> You already need routing — different agents in your pipeline have different model requirements. Build the router before you wire up the agents.</li>
+  </ul>
+
+  <h2>The Bottom Line</h2>
+
+  <p>The "best model" debate is the wrong frame. Different requests need different models, and the teams that recognize this early build AI infrastructure that stays cost-effective and resilient as the model landscape keeps shifting.</p>
+
+  <p>Start simple: a three-tier rule-based setup with LiteLLM or Portkey, a fallback chain across two providers, and instrumentation on route distribution and fallback rate. That alone will expose 80% of the optimization opportunities in most stacks.</p>
+
+  <p>Then, once you have volume and measurement, look at semantic or ML-based routing for the next level of precision. The infrastructure is there. The question is just whether you've built the observability foundation to use it well.</p>
+
+  <!-- FAQ Section -->
+  <div class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+
+    <h3>What is AI model routing and why does it matter in 2026?</h3>
+    <p>AI model routing is the practice of automatically dispatching each AI request to the most appropriate language model based on factors like task complexity, cost, latency requirements, and compliance constraints — rather than sending everything to a single model. It matters because the modern AI landscape offers dozens of viable models with very different cost and capability profiles, and using the same premium model for every request wastes money without improving quality. <a href="https://www.idc.com/resource-center/blog/the-future-of-ai-is-model-routing/">IDC forecasts</a> that 70% of top AI-driven enterprises will use multi-model routing architectures by 2028.</p>
+
+    <h3>How much can AI model routing actually reduce LLM costs?</h3>
+    <p>Organizations using model routers commonly report 30–70% cost reductions while maintaining output quality, according to practical benchmarks from routing tool vendors like MindStudio and Portkey. For specific workloads where lightweight models handle the majority of requests, some teams achieve up to 98% cost reduction on that request category. A customer support chatbot handling 100,000 daily requests that routes 80% of queries to cheaper models can drop from ~$4,500 to ~$1,500 per month — even with the routing overhead.</p>
+
+    <h3>What is the difference between LiteLLM and Portkey for model routing?</h3>
+    <p><a href="https://docs.litellm.ai/docs/routing">LiteLLM</a> is an open-source, self-hosted Python proxy that provides load balancing, semantic routing, and fallback chains across 100+ LLM providers — it gives maximum flexibility but requires more setup and ops overhead. <a href="https://portkey.ai">Portkey</a> is a managed service that combines routing with observability, guardrails, and prompt management in one platform — it's faster to get started and has a strong dashboard, but it introduces a vendor dependency. Both are production-ready; the choice depends on whether your team prefers full control (LiteLLM) or an integrated managed layer (Portkey).</p>
+
+    <h3>How do I handle compliance requirements in an AI model routing setup?</h3>
+    <p>Compliance routing works by attaching a data classification tag to each AI request — for example, <code>contains-PII</code> or <code>regulated-financial-data</code> — and writing routing rules that enforce which models are allowed to process each classification. Requests tagged as sensitive are forced to on-premise deployments or providers with signed DPAs, while untagged requests follow the normal cost-optimized path. Both Portkey and LiteLLM support this pattern natively; the critical design principle is to treat the classification tag as a first-class routing input, not metadata you add later.</p>
+
+    <h3>When should I use ML-based routing vs. rule-based routing?</h3>
+    <p>Rule-based routing is the right starting point for most teams — it's fast to implement, easy to audit, and deterministic. ML-based routing (tools like <a href="https://github.com/lm-sys/RouteLLM">RouteLLM</a> or <a href="https://www.notdiamond.ai">Not-Diamond</a>) makes sense once you have sufficient request volume to generate useful training data and a quality measurement system to close the feedback loop. LMSYS's RouteLLM research demonstrates that trained routing classifiers can reduce frontier model calls by 40–75% with minimal quality degradation — but only if you have the infrastructure to train, evaluate, and continuously update the routing model.</p>
+
+    <h3>What metrics should I track for a production AI model routing layer?</h3>
+    <p>The five core routing metrics are: route distribution (what percentage of requests hit each model), fallback rate (how often the primary model fails or rate-limits), quality delta by route (are cheaper routes producing measurably worse outputs), cost per request by route (finding routes that are routing wrong), and latency per model (since fastest and cheapest don't always align). These metrics should feed into the same observability stack as the rest of your agent pipeline — this post's companion piece on <a href="/blog/tech-tuesday-agentops-observability-2026/">AgentOps observability</a> covers the tracing infrastructure in more detail.</p>
+  </div>
+
+  <div class="sources-section">
+    <h3>Sources:</h3>
+    <ul>
+      <li><a href="https://www.idc.com/resource-center/blog/the-future-of-ai-is-model-routing/">IDC: "The Future of AI Is Model Routing" (December 2025)</a></li>
+      <li><a href="https://www.mindstudio.ai/blog/what-is-ai-model-router-optimize-cost-llm-providers">MindStudio: "What Is an AI Model Router? Optimize Cost Across LLM Providers"</a></li>
+      <li><a href="https://docs.litellm.ai/docs/routing">LiteLLM Routing &amp; Load Balancing Documentation</a></li>
+      <li><a href="https://docs.litellm.ai/docs/proxy/auto_routing">LiteLLM Auto Routing (Semantic Routing)</a></li>
+      <li><a href="https://github.com/lm-sys/RouteLLM">RouteLLM — LMSYS Open-Source Model Routing Framework</a></li>
+      <li><a href="https://github.com/Not-Diamond/awesome-ai-model-routing">Not-Diamond: Awesome AI Model Routing (curated list)</a></li>
+      <li><a href="https://portkey.ai/buyers-guide/ai-gateway-solutions">Portkey: Best AI Gateway Solutions Guide</a></li>
+      <li><a href="https://www.helicone.ai/blog/top-llm-gateways-comparison-2025">Helicone: Top LLM Gateways Comparison 2025</a></li>
+      <li><a href="https://www.companyofagents.ai/blog/en/ai-agent-roi-failure-2026-guide">Company of Agents: "AI Agent ROI in 2026: Avoiding the 40% Failure Rate"</a></li>
+      <li><a href="https://machinelearningmastery.com/7-agentic-ai-trends-to-watch-in-2026/">MachineLearningMastery: "7 Agentic AI Trends to Watch in 2026"</a></li>
+    </ul>
+  </div>
+
+  <div class="cta-box">
+    <p>Building a multi-model AI stack and not sure where to start with routing? <a href="mailto:ryan@supergood.solutions">Drop me a note</a> — happy to talk through your use case and help you design a routing layer that doesn't become its own maintenance burden.</p>
+  </div>
+</article>
+
+<footer>
+  <p>&copy; 2026 Supergood Solutions. Helping marketing teams automate smarter, not harder.</p>
+</footer>
+
+</body>
+</html>
