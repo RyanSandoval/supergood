@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>When Agents Fail: Retry Logic, Circuit Breakers, and Dead Letter Queues for AI Pipelines — Supergood Solutions</title>
+<meta name="description" content="Your AI agents will fail. The question is whether your system fails with them. Here's a vendor-neutral guide to retry patterns, circuit breakers, dead letter queues, and idempotency for production agentic pipelines.">
+<link rel="canonical" href="https://supergood.solutions/blog/systems-sunday-agent-failure-recovery-2026/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="author" content="Ryan Sandoval">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="When Agents Fail: Retry Logic, Circuit Breakers, and Dead Letter Queues for AI Pipelines">
+<meta property="og:description" content="Your AI agents will fail. The question is whether your system fails with them. Here's a vendor-neutral guide to retry patterns, circuit breakers, dead letter queues, and idempotency for production agentic pipelines.">
+<meta property="og:url" content="https://supergood.solutions/blog/systems-sunday-agent-failure-recovery-2026/">
+<meta property="og:image" content="https://supergood.solutions/og-image.png">
+<meta property="article:published_time" content="2026-03-08">
+<meta property="article:author" content="Ryan Sandoval">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="When Agents Fail: Retry Logic, Circuit Breakers, and Dead Letter Queues for AI Pipelines">
+<meta name="twitter:description" content="Your AI agents will fail. The question is whether your system fails with them. Here's a vendor-neutral guide to retry patterns, circuit breakers, dead letter queues, and idempotency for production agentic pipelines.">
+<meta name="twitter:image" content="https://supergood.solutions/og-image.png">
+
+<!-- Schema.org Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "When Agents Fail: Retry Logic, Circuit Breakers, and Dead Letter Queues for AI Pipelines",
+  "description": "Your AI agents will fail. The question is whether your system fails with them. Here's a vendor-neutral guide to retry patterns, circuit breakers, dead letter queues, and idempotency for production agentic pipelines.",
+  "author": {
+    "@type": "Person",
+    "name": "Ryan Sandoval",
+    "url": "https://linkedin.com/in/RyanSandoval",
+    "jobTitle": "AI Automation Consultant",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Supergood Solutions"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Supergood Solutions",
+    "url": "https://supergood.solutions"
+  },
+  "datePublished": "2026-03-08",
+  "dateModified": "2026-03-08",
+  "mainEntityOfPage": "https://supergood.solutions/blog/systems-sunday-agent-failure-recovery-2026/",
+  "keywords": ["AI agents", "retry logic", "circuit breaker", "dead letter queue", "agent reliability", "agentic AI", "AI ops", "error recovery", "idempotency", "production AI"]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #0a0a0b; --surface: #111113; --surface-2: #18181b; --border: #27272a;
+  --text: #fafafa; --text-2: #a1a1aa; --text-3: #71717a;
+  --green: #22c55e; --mono: 'JetBrains Mono', monospace;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+::selection { background: var(--green); color: var(--bg); }
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; background: rgba(10,10,11,0.8); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+nav .inner { max-width: 720px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
+.wordmark { font-weight: 800; font-size: 1.125rem; letter-spacing: -0.03em; color: var(--text); text-decoration: none; display: inline-flex; align-items: baseline; }
+.wordmark .oo-dot { display: inline-block; width: 0.45em; height: 0.45em; background: var(--green); border-radius: 50%; }
+.wordmark .oo-wrap { display: inline-flex; gap: 2px; align-items: center; }
+.wordmark .dot-period { color: var(--green); }
+nav a.back { font-size: 0.875rem; color: var(--text-3); text-decoration: none; }
+nav a.back:hover { color: var(--text); }
+
+article { max-width: 720px; margin: 0 auto; padding: 140px 24px 80px; }
+article .tag { font-family: var(--mono); font-size: 0.6875rem; color: var(--green); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; }
+article h1 { font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px; }
+article .subtitle { font-size: 1.25rem; color: var(--text-2); line-height: 1.6; margin-bottom: 24px; }
+article .meta { font-family: var(--mono); font-size: 0.75rem; color: var(--text-3); margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+article h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin: 56px 0 16px; }
+article h3 { font-size: 1.125rem; font-weight: 600; margin: 40px 0 12px; }
+article p { font-size: 1rem; color: var(--text-2); margin-bottom: 20px; }
+article strong { color: var(--text); }
+article ul, article ol { color: var(--text-2); margin-bottom: 20px; padding-left: 24px; }
+article li { margin-bottom: 8px; }
+article a { color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
+article a:hover { color: var(--text); }
+article code { font-family: var(--mono); font-size: 0.875em; background: var(--surface-2); padding: 2px 6px; border-radius: 4px; color: var(--green); }
+
+.tldr-box { border: 1px solid var(--border); border-left: 3px solid var(--green); border-radius: 8px; padding: 24px 28px; margin: 32px 0 48px; background: var(--surface); }
+.tldr-box .tldr-label { font-family: var(--mono); font-size: 0.6875rem; color: var(--green); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
+.tldr-box p { margin-bottom: 10px; font-size: 0.9375rem; color: var(--text-2); }
+.tldr-box p:last-child { margin-bottom: 0; }
+
+.callout { border: 1px solid var(--border); border-radius: 8px; padding: 20px 24px; margin: 28px 0; background: var(--surface-2); }
+.callout p { margin: 0; font-size: 0.9375rem; }
+
+.cta-box { border: 2px solid var(--green); border-radius: 12px; padding: 40px; margin: 48px 0; text-align: center; background: var(--surface); }
+.cta-box p { font-size: 0.9375rem; color: var(--text); margin-bottom: 0; font-style: italic; }
+
+.sources-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
+.sources-section h3 { font-size: 1rem; font-weight: 600; margin-bottom: 12px; color: var(--text); }
+.sources-section ul { list-style: none; padding: 0; }
+.sources-section li { margin-bottom: 8px; font-size: 0.875rem; }
+
+.faq-section { margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--border); }
+.faq-section > h2 { margin-top: 0; }
+
+footer { background: var(--surface); padding: 40px 0; margin-top: 80px; border-top: 1px solid var(--border); text-align: center; }
+footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
+
+@media (max-width: 768px) {
+  article { padding: 120px 20px 60px; }
+  article h1 { font-size: 2rem; }
+  nav .inner { padding: 0 20px; }
+}
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="inner">
+    <a href="/" class="wordmark">superg<span class="oo-wrap"><span class="oo-dot"></span><span class="oo-dot"></span></span>d<span class="dot-period">.</span></a>
+    <a href="/blog/" class="back">← All posts</a>
+  </div>
+</nav>
+
+<article>
+  <div class="tag">Systems Sunday · Agent Reliability</div>
+  <h1>When Agents Fail: Retry Logic, Circuit Breakers, and Dead Letter Queues for AI Pipelines</h1>
+  <p class="subtitle">Your AI agents will fail. The question is whether your <em>system</em> fails with them. Here's a vendor-neutral guide to the four patterns that keep production agentic pipelines resilient when things go sideways.</p>
+  <div class="meta">Published March 8, 2026 — 10 min read</div>
+
+  <p>Here's the scenario: your content enrichment pipeline ran fine in staging. It ran fine in the first two weeks of production. Then on a Tuesday at 3 AM, the external API it depends on returned a 503 for eight minutes. Your agent didn't retry. It didn't log anything useful. It silently dropped 140 records and moved on. You found out four days later when someone noticed the CRM gaps.</p>
+
+  <p>This isn't a rare edge case. It's the default behavior of most agent pipelines that were built fast — which is most of them. The question isn't <em>whether</em> your agents will encounter failures. They will. The question is whether your system is designed to survive them.</p>
+
+  <p>This post covers the four systems-level patterns every production agentic pipeline should implement: retry logic with backoff, circuit breakers, dead letter queues, and idempotency. All vendor-neutral. All applicable regardless of what orchestration tool or LLM provider you're using.</p>
+
+  <div class="tldr-box">
+    <div class="tldr-label">TL;DR</div>
+    <p>AI agent failures are not exceptional events — they're expected outcomes in any distributed system, and they compound fast in multi-agent pipelines. A 98% per-agent success rate across five sequential agents produces only ~90% end-to-end reliability without fault tolerance.</p>
+    <p>The four patterns that fix this are: <strong>exponential backoff with jitter</strong> (for transient failures), <strong>circuit breakers</strong> (to stop hammering a degraded service), <strong>dead letter queues</strong> (to capture failed tasks for human review), and <strong>idempotent agent actions</strong> (so safe retries don't cause duplicate side effects).</p>
+    <p>None of these require a specific vendor or framework. You can implement a working version of all four this week using whatever stack you're already running. The teams that do this before their first incident aren't just more reliable — they're significantly cheaper to operate at scale.</p>
+  </div>
+
+  <h2>The math nobody wants to look at</h2>
+
+  <p>Before getting into the patterns, it's worth understanding <em>why</em> this matters more for AI pipelines than for traditional software. The short version: probabilities compound.</p>
+
+  <p>If each agent in your pipeline has a 98% success rate per task — which is pretty good — a five-agent chain has an end-to-end success rate of roughly 90%. That's not a rounding error. That's one in ten workflows failing in ways that may not be immediately visible. As O'Reilly's recent analysis of multi-agent system reliability puts it: <em>"Once agents are wired together without validation boundaries, risk compounds. Even strong models with a 98% per-agent success rate can quickly degrade overall system success to 90% or lower."</em> (<a href="https://www.oreilly.com/radar/the-hidden-cost-of-agentic-failure/">O'Reilly Radar, Feb 2026</a>)</p>
+
+  <p>The typical response to this observation is "our agents are more reliable than 98%." Maybe. But that calculation also ignores the transient infrastructure failures that affect every agent: rate limit hits, network blips, upstream API timeouts, and malformed outputs that break downstream schema expectations. These failures don't show up in model benchmarks. They show up in production at 3 AM.</p>
+
+  <p>The good news is that all of these failure modes are solvable — not by making agents smarter, but by building systems around them that absorb and recover from failure gracefully. That's what the following four patterns do.</p>
+
+  <h2>Pattern 1: Retry with exponential backoff and jitter</h2>
+
+  <p>The most common agent failure type is transient: a rate limit, a timeout, a momentary service hiccup. The right response to a transient failure is to wait and try again — but not immediately, and not in a way that hammers the failing service and makes things worse.</p>
+
+  <p><strong>Exponential backoff</strong> means each retry waits progressively longer than the last. A common starting configuration for AI API calls in 2026 is a base delay of 0.5 seconds, a multiplier of 2.0, and a maximum wait of 30 seconds — so retries happen at roughly 0.5s, 1s, 2s, 4s, 8s, 16s, 30s before giving up. (<a href="https://dasroot.net/posts/2026/02/implementing-retry-timeout-strategies-ai-apis/">dasroot.net, Feb 2026</a>)</p>
+
+  <p><strong>Jitter</strong> adds a small random offset to each delay. This is critical when multiple agent instances are running in parallel: without jitter, they all retry at the exact same moment, which is a thundering herd problem that makes the service failure worse. With jitter, retries spread out across a window and the load distributes naturally.</p>
+
+  <p>What to configure per retry attempt:</p>
+  <ul>
+    <li><strong>Max retries:</strong> 3–5 for most agent tasks. More than 5 is usually a sign the failure isn't transient.</li>
+    <li><strong>Retry-eligible errors:</strong> 429 (rate limit), 503 (service unavailable), 504 (gateway timeout), network errors. Do <em>not</em> retry 400-level client errors like 400 (bad request) or 401 (auth failure) — those won't resolve on retry.</li>
+    <li><strong>Timeout per attempt:</strong> Set explicit per-call timeouts. A hung agent waiting indefinitely for an LLM response will block your entire pipeline. 30–60 seconds per LLM call is a reasonable starting point; adjust for your task type.</li>
+    <li><strong>What to log:</strong> Each retry attempt should log the error type, attempt number, wait duration, and a task identifier so you can trace retry storms after the fact.</li>
+  </ul>
+
+  <p>Most popular orchestration frameworks and HTTP clients have retry middleware you can configure. The important thing isn't which library you use — it's that you configure it explicitly rather than accepting the defaults, which are often either too aggressive (immediate retry) or too conservative (no retry at all).</p>
+
+  <h2>Pattern 2: Circuit breakers</h2>
+
+  <p>Retry logic handles isolated transient failures. Circuit breakers handle the scarier scenario: a dependency that's genuinely degraded and isn't going to recover in the next thirty seconds.</p>
+
+  <p>The circuit breaker pattern (originally from Michael Nygard's <em>Release It!</em>) works by tracking failure rates over a rolling window. It operates in three states:</p>
+  <ul>
+    <li><strong>Closed</strong> — normal operation; failures are counted but requests pass through</li>
+    <li><strong>Open</strong> — triggered when failures exceed a threshold (e.g., 5 failures in 60 seconds); requests fail immediately without calling the dependency</li>
+    <li><strong>Half-Open</strong> — after a cooldown period, the breaker allows a small number of test requests through to check if the service has recovered; success closes it again, failure re-opens it</li>
+  </ul>
+
+  <p>For AI agent pipelines, this matters in a specific way: when an LLM provider is having a degraded incident, continuing to send requests doesn't just waste money — it fills your pipeline with failures that corrupt downstream state. A circuit breaker lets you fail fast and cleanly, route to a fallback (a cheaper model, a cached response, a human-in-the-loop queue), and recover automatically when the service returns.</p>
+
+  <p>The NIST AI Risk Management Framework update in 2025 specifically calls out circuit breakers as a mandatory control for agentic systems: organizations should "implement circuit breakers that automatically cut off an agent's access if it exceeds token budgets or attempts unauthorized API calls." (<a href="https://www.csoonline.com/article/4132860/why-2025s-agentic-ai-boom-is-a-cisos-worst-nightmare.html">CSO Online, Feb 2026</a>) The framing there is security, but the operational benefits are identical.</p>
+
+  <div class="callout">
+    <p><strong>Practical threshold to start with:</strong> Open the circuit after 5 consecutive failures or a 50% error rate over a 60-second window. Set the half-open cooldown to 30–60 seconds. Adjust based on your observed failure patterns after the first month in production — the right numbers depend on your workload and providers.</p>
+  </div>
+
+  <h2>Pattern 3: Dead letter queues for failed agent tasks</h2>
+
+  <p>Some failures aren't transient and aren't recoverable with retries. The task might require data that doesn't exist. The upstream output might be malformed in a way the retry won't fix. The agent might have hit a structural limitation in the prompt or context window.</p>
+
+  <p>When retries are exhausted and the circuit is open, what happens to the task? In most naive implementations: it disappears. The agent logs an error, moves on, and the task is lost. A dead letter queue (DLQ) is the fix.</p>
+
+  <p>A DLQ is simply a separate queue or store where failed tasks land after all retry attempts are exhausted. The key properties:</p>
+  <ul>
+    <li><strong>Durability:</strong> tasks in the DLQ persist until explicitly acknowledged or deleted — they don't evaporate</li>
+    <li><strong>Metadata preservation:</strong> store the original task payload, the error that caused failure, the number of retry attempts, and a timestamp</li>
+    <li><strong>Replayability:</strong> you should be able to inspect a DLQ item, fix the root cause (update the prompt, correct the upstream data, adjust the agent config), and requeue it for processing</li>
+    <li><strong>Alerting:</strong> DLQ depth should be a monitored metric; a growing DLQ is an early warning sign of a systemic problem</li>
+  </ul>
+
+  <p>Most message queue systems (AWS SQS, RabbitMQ, Azure Service Bus, Google Pub/Sub) have native DLQ support. If you're not using a queue-based architecture, you can implement a lightweight version with a database table: write failed tasks to a <code>failed_jobs</code> table with status, payload, error, and retry count. A nightly review process (automated or human) triages items in the table.</p>
+
+  <p>The human review workflow is the part most teams skip. A DLQ without a triage process is just a graveyard. The right model is: failed tasks in DLQ → alert triggers → on-call review → either fix-and-replay or acknowledge-and-skip with documented reason. This closes the loop and turns silent failures into visible, actionable incidents.</p>
+
+  <h2>Pattern 4: Idempotent agent actions</h2>
+
+  <p>Retry logic assumes it's safe to run a task more than once. For many agent actions, that assumption is wrong by default.</p>
+
+  <p>If your agent sends an email, creates a CRM record, or posts a social update — and then retries due to a network timeout that actually succeeded on the first attempt — you have a duplicate. Multiply that across a pipeline that retries aggressively and you have a mess that's expensive to clean up and embarrassing if customers see it.</p>
+
+  <p><strong>Idempotency</strong> means designing your agent actions so that running them multiple times with the same input produces the same result as running them once. The standard approach:</p>
+  <ul>
+    <li><strong>Idempotency keys:</strong> generate a unique key for each task (a hash of the input, or a UUID assigned at task creation). Pass this key to downstream APIs and stores. Most modern APIs (Stripe, Twilio, many others) accept an <code>Idempotency-Key</code> header and deduplicate on it server-side.</li>
+    <li><strong>Check-before-write:</strong> before creating a record, check if one already exists with the same identifier. If it does, skip creation and return the existing ID. This is slower but works with systems that don't support idempotency keys natively.</li>
+    <li><strong>Write-once intermediate state:</strong> if your agent has multiple steps that each produce side effects, use a state store (Redis, a DB row) to track which steps have completed for a given task ID. On retry, skip completed steps. This is sometimes called "saga pattern" in distributed systems literature.</li>
+  </ul>
+
+  <p>Not every action needs to be idempotent — read-only operations are inherently safe to retry. The ones that matter are anything that writes state: API POST calls, database writes, notification sends, file creation, webhook triggers. Audit your agent's tool calls and classify each one: safe to retry freely, safe to retry with deduplication, or requires human review before retry.</p>
+
+  <h2>Putting it together: a minimal resilience stack</h2>
+
+  <p>You don't have to implement all four patterns simultaneously. Here's a practical sequencing based on impact-to-effort ratio:</p>
+
+  <ol>
+    <li><strong>Start with retry + backoff.</strong> This is the highest-leverage change and can usually be added to existing pipelines in an afternoon. Configure it for every external API call your agents make, including LLM provider calls. Add jitter. Set explicit timeouts.</li>
+    <li><strong>Add a DLQ.</strong> Even a simple database table is dramatically better than silent task loss. Wire your retry exhaustion handler to write failures there. Set up a daily alert if DLQ depth exceeds zero.</li>
+    <li><strong>Audit for idempotency.</strong> Walk through every agent action and classify it. Add idempotency keys or check-before-write logic to any action that creates external state. This is a refactor, not a configuration change — schedule it deliberately.</li>
+    <li><strong>Add circuit breakers.</strong> Once you have production data on which dependencies fail most often, implement circuit breakers for the top two or three. Start with the LLM provider calls and any external enrichment APIs.</li>
+  </ol>
+
+  <p>Once all four are in place, you'll also want a resilience dashboard: DLQ depth, circuit breaker state per dependency, retry rate by agent and error type, and mean time to recovery when failures occur. The logging infrastructure from earlier posts (AgentOps, Langfuse, or a homegrown setup) gives you the data — these metrics are just the aggregated view of it.</p>
+
+  <h2>What about multi-agent pipelines specifically?</h2>
+
+  <p>Each of the above patterns applies at the individual agent level. In multi-agent systems, there's an additional concern: <strong>error propagation</strong>. When Agent A produces a malformed output and Agent B consumes it without validation, the failure mode is a silent corruption that may not surface until Agent D or E — at which point the blast radius is large and debugging is painful.</p>
+
+  <p>The O'Reilly analysis describes using a "judge agent" at pipeline boundaries to verify and compare outputs before passing them downstream — effectively a circuit breaker for semantic quality, not just infrastructure availability. (<a href="https://www.oreilly.com/radar/the-hidden-cost-of-agentic-failure/">O'Reilly Radar, Feb 2026</a>) CIO.com's recent piece on agentic AI in 2026 echoes this: robust architectures require "circuit breakers and comprehensive audit trails from the ground up" specifically because the failure modes compound at each agent boundary. (<a href="https://www.cio.com/article/4134741/how-agentic-ai-will-reshape-engineering-workflows-in-2026.html">CIO, Feb 2026</a>)</p>
+
+  <p>The practical version of this doesn't require a dedicated judge agent. A validation step at each agent boundary — a schema check, a confidence score threshold, a sanity check on output length or format — catches most corruption before it propagates. The interrupt pattern (covered in a <a href="/blog/tech-tuesday-interrupt-pattern-agent-design-2026/">previous post</a>) is the design-level solution; the circuit breaker is the runtime enforcement mechanism.</p>
+
+  <h2>The mindset shift: design for failure, not against it</h2>
+
+  <p>The common instinct when building agent pipelines is to invest in making them more reliable upfront — better prompts, more capable models, more thorough testing. All of that matters. But it doesn't change the fundamental reality of distributed systems: failures happen, often in ways you didn't anticipate, on schedules you can't control.</p>
+
+  <p>The teams running the most operationally stable AI automation in 2026 aren't running the most sophisticated agents. They're running agents with deliberately mediocre tolerance for ambiguity and robust infrastructure around them. They expect their agents to fail occasionally, and they've built systems that recover gracefully when they do.</p>
+
+  <p>That's not pessimism. That's production engineering.</p>
+
+  <div class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+
+    <h3>What is exponential backoff and why should I use it for AI agent retries?</h3>
+    <p>Exponential backoff is a retry strategy where each successive retry waits progressively longer than the last — for example, 0.5s, 1s, 2s, 4s — rather than retrying immediately or at fixed intervals. It prevents your agent from hammering a degraded API and making the problem worse. For AI API calls specifically, adding random jitter (a small randomized offset) to each delay is important to prevent multiple parallel agents from retrying in synchronized waves. A recommended 2026 starting configuration is base delay 0.5s, multiplier 2.0, max delay 30s, with ±25% jitter per attempt.</p>
+
+    <h3>What is a dead letter queue and how does it apply to AI agent pipelines?</h3>
+    <p>A dead letter queue (DLQ) is a separate store where tasks land after all retry attempts are exhausted — rather than being silently dropped. In an AI agent context, a DLQ preserves the original task payload, the error that caused failure, and retry metadata, so the failure is visible and actionable instead of invisible. A DLQ without a triage process is just a graveyard; the real value comes from pairing it with a monitoring alert on DLQ depth and a workflow for human review, root cause analysis, and replay or acknowledgement of each failed item.</p>
+
+    <h3>Why does reliability degrade so fast in multi-agent pipelines?</h3>
+    <p>In a multi-agent pipeline, each agent's success probability multiplies together to produce an end-to-end success rate. If five agents each succeed 98% of the time independently, the chain succeeds roughly 90% of the time overall — one in ten workflows fails without any individual agent being unreliable. This compound failure effect is why fault tolerance at the system level (retries, circuit breakers, validation boundaries) matters more than marginal improvements to individual agent quality. Adding a sixth or seventh agent to a chain without fault tolerance makes this math substantially worse.</p>
+
+    <h3>What is idempotency in the context of AI agents, and which actions need it?</h3>
+    <p>An idempotent action is one that can be safely run multiple times with the same input and produce the same result — so retrying it after a network timeout doesn't create duplicate side effects. In agent pipelines, the actions that require idempotency design are any that write external state: API POST calls, database record creation, email sends, webhook triggers, file creation. Read-only operations are inherently safe to retry. The most practical implementation is to generate a unique task ID at creation time, pass it as an idempotency key to downstream APIs, and check for existing records before creating new ones in systems that don't support native deduplication.</p>
+
+    <h3>How does a circuit breaker work for AI agent infrastructure?</h3>
+    <p>A circuit breaker monitors failure rates for a dependency (an LLM provider, an enrichment API, a database) and "opens" when failures exceed a configured threshold — causing subsequent requests to fail immediately instead of waiting for timeouts. After a cooldown period, it enters a "half-open" state that allows a small number of test requests through; success closes the breaker, failure reopens it. For AI pipelines, circuit breakers prevent cascading failures from a single degraded upstream service from corrupting your entire workflow, and they reduce cost by not burning tokens on requests that will fail anyway. A reasonable starting configuration is: open after 5 consecutive failures or 50% error rate in 60 seconds; 30-second cooldown before half-open.</p>
+
+    <h3>What monitoring metrics should I track for AI agent pipeline reliability?</h3>
+    <p>The five metrics that give you a complete picture of pipeline health are: <strong>retry rate</strong> (by agent and error type — a spike signals a dependency problem), <strong>DLQ depth</strong> (tasks that exhausted retries — anything above zero deserves a look), <strong>circuit breaker state</strong> (which dependencies are currently open or half-open), <strong>end-to-end task completion rate</strong> (the pipeline-level success rate, not just per-agent), and <strong>mean time to recovery</strong> (how long from a failure event to successful retry or human resolution). Logging prompt version IDs and model parameters alongside these metrics makes post-incident root cause analysis significantly faster.</p>
+  </div>
+
+  <div class="sources-section">
+    <h3>Sources:</h3>
+    <ul>
+      <li><a href="https://www.oreilly.com/radar/the-hidden-cost-of-agentic-failure/">O'Reilly Radar — The Hidden Cost of Agentic Failure: compound probability and architectural debt in multi-agent systems (Feb 2026)</a></li>
+      <li><a href="https://dasroot.net/posts/2026/02/implementing-retry-timeout-strategies-ai-apis/">dasroot.net — Implementing Retry &amp; Timeout Strategies in AI APIs: 2026 production best practices (Feb 2026)</a></li>
+      <li><a href="https://www.cio.com/article/4134741/how-agentic-ai-will-reshape-engineering-workflows-in-2026.html">CIO — How Agentic AI Will Reshape Engineering Workflows in 2026: circuit breakers and audit trails (Feb 2026)</a></li>
+      <li><a href="https://www.csoonline.com/article/4132860/why-2025s-agentic-ai-boom-is-a-cisos-worst-nightmare.html">CSO Online — Why 2025's Agentic AI Boom Is a CISO's Worst Nightmare: NIST AI RMF update mandating circuit breakers (Feb 2026)</a></li>
+      <li><a href="https://www.concentrix.com/insights/blog/12-failure-patterns-of-agentic-ai-systems/">Concentrix — 12 Failure Patterns of Agentic AI Systems — and How to Design Against Them (Nov 2025)</a></li>
+      <li><a href="https://docs.praison.ai/docs/best-practices/agent-retry-strategies">PraisonAI Docs — Agent Retry Strategies: circuit breaker + exponential backoff implementation reference</a></li>
+      <li><a href="https://docs.bswen.com/blog/2026-03-06-agent-reliability/">BSWEN — AI Agent Reliability: Logging, Error Handling &amp; Monitoring Guide for Production Systems (Mar 2026)</a></li>
+    </ul>
+  </div>
+
+  <div class="cta-box">
+    <p>If your AI agent pipeline doesn't have retry logic, a DLQ, or circuit breakers — you're running it on hope. Supergood helps teams build the resilience layer that keeps agentic workflows stable in production: failure recovery, observability, and the systems design that makes the whole thing auditable. Start the conversation at <a href="https://supergood.solutions/">supergood.solutions</a> or reach out on LinkedIn.</p>
+  </div>
+</article>
+
+<footer>
+  <p>&copy; 2026 Supergood Solutions. Helping marketing teams automate smarter, not harder.</p>
+</footer>
+
+</body>
+</html>
