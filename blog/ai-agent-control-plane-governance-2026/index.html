@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The AI Agent Control Plane: Why Governing Agents at Scale Is the Next Infrastructure Problem — Supergood Solutions</title>
+<meta name="description" content="Most AI agents in production today have no centralized governance. A new category of infrastructure is emerging: the agent control plane, which lets teams write governance policies once and enforce them across every agent in their stack.">
+<link rel="canonical" href="https://supergood.solutions/blog/ai-agent-control-plane-governance-2026/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="author" content="Ryan Sandoval">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="The AI Agent Control Plane: Why Governing Agents at Scale Is the Next Infrastructure Problem">
+<meta property="og:description" content="Most AI agents in production today have no centralized governance. A new category of infrastructure is emerging: the agent control plane, which lets teams write governance policies once and enforce them across every agent in their stack.">
+<meta property="og:url" content="https://supergood.solutions/blog/ai-agent-control-plane-governance-2026/">
+<meta property="og:image" content="https://supergood.solutions/og-image.png">
+<meta property="article:published_time" content="2026-03-12">
+<meta property="article:author" content="Ryan Sandoval">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The AI Agent Control Plane: Why Governing Agents at Scale Is the Next Infrastructure Problem">
+<meta name="twitter:description" content="Most AI agents in production have no centralized governance. The agent control plane is the infrastructure layer you're probably missing.">
+<meta name="twitter:image" content="https://supergood.solutions/og-image.png">
+
+<!-- Schema.org Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The AI Agent Control Plane: Why Governing Agents at Scale Is the Next Infrastructure Problem",
+  "description": "Most AI agents in production today have no centralized governance. A new category of infrastructure is emerging: the agent control plane, which lets teams write governance policies once and enforce them across every agent in their stack.",
+  "author": {
+    "@type": "Person",
+    "name": "Ryan Sandoval",
+    "url": "https://linkedin.com/in/RyanSandoval",
+    "jobTitle": "AI Automation Consultant",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Supergood Solutions"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Supergood Solutions",
+    "url": "https://supergood.solutions"
+  },
+  "datePublished": "2026-03-12",
+  "dateModified": "2026-03-12",
+  "mainEntityOfPage": "https://supergood.solutions/blog/ai-agent-control-plane-governance-2026/",
+  "keywords": ["AI agent governance","agent control plane","Galileo Agent Control","agent observability","AI guardrails","runtime guardrails","agent safety","Arize Phoenix","OpenTelemetry","AI infrastructure","enterprise AI","agent ops"]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #0a0a0b; --surface: #111113; --surface-2: #18181b; --border: #27272a;
+  --text: #fafafa; --text-2: #a1a1aa; --text-3: #71717a;
+  --green: #22c55e; --mono: 'JetBrains Mono', monospace;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+::selection { background: var(--green); color: var(--bg); }
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; background: rgba(10,10,11,0.8); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+nav .inner { max-width: 720px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
+.wordmark { font-weight: 800; font-size: 1.125rem; letter-spacing: -0.03em; color: var(--text); text-decoration: none; display: inline-flex; align-items: baseline; }
+.wordmark .oo-dot { display: inline-block; width: 0.45em; height: 0.45em; background: var(--green); border-radius: 50%; }
+.wordmark .oo-wrap { display: inline-flex; gap: 2px; align-items: center; }
+.wordmark .dot-period { color: var(--green); }
+nav a.back { font-size: 0.875rem; color: var(--text-3); text-decoration: none; }
+nav a.back:hover { color: var(--text); }
+
+article { max-width: 720px; margin: 0 auto; padding: 140px 24px 80px; }
+article .tag { font-family: var(--mono); font-size: 0.6875rem; color: var(--green); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; }
+article h1 { font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px; }
+article .subtitle { font-size: 1.25rem; color: var(--text-2); line-height: 1.6; margin-bottom: 24px; }
+article .meta { font-family: var(--mono); font-size: 0.75rem; color: var(--text-3); margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+article h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin: 56px 0 16px; }
+article h3 { font-size: 1.125rem; font-weight: 600; margin: 40px 0 12px; }
+article p { font-size: 1rem; color: var(--text-2); margin-bottom: 20px; }
+article strong { color: var(--text); }
+article ul, article ol { color: var(--text-2); margin-bottom: 20px; padding-left: 24px; }
+article li { margin-bottom: 8px; }
+article a { color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
+article a:hover { color: var(--text); }
+
+.callout { background: var(--surface-2); border-left: 3px solid var(--green); border-radius: 0 8px 8px 0; padding: 20px 24px; margin: 32px 0; }
+.callout p { margin-bottom: 0; font-size: 0.9375rem; }
+
+.danger-callout { background: var(--surface-2); border-left: 3px solid #ef4444; border-radius: 0 8px 8px 0; padding: 20px 24px; margin: 32px 0; }
+.danger-callout p { margin-bottom: 0; font-size: 0.9375rem; color: var(--text-2); }
+.danger-callout strong { color: #f87171; }
+
+.checklist { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 32px; margin: 32px 0; }
+.checklist h3 { font-size: 1rem; font-weight: 600; margin-bottom: 16px; margin-top: 0; color: var(--text); }
+.checklist ul { list-style: none; padding: 0; margin: 0; }
+.checklist li { padding: 6px 0; font-size: 0.9375rem; color: var(--text-2); display: flex; gap: 10px; }
+.checklist li::before { content: "□"; font-family: var(--mono); color: var(--green); flex-shrink: 0; }
+
+.cta-box { border: 2px solid var(--green); border-radius: 12px; padding: 40px; margin: 48px 0; text-align: center; background: var(--surface); }
+.cta-box p { font-size: 0.9375rem; color: var(--text); margin-bottom: 0; font-style: italic; }
+
+.sources-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
+.sources-section h3 { font-size: 1rem; font-weight: 600; margin-bottom: 12px; color: var(--text); }
+.sources-section ul { list-style: none; padding: 0; }
+.sources-section li { margin-bottom: 8px; font-size: 0.875rem; }
+
+.faq-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
+.faq-section h2 { margin-top: 0; }
+.faq-section h3 { font-size: 1rem; }
+
+footer { background: var(--surface); padding: 40px 0; margin-top: 80px; border-top: 1px solid var(--border); text-align: center; }
+footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
+
+@media (max-width: 768px) {
+  article { padding: 120px 20px 60px; }
+  article h1 { font-size: 2rem; }
+  nav .inner { padding: 0 20px; }
+}
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="inner">
+    <a href="/" class="wordmark">superg<span class="oo-wrap"><span class="oo-dot"></span><span class="oo-dot"></span></span>d<span class="dot-period">.</span></a>
+    <a href="/blog/" class="back">← All posts</a>
+  </div>
+</nav>
+
+<article>
+  <div class="tag">AI Agent Ops · Infrastructure</div>
+  <h1>The AI Agent Control Plane: Why Governing Agents at Scale Is the Next Infrastructure Problem</h1>
+  <p class="subtitle">Most AI agents in production today have no centralized governance — safety rules are hard-coded per agent, making oversight brittle and slow. A new category of infrastructure is emerging: the agent control plane. If you're running agents in production, this is the layer you're probably missing.</p>
+  <div class="meta">Published March 12, 2026 — 11 min read</div>
+
+  <h2>The Problem: Agents Ship Without a Safety Net</h2>
+
+  <p>MIT CSAIL's <a href="https://gizmodo.com/new-research-shows-ai-agents-are-running-wild-online-with-few-guardrails-in-place-2000724181" target="_blank" rel="noopener">2025 AI Agent Index</a> dropped a sobering finding: of 30 major AI agents studied — spanning ChatGPT Agent, Claude Code, Perplexity Comet, Microsoft 365 Copilot, and more — only half have published safety or trust frameworks. One in three has zero safety documentation. Five out of 30 claim no compliance standards at all.</p>
+
+  <p>Meanwhile, 13 of those 30 systems operate at "frontier agency" — meaning they can execute extended task sequences with minimal human oversight. Browser agents in particular run with high autonomy, navigating sites, logging in on behalf of users, and making decisions across multi-step workflows.</p>
+
+  <div class="danger-callout">
+    <p><strong>The kicker:</strong> 21 out of 30 agents provide no disclosure to websites or third parties that they're bots. Some actively disguise themselves with Chrome-like user-agent strings and residential IPs to bypass anti-bot protections.</p>
+  </div>
+
+  <p>This is the governance gap. The models are good enough. The frameworks are mature enough. The missing piece is <em>operational control</em> — the ability to enforce behavior policies across every agent, in real time, without taking systems offline.</p>
+
+  <h2>What Is an Agent Control Plane?</h2>
+
+  <p>Think of it like a network control plane, but for AI agent behavior. Instead of routing packets, you're routing decisions — defining what agents can and can't do, how they identify themselves, which tools they can call, and what triggers human escalation.</p>
+
+  <p>A control plane sits between your agents and their operating environment, providing:</p>
+
+  <ul>
+    <li><strong>Centralized policy management</strong> — Write a rule once ("never expose PII," "always require human approval for transactions over $10K"), enforce it everywhere.</li>
+    <li><strong>Runtime guardrails</strong> — Block or redirect agent behavior in real time without redeployment. If an agent starts hallucinating or calling tools it shouldn't, the control plane intervenes before the action completes.</li>
+    <li><strong>Observability hooks</strong> — Trace not just what an agent did, but <em>why</em> it made each decision. Traditional logs capture code execution; agent traces capture reasoning chains.</li>
+    <li><strong>Policy portability</strong> — As your agent stack evolves (new frameworks, new models, new vendors), your governance policies move with you.</li>
+  </ul>
+
+  <p>This isn't theoretical. It's shipping now.</p>
+
+  <h2>Galileo's Agent Control: Open Source, Vendor-Neutral</h2>
+
+  <p>On March 11, <a href="https://www.globenewswire.com/news-release/2026/03/11/3253962/0/en/Galileo-Releases-Open-Source-AI-Agent-Control-Plane-to-Help-Enterprises-Govern-Agents-at-Scale.html" target="_blank" rel="noopener">Galileo released Agent Control</a> as an open-source project under Apache 2.0. The first integrations include Strands Agents, CrewAI, Glean, and Cisco AI Defense.</p>
+
+  <p>What makes it notable:</p>
+
+  <ul>
+    <li><strong>Write once, deploy anywhere</strong> — Policies are portable across agent frameworks. You're not locked into one vendor's guardrail format.</li>
+    <li><strong>Hot-swap enforcement</strong> — Update policies at runtime without pulling agents offline. This matters when a production agent starts exhibiting new, unexpected behavior and you need to respond in minutes, not sprint cycles.</li>
+    <li><strong>Custom evaluators</strong> — Bring your own guardrail evaluators or use third-party ones. The control plane is evaluator-agnostic.</li>
+    <li><strong>Use cases that actually matter</strong> — Preventing hallucinations, blocking PII leakage, steering LLM selection for cost optimization, enforcing brand tone, requiring human approval on sensitive actions, and falling back to alternative tools on error.</li>
+  </ul>
+
+  <div class="callout">
+    <p><strong>Dev Rishi, GM of AI at Rubrik:</strong> "The number one blocker for enterprise agents is no longer the models. To graduate agents to production, the industry needs transparent, community-driven guardrails."</p>
+  </div>
+
+  <h2>The Broader Observability Stack Is Growing Up</h2>
+
+  <p>Agent Control is one piece of a maturing ecosystem. Here's what else is converging:</p>
+
+  <h3>Arize Phoenix</h3>
+  <p><a href="https://arize.com/blog/best-ai-observability-tools-for-autonomous-agents-in-2026/" target="_blank" rel="noopener">Arize Phoenix</a> has become a go-to for agent tracing, with native support for MCP (Model Context Protocol) tracing across client-server hierarchies. It integrates with OpenAI Agents SDK, CrewAI, PydanticAI, LangGraph, and Google ADK. Their thesis: "You cannot fix AI failures with standard logs because the error lives in the reasoning, not the code execution."</p>
+
+  <h3>Amazon Bedrock AgentCore Evaluations</h3>
+  <p>Amazon published a <a href="https://aws.amazon.com/blogs/machine-learning/evaluating-ai-agents-real-world-lessons-from-building-agentic-systems-at-amazon/" target="_blank" rel="noopener">detailed evaluation framework</a> based on lessons from thousands of agents built across Amazon organizations since 2025. The key shift: evaluating not just model output quality, but tool selection accuracy, multi-step reasoning coherence, and memory retrieval efficiency. They've baked this into Bedrock AgentCore as a reusable evaluation library.</p>
+
+  <h3>Langfuse and Braintrust</h3>
+  <p><a href="https://langfuse.com/" target="_blank" rel="noopener">Langfuse</a> continues to grow as an open-source LLM observability platform, while <a href="https://braintrustdata.com/" target="_blank" rel="noopener">Braintrust</a> takes an evaluation-first approach — treating prompts as versioned objects and merging testing directly with production monitoring via their purpose-built OLAP database (Brainstore).</p>
+
+  <h3>OpenTelemetry for AI</h3>
+  <p>The <a href="https://opentelemetry.io/" target="_blank" rel="noopener">OpenTelemetry</a> project is emerging as the vendor-neutral instrumentation layer for agent telemetry. New Relic <a href="https://techcrunch.com/2026/02/24/new-relic-launches-new-ai-agent-platform-and-opentelemetry-tools/" target="_blank" rel="noopener">recently launched</a> dedicated AI agent observability tooling built on OTel, and Datadog has added GPU monitoring and autonomous SRE agents to their stack.</p>
+
+  <h2>Lessons from ConFoo 2026: Guardrails Where the Wheels Touch the Road</h2>
+
+  <p>At <a href="https://blog.gitguardian.com/confoo-2026/" target="_blank" rel="noopener">ConFoo 2026</a> in Montreal, a recurring theme emerged across sessions: the shift from human access models to agentic access models.</p>
+
+  <p>Nick Taylor from Pomerium made the case that Zero Trust principles now apply to AI agents, not just human users. His practical recommendation: put MCP servers behind an identity-aware proxy, enforce per-request authentication, validate token scopes, prevent token passthrough, and audit every access. The metaphor — a venue wristband vs. a one-time gate check — captures the difference between static authentication and continuous enforcement.</p>
+
+  <p>GitGuardian's Ben Dechrai extended this to prompt security, arguing that prompt hygiene is the new input validation. When agents can call tools, a prompt injection isn't just a bad output — it's an unauthorized action.</p>
+
+  <h2>A Practical Checklist for Agent Governance</h2>
+
+  <div class="checklist">
+    <h3>Before your agents touch production:</h3>
+    <ul>
+      <li><strong>Instrument first, ship second</strong> — Wire in observability (traces, not just logs) before your agent touches production traffic. Tools like Arize Phoenix, Langfuse, or Datadog's AI monitoring make this straightforward.</li>
+      <li><strong>Centralize your policies</strong> — Stop hard-coding safety rules inside individual agent codebases. Use a control plane to manage policies centrally. This is the only way to enforce consistency at scale.</li>
+      <li><strong>Enforce at runtime, not just deploy time</strong> — Static rules break when agents encounter novel inputs. You need runtime guardrails that can block, redirect, or escalate in real time.</li>
+      <li><strong>Treat agent identity seriously</strong> — Your agents should identify themselves. Use stable user-agent strings, publish IP ranges, respect robots.txt. Don't be the team that disguises bots as humans.</li>
+      <li><strong>Evaluate continuously</strong> — Amazon's framework makes the case for ongoing evaluation across tool selection, reasoning coherence, and task completion — not just a one-time benchmark.</li>
+      <li><strong>Require human checkpoints for high-stakes actions</strong> — Financial transactions, data deletions, external communications — build human approval into your control plane as policy, not ad-hoc code.</li>
+    </ul>
+  </div>
+
+  <h2>What's Next</h2>
+
+  <p>The agent control plane is following the same trajectory as API gateways did a decade ago. First, every team builds their own. Then open standards emerge. Then it becomes infrastructure everyone expects to exist.</p>
+
+  <p>We're in the "open standards emerging" phase right now. Galileo's Agent Control, OpenTelemetry's AI instrumentation work, and Amazon's evaluation library are all pulling in the same direction: making agent governance a composable, vendor-neutral infrastructure layer.</p>
+
+  <p><strong>If you're betting on agents as a core part of your product or operations, start treating governance as infrastructure — not an afterthought.</strong></p>
+
+  <div class="faq-section">
+    <h2>FAQ</h2>
+
+    <h3>What is an AI agent control plane, and why does it matter?</h3>
+    <p>An AI agent control plane is a centralized infrastructure layer that lets you define and enforce behavior policies across all your AI agents. It matters because without one, safety rules get hard-coded into individual agents, making governance slow, inconsistent, and fragile as you scale. Think of it like a network control plane, but for agent decisions instead of packet routing.</p>
+
+    <h3>How is agent observability different from traditional application monitoring?</h3>
+    <p>Traditional monitoring tracks code execution — server health, latency, error rates. Agent observability tracks <em>reasoning</em> — why an agent chose a specific tool, how it chained multiple steps together, and whether its decision was correct even if it didn't throw an error. Tools like Arize Phoenix and Langfuse capture these reasoning traces, which is essential because agents often fail in ways that look like success.</p>
+
+    <h3>What are the biggest risks of running AI agents without guardrails?</h3>
+    <p>The MIT CSAIL 2025 AI Agent Index found that most agents have no published safety frameworks, actively disguise themselves as human traffic, and operate with minimal oversight on extended task sequences. Practical risks include PII leakage, unauthorized actions via prompt injection, hallucinated outputs that look confident, and uncontrolled cost escalation from excessive tool calls or token usage.</p>
+
+    <h3>Is Galileo Agent Control the only open-source option?</h3>
+    <p>No, but it's the first purpose-built open-source control plane focused specifically on centralized agent policy management. Other open-source tools address pieces of the governance puzzle: Langfuse for observability, Arize Phoenix for tracing and evaluation, and OpenTelemetry for vendor-neutral instrumentation. Agent Control is designed to sit on top of these, providing a policy layer that integrates with any framework.</p>
+
+    <h3>How do I get started with agent governance if I only have a few agents?</h3>
+    <p>Start small: (1) add observability instrumentation to your existing agents using Langfuse or Arize Phoenix, (2) document your implicit safety rules as explicit policies, (3) deploy those policies through a control plane as you scale beyond 2-3 agents. Even with one agent, having traceable reasoning and runtime guardrails prevents the most common production failures.</p>
+
+    <h3>What role does OpenTelemetry play in AI agent monitoring?</h3>
+    <p>OpenTelemetry provides a vendor-neutral framework for collecting traces, metrics, and logs from AI systems. It's becoming the standard instrumentation layer so that agent telemetry data is portable across observability platforms — you instrument once and can send data to Datadog, New Relic, Arize, or any OTel-compatible backend.</p>
+  </div>
+
+  <div class="sources-section">
+    <h3>Sources:</h3>
+    <ul>
+      <li><a href="https://www.globenewswire.com/news-release/2026/03/11/3253962/0/en/Galileo-Releases-Open-Source-AI-Agent-Control-Plane-to-Help-Enterprises-Govern-Agents-at-Scale.html" target="_blank" rel="noopener">Galileo Releases Open Source AI Agent Control Plane — GlobeNewsWire, March 11, 2026</a></li>
+      <li><a href="https://gizmodo.com/new-research-shows-ai-agents-are-running-wild-online-with-few-guardrails-in-place-2000724181" target="_blank" rel="noopener">MIT CSAIL 2025 AI Agent Index — Gizmodo, February 2026</a></li>
+      <li><a href="https://arize.com/blog/best-ai-observability-tools-for-autonomous-agents-in-2026/" target="_blank" rel="noopener">Best AI Observability Tools for Autonomous Agents in 2026 — Arize AI, March 2026</a></li>
+      <li><a href="https://aws.amazon.com/blogs/machine-learning/evaluating-ai-agents-real-world-lessons-from-building-agentic-systems-at-amazon/" target="_blank" rel="noopener">Evaluating AI Agents: Real-World Lessons from Amazon — AWS, February 2026</a></li>
+      <li><a href="https://blog.gitguardian.com/confoo-2026/" target="_blank" rel="noopener">ConFoo 2026: Guardrails for Agentic AI — GitGuardian Blog, March 2026</a></li>
+      <li><a href="https://techcrunch.com/2026/02/24/new-relic-launches-new-ai-agent-platform-and-opentelemetry-tools/" target="_blank" rel="noopener">New Relic Launches AI Agent Platform and OpenTelemetry Tools — TechCrunch, February 2026</a></li>
+      <li><a href="https://www.informationweek.com/machine-learning-ai/who-really-sets-ai-guardrails-how-cios-can-shape-ai-governance-policy" target="_blank" rel="noopener">Who Sets AI Guardrails? — InformationWeek, March 2026</a></li>
+      <li><a href="https://www.kore.ai/blog/ai-agents-in-2026-from-hype-to-enterprise-reality" target="_blank" rel="noopener">AI Agents in 2026: From Hype to Enterprise Reality — Kore.ai, February 2026</a></li>
+    </ul>
+  </div>
+
+  <div class="cta-box">
+    <p>Building AI agents into your ops stack and need governance that scales? We help teams design agent control planes with the guardrails, observability, and security posture to run agents in production. <strong>supergood.solutions</strong></p>
+  </div>
+</article>
+
+<footer>
+  <p>&copy; 2026 Supergood Solutions. Helping marketing teams automate smarter, not harder.</p>
+</footer>
+
+</body>
+</html>
