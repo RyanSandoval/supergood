@@ -1,0 +1,89 @@
+{
+  "strategy": "0DTE SPX Iron Condor",
+  "config": {
+    "starting_capital": 100.0,
+    "wing_width": 5.0,
+    "credit_per_side": 1.5,
+    "atr_period": 20,
+    "daily_factor": 0.7
+  },
+  "data_range": {
+    "start": "2025-03-13",
+    "end": "2026-03-12",
+    "trading_days": 251
+  },
+  "results": [
+    {
+      "strike_mult": 0.5,
+      "trading_days": 231,
+      "wins": 119,
+      "losses": 112,
+      "win_rate": 51.5,
+      "avg_daily_return": 0.375,
+      "total_roi": 129.4,
+      "max_drawdown": 14.7,
+      "final_capital": 229.36,
+      "days_to_5k": null
+    },
+    {
+      "strike_mult": 0.7,
+      "trading_days": 231,
+      "wins": 156,
+      "losses": 75,
+      "win_rate": 67.5,
+      "avg_daily_return": 1.112,
+      "total_roi": 1129.5,
+      "max_drawdown": 9.9,
+      "final_capital": 1229.47,
+      "days_to_5k": null
+    },
+    {
+      "strike_mult": 1.0,
+      "trading_days": 231,
+      "wins": 200,
+      "losses": 31,
+      "win_rate": 86.6,
+      "avg_daily_return": 2.05,
+      "total_roi": 10452.7,
+      "max_drawdown": 5.1,
+      "final_capital": 10552.72,
+      "days_to_5k": 191
+    },
+    {
+      "strike_mult": 1.2,
+      "trading_days": 231,
+      "wins": 211,
+      "losses": 20,
+      "win_rate": 91.3,
+      "avg_daily_return": 2.32,
+      "total_roi": 19480.0,
+      "max_drawdown": 5.4,
+      "final_capital": 19580.01,
+      "days_to_5k": 170
+    },
+    {
+      "strike_mult": 1.5,
+      "trading_days": 231,
+      "wins": 221,
+      "losses": 10,
+      "win_rate": 95.7,
+      "avg_daily_return": 2.535,
+      "total_roi": 31996.0,
+      "max_drawdown": 3.9,
+      "final_capital": 32096.0,
+      "days_to_5k": 162
+    }
+  ],
+  "sweet_spot": {
+    "strike_mult": 1.5,
+    "trading_days": 231,
+    "wins": 221,
+    "losses": 10,
+    "win_rate": 95.7,
+    "avg_daily_return": 2.535,
+    "total_roi": 31996.0,
+    "max_drawdown": 3.9,
+    "final_capital": 32096.0,
+    "days_to_5k": 162
+  }
+}

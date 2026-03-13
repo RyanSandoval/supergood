@@ -1,0 +1,626 @@
+[
+  {
+    "id": "9f1109a3fd0b5089606c902cb452dea4",
+    "sport_key": "tennis_atp_indian_wells",
+    "sport_title": "ATP Indian Wells",
+    "commence_time": "2026-03-13T01:30:00Z",
+    "home_team": "Jack Draper",
+    "away_team": "Daniil Medvedev",
+    "bookmakers": [
+      {
+        "key": "draftkings",
+        "title": "DraftKings",
+        "last_update": "2026-03-13T00:42:41Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-03-13T00:42:41Z",
+            "outcomes": [
+              {
+                "name": "Daniil Medvedev",
+                "price": 1.57
+              },
+              {
+                "name": "Jack Draper",
+                "price": 2.44
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "pinnacle",
+        "title": "Pinnacle",
+        "last_update": "2026-03-13T00:42:36Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-03-13T00:42:36Z",
+            "outcomes": [
+              {
+                "name": "Daniil Medvedev",
+                "price": 1.6
+              },
+              {
+                "name": "Jack Draper",
+                "price": 2.52
+              }
+            ]
+          },
+          {
+            "key": "spreads",
+            "last_update": "2026-03-13T00:42:36Z",
+            "outcomes": [
+              {
+                "name": "Daniil Medvedev",
+                "price": 1.74,
+                "point": -1.5
+              },
+              {
+                "name": "Jack Draper",
+                "price": 2.14,
+                "point": 1.5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "bovada",
+        "title": "Bovada",
+        "last_update": "2026-03-13T00:40:33Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-03-13T00:40:33Z",
+            "outcomes": [
+              {
+                "name": "Daniil Medvedev",
+                "price": 1.56
+              },
+              {
+                "name": "Jack Draper",
+                "price": 2.5
+              }
+            ]
+          },
+          {
+            "key": "spreads",
+            "last_update": "2026-03-13T00:40:33Z",
+            "outcomes": [
+              {
+                "name": "Daniil Medvedev",
+                "price": 1.87,
+                "point": -2.5
+              },
+              {
+                "name": "Jack Draper",
+                "price": 1.87,
+                "point": 2.5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "fanduel",
+        "title": "FanDuel",
+        "last_update": "2026-03-13T00:42:49Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-03-13T00:42:49Z",
+            "outcomes": [
+              {
+                "name": "Daniil Medvedev",
+                "price": 1.52
+              },
+              {
+                "name": "Jack Draper",
+                "price": 2.6
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "4fef27675d8cbf50302e6c4d60384b80",
+    "sport_key": "tennis_atp_indian_wells",
+    "sport_title": "ATP Indian Wells",
+    "commence_time": "2026-03-13T02:00:00Z",
+    "home_team": "Carlos Alcaraz",
+    "away_team": "Cameron Norrie",
+    "bookmakers": [
+      {
+        "key": "draftkings",
+        "title": "DraftKings",
+        "last_update": "2026-03-13T00:42:41Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-03-13T00:42:41Z",
+            "outcomes": [
+              {
+                "name": "Cameron Norrie",
+                "price": 13.8
+              },
+              {
+                "name": "Carlos Alcaraz",
+                "price": 1.05
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "bovada",
+        "title": "Bovada",
+        "last_update": "2026-03-13T00:40:33Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-03-13T00:40:33Z",
+            "outcomes": [
+              {
+                "name": "Cameron Norrie",
+                "price": 15.0
+              },
+              {
+                "name": "Carlos Alcaraz",
+                "price": 1.02
+              }
+            ]
+          },
+          {
+            "key": "spreads",
+            "last_update": "2026-03-13T00:40:33Z",
+            "outcomes": [
+              {
+                "name": "Cameron Norrie",
+                "price": 1.91,
+                "point": 5.5
+              },
+              {
+                "name": "Carlos Alcaraz",
+                "price": 1.83,
+                "point": -5.5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "fanduel",
+        "title": "FanDuel",
+        "last_update": "2026-03-13T00:42:49Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-03-13T00:42:49Z",
+            "outcomes": [
+              {
+                "name": "Cameron Norrie",
+                "price": 15.0
+              },
+              {
+                "name": "Carlos Alcaraz",
+                "price": 1.02
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "pinnacle",
+        "title": "Pinnacle",
+        "last_update": "2026-03-13T00:42:36Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-03-13T00:42:36Z",
+            "outcomes": [
+              {
+                "name": "Cameron Norrie",
+                "price": 15.67
+              },
+              {
+                "name": "Carlos Alcaraz",
+                "price": 1.05
+              }
+            ]
+          },
+          {
+            "key": "spreads",
+            "last_update": "2026-03-13T00:42:36Z",
+            "outcomes": [
+              {
+                "name": "Cameron Norrie",
+                "price": 2.02,
+                "point": 5.5
+              },
+              {
+                "name": "Carlos Alcaraz",
+                "price": 1.87,
+                "point": -5.5
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "c78175e66e7dbf1e18bd5fb38e33c00f",
+    "sport_key": "tennis_atp_indian_wells",
+    "sport_title": "ATP Indian Wells",
+    "commence_time": "2026-03-14T18:00:00Z",
+    "home_team": "Alexander Zverev",
+    "away_team": "Jannik Sinner",
+    "bookmakers": [
+      {
+        "key": "draftkings",
+        "title": "DraftKings",
+        "last_update": "2026-03-13T00:42:41Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-03-13T00:42:41Z",
+            "outcomes": [
+              {
+                "name": "Alexander Zverev",
+                "price": 5.89
+              },
+              {
+                "name": "Jannik Sinner",
+                "price": 1.15
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "bovada",
+        "title": "Bovada",
+        "last_update": "2026-03-13T00:40:33Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-03-13T00:40:33Z",
+            "outcomes": [
+              {
+                "name": "Alexander Zverev",
+                "price": 5.75
+              },
+              {
+                "name": "Jannik Sinner",
+                "price": 1.14
+              }
+            ]
+          },
+          {
+            "key": "spreads",
+            "last_update": "2026-03-13T00:40:33Z",
+            "outcomes": [
+              {
+                "name": "Alexander Zverev",
+                "price": 1.77,
+                "point": 4.5
+              },
+              {
+                "name": "Jannik Sinner",
+                "price": 2.0,
+                "point": -4.5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "pinnacle",
+        "title": "Pinnacle",
+        "last_update": "2026-03-13T00:42:36Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-03-13T00:42:36Z",
+            "outcomes": [
+              {
+                "name": "Alexander Zverev",
+                "price": 6.01
+              },
+              {
+                "name": "Jannik Sinner",
+                "price": 1.16
+              }
+            ]
+          },
+          {
+            "key": "spreads",
+            "last_update": "2026-03-13T00:42:36Z",
+            "outcomes": [
+              {
+                "name": "Alexander Zverev",
+                "price": 2.07,
+                "point": 4.0
+              },
+              {
+                "name": "Jannik Sinner",
+                "price": 1.81,
+                "point": -4.0
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "d870087636247ff0117c5a46cd0e4c92",
+    "sport_key": "tennis_wta_indian_wells",
+    "sport_title": "WTA Indian Wells",
+    "commence_time": "2026-03-12T22:00:00Z",
+    "home_team": "Elina Svitolina",
+    "away_team": "Iga Swiatek",
+    "bookmakers": [
+      {
+        "key": "pinnacle",
+        "title": "Pinnacle",
+        "last_update": "2026-03-13T00:28:09Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-03-13T00:28:09Z",
+            "outcomes": [
+              {
+                "name": "Elina Svitolina",
+                "price": 1.96
+              },
+              {
+                "name": "Iga Swiatek",
+                "price": 1.89
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "0ee404a2636329cf168a147b98dcfbbc",
+    "sport_key": "tennis_wta_indian_wells",
+    "sport_title": "WTA Indian Wells",
+    "commence_time": "2026-03-13T00:12:00Z",
+    "home_team": "Jessica Pegula",
+    "away_team": "Elena Rybakina",
+    "bookmakers": [
+      {
+        "key": "fanduel",
+        "title": "FanDuel",
+        "last_update": "2026-03-13T00:42:04Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-03-13T00:42:04Z",
+            "outcomes": [
+              {
+                "name": "Elena Rybakina",
+                "price": 1.11
+              },
+              {
+                "name": "Jessica Pegula",
+                "price": 7.0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "draftkings",
+        "title": "DraftKings",
+        "last_update": "2026-03-13T00:42:18Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-03-13T00:42:18Z",
+            "outcomes": [
+              {
+                "name": "Elena Rybakina",
+                "price": 1.22
+              },
+              {
+                "name": "Jessica Pegula",
+                "price": 4.6
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "bovada",
+        "title": "Bovada",
+        "last_update": "2026-03-13T00:42:29Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-03-13T00:42:29Z",
+            "outcomes": [
+              {
+                "name": "Elena Rybakina",
+                "price": 1.18
+              },
+              {
+                "name": "Jessica Pegula",
+                "price": 5.0
+              }
+            ]
+          },
+          {
+            "key": "spreads",
+            "last_update": "2026-03-13T00:42:29Z",
+            "outcomes": [
+              {
+                "name": "Elena Rybakina",
+                "price": 2.2,
+                "point": -7.0
+              },
+              {
+                "name": "Jessica Pegula",
+                "price": 1.65,
+                "point": 7.0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "pinnacle",
+        "title": "Pinnacle",
+        "last_update": "2026-03-13T00:42:34Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-03-13T00:42:34Z",
+            "outcomes": [
+              {
+                "name": "Elena Rybakina",
+                "price": 1.28
+              },
+              {
+                "name": "Jessica Pegula",
+                "price": 4.11
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "b0e1c9d7c06cbe8e5efcdf82d9bf2835",
+    "sport_key": "tennis_wta_indian_wells",
+    "sport_title": "WTA Indian Wells",
+    "commence_time": "2026-03-13T18:00:00Z",
+    "home_team": "Aryna Sabalenka",
+    "away_team": "Linda Noskova",
+    "bookmakers": [
+      {
+        "key": "draftkings",
+        "title": "DraftKings",
+        "last_update": "2026-03-13T00:42:18Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-03-13T00:42:18Z",
+            "outcomes": [
+              {
+                "name": "Aryna Sabalenka",
+                "price": 1.16
+              },
+              {
+                "name": "Linda Noskova",
+                "price": 5.67
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "fanduel",
+        "title": "FanDuel",
+        "last_update": "2026-03-13T00:42:04Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-03-13T00:42:04Z",
+            "outcomes": [
+              {
+                "name": "Aryna Sabalenka",
+                "price": 1.13
+              },
+              {
+                "name": "Linda Noskova",
+                "price": 6.3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "bovada",
+        "title": "Bovada",
+        "last_update": "2026-03-13T00:42:29Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-03-13T00:42:29Z",
+            "outcomes": [
+              {
+                "name": "Aryna Sabalenka",
+                "price": 1.14
+              },
+              {
+                "name": "Linda Noskova",
+                "price": 5.75
+              }
+            ]
+          },
+          {
+            "key": "spreads",
+            "last_update": "2026-03-13T00:42:29Z",
+            "outcomes": [
+              {
+                "name": "Aryna Sabalenka",
+                "price": 1.87,
+                "point": -5.0
+              },
+              {
+                "name": "Linda Noskova",
+                "price": 1.87,
+                "point": 5.0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "pinnacle",
+        "title": "Pinnacle",
+        "last_update": "2026-03-13T00:42:34Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-03-13T00:42:34Z",
+            "outcomes": [
+              {
+                "name": "Aryna Sabalenka",
+                "price": 1.16
+              },
+              {
+                "name": "Linda Noskova",
+                "price": 5.99
+              }
+            ]
+          },
+          {
+            "key": "spreads",
+            "last_update": "2026-03-13T00:42:34Z",
+            "outcomes": [
+              {
+                "name": "Aryna Sabalenka",
+                "price": 2.14,
+                "point": -5.0
+              },
+              {
+                "name": "Linda Noskova",
+                "price": 1.76,
+                "point": 5.0
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

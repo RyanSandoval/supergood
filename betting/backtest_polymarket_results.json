@@ -1,0 +1,184 @@
+{
+  "strategy": "polymarket_info_arbitrage",
+  "description": "Simulated binary market arbitrage using BTC price data",
+  "parameters": {
+    "capital": 100.0,
+    "position_size": 10.0,
+    "days": 60,
+    "candles_used": 86401,
+    "valid_days": 60
+  },
+  "results": [
+    {
+      "lag": 3,
+      "threshold": 0.03,
+      "n_trades": 2930,
+      "win_rate": 93.8,
+      "avg_profit": 0.4822,
+      "total_pnl": 1412.73,
+      "roi_pct": 1412.73,
+      "avg_hold_min": 1.5
+    },
+    {
+      "lag": 3,
+      "threshold": 0.05,
+      "n_trades": 1094,
+      "win_rate": 95.9,
+      "avg_profit": 0.7147,
+      "total_pnl": 781.83,
+      "roi_pct": 781.83,
+      "avg_hold_min": 1.4
+    },
+    {
+      "lag": 3,
+      "threshold": 0.08,
+      "n_trades": 347,
+      "win_rate": 98.0,
+      "avg_profit": 1.0519,
+      "total_pnl": 365.0,
+      "roi_pct": 365.0,
+      "avg_hold_min": 1.4
+    },
+    {
+      "lag": 3,
+      "threshold": 0.1,
+      "n_trades": 175,
+      "win_rate": 98.3,
+      "avg_profit": 1.2964,
+      "total_pnl": 226.87,
+      "roi_pct": 226.87,
+      "avg_hold_min": 1.4
+    },
+    {
+      "lag": 5,
+      "threshold": 0.03,
+      "n_trades": 3413,
+      "win_rate": 88.5,
+      "avg_profit": 0.4474,
+      "total_pnl": 1527.09,
+      "roi_pct": 1527.09,
+      "avg_hold_min": 2.5
+    },
+    {
+      "lag": 5,
+      "threshold": 0.05,
+      "n_trades": 1392,
+      "win_rate": 92.3,
+      "avg_profit": 0.6737,
+      "total_pnl": 937.77,
+      "roi_pct": 937.77,
+      "avg_hold_min": 2.4
+    },
+    {
+      "lag": 5,
+      "threshold": 0.08,
+      "n_trades": 493,
+      "win_rate": 95.5,
+      "avg_profit": 1.0042,
+      "total_pnl": 495.08,
+      "roi_pct": 495.08,
+      "avg_hold_min": 2.2
+    },
+    {
+      "lag": 5,
+      "threshold": 0.1,
+      "n_trades": 252,
+      "win_rate": 96.8,
+      "avg_profit": 1.2757,
+      "total_pnl": 321.47,
+      "roi_pct": 321.47,
+      "avg_hold_min": 2.3
+    },
+    {
+      "lag": 10,
+      "threshold": 0.03,
+      "n_trades": 3389,
+      "win_rate": 78.9,
+      "avg_profit": 0.4048,
+      "total_pnl": 1371.89,
+      "roi_pct": 1371.89,
+      "avg_hold_min": 4.8
+    },
+    {
+      "lag": 10,
+      "threshold": 0.05,
+      "n_trades": 1597,
+      "win_rate": 87.2,
+      "avg_profit": 0.6367,
+      "total_pnl": 1016.85,
+      "roi_pct": 1016.85,
+      "avg_hold_min": 4.7
+    },
+    {
+      "lag": 10,
+      "threshold": 0.08,
+      "n_trades": 618,
+      "win_rate": 93.0,
+      "avg_profit": 0.9957,
+      "total_pnl": 615.36,
+      "roi_pct": 615.36,
+      "avg_hold_min": 4.7
+    },
+    {
+      "lag": 10,
+      "threshold": 0.1,
+      "n_trades": 381,
+      "win_rate": 94.5,
+      "avg_profit": 1.2129,
+      "total_pnl": 462.13,
+      "roi_pct": 462.13,
+      "avg_hold_min": 4.4
+    },
+    {
+      "lag": 15,
+      "threshold": 0.03,
+      "n_trades": 3114,
+      "win_rate": 73.9,
+      "avg_profit": 0.3997,
+      "total_pnl": 1244.75,
+      "roi_pct": 1244.75,
+      "avg_hold_min": 7.4
+    },
+    {
+      "lag": 15,
+      "threshold": 0.05,
+      "n_trades": 1610,
+      "win_rate": 83.4,
+      "avg_profit": 0.6242,
+      "total_pnl": 1004.91,
+      "roi_pct": 1004.91,
+      "avg_hold_min": 7.4
+    },
+    {
+      "lag": 15,
+      "threshold": 0.08,
+      "n_trades": 729,
+      "win_rate": 90.7,
+      "avg_profit": 0.9585,
+      "total_pnl": 698.73,
+      "roi_pct": 698.73,
+      "avg_hold_min": 7.0
+    },
+    {
+      "lag": 15,
+      "threshold": 0.1,
+      "n_trades": 473,
+      "win_rate": 92.6,
+      "avg_profit": 1.1735,
+      "total_pnl": 555.07,
+      "roi_pct": 555.07,
+      "avg_hold_min": 6.6
+    }
+  ],
+  "best": {
+    "lag": 5,
+    "threshold": 0.03,
+    "n_trades": 3413,
+    "win_rate": 88.5,
+    "avg_profit": 0.4474,
+    "total_pnl": 1527.09,
+    "roi_pct": 1527.09,
+    "avg_hold_min": 2.5
+  },
+  "generated_at": "2026-03-13T00:37:36.053469+00:00"
+}
