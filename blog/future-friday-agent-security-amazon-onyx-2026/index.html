@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Test AI Agents Before They Break in Production — Supergood Solutions</title>
+<meta name="description" content="A layered evaluation strategy for AI agents combining trajectory metrics, outcome metrics, continuous red teaming, and CI/CD pipelines to catch failures before users do.">
+<link rel="canonical" href="https://supergood.solutions/blog/future-friday-agent-security-amazon-onyx-2026/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Test AI Agents Before They Break in Production">
+<meta property="og:url" content="https://supergood.solutions/blog/future-friday-agent-security-amazon-onyx-2026/">
+<meta property="og:image" content="https://supergood.solutions/og-image.png">
+<meta property="article:published_time" content="2026-03-13">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root { --bg: #0a0a0b; --surface: #111113; --surface-2: #18181b; --border: #27272a; --text: #fafafa; --text-2: #a1a1aa; --text-3: #71717a; --green: #22c55e; --mono: 'JetBrains Mono', monospace; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; background: rgba(10,10,11,0.8); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+nav .inner { max-width: 720px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
+.wordmark { font-weight: 800; font-size: 1.125rem; letter-spacing: -0.03em; color: var(--text); text-decoration: none; }
+.wordmark .dot { color: var(--green); }
+nav a.back { font-size: 0.875rem; color: var(--text-3); text-decoration: none; }
+nav a.back:hover { color: var(--text); }
+article { max-width: 720px; margin: 0 auto; padding: 140px 24px 80px; }
+article .tag { font-family: var(--mono); font-size: 0.6875rem; color: var(--green); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; }
+article h1 { font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px; }
+article .meta { font-family: var(--mono); font-size: 0.75rem; color: var(--text-3); margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+article h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin: 56px 0 16px; }
+article h3 { font-size: 1.125rem; font-weight: 600; margin: 40px 0 12px; }
+article p { font-size: 1rem; color: var(--text-2); margin-bottom: 20px; }
+article strong { color: var(--text); }
+article ul, article ol { color: var(--text-2); margin-bottom: 20px; padding-left: 24px; }
+article li { margin-bottom: 8px; }
+article a { color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
+.callout { background: var(--surface-2); border-left: 3px solid var(--green); border-radius: 0 8px 8px 0; padding: 20px 24px; margin: 32px 0; }
+.callout p { margin-bottom: 0; font-size: 0.9375rem; }
+.sources-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
+.sources-section h3 { font-size: 1rem; font-weight: 600; margin-bottom: 12px; }
+.sources-section ul { list-style: none; padding: 0; }
+.sources-section li { margin-bottom: 8px; font-size: 0.875rem; }
+footer { background: var(--surface); padding: 40px 0; margin-top: 80px; border-top: 1px solid var(--border); text-align: center; }
+footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
+@media (max-width: 768px) { article { padding: 120px 20px 60px; } article h1 { font-size: 2rem; } }
+</style>
+</head>
+<body>
+<nav><div class="inner"><a href="/" class="wordmark">supergood<span class="dot">.</span></a><a href="/blog/" class="back">← All posts</a></div></nav>
+<article>
+<div class="tag">AI Agent Ops</div>
+<h1>How to Test AI Agents Before They Break in Production: Eval Frameworks, Red Teaming, and CI/CD Patterns That Actually Work</h1>
+<div class="meta">Published March 13, 2026 — 11 min read</div>
+
+<div class="callout"><p><strong>TL;DR:</strong> Most AI agents ship with zero structured testing — and the ones that do often measure the wrong things. According to LangChain's 2026 State of AI Agents report, 57% of organizations now have agents in production, but quality remains the top barrier to deployment for 32% of them. The fix isn't more unit tests — it's a layered evaluation strategy that combines trajectory metrics, outcome metrics, continuous red teaming, and eval-in-CI/CD pipelines.</p></div>
+
+<h2>The Problem: "It Works on My Prompt" Is the New "It Works on My Machine"</h2>
+<p>Traditional software has a well-understood testing stack: unit tests, integration tests, staging environments, canary deploys. AI agents have... vibes.</p>
+<p>An agent can pass every static benchmark and still break catastrophically in production because its behavior is non-deterministic. Identical inputs can produce different execution paths. Multi-turn interactions create cascading errors that compound across steps. And the failure modes are subtle — an agent that "completes" a task by hallucinating a tool response looks identical to one that actually succeeded, unless you're inspecting the full execution trace.</p>
+<p>Gartner projects that <a href="https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027">over 40% of agentic AI projects will be canceled by end of 2027</a>, and evaluation gaps are a leading cause. Amazon's internal analysis of thousands of agents built across the company found that traditional LLM benchmarks completely miss the emergent behaviors of complete agentic systems: tool selection accuracy, multi-step reasoning coherence, memory retrieval efficiency, and end-to-end task completion rates.</p>
+<p>The industry needs a testing discipline that matches the complexity of what we're shipping.</p>
+
+<h2>Two Types of Metrics You Need (and Most Teams Only Have One)</h2>
+<p>The biggest conceptual shift in agent evaluation is the split between <strong>trajectory metrics</strong> and <strong>outcome metrics</strong>. Most teams only measure outcomes ("did the agent finish the task?"). That's necessary but nowhere near sufficient.</p>
+
+<h3>Outcome Metrics: The Scoreboard</h3>
+<p>These measure what the agent produced:</p>
+<ul>
+<li><strong>Task success rate</strong> — Did it resolve the customer dispute? Generate a valid SQL query? Book the right flight?</li>
+<li><strong>Response quality</strong> — Accuracy, relevance, completeness of the final output</li>
+<li><strong>Latency and cost</strong> — How long did it take, and how many tokens did it burn?</li>
+</ul>
+<p>Outcome metrics tell you <em>if</em> your agent works. They don't tell you <em>why it failed</em> when it doesn't.</p>
+
+<h3>Trajectory Metrics: The Game Film</h3>
+<p>These evaluate the complete execution path — every reasoning step, tool call, and decision:</p>
+<ul>
+<li><strong>Trajectory exact match</strong> — Did the agent follow the expected sequence of steps?</li>
+<li><strong>Trajectory precision</strong> — Of the steps the agent took, how many were correct?</li>
+<li><strong>Trajectory recall</strong> — Of the steps it should have taken, how many did it actually take?</li>
+<li><strong>Tool selection accuracy</strong> — Did the agent pick the right tool for each step?</li>
+<li><strong>Reasoning coherence</strong> — Does the chain-of-thought hold up under inspection?</li>
+</ul>
+<p>Google Cloud's Vertex AI and Amazon Bedrock AgentCore Evaluations both define production-ready trajectory metrics along these lines. The insight from Amazon's engineering teams is that trajectory metrics expose the <em>root cause</em> of failures — not just detect them.</p>
+<p>A practical example: an agent achieves 60% success on single runs but drops to 25% across eight runs. Outcome metrics show declining performance. Trajectory metrics show <em>where</em> the reasoning chain breaks — maybe tool selection degrades after the fourth turn, or memory retrieval starts returning stale context.</p>
+
+<h2>Building Eval Rubrics That Scale</h2>
+<p>Pass/fail doesn't cut it for agents that research, synthesize, verify, and generate across multiple steps. Galileo's <a href="https://galileo.ai/blog/agent-evaluation-framework-metrics-rubrics-benchmarks">agent evaluation framework</a> recommends a three-tier rubric structure:</p>
+<ol>
+<li><strong>Primary dimensions</strong> (7) — Comprehensiveness, accuracy, coherence, efficiency, safety, tool usage, reasoning quality</li>
+<li><strong>Sub-dimensions</strong> (25) — Granular breakdowns like "handles documented edge cases" or "meets latency constraints"</li>
+<li><strong>Fine-grained rubric items</strong> (130) — Operationalized, measurable criteria that map to specific test assertions</li>
+</ol>
+<p>The key is making rubrics <em>executable</em> — not just documentation, but specifications that automated evaluators can score against. This is where LLM-as-judge comes in.</p>
+
+<h3>LLM-as-Judge: Useful but Not a Silver Bullet</h3>
+<p>Using a language model to evaluate another language model's output is now standard practice. The target benchmark: <strong>0.80+ Spearman correlation</strong> with human judgment. Platforms like Galileo, Arize Phoenix, and Langfuse all support LLM-as-judge workflows.</p>
+<p>The catch: LLM judges have their own biases. They tend to favor verbose responses, struggle with domain-specific correctness, and can be gamed by confident-sounding wrong answers. The fix is pairing automated judges with <strong>human validation on a sample</strong> — not replacing human review, but making it targeted and efficient.</p>
+
+<h2>The Eval Tooling Landscape (Vendor-Neutral)</h2>
+<p>The agent evaluation space is consolidating fast. Here's what the current landscape looks like:</p>
+
+<h3>Open-Source Foundations</h3>
+<ul>
+<li><a href="https://arize.com/ai-agents/agent-evaluation/"><strong>Arize Phoenix</strong></a> — Trace-based observability with agent-specific metrics. Good for teams that want to own their eval infra.</li>
+<li><a href="https://langfuse.com/"><strong>Langfuse</strong></a> — Open-source tracing and evaluation. Framework-agnostic, strong community.</li>
+<li><a href="https://github.com/confident-ai/deepeval"><strong>DeepEval</strong></a> — Pytest-style testing for LLM outputs. Lowest friction for engineering teams already using Python test suites.</li>
+<li><a href="https://mlflow.org/"><strong>MLflow</strong></a> — Now supports LLM-as-judge scoring, evaluation datasets, and quality gates for agent deployments.</li>
+</ul>
+
+<h3>Commercial Platforms</h3>
+<ul>
+<li><a href="https://galileo.ai/"><strong>Galileo</strong></a> — Recently open-sourced Agent Control under Apache 2.0. Strong on rubric-based evaluation and CI/CD integration.</li>
+<li><a href="https://www.getmaxim.ai/"><strong>Maxim AI</strong></a> — End-to-end simulation and evaluation. Focus on agent reliability through synthetic test generation.</li>
+<li><a href="https://www.patronus.ai/"><strong>Patronus AI</strong></a> — Specialized in automated evaluation with 50+ built-in metrics, including agent-specific DAG scoring.</li>
+</ul>
+
+<h3>The Amazon Approach</h3>
+<p>Amazon's <a href="https://aws.amazon.com/blogs/machine-learning/evaluating-ai-agents-real-world-lessons-from-building-agentic-systems-at-amazon/">internal framework</a> — now partially available through Bedrock AgentCore Evaluations — uses a two-component architecture: a generic evaluation workflow that standardizes assessment across different agent implementations, and an evaluation library providing systematic metrics. The key insight: they built it to be <strong>framework-agnostic</strong>, recognizing that teams use different agent frameworks and shouldn't be locked into one vendor's eval approach.</p>
+
+<h2>Continuous Red Teaming: Testing Agents Like an Adversary</h2>
+<p>Static eval suites catch known failure modes. Red teaming catches the ones you didn't think of.</p>
+<p>Startups like Virtue AI and Mindgard are building automated red teaming platforms that test dynamic agent behavior across multi-step reasoning chains and tool interactions — not just single-turn prompt injection.</p>
+<p>Palo Alto Networks' <a href="https://www.paloaltonetworks.com/blog/network-security/beyond-jailbreaks-why-agentic-ai-needs-contextual-red-teaming/">Prisma AIRS AI Red Teaming</a> found that the most financially consequential attacks on agentic systems used contextual manipulation rather than brute-force jailbreaks. This means your red teaming needs to go beyond the OWASP LLM Top 10 checklist and test for <strong>business-logic exploits</strong> specific to your agent's domain and tool access.</p>
+<p>A practical red teaming loop:</p>
+<ol>
+<li><strong>Automated scanning</strong> — Run adversarial prompt suites against the agent on every deployment</li>
+<li><strong>Behavioral probing</strong> — Test what happens when tools return unexpected errors, APIs timeout, or user inputs are adversarial</li>
+<li><strong>Escalation testing</strong> — Verify that the agent hands off to humans when it should, doesn't leak data across sessions, and respects permission boundaries</li>
+<li><strong>Regression locking</strong> — When you find a vulnerability, add it to the eval suite so it never ships again</li>
+</ol>
+
+<h2>Putting Eval in Your CI/CD Pipeline</h2>
+<p>The most mature teams treat agent evaluation like they treat software tests: nothing ships without passing the eval suite. Three trigger types:</p>
+
+<h3>1. Commit-Triggered Evals</h3>
+<p>Every prompt change, tool configuration update, or model swap triggers a baseline eval suite. This catches regressions before they reach staging. Think of it like the lint check of agent development — fast, cheap, blocking.</p>
+
+<h3>2. Scheduled Evals</h3>
+<p>Run comprehensive evaluation suites on a schedule (daily or weekly) against production traffic samples. This catches <strong>model drift</strong> — the slow degradation that happens as underlying models get updated, data distributions shift, or user behavior changes.</p>
+
+<h3>3. Event-Driven Evals</h3>
+<p>Triggered by anomalies: error rate spikes, latency jumps, user feedback signals. These are your fire alarms.</p>
+
+<h3>Progressive Canary Deployment</h3>
+<p>Don't ship agent updates to 100% of traffic at once. Route 5% of requests to the new version, run trajectory and outcome metrics against both versions, and only promote if the new version meets quality gates. The MLflow ecosystem supports this pattern with built-in quality gates: pre-deploy checks → canary release → continuous evaluation → drift detection.</p>
+
+<h2>The Uncomfortable Truth: You Need Humans in the Loop</h2>
+<p>Automated eval gets you 80% of the way there. The last 20% requires humans — especially for:</p>
+<ul>
+<li><strong>Domain-specific correctness</strong> — Does the legal agent's contract clause actually hold up?</li>
+<li><strong>Rubric calibration</strong> — Your LLM-as-judge needs periodic recalibration against human preferences to prevent score drift</li>
+<li><strong>Novel failure modes</strong> — Automated systems catch known patterns. Humans catch the "that's technically correct but wildly inappropriate" edge cases.</li>
+</ul>
+<p>Amazon's framework explicitly incorporates human-in-the-loop processes to audit evaluation results and build golden testing datasets. The key is making human review <em>targeted</em> — use automated eval to filter and prioritize, then route the ambiguous cases to human reviewers.</p>
+
+<h2>What to Do Next</h2>
+<p>If you're running agents in production (or about to), here's the minimum viable eval stack:</p>
+<ol>
+<li><strong>Instrument traces</strong> — If you can't see the full execution path, you can't evaluate it. Pick a tracing tool and instrument everything.</li>
+<li><strong>Define trajectory + outcome metrics</strong> — Don't just measure completion. Measure the path.</li>
+<li><strong>Build a regression suite</strong> — Every production failure becomes a test case.</li>
+<li><strong>Add eval to CI/CD</strong> — Commit-triggered for fast feedback, scheduled for drift detection.</li>
+<li><strong>Red team before launch</strong> — And continuously after.</li>
+<li><strong>Sample for human review</strong> — Pick 5–10% of edge cases weekly for domain expert validation.</li>
+</ol>
+
+<h2>FAQ</h2>
+
+<h3>How is AI agent evaluation different from standard LLM evaluation?</h3>
+<p>Standard LLM evaluation tests model outputs in isolation. Agent evaluation tests the entire system: multi-step reasoning, tool selection and execution, memory retrieval, error recovery, and end-to-end task completion. The key difference is that agents have <em>trajectories</em> (sequences of actions), not just outputs, and those trajectories need independent evaluation to diagnose failures.</p>
+
+<h3>What are the most important metrics for evaluating AI agents in production?</h3>
+<p>You need both trajectory metrics and outcome metrics. Trajectory metrics include tool selection accuracy, reasoning coherence, trajectory precision/recall, and error recovery rate. Outcome metrics include task success rate, response quality, latency, and cost per completion.</p>
+
+<h3>Can I use an LLM to evaluate another LLM's agent behavior?</h3>
+<p>Yes — LLM-as-judge is now standard practice. The benchmark to aim for is 0.80+ Spearman correlation with human judgment. The main caveats: LLM judges tend to favor verbose outputs, struggle with domain-specific correctness, and need periodic recalibration.</p>
+
+<h3>What is continuous red teaming for AI agents?</h3>
+<p>Continuous red teaming means running adversarial tests against your agent on an ongoing basis — not just once before launch. This includes automated prompt injection scanning, behavioral probing, and business-logic exploit testing specific to your agent's domain and tool access.</p>
+
+<h3>How do I integrate agent evaluation into a CI/CD pipeline?</h3>
+<p>Use three trigger types: commit-triggered evals (fast baseline checks on every prompt or config change), scheduled evals (comprehensive suites run daily/weekly), and event-driven evals (triggered by anomalies). Pair with progressive canary deployment — route a small percentage of traffic to new versions and promote only if quality gates pass.</p>
+
+<h3>What's the minimum eval setup for a small team shipping AI agents?</h3>
+<p>Start with three things: (1) instrument full execution traces using an open-source tool like Langfuse or Arize Phoenix, (2) build a regression test suite from every production failure, and (3) add commit-triggered eval checks to your deployment pipeline. The most important thing is having <em>any</em> structured evaluation — most teams currently have none.</p>
+
+<div class="sources-section">
+<h3>Sources</h3>
+<ul>
+<li><a href="https://www.getmaxim.ai/articles/top-5-platforms-to-simulate-ai-agents-to-ensure-production-reliability-in-2026/">LangChain 2026 State of AI Agents Report</a> (cited via Maxim AI)</li>
+<li><a href="https://aws.amazon.com/blogs/machine-learning/evaluating-ai-agents-real-world-lessons-from-building-agentic-systems-at-amazon/">Amazon — Evaluating AI Agents: Real-World Lessons from Building Agentic Systems</a></li>
+<li><a href="https://galileo.ai/blog/agent-evaluation-framework-metrics-rubrics-benchmarks">Galileo — Agent Evaluation Framework: Metrics, Rubrics &amp; Benchmarks</a></li>
+<li><a href="https://www.cbinsights.com/research/ai-agent-predictions-2026/">CB Insights — 5 AI Agent Predictions for 2026</a></li>
+<li><a href="https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027">Gartner — Over 40% of Agentic AI Projects Will Be Canceled by End of 2027</a></li>
+<li><a href="https://www.helpnetsecurity.com/2026/03/03/enterprise-ai-agent-security-2026/">Help Net Security — AI Went from Assistant to Autonomous Actor and Security Never Caught Up</a></li>
+<li><a href="https://www.paloaltonetworks.com/blog/network-security/beyond-jailbreaks-why-agentic-ai-needs-contextual-red-teaming/">Palo Alto Networks — Beyond Jailbreaks: Why Agentic AI Needs Contextual Red Teaming</a></li>
+<li><a href="https://arize.com/ai-agents/agent-evaluation/">Arize — Agent Evaluation</a></li>
+<li><a href="https://arxiv.org/html/2603.08835">MASEval: Extending Multi-Agent Evaluation from Models to Systems (arXiv)</a></li>
+</ul>
+</div>
+</article>
+<footer><p>&copy; 2026 Supergood Solutions. Helping teams automate smarter, not harder.</p></footer>
+</body>
+</html>

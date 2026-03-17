@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Systems Sunday: Applying SRE Principles to AI Agents — Supergood Solutions</title>
+<meta name="description" content="How to adapt the SRE playbook — runbooks, incident response, SLOs, and chaos engineering — for AI agent systems that fail differently than traditional services.">
+<link rel="canonical" href="https://supergood.solutions/blog/systems-sunday-sre-for-ai-agents-2026/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Systems Sunday: Applying SRE Principles to AI Agents — Runbooks, Incident Response, and the New Ops Stack">
+<meta property="og:url" content="https://supergood.solutions/blog/systems-sunday-sre-for-ai-agents-2026/">
+<meta property="og:image" content="https://supergood.solutions/og-image.png">
+<meta property="article:published_time" content="2026-03-15">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root { --bg: #0a0a0b; --surface: #111113; --surface-2: #18181b; --border: #27272a; --text: #fafafa; --text-2: #a1a1aa; --text-3: #71717a; --green: #22c55e; --mono: 'JetBrains Mono', monospace; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; background: rgba(10,10,11,0.8); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+nav .inner { max-width: 720px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
+.wordmark { font-weight: 800; font-size: 1.125rem; letter-spacing: -0.03em; color: var(--text); text-decoration: none; }
+.wordmark .dot { color: var(--green); }
+nav a.back { font-size: 0.875rem; color: var(--text-3); text-decoration: none; }
+nav a.back:hover { color: var(--text); }
+article { max-width: 720px; margin: 0 auto; padding: 140px 24px 80px; }
+article .tag { font-family: var(--mono); font-size: 0.6875rem; color: var(--green); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; }
+article h1 { font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px; }
+article .meta { font-family: var(--mono); font-size: 0.75rem; color: var(--text-3); margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+article h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin: 56px 0 16px; }
+article h3 { font-size: 1.125rem; font-weight: 600; margin: 40px 0 12px; }
+article p { font-size: 1rem; color: var(--text-2); margin-bottom: 20px; }
+article strong { color: var(--text); }
+article ul, article ol { color: var(--text-2); margin-bottom: 20px; padding-left: 24px; }
+article li { margin-bottom: 8px; }
+article a { color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
+.callout { background: var(--surface-2); border-left: 3px solid var(--green); border-radius: 0 8px 8px 0; padding: 20px 24px; margin: 32px 0; }
+.callout p { margin-bottom: 0; font-size: 0.9375rem; }
+.sources-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
+.sources-section h3 { font-size: 1rem; font-weight: 600; margin-bottom: 12px; }
+.sources-section ul { list-style: none; padding: 0; }
+.sources-section li { margin-bottom: 8px; font-size: 0.875rem; }
+footer { background: var(--surface); padding: 40px 0; margin-top: 80px; border-top: 1px solid var(--border); text-align: center; }
+footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
+@media (max-width: 768px) { article { padding: 120px 20px 60px; } article h1 { font-size: 2rem; } }
+</style>
+</head>
+<body>
+<nav><div class="inner"><a href="/" class="wordmark">supergood<span class="dot">.</span></a><a href="/blog/" class="back">← All posts</a></div></nav>
+<article>
+<div class="tag">Systems Sunday · Agent Reliability</div>
+<h1>Systems Sunday: Applying SRE Principles to AI Agents — Runbooks, Incident Response, and the New Ops Stack</h1>
+<div class="meta">Published March 15, 2026 — 9 min read</div>
+
+<div class="callout"><p><strong>TL;DR:</strong> Site reliability engineering (SRE) was built to manage systems that are deterministic but complex. AI agents are neither — they're probabilistic, context-sensitive, and capable of surprising you in production. The good news: SRE principles translate directly to agent ops with some modifications. This post covers how to adapt the SRE playbook — runbooks, incident response, SLOs, and on-call escalation — for the age of autonomous AI agents.</p></div>
+
+<h2>The Problem: Agents Break Differently Than Services</h2>
+<p>Traditional SRE knows how to handle a crashed service: check the logs, find the error, restart or roll back. The failure is deterministic — the same input produces the same failure, and the fix is reproducible.</p>
+<p>AI agents fail differently:</p>
+<ul>
+<li>The same input produces different outputs depending on model state, context window, retrieved documents, and tool availability</li>
+<li>"Degraded performance" is hard to detect — an agent can keep running, returning plausible-looking outputs, while quietly doing the wrong thing</li>
+<li>Root cause is often a prompt change, a data quality issue, or a tool call that succeeded but returned unexpected data — not a crash</li>
+</ul>
+<p>This means traditional SRE tooling catches the obvious failures (the agent crashes, the API times out) but misses the subtle ones (the agent writes wrong data confidently, the agent starts routing tasks to the wrong tool).</p>
+
+<h2>The SRE Tooling Shift: AI Is Coming to Ops Too</h2>
+<p>Three releases this week signal that the ops tooling category is adapting.</p>
+<p><strong>Microsoft Azure SRE Agent went GA</strong> (<a href="https://techcommunity.microsoft.com/blog/appsonazureblog/announcing-general-availability-for-the-azure-sre-agent/4500682">Microsoft Community Hub, March 2026</a>). It automates multi-layer root cause analysis across apps, platform, and infrastructure — correlating telemetry, testing hypotheses, and explaining findings. For teams already running agents on Azure, this is the first native tool that brings AI-assisted incident investigation into the platform.</p>
+<p><strong>PagerDuty expanded its AI ecosystem</strong> to 30+ partners (<a href="https://www.businesswire.com/news/home/20260312685645/en/PagerDuty-Expands-AI-Ecosystem-to-Supercharge-AI-Agents-and-Deliver-Autonomous-Operations">BusinessWire, March 12</a>), with a "context flywheel" that feeds observability telemetry into automated triage. Their SRE Agent can automatically correlate alerts and accelerate root cause analysis. They're also shipping pre-commit risk scoring directly in IDEs — catching risky agent code changes before they reach production.</p>
+<p><strong>Rootly and StackGen</strong> are among a growing cluster of AI SRE tools built around reducing mean time to resolution (MTTR) for complex, distributed systems — including systems where AI agents are part of the stack.</p>
+<p>The common thread: <strong>ops tooling is being rebuilt to handle systems where agents are both the operators and the components being operated.</strong></p>
+
+<h2>Adapting SRE for Agent Ops</h2>
+
+<h3>1. Write Runbooks for Agent Failure Modes, Not Just Service Failures</h3>
+<p>A traditional runbook covers: "Service X is down. Check these logs. Run this restart command." An agent runbook needs to cover:</p>
+<ul>
+<li><strong>Silent degradation</strong>: "Agent outputs look normal but metrics suggest wrong routing — check the tool call trace for the last 50 runs"</li>
+<li><strong>Prompt injection response</strong>: "Agent is behaving unexpectedly after processing external content — isolate the session, audit the context window, roll back to previous system prompt version"</li>
+<li><strong>Cost spiral</strong>: "Agent retry loop detected — circuit breaker should have fired; if not, manual kill switch is [X], check rate limit config"</li>
+<li><strong>Data quality failure</strong>: "Agent is writing low-confidence outputs to the database — check the confidence threshold config, compare recent outputs against eval set"</li>
+</ul>
+<p>Write these before you need them. The 2 AM incident is not when you want to figure out your agent's failure taxonomy.</p>
+
+<h3>2. Define Agent SLOs Differently</h3>
+<p>Traditional SLOs measure uptime, latency, and error rate. For agents, add:</p>
+<ul>
+<li><strong>Task completion rate</strong>: % of initiated tasks that reach a successful terminal state</li>
+<li><strong>Human escalation rate</strong>: % of tasks that trigger an interrupt or require human review (too high = approval fatigue; too low = the agent is overconfident)</li>
+<li><strong>Output quality rate</strong>: % of outputs that pass your eval set (requires a continuous eval pipeline)</li>
+<li><strong>Tool call accuracy</strong>: % of tool calls that return expected response shapes vs. errors or unexpected formats</li>
+<li><strong>Cost per successful completion</strong>: total spend divided by tasks fully completed — rising cost/completion ratio is an early signal of degradation</li>
+</ul>
+
+<h3>3. On-Call for Agent Systems</h3>
+<p>On-call for an agent system requires different instincts:</p>
+<ul>
+<li><strong>Don't restart first</strong> — a crashed agent may have left partial writes in external systems. Understand what it was doing before you restart it.</li>
+<li><strong>Audit before remediation</strong> — check the full tool call trace for the session that failed. Was it a transient API error, a bad context state, or a systematic failure mode?</li>
+<li><strong>Check for data corruption</strong> — if the agent was writing to a CRM, database, or external system, validate the last N writes before declaring the incident resolved</li>
+<li><strong>Root cause the prompt, not just the code</strong> — if the agent started failing after a prompt change, that IS the bug. Treat prompt versions like code commits.</li>
+</ul>
+
+<h3>4. Chaos Engineering for Agents</h3>
+<p>Traditional chaos engineering: kill a service and see if the system recovers. Agent chaos engineering:</p>
+<ul>
+<li><strong>Inject bad tool responses</strong>: return malformed data from one tool and verify the agent interrupts rather than proceeding with corrupt state</li>
+<li><strong>Simulate context window overflow</strong>: see how the agent behaves when its context is near the limit — does it degrade gracefully or start hallucinating?</li>
+<li><strong>Test prompt injection resilience</strong>: send adversarial content through normal input channels and verify the guardrails fire</li>
+<li><strong>Starve the retrieval system</strong>: return empty or irrelevant RAG results and verify the agent escalates rather than fabricating context</li>
+</ul>
+<p>These tests should run in your staging environment before any agent promotion to production.</p>
+
+<h2>The Practical Starting Point</h2>
+<p>If you're running agents in production without an ops framework, here's the minimum viable SRE posture:</p>
+<ol>
+<li><strong>Incident taxonomy</strong>: write down your agent's known failure modes and what "bad" looks like for each one</li>
+<li><strong>Runbooks</strong>: one page per failure mode, written before the incident</li>
+<li><strong>Alerting on agent-specific metrics</strong>: task completion rate, cost/completion, human escalation rate — not just infrastructure metrics</li>
+<li><strong>A kill switch</strong>: a way to halt the agent and prevent new task starts, separate from infrastructure-level restarts</li>
+<li><strong>Post-incident reviews that include prompt history</strong>: if something went wrong, the first question should be "was there a prompt change in the 48 hours before this?"</li>
+</ol>
+
+<h2>FAQ</h2>
+
+<h3>What is an AI SRE agent?</h3>
+<p>An AI SRE agent is an autonomous system designed to assist with site reliability engineering tasks — specifically root cause analysis, alert correlation, incident investigation, and remediation recommendation. Microsoft's Azure SRE Agent (GA March 2026) and PagerDuty's SRE Agent are current examples. They're designed to accelerate MTTR by automating the investigation steps that traditionally require experienced engineers.</p>
+
+<h3>How do you define SLOs for AI agents?</h3>
+<p>AI agent SLOs should include metrics that traditional SLOs miss: task completion rate (% of tasks that reach a successful terminal state), output quality rate (% passing eval checks), human escalation rate (% requiring human review), tool call accuracy (% returning expected response shapes), and cost per successful completion. Tracking these alongside standard latency and error rate metrics gives a complete picture of agent reliability.</p>
+
+<h3>How is AI agent incident response different from traditional incident response?</h3>
+<p>The key differences: agents may leave partial writes in external systems when they fail, so auditing before restarting is critical; root cause often lies in a prompt change rather than code; "silent degradation" (the agent keeps running but produces wrong outputs) requires quality monitoring to detect, not just uptime checks; and restoring service may require validating data integrity in external systems the agent touched.</p>
+
+<h3>What should an AI agent runbook cover?</h3>
+<p>Agent runbooks should document failure modes specific to agent behavior: silent degradation (outputs look normal but quality has dropped), prompt injection response (agent behaves unexpectedly after processing external content), cost spiral (retry loops consuming unbounded budget), and data quality failure (agent writing low-confidence outputs). Each runbook entry should include detection signals, immediate containment steps, root cause investigation procedure, and rollback path.</p>
+
+<h3>What is chaos engineering for AI agents?</h3>
+<p>Chaos engineering for AI agents involves deliberately injecting failure conditions to verify the system's resilience: returning malformed data from tools to test interrupt logic, simulating context window overflow to test graceful degradation, injecting adversarial prompt content to test guardrail effectiveness, and starving the retrieval system to verify the agent escalates rather than fabricating. These tests should run in staging before any agent is promoted to production.</p>
+
+<h3>How do you handle on-call for AI agent systems?</h3>
+<p>On-call for agent systems requires a different default instinct than traditional service on-call: don't restart first (the agent may have left partial writes in external systems), audit the full tool call trace before taking any action, check for data corruption in systems the agent touched, and treat prompt changes as potential root causes with the same rigor as code changes.</p>
+
+<div class="sources-section">
+<h3>Sources</h3>
+<ul>
+<li><a href="https://techcommunity.microsoft.com/blog/appsonazureblog/announcing-general-availability-for-the-azure-sre-agent/4500682">Microsoft Community Hub — Azure SRE Agent GA</a></li>
+<li><a href="https://www.businesswire.com/news/home/20260312685645/en/PagerDuty-Expands-AI-Ecosystem-to-Supercharge-AI-Agents-and-Deliver-Autonomous-Operations">BusinessWire — PagerDuty Expands AI Ecosystem</a></li>
+<li><a href="https://rootly.com/sre/best-ai-sre-tools-for-faster-incident-resolution-in-2026">Rootly — Best AI SRE Tools 2026</a></li>
+<li><a href="https://stackgen.com/blog/top-7-ai-sre-tools-for-2026-essential-solutions-for-modern-site-reliability">StackGen — Top 7 AI SRE Tools 2026</a></li>
+</ul>
+</div>
+</article>
+<footer><p>&copy; 2026 Supergood Solutions. Helping teams automate smarter, not harder.</p></footer>
+</body>
+</html>
