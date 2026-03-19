@@ -50,12 +50,14 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
   --bg: #0a0a0b; --surface: #111113; --surface-2: #18181b; --border: #27272a;
-  --text: #fafafa; --text-2: #a1a1aa; --text-3: #71717a;
+  --text: #fafafa; --text-2: #a1a1aa; --text-3: #8c8c96;
   --green: #22c55e; --mono: 'JetBrains Mono', monospace;
 }
 html { scroll-behavior: smooth; }
