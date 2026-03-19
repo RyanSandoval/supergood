@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://supergood.solutions/</loc>
-    <lastmod>2026-02-16</lastmod>
+    <lastmod>2026-03-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -152,7 +152,7 @@
   </url>
   <url>
     <loc>https://supergood.solutions/blog/</loc>
-    <lastmod>2026-02-28</lastmod>
+    <lastmod>2026-03-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -162,6 +162,9 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url><loc>https://supergood.solutions/blog/ai-news-roundup-2026-02-27-enterprise-product/</loc><lastmod>2026-02-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://supergood.solutions/blog/ai-news-roundup-2026-03-03-enterprise-product/</loc><lastmod>2026-03-03</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://supergood.solutions/blog/ai-news-roundup-2026-03-06-enterprise-product/</loc><lastmod>2026-03-06</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url>
     <loc>https://supergood.solutions/blog/future-friday-multi-agent-orchestration-patterns-2026/</loc>
     <lastmod>2026-02-27</lastmod>
