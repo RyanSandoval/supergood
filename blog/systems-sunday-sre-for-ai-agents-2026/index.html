@@ -118,7 +118,7 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
 <ul>
 <li><strong>Silent degradation</strong>: "Agent outputs look normal but metrics suggest wrong routing — check the tool call trace for the last 50 runs"</li>
 <li><strong>Prompt injection response</strong>: "Agent is behaving unexpectedly after processing external content — isolate the session, audit the context window, roll back to previous system prompt version"</li>
-<li><strong>Cost spiral</strong>: "Agent retry loop detected — circuit breaker should have fired; if not, manual kill switch is [X], check rate limit config"</li>
+<li><strong>Cost spiral</strong>: "Agent retry loop detected — circuit breaker should have fired; if not, manual kill switch is [X], check rate limit config" (see our deep-dive on <a href="/blog/systems-sunday-agent-failure-recovery-2026/">retry logic and circuit breakers</a>)</li>
 <li><strong>Data quality failure</strong>: "Agent is writing low-confidence outputs to the database — check the confidence threshold config, compare recent outputs against eval set"</li>
 </ul>
 <p>Write these before you need them. The 2 AM incident is not when you want to figure out your agent's failure taxonomy.</p>
@@ -128,7 +128,7 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
 <ul>
 <li><strong>Task completion rate</strong>: % of initiated tasks that reach a successful terminal state</li>
 <li><strong>Human escalation rate</strong>: % of tasks that trigger an interrupt or require human review (too high = approval fatigue; too low = the agent is overconfident)</li>
-<li><strong>Output quality rate</strong>: % of outputs that pass your eval set (requires a continuous eval pipeline)</li>
+<li><strong>Output quality rate</strong>: % of outputs that pass your <a href="/blog/metrics-monday-agent-evals-observability/">eval set</a> (requires a continuous eval pipeline)</li>
 <li><strong>Tool call accuracy</strong>: % of tool calls that return expected response shapes vs. errors or unexpected formats</li>
 <li><strong>Cost per successful completion</strong>: total spend divided by tasks fully completed — rising cost/completion ratio is an early signal of degradation</li>
 </ul>

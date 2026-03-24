@@ -316,7 +316,7 @@ lead = client.chat.completions.create(
     <li><strong>What outputs are categorically blocked, regardless of confidence?</strong> PII in a field that flows to a public-facing system. Negative dollar values in any invoice field. Competitor mentions in any customer-facing content.</li>
   </ul>
 
-  <p>These rules don't require a framework. They're code. What they require is <em>intentionality</em> — writing them down before something goes wrong, rather than reverse-engineering them from an incident.</p>
+  <p>These rules don't require a framework. They're code. What they require is <em>intentionality</em> — writing them down before something goes wrong, rather than reverse-engineering them from an incident. This is the same discipline behind the <a href="/blog/tech-tuesday-interrupt-pattern-agent-design-2026/">interrupt pattern</a> — defining the boundaries before the agent ships, not after it finds one for you.</p>
 
   <h3>NVIDIA NeMo Guardrails: Programmable Policy Rails</h3>
 
@@ -346,7 +346,7 @@ lead = client.chat.completions.create(
 
   <p>The framing that helps: compare validation costs to incident costs. A single bad run that corrupts 500 CRM records doesn't just cost the cleanup time — it costs the confidence of the team in the agent system, which often translates to reduced automation scope or full rollback. For most business-critical workflows, Tier 2 semantic validation adds &lt;5% to total LLM cost and pays for itself the first time it catches something that would have been a data incident.</p>
 
-  <p>Start with Tier 2 validators on every output field that directly writes to a system of record. Add Tier 3 policy gates before any irreversible action. Treat both as part of the definition of "done" for an agent, not optional polish to add later.</p>
+  <p>Start with Tier 2 validators on every output field that directly writes to a system of record. Add Tier 3 policy gates before any irreversible action. Treat both as part of the definition of "done" for an agent, not optional polish to add later. Our <a href="/blog/systems-sunday-agent-ops-runbook/">agent ops runbook</a> includes validation checkpoints alongside the rest of the pre-ship checklist.</p>
 
   <p>Structured outputs are a great foundation. A real validation layer is what makes agents production-ready.</p>
 

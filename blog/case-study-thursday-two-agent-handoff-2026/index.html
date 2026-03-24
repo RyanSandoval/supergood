@@ -358,7 +358,7 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
   <div class="checklist">
     <h3>Multi-Agent Handoff Design Checklist</h3>
     <ul>
-      <li>Define a typed state schema (Pydantic, TypeScript interface, or equivalent) before writing either agent's prompt — the schema is the contract</li>
+      <li>Define a <a href="/blog/tech-tuesday-structured-output-contracts-2026/">typed state schema</a> (Pydantic, TypeScript interface, or equivalent) before writing either agent's prompt — the schema is the contract</li>
       <li>Parse and validate every agent output against the schema before passing it to the next agent — never pass raw LLM strings across agent boundaries</li>
       <li>Schema validation failures route to an error queue, not the next step — a partial output is worse than a visible failure</li>
       <li>The handoff payload includes not just the agent's output but its reasoning notes ("annotated handoff") — downstream agents shouldn't reverse-engineer upstream logic from output text</li>
@@ -371,7 +371,7 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
     </ul>
   </div>
 
-  <p>A note on frameworks: the patterns above work regardless of which agent framework you use. <a href="https://python.langchain.com/docs/langgraph/" target="_blank" rel="noopener noreferrer">LangGraph</a> makes some of this easier through its explicit shared state model and durable execution — failures can be replayed from exact stopping points rather than restarted from scratch, which is enormously useful for debugging handoff failures. <a href="https://www.crewai.com/" target="_blank" rel="noopener noreferrer">CrewAI</a> takes a different approach with role-based agents passing structured task outputs, which also enforces some of this discipline implicitly. But the underlying principle — define the contract, validate the boundary, instrument the seam — is framework-agnostic.</p>
+  <p>A note on frameworks: the patterns above work regardless of which agent framework you use. <a href="https://python.langchain.com/docs/langgraph/" target="_blank" rel="noopener noreferrer">LangGraph</a> makes some of this easier through its explicit shared state model and durable execution — failures can be replayed from exact stopping points rather than restarted from scratch, which is enormously useful for debugging handoff failures. For the broader pattern of how to handle retries, circuit breakers, and dead letter queues when those failures do occur, see our post on <a href="/blog/systems-sunday-agent-failure-recovery-2026/">agent failure recovery</a>. <a href="https://www.crewai.com/" target="_blank" rel="noopener noreferrer">CrewAI</a> takes a different approach with role-based agents passing structured task outputs, which also enforces some of this discipline implicitly. But the underlying principle — define the contract, validate the boundary, instrument the seam — is framework-agnostic.</p>
 
   <h2>What this means for your next multi-agent build</h2>
 

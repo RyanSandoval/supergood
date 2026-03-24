@@ -270,10 +270,10 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
   <p>There's a default instinct when something feels risky: add a human approval step. And for genuinely high-stakes, low-frequency decisions, that's the right call. An agent that wants to issue a refund over $5,000 should probably escalate to a human.</p>
   <p>But the AIUC-1 Consortium briefing put it bluntly: for agents operating at machine speed across long-running, multi-step workflows, "human-in-the-loop" becomes <em>safety theater</em>. Approvals can't keep up with tool call volumes. Review bottlenecks get bypassed. Entitlements drift. The "temporary exception" becomes the permanent default.</p>
   <p>The security practitioners contributing to that briefing — including CISOs from Confluent, Elastic, and UiPath — recommended shifting toward <strong>deterministic enforcement</strong>: policy-as-code at the action layer, not detection-only dashboards or approval queues that run at human speed on machine-speed systems.</p>
-  <p>This doesn't mean removing humans from oversight entirely. It means being deliberate about <em>where</em> humans are in the loop. Reserve human approval for the decisions that genuinely warrant it — high-stakes, irreversible, or cross-policy edge cases. Automate enforcement for everything else.</p>
+  <p>This doesn't mean removing humans from oversight entirely. It means being deliberate about <em>where</em> humans are in the loop. Reserve human approval for the decisions that genuinely warrant it — high-stakes, irreversible, or cross-policy edge cases — and implement those checkpoints using a structured <a href="/blog/tech-tuesday-interrupt-pattern-agent-design-2026/">interrupt pattern</a>. Automate enforcement for everything else.</p>
 
   <h2>A Practical Playbook for Teams Deploying Agents Now</h2>
-  <p>If you're in the middle of a production agent deployment — or planning one — here's where to start, in priority order:</p>
+  <p>If you're in the middle of a production agent deployment — or planning one — here's where to start, in priority order. (If you want the full operational checklist for running agents sustainably, our <a href="/blog/systems-sunday-agent-ops-runbook/">agent ops runbook</a> covers the end-to-end setup.)</p>
 
   <ol>
     <li><strong>Map your agent's tool access before you build guardrails.</strong> You can't enforce least-privilege if you don't know what privilege your agent currently has. Document every tool, every API, every data source the agent can reach. Cut anything it doesn't actively need.</li>

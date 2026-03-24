@@ -261,7 +261,7 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
   <div class="fix-card">
     <div class="fix-label">Guardrail 01</div>
     <h3>Least-privilege tool design</h3>
-    <p>Every tool the agent can call is scoped to the minimum action needed. Read tools are separate from write tools. Write tools have field-level allowlists, not record-level access. Destructive actions (delete, overwrite) require a separate confirmation step. The agent's permission envelope is the first thing we design — not an afterthought.</p>
+    <p>Every tool the agent can call is scoped to the minimum action needed. Read tools are separate from write tools. Write tools have field-level allowlists, not record-level access. Destructive actions (delete, overwrite) require a separate confirmation step — a form of <a href="/blog/tech-tuesday-interrupt-pattern-agent-design-2026/">interrupt pattern</a> applied at the tool boundary. The agent's permission envelope is the first thing we design — not an afterthought.</p>
   </div>
 
   <div class="fix-card">
@@ -324,7 +324,7 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
     </ul>
   </div>
 
-  <p>This isn't a comprehensive security posture — for that, the <a href="https://genai.owasp.org/llmrisk/llm01-prompt-injection/" target="_blank" rel="noopener noreferrer">OWASP LLM Top 10</a> is worth a full read, particularly around prompt injection (the #1 risk) and insecure output handling. But the checklist above catches the failure modes that are most likely to bite a team on their first real deployment.</p>
+  <p>This isn't a comprehensive security posture — for that, the <a href="https://genai.owasp.org/llmrisk/llm01-prompt-injection/" target="_blank" rel="noopener noreferrer">OWASP LLM Top 10</a> is worth a full read, particularly around prompt injection (the #1 risk) and insecure output handling. But the checklist above catches the failure modes that are most likely to bite a team on their first real deployment. For a broader framework covering all four runtime guardrail layers, see our post on <a href="/blog/future-friday-agent-guardrails-production-2026/">agent guardrails in production</a>.</p>
 
   <div class="callout">
     <p><strong>The uncomfortable truth about AI agents:</strong> the demo environment is not the production environment. The demo uses clean inputs, known edge cases, and a sympathetic reviewer. Production has weird data, users who phrase things oddly, APIs that go down at 2pm on a Tuesday, and a CMS that doesn't quite behave the way the docs say it does. Your guardrails need to be designed for that world, not the demo.</p>

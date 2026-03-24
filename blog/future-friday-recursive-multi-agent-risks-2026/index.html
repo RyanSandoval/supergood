@@ -140,7 +140,7 @@ footer p{color:var(--text-3);font-size:0.875rem;margin:0}
 
 <p>Before any orchestrator can spawn sub-agents, require it to estimate the number of agents it intends to create and get that estimate checked against a budget. This is analogous to a spend limit in a financial system — not an optimization, but a hard ceiling.</p>
 
-<p>Practical implementation: define a <code>max_subagents</code> parameter at the job or request level. If the orchestrator's plan requires more sub-agents than the budget allows, it must find a different approach or escalate to a human.</p>
+<p>Practical implementation: define a <code>max_subagents</code> parameter at the job or request level. If the orchestrator's plan requires more sub-agents than the budget allows, it must find a different approach or escalate to a human — ideally through a defined <a href="/blog/tech-tuesday-interrupt-pattern-agent-design-2026/">interrupt pattern</a> rather than an ad hoc approval flow.</p>
 
 <h3>Scope Tools Explicitly Per Sub-Agent</h3>
 
@@ -163,7 +163,7 @@ footer p{color:var(--text-3);font-size:0.875rem;margin:0}
   <li>Spawn approval (is this spawn within budget?)</li>
   <li>Tool authorization (is this agent allowed this tool?)</li>
   <li>Cost attribution (which parent request is this charge associated with?)</li>
-  <li>Circuit breaking (has this chain exceeded its retry limit?)</li>
+  <li>Circuit breaking (has this chain exceeded its retry limit?) — see our post on <a href="/blog/systems-sunday-agent-failure-recovery-2026/">retry logic and circuit breakers</a> for implementation patterns</li>
 </ul>
 
 <p>Frameworks like <strong>LangGraph</strong>, <strong>CrewAI</strong>, and <strong>AutoGen</strong> each offer different hooks for implementing this layer. LangGraph's graph-based state management makes it well-suited for pipelines with complex branching and parallel fan-out. All three require you to build the control plane logic yourself; the framework provides the hooks, not the enforcement.</p>

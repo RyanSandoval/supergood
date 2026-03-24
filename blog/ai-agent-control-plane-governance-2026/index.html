@@ -224,7 +224,7 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
   <div class="checklist">
     <h3>Before your agents touch production:</h3>
     <ul>
-      <li><strong>Instrument first, ship second</strong> — Wire in observability (traces, not just logs) before your agent touches production traffic. Tools like Arize Phoenix, Langfuse, or Datadog's AI monitoring make this straightforward.</li>
+      <li><strong>Instrument first, ship second</strong> — Wire in observability (traces, not just logs) before your agent touches production traffic. Tools like Arize Phoenix, Langfuse, or Datadog's AI monitoring make this straightforward. For a practical breakdown of what an <a href="/blog/tech-tuesday-agentops-observability-2026/">AgentOps observability stack</a> looks like, see our earlier post.</li>
       <li><strong>Centralize your policies</strong> — Stop hard-coding safety rules inside individual agent codebases. Use a control plane to manage policies centrally. This is the only way to enforce consistency at scale.</li>
       <li><strong>Enforce at runtime, not just deploy time</strong> — Static rules break when agents encounter novel inputs. You need runtime guardrails that can block, redirect, or escalate in real time.</li>
       <li><strong>Treat agent identity seriously</strong> — Your agents should identify themselves. Use stable user-agent strings, publish IP ranges, respect robots.txt. Don't be the team that disguises bots as humans.</li>
@@ -239,7 +239,7 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
 
   <p>We're in the "open standards emerging" phase right now. Galileo's Agent Control, OpenTelemetry's AI instrumentation work, and Amazon's evaluation library are all pulling in the same direction: making agent governance a composable, vendor-neutral infrastructure layer.</p>
 
-  <p><strong>If you're betting on agents as a core part of your product or operations, start treating governance as infrastructure — not an afterthought.</strong></p>
+  <p><strong>If you're betting on agents as a core part of your product or operations, start treating governance as infrastructure — not an afterthought.</strong> Our <a href="/blog/systems-sunday-agent-ops-runbook/">agent ops runbook</a> provides a concrete checklist for teams standing up this infrastructure for the first time.</p>
 
   <div class="faq-section">
     <h2>FAQ</h2>
