@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Structured Output Contracts for Agent-to-Agent Communication — Supergood Solutions</title>
+<meta name="description" content="When two AI agents talk to each other, the interface between them is a contract — and untyped, free-form text is a bad contract.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://supergood.solutions/blog/structured-output-contracts-agent-to-agent-communication/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Structured Output Contracts for Agent-to-Agent Communication">
+<meta property="og:url" content="https://supergood.solutions/blog/structured-output-contracts-agent-to-agent-communication/">
+<meta property="og:image" content="https://supergood.solutions/og-image.png">
+<meta property="article:published_time" content="2026-03-24">
+<meta property="article:author" content="Ryan Sandoval">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Structured Output Contracts for Agent-to-Agent Communication","description":"When two AI agents talk to each other, the interface between them is a contract — and untyped, free-form text is a bad contract.","author":{"@type":"Person","name":"Ryan Sandoval","url":"https://linkedin.com/in/RyanSandoval","jobTitle":"AI Automation Consultant","worksFor":{"@type":"Organization","name":"Supergood Solutions"}},"publisher":{"@type":"Organization","name":"Supergood Solutions","url":"https://supergood.solutions"},"datePublished":"2026-03-24","dateModified":"2026-03-24","mainEntityOfPage":"https://supergood.solutions/blog/structured-output-contracts-agent-to-agent-communication/","keywords":["AI agents","agentic AI","AI automation","enterprise AI","AI ops"]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://supergood.solutions/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://supergood.solutions/blog/"},{"@type":"ListItem","position":3,"name":"Structured Output Contracts for Agent-to-Agent Communication","item":"https://supergood.solutions/blog/structured-output-contracts-agent-to-agent-communication/"}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0b;--surface:#111113;--surface-2:#18181b;--border:#27272a;--text:#fafafa;--text-2:#a1a1aa;--text-3:#8c8c96;--green:#22c55e;--mono:'JetBrains Mono',monospace}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;background:rgba(10,10,11,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .inner{max-width:720px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
+.wordmark{font-weight:800;font-size:1.125rem;letter-spacing:-0.03em;color:var(--text);text-decoration:none}
+.wordmark .dot{color:var(--green)}
+nav a.back{font-size:0.875rem;color:var(--text-3);text-decoration:none}
+nav a.back:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:140px 24px 80px}
+article .tag{font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:16px}
+article h1{font-size:clamp(2rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin-bottom:20px}
+article .meta{font-family:var(--mono);font-size:0.75rem;color:var(--text-3);margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+article h2{font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;margin:56px 0 16px}
+article h3{font-size:1.125rem;font-weight:600;margin:40px 0 12px}
+article p{font-size:1rem;color:var(--text-2);margin-bottom:20px}
+article strong{color:var(--text)}
+article ul,article ol{color:var(--text-2);margin-bottom:20px;padding-left:24px}
+article li{margin-bottom:8px}
+article a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+article code{font-family:var(--mono);font-size:0.875em;background:var(--surface-2);padding:2px 6px;border-radius:4px}
+article pre{background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:20px 24px;margin:24px 0;overflow-x:auto}
+article pre code{background:none;padding:0;font-size:0.8125rem;line-height:1.6;color:var(--text-2)}
+.callout{background:var(--surface-2);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:20px 24px;margin:32px 0}
+.callout p{margin-bottom:0;font-size:0.9375rem}
+.sources-section{margin-top:48px;padding-top:32px;border-top:1px solid var(--border)}
+.sources-section h3{font-size:1rem;font-weight:600;margin-bottom:12px;color:var(--text)}
+.sources-section ul{list-style:none;padding:0}
+.sources-section li{margin-bottom:8px;font-size:0.875rem}
+footer{background:var(--surface);padding:40px 0;margin-top:80px;border-top:1px solid var(--border);text-align:center}
+footer p{color:var(--text-3);font-size:0.875rem;margin:0}
+@media(max-width:768px){article{padding:120px 20px 60px}article h1{font-size:2rem}}
+</style>
+</head>
+<body>
+<nav><div class="inner"><a href="/" class="wordmark">supergood<span class="dot">.</span></a><a href="/blog/" class="back">← All posts</a></div></nav>
+<main><article>
+<div class="tag">Tech Tuesday · Practical AI Tooling Patterns</div>
+<h1>Structured Output Contracts for Agent-to-Agent Communication</h1>
+<div class="meta">Published March 24, 2026 — 13 min read</div>
+
+<div class="callout">
+<p><strong>TL;DR:</strong> When two AI agents talk to each other, the interface between them is a contract — and untyped, free-form text is a bad contract. Structured output schemas (JSON Schema, Pydantic models, or emerging standards like Google's A2A protocol) let you enforce what data crosses agent boundaries, catch failures early, and build multi-agent systems that don't silently corrupt downstream work. This post covers the practical patterns for designing, validating, and versioning those contracts in production.</p>
+</div>
+
+<h2>The Problem with "Just Pass the Text"</h2>
+
+<p>Multi-agent systems fail at the boundary. Agent A produces a response. Agent B consumes it. If Agent A hallucinates a field, uses a different date format, or returns <code>null</code> where a string was expected, Agent B may silently continue with bad data — or crash in a way that's nearly impossible to trace back to the root cause.</p>
+
+<p>Free-form text handoffs feel flexible. In practice, they shift the burden of parsing and validation to the receiving agent's prompt, which is the worst possible place for it. Prompts are soft. Schemas are hard. For anything you care about, use a schema.</p>
+
+<p>This is not a theoretical concern. In production multi-agent pipelines — lead enrichment flows, content generation chains, financial data pipelines — schema violations at agent handoff boundaries are among the most common and hardest-to-debug failure modes.</p>
+
+<h2>What Is a Structured Output Contract?</h2>
+
+<p>A structured output contract is a formally defined schema that specifies exactly what an agent must produce before its output is passed to the next stage. It's the equivalent of a typed function signature in a software API.</p>
+
+<p>At minimum, a contract defines:</p>
+<ul>
+<li><strong>Required fields</strong> — what must always be present</li>
+<li><strong>Types</strong> — string, number, boolean, array, object</li>
+<li><strong>Enums</strong> — when a field is constrained to a fixed set of values</li>
+<li><strong>Optional fields</strong> — what may be absent (and what absence means)</li>
+<li><strong>Nullability</strong> — whether <code>null</code> is a valid value vs. a missing field</li>
+</ul>
+
+<p>Contracts can be expressed as:</p>
+<ul>
+<li><strong>JSON Schema</strong> — the lingua franca, supported by most model APIs</li>
+<li><strong>Pydantic models</strong> — the Python-native approach, used heavily in agent frameworks</li>
+<li><strong>TypeScript interfaces / Zod schemas</strong> — for TypeScript-based agent stacks</li>
+<li><strong>OpenAPI-derived specs</strong> — for agents that interact with REST APIs</li>
+</ul>
+
+<h2>Layer 1: Model-Native Structured Outputs</h2>
+
+<p>The first line of enforcement is at the model API level.</p>
+
+<p><strong>OpenAI Structured Outputs</strong> (introduced mid-2024, now broadly available) go beyond JSON mode by guaranteeing that the model's response will <em>exactly</em> match a provided JSON Schema — not just produce valid JSON, but adhere to the schema structure. This is enforced through constrained decoding, not prompt heuristics.</p>
+
+<pre><code>from openai import OpenAI
+import json
+
+client = OpenAI()
+
+schema = {
+    "type": "object",
+    "properties": {
+        "lead_score": {"type": "number"},
+        "fit_category": {"type": "string", "enum": ["hot", "warm", "cold"]},
+        "next_action": {"type": "string"},
+        "confidence": {"type": "number", "minimum": 0, "maximum": 1}
+    },
+    "required": ["lead_score", "fit_category", "next_action", "confidence"],
+    "additionalProperties": false
+}
+
+response = client.chat.completions.create(
+    model="gpt-4o",
+    messages=[{"role": "user", "content": "Score this lead: ..."}],
+    response_format={
+        "type": "json_schema",
+        "json_schema": {"name": "lead_score", "strict": True, "schema": schema}
+    }
+)</code></pre>
+
+<p>The <code>strict: true</code> flag is critical — it enables the hard schema enforcement. Without it, you get JSON mode (valid JSON, but not necessarily your schema).</p>
+
+<p>For Anthropic's Claude models, structured output is available through tool use: define a tool with a JSON Schema, set <code>tool_choice</code> to force the model to call it, and the response will conform to the schema. Same result, different mechanism.</p>
+
+<h2>Layer 2: Application-Level Validation with Pydantic</h2>
+
+<p>Model-native structured outputs handle the LLM boundary. But your application layer needs its own validation — especially when passing data between agents implemented in Python.</p>
+
+<p><a href="https://ai.pydantic.dev/">Pydantic AI</a> makes this the default. You define your output as a Pydantic model, and the framework handles both schema generation (to send to the LLM) and validation (to guarantee the data is correct before it travels further):</p>
+
+<pre><code>from pydantic import BaseModel, Field
+from pydantic_ai import Agent
+
+class LeadScore(BaseModel):
+    lead_score: float = Field(ge=0, le=100)
+    fit_category: Literal["hot", "warm", "cold"]
+    next_action: str
+    confidence: float = Field(ge=0, le=1)
+
+scoring_agent = Agent("openai:gpt-4o", result_type=LeadScore)
+result = await scoring_agent.run("Score this lead: ...")
+# result.data is a validated LeadScore — guaranteed</code></pre>
+
+<p>The key insight from <a href="https://ylanglabs.com/blogs/building-reliable-llm-workflows-with-pydantic">Ylang Labs' production guide</a>: treat <code>ValidationError</code> as a structured retry signal, not an exception to suppress. When validation fails, feed the schema error back to the model as part of a retry prompt. This turns schema violations into self-correcting loops rather than crashes.</p>
+
+<h2>Layer 3: Agent Handoff Envelope Design</h2>
+
+<p>Beyond field-level schemas, production multi-agent systems need an <strong>envelope</strong> — metadata that wraps the payload and allows the receiving agent to make routing and validation decisions before inspecting the content.</p>
+
+<p>A minimal handoff envelope looks like this:</p>
+
+<pre><code>{
+  "envelope": {
+    "schema_version": "1.2",
+    "producer_agent": "lead-scorer-v3",
+    "produced_at": "2026-03-24T12:30:00Z",
+    "trace_id": "abc-123",
+    "schema_id": "lead_score_output"
+  },
+  "payload": {
+    "lead_score": 78.5,
+    "fit_category": "hot",
+    "next_action": "Schedule demo within 48h",
+    "confidence": 0.91
+  }
+}</code></pre>
+
+<p>Why this matters in production:</p>
+<ul>
+<li><strong><code>schema_version</code></strong> lets you run old and new schema versions side-by-side during migrations</li>
+<li><strong><code>producer_agent</code></strong> enables blame attribution when something breaks downstream</li>
+<li><strong><code>trace_id</code></strong> propagates the observability context through the full agent chain</li>
+<li><strong><code>schema_id</code></strong> lets the receiver look up the schema registry and validate before processing</li>
+</ul>
+
+<p><a href="https://docs.anthropic.com/en/docs/build-with-claude/tool-use">Anthropic's multi-agent guidance</a> explicitly recommends treating agent outputs as typed objects at boundaries, not raw text.</p>
+
+<h2>Layer 4: The agents.json Specification</h2>
+
+<p>For teams building agents that interact with external APIs, the <a href="https://github.com/wild-card-ai/agents-json"><code>agents.json</code> specification</a> (built on OpenAPI) provides a formal way to describe contracts for API and agent interactions. Think of it as an OpenAPI spec layer specifically designed for agentic consumption — the agent gets a machine-readable description of what it can call, what it must send, and what it will receive.</p>
+
+<p>This matters as agent ecosystems grow: you can't hardcode every agent's output schema into every consumer. A spec layer lets agents discover and validate contracts at runtime.</p>
+
+<h2>Layer 5: Google's A2A Protocol</h2>
+
+<p><a href="https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/">Google's Agent2Agent (A2A) protocol</a> (released April 2025, now with an active open-source community at <a href="https://github.com/a2aproject/A2A">github.com/a2aproject/A2A</a>) tackles the same problem at network scale. A2A defines a standardized message format for agents to communicate across organizational and framework boundaries.</p>
+
+<p>Key A2A design decisions relevant to contracts:</p>
+<ul>
+<li>Messages are <strong>typed parts</strong> (text, file, structured JSON) — not blobs of untyped text</li>
+<li>Agents expose <strong>Agent Cards</strong> (a structured capability manifest) so consumers know what to expect</li>
+<li>The protocol is <strong>framework-agnostic</strong> — a LangGraph agent and a CrewAI agent can communicate via A2A without shared code</li>
+</ul>
+
+<p>A2A is most relevant for enterprise deployments where agents span teams, vendors, or cloud accounts. For single-org, single-stack deployments, JSON Schema + Pydantic is usually sufficient.</p>
+
+<h2>Schema Versioning: The Part Teams Skip</h2>
+
+<p>Contract design gets discussed. Contract versioning gets skipped until it bites you.</p>
+
+<p>When you change an agent's output schema — adding a field, renaming one, changing a type — every downstream consumer breaks unless you manage versions. The patterns that work in production:</p>
+
+<h3>Additive-only changes (preferred)</h3>
+<p>Add fields, never remove or rename them. Mark old fields as deprecated in your schema registry. This is backward compatible by definition.</p>
+
+<h3>Versioned schema IDs</h3>
+<p>Use <code>schema_id: "lead_score_v2"</code> in your envelope. Consumers that only understand <code>v1</code> can reject or route to a compatibility shim.</p>
+
+<h3>Schema registry</h3>
+<p>A shared store (even a Git repo with JSON Schema files) that all agents reference. When an agent is deployed, it registers its output schema. When a consumer is deployed, it validates against the registered schema. This catches breaking changes at deploy time, not at runtime.</p>
+
+<h3>Canary validation</h3>
+<p>Before rolling out a new schema version, shadow-validate a sample of live traffic against both old and new schemas. This catches cases where the new schema rejects data the old one accepted.</p>
+
+<h2>What Breaks Without Contracts</h2>
+
+<p>To make this concrete: here are the failure patterns we see most often in multi-agent systems without structured contracts.</p>
+
+<p><strong>Silent type coercion:</strong> Agent A returns <code>"78"</code> (a string). Agent B expects <code>78</code> (a number). Python quietly coerces it; JavaScript might not. The math downstream is wrong. No error is raised.</p>
+
+<p><strong>Missing optional fields treated as present:</strong> Agent A doesn't include <code>confidence</code> because it's marked optional in the prompt. Agent B's prompt assumes it's always there and uses <code>confidence</code> in its reasoning. Result: hallucinated confidence scores.</p>
+
+<p><strong>Enum drift:</strong> Agent A's prompt says to return <code>"HIGH"</code>, <code>"MEDIUM"</code>, or <code>"LOW"</code>. The LLM occasionally returns <code>"high"</code> (lowercase). Agent B's code does a strict string comparison. Routing fails silently.</p>
+
+<p><strong>Cascading nulls:</strong> One field is null in Agent A's output. Three agents downstream, that null has propagated through aggregations, been passed to a tool call, and caused an API error that looks completely unrelated to the original issue.</p>
+
+<p>All of these are prevented by strict schema enforcement at the boundary.</p>
+
+<h2>Practical Starting Point</h2>
+
+<p>If you're building a new multi-agent pipeline, here's the minimum viable contract setup:</p>
+
+<ol>
+<li><strong>Define output schemas as Pydantic models or JSON Schema files</strong> — not in prompts, in code</li>
+<li><strong>Enable <code>strict: true</code></strong> on any OpenAI Structured Outputs call (or equivalent for your model provider)</li>
+<li><strong>Wrap payloads in an envelope</strong> with at minimum <code>schema_version</code>, <code>producer_agent</code>, and <code>trace_id</code></li>
+<li><strong>Treat <code>ValidationError</code> as a retry signal</strong> — build a retry loop that feeds the error back to the model</li>
+<li><strong>Store schemas in version control</strong> — treat schema changes like code changes (PR, review, deploy)</li>
+</ol>
+
+<p>Start simple. A 5-field Pydantic model with one retry loop will save you more debugging hours than any observability dashboard.</p>
+
+<h2>FAQ</h2>
+
+<h3>What's the difference between JSON mode and Structured Outputs?</h3>
+<p>JSON mode guarantees the model returns valid JSON, but doesn't enforce that the JSON matches any particular schema — fields can be missing, types can be wrong, and the model can add arbitrary extra fields. Structured Outputs (with <code>strict: true</code> in OpenAI's API) enforce that the response exactly matches the provided JSON Schema, including required fields, types, and no additional properties. For agent-to-agent handoffs, only Structured Outputs provide the guarantees you actually need.</p>
+
+<h3>Do I need Pydantic or can I use raw JSON Schema?</h3>
+<p>Both work. JSON Schema is the universal format and works across languages and model providers. Pydantic gives you Python-native validation, automatic JSON Schema generation from your model class, and better integration with Python agent frameworks like PydanticAI, LangGraph, and FastAPI. If you're working in Python, Pydantic is the practical choice. If you're in a polyglot environment, raw JSON Schema with a shared schema registry is more portable.</p>
+
+<h3>What is the A2A protocol and when should I use it?</h3>
+<p>Google's Agent2Agent (A2A) protocol is an open standard for cross-system agent communication, designed for cases where agents from different organizations, vendors, or frameworks need to interoperate. It defines a structured message format, an agent capability manifest (Agent Card), and a transport layer. If your agents all live in the same codebase and stack, A2A is overkill — use JSON Schema + Pydantic. If you're building an agent marketplace, enterprise integration platform, or multi-vendor agent pipeline, A2A is worth evaluating.</p>
+
+<h3>How do I handle schema changes without breaking downstream agents?</h3>
+<p>The safest approach is additive-only changes: add new optional fields without removing or renaming existing ones. Use a <code>schema_version</code> field in your handoff envelope so consumers can handle multiple versions. When you need a breaking change, version the schema ID (e.g., <code>lead_score_v1</code> → <code>lead_score_v2</code>), deploy consumers that understand both versions, then migrate producers and decommission the old version. Treat schema changes like database migrations — planned, versioned, and rolled back cleanly if needed.</p>
+
+<h3>What's the cheapest way to add structured output contracts to an existing agent?</h3>
+<p>Start at the output boundary of your most critical agent. Define a Pydantic model for what it should return. Wrap the agent's call in a try/except that catches <code>ValidationError</code>, logs the schema error, and retries with the error in the prompt. This adds contract enforcement with minimal code change. You can expand to full envelope design and a schema registry incrementally as the system grows.</p>
+
+<h3>Can I use structured output contracts with open-source models?</h3>
+<p>Yes, with caveats. Models running through Ollama, vLLM, or llama.cpp support JSON Schema-constrained decoding (via grammar-based sampling), which gives you schema enforcement similar to OpenAI's Structured Outputs. The reliability varies by model — larger models (70B+) tend to follow schemas more consistently. For production use with open-source models, add application-level Pydantic validation and a retry loop as a safety net, since constrained decoding doesn't guarantee semantic correctness, only structural conformance.</p>
+
+<div class="sources-section">
+<h3>Sources</h3>
+<ul>
+<li><a href="https://platform.openai.com/docs/guides/structured-outputs">OpenAI Structured Outputs Documentation</a> — Official guide to schema enforcement in the OpenAI API</li>
+<li><a href="https://platform.openai.com/docs/guides/function-calling">OpenAI Function Calling Documentation</a> — Tool use patterns for structured agent outputs</li>
+<li><a href="https://ai.pydantic.dev/">PydanticAI Documentation</a> — Type-safe Python framework for building agents with validated outputs</li>
+<li><a href="https://ylanglabs.com/blogs/building-reliable-llm-workflows-with-pydantic">Building Reliable LLM Workflows with Pydantic — Ylang Labs</a> — Production patterns for Pydantic validation in LLM pipelines</li>
+<li><a href="https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/">Announcing the Agent2Agent Protocol — Google Developers Blog</a> — Google's open protocol for cross-system agent communication</li>
+<li><a href="https://github.com/wild-card-ai/agents-json">agents.json Specification — GitHub</a> — OpenAPI-based formal contract spec for agent interactions</li>
+<li><a href="https://aicompetence.org/json-prompting-supercharges-multi-agent-ai-systems/">How JSON Prompting Supercharges Multi-Agent AI Systems — AI Competence</a> — Practical patterns for JSON-based agent communication</li>
+<li><a href="https://github.com/a2aproject/A2A">A2A Protocol GitHub Repository</a> — Open-source A2A protocol specification and reference implementations</li>
+</ul>
+</div>
+
+</article></main>
+<footer><p>&copy; 2026 Supergood Solutions. Helping teams automate smarter, not harder.</p></footer>
+</body>
+</html>
