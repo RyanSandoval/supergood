@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Two Memory Problems Every Production Agent Has — Supergood Solutions</title>
+<meta name="description" content="Most agent failures aren't model failures — they're memory failures. Agents need two completely different memory systems working together: working memory and long-term memory.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://supergood.solutions/blog/ai-wednesday-two-memory-problems-production-agents-2026/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Two Memory Problems Every Production Agent Has">
+<meta property="og:url" content="https://supergood.solutions/blog/ai-wednesday-two-memory-problems-production-agents-2026/">
+<meta property="og:image" content="https://supergood.solutions/og-image.png">
+<meta property="article:published_time" content="2026-03-25">
+<meta property="article:author" content="Ryan Sandoval">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"The Two Memory Problems Every Production Agent Has","description":"Most agent failures aren't model failures — they're memory failures. Agents need two completely different memory systems working together: working memory and long-term memory.","author":{"@type":"Person","name":"Ryan Sandoval","url":"https://linkedin.com/in/RyanSandoval","jobTitle":"AI Automation Consultant","worksFor":{"@type":"Organization","name":"Supergood Solutions"}},"publisher":{"@type":"Organization","name":"Supergood Solutions","url":"https://supergood.solutions"},"datePublished":"2026-03-25","dateModified":"2026-03-25","mainEntityOfPage":"https://supergood.solutions/blog/ai-wednesday-two-memory-problems-production-agents-2026/","keywords":["AI agents","agentic AI","AI automation","enterprise AI","AI ops"]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://supergood.solutions/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://supergood.solutions/blog/"},{"@type":"ListItem","position":3,"name":"The Two Memory Problems Every Production Agent Has","item":"https://supergood.solutions/blog/ai-wednesday-two-memory-problems-production-agents-2026/"}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0b;--surface:#111113;--surface-2:#18181b;--border:#27272a;--text:#fafafa;--text-2:#a1a1aa;--text-3:#8c8c96;--green:#22c55e;--mono:'JetBrains Mono',monospace}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;background:rgba(10,10,11,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .inner{max-width:720px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
+.wordmark{font-weight:800;font-size:1.125rem;letter-spacing:-0.03em;color:var(--text);text-decoration:none}
+.wordmark .dot{color:var(--green)}
+nav a.back{font-size:0.875rem;color:var(--text-3);text-decoration:none}
+nav a.back:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:140px 24px 80px}
+article .tag{font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:16px}
+article h1{font-size:clamp(2rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin-bottom:20px}
+article .meta{font-family:var(--mono);font-size:0.75rem;color:var(--text-3);margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+article h2{font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;margin:56px 0 16px}
+article h3{font-size:1.125rem;font-weight:600;margin:40px 0 12px}
+article p{font-size:1rem;color:var(--text-2);margin-bottom:20px}
+article strong{color:var(--text)}
+article ul,article ol{color:var(--text-2);margin-bottom:20px;padding-left:24px}
+article li{margin-bottom:8px}
+article a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+.callout{background:var(--surface-2);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:20px 24px;margin:32px 0}
+.callout p{margin-bottom:0;font-size:0.9375rem}
+.sources-section{margin-top:48px;padding-top:32px;border-top:1px solid var(--border)}
+.sources-section h3{font-size:1rem;font-weight:600;margin-bottom:12px;color:var(--text)}
+.sources-section ul{list-style:none;padding:0}
+.sources-section li{margin-bottom:8px;font-size:0.875rem}
+footer{background:var(--surface);padding:40px 0;margin-top:80px;border-top:1px solid var(--border);text-align:center}
+footer p{color:var(--text-3);font-size:0.875rem;margin:0}
+@media(max-width:768px){article{padding:120px 20px 60px}article h1{font-size:2rem}}
+</style>
+</head>
+<body>
+<nav><div class="inner"><a href="/" class="wordmark">supergood<span class="dot">.</span></a><a href="/blog/" class="back">← All posts</a></div></nav>
+<main><article>
+<div class="tag">AI Wednesday · AI Engineering</div>
+<h1>The Two Memory Problems Every Production Agent Has</h1>
+<div class="meta">Published March 25, 2026 — 5 min read</div>
+
+<p><strong>TL;DR:</strong> Most agent failures aren't model failures — they're memory failures. Agents need two completely different memory systems working together: working memory (the live context window) and long-term memory (persistent external storage). Confusing the two, or leaning entirely on one, is why agents go off the rails on long tasks.</p>
+
+<h2>Working Memory Is Just the Context Window</h2>
+
+<p>When your agent starts a task, everything it knows right now lives in its context window. That's working memory — it's fast, it's immediately accessible, and it's gone the moment the session ends.</p>
+
+<p>The problem: context windows fill up. Even with 128k or 200k token models, long-horizon tasks — multi-step workflows, ongoing customer interactions, code refactors that span hours — will exhaust the available space. And context drift sets in before you hit the limit. Research from Zylos AI found that nearly 65% of enterprise AI failures in 2025 were attributed to context drift during multi-step reasoning, not raw context exhaustion.</p>
+
+<p>Working memory is not a long-term solution. It's a runway.</p>
+
+<h2>Long-Term Memory Is an Engineering Problem</h2>
+
+<p>Persistent memory lives outside the model entirely — in vector stores, graph databases, or structured key-value stores. The agent retrieves relevant pieces at query time and injects them into working memory as needed.</p>
+
+<p>There are three flavors worth knowing:</p>
+
+<ul>
+<li><strong>Episodic memory</strong> — records of what happened ("the user asked X on Monday, we resolved it with Y")</li>
+<li><strong>Semantic memory</strong> — facts and entity relationships ("this user prefers async communication, their stack is Python + FastAPI")</li>
+<li><strong>Procedural memory</strong> — learned behaviors ("when this error pattern appears, escalate before retrying")</li>
+</ul>
+
+<p>These aren't mutually exclusive. Production agents often need all three, and the design question is how you populate and retrieve each one without burying the context window in noise.</p>
+
+<h2>The Real Design Problem: What Goes Where, When</h2>
+
+<p>The hardest part of agent memory isn't choosing a tool — it's deciding what information gets written to long-term storage, when, and how it gets retrieved.</p>
+
+<p>Two main patterns exist:</p>
+
+<p><strong>Hot path:</strong> Memory operations happen inline during the agent's execution loop. Low latency, but adds complexity and cost to every turn.</p>
+
+<p><strong>Background consolidation:</strong> A secondary process summarizes and writes memories asynchronously after a session ends. Lower overhead per turn, but the agent won't have fresh memories mid-session.</p>
+
+<p>Most production setups use a hybrid: background consolidation for episodic and semantic memory, with selective hot-path writes for high-signal events (errors, explicit user preferences, resolved decisions).</p>
+
+<h2>What the Tooling Landscape Looks Like Right Now</h2>
+
+<p>The memory-as-a-service space has matured significantly. A few tools worth evaluating:</p>
+
+<ul>
+<li><strong>Mem0</strong> — managed memory layer with vector + graph storage; fastest path to production, pricing can add up at scale</li>
+<li><strong>Zep</strong> — more control, temporal reasoning built in, better for power users who need to manage memory lifecycle explicitly</li>
+<li><strong>LangMem</strong> — low-friction if your stack is already LangGraph; vector-first, good for personalization use cases</li>
+<li><strong>Letta</strong> — agent-managed hierarchy, OS-inspired; the agent itself controls what lives in working memory vs. long-term storage</li>
+</ul>
+
+<p>None of these is universally right. The choice depends on your latency budget, whether you need entity-relationship tracking, and how much infrastructure you want to own.</p>
+
+<h2>The Mistake to Avoid: Treating Bigger Context as a Substitute</h2>
+
+<p>Weaviate's context engineering team put it plainly: "It's tempting to assume that shoving everything into bigger context windows solves this problem, but this is generally not the case."</p>
+
+<p>A 1M token context window is not a memory strategy. It's expensive, it degrades reasoning quality on long sequences, and it still doesn't give you cross-session persistence.</p>
+
+<p>Deliberate memory architecture — knowing what type of information you're storing, where it goes, and when to retrieve it — is what separates agents that work once from agents that work reliably over time.</p>
+
+<div class="callout"><p><strong>Concrete next step:</strong> Audit your current agent's memory assumptions. If everything lives in the context window and nothing persists across sessions, you have a working memory problem. Pick one memory type (episodic is usually the easiest starting point), and add a background consolidation pass after each session ends.</p></div>
+
+<h2>FAQ</h2>
+
+<h3>What's the difference between working memory and long-term memory in AI agents?</h3>
+<p>Working memory is the live context window — everything the agent can see and reason over right now. Long-term memory is external persistent storage that survives session boundaries and gets retrieved on demand.</p>
+
+<h3>Why can't I just use a longer context window instead of external memory?</h3>
+<p>Longer context windows increase cost, can degrade reasoning quality on extended sequences, and still don't persist across sessions. They're a tradeoff, not a solution.</p>
+
+<h3>What types of long-term memory should an agent have?</h3>
+<p>The CoALA framework (and tools like MIRIX) distinguish episodic (what happened), semantic (facts and entities), and procedural (learned behaviors). Most production agents benefit from all three, implemented with different storage backends.</p>
+
+<h3>Which memory tool is best for AI agents?</h3>
+<p>Mem0 is the most mature managed option. Zep suits teams that need fine-grained temporal control. LangMem is the path of least resistance for LangGraph users. Letta is best when you want the agent itself to manage memory hierarchy. Evaluate based on your latency requirements and stack, not hype.</p>
+
+<div class="sources-section">
+<h3>Sources</h3>
+<ul>
+<li>Leonie Monigatti — <a href="https://www.leoniemonigatti.com/blog/memory-in-ai-agents.html">Making Sense of Memory in AI Agents</a></li>
+<li>Weaviate — <a href="https://weaviate.io/blog/context-engineering">Context Engineering: LLM Memory and Retrieval for AI Agents</a> (Dec 2025)</li>
+<li>The New Stack — <a href="https://thenewstack.io/memory-for-ai-agents-a-new-paradigm-of-context-engineering/">Memory for AI Agents: A New Paradigm of Context Engineering</a> (Jan 2026)</li>
+<li>MachineLearningMastery — <a href="https://machinelearningmastery.com/beyond-short-term-memory-the-3-types-of-long-term-memory-ai-agents-need/">Beyond Short-term Memory: The 3 Types of Long-term Memory AI Agents Need</a> (Dec 2025)</li>
+<li>Vectorize.io — <a href="https://vectorize.io/articles/best-ai-agent-memory-systems">Best AI Agent Memory Systems in 2026: 8 Frameworks Compared</a> (Mar 2026)</li>
+<li>Zylos AI — <a href="https://zylos.ai/research/2026-02-28-ai-agent-context-compression-strategies">AI Agent Context Compression: Strategies for Long-Running Sessions</a> (Feb 2026)</li>
+<li>DEV Community — <a href="https://dev.to/anajuliabit/mem0-vs-zep-vs-langmem-vs-memoclaw-ai-agent-memory-comparison-2026-1l1k">Mem0 vs Zep vs LangMem vs MemoClaw: AI Agent Memory Comparison 2026</a> (Feb 2026)</li>
+</ul>
+</div>
+
+</article></main>
+<footer><p>&copy; 2026 Supergood Solutions. Helping teams automate smarter, not harder.</p></footer>
+</body>
+</html>
