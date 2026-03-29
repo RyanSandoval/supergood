@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Systems Sunday: Circuit Breakers for LLM Calls — Stop Cascading Failures Before They Start — Supergood Solutions</title>
+<meta name="description" content="Retrying a failing LLM call into oblivion isn't resilience — it's how one provider outage takes down your whole agent.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://supergood.solutions/blog/systems-sunday-circuit-breakers-llm-calls-2026/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Systems Sunday: Circuit Breakers for LLM Calls — Stop Cascading Failures Before They Start">
+<meta property="og:url" content="https://supergood.solutions/blog/systems-sunday-circuit-breakers-llm-calls-2026/">
+<meta property="og:image" content="https://supergood.solutions/og-image.png">
+<meta property="article:published_time" content="2026-03-29">
+<meta property="article:author" content="Ryan Sandoval">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Systems Sunday: Circuit Breakers for LLM Calls — Stop Cascading Failures Before They Start","description":"Retrying a failing LLM call into oblivion isn't resilience — it's how one provider outage takes down your whole agent.","author":{"@type":"Person","name":"Ryan Sandoval","url":"https://linkedin.com/in/RyanSandoval","jobTitle":"AI Automation Consultant","worksFor":{"@type":"Organization","name":"Supergood Solutions"}},"publisher":{"@type":"Organization","name":"Supergood Solutions","url":"https://supergood.solutions"},"datePublished":"2026-03-29","dateModified":"2026-03-29","mainEntityOfPage":"https://supergood.solutions/blog/systems-sunday-circuit-breakers-llm-calls-2026/","keywords":["AI agents","agentic AI","AI automation","enterprise AI","AI ops"]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://supergood.solutions/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://supergood.solutions/blog/"},{"@type":"ListItem","position":3,"name":"Systems Sunday: Circuit Breakers for LLM Calls — Stop Cascading Failures Before They Start","item":"https://supergood.solutions/blog/systems-sunday-circuit-breakers-llm-calls-2026/"}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0b;--surface:#111113;--surface-2:#18181b;--border:#27272a;--text:#fafafa;--text-2:#a1a1aa;--text-3:#8c8c96;--green:#22c55e;--mono:'JetBrains Mono',monospace}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;background:rgba(10,10,11,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .inner{max-width:720px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
+.wordmark{font-weight:800;font-size:1.125rem;letter-spacing:-0.03em;color:var(--text);text-decoration:none}
+.wordmark .dot{color:var(--green)}
+nav a.back{font-size:0.875rem;color:var(--text-3);text-decoration:none}
+nav a.back:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:140px 24px 80px}
+article .tag{font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:16px}
+article h1{font-size:clamp(2rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin-bottom:20px}
+article .meta{font-family:var(--mono);font-size:0.75rem;color:var(--text-3);margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+article h2{font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;margin:56px 0 16px}
+article h3{font-size:1.125rem;font-weight:600;margin:40px 0 12px}
+article p{font-size:1rem;color:var(--text-2);margin-bottom:20px}
+article strong{color:var(--text)}
+article ul,article ol{color:var(--text-2);margin-bottom:20px;padding-left:24px}
+article li{margin-bottom:8px}
+article a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+article code{font-family:var(--mono);font-size:0.875em;color:var(--green);background:var(--surface-2);padding:2px 6px;border-radius:4px}
+.callout{background:var(--surface-2);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:20px 24px;margin:32px 0}
+.callout p{margin-bottom:0;font-size:0.9375rem}
+.sources-section{margin-top:48px;padding-top:32px;border-top:1px solid var(--border)}
+.sources-section h3{font-size:1rem;font-weight:600;margin-bottom:12px;color:var(--text)}
+.sources-section ul{list-style:none;padding:0}
+.sources-section li{margin-bottom:8px;font-size:0.875rem}
+footer{background:var(--surface);padding:40px 0;margin-top:80px;border-top:1px solid var(--border);text-align:center}
+footer p{color:var(--text-3);font-size:0.875rem;margin:0}
+@media(max-width:768px){article{padding:120px 20px 60px}article h1{font-size:2rem}}
+</style>
+</head>
+<body>
+<nav><div class="inner"><a href="/" class="wordmark">supergood<span class="dot">.</span></a><a href="/blog/" class="back">← All posts</a></div></nav>
+<main><article>
+<div class="tag">Systems Sunday</div>
+<h1>Systems Sunday: Circuit Breakers for LLM Calls — Stop Cascading Failures Before They Start</h1>
+<div class="meta">Published March 29, 2026 — 7 min read</div>
+
+<p><strong>TL;DR:</strong> Retrying a failing LLM call into oblivion isn't resilience — it's how one provider outage takes down your whole agent. Circuit breakers give your system a way to fail fast, route around problems, and recover safely. Here's how to wire them in.</p>
+
+<h2>The Problem: Retries Make Bad Outages Worse</h2>
+<p>When an LLM provider goes down, the natural instinct is to retry. But naive retry logic under a real outage does three bad things: it saturates your request queue, it burns rate-limit budget on calls that will fail anyway, and it causes cascading timeouts downstream.</p>
+<p>Infrastructure failures account for roughly 16% of multi-agent system failures — and they produce the most visible outages (FutureAGI, 2026). The culprit is usually not the outage itself, but the retry storm that follows it.</p>
+<p>A circuit breaker solves this by short-circuiting failed calls instead of hammering a downed service.</p>
+
+<h2>How a Circuit Breaker Works (the 60-second version)</h2>
+<p>The pattern has three states:</p>
+<ul>
+<li><strong>Closed</strong> — normal operation, requests flow through, failures are counted</li>
+<li><strong>Open</strong> — failure threshold exceeded; all requests are blocked immediately (no calls made)</li>
+<li><strong>Half-Open</strong> — after a timeout, a probe request tests if the service recovered; success closes the circuit, failure keeps it open</li>
+</ul>
+<p>For LLM calls, "failure" means: 5xx errors, provider-reported rate limit exhaustion (429), or timeouts exceeding your SLO. A reasonable starting config: open after 5 failures in a 60-second window, test recovery after 30 seconds, require 3 successful probes to close.</p>
+<p>The key insight: <strong>the circuit breaker's job is to fail fast, not to succeed eventually.</strong> That's what retries are for.</p>
+
+<h2>Retries, Fallbacks, and Circuit Breakers Are Not the Same Thing</h2>
+<p>These three patterns layer on top of each other and are often conflated:</p>
+<table style="width:100%;border-collapse:collapse;margin-bottom:20px;font-size:0.9375rem;color:var(--text-2)">
+<thead><tr style="border-bottom:1px solid var(--border)">
+<th style="text-align:left;padding:10px 12px;color:var(--text);font-weight:600">Pattern</th>
+<th style="text-align:left;padding:10px 12px;color:var(--text);font-weight:600">When to use</th>
+<th style="text-align:left;padding:10px 12px;color:var(--text);font-weight:600">What it does</th>
+</tr></thead>
+<tbody>
+<tr style="border-bottom:1px solid var(--border)"><td style="padding:10px 12px"><strong>Retry</strong></td><td style="padding:10px 12px">Transient errors (network blip, single timeout)</td><td style="padding:10px 12px">Re-sends the same request after backoff</td></tr>
+<tr style="border-bottom:1px solid var(--border)"><td style="padding:10px 12px"><strong>Fallback</strong></td><td style="padding:10px 12px">Provider unavailable or too slow</td><td style="padding:10px 12px">Routes to a secondary model/provider</td></tr>
+<tr><td style="padding:10px 12px"><strong>Circuit breaker</strong></td><td style="padding:10px 12px">Sustained failure or degradation</td><td style="padding:10px 12px">Stops sending until the service recovers</td></tr>
+</tbody>
+</table>
+<p>In practice: retry first (with exponential backoff), then fall back to an alternate provider, and let the circuit breaker gate whether you even try the primary. Retries without a circuit breaker are just a denial-of-service attack against a struggling provider.</p>
+
+<h2>Per-Provider Circuits, Not Global Ones</h2>
+<p>A common mistake is implementing a single circuit breaker across all LLM calls. If you're routing between OpenAI, Anthropic, and a self-hosted model like Ollama, each should have its own circuit — otherwise one provider's bad day opens the circuit for everything.</p>
+<p>Tools like <a href="https://docs.litellm.ai/docs/completion/reliable_completions">LiteLLM</a> handle per-provider fallback routing natively. <a href="https://portkey.ai/blog/retries-fallbacks-and-circuit-breakers-in-llm-apps/">Portkey</a> and Bifrost add circuit-breaker state with real-time health monitoring across the provider fleet. If you're rolling your own, the <code>go-circuitbreaker</code> library (Go) or <code>pybreaker</code> (Python) are solid starting points.</p>
+<p>One important caveat from production experience: <strong>your circuit breaker's state store needs a fallback too.</strong> If you're tracking failure counts in Redis and Redis goes down, your circuit logic shouldn't silently fail closed (letting requests through) or fail open (blocking everything). Default to closed with local in-memory state.</p>
+
+<h2>What to Instrument</h2>
+<p>A circuit breaker you can't observe is just a black box that occasionally breaks things:</p>
+<ul>
+<li><code>llm_circuit_breaker_state</code> (gauge) — current state per provider: 0=closed, 1=half-open, 2=open</li>
+<li><code>llm_requests_total</code> with <code>status</code> label — track the ratio of blocked vs. passed requests</li>
+<li><code>llm_circuit_opens_total</code> (counter) — alerts when circuits trip more than expected</li>
+<li>Alert threshold: more than 2 circuit opens per provider per hour warrants investigation</li>
+</ul>
+<p>The Google Cloud SRE guide for LLM apps recommends treating circuit state as a first-class signal alongside latency and error rate — not an afterthought.</p>
+
+<h2>FAQ</h2>
+<h3>What's the difference between a circuit breaker and a timeout?</h3>
+<p>A timeout limits how long a single call waits. A circuit breaker tracks failure patterns across many calls and stops new requests from going out at all when a threshold is crossed. You need both.</p>
+
+<h3>Should I use a circuit breaker for all LLM calls or only critical paths?</h3>
+<p>Start with your highest-traffic or most latency-sensitive paths. Background/async agents can tolerate longer retry queues; real-time user-facing agents need fast fail behavior to protect UX.</p>
+
+<h3>What failure threshold should I use to open the circuit?</h3>
+<p>A common starting point: 5 failures in a 60-second window. Tune down if you have a high-volume system where 5 failures happen routinely; tune up if you have low-traffic agents where 5 failures might just be noise.</p>
+
+<h3>What happens to in-flight agent tasks when a circuit opens?</h3>
+<p>This depends on your architecture. Async agents should queue or checkpoint the task. Synchronous agents should return a graceful error immediately. Never silently drop work — log the blocked request and expose it in your runbook.</p>
+
+<div class="sources-section">
+<h3>Sources</h3>
+<ul>
+<li><a href="https://www.getmaxim.ai/articles/retries-fallbacks-and-circuit-breakers-in-llm-apps-a-production-guide/">Retries, Fallbacks, and Circuit Breakers in LLM Apps: A Production Guide — Maxim, Feb 2026</a></li>
+<li><a href="https://portkey.ai/blog/retries-fallbacks-and-circuit-breakers-in-llm-apps/">Retries, fallbacks, and circuit breakers in LLM apps: what to use when — Portkey, Jan 2026</a></li>
+<li><a href="https://www.sitepoint.com/claude-api-circuit-breaker-pattern/">Claude API Circuit Breaker Enterprise Pattern Guide — SitePoint, Mar 2026</a></li>
+<li><a href="https://dasroot.net/posts/2026/02/implementing-circuit-breakers-for-llm-services-in-go/">Implementing Circuit Breakers for LLM Services in Go — dasroot.net, Feb 2026</a></li>
+<li><a href="https://futureagi.substack.com/p/why-do-multi-agent-llm-systems-fail">Why do multi-agent LLM systems fail — FutureAGI, Mar 2026</a></li>
+<li><a href="https://medium.com/google-cloud/building-bulletproof-llm-applications-a-guide-to-applying-sre-best-practices-1564b72fd22e">Building Bulletproof LLM Applications: SRE Best Practices — Google Cloud / Medium, Oct 2025</a></li>
+<li><a href="https://dev.to/sandhu93/circuit-breaker-for-llm-provider-failure-53f6">Circuit breaker for LLM provider failure — DEV Community, Mar 2026</a></li>
+<li><a href="https://docs.litellm.ai/docs/completion/reliable_completions">LiteLLM Reliability Docs</a></li>
+</ul>
+</div>
+</article></main>
+<footer><p>&copy; 2026 Supergood Solutions. Helping teams automate smarter, not harder.</p></footer>
+</body>
+</html>
