@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>When Your Agent Fails Silently—Retry Logic & Graceful Degradation in Production — Supergood Solutions</title>
+<meta name="description" content="A production-grade AI agent isn't just smart—it's resilient. We walked through a real deployment where tool timeouts and API rate-limits cascaded into silent failures. The fix: exponential backoff retry logic, circuit breakers, and a fallback chain that degrades gracefully instead of crashing.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://supergood.solutions/blog/when-your-agent-fails-silently/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="When Your Agent Fails Silently—Retry Logic & Graceful Degradation in Production">
+<meta property="og:url" content="https://supergood.solutions/blog/when-your-agent-fails-silently/">
+<meta property="og:image" content="https://supergood.solutions/og-image.png">
+<meta property="article:published_time" content="2026-04-09">
+<meta property="article:author" content="Ryan Sandoval">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"When Your Agent Fails Silently—Retry Logic & Graceful Degradation in Production","description":"A production-grade AI agent isn't just smart—it's resilient. We walked through a real deployment where tool timeouts and API rate-limits cascaded into silent failures. The fix: exponential backoff retry logic, circuit breakers, and a fallback chain that degrades gracefully instead of crashing.","author":{"@type":"Person","name":"Ryan Sandoval","url":"https://linkedin.com/in/RyanSandoval","jobTitle":"AI Automation Consultant","worksFor":{"@type":"Organization","name":"Supergood Solutions"}},"publisher":{"@type":"Organization","name":"Supergood Solutions","url":"https://supergood.solutions"},"datePublished":"2026-04-09","dateModified":"2026-04-09","mainEntityOfPage":"https://supergood.solutions/blog/when-your-agent-fails-silently/","keywords":["AI agents","agentic AI","AI automation","enterprise AI","AI ops"]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://supergood.solutions/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://supergood.solutions/blog/"},{"@type":"ListItem","position":3,"name":"When Your Agent Fails Silently—Retry Logic & Graceful Degradation in Production","item":"https://supergood.solutions/blog/when-your-agent-fails-silently/"}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0b;--surface:#111113;--surface-2:#18181b;--border:#27272a;--text:#fafafa;--text-2:#a1a1aa;--text-3:#8c8c96;--green:#22c55e;--mono:'JetBrains Mono',monospace}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;background:rgba(10,10,11,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .inner{max-width:720px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
+.wordmark{font-weight:800;font-size:1.125rem;letter-spacing:-0.03em;color:var(--text);text-decoration:none}
+.wordmark .dot{color:var(--green)}
+nav a.back{font-size:0.875rem;color:var(--text-3);text-decoration:none}
+nav a.back:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:140px 24px 80px}
+article .tag{font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:16px}
+article h1{font-size:clamp(2rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin-bottom:20px}
+article .meta{font-family:var(--mono);font-size:0.75rem;color:var(--text-3);margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+article h2{font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;margin:56px 0 16px}
+article h3{font-size:1.125rem;font-weight:600;margin:40px 0 12px}
+article p{font-size:1rem;color:var(--text-2);margin-bottom:20px}
+article strong{color:var(--text)}
+article ul,article ol{color:var(--text-2);margin-bottom:20px;padding-left:24px}
+article li{margin-bottom:8px}
+article a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+article pre{background:var(--surface-2);border-radius:8px;padding:16px;overflow-x:auto;margin-bottom:20px}
+article code{font-family:var(--mono);font-size:0.9rem;color:var(--text-2)}
+.callout{background:var(--surface-2);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:20px 24px;margin:32px 0}
+.callout p{margin-bottom:0;font-size:0.9375rem}
+.sources-section{margin-top:48px;padding-top:32px;border-top:1px solid var(--border)}
+.sources-section h3{font-size:1rem;font-weight:600;margin-bottom:12px;color:var(--text)}
+.sources-section ul{list-style:none;padding:0}
+.sources-section li{margin-bottom:8px;font-size:0.875rem}
+footer{background:var(--surface);padding:40px 0;margin-top:80px;border-top:1px solid var(--border);text-align:center}
+footer p{color:var(--text-3);font-size:0.875rem;margin:0}
+@media(max-width:768px){article{padding:120px 20px 60px}article h1{font-size:2rem}}
+</style>
+</head>
+<body>
+<nav><div class="inner"><a href="/" class="wordmark">supergood<span class="dot">.</span></a><a href="/blog/" class="back">← All posts</a></div></nav>
+<main><article>
+<div class="tag">Case Study Thursday</div>
+<h1>When Your Agent Fails Silently—Retry Logic & Graceful Degradation in Production</h1>
+<div class="meta">Published April 9, 2026 — 11 min read</div>
+
+<p><strong>TL;DR:</strong> A production-grade AI agent isn't just smart—it's resilient. We walked through a real deployment where tool timeouts and API rate-limits cascaded into silent failures. The fix: exponential backoff retry logic, circuit breakers, and a fallback chain that degrades gracefully instead of crashing. This case study covers the three-layer resilience pattern that separates prototype code from production systems.</p>
+
+<hr style="border:none;border-top:1px solid var(--border);margin:32px 0;">
+
+<h2>The Problem: Silent Failure at 3 AM</h2>
+
+<p>Two months in, our customer's lead-enrichment agent was ghosting. It would fetch contact data, start enriching them, then vanish. No crash logs. No exceptions. Just... nothing.</p>
+
+<p>The agent was working fine in development. So what changed?</p>
+
+<p><strong>Production traffic.</strong> In production, the agent hit the Clearbit API, which has strict rate limits (10 req/sec for the free tier, higher for paid). In dev, we ran one agent instance. In production, three instances running concurrently meant 30 requests/second during peak hours. Clearbit was silently dropping requests (429 Too Many Requests), the agent got no response, timed out after 30 seconds, and moved on. The lead never got enriched. The customer never got alerted.</p>
+
+<p>The agent didn't crash. It just failed silently, one request at a time.</p>
+
+<hr style="border:none;border-top:1px solid var(--border);margin:32px 0;">
+
+<h2>The Solution: Three Layers of Resilience</h2>
+
+<p>We implemented a three-layer defense: <strong>retry logic</strong> (the first line), <strong>circuit breakers</strong> (the checkpoint), and <strong>fallback chains</strong> (the exit strategy).</p>
+
+<h3>Layer 1: Exponential Backoff Retry</h3>
+
+<p>The first failure isn't usually permanent. A 429 (rate limit) or 503 (service unavailable) is often transient—the API will be back online in a few seconds. We added retry logic with exponential backoff:</p>
+
+<pre><code>Attempt 1: Fail immediately
+Attempt 2: Wait 1 second, retry
+Attempt 3: Wait 2 seconds, retry  
+Attempt 4: Wait 4 seconds, retry (max 3 retries)</code></pre>
+
+<p>Exponential backoff gives the upstream service time to shed load and recover, instead of hammering it with repeated requests. Most transient failures recover within the first 2–4 seconds.</p>
+
+<p><strong>Implementation pattern:</strong> Wrap tool calls in a retry wrapper (Tenacity for Python, built-in in LangChain, or a simple custom handler). Configure retry-able HTTP status codes (429, 503, 504) separately from hard failures (401, 403). Track retry metrics separately so you can spot systemic issues.</p>
+
+<h3>Layer 2: Circuit Breaker Pattern</h3>
+
+<p>But what if the API stays down? After 3 retries, we don't want to keep burning time. Enter the circuit breaker.</p>
+
+<p>A circuit breaker monitors tool failures and stops calling a failing tool when a threshold is exceeded. Think of it like a light switch with three states:</p>
+
+<ul>
+<li><strong>Closed</strong> (normal): Requests flow through.</li>
+<li><strong>Open</strong> (failure detected): Requests blocked immediately, no attempt made.</li>
+<li><strong>Half-open</strong> (recovery test): After a cooldown, test a single request to see if the service is back.</li>
+</ul>
+
+<p>In our case, if Clearbit failed 5 times in 2 minutes, the circuit breaker opened. New tool calls failed instantly (fast, not slow), and we switched to fallback logic (see below). After 30 seconds, we test Clearbit again. If it responds, we close the circuit and resume normal flow.</p>
+
+<p><strong>Why this matters:</strong> A broken tool that times out every 30 seconds will crater your agent's latency if you keep retrying. The circuit breaker stops wasting time and moves to plan B.</p>
+
+<h3>Layer 3: Fallback Chains</h3>
+
+<p>Even with retries and circuit breakers, sometimes a tool is legitimately down. Your agent needs a plan B.</p>
+
+<p>We set up a <strong>fallback chain</strong> for lead enrichment:</p>
+
+<ol>
+<li><strong>Primary:</strong> Clearbit API (real-time, most accurate).</li>
+<li><strong>Secondary:</strong> Hunter.io (email verification, works when Clearbit is down).</li>
+<li><strong>Tertiary:</strong> In-house cleaned database (older, but reliable).</li>
+<li><strong>Final fallback:</strong> Return partial data (name + email from the source system, skip enrichment fields).</li>
+</ol>
+
+<p>The agent tries tools in order, using circuit breaker state to skip known-down tools, until one succeeds or the chain is exhausted. The customer gets <em>something</em>, not nothing.</p>
+
+<hr style="border:none;border-top:1px solid var(--border);margin:32px 0;">
+
+<h2>What We Measured</h2>
+
+<p>To know if the fix worked, we had to observe:</p>
+
+<ol>
+<li><strong>Retry success rate:</strong> Of all failed requests, how many succeeded on retry 2–3? (Answer: 67%. Not retrying meant we'd lose those completely.)</li>
+<li><strong>Circuit breaker trips:</strong> How often did a tool hit the failure threshold and open the circuit? (Answer: ~3 times per day during peak hours, down to ~0.2 after optimizing rate limits.)</li>
+<li><strong>Fallback usage:</strong> How often did agents fall back to Hunter or in-house data? (Answer: &lt;1% of requests after stabilizing Clearbit API limits.)</li>
+<li><strong>Agent latency:</strong> What's the tail latency (p99) when retries are happening? (Answer: dropped from 45 seconds to 8 seconds because circuit breaker prevents timeouts.)</li>
+</ol>
+
+<p>These metrics separate "the agent is working" from "the agent is <em>reliably</em> working."</p>
+
+<hr style="border:none;border-top:1px solid var(--border);margin:32px 0;">
+
+<h2>Key Decisions</h2>
+
+<p><strong>Retry limits:</strong> We set max 3 retries with a 10-second total budget (backoff: 1s, 2s, 4s). Anything longer and we'd rather fail than hang.</p>
+
+<p><strong>Circuit breaker threshold:</strong> 5 failures in 120 seconds. Too aggressive and you flip the switch on every hiccup; too loose and you stay broken too long.</p>
+
+<p><strong>Fallback degradation:</strong> We chose to return partial results rather than fail completely. The customer gets something useful even if all premium tools are down.</p>
+
+<p><strong>Observability:</strong> Each retry, circuit state change, and fallback switch is logged with the request ID. This lets us trace a single lead through the agent and see <em>why</em> it went to a fallback.</p>
+
+<hr style="border:none;border-top:1px solid var(--border);margin:32px 0;">
+
+<h2>FAQ</h2>
+
+<p><strong>Q: What if retries make things worse?</strong><br>
+A: In degraded systems, more requests can worsen the problem. That's why circuit breakers matter—they stop retrying when the tool is clearly down. Also, use idempotency keys on external API calls so retries don't double-process.</p>
+
+<p><strong>Q: How do you know when to retry vs. fail?</strong><br>
+A: Retry on transient errors (429, 503, 504, timeout, connection reset). Fail immediately on permanent errors (401 auth failure, 404 not found, 400 bad request). Your API docs will tell you which errors are retryable.</p>
+
+<p><strong>Q: What if I add retries but the user still waits forever?</strong><br>
+A: Set a hard timeout for the whole operation (e.g., 10 seconds max). When that fires, activate the fallback chain. Users prefer a fast, partial answer to a slow, complete one.</p>
+
+<p><strong>Q: Do I need all three layers?</strong><br>
+A: Start with retries. Add circuit breakers if you have multiple agent instances or external APIs. Add fallback chains if failures can be gracefully degraded. Build complexity only when you need it.</p>
+
+<hr style="border:none;border-top:1px solid var(--border);margin:32px 0;">
+
+<div class="sources-section">
+<h3>Sources</h3>
+<ul>
+<li><a href="https://aiworkflowlab.dev/article/ai-agent-resilience-production-retry-fallback-circuit-breaker-python">AI Agent Resilience Patterns Guide (2026)</a></li>
+<li><a href="https://cordum.io/blog/ai-agent-circuit-breaker-pattern">AI Agent Circuit Breaker Pattern: Stop Cascading Tool Failures</a></li>
+<li><a href="https://markaicode.com/api-timeout-handling-llm-applications/">API Timeout Handling: Best Practices for LLM Applications</a></li>
+<li><a href="https://www.paperclipped.de/en/blog/ai-agents-fail-production-deployment/">Why AI Agents Fail in Production: 7 Lessons from Real Deployments</a></li>
+<li><a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/retry-backoff.html">Retry with Backoff Pattern — AWS Prescriptive Guidance</a></li>
+<li><a href="https://threepointformula.wordpress.com/2025/11/02/agentic-design-pattern-fallback-degradation/">Fallback Degradation in Agentic Workflows</a></li>
+</ul>
+</div>
+
+<p style="margin-top:48px;padding-top:32px;border-top:1px solid var(--border);font-size:0.9375rem;color:var(--text-2);"><strong>Next step:</strong> If you're running agents in production, audit your tool-call layer. Do you have retry logic? Circuit breakers? Fallbacks? Start with retries; the other two follow naturally as you scale.</p>
+</article></main>
+<footer><p>&copy; 2026 Supergood Solutions. Helping teams automate smarter, not harder.</p></footer>
+</body>
+</html>
