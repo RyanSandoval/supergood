@@ -411,4 +411,10 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://supergood.solutions/blog/future-friday-when-to-split-a-single-agent-into-many-a-routing-pattern-guide/</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
