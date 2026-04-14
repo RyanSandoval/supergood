@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tech Tuesday: Structured Output Contracts for Agent-to-Agent Communication — Supergood Solutions</title>
+<meta name="description" content="When agents talk to agents, you need schemas—not as suggestions, but as enforceable contracts.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://supergood.solutions/blog/tech-tuesday-structured-output-contracts-agent-to-agent-communication/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tech Tuesday: Structured Output Contracts for Agent-to-Agent Communication">
+<meta property="og:url" content="https://supergood.solutions/blog/tech-tuesday-structured-output-contracts-agent-to-agent-communication/">
+<meta property="og:image" content="https://supergood.solutions/og-image.png">
+<meta property="article:published_time" content="2026-04-14">
+<meta property="article:author" content="Ryan Sandoval">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Tech Tuesday: Structured Output Contracts for Agent-to-Agent Communication","description":"When agents talk to agents, you need schemas—not as suggestions, but as enforceable contracts.","author":{"@type":"Person","name":"Ryan Sandoval","url":"https://linkedin.com/in/RyanSandoval","jobTitle":"AI Automation Consultant","worksFor":{"@type":"Organization","name":"Supergood Solutions"}},"publisher":{"@type":"Organization","name":"Supergood Solutions","url":"https://supergood.solutions"},"datePublished":"2026-04-14","dateModified":"2026-04-14","mainEntityOfPage":"https://supergood.solutions/blog/tech-tuesday-structured-output-contracts-agent-to-agent-communication/","keywords":["AI agents","agentic AI","AI automation","enterprise AI","AI ops"]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://supergood.solutions/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://supergood.solutions/blog/"},{"@type":"ListItem","position":3,"name":"Tech Tuesday: Structured Output Contracts for Agent-to-Agent Communication","item":"https://supergood.solutions/blog/tech-tuesday-structured-output-contracts-agent-to-agent-communication/"}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0b;--surface:#111113;--surface-2:#18181b;--border:#27272a;--text:#fafafa;--text-2:#a1a1aa;--text-3:#8c8c96;--green:#22c55e;--mono:'JetBrains Mono',monospace}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;background:rgba(10,10,11,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .inner{max-width:720px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
+.wordmark{font-weight:800;font-size:1.125rem;letter-spacing:-0.03em;color:var(--text);text-decoration:none}
+.wordmark .dot{color:var(--green)}
+nav a.back{font-size:0.875rem;color:var(--text-3);text-decoration:none}
+nav a.back:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:140px 24px 80px}
+article .tag{font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:16px}
+article h1{font-size:clamp(2rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin-bottom:20px}
+article .meta{font-family:var(--mono);font-size:0.75rem;color:var(--text-3);margin-bottom:48px;padding-bottom:32px;border-top:1px solid var(--border)}
+article h2{font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;margin:56px 0 16px}
+article h3{font-size:1.125rem;font-weight:600;margin:40px 0 12px}
+article p{font-size:1rem;color:var(--text-2);margin-bottom:20px}
+article strong{color:var(--text)}
+article ul,article ol{color:var(--text-2);margin-bottom:20px;padding-left:24px}
+article li{margin-bottom:8px}
+article a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+article pre{background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:16px;overflow-x:auto;margin-bottom:20px;font-family:var(--mono);font-size:0.875rem}
+article code{color:var(--green);font-family:var(--mono)}
+article pre code{color:var(--text-2)}
+.callout{background:var(--surface-2);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:20px 24px;margin:32px 0}
+.callout p{margin-bottom:0;font-size:0.9375rem}
+.sources-section{margin-top:48px;padding-top:32px;border-top:1px solid var(--border)}
+.sources-section h3{font-size:1rem;font-weight:600;margin-bottom:12px;color:var(--text)}
+.sources-section ul{list-style:none;padding:0}
+.sources-section li{margin-bottom:8px;font-size:0.875rem}
+footer{background:var(--surface);padding:40px 0;margin-top:80px;border-top:1px solid var(--border);text-align:center}
+footer p{color:var(--text-3);font-size:0.875rem;margin:0}
+@media(max-width:768px){article{padding:120px 20px 60px}article h1{font-size:2rem}}
+</style>
+</head>
+<body>
+<nav><div class="inner"><a href="/" class="wordmark">supergood<span class="dot">.</span></a><a href="/blog/" class="back">← All posts</a></div></nav>
+<main><article>
+<div class="tag">Tech Tuesday</div>
+<h1>Tech Tuesday: Structured Output Contracts for Agent-to-Agent Communication</h1>
+<div class="meta">Published April 14, 2026 — 8 min read</div>
+
+<p>When agents talk to agents, you need schemas—not as suggestions, but as enforceable contracts. JSON Schema + Pydantic + strict validation catches misalignment before agents spiral into hallucinations and failed handoffs. Make output contracts explicit, testable, and version-controlled. Your debugging time will thank you.</p>
+
+<h2>Why Agents Need Output Contracts</h2>
+
+<p>Agents succeed when the feedback loop is tight. An agent sends a message; the next agent receives it and acts. When that handoff breaks—missing fields, wrong types, hallucinated values—the downstream agent either rejects the input, wastes compute on retries, or does the wrong thing silently.</p>
+
+<p>Unlike human-to-human APIs (where clients can tolerate loose contracts), agent-to-agent communication happens fast and at scale. A single malformed response cascades: Agent A hallucinates a JSON field, Agent B fails to parse it, Agent C gets garbage input, and your whole workflow crumbles. Structured output contracts prevent this.</p>
+
+<h2>Defining Output Schemas as Executable Specs</h2>
+
+<p>A schema isn't documentation—it's a contract you enforce. Use <strong>JSON Schema</strong> or <strong>Pydantic</strong> to define what a valid response looks like, then validate every single output before handing it off.</p>
+
+<p><strong>Example:</strong> An agent that summarizes documents hands its output to a classifier agent. Define this upfront:</p>
+
+<pre><code>{
+  "type": "object",
+  "properties": {
+    "summary": {
+      "type": "string",
+      "minLength": 50,
+      "maxLength": 500
+    },
+    "topics": {
+      "type": "array",
+      "items": {"type": "string"},
+      "minItems": 1,
+      "maxItems": 5
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    }
+  },
+  "required": ["summary", "topics", "confidence"]
+}</code></pre>
+
+<p>Now any output missing these fields or with invalid types gets rejected <em>before</em> it reaches the classifier. The contract is enforceable.</p>
+
+<h2>Validation Patterns That Work</h2>
+
+<p><strong>1. Inline validation with Pydantic</strong></p>
+
+<p>Define models in code, generate schemas on the fly, and validate outputs immediately after the LLM call:</p>
+
+<pre><code>from pydantic import BaseModel, Field
+
+class DocumentSummary(BaseModel):
+    summary: str = Field(..., min_length=50, max_length=500)
+    topics: list[str] = Field(..., min_items=1, max_items=5)
+    confidence: float = Field(..., ge=0, le=1)
+
+# After the LLM call:
+response_dict = json.loads(llm_response)
+validated = DocumentSummary(**response_dict)  # Fails if schema violated</code></pre>
+
+<p>Pydantic will raise <code>ValidationError</code> if the LLM's output doesn't match. No ambiguity.</p>
+
+<p><strong>2. Two-tier fallback strategy</strong></p>
+
+<p>First attempt: Structured output mode (supported by Claude, GPT-4, etc.). If the model fails, retry with stricter prompt language and in-context examples:</p>
+
+<pre><code>try:
+    result = model.generate(prompt, response_format=DocumentSummary)
+except ValidationError:
+    # Fallback: retry with explicit constraints in the prompt
+    result = model.generate(
+        prompt + "\nRespond ONLY with valid JSON matching this schema: " + schema_json,
+        temperature=0.1
+    )</code></pre>
+
+<p><strong>3. Version schemas like code</strong></p>
+
+<p>Keep schemas in version control. When you change a contract—adding required fields, narrowing value ranges—bump the version and log it:</p>
+
+<pre><code># outputs/summarizer_schema.v2.json
+version: "2.0"
+changed_at: "2026-04-10"
+breaking_changes: ["confidence field now required"]</code></pre>
+
+<p>Agents should check the schema version and fail loudly if they expect v1 but get v2.</p>
+
+<h2>Error Handling: Strict vs. Forgiving</h2>
+
+<p><strong>Strict mode:</strong> Validation failure = task failure. Useful for critical handoffs (payment agents, compliance workflows).</p>
+
+<pre><code>validated = DocumentSummary(**response_dict)  # Raises on error</code></pre>
+
+<p><strong>Forgiving mode:</strong> Validation failure = retry loop. Useful for best-effort tasks (content generation, recommendations).</p>
+
+<pre><code>try:
+    validated = DocumentSummary(**response_dict)
+except ValidationError as e:
+    # Log the error, ask the model to try again with feedback
+    retry_prompt = f"Your previous output was invalid: {e}\nHere's what's required..."
+    validated = retry_with_constraints(retry_prompt)</code></pre>
+
+<p>Pick the mode based on stakes. High-stakes operations get strict validation. Exploratory agents can tolerate retries.</p>
+
+<h2>Testing Contracts Before Production</h2>
+
+<p>Contracts only work if you test them. Use your eval harness to:</p>
+
+<ol>
+<li><strong>Sample outputs</strong> from each agent over 100+ examples</li>
+<li><strong>Validate</strong> against the schema; measure failure rate</li>
+<li><strong>Inspect failures</strong> and adjust either the schema or the prompt</li>
+<li><strong>Document edge cases</strong> (e.g., "topics can be empty if the document is too short")</li>
+</ol>
+
+<p>If your agent fails validation 10% of the time, your contract is either too strict or your prompt is too weak. Fix it before it hits production.</p>
+
+<h2>The One Rule: Contracts > Documentation</h2>
+
+<p>A schema in a README is a suggestion. A schema in code is a constraint. Enforce it at runtime. The 30 seconds it takes to add validation to your handoff pays dividends when your agent workflows run reliably.</p>
+
+<h2>FAQ</h2>
+
+<p><strong>Q: Doesn't structured output mode in Claude/GPT-4 handle this?</strong><br>A: Mostly. But structured output is a soft guarantee—the model <em>usually</em> complies, but edge cases slip through. Always validate on the receiving end. Don't trust the model; trust the contract.</p>
+
+<p><strong>Q: What if the schema is wrong and breaks valid outputs?</strong><br>A: Test against 100+ real examples before deploying. If edge cases appear in production, bump the schema version and add an escape hatch (e.g., <code>nullable</code> fields) rather than loosening validation retroactively.</p>
+
+<p><strong>Q: Should every agent output have a schema?</strong><br>A: Yes, if it's handed to another agent. If it's final output to a human, strict validation is less critical (humans tolerate messy JSON). But if Agent A feeds Agent B, enforce the contract.</p>
+
+<p><strong>Q: How do I know if my schema is too strict?</strong><br>A: Run it against 50+ real outputs from your agent. If >5% fail validation, the schema is too strict or the prompt isn't clear. Adjust one or both.</p>
+
+<div class="sources-section">
+<h3>Sources</h3>
+<ul>
+<li><a href="https://www.anthropic.com/research/building-effective-agents">Anthropic: Building Effective Agents</a> — Best practices on agentic workflows and tool design</li>
+<li><a href="https://python.langchain.com/docs/how_to/structured_output/">LangChain: Structured Output</a> — Error handling and schema validation patterns</li>
+<li><a href="https://docs.pydantic.dev/latest/concepts/json_schema/">Pydantic: JSON Schema</a> — Generating and customizing schemas from models</li>
+<li><a href="https://json-schema.org/">JSON Schema Specification</a> — Reference for schema constraints and validation rules</li>
+</ul>
+</div>
+
+</article></main>
+<footer><p>&copy; 2026 Supergood Solutions. Helping teams automate smarter, not harder.</p></footer>
+</body>
+</html>
