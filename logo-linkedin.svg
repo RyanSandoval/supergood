@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 628">
+  <!-- Dark background -->
+  <rect width="1200" height="628" fill="#0a0a0b"/>
+  
+  <!-- Left circle with subtle glow -->
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Large left circle -->
+  <circle cx="280" cy="314" r="140" fill="#22c55e" filter="url(#glow)"/>
+  
+  <!-- Large right circle -->
+  <circle cx="920" cy="314" r="140" fill="#22c55e" filter="url(#glow)"/>
+  
+  <!-- Optional: text version (uncomment if needed)
+  <text x="600" y="520" font-family="Inter, sans-serif" font-size="48" font-weight="700" fill="#fafafa" text-anchor="middle" letter-spacing="-1">supergood.solutions</text>
+  -->
+</svg>

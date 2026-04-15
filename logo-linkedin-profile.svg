@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200">
+  <!-- Dark background -->
+  <rect width="1200" height="1200" fill="#0a0a0b"/>
+  
+  <!-- Subtle glow filter -->
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Top circle -->
+  <circle cx="600" cy="380" r="180" fill="#22c55e" filter="url(#glow)"/>
+  
+  <!-- Bottom circle with slight offset -->
+  <circle cx="600" cy="820" r="180" fill="#22c55e" filter="url(#glow)"/>
+  
+  <!-- Optional: brand text below circles
+  <text x="600" y="1080" font-family="Inter, sans-serif" font-size="72" font-weight="800" fill="#fafafa" text-anchor="middle" letter-spacing="-2">supergood</text>
+  -->
+</svg>
