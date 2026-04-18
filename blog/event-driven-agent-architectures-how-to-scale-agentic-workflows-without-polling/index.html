@@ -70,6 +70,68 @@ footer p{color:var(--text-3);font-size:0.875rem;margin:0}
 <p>Event-driven flips this: agents don't wait for calls. They subscribe to events relevant to their scope, process them independently, and emit new events when done. No blocking. No wasted compute. More parallelism.</p>
 <h2>Pattern 1: Fire-and-Forget with Message Queues</h2>
 <p>The simplest event-driven pattern. An event lands in a queue (SQS, Kafka, RabbitMQ, or a cloud pubsub service). An agent consumer picks it up, processes it, optionally emits a completion event.</p>
+<p><strong>How it works:</strong></p>
+<p>1. Your app publishes an event: `{"type": "lead_enrichment_requested", "lead_id": 123}`</p>
+<p>2. The lead enrichment agent consumes it, does its work, publishes: `{"type": "lead_enrichment_completed", "lead_id": 123, "data": {...}}`</p>
+<p>3. A separate consumer (maybe a webhook handler, maybe another agent) subscribes to the completion event.</p>
+<p><strong>Best for:</strong> Independent tasks that don't need real-time response. Data pipeline jobs. Batch-like workflows. Anything where eventual consistency is acceptable.</p>
+<p><strong>Tradeoff:</strong> You lose the ability to return a response immediately. Good for background work; bad for user-facing requests.</p>
+<h2>Pattern 2: Event Streams with State</h2>
+<p>This is fire-and-forget plus coordination. Each agent publishes events to an immutable log (Kafka, cloud event sourcing). Other agents listen, build state, trigger downstream actions.</p>
+<p>A marketing automation example:</p>
+<p>1. CRM publishes: `contact_created`</p>
+<p>2. Lead scoring agent listens, enriches, publishes: `lead_scored`</p>
+<p>3. Segmentation agent listens to `lead_scored`, publishes: `contact_segmented`</p>
+<p>4. Campaign agent listens to `contact_segmented`, publishes: `campaign_started`</p>
+<p>Each agent is loosely coupled. If the lead scoring agent fails or is slow, it doesn't block the pipeline—events queue up. The immutable log lets you replay or audit exactly what happened.</p>
+<p><strong>Best for:</strong> Multi-step workflows with clear phases. Audit trails. Workflows where replay or reconstruction matters.</p>
+<p><strong>Tradeoff:</strong> More infrastructure. Harder to debug than synchronous code. Latency can compound if you have many sequential stages.</p>
+<h2>Pattern 3: Choreography with Context</h2>
+<p>The most flexible pattern: agents don't have a central orchestrator. Instead, each agent knows what events it cares about and what to do when they arrive. Events carry context (request ID, prior results), so agents can make decisions.</p>
+<p>Example: `order_placed` event arrives. The payment agent listens, charges the card, publishes `payment_processed`. The fulfillment agent listens to `payment_processed`, picks the order, publishes `order_ready_to_ship`. The notification agent listens to `order_ready_to_ship` and emails the customer. No controller. Each agent acts independently.</p>
+<p><strong>Best for:</strong> Complex, non-linear workflows. High-scale systems where you can't afford a central bottleneck. Systems that need to change quickly (add a new agent, update logic).</p>
+<p><strong>Tradeoff:</strong> Harder to reason about the overall flow. Deadlocks possible if you have circular dependencies. Requires good observability.</p>
+<h2>Practical Setup: What to Actually Use</h2>
+<p><strong>For most teams:</strong> Start with SQS + Lambda (AWS) or Cloud Tasks + Cloud Functions (GCP). Fire-and-forget with minimal ops overhead. You get built-in retry, DLQ, and visibility.</p>
+<p><strong>For more complex workflows:</strong> Temporal (open source workflow engine) or Inngest (serverless orchestration). Both handle retries, timeouts, and state. You define agents as discrete steps and the orchestrator wires them together.</p>
+<p><strong>For truly event-driven:</strong> Kafka. Overkill for most use cases, but necessary if you need true event streaming, audit trails, and replay. Requires ops investment.</p>
+<h2>Watch Out For</h2>
+<p><strong>Exactly-once delivery:</strong> Queues don't guarantee it. Use idempotency keys. Every event should include a unique ID that lets your agent safely process it twice.</p>
+<p><strong>Event ordering:</strong> If order matters, don't use fire-and-forget with multiple consumers. Use an ordered queue (SQS FIFO, Kafka partition) or Temporal/Inngest.</p>
+<p><strong>Observable failures:</strong> Agents fail silently by default. Wire DLQs, alerting, and structured logging. You need to know when an event sits unprocessed for 10 minutes.</p>
+<p><strong>Token bleed:</strong> Each agent call uses tokens. In a long event chain, tokens can explode. Add circuit breakers or token budgets per event type.</p>
+<h2>FAQ</h2>
+<p><strong>Should I use events for every agent call?</strong></p>
+<p>No. If the work is synchronous and must complete before the caller proceeds, keep it request-response. Events are for work that can happen in the background or in parallel. Start synchronous, move to events only when you hit scale or latency problems.</p>
+<p><strong>What if I need to wait for the result of an agent's work?</strong></p>
+<p>Use a correlation ID. The triggering app publishes an event with a unique request ID, then polls or subscribes to a results topic with that ID. Or use a workflow engine like Temporal that handles the waiting for you.</p>
+<p><strong>How do I debug event-driven workflows?</strong></p>
+<p>Structured logging + request IDs on every event. Track which events touched which agents. Use a tracing tool (Datadog, New Relic, open source Jaeger) to follow a single request through the system.</p>
+<p><strong>Can I mix synchronous and asynchronous agents?</strong></p>
+<p>Yes. A synchronous agent can publish events. An async agent can make synchronous calls. The pattern is about your architecture, not about individual agents.</p>
+<p>---</p>
+<h2>Sources</h2>
+<ul>
+<li>Temporal: <https://temporal.io/> — Durable execution and workflows</li>
+<li>Inngest: <https://www.inngest.com/> — Serverless orchestration</li>
+<li>AWS SQS: <https://docs.aws.amazon.com/sqs/> — Message queue</li>
+<li>Kafka: <https://kafka.apache.org/> — Event streaming platform</li>
+<li>Event Sourcing Pattern: <https://martinfowler.com/eaaDev/EventSourcing.html> — Martin Fowler reference</li>
+<li>"Building Microservices" (2015, Sam Newman) — Chapter on asynchronous communication patterns</li>
+</ul>
+<p>---</p>
+<h2>Next Step</h2>
+<p>Pick one: run a POC with SQS + your agents this week, or evaluate Temporal if your workflows have complex retry/timeout logic. Measure time-to-completion and token usage before and after. You'll see if events actually help your specific setup.</p>
+
+<div class="callout"><p><strong>TL;DR:</strong> As agent deployments grow, request-response patterns become bottlenecks. Event-driven architectures decouple agents from synchronous calls, letting them listen for events and respond asynchronously. This post covers the three core patterns—fire-and-forget, event streams, and choreography—with concrete tradeoffs and when to use each.</p></div>
+
+<p>---</p>
+<h2>The Polling Problem</h2>
+<p>Most early-stage agent systems work like this: app calls agent, waits for response, moves on. It's simple, it's blocking, and it breaks at scale.</p>
+<p>When you have multiple agents, conditional workflows, or long-running tasks, synchronous request-response becomes expensive. You're burning tokens waiting, you're holding database connections open, and you can't easily trigger parallel workflows. You're essentially polling for completion—a pattern we learned to hate in the 1990s.</p>
+<p>Event-driven flips this: agents don't wait for calls. They subscribe to events relevant to their scope, process them independently, and emit new events when done. No blocking. No wasted compute. More parallelism.</p>
+<h2>Pattern 1: Fire-and-Forget with Message Queues</h2>
+<p>The simplest event-driven pattern. An event lands in a queue (SQS, Kafka, RabbitMQ, or a cloud pubsub service). An agent consumer picks it up, processes it, optionally emits a completion event.</p>
 <p><strong>How it works:</strong> **</p>
 <p>1. Your app publishes an event: `{"type": "lead_enrichment_requested", "lead_id": 123}`</p>
 <p>2. The lead enrichment agent consumes it, does its work, publishes: `{"type": "lead_enrichment_completed", "lead_id": 123, "data": {...}}`</p>
