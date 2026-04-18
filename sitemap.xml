@@ -55,4 +55,10 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://supergood.solutions/blog/event-driven-agent-architectures-how-to-scale-agentic-workflows-without-polling/</loc>
+    <lastmod>2026-04-18</lastmod>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>
