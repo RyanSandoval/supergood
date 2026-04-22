@@ -52,10 +52,13 @@ article a{color:var(--green);text-decoration:underline;text-underline-offset:3px
 .sources-section li{margin-bottom:8px;font-size:0.875rem}
 footer{background:var(--surface);padding:40px 0;margin-top:80px;border-top:1px solid var(--border);text-align:center}
 footer p{color:var(--text-3);font-size:0.875rem;margin:0}
+.reading-progress{position:fixed;top:0;left:0;height:2px;width:0;background:var(--green);z-index:101;transition:width 80ms linear}
+@supports (animation-timeline: scroll()){.reading-progress{width:100%;transform-origin:left;transform:scaleX(0);animation:reading-progress linear;animation-timeline:scroll(root);transition:none}@keyframes reading-progress{to{transform:scaleX(1)}}}
 @media(max-width:768px){article{padding:120px 20px 60px}article h1{font-size:2rem}}
 </style>
 </head>
 <body>
+<div class="reading-progress" aria-hidden="true"></div>
 <nav><div class="inner"><a href="/" class="wordmark">supergood<span class="dot">.</span></a><a href="/blog/" class="back">← All posts</a></div></nav>
 <main><article>
 <div class="tag">Case Study Thursday</div>
@@ -157,5 +160,8 @@ footer p{color:var(--text-3);font-size:0.875rem;margin:0}
 
 </article></main>
 <footer><p>&copy; 2026 Supergood Solutions. Helping teams automate smarter, not harder.</p></footer>
+<script>
+(function(){if(CSS.supports('animation-timeline: scroll()'))return;var b=document.querySelector('.reading-progress');if(!b)return;function u(){var d=document.documentElement,m=d.scrollHeight-window.innerHeight,p=m>0?Math.min(1,Math.max(0,window.scrollY/m)):0;b.style.width=(p*100)+'%';}document.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u);u();})();
+</script>
 </body>
 </html>
