@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Vector Database Isn't the Problem — Your Retrieval Strategy Is — Supergood Solutions</title>
+<meta name="description" content="Pure vector search is the default for enterprise RAG, and it's the wrong default. Teams that ship reliable retrieval in production run hybrid search (BM25 + vec">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://supergood.solutions/blog/your-vector-database-isn-t-the-problem-your-retrieval-strategy-is/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Your Vector Database Isn't the Problem — Your Retrieval Strategy Is">
+<meta property="og:url" content="https://supergood.solutions/blog/your-vector-database-isn-t-the-problem-your-retrieval-strategy-is/">
+<meta property="og:image" content="https://supergood.solutions/og-image.png">
+<meta property="article:published_time" content="2026-04-22">
+<meta property="article:author" content="Ryan Sandoval">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Your Vector Database Isn't the Problem — Your Retrieval Strategy Is","description":"Pure vector search is the default for enterprise RAG, and it's the wrong default. Teams that ship reliable retrieval in production run hybrid search (BM25 + vec","author":{"@type":"Person","name":"Ryan Sandoval","url":"https://linkedin.com/in/RyanSandoval"},"publisher":{"@type":"Organization","name":"Supergood Solutions","url":"https://supergood.solutions"},"datePublished":"2026-04-22","dateModified":"2026-04-22","mainEntityOfPage":"https://supergood.solutions/blog/your-vector-database-isn-t-the-problem-your-retrieval-strategy-is/"}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0b;--surface:#111113;--surface-2:#18181b;--border:#27272a;--text:#fafafa;--text-2:#a1a1aa;--text-3:#8c8c96;--green:#22c55e;--mono:'JetBrains Mono',monospace}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;background:rgba(10,10,11,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .inner{max-width:720px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
+.wordmark{font-weight:800;font-size:1.125rem;letter-spacing:-0.03em;color:var(--text);text-decoration:none}
+.wordmark .dot{color:var(--green)}
+nav a.back{font-size:0.875rem;color:var(--text-3);text-decoration:none}
+nav a.back:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:140px 24px 80px}
+article .tag{font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:16px}
+article h1{font-size:clamp(2rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin-bottom:20px}
+article .meta{font-family:var(--mono);font-size:0.75rem;color:var(--text-3);margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+article h2{font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;margin:56px 0 16px}
+article h3{font-size:1.125rem;font-weight:600;margin:40px 0 12px}
+article p{font-size:1rem;color:var(--text-2);margin-bottom:20px}
+article strong{color:var(--text)}
+article ul,article ol{color:var(--text-2);margin-bottom:20px;padding-left:24px}
+article li{margin-bottom:8px}
+article a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+article hr{border:none;border-top:1px solid var(--border);margin:40px 0}
+.callout{background:var(--surface-2);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:20px 24px;margin:32px 0}
+.callout p{margin-bottom:0;font-size:0.9375rem}
+footer{background:var(--surface);padding:40px 0;margin-top:80px;border-top:1px solid var(--border);text-align:center}
+footer p{color:var(--text-3);font-size:0.875rem;margin:0}
+@media(max-width:768px){article{padding:120px 20px 60px}article h1{font-size:2rem}}
+</style>
+</head>
+<body>
+<nav><div class="inner"><a href="/" class="wordmark">supergood<span class="dot">.</span></a><a href="/blog/" class="back">← All posts</a></div></nav>
+<main><article>
+<div class="tag">AI Wednesday</div>
+<h1>Your Vector Database Isn't the Problem — Your Retrieval Strategy Is</h1>
+<div class="meta">Published April 22, 2026 — 5 min read</div>
+<div class="callout"><p><strong>TL;DR:</strong> Pure vector search is the default for enterprise RAG, and it's the wrong default. Teams that ship reliable retrieval in production run hybrid search (BM25 + vector) with a reranker — and the quality gap over pure embedding search is not subtle. If your RAG answers feel "close but wrong," this is almost always why.</p></div>
+
+<h2>Key Insight</h2>
+<p>Embeddings are good at semantic similarity. They are bad at exact matches, rare terms, product SKUs, error codes, acronyms, and anything the model didn't see much of during pretraining. Enterprise corpora are <em>full</em> of those things.</p>
+<p>The contrarian take: <strong>vector search was never supposed to be the whole retrieval pipeline.</strong> It's one signal among several. But the industry sold teams a vector DB as "the RAG stack," and now everyone's debugging bad answers by swapping embedding models when the actual fix is architectural.</p>
+<p>Anthropic's September 2024 Contextual Retrieval work quantified this clearly: adding BM25 to vector search cut retrieval failures by ~49%. Adding a reranker on top cut them by ~67%. That's not a tuning gain. That's a different pipeline.</p>
+<h2>Why Teams Miss This</h2>
+<p>Three reasons, in the order they usually bite:</p>
+<ol>
+<li><strong>The vendor pitch conflates storage with retrieval.</strong> Pinecone, Weaviate, Qdrant, and the rest are excellent vector <em>stores</em>. But "we have a vector DB" is not the same as "we have a retrieval strategy." Teams buy the store and stop thinking.</li>
+</ol>
+<p>2. <strong>Eval sets don't stress-test keyword-heavy queries.</strong> Most internal RAG evals are written by the team that built the system, using natural-language questions they'd ask. Real users paste error messages, part numbers, internal acronyms, and half-sentences. Pure vector search quietly loses on all of those.</p>
+<p>3. <strong>"Just use a bigger embedding model" feels like progress.</strong> Upgrading from `text-embedding-ada-002` to `text-embedding-3-large` or a Cohere v3 model will move your metrics 3–8%. Adding BM25 + rerank will move them 30–50%. Teams pick the smaller win because it's a config change, not an architecture change.</p>
+<h2>How to Actually Do It</h2>
+<p>Here's the pipeline that works in production. It's not novel — it's just unevenly adopted.</p>
+<p><strong>1. Index twice.</strong> Same chunks, two indexes:</p>
+<ul>
+<li>BM25 (lexical) — use Elasticsearch, OpenSearch, or Postgres `tsvector` if you're small</li>
+<li>Dense vector — your embedding model of choice, stored anywhere</li>
+</ul>
+<p><strong>2. Query both in parallel.</strong> Pull top-K from each (K=25 is a reasonable default).</p>
+<p><strong>3. Fuse the results.</strong> Reciprocal Rank Fusion (RRF) is the boring, well-understood default:</p>
+<p>def rrf(ranked_lists, k=60):</p>
+<p>scores = {}</p>
+<p>for ranking in ranked_lists:</p>
+<p>for rank, doc_id in enumerate(ranking):</p>
+<p>scores[doc_id] = scores.get(doc_id, 0) + 1 / (k + rank + 1)</p>
+<p>return sorted(scores.items(), key=lambda x: -x[1])</p>
+<p>fused = rrf([bm25_results, vector_results])</p>
+<p>RRF needs zero score normalization, zero learned weights, and works across heterogeneous scorers. Use it.</p>
+<p><strong>4. Rerank the top 20–50.</strong> A cross-encoder reranker (Cohere Rerank v3, Jina Reranker v2, or a local bge-reranker) reads query + document together and scores them. This is the step that actually reads semantics. Keep the top 5–10.</p>
+<p><strong>5. Add contextual chunk prefixing if your corpus has heavy cross-references.</strong> Anthropic's trick: before embedding, prepend each chunk with a 50–100 token LLM-generated summary of where it sits in the parent doc. Adds ~20% to indexing cost; cuts retrieval failure another 35% on top of hybrid+rerank.</p>
+<p>That's the whole playbook. Five steps. None of them exotic.</p>
+<h2>What We've Learned</h2>
+<p>The teams shipping good RAG in 2026 aren't winning on embedding model selection. They're winning on pipeline shape. If you're debugging hallucinations by A/B-testing embedding models, you're optimizing the wrong layer.</p>
+<p><strong>Next experiment:</strong> Pull 50 real user queries from your logs — especially the ones with error codes, part numbers, or acronyms. Run them through your current retrieval and hand-label whether the right chunk is in the top 5. Then bolt BM25 + RRF onto the front of your current vector pipeline and re-run. If the delta is under 15 percentage points, your corpus is unusually clean. If it's 30+ points, you now know what to build next.</p>
+<p>One more thing: reranking latency is the usual objection. Cohere Rerank v3 adds ~200ms on 25 docs. If your end-to-end agent response is already 3–8 seconds, that's noise. Measure it before you dismiss it.</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://www.anthropic.com/news/contextual-retrieval">Anthropic — Contextual Retrieval (Sept 2024)</a></li>
+<li><a href="https://learn.microsoft.com/en-us/azure/search/hybrid-search-overview">Microsoft Azure AI Search — Hybrid Search Documentation</a></li>
+<li><a href="https://docs.cohere.com/docs/rerank-2">Cohere Rerank v3 Release Notes</a></li>
+<li><a href="https://plg.uwaterloo.ca/~gvcormac/cormacksigir09-rrf.pdf">Cormack, Clarke, Buettcher — Reciprocal Rank Fusion (2009)</a></li>
+<li><a href="https://www.pinecone.io/learn/hybrid-search-intro/">Pinecone — Hybrid Search Blog</a></li>
+</ul>
+<hr>
+<h2>FAQ</h2>
+<p><strong>Q: Do I need to replace my vector database?</strong></p>
+<p>A: No. Hybrid search runs <em>alongside</em> your vector DB. Keep Pinecone/Weaviate/Qdrant for dense retrieval, add a lexical index (Elasticsearch, OpenSearch, or Postgres full-text), and fuse at query time. No data migration required.</p>
+<p><strong>Q: Is Reciprocal Rank Fusion really better than learned weight tuning?</strong></p>
+<p>A: For most teams, yes — because you don't have a labeled eval set large enough to tune weights without overfitting. RRF is parameter-free and robust. Move to learned fusion only after you have 1,000+ labeled query-doc pairs.</p>
+<p><strong>Q: Can I skip the reranker to save cost and latency?</strong></p>
+<p>A: You can, but you'll leave the biggest quality gain on the table. Reranking on 25 candidates adds ~200ms and a few cents per 1K queries with Cohere. Most teams burn more than that on a single unnecessary LLM retry.</p>
+<p><strong>Q: What about long-context models — can't I just stuff everything in the prompt and skip retrieval?</strong></p>
+<p>A: Long context works for small, static corpora (product manuals, a single contract). It collapses economically and accuracy-wise on any corpus over ~100K tokens. Retrieval is still the right tool for enterprise-scale knowledge.</p>
+<p><strong>Q: Does this apply if I'm using a managed RAG product (e.g., Azure AI Search, Vertex AI Search)?</strong></p>
+<p>A: Yes — and the managed products mostly already do hybrid + rerank under the hood. If you're using a DIY stack built around a vector DB only, you're giving up the quality floor that the managed products treat as table stakes.</p>
+<p><strong>Q: Where does contextual chunking fit in the priority order?</strong></p>
+<p>A: Last. Implement BM25 + RRF first, then reranking, then contextual chunking. The first two are cheap and compound. Contextual chunking adds indexing cost and only pays off once the rest of the pipeline is solid.</p>
+
+</article></main>
+<footer><p>&copy; 2026 Supergood Solutions. Helping teams automate smarter, not harder.</p></footer>
+</body>
+</html>
