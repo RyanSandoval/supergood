@@ -361,7 +361,7 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
   <div class="checklist">
     <h3>Multi-Agent Handoff Design Checklist</h3>
     <ul>
-      <li>Define a <a href="/blog/tech-tuesday-structured-output-contracts-2026/">typed state schema</a> (Pydantic, TypeScript interface, or equivalent) before writing either agent's prompt — the schema is the contract</li>
+      <li>Define a <a href="/blog/structured-output-contracts-agent-to-agent-communication/">typed state schema</a> (Pydantic, TypeScript interface, or equivalent) before writing either agent's prompt — the schema is the contract</li>
       <li>Parse and validate every agent output against the schema before passing it to the next agent — never pass raw LLM strings across agent boundaries</li>
       <li>Schema validation failures route to an error queue, not the next step — a partial output is worse than a visible failure</li>
       <li>The handoff payload includes not just the agent's output but its reasoning notes ("annotated handoff") — downstream agents shouldn't reverse-engineer upstream logic from output text</li>
