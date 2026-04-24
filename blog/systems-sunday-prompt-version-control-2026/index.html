@@ -109,7 +109,7 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
   article h1 { font-size: 2rem; }
   nav .inner { padding: 0 20px; }
 }
-.reading-progress{position:fixed;top:0;left:0;height:2px;width:0;background:var(--green);z-index:101;transition:width 80ms linear}
+.reading-progress{position:absolute;bottom:-1px;left:0;height:2px;width:0;background:var(--green);z-index:101;transition:width 80ms linear}
 @supports (animation-timeline: scroll()){.reading-progress{width:100%;transform-origin:left;transform:scaleX(0);animation:reading-progress linear;animation-timeline:scroll(root);transition:none}@keyframes reading-progress{to{transform:scaleX(1)}}}
 </style>
 <script type="application/ld+json">
@@ -126,13 +126,12 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
 </head>
 
 <body>
-<div class="reading-progress" aria-hidden="true"></div>
 <nav>
   <div class="inner">
     <a href="/" class="wordmark">superg<span class="oo-wrap"><span class="oo-dot"></span><span class="oo-dot"></span></span>d<span class="dot-period">.</span></a>
     <a href="/blog/" class="back">← All posts</a>
   </div>
-</nav>
+<div class="reading-progress" aria-hidden="true"></div></nav>
 
 <article>
   <div class="tag">Systems Sunday · AI Ops</div>
