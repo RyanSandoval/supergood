@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stop Asking "Build or Buy?" — Ask "What Do We Wrap?" — Supergood Solutions</title>
+<meta name="description" content="The build-vs-buy frame for enterprise AI agents is a trap: it forces a binary choice between a 12-month internal build and a vendor lock-in that owns your roadm">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://supergood.solutions/blog/stop-asking-build-or-buy-ask-what-do-we-wrap/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Stop Asking "Build or Buy?" — Ask "What Do We Wrap?"">
+<meta property="og:url" content="https://supergood.solutions/blog/stop-asking-build-or-buy-ask-what-do-we-wrap/">
+<meta property="og:image" content="https://supergood.solutions/og-image.png">
+<meta property="article:published_time" content="2026-04-25">
+<meta property="article:author" content="Ryan Sandoval">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Stop Asking "Build or Buy?" — Ask "What Do We Wrap?"","description":"The build-vs-buy frame for enterprise AI agents is a trap: it forces a binary choice between a 12-month internal build and a vendor lock-in that owns your roadm","author":{"@type":"Person","name":"Ryan Sandoval","url":"https://linkedin.com/in/RyanSandoval"},"publisher":{"@type":"Organization","name":"Supergood Solutions","url":"https://supergood.solutions"},"datePublished":"2026-04-25","dateModified":"2026-04-25","mainEntityOfPage":"https://supergood.solutions/blog/stop-asking-build-or-buy-ask-what-do-we-wrap/"}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0b;--surface:#111113;--surface-2:#18181b;--border:#27272a;--text:#fafafa;--text-2:#a1a1aa;--text-3:#8c8c96;--green:#22c55e;--mono:'JetBrains Mono',monospace}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;background:rgba(10,10,11,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .inner{max-width:720px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
+.wordmark{font-weight:800;font-size:1.125rem;letter-spacing:-0.03em;color:var(--text);text-decoration:none}
+.wordmark .dot{color:var(--green)}
+nav a.back{font-size:0.875rem;color:var(--text-3);text-decoration:none}
+nav a.back:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:140px 24px 80px}
+article .tag{font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:16px}
+article h1{font-size:clamp(2rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin-bottom:20px}
+article .meta{font-family:var(--mono);font-size:0.75rem;color:var(--text-3);margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+article h2{font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;margin:56px 0 16px}
+article h3{font-size:1.125rem;font-weight:600;margin:40px 0 12px}
+article p{font-size:1rem;color:var(--text-2);margin-bottom:20px}
+article strong{color:var(--text)}
+article ul,article ol{color:var(--text-2);margin-bottom:20px;padding-left:24px}
+article li{margin-bottom:8px}
+article a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+article hr{border:none;border-top:1px solid var(--border);margin:40px 0}
+.callout{background:var(--surface-2);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:20px 24px;margin:32px 0}
+.callout p{margin-bottom:0;font-size:0.9375rem}
+footer{background:var(--surface);padding:40px 0;margin-top:80px;border-top:1px solid var(--border);text-align:center}
+footer p{color:var(--text-3);font-size:0.875rem;margin:0}
+.reading-progress{position:absolute;bottom:-1px;left:0;height:2px;width:0;background:var(--green);z-index:101;transition:width 80ms linear}
+@supports (animation-timeline: scroll()){.reading-progress{width:100%;transform-origin:left;transform:scaleX(0);animation:reading-progress linear;animation-timeline:scroll(root);transition:none}@keyframes reading-progress{to{transform:scaleX(1)}}}
+@media(max-width:768px){article{padding:120px 20px 60px}article h1{font-size:2rem}}
+</style>
+</head>
+<body>
+<nav><div class="inner"><a href="/" class="wordmark">supergood<span class="dot">.</span></a><a href="/blog/" class="back">← All posts</a></div><div class="reading-progress" aria-hidden="true"></div></nav>
+<main><article>
+<div class="tag">Strategy Saturday</div>
+<h1>Stop Asking "Build or Buy?" — Ask "What Do We Wrap?"</h1>
+<div class="meta">Published April 25, 2026 — 9 min read</div>
+<div class="callout"><p><strong>TL;DR:</strong> The build-vs-buy frame for enterprise AI agents is a trap: it forces a binary choice between a 12-month internal build and a vendor lock-in that owns your roadmap. The contrarian move in 2026 is to default to a third option — buy a generic agent runtime, then wrap it in a thin, owned orchestration layer that holds your evals, prompts, policies, and routing logic. That's where 80% of the durable value lives, and almost no enterprise procurement framework asks for it.</p></div>
+
+<h2>Key Insight</h2>
+<p>Most "build vs buy" decks at enterprise AI committees collapse the question into two columns:</p>
+<ul>
+<li><strong>Build:</strong> ~$2–5M, 9–18 months, you own everything, but staffing risk and opportunity cost are huge.</li>
+<li><strong>Buy:</strong> ~$200–800K/year, 6–12 weeks to deploy, but the vendor's roadmap becomes your roadmap, and switching cost grows monthly.</li>
+</ul>
+<p>The framing is wrong because it treats the agent system as a <em>monolith</em> — one stack, one decision. In practice, an enterprise AI agent has at least four loosely-coupled layers, and each has its own build/buy answer:</p>
+<ol>
+<li><strong>Runtime</strong> — the orchestration engine that invokes models, tools, and memory (e.g. LangGraph, AutoGen, Microsoft Agent Framework, Vertex Agent Builder, Bedrock Agents).</li>
+<li><strong>Model layer</strong> — the actual LLMs and embedding models, plus routing between them.</li>
+<li><strong>Tools and integrations</strong> — connectors to your CRM, ticketing system, data warehouse, internal APIs.</li>
+<li><strong>Policy and evals layer</strong> — your prompts, your guardrails, your evaluation suite, your routing decisions, your audit logs.</li>
+</ol>
+<p>The contrarian take: layers 1–3 should almost always be bought. Layer 4 should almost always be built — and it's the only one that actually constitutes durable enterprise IP. Everything else is commodity inside 18 months.</p>
+<p>The "wrap" pattern is just: buy a generic runtime, plug in models and tools through standard protocols (MCP for tools, OpenAI-compatible APIs for models), and put your owned policy and evals layer <em>on top</em>. You get the speed of buy and the optionality of build, without paying for either in full.</p>
+<h2>Why Teams Miss This</h2>
+<p><strong>1. Procurement scoring rewards completeness, not optionality.</strong> Vendor RFP scorecards weight feature coverage heavily — "does the platform include eval tooling, audit logging, prompt management, and a marketplace?" The vendor that ticks every box wins, even though every checked box is also a piece of IP you've outsourced. Teams optimizing for "fewest vendors" end up with the most lock-in.</p>
+<p><strong>2. Engineering teams pattern-match to "build" out of habit.</strong> AI/ML teams that grew up shipping models in-house default to building runtime infrastructure too. Five years ago that was correct — there was no commodity option. In 2026 there is, but the muscle memory hasn't updated. Most internal "agent platform" projects are reinventing what LangGraph, AutoGen, and Bedrock Agents already do, badly, slower, and with worse observability.</p>
+<p><strong>3. Build-vs-buy decks don't model layer drift.</strong> The runtime layer is consolidating fast — MCP standardized tool exposure in late 2024, A2A standardized agent-to-agent messaging in 2025, and most major vendors now ship runtime engines that look interchangeable from the outside. By 2027, picking a runtime will be like picking a Postgres host. But your prompts, your evals, your routing — those are <em>yours</em>, and a 6-month build there pays back for years.</p>
+<p><strong>4. Vendors actively obscure the layer boundaries.</strong> The biggest agent platforms ship the runtime, model access, <em>and</em> eval/policy tooling as one product, with the eval and policy tools intentionally tightly coupled to their runtime. That's what makes lock-in real. Asking "can I take my eval suite to a different runtime?" in the demo is the question that exposes whether you're buying a tool or buying a cage.</p>
+<h2>How to Actually Do It</h2>
+<p><strong>Step 1 — Map your agent stack into the four layers and label each with build/buy/wrap.</strong></p>
+<p>| Layer | Default | Why |</p>
+<p>|-------|---------|-----|</p>
+<p>| Runtime | Buy | Commodity in 12 months. Your team's time is better spent elsewhere. |</p>
+<p>| Model | Buy + route | Use Anthropic, OpenAI, Google, and an open-weight host. Routing logic lives in your wrap layer. |</p>
+<p>| Tools | Buy or wrap MCP | Use existing MCP servers when they exist; build thin MCP wrappers for proprietary internal APIs only. |</p>
+<p>| Policy + evals | Build (the wrap layer) | This is the IP. Owns prompts, eval data, guardrails, routing rules, audit logs, rollback hooks. |</p>
+<p>If your current architecture has any of these inverted — e.g. building a runtime, or buying eval tooling — that's the place to challenge the decision.</p>
+<p><strong>Step 2 — Define the wrap-layer contract before picking a runtime.</strong> Write down what your owned layer must do, independent of any vendor:</p>
+<ul>
+<li>Hold every prompt and guardrail in version control, with semantic versioning and rollback.</li>
+<li>Run eval suites against any runtime + model combination you point at.</li>
+<li>Route requests to the cheapest model that meets quality bar, per task class.</li>
+<li>Emit an OpenTelemetry trace for every agent call, regardless of which runtime executed it.</li>
+<li>Log every tool invocation with input/output to your warehouse, not the vendor's.</li>
+</ul>
+<p>If a runtime can't be wrapped to satisfy this contract — e.g. it won't let your evals see raw prompts, or its tracing is locked inside its UI — disqualify it before you start the procurement process. This shrinks the vendor list fast.</p>
+<p><strong>Step 3 — Pick the thinnest runtime that does the job.</strong> In 2026 the credible options for the runtime layer are roughly: LangGraph (most flexible, most code), Microsoft Agent Framework (best for Azure-heavy stacks, MCP-native), Bedrock Agents (best for AWS-heavy, weaker eval story), Vertex Agent Builder (best for GCP, weakest portability), and AutoGen (research-leaning, good for multi-agent patterns). All of them are "good enough" runtimes. Pick on integration fit with your existing cloud, not on feature surface area.</p>
+<p><strong>Step 4 — Build the wrap layer as a thin Python or TypeScript package, not a platform.</strong> A common failure mode is over-engineering the wrap into its own internal platform — UI, marketplace, multi-tenancy. Resist. The wrap is a library that exposes:</p>
+<p>from your_company_agents import run_agent</p>
+<p>result = run_agent(</p>
+<p>task="summarize_ticket",</p>
+<p>inputs={"ticket_id": 12345},</p>
+<p>policy_version="v3.2",</p>
+<p>eval_mode="shadow",  # runs against eval suite in parallel</p>
+<p>)</p>
+<p>Internally it picks the runtime, picks the model, applies prompt version v3.2, runs guardrails, emits traces, optionally fans out a shadow eval. That's it. Three engineers, three months. Most enterprise "agent platform" projects are 30 engineers and 18 months because the team scoped a platform when they needed a library.</p>
+<p><strong>Step 5 — Make the runtime swap explicit in your roadmap.</strong> Pick a date — say 12 months out — at which you re-evaluate the runtime layer. Plan for it. Run a shadow deployment on a second runtime for two weeks before the date. The fact that you <em>can</em> swap, and you're known to <em>plan to</em> swap, is what keeps your vendor honest on price and roadmap. Companies that never threaten to leave never get the discount.</p>
+<h2>What We've Learned</h2>
+<p>The teams getting durable leverage from AI agents in 2026 aren't the ones who built the most or bought the most — they're the ones who got the layer boundaries right. They bought commodity runtime and model layers because the marginal value of building those is collapsing. They built a small, owned policy and evals layer because that's the part that compounds — every prompt version, every eval case, every routing rule is permanent IP that survives the next vendor swap.</p>
+<p>If your AI strategy doc still has a "build vs buy" tab with two columns, you're optimizing the wrong question. The right question is: which layers are commodity, which layers are IP, and what's the thinnest wrap we can put between them?</p>
+<p><strong>Concrete next step:</strong> sketch your current agent architecture on one page, draw the four layers, and label each cell <em>commodity</em> or <em>IP</em>. If anything labeled <em>IP</em> is currently bought, or anything labeled <em>commodity</em> is currently being built, you've found the next architecture decision worth defending in your next steering committee. Bring numbers — token cost per request, runtime engineer-months, vendor renewal cost — and the layer-mapping argument tends to make itself.</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://www.anthropic.com/research/building-effective-agents">Anthropic — Building Effective Agents (Dec 2024)</a></li>
+<li><a href="https://modelcontextprotocol.io/">Model Context Protocol (MCP) Specification</a></li>
+<li><a href="https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/">Google — Agent2Agent (A2A) Protocol Announcement (April 2025)</a></li>
+<li><a href="https://learn.microsoft.com/en-us/agent-framework/">Microsoft Agent Framework — General Availability (2026)</a></li>
+<li><a href="https://docs.aws.amazon.com/bedrock/latest/userguide/agents.html">AWS Bedrock Agents Documentation</a></li>
+<li><a href="https://cloud.google.com/products/agent-builder">Google Vertex AI Agent Builder</a></li>
+<li><a href="https://langchain-ai.github.io/langgraph/">LangGraph — Agentic Architecture Documentation</a></li>
+<li><a href="https://www.gartner.com/en/research/methodologies/gartner-hype-cycle">Gartner — Hype Cycle for Generative AI, 2025</a></li>
+</ul>
+<hr>
+<h2>FAQ</h2>
+<p><strong>Q: Isn't "wrap" just a fancy word for "vendor abstraction layer," and didn't every team that tried that in the cloud era regret it?</strong></p>
+<p>A: Cloud abstraction layers failed because the underlying services (S3 vs Blob Storage vs GCS) had genuinely different semantics that leaked through any abstraction. Agent runtimes are converging on shared protocols (MCP, A2A, OpenAI-compatible APIs) precisely to avoid that fate. The abstraction is shallower because the substrate is more standardized. That said — keep the wrap thin. The moment it tries to hide model differences, it becomes the cloud-abstraction trap all over again.</p>
+<p><strong>Q: Which runtime should we pick if we're starting today?</strong></p>
+<p>A: Pick on cloud fit, not on features. Azure-heavy: Microsoft Agent Framework. AWS-heavy: Bedrock Agents (with the caveat that you'll need to build more of the eval layer yourself). GCP-heavy: Vertex Agent Builder. Cloud-agnostic or research-heavy: LangGraph. None of these are wrong answers in 2026. The wrong answer is "we're going to build our own."</p>
+<p><strong>Q: What goes in the policy and evals layer specifically?</strong></p>
+<p>A: At minimum: versioned prompts, guardrail/policy rules (PII redaction, output validation, refusal patterns), an eval suite with golden test cases per task class, a routing function that picks model and runtime per task, OpenTelemetry tracing emission, and a shadow-mode runner for safe rollouts. These are the things you do not want to outsource because every one of them gets better with your specific data over time.</p>
+<p><strong>Q: How big should the wrap layer be?</strong></p>
+<p>A: Small. Three engineers for three months is a reasonable starting point for a mid-market deployment. If your wrap layer needs ten engineers and a dedicated platform team, you've over-scoped it into an internal SaaS — pull it back. The wrap is a library plus a CI pipeline, not a product.</p>
+<p><strong>Q: What if our chosen runtime adds the eval and policy features we need natively — should we still build the wrap?</strong></p>
+<p>A: Yes, and treat it as the price of optionality. If the runtime's eval tooling is genuinely better than yours, your wrap can call into it — but the eval <em>data</em>, <em>test cases</em>, and <em>routing logic</em> must live in your repo, not the vendor's UI. The day you decide to swap runtimes, that data is what determines whether the swap is a weekend or a year.</p>
+<p><strong>Q: How does this advice change for regulated industries (healthcare, finance)?</strong></p>
+<p>A: It hardens, doesn't change. Regulated industries need <em>more</em> policy and audit IP owned in-house, not less, because the compliance evidence belongs to you, not the vendor. The wrap layer is also the natural place for PHI/PII redaction, retention policies, and audit log routing to your SIEM. If anything, regulated buyers should be fastest to adopt the wrap pattern — it's the one architecture that keeps compliance evidence portable.</p>
+<p><strong>Q: Will this still hold in 2027–2028 as agent platforms mature?</strong></p>
+<p>A: The runtime commoditization argument gets <em>stronger</em> over time, not weaker — protocols like MCP and A2A are doing to agent runtimes what Kubernetes did to container orchestration. The IP value of owning your policy and evals layer also compounds with usage. Expect the wrap pattern to become the dominant enterprise architecture by 2028, with vendor lock-in to specific runtime stacks looking, in retrospect, the way "we standardized on a single cloud" looks today.</p>
+
+</article></main>
+<footer><p>&copy; 2026 Supergood Solutions. Helping teams automate smarter, not harder.</p></footer>
+<script>
+(function(){if(CSS.supports('animation-timeline: scroll()'))return;var b=document.querySelector('.reading-progress');if(!b)return;function u(){var d=document.documentElement,m=d.scrollHeight-window.innerHeight,p=m>0?Math.min(1,Math.max(0,window.scrollY/m)):0;b.style.width=(p*100)+'%';}document.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u);u();})();
+</script>
+</body>
+</html>
