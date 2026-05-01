@@ -2,15 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://supergood.solutions/</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://supergood.solutions/blog/</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://supergood.solutions/blog/your-1m-token-context-window-is-a-crutch/</loc>
+    <lastmod>2026-05-01</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://supergood.solutions/blog/contributor-poker-what-zig-s-ai-ban-teaches-every-engineering-team-about-developer-pipelines/</loc>
