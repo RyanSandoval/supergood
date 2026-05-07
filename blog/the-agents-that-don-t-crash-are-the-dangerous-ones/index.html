@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Agents That Don't Crash Are the Dangerous Ones — Supergood Solutions</title>
+<meta name="description" content="The most expensive AI agent failures in production aren't errors or exceptions — they're silent: the agent runs cleanly, returns a result, and nobody realizes t">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://supergood.solutions/blog/the-agents-that-don-t-crash-are-the-dangerous-ones/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Agents That Don't Crash Are the Dangerous Ones">
+<meta property="og:url" content="https://supergood.solutions/blog/the-agents-that-don-t-crash-are-the-dangerous-ones/">
+<meta property="og:image" content="https://supergood.solutions/og-image.png">
+<meta property="article:published_time" content="2026-05-07">
+<meta property="article:author" content="Ryan Sandoval">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"The Agents That Don't Crash Are the Dangerous Ones","description":"The most expensive AI agent failures in production aren't errors or exceptions — they're silent: the agent runs cleanly, returns a result, and nobody realizes t","author":{"@type":"Person","name":"Ryan Sandoval","url":"https://linkedin.com/in/RyanSandoval"},"publisher":{"@type":"Organization","name":"Supergood Solutions","url":"https://supergood.solutions"},"datePublished":"2026-05-07","dateModified":"2026-05-07","mainEntityOfPage":"https://supergood.solutions/blog/the-agents-that-don-t-crash-are-the-dangerous-ones/"}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0b;--surface:#111113;--surface-2:#18181b;--border:#27272a;--text:#fafafa;--text-2:#a1a1aa;--text-3:#8c8c96;--green:#22c55e;--mono:'JetBrains Mono',monospace}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;background:rgba(10,10,11,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .inner{max-width:720px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
+.wordmark{font-weight:800;font-size:1.125rem;letter-spacing:-0.03em;color:var(--text);text-decoration:none}
+.wordmark .dot{color:var(--green)}
+nav a.back{font-size:0.875rem;color:var(--text-3);text-decoration:none}
+nav a.back:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:140px 24px 80px}
+article .tag{font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:16px}
+article h1{font-size:clamp(2rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin-bottom:20px}
+article .meta{font-family:var(--mono);font-size:0.75rem;color:var(--text-3);margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+article h2{font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;margin:56px 0 16px}
+article h3{font-size:1.125rem;font-weight:600;margin:40px 0 12px}
+article p{font-size:1rem;color:var(--text-2);margin-bottom:20px}
+article strong{color:var(--text)}
+article ul,article ol{color:var(--text-2);margin-bottom:20px;padding-left:24px}
+article li{margin-bottom:8px}
+article a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+article hr{border:none;border-top:1px solid var(--border);margin:40px 0}
+.callout{background:var(--surface-2);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:20px 24px;margin:32px 0}
+.callout p{margin-bottom:0;font-size:0.9375rem}
+footer{background:var(--surface);padding:40px 0;margin-top:80px;border-top:1px solid var(--border);text-align:center}
+footer p{color:var(--text-3);font-size:0.875rem;margin:0}
+.reading-progress{position:absolute;bottom:-1px;left:0;height:2px;width:0;background:var(--green);z-index:101;transition:width 80ms linear}
+@supports (animation-timeline: scroll()){.reading-progress{width:100%;transform-origin:left;transform:scaleX(0);animation:reading-progress linear;animation-timeline:scroll(root);transition:none}@keyframes reading-progress{to{transform:scaleX(1)}}}
+@media(max-width:768px){article{padding:120px 20px 60px}article h1{font-size:2rem}}
+</style>
+</head>
+<body>
+<nav><div class="inner"><a href="/" class="wordmark">supergood<span class="dot">.</span></a><a href="/blog/" class="back">← All posts</a></div><div class="reading-progress" aria-hidden="true"></div></nav>
+<main><article>
+<div class="tag">Case Study Thursday</div>
+<h1>The Agents That Don't Crash Are the Dangerous Ones</h1>
+<div class="meta">Published May 07, 2026 — 6 min read</div>
+<div class="callout"><p><strong>TL;DR:</strong> The most expensive AI agent failures in production aren't errors or exceptions — they're silent: the agent runs cleanly, returns a result, and nobody realizes the output was wrong for weeks. Teams that have learned to catch these failures share one trait: they stopped trusting exit codes and started instrumenting *correctness*, not just health.</p></div>
+
+<hr>
+<h2>Key Insight</h2>
+<p>Your alerting dashboard is full of green. Your agents are completing tasks. Your logs show no exceptions. And somewhere in a CRM or a content pipeline or a support queue, garbage is accumulating at scale.</p>
+<p>This is the silent failure pattern, and it's the most common mode of production agent failure in 2026 — not crashes, not runaway costs, not hallucinations that are obviously wrong. It's the agent that confidently produces a plausible-but-incorrect output, and nobody notices until a human stumbles on it two sprints later.</p>
+<p>The contrarian take: <strong>the more capable your model gets, the worse this problem becomes.</strong> A GPT-2 era model that fails is obviously broken. A frontier model that fails is <em>convincing</em>. That's a harder problem.</p>
+<hr>
+<h2>Why Teams Miss This</h2>
+<p>Enterprise teams spend heavily on uptime and latency SLOs. Those are the wrong metrics for agents.</p>
+<p>A rule-based workflow fails loudly — a null pointer, a schema validation error, a rejected API call. An agent workflow "succeeds" at the infrastructure level while producing incorrect decisions at the application level. The exit code is 0. The structured output validates against the schema. The token cost is normal. Nothing fires.</p>
+<p>The common assumption: <strong>"If the agent didn't throw an error, it worked."</strong> That assumption was reasonable for deterministic software. It's wrong for LLM-based systems.</p>
+<p>Specific failure modes that don't trigger standard observability:</p>
+<ul>
+<li><strong>Confident confabulation</strong> — the agent synthesizes an answer from partial context without flagging uncertainty</li>
+<li><strong>Stale retrieval</strong> — the knowledge base hasn't been updated; the agent reasons correctly from wrong data</li>
+<li><strong>Task drift under load</strong> — as queues grow, agents start compressing reasoning steps, degrading quality without degrading throughput</li>
+<li><strong>Automation complacency</strong> — humans in the review loop rubber-stamp outputs after the first few hundred look fine</li>
+</ul>
+<p>That last one is structural. Once a human reviewer approves 200 agent outputs in a row without finding an error, their attention degrades. The HITL gate remains on paper; in practice it's a rubber stamp.</p>
+<hr>
+<h2>How to Actually Do It</h2>
+<p>The teams that have solved this built <em>correctness instrumentation</em>, not just health instrumentation. Here's the pattern:</p>
+<p><strong>1. Tag every agent write with a provenance chain</strong></p>
+<p>Every record the agent creates or modifies should carry: `run_id`, `agent_version`, `model_id`, `timestamp`, `input_hash`. This makes silent failures <em>findable</em> even after the fact — you can audit which outputs came from which agent run and model version.</p>
+<p><strong>2. Run a parallel ground-truth sampler</strong></p>
+<p>For 5–10% of agent outputs, route the same input through a gold-standard path (a slower model, a human reviewer, or a rule-based reference implementation) and compare. Don't alert on every mismatch — compute a rolling drift score. When drift spikes, you have signal before a human notices.</p>
+<p>def log_agent_output(run_id, agent_result, ground_truth_result=None):</p>
+<p>record = {</p>
+<p>"run_id": run_id,</p>
+<p>"agent_output": agent_result,</p>
+<p>"ground_truth": ground_truth_result,</p>
+<p>"match": ground_truth_result is None or agent_result == ground_truth_result,</p>
+<p>"timestamp": datetime.utcnow().isoformat(),</p>
+<p>}</p>
+<p>drift_store.append(record)</p>
+<p>if rolling_mismatch_rate(drift_store, window=100) > DRIFT_THRESHOLD:</p>
+<p>alert("Agent correctness drift detected", run_id=run_id)</p>
+<p><strong>3. Prefer soft writes, always</strong></p>
+<p>Agents should never hard-delete or hard-overwrite. Every write is either append-only or a versioned soft-update with a `superseded_by` pointer. This is table stakes — it makes rollback possible and makes auditing cheap.</p>
+<p><strong>4. Build a "confusion index" per task type</strong></p>
+<p>Track how often the agent asks a clarifying tool call, backtracks, or outputs a low-confidence marker. Agents that are quietly confused tend to fail silently. Rising confusion index = early warning before output quality degrades.</p>
+<p><strong>5. Rotate HITL reviewers — and deliberately break their rhythm</strong></p>
+<p>If the same person reviews agent outputs in a steady stream, complacency is guaranteed. Route a randomized 2–3% of outputs to a second, fresh reviewer. Periodically inject known-bad synthetic outputs to test whether reviewers are catching them. If your sentinel injections aren't being caught, your HITL gate isn't real.</p>
+<hr>
+<h2>What We've Learned</h2>
+<p>The teams shipping reliable agents in production have reframed the question from <em>"Is the agent running?"</em> to <em>"Is the agent right?"</em> Those are different monitoring problems requiring different instrumentation.</p>
+<p><strong>Immediate next step:</strong> Audit your current agent deployments. For each one, answer: if the model started producing wrong outputs today, how many days would pass before someone noticed? If the answer is more than one business day, you have a correctness visibility gap.</p>
+<p>Instrument provenance, run a parallel sampler, and rotate your reviewers. That combination catches silent failures before they compound.</p>
+<hr>
+<h2>FAQ</h2>
+<p><strong>What's the difference between a silent failure and a hallucination?</strong></p>
+<p>A hallucination is one type of silent failure — the agent confidently generates incorrect information. But silent failures also include reasoning errors, stale-data errors, and task drift under load. Hallucination is the most famous; it's not the most common production failure mode.</p>
+<p><strong>Isn't HITL (human-in-the-loop) the fix for silent failures?</strong></p>
+<p>HITL helps, but automation complacency degrades it over time. If reviewers see 500 correct outputs before one bad one, their catch rate drops sharply. HITL is necessary but insufficient without active measures to maintain reviewer attention — rotating reviewers, injecting synthetic failures, and sampling at appropriate rates.</p>
+<p><strong>How do I pick a drift threshold for the parallel sampler?</strong></p>
+<p>Start empirically: run the parallel sampler for two weeks without alerting, establish your baseline mismatch rate, and set your alert threshold at 2x baseline. Don't set it too tight or you'll alert on normal model variance. Revisit thresholds after every model upgrade.</p>
+<p><strong>Does this apply to RAG-based agents specifically?</strong></p>
+<p>Yes, and stale retrieval is the most common failure mode for RAG agents. The agent's reasoning may be flawless while the knowledge base is two months out of date. Provenance tagging should include the retrieval timestamp and knowledge-base version, not just the model version.</p>
+<p><strong>What's the ROI justification for building correctness instrumentation?</strong></p>
+<p>One silent failure that writes bad data into a CRM at scale — 10,000 records touched before discovery — can cost more to remediate than months of instrumentation investment. Frame it as insurance, not overhead. The question isn't whether to build it; it's whether to build it before or after the first silent-failure incident.</p>
+<p><strong>Is this a problem unique to LLMs, or do traditional ML models have it too?</strong></p>
+<p>Traditional ML models can fail silently too (concept drift, distribution shift), and the ML community has learned this the hard way. LLM agents inherit those risks and add new ones — specifically, the plausibility of incorrect outputs is much higher, which makes human review less effective as a backstop.</p>
+<hr>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://aviasole.com/blog/why-ai-agent-deployments-fail/">Why AI Agent Deployments Fail: Real Data, Real Failures</a> — deployment governance data, 82% confidence vs 14% approval rate</li>
+<li><a href="https://medium.com/@prajitdatta/ai-in-2026-why-94-of-companies-are-still-failing-at-production-deployment-and-what-winners-do-759cbf8f9a9f">AI in 2026: Why 94% of Companies Are Still Failing at Production Deployment</a> — infrastructure-first patterns and failure taxonomy</li>
+<li><a href="https://cordum.io/blog/ai-agent-circuit-breaker-pattern">AI Agent Circuit Breaker Pattern: Stop Cascading Tool Failures</a> — soft delete and circuit breaker implementation patterns</li>
+<li><a href="https://docs.bswen.com/blog/2026-05-03-production-agent-architecture-patterns/">Production Agent Architecture: State, Retries, and Approval Gates</a> — plan-execute separation and approval gate design</li>
+<li>NIST AI RMF 1.0 — risk management framework reference for AI system auditability</li>
+</ul>
+
+</article></main>
+<footer><p>&copy; 2026 Supergood Solutions. Helping teams automate smarter, not harder.</p></footer>
+<script>
+(function(){if(CSS.supports('animation-timeline: scroll()'))return;var b=document.querySelector('.reading-progress');if(!b)return;function u(){var d=document.documentElement,m=d.scrollHeight-window.innerHeight,p=m>0?Math.min(1,Math.max(0,window.scrollY/m)):0;b.style.width=(p*100)+'%';}document.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u);u();})();
+</script>
+</body>
+</html>
