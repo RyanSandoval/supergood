@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stop Writing Better Prompts. Start Engineering Better Context. — Supergood Solutions</title>
+<meta name="description" content="Teams spending months tuning prompts while their agents fail in production are solving the wrong problem — 82% of AI leaders now say prompt engineering alone ca">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://supergood.solutions/blog/stop-writing-better-prompts-start-engineering-better-context/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Stop Writing Better Prompts. Start Engineering Better Context.">
+<meta property="og:url" content="https://supergood.solutions/blog/stop-writing-better-prompts-start-engineering-better-context/">
+<meta property="og:image" content="https://supergood.solutions/og-image.png">
+<meta property="article:published_time" content="2026-05-08">
+<meta property="article:author" content="Ryan Sandoval">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Stop Writing Better Prompts. Start Engineering Better Context.","description":"Teams spending months tuning prompts while their agents fail in production are solving the wrong problem — 82% of AI leaders now say prompt engineering alone ca","author":{"@type":"Person","name":"Ryan Sandoval","url":"https://linkedin.com/in/RyanSandoval"},"publisher":{"@type":"Organization","name":"Supergood Solutions","url":"https://supergood.solutions"},"datePublished":"2026-05-08","dateModified":"2026-05-08","mainEntityOfPage":"https://supergood.solutions/blog/stop-writing-better-prompts-start-engineering-better-context/"}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0b;--surface:#111113;--surface-2:#18181b;--border:#27272a;--text:#fafafa;--text-2:#a1a1aa;--text-3:#8c8c96;--green:#22c55e;--mono:'JetBrains Mono',monospace}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;background:rgba(10,10,11,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .inner{max-width:720px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
+.wordmark{font-weight:800;font-size:1.125rem;letter-spacing:-0.03em;color:var(--text);text-decoration:none}
+.wordmark .dot{color:var(--green)}
+nav a.back{font-size:0.875rem;color:var(--text-3);text-decoration:none}
+nav a.back:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:140px 24px 80px}
+article .tag{font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:16px}
+article h1{font-size:clamp(2rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin-bottom:20px}
+article .meta{font-family:var(--mono);font-size:0.75rem;color:var(--text-3);margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+article h2{font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;margin:56px 0 16px}
+article h3{font-size:1.125rem;font-weight:600;margin:40px 0 12px}
+article p{font-size:1rem;color:var(--text-2);margin-bottom:20px}
+article strong{color:var(--text)}
+article ul,article ol{color:var(--text-2);margin-bottom:20px;padding-left:24px}
+article li{margin-bottom:8px}
+article a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+article hr{border:none;border-top:1px solid var(--border);margin:40px 0}
+.callout{background:var(--surface-2);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:20px 24px;margin:32px 0}
+.callout p{margin-bottom:0;font-size:0.9375rem}
+footer{background:var(--surface);padding:40px 0;margin-top:80px;border-top:1px solid var(--border);text-align:center}
+footer p{color:var(--text-3);font-size:0.875rem;margin:0}
+.reading-progress{position:absolute;bottom:-1px;left:0;height:2px;width:0;background:var(--green);z-index:101;transition:width 80ms linear}
+@supports (animation-timeline: scroll()){.reading-progress{width:100%;transform-origin:left;transform:scaleX(0);animation:reading-progress linear;animation-timeline:scroll(root);transition:none}@keyframes reading-progress{to{transform:scaleX(1)}}}
+@media(max-width:768px){article{padding:120px 20px 60px}article h1{font-size:2rem}}
+</style>
+</head>
+<body>
+<nav><div class="inner"><a href="/" class="wordmark">supergood<span class="dot">.</span></a><a href="/blog/" class="back">← All posts</a></div><div class="reading-progress" aria-hidden="true"></div></nav>
+<main><article>
+<div class="tag">Framework Friday</div>
+<h1>Stop Writing Better Prompts. Start Engineering Better Context.</h1>
+<div class="meta">Published May 08, 2026 — 5 min read</div>
+<div class="callout"><p><strong>TL;DR:</strong> Teams spending months tuning prompts while their agents fail in production are solving the wrong problem — 82% of AI leaders now say prompt engineering alone can't power agents at scale, and the teams winning in production have moved to a fundamentally different discipline: context engineering.</p></div>
+
+<hr>
+<h2>Key Insight</h2>
+<p>Prompt engineering is about <em>how you talk to the model</em>. Context engineering is about <em>what the model knows when it answers you</em>.</p>
+<p>That distinction sounds subtle. It isn't. It's the difference between coaching a doctor on bedside manner versus giving them the patient's actual chart.</p>
+<p>Here's the contrarian take most teams don't want to hear: <strong>if your agents are underperforming, the problem is almost certainly not your prompts.</strong> It's the information pipeline that feeds the model. You can wordsmith system instructions for weeks and gain nothing, while a team that engineers their retrieval pipeline, manages token budget deliberately, and structures what goes into context at what time will run circles around you with a generic "be helpful" prompt.</p>
+<p>Context engineering emerged in mid-2025 as the successor to prompt engineering. The 2026 State of Context Management Report found 82% of IT and data leaders have already concluded that prompting alone won't cut it. Production teams aren't tuning prompts anymore — they're building context pipelines.</p>
+<hr>
+<h2>Why Teams Miss This</h2>
+<p>The prompt-first instinct is understandable. It's tactile — you can see the prompt, change a word, observe a result. The feedback loop is tight.</p>
+<p>Context problems are harder to see. The model <em>looks</em> like it's running. Tokens flow. Outputs generate. But the model is reasoning from the wrong information — stale retrieval, truncated history, bloated context that's diluting the signal it actually needs.</p>
+<p>Three failure modes that look like prompt problems but aren't:</p>
+<p><strong>1. Context rot.</strong> Research across 18 frontier models in 2026 found accuracy degradation of 30%+ for information in mid-window positions — not at the edges, <em>in the middle</em>. If your most important context is buried in a 50k-token window, the model may not be weighting it the way you think. The fix isn't a better prompt; it's context placement strategy.</p>
+<p><strong>2. Tool overload.</strong> Give an agent 30 tools "just in case" and performance drops. Anthropic's production guidance is explicit: if a human engineer can't immediately say which tool to use in a given situation, the agent can't either. Trim the tool set to what's needed for the current task scope. A bloated tool list reads like a context problem that looks like a reasoning problem.</p>
+<p><strong>3. Pre-stuffed context.</strong> Teams dump entire knowledge bases or documents into context upfront. This burns tokens on information the agent may never need and pushes relevant content into mid-window dead zones. The winning pattern is just-in-time retrieval — maintain lightweight identifiers, pull data via tools when the task actually requires it.</p>
+<hr>
+<h2>How to Actually Do It</h2>
+<p>Context engineering has four concrete levers:</p>
+<p><strong>1. Treat context like a token budget, not a dump site</strong></p>
+<p>Know your model's effective context window (not the advertised limit — in practice, most models degrade well before the ceiling). Allocate that budget intentionally:</p>
+<ul>
+<li>System instructions: lean and organized by section (XML tags or Markdown headers work well)</li>
+<li>Working memory: only what's needed for this step</li>
+<li>Examples: 3–5 diverse, canonical ones — not exhaustive edge cases</li>
+<li>Retrieval results: just-in-time, relevance-ranked, trimmed</li>
+</ul>
+<p>CONTEXT_BUDGET = 100_000  # effective limit, not advertised max</p>
+<p>budget_allocation = {</p>
+<p>"system_instructions": 0.08,   # 8k tokens — keep it lean</p>
+<p>"tool_definitions": 0.05,      # 5k — only tools this task needs</p>
+<p>"working_memory": 0.15,        # 15k — current task state</p>
+<p>"retrieved_context": 0.55,     # 55k — the actual content</p>
+<p>"conversation_history": 0.12,  # 12k — compressed, not raw</p>
+<p>"output_buffer": 0.05,         # 5k — room to respond</p>
+<p>}</p>
+<p><strong>2. Compress conversation history, don't truncate it</strong></p>
+<p>Most frameworks truncate history when context fills — dropping the oldest messages. That loses architectural decisions and prior reasoning. Instead, compact: summarize the conversation so far, preserving unresolved issues and key decisions. Sub-agents can receive a condensed brief instead of full history.</p>
+<p><strong>3. Sub-agent isolation for clean context windows</strong></p>
+<p>For multi-step workflows, each sub-agent should have its own clean context scoped to its task. The orchestrating agent doesn't need to carry the full retrieval payload for step 6 when it's executing step 2. Sub-agents return condensed summaries to the parent — results, not raw working data.</p>
+<p><strong>4. Audit tool sets per task, not globally</strong></p>
+<p>Stop defining one master tool list and loading it for every agent run. Define task-scoped tool sets. A customer support agent routing a refund request doesn't need your analytics query tool. Narrower tool sets mean the model makes faster, more accurate tool-selection decisions and the tool definitions consume less of your context budget.</p>
+<hr>
+<h2>What We've Learned</h2>
+<p>The teams consistently shipping reliable agents in production have a shared characteristic: they treat the model's information environment as a first-class engineering problem, not an afterthought.</p>
+<p><strong>Immediate experiment:</strong> Pick one underperforming agent and do a context audit before touching the prompt. Print the full context at inference time. Ask: What's in here that shouldn't be? What's missing that should be? Where is the most important information relative to the context window? What tools are defined that this task never actually uses?</p>
+<p>In most cases, that audit will surface more actionable improvements than another round of prompt iteration.</p>
+<p>The model is not your problem. What you're feeding it is.</p>
+<hr>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">Effective Context Engineering for AI Agents — Anthropic Engineering</a> — production context engineering principles from Anthropic's internal agent work</li>
+<li><a href="https://neo4j.com/blog/agentic-ai/context-engineering-vs-prompt-engineering/">Context Engineering vs Prompt Engineering — Neo4j Blog</a> — enterprise adoption data and discipline comparison</li>
+<li><a href="https://sombrainc.com/blog/ai-context-engineering-guide">AI Context Engineering in 2026 — Sombrainc</a> — 2026 State of Context Management Report data (82% of leaders)</li>
+<li><a href="https://atlan.com/know/llm-context-window-limitations/">LLM Context Window Limitations in 2026 — Atlan</a> — context rot research, mid-window degradation data</li>
+<li><a href="https://albertsikkema.com/ai/development/tools/2026/04/23/smaller-context-window-better-claude-code.html">Why I Shrunk Claude Code's Context Window Back to 200k — Albert Sikkema</a> — practitioner case study on effective vs. advertised context limits</li>
+<li><a href="https://dev.to/serenitiesai/context-engineering-why-its-replacing-prompt-engineering-in-2026-1b4g">Context Engineering: The New Skill Replacing Prompt Engineering in 2026 — DEV Community</a> — industry shift overview</li>
+</ul>
+
+</article></main>
+<footer><p>&copy; 2026 Supergood Solutions. Helping teams automate smarter, not harder.</p></footer>
+<script>
+(function(){if(CSS.supports('animation-timeline: scroll()'))return;var b=document.querySelector('.reading-progress');if(!b)return;function u(){var d=document.documentElement,m=d.scrollHeight-window.innerHeight,p=m>0?Math.min(1,Math.max(0,window.scrollY/m)):0;b.style.width=(p*100)+'%';}document.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u);u();})();
+</script>
+</body>
+</html>
