@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Agent Eval Is Lying to You — Supergood Solutions</title>
+<meta name="description" content="Enterprise teams evaluating tool-calling agents obsess over task completion rates — and miss the three metrics that actually predict production failure. An agen">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://supergood.solutions/blog/your-agent-eval-is-lying-to-you/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Your Agent Eval Is Lying to You">
+<meta property="og:url" content="https://supergood.solutions/blog/your-agent-eval-is-lying-to-you/">
+<meta property="og:image" content="https://supergood.solutions/og-image.png">
+<meta property="article:published_time" content="2026-05-11">
+<meta property="article:author" content="Ryan Sandoval">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Your Agent Eval Is Lying to You","description":"Enterprise teams evaluating tool-calling agents obsess over task completion rates — and miss the three metrics that actually predict production failure. An agen","author":{"@type":"Person","name":"Ryan Sandoval","url":"https://linkedin.com/in/RyanSandoval"},"publisher":{"@type":"Organization","name":"Supergood Solutions","url":"https://supergood.solutions"},"datePublished":"2026-05-11","dateModified":"2026-05-11","mainEntityOfPage":"https://supergood.solutions/blog/your-agent-eval-is-lying-to-you/"}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0b;--surface:#111113;--surface-2:#18181b;--border:#27272a;--text:#fafafa;--text-2:#a1a1aa;--text-3:#8c8c96;--green:#22c55e;--mono:'JetBrains Mono',monospace}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;background:rgba(10,10,11,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .inner{max-width:720px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
+.wordmark{font-weight:800;font-size:1.125rem;letter-spacing:-0.03em;color:var(--text);text-decoration:none}
+.wordmark .dot{color:var(--green)}
+nav a.back{font-size:0.875rem;color:var(--text-3);text-decoration:none}
+nav a.back:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:140px 24px 80px}
+article .tag{font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:16px}
+article h1{font-size:clamp(2rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin-bottom:20px}
+article .meta{font-family:var(--mono);font-size:0.75rem;color:var(--text-3);margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+article h2{font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;margin:56px 0 16px}
+article h3{font-size:1.125rem;font-weight:600;margin:40px 0 12px}
+article p{font-size:1rem;color:var(--text-2);margin-bottom:20px}
+article strong{color:var(--text)}
+article ul,article ol{color:var(--text-2);margin-bottom:20px;padding-left:24px}
+article li{margin-bottom:8px}
+article a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+article hr{border:none;border-top:1px solid var(--border);margin:40px 0}
+.callout{background:var(--surface-2);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:20px 24px;margin:32px 0}
+.callout p{margin-bottom:0;font-size:0.9375rem}
+footer{background:var(--surface);padding:40px 0;margin-top:80px;border-top:1px solid var(--border);text-align:center}
+footer p{color:var(--text-3);font-size:0.875rem;margin:0}
+.reading-progress{position:absolute;bottom:-1px;left:0;height:2px;width:0;background:var(--green);z-index:101;transition:width 80ms linear}
+@supports (animation-timeline: scroll()){.reading-progress{width:100%;transform-origin:left;transform:scaleX(0);animation:reading-progress linear;animation-timeline:scroll(root);transition:none}@keyframes reading-progress{to{transform:scaleX(1)}}}
+@media(max-width:768px){article{padding:120px 20px 60px}article h1{font-size:2rem}}
+</style>
+</head>
+<body>
+<nav><div class="inner"><a href="/" class="wordmark">supergood<span class="dot">.</span></a><a href="/blog/" class="back">← All posts</a></div><div class="reading-progress" aria-hidden="true"></div></nav>
+<main><article>
+<div class="tag">Metrics Monday</div>
+<h1>Your Agent Eval Is Lying to You</h1>
+<div class="meta">Published May 11, 2026 — 6 min read</div>
+<div class="callout"><p><strong>TL;DR:</strong> Enterprise teams evaluating tool-calling agents obsess over task completion rates — and miss the three metrics that actually predict production failure. An agent that passes your benchmark at 82% accuracy can hemorrhage 4x more API cost than a "worse" alternative, hit latency cliffs at p99, and fail on exactly the cases that matter most to users. The fix is not a better benchmark. It's a different set of questions.</p></div>
+
+<h2>Key Insight</h2>
+<p><strong>The benchmark metric is not the production metric.</strong></p>
+<p>Here's the uncomfortable data: a 2025 arxiv analysis of enterprise agentic systems found agent performance dropping from 60% on single-run benchmarks to 25% when measured across 8 consistency runs. That is not a different agent — it is the same agent, measured more honestly.</p>
+<p>The CLEAR framework (Cost, Latency, Efficacy, Assurance, Reliability) names what enterprise teams actually need to optimize against. Most eval harnesses instrument only "Efficacy" — task completion — and treat the other four as someone else's problem. That works fine in a research environment. In production it fails visibly and expensively.</p>
+<p>Tool-calling agents add another layer. The agent can fail in two distinct ways that a simple pass/fail eval collapses into one:</p>
+<ol>
+<li><strong>Wrong tool selected</strong> — the agent called the right category of action with the wrong function</li>
+<li><strong>Right tool, wrong execution</strong> — the agent selected correctly but params were malformed or the call sequence was off</li>
+</ol>
+<p>These failure modes have different root causes and completely different fixes. If your harness does not separate them, you are debugging blind.</p>
+<h2>Why Teams Miss This</h2>
+<p>Because task completion is easy to label and hard to argue with.</p>
+<p>"The agent completed 78% of test cases" is a clean number. It fits in a slide deck. It satisfies stakeholders. It maps to the benchmarks the model providers publish.</p>
+<p>The problem is that benchmark task completion is measured under ideal conditions: clean inputs, fresh context, no concurrency, no cost pressure. Production is the opposite.</p>
+<p>Three things that do not show up in standard agent benchmarks but routinely cause production failures:</p>
+<ol>
+<li><strong>Tool selection under ambiguous input</strong>: When a query could route to two different tools, which one does the agent pick? How consistent is that choice across paraphrases of the same question?</li>
+<li><strong>Cost-per-correct-outcome</strong>: Research shows that optimizing for accuracy alone yields agents 4–10x more expensive than cost-aware alternatives with comparable task completion. That delta kills ROI before the agent gets past pilot.</li>
+<li><strong>p99 latency</strong>: Median latency looks fine; p99 is where SLAs break. Parallel tool execution patterns cut latency significantly in multi-step workflows — but only if your harness can detect when the agent is making sequential calls that should be parallel.</li>
+</ol>
+<h2>How to Actually Do It</h2>
+<p>Build your eval harness around four questions, not one.</p>
+<h3>1. Tool Selection Accuracy</h3>
+<p>Ground-truth label each test case with the expected tool or tool sequence. Track whether the agent selected the right tool, called it in the right order, and what it chose when input was ambiguous.</p>
+<p>expected_tool = "search_documents"</p>
+<p>actual_tool = trace.tool_calls[0].name</p>
+<p>tool_correct = actual_tool == expected_tool</p>
+<p>tool_precision = sum(tool_correct) / len(test_cases)</p>
+<h3>2. Cost Per Correct Outcome</h3>
+<p>Do not report "cost" in isolation. Report cost <em>conditional on correctness</em>. An expensive agent that is always right may cost less over time than a cheap agent that is right 60% of the time once you factor in retry cost and human correction downstream.</p>
+<p>cost_correct = total_cost / correct_completions</p>
+<p>cost_all    = total_cost / total_runs</p>
+<h3>3. Failure Mode Taxonomy</h3>
+<p>Tag each failure: wrong tool, right tool with wrong params, right tool and params but wrong reasoning, timeout or infinite loop. A distribution that is 80% "wrong reasoning" points to a prompting problem. An 80% "timeout" distribution points to a tool budget problem. Same overall pass rate — entirely different root causes and fixes.</p>
+<h3>4. Operating Envelope Gates</h3>
+<p>Define hard limits: max steps, max tool calls, token budget, wall-clock timeout. Fail the run if any limit is exceeded — even if the output was correct. An agent that gets the right answer in 45 tool calls is not a production agent; it is a liability.</p>
+<p>Tools like <a href="https://www.braintrust.dev/">Braintrust</a> and Anthropic's eval infrastructure surface trace-level data that enables this analysis. The gap is not tooling — it is that teams do not define the eval contract before they start building.</p>
+<h2>What We've Learned</h2>
+<p>Run this audit on your current eval harness before the next sprint:</p>
+<ol>
+<li>Pull the last 50 failure cases. Can you classify them by failure mode — tool selection vs. execution vs. reasoning?</li>
+<li>Calculate cost-per-correct-outcome, not just total cost. Is it higher or lower than you assumed?</li>
+<li>Find your p99 latency in production traces. If it is more than 3x your p50, you have a sequential tool-call problem worth fixing.</li>
+</ol>
+<p>If you cannot answer these three questions from your current telemetry, you do not have an eval problem — you have an observability problem. Fix the instrumentation first; the harness comes second.</p>
+<p>The output of a well-designed eval harness is not a score. It is a failure mode map. Build the map, then fix the most expensive failure mode first. That is the entire job.</p>
+<h2>FAQ</h2>
+<p><strong>What metrics matter most for evaluating tool-calling agents?</strong></p>
+<p>Tool selection accuracy, cost-per-correct-outcome, failure mode distribution, and p99 latency are the four metrics that predict production reliability. Task completion rate alone is insufficient because it collapses distinct failure modes into a single number, making root-cause analysis nearly impossible.</p>
+<p><strong>What is the CLEAR framework for AI agent evaluation?</strong></p>
+<p>CLEAR stands for Cost, Latency, Efficacy, Assurance, and Reliability — a multi-objective evaluation framework designed for enterprise AI deployment. It recognizes that optimizing for accuracy alone ignores the cost and latency constraints that determine whether an agent is viable at scale.</p>
+<p><strong>How do you measure tool selection accuracy in a tool-calling agent?</strong></p>
+<p>Ground-truth label each test case with the expected tool or tool sequence. During eval runs, compare the agent's actual tool calls against the expected calls. Track both tool identity (was the right function called?) and call order (was the sequence correct?).</p>
+<p><strong>Why do agent pass rates drop when you run them multiple times?</strong></p>
+<p>Consistency is a separate property from correctness. An agent might solve a task correctly 60% of the time in single-run tests but only 25% of the time across 8 runs on the same input. This drop reveals sensitivity to context window state, temperature variance, and tool-call ordering — none of which appear in a single-shot benchmark.</p>
+<p><strong>What is an operating envelope in agent evaluation?</strong></p>
+<p>An operating envelope defines the maximum acceptable resource usage for a successful run: max steps, max tool calls, token budget, wall-clock timeout. A run that exceeds these limits fails the eval even if the output is correct, because an agent that uses 45 tool calls to answer a 3-call question is not deployable.</p>
+<p><strong>How do I know if I have an observability problem vs. an eval problem?</strong></p>
+<p>If you cannot classify your failure cases by failure mode, you have an observability problem first. You need trace-level data — every tool call, every intermediate reasoning step — before you can design a meaningful eval harness. Start with instrumentation; evals follow from that.</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://arxiv.org/html/2511.14136v1">Beyond Accuracy: A Multi-Dimensional Framework for Evaluating Enterprise Agentic AI Systems</a> — arxiv 2025</li>
+<li><a href="https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents">Demystifying evals for AI agents</a> — Anthropic Engineering</li>
+<li><a href="https://www.braintrust.dev/articles/ai-agent-evaluation-framework">AI agent evaluation: A practical framework for testing multi-step agents</a> — Braintrust</li>
+<li><a href="https://galileo.ai/blog/agent-evaluation-framework-metrics-rubrics-benchmarks">Agent Evaluation Framework 2026: Metrics, Rubrics & Benchmarks</a> — Galileo AI</li>
+<li><a href="https://kili-technology.com/blog/ai-benchmarks-guide-the-top-evaluations-in-2026-and-why-theyre-not-enough">AI Benchmarks 2026: Top Evaluations and Their Limits</a> — Kili Technology</li>
+</ul>
+
+</article></main>
+<footer><p>&copy; 2026 Supergood Solutions. Helping teams automate smarter, not harder.</p></footer>
+<script>
+(function(){if(CSS.supports('animation-timeline: scroll()'))return;var b=document.querySelector('.reading-progress');if(!b)return;function u(){var d=document.documentElement,m=d.scrollHeight-window.innerHeight,p=m>0?Math.min(1,Math.max(0,window.scrollY/m)):0;b.style.width=(p*100)+'%';}document.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u);u();})();
+</script>
+</body>
+</html>
