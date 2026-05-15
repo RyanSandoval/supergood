@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Agents Are Waiting for Humans. That's the Bug. — Supergood Solutions</title>
+<meta name="description" content="Most enterprise AI agents are built as request-response systems — they sit idle until a human pings them. That's not agentic, that's a chatbot with extra steps.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://supergood.solutions/blog/your-agents-are-waiting-for-humans-that-s-the-bug/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Your Agents Are Waiting for Humans. That's the Bug.">
+<meta property="og:url" content="https://supergood.solutions/blog/your-agents-are-waiting-for-humans-that-s-the-bug/">
+<meta property="og:image" content="https://supergood.solutions/og-image.png">
+<meta property="article:published_time" content="2026-05-15">
+<meta property="article:author" content="Ryan Sandoval">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Your Agents Are Waiting for Humans. That's the Bug.","description":"Most enterprise AI agents are built as request-response systems — they sit idle until a human pings them. That's not agentic, that's a chatbot with extra steps.","author":{"@type":"Person","name":"Ryan Sandoval","url":"https://linkedin.com/in/RyanSandoval"},"publisher":{"@type":"Organization","name":"Supergood Solutions","url":"https://supergood.solutions"},"datePublished":"2026-05-15","dateModified":"2026-05-15","mainEntityOfPage":"https://supergood.solutions/blog/your-agents-are-waiting-for-humans-that-s-the-bug/"}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0b;--surface:#111113;--surface-2:#18181b;--border:#27272a;--text:#fafafa;--text-2:#a1a1aa;--text-3:#8c8c96;--green:#22c55e;--mono:'JetBrains Mono',monospace}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;background:rgba(10,10,11,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .inner{max-width:720px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
+.wordmark{font-weight:800;font-size:1.125rem;letter-spacing:-0.03em;color:var(--text);text-decoration:none}
+.wordmark .dot{color:var(--green)}
+nav a.back{font-size:0.875rem;color:var(--text-3);text-decoration:none}
+nav a.back:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:140px 24px 80px}
+article .tag{font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:16px}
+article h1{font-size:clamp(2rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin-bottom:20px}
+article .meta{font-family:var(--mono);font-size:0.75rem;color:var(--text-3);margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+article h2{font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;margin:56px 0 16px}
+article h3{font-size:1.125rem;font-weight:600;margin:40px 0 12px}
+article p{font-size:1rem;color:var(--text-2);margin-bottom:20px}
+article strong{color:var(--text)}
+article ul,article ol{color:var(--text-2);margin-bottom:20px;padding-left:24px}
+article li{margin-bottom:8px}
+article a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+article hr{border:none;border-top:1px solid var(--border);margin:40px 0}
+.callout{background:var(--surface-2);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:20px 24px;margin:32px 0}
+.callout p{margin-bottom:0;font-size:0.9375rem}
+footer{background:var(--surface);padding:40px 0;margin-top:80px;border-top:1px solid var(--border);text-align:center}
+footer p{color:var(--text-3);font-size:0.875rem;margin:0}
+.reading-progress{position:absolute;bottom:-1px;left:0;height:2px;width:0;background:var(--green);z-index:101;transition:width 80ms linear}
+@supports (animation-timeline: scroll()){.reading-progress{width:100%;transform-origin:left;transform:scaleX(0);animation:reading-progress linear;animation-timeline:scroll(root);transition:none}@keyframes reading-progress{to{transform:scaleX(1)}}}
+@media(max-width:768px){article{padding:120px 20px 60px}article h1{font-size:2rem}}
+</style>
+</head>
+<body>
+<nav><div class="inner"><a href="/" class="wordmark">supergood<span class="dot">.</span></a><a href="/blog/" class="back">← All posts</a></div><div class="reading-progress" aria-hidden="true"></div></nav>
+<main><article>
+<div class="tag">Future Friday</div>
+<h1>Your Agents Are Waiting for Humans. That's the Bug.</h1>
+<div class="meta">Published May 15, 2026 — 6 min read</div>
+<div class="callout"><p><strong>TL;DR:</strong> Most enterprise AI agents are built as request-response systems — they sit idle until a human pings them. That's not agentic, that's a chatbot with extra steps. The teams pulling real value from agents in 2026 have made a quiet architectural shift to event-driven design, and it changes everything about what an agent can actually do.</p></div>
+
+<h2>Key Insight</h2>
+<p>Here's the uncomfortable truth about most "AI agent" deployments: they're fundamentally passive. A human opens a chat window, types a request, the agent responds. Repeat. That's not autonomous intelligence — that's autocomplete with a personality.</p>
+<p>The teams that have moved past POC purgatory and into production impact have rebuilt their agents around a different trigger model: <strong>events, not prompts</strong>.</p>
+<p>In an event-driven agent architecture, an agent wakes up because something happened in the world — a support ticket was filed, a contract landed in a shared inbox, an inventory level crossed a threshold, a scheduled window opened. The agent doesn't wait to be asked. It acts.</p>
+<p>This isn't a novel concept. It's how we've built reliable software for 20 years (message queues, webhooks, pub/sub). The contrarian point is that we keep building AI agents as if they're chat interfaces when they should be autonomous processes wired into the event streams that already exist in every enterprise.</p>
+<h2>Why Teams Miss This</h2>
+<p>The default mental model is inherited from demos and product marketing. Every AI agent demo shows a human typing a question and an agent responding. It's intuitive. It's legible. It's also the worst possible design for an agent that needs to handle thousands of events per day without a human in the loop for each one.</p>
+<p>Teams then encounter a scaling problem: the agent is only as fast and consistent as the humans remembering to ask it things. You haven't automated the work — you've automated the <em>response to a request about</em> the work. That's one abstraction layer short of the actual win.</p>
+<p>Three specific failure modes this creates:</p>
+<ol>
+<li><strong>The "why didn't it catch that?" problem.</strong> Agent was never told about the edge case because no one thought to ask. An event-driven agent would have seen the same data and acted without needing the prompt.</li>
+</ol>
+<p>2. <strong>The context collapse problem.</strong> By the time a human asks the agent to handle something, the relevant context (a Slack thread, a prior decision, a Jira ticket) has to be manually attached. An event-triggered agent has direct access to the event payload and its full origin context.</p>
+<p>3. <strong>The throughput ceiling.</strong> Your best human operators can triage ~50 complex situations per day. An event-driven agent handles 50,000. The moment you make agents dependent on human triggers, you've capped their throughput at human speed.</p>
+<h2>How to Actually Do It</h2>
+<p>The core pattern: wire your agents into the same event bus your other systems use. Don't build a separate "AI interface" — embed agents as consumers in your existing event streams.</p>
+<p><strong>Basic pattern (AWS + Bedrock):</strong></p>
+<p>def lambda_handler(event, context):</p>
+<p># Event came from: S3 upload, Salesforce webhook, Jira status change, etc.</p>
+<p>event_payload = event["detail"]</p>
+<p>agent_response = bedrock_agent_runtime.invoke_agent(</p>
+<p>agentId=AGENT_ID,</p>
+<p>agentAliasId=ALIAS_ID,</p>
+<p>sessionId=event_payload["entity_id"],  # natural session scoping</p>
+<p>inputText=build_prompt_from_event(event_payload)</p>
+<p>)</p>
+<p># Agent acts, logs result, triggers downstream events if needed</p>
+<p>route_agent_output(agent_response, event_payload)</p>
+<p>The key decisions:</p>
+<p><strong>1. Use your existing event bus.</strong> If you're on AWS, EventBridge is already there. Kafka, SQS, Azure Service Bus — same principle. Don't build a custom "agent trigger" system; agents are just another consumer type.</p>
+<p><strong>2. Session scoping via entity ID.</strong> Each unique entity (customer, contract, ticket) gets its own session context. When the same customer triggers three events in a day, the agent maintains coherent context across all three without human re-briefing.</p>
+<p><strong>3. Idempotency is non-negotiable.</strong> Events can fire twice (network hiccups, retries). Your agent actions must be idempotent or gated behind deduplication checks. This is table stakes for event-driven systems — it applies equally to agents.</p>
+<p><strong>4. Human-in-the-loop as an <em>output</em> event, not an <em>input</em> requirement.</strong> When the agent hits a low-confidence decision, it fires a `HUMAN_REVIEW_REQUESTED` event with its reasoning and proposed action. A human reviews an async queue — not a blocking chat thread. This is how Salesforce Agentforce handles escalation in its service cloud deployments.</p>
+<p><strong>Real example from enterprise deployments:</strong> A financial services firm wired a compliance agent to their document management system via S3 event notifications. Every new contract upload triggers the agent, which classifies the document, flags compliance issues, routes it to the right review queue, and logs a structured audit record — all before a human ever opens the file. Throughput went from 200 docs/week (human-triaged) to 4,000 docs/week, with humans only reviewing the 8% that the agent flagged as ambiguous.</p>
+<h2>What We've Learned</h2>
+<p>If you're running a request-response agent in production, map out every time a human has to <em>remember</em> to involve it. Each one of those moments is an event trigger waiting to be wired up.</p>
+<p>Start with the highest-frequency, most consistent trigger in your workflow. Replace the "remember to ask the agent" step with an automatic event. Measure the change in throughput and error rate over four weeks.</p>
+<p>The agent doesn't get smarter. Your architecture does.</p>
+<h2>FAQ</h2>
+<p><strong>Q: Won't event-driven agents run wild if there's no human in the loop?</strong></p>
+<p>A: Only if you skip the escalation event pattern. Build `HUMAN_REVIEW_REQUESTED` as a first-class output type, set confidence thresholds for autonomous action, and you get high throughput <em>with</em> appropriate human oversight — not instead of it.</p>
+<p><strong>Q: Do I need a different model for event-driven agents vs. chat agents?</strong></p>
+<p>A: No. The model is the same; what changes is how it's invoked and what context it receives. A well-structured event payload is often <em>better</em> context than a human prompt because it's structured, complete, and machine-generated.</p>
+<p><strong>Q: What about agents that need to poll for changes instead of receive events?</strong></p>
+<p>A: Polling is a fallback when webhooks aren't available (legacy systems, third-party APIs). Use scheduled EventBridge rules for polling agents, but design the agent logic identically — stateless, idempotent, event-aware. Treat the poll result as a synthetic event.</p>
+<p><strong>Q: How do we handle event storms — thousands of events firing at once?</strong></p>
+<p>A: Apply standard backpressure patterns: SQS with visibility timeout and DLQ, Kafka consumer group with controlled lag monitoring, or EventBridge pipes with batching. These are solved problems in distributed systems. Your agent doesn't need to know about them — your event infrastructure does.</p>
+<p><strong>Q: Is this different from what Salesforce Agentforce or Microsoft Copilot Studio does?</strong></p>
+<p>A: These platforms are moving in this direction, but they abstract away the event bus, which limits flexibility. Building on native event infrastructure (EventBridge, Kafka, Service Bus) gives you finer control over routing, filtering, and throughput — worth the complexity for high-volume enterprise use cases.</p>
+<p><strong>Q: What's the first event trigger to wire up if we're starting fresh?</strong></p>
+<p>A: Pick your highest-volume, most structured, most consistent business event. Support ticket creation, document upload, or CRM record status change are common starting points — all structured, all high-frequency, all currently requiring manual triage that an agent can handle.</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://docs.aws.amazon.com/bedrock/latest/userguide/agents.html">AWS EventBridge + Bedrock Agents Integration Guide</a> — AWS documentation on invoking Bedrock Agents programmatically</li>
+<li><a href="https://developer.salesforce.com/docs/einstein/genai/guide/agentforce-overview.html">Salesforce Agentforce Architecture Overview</a> — Salesforce's event-driven agent escalation model</li>
+<li><a href="https://www.anthropic.com/research/building-effective-agents">Anthropic: Building Effective Agents</a> — foundational patterns for production agent systems</li>
+<li><a href="https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-pipes.html">AWS EventBridge Pipes for Event-Driven Architectures</a> — batching and filtering for high-volume event streams</li>
+<li><a href="https://learn.microsoft.com/en-us/azure/ai-services/agents/overview">Azure Service Bus + Azure AI Agent Service</a> — Microsoft's approach to event-triggered agents in enterprise workflows</li>
+</ul>
+
+</article></main>
+<footer><p>&copy; 2026 Supergood Solutions. Helping teams automate smarter, not harder.</p></footer>
+<script>
+(function(){if(CSS.supports('animation-timeline: scroll()'))return;var b=document.querySelector('.reading-progress');if(!b)return;function u(){var d=document.documentElement,m=d.scrollHeight-window.innerHeight,p=m>0?Math.min(1,Math.max(0,window.scrollY/m)):0;b.style.width=(p*100)+'%';}document.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u);u();})();
+</script>
+</body>
+</html>
