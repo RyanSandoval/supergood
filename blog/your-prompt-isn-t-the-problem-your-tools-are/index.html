@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Prompt Isn't the Problem. Your Tools Are. — Supergood Solutions</title>
+<meta name="description" content="Enterprise teams invest weeks refining system prompts while their agent tools ship with two-line docstrings and undefined edge cases. Anthropic's own engineers ">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://supergood.solutions/blog/your-prompt-isn-t-the-problem-your-tools-are/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Your Prompt Isn't the Problem. Your Tools Are.">
+<meta property="og:url" content="https://supergood.solutions/blog/your-prompt-isn-t-the-problem-your-tools-are/">
+<meta property="og:image" content="https://supergood.solutions/og-image.png">
+<meta property="article:published_time" content="2026-05-17">
+<meta property="article:author" content="Ryan Sandoval">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Your Prompt Isn't the Problem. Your Tools Are.","description":"Enterprise teams invest weeks refining system prompts while their agent tools ship with two-line docstrings and undefined edge cases. Anthropic's own engineers ","author":{"@type":"Person","name":"Ryan Sandoval","url":"https://linkedin.com/in/RyanSandoval"},"publisher":{"@type":"Organization","name":"Supergood Solutions","url":"https://supergood.solutions"},"datePublished":"2026-05-17","dateModified":"2026-05-17","mainEntityOfPage":"https://supergood.solutions/blog/your-prompt-isn-t-the-problem-your-tools-are/"}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0b;--surface:#111113;--surface-2:#18181b;--border:#27272a;--text:#fafafa;--text-2:#a1a1aa;--text-3:#8c8c96;--green:#22c55e;--mono:'JetBrains Mono',monospace}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;background:rgba(10,10,11,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .inner{max-width:720px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
+.wordmark{font-weight:800;font-size:1.125rem;letter-spacing:-0.03em;color:var(--text);text-decoration:none}
+.wordmark .dot{color:var(--green)}
+nav a.back{font-size:0.875rem;color:var(--text-3);text-decoration:none}
+nav a.back:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:140px 24px 80px}
+article .tag{font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:16px}
+article h1{font-size:clamp(2rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin-bottom:20px}
+article .meta{font-family:var(--mono);font-size:0.75rem;color:var(--text-3);margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+article h2{font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;margin:56px 0 16px}
+article h3{font-size:1.125rem;font-weight:600;margin:40px 0 12px}
+article p{font-size:1rem;color:var(--text-2);margin-bottom:20px}
+article strong{color:var(--text)}
+article ul,article ol{color:var(--text-2);margin-bottom:20px;padding-left:24px}
+article li{margin-bottom:8px}
+article a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+article hr{border:none;border-top:1px solid var(--border);margin:40px 0}
+.callout{background:var(--surface-2);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:20px 24px;margin:32px 0}
+.callout p{margin-bottom:0;font-size:0.9375rem}
+footer{background:var(--surface);padding:40px 0;margin-top:80px;border-top:1px solid var(--border);text-align:center}
+footer p{color:var(--text-3);font-size:0.875rem;margin:0}
+.reading-progress{position:absolute;bottom:-1px;left:0;height:2px;width:0;background:var(--green);z-index:101;transition:width 80ms linear}
+@supports (animation-timeline: scroll()){.reading-progress{width:100%;transform-origin:left;transform:scaleX(0);animation:reading-progress linear;animation-timeline:scroll(root);transition:none}@keyframes reading-progress{to{transform:scaleX(1)}}}
+@media(max-width:768px){article{padding:120px 20px 60px}article h1{font-size:2rem}}
+</style>
+</head>
+<body>
+<nav><div class="inner"><a href="/" class="wordmark">supergood<span class="dot">.</span></a><a href="/blog/" class="back">← All posts</a></div><div class="reading-progress" aria-hidden="true"></div></nav>
+<main><article>
+<div class="tag">Deep Dive</div>
+<h1>Your Prompt Isn't the Problem. Your Tools Are.</h1>
+<div class="meta">Published May 17, 2026 — 3 min read</div>
+<div class="callout"><p><strong>TL;DR:</strong> Enterprise teams invest weeks refining system prompts while their agent tools ship with two-line docstrings and undefined edge cases. Anthropic's own engineers found they spent *more* time on tool design than on the overall prompt — and that gap is where most production failures actually live.</p></div>
+
+<h2>Key Insight</h2>
+<p>Everyone treats the system prompt as the product. But for agents, the real interface is the tool layer — what the model can call, how parameters are named, what the function contract looks like when something goes wrong.</p>
+<p>Here's the uncomfortable math: a vague tool spec doesn't just return a bad result. It sends the agent down a reasoning path built on a false premise, and by the time it surfaces an answer, the failure is three hops back in a chain you're not logging clearly enough to trace.</p>
+<p>Anthropic calls this the ACI problem — <strong>agent-computer interface</strong>. It's the gap between "this tool technically works" and "this tool is legible to an LLM reasoning about what to do next." Most teams close the first gap and forget the second exists.</p>
+<h2>Why Teams Miss This</h2>
+<p>The mental model is wrong from the start. Teams think of tools as plumbing — utilities the agent calls when it needs data. So they're designed like internal APIs: terse names, developer-readable docs, assume the caller knows the domain.</p>
+<p>LLMs aren't developers. They're pattern-matching on your parameter names, your descriptions, and your example values to infer the contract. When you name a parameter `ts` instead of `timestamp_utc_iso8601`, the model has to guess. When your tool silently returns an empty array for an invalid query instead of a descriptive error, the model assumes the answer is "nothing exists" rather than "the query was malformed."</p>
+<p>Common failure signatures in production:</p>
+<ul>
+<li><strong>Silent wrong inputs</strong>: Model passes a date as `MM/DD/YYYY` when the API expects `YYYY-MM-DD`. Tool returns 400, agent retries with the same format, eventually hallucinates a fallback.</li>
+<li><strong>Ambiguous overlap</strong>: Two tools with similar names and overlapping functionality. Model picks the wrong one 30% of the time. You notice when outputs randomly degrade.</li>
+<li><strong>Missing error semantics</strong>: Tool throws an exception that becomes a generic "tool call failed" in the agent loop. Model has no idea whether to retry, reroute, or abort.</li>
+</ul>
+<h2>How to Actually Do It</h2>
+<p><strong>1. Name parameters for an LLM, not a developer</strong></p>
+<p>def get_records(id, ts, fmt="json"):</p>
+<p>...</p>
+<p>def get_customer_records(</p>
+<p>customer_id: str,           # UUID from the CRM system</p>
+<p>since_date_utc: str,        # ISO 8601 format: "2026-01-15T00:00:00Z"</p>
+<p>output_format: str = "json" # Options: "json" | "csv" | "summary"</p>
+<p>) -> dict:</p>
+<p>"""</p>
+<p>Returns transaction records for a customer since a given date.</p>
+<p>Returns an empty list if no records exist. Raises ValueError with</p>
+<p>a descriptive message if customer_id is not found.</p>
+<p>"""</p>
+<p>The docstring isn't for your team. It's the model's only window into what this function does and when to use it.</p>
+<p><strong>2. Make errors informative, not silent</strong></p>
+<p>except Exception:</p>
+<p>return {"result": [], "error": True}</p>
+<p>except CustomerNotFoundError:</p>
+<p>raise ValueError(f"Customer '{customer_id}' not found in CRM. "</p>
+<p>f"Verify the ID is a valid UUID before retrying.")</p>
+<p>except DateParseError:</p>
+<p>raise ValueError(f"Could not parse since_date_utc='{since_date_utc}'. "</p>
+<p>f"Expected ISO 8601 format, e.g. '2026-01-15T00:00:00Z'.")</p>
+<p>The agent reads error messages and adjusts. Give it something to work with.</p>
+<p><strong>3. Eliminate ambiguous overlap</strong></p>
+<p>If you have `search_products` and `find_products` doing slightly different things, merge them or rename until the distinction is obvious from the name alone. When in doubt: fewer, broader tools with clear boundaries beat many narrow tools with fuzzy edges.</p>
+<p><strong>4. Test your tools against LLM reasoning, not unit tests</strong></p>
+<p>Write a short eval: give the model a description of the task and the tool list. Ask it to explain which tool it would use and why. If it hesitates, guesses wrong, or hedges — your tool spec is the problem, not the model.</p>
+<h2>What We've Learned</h2>
+<p>Before your next agent sprint: do a tool audit. For every tool in your agent's toolkit, ask: <em>Could a smart non-technical person read this docstring and know exactly when to use it, what inputs are valid, and what a failure looks like?</em></p>
+<p>If the answer is no for any tool, fix that before touching the system prompt. You'll find more leverage there in an hour than in a week of prompt iteration.</p>
+<h2>Sources</h2>
+<ul>
+<li>Anthropic Engineering: <a href="https://www.anthropic.com/engineering/building-effective-agents">Building Effective Agents</a> — source for ACI concept, tool-first investment finding, and SWE-bench tooling observations</li>
+<li>OpenAI Function Calling Best Practices: <a href="https://platform.openai.com/docs/guides/function-calling">Platform Docs</a> — parameter naming conventions and tool contract design</li>
+</ul>
+
+</article></main>
+<footer><p>&copy; 2026 Supergood Solutions. Helping teams automate smarter, not harder.</p></footer>
+<script>
+(function(){if(CSS.supports('animation-timeline: scroll()'))return;var b=document.querySelector('.reading-progress');if(!b)return;function u(){var d=document.documentElement,m=d.scrollHeight-window.innerHeight,p=m>0?Math.min(1,Math.max(0,window.scrollY/m)):0;b.style.width=(p*100)+'%';}document.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u);u();})();
+</script>
+</body>
+</html>
