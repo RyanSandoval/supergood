@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Default Model Is Quietly Bankrupting Your AI Budget — Supergood Solutions</title>
+<meta name="description" content="Enterprises are leaving 45–85% of their AI compute budget on the table by defaulting every request to their most powerful (and most expensive) model. Model rout">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://supergood.solutions/blog/your-default-model-is-quietly-bankrupting-your-ai-budget/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Your Default Model Is Quietly Bankrupting Your AI Budget">
+<meta property="og:url" content="https://supergood.solutions/blog/your-default-model-is-quietly-bankrupting-your-ai-budget/">
+<meta property="og:image" content="https://supergood.solutions/og-image.png">
+<meta property="article:published_time" content="2026-05-18">
+<meta property="article:author" content="Ryan Sandoval">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Your Default Model Is Quietly Bankrupting Your AI Budget","description":"Enterprises are leaving 45–85% of their AI compute budget on the table by defaulting every request to their most powerful (and most expensive) model. Model rout","author":{"@type":"Person","name":"Ryan Sandoval","url":"https://linkedin.com/in/RyanSandoval"},"publisher":{"@type":"Organization","name":"Supergood Solutions","url":"https://supergood.solutions"},"datePublished":"2026-05-18","dateModified":"2026-05-18","mainEntityOfPage":"https://supergood.solutions/blog/your-default-model-is-quietly-bankrupting-your-ai-budget/"}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0b;--surface:#111113;--surface-2:#18181b;--border:#27272a;--text:#fafafa;--text-2:#a1a1aa;--text-3:#8c8c96;--green:#22c55e;--mono:'JetBrains Mono',monospace}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;background:rgba(10,10,11,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .inner{max-width:720px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
+.wordmark{font-weight:800;font-size:1.125rem;letter-spacing:-0.03em;color:var(--text);text-decoration:none}
+.wordmark .dot{color:var(--green)}
+nav a.back{font-size:0.875rem;color:var(--text-3);text-decoration:none}
+nav a.back:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:140px 24px 80px}
+article .tag{font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:16px}
+article h1{font-size:clamp(2rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin-bottom:20px}
+article .meta{font-family:var(--mono);font-size:0.75rem;color:var(--text-3);margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+article h2{font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;margin:56px 0 16px}
+article h3{font-size:1.125rem;font-weight:600;margin:40px 0 12px}
+article p{font-size:1rem;color:var(--text-2);margin-bottom:20px}
+article strong{color:var(--text)}
+article ul,article ol{color:var(--text-2);margin-bottom:20px;padding-left:24px}
+article li{margin-bottom:8px}
+article a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+article hr{border:none;border-top:1px solid var(--border);margin:40px 0}
+.callout{background:var(--surface-2);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:20px 24px;margin:32px 0}
+.callout p{margin-bottom:0;font-size:0.9375rem}
+footer{background:var(--surface);padding:40px 0;margin-top:80px;border-top:1px solid var(--border);text-align:center}
+footer p{color:var(--text-3);font-size:0.875rem;margin:0}
+.reading-progress{position:absolute;bottom:-1px;left:0;height:2px;width:0;background:var(--green);z-index:101;transition:width 80ms linear}
+@supports (animation-timeline: scroll()){.reading-progress{width:100%;transform-origin:left;transform:scaleX(0);animation:reading-progress linear;animation-timeline:scroll(root);transition:none}@keyframes reading-progress{to{transform:scaleX(1)}}}
+@media(max-width:768px){article{padding:120px 20px 60px}article h1{font-size:2rem}}
+</style>
+</head>
+<body>
+<nav><div class="inner"><a href="/" class="wordmark">supergood<span class="dot">.</span></a><a href="/blog/" class="back">← All posts</a></div><div class="reading-progress" aria-hidden="true"></div></nav>
+<main><article>
+<div class="tag">AI IN PRODUCTION</div>
+<h1>Your Default Model Is Quietly Bankrupting Your AI Budget</h1>
+<div class="meta">Published May 18, 2026 — 4 min read</div>
+<div class="callout"><p><strong>TL;DR:</strong> Enterprises are leaving 45–85% of their AI compute budget on the table by defaulting every request to their most powerful (and most expensive) model. Model routing — sending the right query to the right model — is the production skill that actually separates teams shipping profitably from teams with a cost center problem.</p></div>
+
+<h2>Key Insight</h2>
+<p><strong>You don't have a model problem. You have a routing problem.</strong></p>
+<p>The contrarian take: the reason your AI costs keep climbing isn't that the models are too expensive — it's that you're running your entire workload through a Ferrari when most of it could go through a bicycle. The same task that costs $0.015 on Claude Haiku or GPT-4o-mini costs $0.075 on Sonnet or $0.375 on Opus. That's a 25x multiplier, and most enterprise teams treat every prompt identically.</p>
+<p>The math compounds fast. Processing one million conversations through a frontier model costs $15,000–$75,000. Through a well-sized small language model: $150–$800. That's not a rounding error — that's the difference between a proof of concept and a scalable product.</p>
+<p>The good news: you don't have to choose one or the other. <strong>Model routing is the architectural pattern that lets you use both.</strong></p>
+<h2>Why Teams Miss This</h2>
+<p>The default path of least resistance is picking one model and pointing everything at it. It's simple, the integration is straightforward, and "it works." The mistake is treating that as an architecture decision rather than a prototype shortcut.</p>
+<p>Two failure modes appear constantly in production:</p>
+<ol>
+<li><strong>Single-tier overkill</strong>: Teams use GPT-4 or Claude Opus for everything — FAQ lookups, data extraction, sentiment classification — tasks where a $0.002/1k-token model produces identical output. The model is wasted, the budget bleeds, and nobody notices until the quarterly cloud bill hits.</li>
+</ol>
+<p>2. <strong>Fake confidence from escalation signals</strong>: Teams that do try cascading often escalate based on the small model's self-reported confidence scores. The research is clear: LLM self-reported confidence is poorly calibrated. A model can produce fluent, high-token-probability output while being completely wrong. Using raw logprobs as your escalation trigger sounds smart but fails quietly in production.</p>
+<h2>How to Actually Do It</h2>
+<p>There are two workable patterns in 2026 production deployments:</p>
+<h3>Pattern 1: Intent-Based Routing (One-Shot)</h3>
+<p>Route at query intake based on task complexity. Classify the request <em>before</em> it hits a large model.</p>
+<p>TASK_MODEL_MAP = {</p>
+<p>"extraction": "claude-haiku-4-5",       # structured data, cheap</p>
+<p>"classification": "claude-haiku-4-5",   # sentiment, category</p>
+<p>"summarization": "claude-sonnet-4-6",   # moderate complexity</p>
+<p>"multi_step_reasoning": "claude-opus-4-7",  # reserve for actual hard problems</p>
+<p>"creative_generation": "claude-sonnet-4-6",</p>
+<p>}</p>
+<p>def route_request(query: str, task_type: str) -> str:</p>
+<p>model = TASK_MODEL_MAP.get(task_type, "claude-sonnet-4-6")</p>
+<p>return call_model(model, query)</p>
+<p>The classifier itself should be a small, fast model or a rules-based heuristic — not another frontier model. If your router is more expensive than your task model, you've missed the point.</p>
+<h3>Pattern 2: Cascade with Calibrated Escalation</h3>
+<p>Run the cheap model first, escalate only when you have <em>structural</em> reason to believe the output is wrong — not just when token probabilities look uncertain.</p>
+<p>Better escalation triggers than raw confidence:</p>
+<ul>
+<li><strong>Schema validation failure</strong>: The small model returned malformed JSON or missed required fields.</li>
+<li><strong>Contradiction detection</strong>: The answer contradicts a known ground truth or contradicts itself.</li>
+<li><strong>Length/complexity proxy</strong>: Request contains >3 reasoning hops, multiple entities, or domain-specific terminology the small model reliably misses.</li>
+<li><strong>Human-in-the-loop sampling</strong>: Randomly sample 2–5% of small-model outputs for human review; use failures to tune escalation thresholds.</li>
+</ul>
+<p>def cascade_call(query: str, context: dict) -> str:</p>
+<p>result = call_model("claude-haiku-4-5", query)</p>
+<p># Structural checks, not confidence scores</p>
+<p>if not is_valid_schema(result, context["expected_schema"]):</p>
+<p>result = call_model("claude-sonnet-4-6", query)</p>
+<p>if contains_contradiction(result, context["ground_truth"]):</p>
+<p>result = call_model("claude-opus-4-7", query)</p>
+<p>return result</p>
+<p>Companies applying this pattern are reporting 45–85% cost reduction with 95%+ quality retention. One documented case: routing product search to a fast small model, complaints to a tone-aware mid-tier model, and fraud analysis to Opus — resulting in 65% cost reduction and <em>better</em> per-task outcomes than a single model.</p>
+<h2>What We've Learned</h2>
+<p><strong>This week's experiment</strong>: Audit your last 1,000 production prompts. Classify them by task type and actual complexity. You'll almost certainly find 60–70% are extraction, classification, or simple summarization — all small-model territory. Price out what that workload costs today versus on Haiku-class models. If the delta isn't jarring, your classification is wrong.</p>
+<p>If you don't have 1,000 prompts yet, build the classification first. Stand up a lightweight router that logs task type with every request. That log is more valuable than any benchmark.</p>
+<p>Model routing isn't an optimization you do later. It's architectural. The teams building it in now aren't paying for AI at a premium — they're building a system that gets cheaper as it scales.</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://arxiv.org/abs/2603.04445">Dynamic Model Routing and Cascading for Efficient LLM Inference: A Survey (arXiv 2603.04445)</a></li>
+<li><a href="https://medium.com/@jsmith0475/the-100x-cost-reduction-reshaping-enterprise-ai-0e2779fca872">The 100x Cost Reduction Reshaping Enterprise AI — Dr. Jerry A. Smith, Medium</a></li>
+<li><a href="https://www.swfte.com/blog/intelligent-llm-routing-multi-model-ai">Intelligent LLM Routing: How Multi-Model AI Cuts Costs by 85% — Swfte AI</a></li>
+<li><a href="https://tianpan.co/blog/2025-11-03-llm-routing-model-cascades">LLM Routing and Model Cascades: How to Cut AI Costs Without Sacrificing Quality — TianPan.co</a></li>
+<li><a href="https://www.stackai.com/insights/enterprise-ai-adoption-2026-trends-benchmarks-and-best-practices-for-scalable-success">Enterprise AI Adoption 2026: Trends, Benchmarks, and Best Practices — StackAI</a></li>
+<li><a href="https://research.google/blog/speculative-cascades-a-hybrid-approach-for-smarter-faster-llm-inference/">Speculative Cascades — Google Research</a></li>
+</ul>
+
+</article></main>
+<footer><p>&copy; 2026 Supergood Solutions. Helping teams automate smarter, not harder.</p></footer>
+<script>
+(function(){if(CSS.supports('animation-timeline: scroll()'))return;var b=document.querySelector('.reading-progress');if(!b)return;function u(){var d=document.documentElement,m=d.scrollHeight-window.innerHeight,p=m>0?Math.min(1,Math.max(0,window.scrollY/m)):0;b.style.width=(p*100)+'%';}document.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u);u();})();
+</script>
+</body>
+</html>
