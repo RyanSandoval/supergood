@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stop Using Your Frontier Model as a Workhorse — Supergood Solutions</title>
+<meta name="description" content="Most enterprise AI teams are routing every request — from simple classification to complex reasoning — through their most expensive model. That's not safe, it's">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://supergood.solutions/blog/stop-using-your-frontier-model-as-a-workhorse/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Stop Using Your Frontier Model as a Workhorse">
+<meta property="og:url" content="https://supergood.solutions/blog/stop-using-your-frontier-model-as-a-workhorse/">
+<meta property="og:image" content="https://supergood.solutions/og-image.png">
+<meta property="article:published_time" content="2026-05-19">
+<meta property="article:author" content="Ryan Sandoval">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Stop Using Your Frontier Model as a Workhorse","description":"Most enterprise AI teams are routing every request — from simple classification to complex reasoning — through their most expensive model. That's not safe, it's","author":{"@type":"Person","name":"Ryan Sandoval","url":"https://linkedin.com/in/RyanSandoval"},"publisher":{"@type":"Organization","name":"Supergood Solutions","url":"https://supergood.solutions"},"datePublished":"2026-05-19","dateModified":"2026-05-19","mainEntityOfPage":"https://supergood.solutions/blog/stop-using-your-frontier-model-as-a-workhorse/"}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0b;--surface:#111113;--surface-2:#18181b;--border:#27272a;--text:#fafafa;--text-2:#a1a1aa;--text-3:#8c8c96;--green:#22c55e;--mono:'JetBrains Mono',monospace}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;background:rgba(10,10,11,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .inner{max-width:720px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
+.wordmark{font-weight:800;font-size:1.125rem;letter-spacing:-0.03em;color:var(--text);text-decoration:none}
+.wordmark .dot{color:var(--green)}
+nav a.back{font-size:0.875rem;color:var(--text-3);text-decoration:none}
+nav a.back:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:140px 24px 80px}
+article .tag{font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:16px}
+article h1{font-size:clamp(2rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin-bottom:20px}
+article .meta{font-family:var(--mono);font-size:0.75rem;color:var(--text-3);margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+article h2{font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;margin:56px 0 16px}
+article h3{font-size:1.125rem;font-weight:600;margin:40px 0 12px}
+article p{font-size:1rem;color:var(--text-2);margin-bottom:20px}
+article strong{color:var(--text)}
+article ul,article ol{color:var(--text-2);margin-bottom:20px;padding-left:24px}
+article li{margin-bottom:8px}
+article a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+article hr{border:none;border-top:1px solid var(--border);margin:40px 0}
+.callout{background:var(--surface-2);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:20px 24px;margin:32px 0}
+.callout p{margin-bottom:0;font-size:0.9375rem}
+footer{background:var(--surface);padding:40px 0;margin-top:80px;border-top:1px solid var(--border);text-align:center}
+footer p{color:var(--text-3);font-size:0.875rem;margin:0}
+.reading-progress{position:absolute;bottom:-1px;left:0;height:2px;width:0;background:var(--green);z-index:101;transition:width 80ms linear}
+@supports (animation-timeline: scroll()){.reading-progress{width:100%;transform-origin:left;transform:scaleX(0);animation:reading-progress linear;animation-timeline:scroll(root);transition:none}@keyframes reading-progress{to{transform:scaleX(1)}}}
+@media(max-width:768px){article{padding:120px 20px 60px}article h1{font-size:2rem}}
+</style>
+</head>
+<body>
+<nav><div class="inner"><a href="/" class="wordmark">supergood<span class="dot">.</span></a><a href="/blog/" class="back">← All posts</a></div><div class="reading-progress" aria-hidden="true"></div></nav>
+<main><article>
+<div class="tag">ENTERPRISE AI</div>
+<h1>Stop Using Your Frontier Model as a Workhorse</h1>
+<div class="meta">Published May 19, 2026 — 3 min read</div>
+<div class="callout"><p><strong>TL;DR:</strong> Most enterprise AI teams are routing every request — from simple classification to complex reasoning — through their most expensive model. That's not safe, it's wasteful: teams overspend 50–90% of their LLM budget and call it "quality insurance."</p></div>
+
+<hr>
+<h2>Key Insight</h2>
+<p>Your AI infrastructure is a fleet, not a single vehicle. Treating GPT-4 or Claude Opus as your default model for everything is like a logistics company that only sends semi-trucks for local deliveries because "bigger is safer." It's not safer — it's just expensive and slow.</p>
+<p>Here's the uncomfortable math: premium frontier models (GPT-4, Claude Opus) run $30–60 per million tokens. Small models run $0.10–$0.50 per million tokens. That's a 60–300x price difference. Yet most enterprise pipelines don't route at all — they have one model, one endpoint, and a growing invoice.</p>
+<p>Research from UC Berkeley and Canva's production deployments shows intelligent routing delivers <strong>85% cost reduction while maintaining 95% of frontier model performance</strong>. That's not a trade-off. That's a bad default corrected.</p>
+<hr>
+<h2>Why Teams Miss This</h2>
+<p>The default is conservative for understandable reasons: teams pick one flagship model, it works in the pilot, and then nobody wants to be the person who "downgraded" the AI and broke something.</p>
+<p>But this creates a category error. Not all LLM calls are the same:</p>
+<ul>
+<li><strong>Extracting a date from a contract</strong> doesn't need Claude Opus</li>
+<li><strong>Answering "is this email spam?"</strong> doesn't need GPT-4o</li>
+<li><strong>Classifying a support ticket into one of 12 buckets</strong> doesn't need frontier reasoning</li>
+</ul>
+<p>The model-routing conversation never happens because cost isn't visible until the bill arrives. By then, the architecture is baked in. According to LeanLM's 2026 analysis, enterprises routinely overspend 50–90% of their inference budget — not because they need that power, but because they never designed a routing layer.</p>
+<p>There's also a latency cost nobody talks about: large models are slower. If you're building customer-facing features, routing a simple intent-classification call through a frontier model adds 800ms–2s that a small model handles in under 200ms.</p>
+<hr>
+<h2>How to Actually Do It</h2>
+<p>Model routing doesn't have to be complex. Start with a two-tier system:</p>
+<p><strong>Tier 1 — Lightweight (default):</strong> Handle 70–80% of your calls here. Classification, extraction, summarization of short text, intent detection. Use: `claude-haiku-4-5`, `llama-3.1-8b`, `mistral-7b`.</p>
+<p><strong>Tier 2 — Frontier (escalate):</strong> Reserve for multi-step reasoning, ambiguous inputs, high-stakes decisions with downstream consequences. Use: `claude-opus-4-7`, `gpt-4o`.</p>
+<p><strong>Routing logic — three rules:</strong></p>
+<p>def route_request(task_type: str, input_length: int, stakes: str) -> str:</p>
+<p># Rule 1: Short structured tasks → lightweight</p>
+<p>if task_type in ["classify", "extract", "summarize"] and input_length < 2000:</p>
+<p>return "haiku"</p>
+<p># Rule 2: High-stakes or ambiguous → frontier</p>
+<p>if stakes == "high" or task_type in ["reason", "plan", "synthesize"]:</p>
+<p>return "opus"</p>
+<p># Rule 3: Default mid-tier for everything else</p>
+<p>return "sonnet"</p>
+<p>This is naive but effective as a starting point. Tools like <strong>LiteLLM</strong>, <strong>Portkey</strong>, and <strong>Requesty</strong> add semantic similarity routing, performance-based fallbacks, and cost dashboards on top of this logic — worth the integration if you're past 10M tokens/month.</p>
+<p><strong>Measure before you optimize.</strong> Before building a router, log model calls for two weeks with task type and token count. You'll almost certainly find 60–70% of calls are simple enough for a lightweight model. That's your routing target.</p>
+<hr>
+<h2>What We've Learned</h2>
+<p>The teams that get this right share one habit: they instrument their LLM calls from day one. Task type, token count, latency, model used, and output quality score. Without that data, routing is guesswork.</p>
+<p>If you're running production AI today, pull your last 30 days of API logs and classify each call type. If more than half are classification, extraction, or short summarization tasks — you have an immediate cost-reduction project that requires zero model fine-tuning and zero quality trade-off.</p>
+<p>Start there. The frontier models can wait.</p>
+<hr>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://leanlm.ai/blog/llm-cost-optimization">LLM Cost Optimization: Why Enterprises Overspend 50–90% and How to Fix It</a></li>
+<li><a href="https://www.requesty.ai/blog/intelligent-llm-routing-in-enterprise-ai-uptime-cost-efficiency-and-model">Intelligent LLM Routing in Enterprise AI: Uptime, Cost Efficiency, and Model Selection</a></li>
+<li><a href="https://www.maviklabs.com/blog/llm-cost-optimization-2026">LLM Cost Optimization in 2026: Routing, Caching, and Batching</a></li>
+<li><a href="https://www.mindstudio.ai/blog/what-is-ai-model-router-optimize-cost-llm-providers">What Is an AI Model Router? Optimize Cost Across LLM Providers</a></li>
+<li><a href="https://composio.dev/blog/why-ai-agent-pilots-fail-2026-integration-roadmap">The 2025 AI Agent Report: Why AI Pilots Fail in Production</a></li>
+</ul>
+
+</article></main>
+<footer><p>&copy; 2026 Supergood Solutions. Helping teams automate smarter, not harder.</p></footer>
+<script>
+(function(){if(CSS.supports('animation-timeline: scroll()'))return;var b=document.querySelector('.reading-progress');if(!b)return;function u(){var d=document.documentElement,m=d.scrollHeight-window.innerHeight,p=m>0?Math.min(1,Math.max(0,window.scrollY/m)):0;b.style.width=(p*100)+'%';}document.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u);u();})();
+</script>
+</body>
+</html>
