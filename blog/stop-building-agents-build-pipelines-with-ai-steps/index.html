@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stop Building Agents. Build Pipelines with AI Steps. — Supergood Solutions</title>
+<meta name="description" content="Enterprise teams are failing in production because they're treating every AI workflow as an agent problem. Most of what you're trying to do doesn't need autonom">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://supergood.solutions/blog/stop-building-agents-build-pipelines-with-ai-steps/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Stop Building Agents. Build Pipelines with AI Steps.">
+<meta property="og:url" content="https://supergood.solutions/blog/stop-building-agents-build-pipelines-with-ai-steps/">
+<meta property="og:image" content="https://supergood.solutions/og-image.png">
+<meta property="article:published_time" content="2026-05-23">
+<meta property="article:author" content="Ryan Sandoval">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Stop Building Agents. Build Pipelines with AI Steps.","description":"Enterprise teams are failing in production because they're treating every AI workflow as an agent problem. Most of what you're trying to do doesn't need autonom","author":{"@type":"Person","name":"Ryan Sandoval","url":"https://linkedin.com/in/RyanSandoval"},"publisher":{"@type":"Organization","name":"Supergood Solutions","url":"https://supergood.solutions"},"datePublished":"2026-05-23","dateModified":"2026-05-23","mainEntityOfPage":"https://supergood.solutions/blog/stop-building-agents-build-pipelines-with-ai-steps/"}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0b;--surface:#111113;--surface-2:#18181b;--border:#27272a;--text:#fafafa;--text-2:#a1a1aa;--text-3:#8c8c96;--green:#22c55e;--mono:'JetBrains Mono',monospace}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;background:rgba(10,10,11,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .inner{max-width:720px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
+.wordmark{font-weight:800;font-size:1.125rem;letter-spacing:-0.03em;color:var(--text);text-decoration:none}
+.wordmark .dot{color:var(--green)}
+nav a.back{font-size:0.875rem;color:var(--text-3);text-decoration:none}
+nav a.back:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:140px 24px 80px}
+article .tag{font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:16px}
+article h1{font-size:clamp(2rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin-bottom:20px}
+article .meta{font-family:var(--mono);font-size:0.75rem;color:var(--text-3);margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+article h2{font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;margin:56px 0 16px}
+article h3{font-size:1.125rem;font-weight:600;margin:40px 0 12px}
+article p{font-size:1rem;color:var(--text-2);margin-bottom:20px}
+article strong{color:var(--text)}
+article ul,article ol{color:var(--text-2);margin-bottom:20px;padding-left:24px}
+article li{margin-bottom:8px}
+article a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+article hr{border:none;border-top:1px solid var(--border);margin:40px 0}
+.callout{background:var(--surface-2);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:20px 24px;margin:32px 0}
+.callout p{margin-bottom:0;font-size:0.9375rem}
+footer{background:var(--surface);padding:40px 0;margin-top:80px;border-top:1px solid var(--border);text-align:center}
+footer p{color:var(--text-3);font-size:0.875rem;margin:0}
+.reading-progress{position:absolute;bottom:-1px;left:0;height:2px;width:0;background:var(--green);z-index:101;transition:width 80ms linear}
+@supports (animation-timeline: scroll()){.reading-progress{width:100%;transform-origin:left;transform:scaleX(0);animation:reading-progress linear;animation-timeline:scroll(root);transition:none}@keyframes reading-progress{to{transform:scaleX(1)}}}
+@media(max-width:768px){article{padding:120px 20px 60px}article h1{font-size:2rem}}
+</style>
+</head>
+<body>
+<nav><div class="inner"><a href="/" class="wordmark">supergood<span class="dot">.</span></a><a href="/blog/" class="back">← All posts</a></div><div class="reading-progress" aria-hidden="true"></div></nav>
+<main><article>
+<div class="tag">AI IN PRODUCTION</div>
+<h1>Stop Building Agents. Build Pipelines with AI Steps.</h1>
+<div class="meta">Published May 23, 2026 — 4 min read</div>
+<div class="callout"><p><strong>TL;DR:</strong> Enterprise teams are failing in production because they're treating every AI workflow as an agent problem. Most of what you're trying to do doesn't need autonomous reasoning — it needs a reliable pipeline with AI at the right steps. The distinction is costing teams months of debugging and real money.</p></div>
+
+<h2>Key Insight</h2>
+<p><strong>"Agent" has become the default architecture for any AI workflow, and it's wrong for most use cases.</strong></p>
+<p>The definition matters: a true agent perceives state, reasons about what to do next, and takes actions in sequences that can't be fully predicted in advance. A pipeline is a fixed sequence of steps, some of which happen to call an LLM.</p>
+<p>The industry has collapsed these two things into one bucket and called everything an "agent." The result: 88% of AI agent initiatives fail to reach production at scale. Multi-agent architectures introduce orchestration complexity that grows nearly exponentially — and cascading failures that are genuinely hard to reproduce in staging because they depend on runtime state you can't replicate.</p>
+<p>Most enterprise AI use cases — document processing, support routing, data extraction, report generation — don't need agents. They need deterministic pipelines where AI handles the ambiguous parts.</p>
+<h2>Why Teams Miss This</h2>
+<p>The failure is conceptual before it's technical.</p>
+<p>"Agent" sounds sophisticated. "Pipeline" sounds like IT infrastructure from 2012. Teams pitch to stakeholders, and "we built an autonomous AI agent" gets funded. "We built a processing pipeline with LLM steps" doesn't make the all-hands slide.</p>
+<p>So teams architect for the pitch, not for production. They add dynamic tool selection where a fixed function call would work. They introduce multi-agent delegation where a single LLM call with more context would suffice. Every layer of autonomy adds a new surface for failure.</p>
+<p>The second miss: agents are hard to test. A deterministic pipeline can be unit-tested at each step. An agent that dynamically decides its path through a workflow can behave correctly in 95% of cases and catastrophically in the remaining 5% — and you won't catch that 5% in staging because it only appears in rare input combinations at production scale.</p>
+<p>The third miss is the one that doesn't show up in postmortems: the most dangerous production failure mode isn't an obvious crash. It's confident, well-formatted, operationally wrong output that humans approve because it looks right. That failure mode is worse in agentic systems because the chain of reasoning that produced it is harder to audit.</p>
+<h2>How to Actually Do It</h2>
+<p><strong>The decision heuristic:</strong> Ask "Can I write pseudocode for this workflow with fixed steps?" If yes — build a pipeline. Reserve true agents for workflows where the branching logic is genuinely unknowable in advance.</p>
+<p><strong>Pipeline-first architecture:</strong></p>
+<p>result = agent.run("Process this customer complaint and take appropriate action")</p>
+<p>def process_complaint(complaint: str) -> dict:</p>
+<p>category = classify(complaint)           # LLM step 1: fixed output schema</p>
+<p>sentiment = analyze_sentiment(complaint) # LLM step 2: bounded classification</p>
+<p>if category == "refund" and sentiment == "high_anger":</p>
+<p>return escalate_to_human(complaint)  # deterministic routing, no LLM</p>
+<p>response = draft_response(complaint, category)  # LLM step 3: generation</p>
+<p>return queue_for_review(response)                # deterministic action</p>
+<p>Each LLM step has a defined input schema, a defined output schema, and a predictable failure mode. The pipeline is observable, testable, and debuggable — because it's just a pipeline that happens to call an LLM.</p>
+<p><strong>When agents are actually the right call:</strong> Tasks where the path is unknowable until the agent encounters it. Code debugging — the agent can't know in advance what errors it'll hit. Deep research requiring iterative exploration. Any task with genuinely unbounded tool use where the human equivalent would also be improvising.</p>
+<p><strong>Migration pattern for existing "agents":</strong></p>
+<ol>
+<li>Add structured logging to every tool call and decision point in your current agent</li>
+<li>After a week, visualize the 20 most common traces</li>
+<li>For each trace, ask: "Was this path predictable in advance from the initial input?"</li>
+<li>Any path traversed by >50% of runs is pipeline territory — extract it</li>
+<li>Keep the agent only for the tail cases that genuinely require dynamic routing</li>
+</ol>
+<p><strong>The staffing analogy:</strong> Most teams would never hire a senior consultant to do data entry just because they <em>could</em> handle ambiguous edge cases. Same logic applies to agents. Use the expensive, autonomous capability for genuinely ambiguous work. Route everything else through cheaper, predictable infrastructure.</p>
+<h2>What We've Learned</h2>
+<p>The best AI deployments in production right now aren't the ones with the most autonomous agents — they're the ones that are ruthlessly boring underneath. A three-step LLM pipeline running 10,000 times a day without incident beats a sophisticated agent that handles edge cases brilliantly but fails on routine inputs 2% of the time at scale.</p>
+<p>That 2% at scale is 200 failures a day. That's a support queue, not an edge case.</p>
+<p>Build the pipeline. Extract agent logic only where you genuinely can't predict the path. Measure production success rate, not architectural elegance.</p>
+<p>Next experiment worth running: if you have an existing agent in production, add step-level logging this week. After seven days, count how many distinct paths it actually took. If the top three paths cover 70%+ of volume, you've got a pipeline masquerading as an agent — and a straightforward refactor that'll cut your incident rate significantly.</p>
+<hr>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://hypersense-software.com/blog/2026/01/12/why-88-percent-ai-agents-fail-production/">Why 88% of AI Agents Never Make It to Production — Hypersense Software</a></li>
+<li><a href="https://machinelearningmastery.com/5-production-scaling-challenges-for-agentic-ai-in-2026/">5 Production Scaling Challenges for Agentic AI in 2026 — MachineLearningMastery</a></li>
+<li><a href="https://composio.dev/blog/why-ai-agent-pilots-fail-2026-integration-roadmap">The 2025 AI Agent Report: Why AI Pilots Fail in Production — Composio</a></li>
+<li><a href="https://venturebeat.com/orchestration/enterprise-ai-agents-keep-failing-because-they-forget-what-they-learned">Enterprise AI Agents Keep Failing Because They Forget What They Learned — VentureBeat</a></li>
+<li><a href="https://www.alation.com/blog/why-enterprise-ai-projects-fail/">Why Enterprise AI Projects Fail: 6 Root Causes and Fixes — Alation</a></li>
+</ul>
+
+</article></main>
+<footer><p>&copy; 2026 Supergood Solutions. Helping teams automate smarter, not harder.</p></footer>
+<script>
+(function(){if(CSS.supports('animation-timeline: scroll()'))return;var b=document.querySelector('.reading-progress');if(!b)return;function u(){var d=document.documentElement,m=d.scrollHeight-window.innerHeight,p=m>0?Math.min(1,Math.max(0,window.scrollY/m)):0;b.style.width=(p*100)+'%';}document.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u);u();})();
+</script>
+</body>
+</html>
