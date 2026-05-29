@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your AI Agent Is an Exfiltration Vector. Treat It Like One. — Supergood Solutions</title>
+<meta name="description" content="Enterprise AI agents have legitimate access to your data and legitimate channels to the internet — that combination makes your security team's existing playbook">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://supergood.solutions/blog/your-ai-agent-is-an-exfiltration-vector-treat-it-like-one/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Your AI Agent Is an Exfiltration Vector. Treat It Like One.">
+<meta property="og:url" content="https://supergood.solutions/blog/your-ai-agent-is-an-exfiltration-vector-treat-it-like-one/">
+<meta property="og:image" content="https://supergood.solutions/og-image.png">
+<meta property="article:published_time" content="2026-05-29">
+<meta property="article:author" content="Ryan Sandoval">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Your AI Agent Is an Exfiltration Vector. Treat It Like One.","description":"Enterprise AI agents have legitimate access to your data and legitimate channels to the internet — that combination makes your security team's existing playbook","author":{"@type":"Person","name":"Ryan Sandoval","url":"https://linkedin.com/in/RyanSandoval"},"publisher":{"@type":"Organization","name":"Supergood Solutions","url":"https://supergood.solutions"},"datePublished":"2026-05-29","dateModified":"2026-05-29","mainEntityOfPage":"https://supergood.solutions/blog/your-ai-agent-is-an-exfiltration-vector-treat-it-like-one/"}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0b;--surface:#111113;--surface-2:#18181b;--border:#27272a;--text:#fafafa;--text-2:#a1a1aa;--text-3:#8c8c96;--green:#22c55e;--mono:'JetBrains Mono',monospace}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;background:rgba(10,10,11,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .inner{max-width:720px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
+.wordmark{font-weight:800;font-size:1.125rem;letter-spacing:-0.03em;color:var(--text);text-decoration:none}
+.wordmark .dot{color:var(--green)}
+nav a.back{font-size:0.875rem;color:var(--text-3);text-decoration:none}
+nav a.back:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:140px 24px 80px}
+article .tag{font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:16px}
+article h1{font-size:clamp(2rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin-bottom:20px}
+article .meta{font-family:var(--mono);font-size:0.75rem;color:var(--text-3);margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+article h2{font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;margin:56px 0 16px}
+article h3{font-size:1.125rem;font-weight:600;margin:40px 0 12px}
+article p{font-size:1rem;color:var(--text-2);margin-bottom:20px}
+article strong{color:var(--text)}
+article ul,article ol{color:var(--text-2);margin-bottom:20px;padding-left:24px}
+article li{margin-bottom:8px}
+article a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+article hr{border:none;border-top:1px solid var(--border);margin:40px 0}
+.callout{background:var(--surface-2);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:20px 24px;margin:32px 0}
+.callout p{margin-bottom:0;font-size:0.9375rem}
+footer{background:var(--surface);padding:40px 0;margin-top:80px;border-top:1px solid var(--border);text-align:center}
+footer p{color:var(--text-3);font-size:0.875rem;margin:0}
+.reading-progress{position:absolute;bottom:-1px;left:0;height:2px;width:0;background:var(--green);z-index:101;transition:width 80ms linear}
+@supports (animation-timeline: scroll()){.reading-progress{width:100%;transform-origin:left;transform:scaleX(0);animation:reading-progress linear;animation-timeline:scroll(root);transition:none}@keyframes reading-progress{to{transform:scaleX(1)}}}
+@media(max-width:768px){article{padding:120px 20px 60px}article h1{font-size:2rem}}
+</style>
+</head>
+<body>
+<nav><div class="inner"><a href="/" class="wordmark">supergood<span class="dot">.</span></a><a href="/blog/" class="back">← All posts</a></div><div class="reading-progress" aria-hidden="true"></div></nav>
+<main><article>
+<div class="tag">SECURITY</div>
+<h1>Your AI Agent Is an Exfiltration Vector. Treat It Like One.</h1>
+<div class="meta">Published May 29, 2026 — 4 min read</div>
+<div class="callout"><p><strong>TL;DR:</strong> Enterprise AI agents have legitimate access to your data and legitimate channels to the internet — that combination makes your security team's existing playbook mostly irrelevant. The threat isn't "AI goes rogue." It's "AI gets manipulated into doing exactly what it was built to do."</p></div>
+
+<hr>
+<h2>Key Insight</h2>
+<p>Every serious AI security breach in the last 12 months followed the same pattern. The agent didn't break the rules. It followed them.</p>
+<p>Simon Willison called it the <strong>lethal trifecta</strong>: an AI agent with access to private data, exposure to untrusted content, and a communication channel to the outside world. Hit all three and you have an unconditional exfiltration primitive. Not a theoretical one. A production one.</p>
+<p><strong>CVE-2025-32711 (EchoLeak)</strong> is the case study. A Microsoft 365 Copilot vulnerability let an attacker send a single email. No clicks required. Copilot read the email, which contained hidden instructions. Those instructions told Copilot to retrieve internal files and embed their contents in an auto-fetched image URL — a URL pointing to the attacker's server. The exfil happened as a normal outbound image request. Clean logs. No anomalies. Legitimate agent behavior.</p>
+<p>Microsoft patched it. Then it happened again, differently. <strong>CVE-2026-24299 (Copirate 365)</strong> demonstrated at DEF CON that patching one exfil channel while leaving the agent's core capability intact is whack-a-mole. If the agent can read files and make external calls, there will always be another path.</p>
+<p>This is not a prompt injection problem. Calling it that frames it wrong and leads to the wrong fixes.</p>
+<hr>
+<h2>Why Teams Miss This</h2>
+<p>The standard enterprise response to AI security concerns is one of three things:</p>
+<ol>
+<li>Add a system prompt that says "never share confidential data"</li>
+<li>Deploy an LLM firewall to filter inputs</li>
+<li>Run red-team exercises on the model itself</li>
+</ol>
+<p>All three treat the model as the attack surface. But the actual attack surface is the <strong>agent's capability set</strong> — what it can read, what it can call, what it can write.</p>
+<p>An agent with email access, SharePoint access, and the ability to make outbound HTTP calls is a sophisticated data-movement tool. You wouldn't deploy a tool like that without tight controls on what data it can touch and where it can send it. You absolutely should not deploy an AI wrapper around it with fewer controls than you'd put on the underlying APIs.</p>
+<p>The bolt-on prompt filter approach also misses the MCP supply chain problem entirely. As enterprises adopt the Model Context Protocol to connect agents to internal tools, those tool definitions become a new attack surface. <strong>Tool poisoning</strong> — embedding hidden instructions in the metadata that agents read to decide which tools to invoke — is invisible to every prompt filter on the market. It targets the reasoning layer, not the input layer.</p>
+<p>The core mistake: treating agentic AI as "smart chatbot with plugins" rather than "autonomous system with sensitive data access and outbound network capability."</p>
+<hr>
+<h2>How to Actually Do It</h2>
+<p>The right model is closer to how you treat a privileged service account than how you treat a chatbot.</p>
+<p><strong>1. Scope data access to the task, not the user</strong></p>
+<p>Don't give an agent the same data permissions as the human who deployed it. Define a least-privilege scope tied to the specific workflow. A customer-support agent does not need access to HR files because its operator does.</p>
+<p><strong>2. Treat outbound channels as security controls</strong></p>
+<p>Every external call an agent can make — webhooks, image fetches, API calls, email sends — is a potential exfil channel. Enumerate them at deployment time. Apply egress filtering at the network layer, not the prompt layer. Egress controls catch EchoLeak-style attacks that bypass model-level mitigations.</p>
+<p><strong>3. Audit MCP tool registries like you audit npm packages</strong></p>
+<p>If your agents pull tool definitions from a registry, that registry is part of your supply chain. Verify tool provenance. Pin versions. Flag any tool that requests permissions beyond what its stated purpose requires — agents that "decide which tool to use" based on metadata they can't validate are vulnerable to tool poisoning by default.</p>
+<p><strong>4. Log agent reasoning, not just agent outputs</strong></p>
+<p>Standard audit logs capture what the agent did. You need logs that capture why — which instructions it was following, which tools it selected, what data it accessed in the process. Without reasoning traces, a compromised agent looks identical to a working one until after the exfil is complete.</p>
+<p><strong>5. Build agent-specific threat models before deployment</strong></p>
+<p>Run through the lethal trifecta explicitly: What private data can this agent access? What untrusted content will it process? What external channels does it have? If you can check all three boxes, you need compensating controls for each — not a system prompt.</p>
+<hr>
+<h2>What We've Learned</h2>
+<p>Bolt-on prompt filters are not agent security. They are model security, applied to a fundamentally different threat surface.</p>
+<p>The practical next step for any team deploying agents in 2026: <strong>run the lethal trifecta audit on every agent in production before adding a single new one</strong>. Private data access + untrusted content exposure + outbound channel = mandatory architectural review, not optional guardrails.</p>
+<p>The agents that get compromised in 2026 won't be the ones that ignored the rules. They'll be the ones that followed them perfectly while carrying someone else's instructions.</p>
+<hr>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://simonwillison.net/2025/Jun/11/echoleak/">EchoLeak (CVE-2025-32711): Simon Willison's breakdown</a></li>
+<li><a href="https://www.hackthebox.com/blog/cve-2025-32711-echoleak-copilot-vulnerability">CVE-2025-32711 deep dive — Hack The Box</a></li>
+<li><a href="https://embracethered.com/blog/posts/2026/defcon-talk-copirate-365/">Copirate 365 / CVE-2026-24299 — Embrace The Red (DEF CON)</a></li>
+<li><a href="https://venturebeat.com/security/microsoft-salesforce-copilot-agentforce-prompt-injection-cve-agent-remediation-playbook">Microsoft patched Copilot Studio prompt injection — the data exfiltrated anyway (VentureBeat)</a></li>
+<li><a href="https://itecsonline.com/post/mcp-tool-poisoning-enterprise-ai-agent-security-2026">MCP Tool Poisoning: Enterprise AI Agent Security in 2026 — ITECS</a></li>
+<li><a href="https://venturebeat.com/security/most-enterprises-cant-stop-stage-three-ai-agent-threats-venturebeat-survey-finds">AI Agent Security Maturity Audit — VentureBeat survey</a></li>
+<li><a href="https://genai.owasp.org/2026/04/14/owasp-genai-exploit-round-up-report-q1-2026/">OWASP GenAI Exploit Round-up Q1 2026</a></li>
+</ul>
+
+</article></main>
+<footer><p>&copy; 2026 Supergood Solutions. Helping teams automate smarter, not harder.</p></footer>
+<script>
+(function(){if(CSS.supports('animation-timeline: scroll()'))return;var b=document.querySelector('.reading-progress');if(!b)return;function u(){var d=document.documentElement,m=d.scrollHeight-window.innerHeight,p=m>0?Math.min(1,Math.max(0,window.scrollY/m)):0;b.style.width=(p*100)+'%';}document.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u);u();})();
+</script>
+</body>
+</html>
