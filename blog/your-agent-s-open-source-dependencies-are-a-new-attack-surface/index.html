@@ -92,7 +92,7 @@ for path in sys.argv[1:]:
 <p><strong>2. Add Skills files to your dependency review checklist.</strong></p>
 <p>Same process as package.json or requirements.txt — any file that ships in a third-party repo and gets loaded into your agent's context is a dependency. Review <code>name</code>, <code>description</code>, and any instruction sections specifically.</p>
 <p><strong>3. Use the <code>aid</code> scanner in CI.</strong></p>
-<p>The Embrace the Red researcher published a basic scanner at <code>github.com/wunderwuzzi23/aid</code> specifically for detecting hidden prompt injection in Skills files. Wire it into your pre-commit hooks or repo scanning pipeline the same way you'd run <code>npm audit</code>.</p>
+<p>The Embrace the Red researcher published a basic scanner at <a href="https://github.com/wunderwuzzi23/aid">github.com/wunderwuzzi23/aid</a> specifically for detecting hidden prompt injection in Skills files. Wire it into your pre-commit hooks or repo scanning pipeline the same way you'd run <code>npm audit</code>.</p>
 <p><strong>4. Scope agent permissions at the filesystem level.</strong></p>
 <p>Skills should not be able to modify their own directory, write new Skills, or invoke tools outside their declared scope. In enterprise deployments, run agents in containers or VMs where the Skills path is read-only and mounted from a verified internal registry. Agents that can write to <code>~/.claude/skills/</code> can self-modify — that's the privilege escalation vector.</p>
 <p><strong>5. Pin your Skills versions.</strong></p>
