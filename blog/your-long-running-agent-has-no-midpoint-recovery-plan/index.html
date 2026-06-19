@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Long-Running Agent Has No Midpoint Recovery Plan — Supergood Solutions</title>
+<meta name="description" content="As enterprises push AI agents into multi-hour workflows, a silent budget killer is hiding in plain sight: when anything goes wrong, you restart from scratch. Ch">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://supergood.solutions/blog/your-long-running-agent-has-no-midpoint-recovery-plan/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Your Long-Running Agent Has No Midpoint Recovery Plan">
+<meta property="og:url" content="https://supergood.solutions/blog/your-long-running-agent-has-no-midpoint-recovery-plan/">
+<meta property="og:image" content="https://supergood.solutions/blog/your-long-running-agent-has-no-midpoint-recovery-plan/hero-og.png">
+<meta property="article:published_time" content="2026-06-18">
+<meta property="article:author" content="Ryan Sandoval">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Your Long-Running Agent Has No Midpoint Recovery Plan","description":"As enterprises push AI agents into multi-hour workflows, a silent budget killer is hiding in plain sight: when anything goes wrong, you restart from scratch. Ch","author":{"@type":"Person","name":"Ryan Sandoval","url":"https://linkedin.com/in/RyanSandoval"},"publisher":{"@type":"Organization","name":"Supergood Solutions","url":"https://supergood.solutions"},"datePublished":"2026-06-18","dateModified":"2026-06-18","mainEntityOfPage":"https://supergood.solutions/blog/your-long-running-agent-has-no-midpoint-recovery-plan/"}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0b;--surface:#111113;--surface-2:#18181b;--border:#27272a;--text:#fafafa;--text-2:#a1a1aa;--text-3:#8c8c96;--green:#22c55e;--mono:'JetBrains Mono',monospace}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;background:rgba(10,10,11,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .inner{max-width:720px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
+.wordmark{font-weight:800;font-size:1.125rem;letter-spacing:-0.03em;color:var(--text);text-decoration:none}
+.wordmark .dot{color:var(--green)}
+nav a.back{font-size:0.875rem;color:var(--text-3);text-decoration:none}
+nav a.back:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:140px 24px 80px}
+article .tag{font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:16px}
+article h1{font-size:clamp(2rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin-bottom:20px}
+article .hero{width:100%;height:auto;display:block;border:1px solid var(--border);border-radius:12px;margin-bottom:32px}
+article .meta{font-family:var(--mono);font-size:0.75rem;color:var(--text-3);margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+article h2{font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;margin:56px 0 16px}
+article h3{font-size:1.125rem;font-weight:600;margin:40px 0 12px}
+article p{font-size:1rem;color:var(--text-2);margin-bottom:20px}
+article strong{color:var(--text)}
+article ul,article ol{color:var(--text-2);margin-bottom:20px;padding-left:24px}
+article li{margin-bottom:8px}
+article a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+article hr{border:none;border-top:1px solid var(--border);margin:40px 0}
+article code{font-family:var(--mono);font-size:0.875em;background:var(--surface-2);color:var(--text);padding:2px 6px;border-radius:4px;border:1px solid var(--border)}
+article pre{background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:16px 20px;margin:24px 0;overflow-x:auto;font-family:var(--mono);font-size:0.8125rem;line-height:1.6}
+article pre code{color:var(--text);background:transparent;padding:0;border:none;border-radius:0;font-size:inherit;white-space:pre}
+.callout{background:var(--surface-2);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:20px 24px;margin:32px 0}
+.callout code{background:rgba(255,255,255,0.04)}
+.callout p{margin-bottom:0;font-size:0.9375rem}
+footer{background:var(--surface);padding:40px 0;margin-top:80px;border-top:1px solid var(--border);text-align:center}
+footer p{color:var(--text-3);font-size:0.875rem;margin:0}
+.reading-progress{position:absolute;bottom:-1px;left:0;height:2px;width:0;background:var(--green);z-index:101;transition:width 80ms linear}
+@supports (animation-timeline: scroll()){.reading-progress{width:100%;transform-origin:left;transform:scaleX(0);animation:reading-progress linear;animation-timeline:scroll(root);transition:none}@keyframes reading-progress{to{transform:scaleX(1)}}}
+@media(max-width:768px){article{padding:120px 20px 60px}article h1{font-size:2rem}}
+</style>
+</head>
+<body>
+<nav><div class="inner"><a href="/" class="wordmark">supergood<span class="dot">.</span></a><a href="/blog/" class="back">← All posts</a></div><div class="reading-progress" aria-hidden="true"></div></nav>
+<main><article>
+<img class="hero" src="hero.svg" alt="" width="1200" height="630" loading="eager">
+<div class="tag">Architecture</div>
+<h1>Your Long-Running Agent Has No Midpoint Recovery Plan</h1>
+<div class="meta">Published June 18, 2026 — 4 min read</div>
+<div class="callout"><p><strong>TL;DR:</strong> As enterprises push AI agents into multi-hour workflows, a silent budget killer is hiding in plain sight: when anything goes wrong, you restart from scratch. Checkpoint-and-resume isn't an optional optimization — it's the difference between a production system and an expensive science experiment.</p></div>
+
+<h2>Key Insight</h2>
+<p>The retry logic that works fine for a 30-second API call becomes a liability the moment your agent is 4 hours into a financial data migration. Short-lived agents can afford to restart from zero. Long-running agents cannot — and yet most enterprise deployments treat them identically.</p>
+<p>The math is brutal. If a 6-hour agent task fails at hour 5 due to an API timeout, you've just queued up another 6-hour run and doubled your LLM spend. Do that three times and you've paid for the task ten times over. The failure rate compounds too: for tasks running over 4 hours without state persistence, <a href="https://hendricks.ai/insights/checkpoint-patterns-long-running-ai-agent-tasks">research from Hendricks AI</a> puts the risk of total task failure 90% higher than equivalent checkpointed workflows.</p>
+<p>The counterintuitive part: checkpointing doesn't require a dramatic architecture overhaul. It requires thinking in <strong>business milestones</strong> rather than code lines.</p>
+<h2>Why Teams Miss This</h2>
+<p>Teams port their synchronous, request-response mental model into agent architecture. They test the happy path — agent runs start to finish, task completes, result lands. It works beautifully in staging.</p>
+<p>Then production happens: a rate limit at step 7 of 12, a transient database timeout, a cloud instance preempted at 3 AM. The agent dies. The team restarts it manually. They chalk it up to infra noise rather than a structural gap in the agent's design.</p>
+<p>The second failure mode is over-engineering in the wrong direction. Teams reach for distributed locks, vector memory stores, and elaborate state machines before they've solved the simpler problem: <em>can this agent tell me where it was when it died?</em></p>
+<p>Most can't. Most weren't designed to.</p>
+<h2>How to Actually Do It</h2>
+<p>Checkpoints belong at <strong>business logic boundaries</strong>, not arbitrary time intervals. For a financial processing agent that validates data, calls external APIs, transforms records, and writes outputs — the right checkpoint is after each of those stages, not every 10 minutes.</p>
+<p>Here's the pattern in concrete terms using Google's Agent Development Kit (ADK), which ships this as a first-class primitive:</p>
+<pre><code class="language-python">async for event in self.runner.run_async(
+    user_id=user_id,
+    session_id=session_id,
+    new_message=types.Content(...),
+    state_delta={
+        "current_step": OnboardingStep.DOCUMENTS_SIGNED,
+        "pending_signals": [],
+    },
+):
+    ...</code></pre>
+<p>The <code>state_delta</code> argument atomically applies state before the next inference call. When an external event (a webhook, a human approval, a database write completing) fires, the agent resumes exactly where the business process left off — not where the chat history ran out.</p>
+<p>Three things make this work in production:</p>
+<ol>
+<li><strong>Named checkpoint constants</strong> — replace inferred conversation state with explicit enum values (<code>VALIDATION_COMPLETE</code>, <code>APIS_CALLED</code>, <code>RECORDS_TRANSFORMED</code>). If you can't name the state in one word, you don't have a checkpoint, you have a guess.</li>
+</ol>
+<p>2. <strong>Atomic state writes</strong> — checkpoints that half-save are worse than no checkpoints. Write state as a single atomic operation. SQLite for local dev, Cloud SQL or DynamoDB in production. The ADK architecture runs the same code against either without modification.</p>
+<p>3. <strong>Trigger-based resumption</strong> — don't poll. Webhooks or event queues wake the agent when real-world events complete. Polling during idle periods burns tokens and compute for no reason.</p>
+<p>The overhead is negligible: <a href="https://hendricks.ai/insights/checkpoint-patterns-long-running-ai-agent-tasks">according to Hendricks AI's benchmarks</a>, checkpoint operations add 2-5% execution overhead while preventing 40-70% of total processing time loss on failure. Differential state tracking (only writing <em>changed</em> state, not the full snapshot) can cut checkpoint latency from 45 seconds to 3 seconds.</p>
+<p><strong>When to implement:</strong> if your agent task exceeds 30 minutes, costs more than $100 per execution, touches irreversible external operations, or runs on a time-sensitive deadline — you need checkpoints. All four conditions? You needed them yesterday.</p>
+<h2>What We've Learned</h2>
+<p>A global accounting firm that implemented business-milestone checkpointing across their agent fleet reported a 73% reduction in failure-related costs — roughly $2.4M in recovered productivity annually. A healthcare data migration team cut their recovery time from 8-hour full restarts down to 45 minutes of incremental reprocessing.</p>
+<p>The architecture pattern that enables this isn't exotic. It's a state machine with named steps, atomic writes, and a resume handler wired to your event system.</p>
+<p>Start with your most expensive agent task — the one where a failure stings most. Map its natural business stages. Add a checkpoint write after each one. Wire a resume path that reads that checkpoint on startup instead of reinitializing from scratch.</p>
+<p>That's it. No new infrastructure. No framework migration. Just a team that finally knows where their agent was when the lights went out.</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://hendricks.ai/insights/checkpoint-patterns-long-running-ai-agent-tasks">Checkpoint Patterns for Long-Running AI Agent Tasks — Hendricks AI</a></li>
+<li><a href="https://developers.googleblog.com/build-long-running-ai-agents-that-pause-resume-and-never-lose-context-with-adk/">Build Long-Running AI Agents That Pause, Resume, and Never Lose Context with ADK — Google Developers Blog</a></li>
+<li><a href="https://www.indium.tech/blog/7-state-persistence-strategies-ai-agents-2026/">7 State Persistence Strategies for Long-Running AI Agents in 2026 — Indium Tech</a></li>
+<li><a href="https://zylos.ai/research/2026-03-04-ai-agent-workflow-checkpointing-resumability/">AI Agent Workflow Checkpointing and Resumability — Zylos Research</a></li>
+</ul>
+
+</article></main>
+<footer><p>&copy; 2026 Supergood Solutions. Helping teams automate smarter, not harder.</p></footer>
+<script>
+(function(){if(CSS.supports('animation-timeline: scroll()'))return;var b=document.querySelector('.reading-progress');if(!b)return;function u(){var d=document.documentElement,m=d.scrollHeight-window.innerHeight,p=m>0?Math.min(1,Math.max(0,window.scrollY/m)):0;b.style.width=(p*100)+'%';}document.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u);u();})();
+</script>
+</body>
+</html>
