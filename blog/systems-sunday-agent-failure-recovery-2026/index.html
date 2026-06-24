@@ -11,46 +11,27 @@
 
 <!-- Open Graph -->
 <meta property="og:type" content="article">
+<meta property="og:site_name" content="Supergood Solutions">
 <meta property="og:title" content="When Agents Fail: Retry Logic, Circuit Breakers, and Dead Letter Queues for AI Pipelines">
 <meta property="og:description" content="Your AI agents will fail. The question is whether your system fails with them. Here's a vendor-neutral guide to retry patterns, circuit breakers, dead letter queues, and idempotency for production agentic pipelines.">
 <meta property="og:url" content="https://supergood.solutions/blog/systems-sunday-agent-failure-recovery-2026/">
 <meta property="og:image" content="https://supergood.solutions/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="When Agents Fail: Retry Logic, Circuit Breakers, and Dead Letter Queues for AI Pipelines">
 <meta property="article:published_time" content="2026-03-08">
+<meta property="article:modified_time" content="2026-03-08">
 <meta property="article:author" content="Ryan Sandoval">
-
-<!-- Twitter Card -->
+<meta property="article:section" content="Systems Sunday · Agent Reliability">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="When Agents Fail: Retry Logic, Circuit Breakers, and Dead Letter Queues for AI Pipelines">
 <meta name="twitter:description" content="Your AI agents will fail. The question is whether your system fails with them. Here's a vendor-neutral guide to retry patterns, circuit breakers, dead letter queues, and idempotency for production agentic pipelines.">
 <meta name="twitter:image" content="https://supergood.solutions/og-image.png">
-
-<!-- Schema.org Article -->
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "When Agents Fail: Retry Logic, Circuit Breakers, and Dead Letter Queues for AI Pipelines",
-  "description": "Your AI agents will fail. The question is whether your system fails with them. Here's a vendor-neutral guide to retry patterns, circuit breakers, dead letter queues, and idempotency for production agentic pipelines.",
-  "author": {
-    "@type": "Person",
-    "name": "Ryan Sandoval",
-    "url": "https://linkedin.com/in/RyanSandoval",
-    "jobTitle": "AI Automation Consultant",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "Supergood Solutions"
-    }
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Supergood Solutions",
-    "url": "https://supergood.solutions"
-  },
-  "datePublished": "2026-03-08",
-  "dateModified": "2026-03-08",
-  "mainEntityOfPage": "https://supergood.solutions/blog/systems-sunday-agent-failure-recovery-2026/",
-  "keywords": ["AI agents", "retry logic", "circuit breaker", "dead letter queue", "agent reliability", "agentic AI", "AI ops", "error recovery", "idempotency", "production AI"]
-}
+{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "When Agents Fail: Retry Logic, Circuit Breakers, and Dead Letter Queues for AI Pipelines", "description": "Your AI agents will fail. The question is whether your system fails with them. Here's a vendor-neutral guide to retry patterns, circuit breakers, dead letter queues, and idempotency for production agentic pipelines.", "image": "https://supergood.solutions/og-image.png", "url": "https://supergood.solutions/blog/systems-sunday-agent-failure-recovery-2026/", "datePublished": "2026-03-08", "dateModified": "2026-03-08", "wordCount": 0, "articleSection": "Systems Sunday · Agent Reliability", "inLanguage": "en", "isAccessibleForFree": true, "author": {"@type": "Person", "name": "Ryan Sandoval", "url": "https://linkedin.com/in/RyanSandoval"}, "publisher": {"@type": "Organization", "name": "Supergood Solutions", "url": "https://supergood.solutions", "logo": {"@type": "ImageObject", "url": "https://supergood.solutions/og-image.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://supergood.solutions/blog/systems-sunday-agent-failure-recovery-2026/"}, "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".callout", "article h1", "article h2"]}}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://supergood.solutions/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://supergood.solutions/blog/"}, {"@type": "ListItem", "position": 3, "name": "When Agents Fail: Retry Logic, Circuit Breakers, and Dead Letter Queues for AI Pipelines", "item": "https://supergood.solutions/blog/systems-sunday-agent-failure-recovery-2026/"}]}
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -118,8 +99,7 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
   article h1 { font-size: 2rem; }
   nav .inner { padding: 0 20px; }
 }
-.reading-progress{position:absolute;bottom:-1px;left:0;height:2px;width:0;background:var(--green);z-index:101;transition:width 80ms linear}
-@supports (animation-timeline: scroll()){.reading-progress{width:100%;transform-origin:left;transform:scaleX(0);animation:reading-progress linear;animation-timeline:scroll(root);transition:none}@keyframes reading-progress{to{transform:scaleX(1)}}}
+.reading-progress{position:absolute;bottom:-1px;left:0;height:2px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--green);z-index:101;will-change:transform}
 </style>
 <script type="application/ld+json">
 {
@@ -315,7 +295,7 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
 </footer>
 
 <script>
-(function(){if(CSS.supports('animation-timeline: scroll()'))return;var b=document.querySelector('.reading-progress');if(!b)return;function u(){var d=document.documentElement,m=d.scrollHeight-window.innerHeight,p=m>0?Math.min(1,Math.max(0,window.scrollY/m)):0;b.style.width=(p*100)+'%';}document.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u);u();})();
+(function(){var b=document.querySelector('.reading-progress');if(!b)return;var t=false;function u(){var d=document.documentElement,m=d.scrollHeight-d.clientHeight,y=window.scrollY||window.pageYOffset||d.scrollTop||0,p=m>0?Math.min(1,Math.max(0,y/m)):0;b.style.transform='scaleX('+p+')';t=false;}function q(){if(!t){t=true;requestAnimationFrame(u);}}window.addEventListener('scroll',q,{passive:true});window.addEventListener('resize',q,{passive:true});window.addEventListener('orientationchange',q);u();})();
 </script>
 </body>
 </html>
