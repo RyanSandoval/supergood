@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Agentic RAG System Is Not a Retrieval Problem — Supergood Solutions</title>
+<meta name="description" content="When production agentic RAG underperforms, teams reach for the vector store tuning knobs first — chunk size, embedding models, similarity thresholds. Bayer's PR">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://supergood.solutions/blog/your-agentic-rag-system-is-not-a-retrieval-problem/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Your Agentic RAG System Is Not a Retrieval Problem">
+<meta property="og:url" content="https://supergood.solutions/blog/your-agentic-rag-system-is-not-a-retrieval-problem/">
+<meta property="og:image" content="https://supergood.solutions/blog/your-agentic-rag-system-is-not-a-retrieval-problem/hero-og.png">
+<meta property="article:published_time" content="2026-06-23">
+<meta property="article:author" content="Ryan Sandoval">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Your Agentic RAG System Is Not a Retrieval Problem","description":"When production agentic RAG underperforms, teams reach for the vector store tuning knobs first — chunk size, embedding models, similarity thresholds. Bayer's PR","author":{"@type":"Person","name":"Ryan Sandoval","url":"https://linkedin.com/in/RyanSandoval"},"publisher":{"@type":"Organization","name":"Supergood Solutions","url":"https://supergood.solutions"},"datePublished":"2026-06-23","dateModified":"2026-06-23","mainEntityOfPage":"https://supergood.solutions/blog/your-agentic-rag-system-is-not-a-retrieval-problem/"}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0b;--surface:#111113;--surface-2:#18181b;--border:#27272a;--text:#fafafa;--text-2:#a1a1aa;--text-3:#8c8c96;--green:#22c55e;--mono:'JetBrains Mono',monospace}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;background:rgba(10,10,11,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .inner{max-width:720px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
+.wordmark{font-weight:800;font-size:1.125rem;letter-spacing:-0.03em;color:var(--text);text-decoration:none}
+.wordmark .dot{color:var(--green)}
+nav a.back{font-size:0.875rem;color:var(--text-3);text-decoration:none}
+nav a.back:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:140px 24px 80px}
+article .tag{font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:16px}
+article h1{font-size:clamp(2rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin-bottom:20px}
+article .hero{width:100%;height:auto;display:block;border:1px solid var(--border);border-radius:12px;margin-bottom:32px}
+article .meta{font-family:var(--mono);font-size:0.75rem;color:var(--text-3);margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+article h2{font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;margin:56px 0 16px}
+article h3{font-size:1.125rem;font-weight:600;margin:40px 0 12px}
+article p{font-size:1rem;color:var(--text-2);margin-bottom:20px}
+article strong{color:var(--text)}
+article ul,article ol{color:var(--text-2);margin-bottom:20px;padding-left:24px}
+article li{margin-bottom:8px}
+article a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+article hr{border:none;border-top:1px solid var(--border);margin:40px 0}
+article code{font-family:var(--mono);font-size:0.875em;background:var(--surface-2);color:var(--text);padding:2px 6px;border-radius:4px;border:1px solid var(--border)}
+article pre{background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:16px 20px;margin:24px 0;overflow-x:auto;font-family:var(--mono);font-size:0.8125rem;line-height:1.6}
+article pre code{color:var(--text);background:transparent;padding:0;border:none;border-radius:0;font-size:inherit;white-space:pre}
+.callout{background:var(--surface-2);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:20px 24px;margin:32px 0}
+.callout code{background:rgba(255,255,255,0.04)}
+.callout p{margin-bottom:0;font-size:0.9375rem}
+footer{background:var(--surface);padding:40px 0;margin-top:80px;border-top:1px solid var(--border);text-align:center}
+footer p{color:var(--text-3);font-size:0.875rem;margin:0}
+.reading-progress{position:absolute;bottom:-1px;left:0;height:2px;width:0;background:var(--green);z-index:101;transition:width 80ms linear}
+@supports (animation-timeline: scroll()){.reading-progress{width:100%;transform-origin:left;transform:scaleX(0);animation:reading-progress linear;animation-timeline:scroll(root);transition:none}@keyframes reading-progress{to{transform:scaleX(1)}}}
+@media(max-width:768px){article{padding:120px 20px 60px}article h1{font-size:2rem}}
+</style>
+</head>
+<body>
+<nav><div class="inner"><a href="/" class="wordmark">supergood<span class="dot">.</span></a><a href="/blog/" class="back">← All posts</a></div><div class="reading-progress" aria-hidden="true"></div></nav>
+<main><article>
+<img class="hero" src="hero.svg" alt="" width="1200" height="630" loading="eager">
+<div class="tag">RAG</div>
+<h1>Your Agentic RAG System Is Not a Retrieval Problem</h1>
+<div class="meta">Published June 23, 2026 — 4 min read</div>
+<div class="callout"><p><strong>TL;DR:</strong> When production agentic RAG underperforms, teams reach for the vector store tuning knobs first — chunk size, embedding models, similarity thresholds. Bayer's PRINCE case study makes it plain: the real failure is in the orchestration layer that decides <em>how</em> to retrieve, not the retrieval layer itself.</p></div>
+
+<h2>Key Insight</h2>
+<p>Every team I've seen hit a wall with agentic RAG does the same thing: they open the chunking config.</p>
+<p>They split at 512 tokens instead of 256. They try a better embedding model. They add a reranker. Six sprints later, precision ticks up 3 points on their eval set and falls apart the moment a real user asks a multi-hop question about data that spans three internal repositories with inconsistent metadata.</p>
+<p>The Bayer PRINCE system — an agentic RAG platform that lets pharmaceutical scientists query <em>decades</em> of preclinical drug-safety reports in plain language — ran into this exact wall. Their published case study, written up on <a href="https://martinfowler.com/articles/reliable-llm-bayer.html">Martin Fowler's site</a>, names the actual load-bearing discipline: <strong>harness engineering</strong>.</p>
+<p>Not context engineering. Not embedding quality. Harness engineering: orchestration, tool boundaries, state persistence, retries, fallbacks, validation gates, reflection loops, and observability. The scaffolding that determines <em>what the agent does when a retrieval step doesn't land</em>.</p>
+<p>That's the part most teams leave as an afterthought.</p>
+<h2>Why Teams Miss This</h2>
+<p>Because retrieval failures are <em>visible</em> and orchestration failures are <em>subtle</em>.</p>
+<p>When your vector search returns irrelevant chunks, you see it in the answer — hallucination, wrong compound name, missing context. Easy to blame the retriever. You instrument cosine similarity scores and tweak.</p>
+<p>When your <em>orchestration</em> fails, you get something that looks almost right. The agent retrieved three of the four relevant documents. It stopped re-querying too early because its sub-query decomposition treated a compound question as a single-hop lookup. It never issued the follow-up retrieval that would have caught the conflicting result. The answer sounds confident and is 70% correct, which is worse than a clear failure.</p>
+<p>Bayer's data environment makes this concrete. Their preclinical study reports span decades, multiple system migrations, and years of metadata decay — structured annotations that are incomplete, missing, or just wrong. The "gold standard" answer always lives in the unstructured PDF. An agent hitting that corpus with a single semantic lookup and calling it done will fail, not because the embedding is bad, but because the <em>question required multiple retrieval passes with intermediate reasoning</em> to surface what the researcher actually needed.</p>
+<p>The orchestration bug, not the vector store bug.</p>
+<h2>How to Actually Do It</h2>
+<p>The PRINCE team framed their solution around two concepts worth stealing directly:</p>
+<p><strong>Context engineering:</strong> Controlling <em>what information each model sees at each step</em> — not just the retrieved chunks, but what prior steps surfaced, what was ruled out, and what context moves between a research agent, a reflection agent, and a writing agent.</p>
+<p><strong>Harness engineering:</strong> The scaffolding that wraps every retrieval step — when to retry, what fallback query to issue, how to validate before moving to the next step, when to surface uncertainty to the human reviewer.</p>
+<p>Here's the orchestration pattern that breaks things in practice and how to fix it:</p>
+<pre><code class="language-python"># Naive pattern: one-shot retrieval, trust the result
+def answer_question(query: str) -&gt; str:
+    chunks = vector_store.search(query, top_k=5)
+    return llm.generate(query, context=chunks)
+
+# Agentic pattern: decompose, retrieve, reflect, re-query
+def answer_question(query: str) -&gt; str:
+    sub_queries = planner.decompose(query)          # break multi-hop Q into steps
+    gathered = []
+    for sq in sub_queries:
+        result = vector_store.search(sq, top_k=5)
+        if reflector.is_sufficient(sq, result):     # validate each retrieval step
+            gathered.extend(result)
+        else:
+            # rewrite the sub-query and try again, or flag for human
+            result = vector_store.search(
+                rewriter.rephrase(sq, gathered), top_k=5
+            )
+            gathered.extend(result)
+    return llm.generate(query, context=deduplicate(gathered))</code></pre>
+<p>The <code>reflector.is_sufficient()</code> call is where most teams have a gap. It should check:</p>
+<ol>
+<li><strong>Coverage</strong> — does the retrieved context actually address the sub-query, or just keyword-match it?</li>
+<li><strong>Conflict detection</strong> — do any retrieved chunks contradict each other? If yes, that's a signal to retrieve more before generating.</li>
+<li><strong>Completeness under known data distribution</strong> — for a domain like pharmaceutical research, if you're asking about a study compound and retrieved zero toxicology results, that's a retrieval failure worth retrying rather than generating "no toxicology data found."</li>
+</ol>
+<p>The third one is domain-specific and requires you to encode knowledge about your <em>data distribution</em> into the reflection step. No off-the-shelf retriever does this for you.</p>
+<h2>What We've Learned</h2>
+<p>Before your next sprint on chunk size or embedding model, audit your orchestration logic against two questions:</p>
+<ul>
+<li><strong>What does your agent do when the first retrieval pass returns low-confidence chunks?</strong> If the answer is "it generates anyway," you have a harness problem.</li>
+<li><strong>Does your agent decompose multi-hop questions into separate retrieval steps with intermediate validation?</strong> If the answer is "the LLM handles that in the prompt," you have a harness problem.</li>
+</ul>
+<p>Fix those two before touching <code>chunk_size</code>.</p>
+<p>If you're starting fresh: read the Bayer PRINCE case study and the accompanying <a href="https://www.frontiersin.org/journals/artificial-intelligence/articles/10.3389/frai.2025.1636809/full">Frontiers in AI paper</a>. It's one of the most honest production write-ups in the agentic RAG space — not a tutorial, a postmortem on the engineering tradeoffs that actually matter at scale.</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://martinfowler.com/articles/reliable-llm-bayer.html">Building Reliable Agentic AI Systems (Bayer PRINCE case study)</a>: Bayer + Thoughtworks case study on martinfowler.com — harness engineering as the core discipline</li>
+<li><a href="https://www.frontiersin.org/journals/artificial-intelligence/articles/10.3389/frai.2025.1636809/full">PRINCE: Frontiers in Artificial Intelligence paper</a>: full product evolution and business impact behind the PRINCE system</li>
+<li><a href="https://www.marsdevs.com/guides/agentic-rag-2026-guide">Agentic RAG: The 2026 Production Guide</a>: five production patterns, framework comparison, and cost reality check</li>
+<li><a href="https://www.applied-ai.com/briefings/enterprise-rag-architecture/">Enterprise RAG Architecture: A Practitioner's Guide</a>: decision framework for when agentic orchestration is and isn't justified</li>
+</ul>
+
+</article></main>
+<footer><p>&copy; 2026 Supergood Solutions. Helping teams automate smarter, not harder.</p></footer>
+<script>
+(function(){if(CSS.supports('animation-timeline: scroll()'))return;var b=document.querySelector('.reading-progress');if(!b)return;function u(){var d=document.documentElement,m=d.scrollHeight-window.innerHeight,p=m>0?Math.min(1,Math.max(0,window.scrollY/m)):0;b.style.width=(p*100)+'%';}document.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u);u();})();
+</script>
+</body>
+</html>
