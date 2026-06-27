@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You're Fine-Tuning When You Should Be Prompting, and Vice Versa — Supergood Solutions</title>
+<meta name="description" content="Most enterprise teams reach for fine-tuning when domain knowledge gets specialized — but the actual decision axis isn't domain specificity, it's update…">
+<meta name="author" content="Ryan Sandoval">
+<meta name="keywords" content="Architecture, AI agents, artificial intelligence, enterprise AI">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0a0a0b">
+<link rel="canonical" href="https://supergood.solutions/blog/you-re-fine-tuning-when-you-should-be-prompting-and-vice-versa/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preload" as="image" href="hero.svg" fetchpriority="high">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Supergood Solutions">
+<meta property="og:title" content="You're Fine-Tuning When You Should Be Prompting, and Vice Versa">
+<meta property="og:description" content="Most enterprise teams reach for fine-tuning when domain knowledge gets specialized — but the actual decision axis isn't domain specificity, it's update…">
+<meta property="og:url" content="https://supergood.solutions/blog/you-re-fine-tuning-when-you-should-be-prompting-and-vice-versa/">
+<meta property="og:image" content="https://supergood.solutions/blog/you-re-fine-tuning-when-you-should-be-prompting-and-vice-versa/hero-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="You're Fine-Tuning When You Should Be Prompting, and Vice Versa">
+<meta property="article:published_time" content="2026-06-26">
+<meta property="article:modified_time" content="2026-06-26">
+<meta property="article:author" content="Ryan Sandoval">
+<meta property="article:section" content="Architecture">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="You're Fine-Tuning When You Should Be Prompting, and Vice Versa">
+<meta name="twitter:description" content="Most enterprise teams reach for fine-tuning when domain knowledge gets specialized — but the actual decision axis isn't domain specificity, it's update…">
+<meta name="twitter:image" content="https://supergood.solutions/blog/you-re-fine-tuning-when-you-should-be-prompting-and-vice-versa/hero-og.png">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "You're Fine-Tuning When You Should Be Prompting, and Vice Versa", "description": "Most enterprise teams reach for fine-tuning when domain knowledge gets specialized — but the actual decision axis isn't domain specificity, it's update…", "image": "https://supergood.solutions/blog/you-re-fine-tuning-when-you-should-be-prompting-and-vice-versa/hero-og.png", "url": "https://supergood.solutions/blog/you-re-fine-tuning-when-you-should-be-prompting-and-vice-versa/", "datePublished": "2026-06-26", "dateModified": "2026-06-26", "wordCount": 821, "timeRequired": "PT4M", "articleSection": "Architecture", "keywords": ["Architecture", "AI agents", "artificial intelligence", "enterprise AI"], "inLanguage": "en-US", "isAccessibleForFree": true, "author": {"@type": "Person", "name": "Ryan Sandoval", "url": "https://linkedin.com/in/RyanSandoval"}, "publisher": {"@type": "Organization", "name": "Supergood Solutions", "url": "https://supergood.solutions", "logo": {"@type": "ImageObject", "url": "https://supergood.solutions/og-image.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://supergood.solutions/blog/you-re-fine-tuning-when-you-should-be-prompting-and-vice-versa/"}, "isPartOf": {"@type": "Blog", "url": "https://supergood.solutions/blog/"}, "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".callout", "article h1", "article h2"]}}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://supergood.solutions/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://supergood.solutions/blog/"}, {"@type": "ListItem", "position": 3, "name": "You're Fine-Tuning When You Should Be Prompting, and Vice Versa", "item": "https://supergood.solutions/blog/you-re-fine-tuning-when-you-should-be-prompting-and-vice-versa/"}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0b;--surface:#111113;--surface-2:#18181b;--border:#27272a;--text:#fafafa;--text-2:#a1a1aa;--text-3:#8c8c96;--green:#22c55e;--mono:'JetBrains Mono',monospace}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;background:rgba(10,10,11,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .inner{max-width:720px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
+.wordmark{font-weight:800;font-size:1.125rem;letter-spacing:-0.03em;color:var(--text);text-decoration:none}
+.wordmark .dot{color:var(--green)}
+nav a.back{font-size:0.875rem;color:var(--text-3);text-decoration:none}
+nav a.back:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:140px 24px 80px}
+article .tag{font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:16px}
+article h1{font-size:clamp(2rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin-bottom:20px}
+article .hero{width:100%;height:auto;display:block;border:1px solid var(--border);border-radius:12px;margin-bottom:32px}
+article .meta{font-family:var(--mono);font-size:0.75rem;color:var(--text-3);margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+article h2{font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;margin:56px 0 16px}
+article h3{font-size:1.125rem;font-weight:600;margin:40px 0 12px}
+article p{font-size:1rem;color:var(--text-2);margin-bottom:20px}
+article strong{color:var(--text)}
+article ul,article ol{color:var(--text-2);margin-bottom:20px;padding-left:24px}
+article li{margin-bottom:8px}
+article a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+article hr{border:none;border-top:1px solid var(--border);margin:40px 0}
+article code{font-family:var(--mono);font-size:0.875em;background:var(--surface-2);color:var(--text);padding:2px 6px;border-radius:4px;border:1px solid var(--border)}
+article pre{background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:16px 20px;margin:24px 0;overflow-x:auto;font-family:var(--mono);font-size:0.8125rem;line-height:1.6}
+article pre code{color:var(--text);background:transparent;padding:0;border:none;border-radius:0;font-size:inherit;white-space:pre}
+.callout{background:var(--surface-2);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:20px 24px;margin:32px 0}
+.callout code{background:rgba(255,255,255,0.04)}
+.callout p{margin-bottom:0;font-size:0.9375rem}
+footer{background:var(--surface);padding:40px 0;margin-top:80px;border-top:1px solid var(--border);text-align:center}
+footer p{color:var(--text-3);font-size:0.875rem;margin:0}
+.reading-progress{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--green);z-index:200;will-change:transform}
+@media(max-width:768px){article{padding:120px 20px 60px}article h1{font-size:2rem}}
+</style>
+</head>
+<body>
+<div class="reading-progress" aria-hidden="true"></div>
+<nav><div class="inner"><a href="/" class="wordmark">supergood<span class="dot">.</span></a><a href="/blog/" class="back">← All posts</a></div></nav>
+<main><article>
+<img class="hero" src="hero.svg" alt="" width="1200" height="630" loading="eager">
+<div class="tag">Architecture</div>
+<h1>You're Fine-Tuning When You Should Be Prompting, and Vice Versa</h1>
+<div class="meta">Published June 26, 2026 — 4 min read</div>
+<div class="callout"><p><strong>TL;DR:</strong> Most enterprise teams reach for fine-tuning when domain knowledge gets specialized — but the actual decision axis isn't domain specificity, it's update frequency. Getting this backwards means paying retraining costs for problems that a well-structured prompt would solve in an afternoon.</p></div>
+
+<h2>Key Insight</h2>
+<p>The mental model most teams operate on: "our use case is domain-specific, so we need to fine-tune." The correct mental model: <strong>ask whether the thing you're trying to teach the model changes over time</strong>.</p>
+<p>Here's the split that actually holds up in production:</p>
+<ul>
+<li><strong>Fast-changing information</strong> (product catalog, pricing, customer data, recent research, policy docs) → belongs in the context window, not the weights. This is the job for RAG, tool calls, or structured prompting. Update it by updating your retrieval layer — no retraining required.</li>
+<li><strong>Stable procedural behavior</strong> (output format, domain-specific reasoning patterns, tone calibration, task specialization) → belongs in the weights. This is where fine-tuning earns its cost. A LoRA adapter that teaches the model to produce structured JSON extraction in your schema, or to reason like a compliance analyst, won't go stale next quarter.</li>
+</ul>
+<p>Most enterprise teams have this mapping exactly backwards. They fine-tune on their proprietary knowledge base (product docs, internal wikis, last year's support tickets) — baking it into weights that are frozen the moment training ends. Then six months later, they're paying for another fine-tuning run because Q3 pricing changed. Meanwhile, they're prompt-engineering 2,000-token system prompts to try to get consistent output formatting, a problem a small LoRA would have solved once and permanently.</p>
+<h2>Why Teams Miss This</h2>
+<p>The word "domain-specific" is doing too much work. Teams hear it and jump to fine-tuning because that's what the ML literature has historically recommended for domain adaptation. But in the LLM era, "domain-specific knowledge" and "domain-specific behavior" are different problems that demand different tools.</p>
+<p>Knowledge is dynamic. Behavior is static (or at least, slow-moving).</p>
+<p>The second failure mode: teams treat fine-tuning as a quality upgrade rather than a behavioral tool. "Our prompts aren't reliable enough, so we'll fine-tune." That's a reasonable instinct, but it conflates two separate problems. If your model gives inconsistent answers about your product's return policy, the fix is not fine-tuning — it's injecting the return policy into context reliably (RAG, structured prompt, tool call). If your model refuses to produce output in a specific schema even when asked explicitly and consistently, <em>that's</em> when fine-tuning earns its place.</p>
+<h2>How to Actually Do It</h2>
+<p>Run every candidate use case through two questions before picking a tool:</p>
+<p><strong>1. Will this information change in the next 6 months?</strong></p>
+<p>If yes: keep it out of the weights. Build a retrieval layer (vector search, structured database lookup, API call) and inject it at inference time. Fine-tuning that data is just scheduling your own technical debt.</p>
+<p><strong>2. Is the problem about <em>what</em> the model knows, or <em>how</em> it behaves?</strong></p>
+<p>"What" problems (facts, current state, proprietary data) → context window.</p>
+<p>"How" problems (consistent format, specialized reasoning style, task-specific priors) → fine-tuning.</p>
+<p>In practice, the decision tree looks like this:</p>
+<pre><code>Is the capability I need:
+  └─ A fact, policy, or piece of current information?
+      → RAG / retrieval / structured prompt
+  └─ A behavioral pattern (format, reasoning style, task specialization)?
+      └─ Is it achievable with 1-2 clear examples in the prompt?
+          → Few-shot prompting (free, instant)
+      └─ Does it require consistent behavior across thousands of calls?
+          → LoRA / PEFT adapter (train once, reuse everywhere)</code></pre>
+<p>One concrete example: a legal team building a contract review assistant. They fine-tuned on 10,000 past contracts thinking the model needed to "learn" their legal domain. Three months in, they're re-running fine-tuning jobs every time contract templates change. The fix is to RAG the relevant templates and clauses at query time, and use a lightweight LoRA only for the formatting and risk-flagging <em>style</em> their team wants — which doesn't change when the templates do.</p>
+<p>Parameter-efficient methods like LoRA make the behavioral-pattern use case genuinely cheap. You're not training a new model; you're adding a small adapter on top of frozen weights. <a href="https://huggingface.co/docs/peft/en/index">Hugging Face's PEFT library</a> makes this accessible without GPU clusters. The knowledge-retrieval side has its own mature tooling in <a href="https://www.llamaindex.ai/">LlamaIndex</a> and <a href="https://www.langchain.com/">LangChain</a>. The hard part is making the classification call correctly upfront — not the implementation.</p>
+<h2>What We've Learned</h2>
+<p>Before your team starts any fine-tuning project, do a 30-minute audit: for every piece of "domain knowledge" you planned to bake into the model, ask whether it will still be accurate in 12 months. If the answer is "probably not," you're looking at a retrieval problem, not a training problem. Reserve your fine-tuning budget for behavioral patterns — the things you want the model to <em>do</em> differently, not just <em>know</em> differently. That shift alone tends to cut retraining costs in half and produce more durable systems.</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://huggingface.co/blog/gemma-peft">Hugging Face PEFT — Fine-tuning with LoRA and QLoRA</a></li>
+<li><a href="https://huggingface.co/docs/peft/en/index">Hugging Face PEFT Library documentation</a></li>
+<li><a href="https://www.llamaindex.ai/">LlamaIndex — RAG and retrieval infrastructure</a></li>
+<li><a href="https://www.langchain.com/">LangChain — retrieval-augmented generation tooling</a></li>
+</ul>
+
+</article></main>
+<footer><p>&copy; 2026 Supergood Solutions. Helping teams automate smarter, not harder.</p></footer>
+<script>
+(function(){var b=document.querySelector('.reading-progress');if(!b)return;var t=false;function u(){var d=document.documentElement,m=d.scrollHeight-d.clientHeight;if(m<=0){t=false;return;}var y=window.scrollY||window.pageYOffset||d.scrollTop||0;b.style.transform='scaleX('+Math.min(1,Math.max(0,y/m))+')';t=false;}function q(){if(!t){t=true;requestAnimationFrame(u);}}window.addEventListener('scroll',q,{passive:true});window.addEventListener('resize',q,{passive:true});window.addEventListener('orientationchange',q,{passive:true});setTimeout(u,0);})();
+</script>
+</body>
+</html>
