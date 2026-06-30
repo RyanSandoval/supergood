@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Observability Isn't Evaluation (And the Difference Is Killing Your AI Rollout) — Supergood Solutions</title>
+<meta name="description" content="89% of enterprise AI teams can watch their models run. Only 37% can tell you if the outputs are right. That gap — between observability and evaluation — is the…">
+<meta name="author" content="Ryan Sandoval">
+<meta name="keywords" content="PRODUCTION AI, AI agents, artificial intelligence, enterprise AI">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0a0a0b">
+<link rel="canonical" href="https://supergood.solutions/blog/observability-isn-t-evaluation-and-the-difference-is-killing-your-ai-rollout/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preload" as="image" href="hero.svg" fetchpriority="high">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Supergood Solutions">
+<meta property="og:title" content="Observability Isn't Evaluation (And the Difference Is Killing Your AI Rollout)">
+<meta property="og:description" content="89% of enterprise AI teams can watch their models run. Only 37% can tell you if the outputs are right. That gap — between observability and evaluation — is the…">
+<meta property="og:url" content="https://supergood.solutions/blog/observability-isn-t-evaluation-and-the-difference-is-killing-your-ai-rollout/">
+<meta property="og:image" content="https://supergood.solutions/blog/observability-isn-t-evaluation-and-the-difference-is-killing-your-ai-rollout/hero-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Observability Isn't Evaluation (And the Difference Is Killing Your AI Rollout)">
+<meta property="article:published_time" content="2026-06-28">
+<meta property="article:modified_time" content="2026-06-28">
+<meta property="article:author" content="Ryan Sandoval">
+<meta property="article:section" content="PRODUCTION AI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Observability Isn't Evaluation (And the Difference Is Killing Your AI Rollout)">
+<meta name="twitter:description" content="89% of enterprise AI teams can watch their models run. Only 37% can tell you if the outputs are right. That gap — between observability and evaluation — is the…">
+<meta name="twitter:image" content="https://supergood.solutions/blog/observability-isn-t-evaluation-and-the-difference-is-killing-your-ai-rollout/hero-og.png">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Observability Isn't Evaluation (And the Difference Is Killing Your AI Rollout)", "description": "89% of enterprise AI teams can watch their models run. Only 37% can tell you if the outputs are right. That gap — between observability and evaluation — is the…", "image": "https://supergood.solutions/blog/observability-isn-t-evaluation-and-the-difference-is-killing-your-ai-rollout/hero-og.png", "url": "https://supergood.solutions/blog/observability-isn-t-evaluation-and-the-difference-is-killing-your-ai-rollout/", "datePublished": "2026-06-28", "dateModified": "2026-06-28", "wordCount": 793, "timeRequired": "PT3M", "articleSection": "PRODUCTION AI", "keywords": ["PRODUCTION AI", "AI agents", "artificial intelligence", "enterprise AI"], "inLanguage": "en-US", "isAccessibleForFree": true, "author": {"@type": "Person", "name": "Ryan Sandoval", "url": "https://linkedin.com/in/RyanSandoval"}, "publisher": {"@type": "Organization", "name": "Supergood Solutions", "url": "https://supergood.solutions", "logo": {"@type": "ImageObject", "url": "https://supergood.solutions/og-image.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://supergood.solutions/blog/observability-isn-t-evaluation-and-the-difference-is-killing-your-ai-rollout/"}, "isPartOf": {"@type": "Blog", "url": "https://supergood.solutions/blog/"}, "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".callout", "article h1", "article h2"]}}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://supergood.solutions/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://supergood.solutions/blog/"}, {"@type": "ListItem", "position": 3, "name": "Observability Isn't Evaluation (And the Difference Is Killing Your AI Rollout)", "item": "https://supergood.solutions/blog/observability-isn-t-evaluation-and-the-difference-is-killing-your-ai-rollout/"}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0b;--surface:#111113;--surface-2:#18181b;--border:#27272a;--text:#fafafa;--text-2:#a1a1aa;--text-3:#8c8c96;--green:#22c55e;--mono:'JetBrains Mono',monospace}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;background:rgba(10,10,11,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .inner{max-width:720px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
+.wordmark{font-weight:800;font-size:1.125rem;letter-spacing:-0.03em;color:var(--text);text-decoration:none}
+.wordmark .dot{color:var(--green)}
+nav a.back{font-size:0.875rem;color:var(--text-3);text-decoration:none}
+nav a.back:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:140px 24px 80px}
+article .tag{font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:16px}
+article h1{font-size:clamp(2rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin-bottom:20px}
+article .hero{width:100%;height:auto;display:block;border:1px solid var(--border);border-radius:12px;margin-bottom:32px}
+article .meta{font-family:var(--mono);font-size:0.75rem;color:var(--text-3);margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+article h2{font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;margin:56px 0 16px}
+article h3{font-size:1.125rem;font-weight:600;margin:40px 0 12px}
+article p{font-size:1rem;color:var(--text-2);margin-bottom:20px}
+article strong{color:var(--text)}
+article ul,article ol{color:var(--text-2);margin-bottom:20px;padding-left:24px}
+article li{margin-bottom:8px}
+article a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+article hr{border:none;border-top:1px solid var(--border);margin:40px 0}
+article code{font-family:var(--mono);font-size:0.875em;background:var(--surface-2);color:var(--text);padding:2px 6px;border-radius:4px;border:1px solid var(--border)}
+article pre{background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:16px 20px;margin:24px 0;overflow-x:auto;font-family:var(--mono);font-size:0.8125rem;line-height:1.6}
+article pre code{color:var(--text);background:transparent;padding:0;border:none;border-radius:0;font-size:inherit;white-space:pre}
+.callout{background:var(--surface-2);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:20px 24px;margin:32px 0}
+.callout code{background:rgba(255,255,255,0.04)}
+.callout p{margin-bottom:0;font-size:0.9375rem}
+footer{background:var(--surface);padding:40px 0;margin-top:80px;border-top:1px solid var(--border);text-align:center}
+footer p{color:var(--text-3);font-size:0.875rem;margin:0}
+.reading-progress{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--green);z-index:200;will-change:transform}
+@media(max-width:768px){article{padding:120px 20px 60px}article h1{font-size:2rem}}
+</style>
+</head>
+<body>
+<div class="reading-progress" aria-hidden="true"></div>
+<nav><div class="inner"><a href="/" class="wordmark">supergood<span class="dot">.</span></a><a href="/blog/" class="back">← All posts</a></div></nav>
+<main><article>
+<img class="hero" src="hero.svg" alt="" width="1200" height="630" loading="eager">
+<div class="tag">PRODUCTION AI</div>
+<h1>Observability Isn't Evaluation (And the Difference Is Killing Your AI Rollout)</h1>
+<div class="meta">Published June 28, 2026 — 3 min read</div>
+<div class="callout"><p><strong>TL;DR:</strong> 89% of enterprise AI teams can watch their models run. Only 37% can tell you if the outputs are right. That gap — between observability and evaluation — is the most expensive mistake in production AI today.</p></div>
+
+<h2>Key Insight</h2>
+<p>Your logging dashboard is lying to you by omission.</p>
+<p>Observability tools — LangSmith, Langfuse, Arize Phoenix — are genuinely useful. They give you traces: inputs, outputs, latency, token counts, call chains. They tell you <em>that</em> your AI ran. What they don't tell you is whether it was <em>correct</em>.</p>
+<p>This is a category error most teams don't realize they're making. They deploy, they instrument, they watch the green dashboards — and they assume that means the system is working. It isn't. Not necessarily.</p>
+<p>LLM outputs degrade silently. A hallucinated answer doesn't throw a 500. A response that's factually wrong but phrased confidently doesn't spike your error rate. Your on-call engineer won't get paged. You'll find out the way you find out everything in enterprise AI: a customer complaint six weeks later.</p>
+<h2>Why Teams Miss This</h2>
+<p>The mental model teams bring to AI deployment is borrowed from traditional software: if it's not throwing errors, it's working. That model breaks for LLMs.</p>
+<p>Traditional software is deterministic. If the function returns the wrong value, you reproduce it and fix it. LLMs are probabilistic — same input, different output, and "wrong" is often a matter of degree rather than binary failure. You need a grader, not just a logger.</p>
+<p>The other trap is benchmark scores. Teams evaluate a model against published benchmarks — MMLU, HumanEval, whatever's in vogue — and ship it. But benchmarks measure the model in isolation. Your production system isn't isolated: it has a retrieval layer, a prompt template, a context window, post-processing, and guardrails. Every one of those adds quality variation that benchmarks can't capture. The model that scored 78% on MMLU might be hitting 40% on your actual task. You won't know because you haven't looked.</p>
+<p>Per <a href="https://nextwavesinsight.com/ai-evals-production-enterprise/">analysis from NextWaves Insight</a>, 23% of teams with confirmed production deployments don't evaluate their agents at all. The same analysis found only 52% run any offline evaluations before shipping, and a mere 37% run online evals against live production traffic.</p>
+<h2>How to Actually Do It</h2>
+<p>Build three layers of evaluation in order of effort:</p>
+<p><strong>1. Offline evals — do this before any code ships</strong></p>
+<p>Run a fixed test set through your system and score outputs. The score doesn't need to be perfect — it needs to be <em>consistent</em>. You're building a regression harness, not a research benchmark. Fifty representative test cases is enough to start.</p>
+<pre><code class="language-python"># LLM-as-judge eval pattern
+def eval_response(question, reference_answer, model_answer, judge_model):
+    prompt = f"""
+Score this answer 1-5 for faithfulness to the reference.
+Question: {question}
+Reference: {reference_answer}
+Answer: {model_answer}
+Return JSON: {{"score": int, "reason": str}}
+"""
+    return judge_model.complete(prompt)</code></pre>
+<p>Tools like <a href="https://www.braintrustdata.com/">Braintrust</a> or <a href="https://www.langchain.com/langsmith">LangSmith</a> wrap this pattern with a UI. The specific tool matters less than having one before you deploy.</p>
+<p><strong>2. Online evals — where the real signal lives</strong></p>
+<p>Sample 5-10% of live traffic and run it through an async evaluator. Flag outputs below a threshold for human review. This catches the drift your test set never anticipated — the weird edge cases your users actually type.</p>
+<p>Only 37% of teams do this step. It's the highest-signal quality signal available, and the most skipped.</p>
+<p><strong>3. Human review loops — to keep your automated judge honest</strong></p>
+<p>Automated LLM-as-judge evals are fast and scalable but drift over time. A small weekly cadence of human review — even 20 samples — recalibrates the judge. If your automated grader is wrong about what "good" looks like, your entire quality signal is corrupted upstream.</p>
+<h2>What We've Learned</h2>
+<p>Teams that successfully cross from pilot to production share one habit: they build eval infrastructure <em>before</em> they build features. Not after. Not "we'll add it later." Before.</p>
+<p>The practical starting point: pick your three most important output properties for your use case (factual accuracy, scope adherence, tone — whatever the failure mode actually is), write 50 test cases, pick a judge model, and run the harness before your first deploy. You catch the embarrassing failures in the test set instead of in front of a customer.</p>
+<p>Eval infrastructure isn't what gets demoed at AI summits. Test sets and human review queues don't make for a good conference slide. But they are what separates the 15% of enterprise AI pilots that reach production from the 67% that die in pilot purgatory, quietly reclassified as "ongoing evaluation" until the budget runs out.</p>
+<p>The boring stuff is the job.</p>
+<hr>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://nextwavesinsight.com/ai-evals-production-enterprise/">AI Evaluation in Production: The Gap Most Enterprise Teams Ignore</a> — NextWaves Insight</li>
+<li><a href="https://agentmarketcap.ai/blog/2026/04/09/ai-agent-pilot-to-production-stall-2026-enterprise-scaling-failure">Why 67% of Enterprise AI Agent Pilots Never Reach Production: The 2026 Scaling Crisis</a> — Agent Market Cap</li>
+</ul>
+
+</article></main>
+<footer><p>&copy; 2026 Supergood Solutions. Helping teams automate smarter, not harder.</p></footer>
+<script>
+(function(){var b=document.querySelector('.reading-progress');if(!b)return;var t=false;function u(){var d=document.documentElement,m=d.scrollHeight-d.clientHeight;if(m<=0){t=false;return;}var y=window.scrollY||window.pageYOffset||d.scrollTop||0;b.style.transform='scaleX('+Math.min(1,Math.max(0,y/m))+')';t=false;}function q(){if(!t){t=true;requestAnimationFrame(u);}}window.addEventListener('scroll',q,{passive:true});window.addEventListener('resize',q,{passive:true});window.addEventListener('orientationchange',q,{passive:true});setTimeout(u,0);})();
+</script>
+</body>
+</html>
