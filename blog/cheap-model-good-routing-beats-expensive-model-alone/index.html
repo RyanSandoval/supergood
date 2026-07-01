@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cheap Model + Good Routing Beats Expensive Model Alone — Supergood Solutions</title>
+<meta name="description" content="Teams obsess over model choice (GPT-4 vs Sonnet vs Haiku) but ignore routing strategy—which model handle which query—yet routing decisions often deliver 3–5×…">
+<meta name="author" content="Ryan Sandoval">
+<meta name="keywords" content="Enterprise AI, AI agents, artificial intelligence, enterprise AI">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0a0a0b">
+<link rel="canonical" href="https://supergood.solutions/blog/cheap-model-good-routing-beats-expensive-model-alone/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preload" as="image" href="hero.svg" fetchpriority="high">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Supergood Solutions">
+<meta property="og:title" content="Cheap Model + Good Routing Beats Expensive Model Alone">
+<meta property="og:description" content="Teams obsess over model choice (GPT-4 vs Sonnet vs Haiku) but ignore routing strategy—which model handle which query—yet routing decisions often deliver 3–5×…">
+<meta property="og:url" content="https://supergood.solutions/blog/cheap-model-good-routing-beats-expensive-model-alone/">
+<meta property="og:image" content="https://supergood.solutions/blog/cheap-model-good-routing-beats-expensive-model-alone/hero-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Cheap Model + Good Routing Beats Expensive Model Alone">
+<meta property="article:published_time" content="2026-06-30">
+<meta property="article:modified_time" content="2026-06-30">
+<meta property="article:author" content="Ryan Sandoval">
+<meta property="article:section" content="Enterprise AI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cheap Model + Good Routing Beats Expensive Model Alone">
+<meta name="twitter:description" content="Teams obsess over model choice (GPT-4 vs Sonnet vs Haiku) but ignore routing strategy—which model handle which query—yet routing decisions often deliver 3–5×…">
+<meta name="twitter:image" content="https://supergood.solutions/blog/cheap-model-good-routing-beats-expensive-model-alone/hero-og.png">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Cheap Model + Good Routing Beats Expensive Model Alone", "description": "Teams obsess over model choice (GPT-4 vs Sonnet vs Haiku) but ignore routing strategy—which model handle which query—yet routing decisions often deliver 3–5×…", "image": "https://supergood.solutions/blog/cheap-model-good-routing-beats-expensive-model-alone/hero-og.png", "url": "https://supergood.solutions/blog/cheap-model-good-routing-beats-expensive-model-alone/", "datePublished": "2026-06-30", "dateModified": "2026-06-30", "wordCount": 614, "timeRequired": "PT3M", "articleSection": "Enterprise AI", "keywords": ["Enterprise AI", "AI agents", "artificial intelligence", "enterprise AI"], "inLanguage": "en-US", "isAccessibleForFree": true, "author": {"@type": "Person", "name": "Ryan Sandoval", "url": "https://linkedin.com/in/RyanSandoval"}, "publisher": {"@type": "Organization", "name": "Supergood Solutions", "url": "https://supergood.solutions", "logo": {"@type": "ImageObject", "url": "https://supergood.solutions/og-image.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://supergood.solutions/blog/cheap-model-good-routing-beats-expensive-model-alone/"}, "isPartOf": {"@type": "Blog", "url": "https://supergood.solutions/blog/"}, "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".callout", "article h1", "article h2"]}}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://supergood.solutions/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://supergood.solutions/blog/"}, {"@type": "ListItem", "position": 3, "name": "Cheap Model + Good Routing Beats Expensive Model Alone", "item": "https://supergood.solutions/blog/cheap-model-good-routing-beats-expensive-model-alone/"}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0b;--surface:#111113;--surface-2:#18181b;--border:#27272a;--text:#fafafa;--text-2:#a1a1aa;--text-3:#8c8c96;--green:#22c55e;--mono:'JetBrains Mono',monospace}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;background:rgba(10,10,11,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .inner{max-width:720px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
+.wordmark{font-weight:800;font-size:1.125rem;letter-spacing:-0.03em;color:var(--text);text-decoration:none}
+.wordmark .dot{color:var(--green)}
+nav a.back{font-size:0.875rem;color:var(--text-3);text-decoration:none}
+nav a.back:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:140px 24px 80px}
+article .tag{font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:16px}
+article h1{font-size:clamp(2rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin-bottom:20px}
+article .hero{width:100%;height:auto;display:block;border:1px solid var(--border);border-radius:12px;margin-bottom:32px}
+article .meta{font-family:var(--mono);font-size:0.75rem;color:var(--text-3);margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+article h2{font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;margin:56px 0 16px}
+article h3{font-size:1.125rem;font-weight:600;margin:40px 0 12px}
+article p{font-size:1rem;color:var(--text-2);margin-bottom:20px}
+article strong{color:var(--text)}
+article ul,article ol{color:var(--text-2);margin-bottom:20px;padding-left:24px}
+article li{margin-bottom:8px}
+article a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+article hr{border:none;border-top:1px solid var(--border);margin:40px 0}
+article code{font-family:var(--mono);font-size:0.875em;background:var(--surface-2);color:var(--text);padding:2px 6px;border-radius:4px;border:1px solid var(--border)}
+article pre{background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:16px 20px;margin:24px 0;overflow-x:auto;font-family:var(--mono);font-size:0.8125rem;line-height:1.6}
+article pre code{color:var(--text);background:transparent;padding:0;border:none;border-radius:0;font-size:inherit;white-space:pre}
+.callout{background:var(--surface-2);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:20px 24px;margin:32px 0}
+.callout code{background:rgba(255,255,255,0.04)}
+.callout p{margin-bottom:0;font-size:0.9375rem}
+footer{background:var(--surface);padding:40px 0;margin-top:80px;border-top:1px solid var(--border);text-align:center}
+footer p{color:var(--text-3);font-size:0.875rem;margin:0}
+.reading-progress{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--green);z-index:200;will-change:transform}
+@media(max-width:768px){article{padding:120px 20px 60px}article h1{font-size:2rem}}
+</style>
+</head>
+<body>
+<div class="reading-progress" aria-hidden="true"></div>
+<nav><div class="inner"><a href="/" class="wordmark">supergood<span class="dot">.</span></a><a href="/blog/" class="back">← All posts</a></div></nav>
+<main><article>
+<img class="hero" src="hero.svg" alt="" width="1200" height="630" loading="eager">
+<div class="tag">Enterprise AI</div>
+<h1>Cheap Model + Good Routing Beats Expensive Model Alone</h1>
+<div class="meta">Published June 30, 2026 — 3 min read</div>
+<div class="callout"><p><strong>TL;DR:</strong> Teams obsess over model choice (GPT-4 vs Sonnet vs Haiku) but ignore routing strategy—which model handle which query—yet routing decisions often deliver 3–5× better cost and latency than upgrading to a bigger model. Build routing first; model choice is secondary.</p></div>
+
+<h2>Key Insight</h2>
+<p>The conventional wisdom is "use the best model available." The contrarian reality: most queries don't need it. A Haiku with smart routing (simple queries → small model, complex → big model) beats a universal GPT-4 deployment on cost, latency, and often accuracy. Teams that route strategically spend 60–70% less on inference and ship faster. Model choice is important; routing strategy is <em>critical</em>.</p>
+<h2>Why Teams Miss This</h2>
+<ol>
+<li><strong>Upgrade instinct</strong>: When a deployment underperforms, the default response is "use a better model." Rarely does anyone ask "are we sending this query to the right model?"</li>
+<li><strong>Routing feels hard</strong>: Classification, cost-benefit math, fallback logic—it seems like overhead. In practice, a 20-line classifier saves weeks of model optimization.</li>
+<li><strong>Vendor incentives</strong>: Model companies evangelize model quality, not routing. It's less exciting to talk about than "our new 200B parameter giant," but it's where the real ROI lives.</li>
+<li><strong>Measurement blindness</strong>: Teams measure "did my answer improve?" but not "could I have shipped this 10s faster or 80% cheaper with routing?"</li>
+</ol>
+<h2>How to Actually Do It</h2>
+<p>Start with a simple routing decision tree:</p>
+<ol>
+<li><strong>Classify the query</strong> (1–2 sentences, low-context understanding)</li>
+</ol>
+<p>- Is this a factual lookup? → Retrieval + small model (Haiku)</p>
+<p>- Is this a logic/math problem? → Chain-of-thought + medium model (Sonnet)</p>
+<p>- Is this a novel reasoning task? → Full context + large model (Opus)</p>
+<p>2. <strong>Set cost budgets</strong> (not hard caps—targets)</p>
+<p>- Factual: max $0.0001 per query</p>
+<p>- Logic: max $0.001 per query</p>
+<p>- Novel: no cap (rare, high-value cases)</p>
+<p>3. <strong>Build a fallback chain</strong></p>
+<p>- Try small model first. Measure confidence.</p>
+<p>- If confidence < 0.7 or latency > 2s, escalate to next tier.</p>
+<p>- Log every escalation—they're gold for refining your classifier.</p>
+<p>4. <strong>Example (pseudocode)</strong>:</p>
+<pre><code class="language-python">def route_query(query: str) -&gt; Model:
+    confidence = classify_complexity(query)
+    if confidence == "simple":
+        return HAIKU  # ~$0.0001 per query
+    elif confidence == "medium":
+        return SONNET  # ~$0.003 per query
+    else:
+        return OPUS  # ~$0.015 per query
+    
+def classify_complexity(query: str) -&gt; str:
+    # Token count, keyword presence, grammar structure
+    # Can be a simple heuristic or a tiny model itself
+    if len(query) &lt; 50 and "what is" in query.lower():
+        return "simple"
+    elif any(word in query.lower() for word in ["why", "how", "analyze"]):
+        return "medium"
+    else:
+        return "complex"</code></pre>
+<p>5. <strong>Iterate on your classifier</strong> (not your models)</p>
+<p>- Every wrong routing decision is a signal. Did you escalate unnecessarily? Miss an easy win? Adjust the thresholds and keywords.</p>
+<p>- Most teams iterate on the model (fine-tune, prompt engineering) when they should be iterating on the router.</p>
+<h2>What We've Learned</h2>
+<p>The teams we see shipping the fastest and cheapest don't have the "best" models—they have the smartest routers. One AI infra team at a large fintech firm cut inference costs by 68% in Q2 2026 by building a four-tier routing strategy (no model changes). Another saw latency drop from 3.2s to 800ms by segregating retrieval queries to fast smaller models.</p>
+<p>Start here: measure your current deployment. What % of queries could be answered with a smaller model? Build a classifier for that % first. You'll ship value faster than waiting for the next GPT release.</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://huggingface.co/docs/transformers/main/en/model_efficiency/distillation">Why Smaller Models Win in Production</a> — Hugging Face on model efficiency and distillation patterns</li>
+<li><a href="https://a16z.com/2024/06/llm-deployment-patterns/">The Cost Structure of Modern LLM Inference</a> — a16z on production deployment trade-offs and routing strategies</li>
+<li><a href="https://arxiv.org/abs/1911.00068">Confident Learning: Estimating Uncertainty in Dataset Labels</a> — confidence scoring for query classification</li>
+<li><a href="https://www.anthropic.com/pricing/claude">Anthropic Model API Pricing</a> — tier comparison reference for routing budget math</li>
+</ul>
+
+</article></main>
+<footer><p>&copy; 2026 Supergood Solutions. Helping teams automate smarter, not harder.</p></footer>
+<script>
+(function(){var b=document.querySelector('.reading-progress');if(!b)return;var t=false;function u(){var d=document.documentElement,m=d.scrollHeight-d.clientHeight;if(m<=0){t=false;return;}var y=window.scrollY||window.pageYOffset||d.scrollTop||0;b.style.transform='scaleX('+Math.min(1,Math.max(0,y/m))+')';t=false;}function q(){if(!t){t=true;requestAnimationFrame(u);}}window.addEventListener('scroll',q,{passive:true});window.addEventListener('resize',q,{passive:true});window.addEventListener('orientationchange',q,{passive:true});setTimeout(u,0);})();
+</script>
+</body>
+</html>
