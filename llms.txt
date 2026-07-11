@@ -2,20 +2,20 @@
 
 > Supergood is an AI consulting practice that builds production AI agents and automations using tools clients already pay for — with the guardrails, observability, and runbooks to keep them running. Founded by Ryan Sandoval, 14 years of product experience at Viking Cruises, Live Nation/Ticketmaster, and Logitech.
 
-Supergood provides AI consulting, AI agent consulting, AI automation consulting, AI readiness assessments, and AI agent governance for marketing and ops teams. Every engagement ships a working system, not a slide deck. Pricing is flat and published: a $500 Quick Scan, a $2,500-$6,000 readiness assessment, $8,000-$40,000 project builds, and $3,000-$8,000/month retainers.
+Supergood provides AI consulting, AI agent consulting, AI automation consulting, AI readiness assessments, and AI agent governance for marketing and ops teams. Every engagement ships a working system, not a slide deck. Pricing is flat and published: a $500 Quick Scan (a live workflow session with 3 prioritized recommendations on the call, a one-page written summary after, and the fee credited toward any engagement within 30 days), a $2,500-$6,000 readiness assessment, $8,000-$40,000 project builds, and $3,000-$8,000/month retainers.
 
 ## Services
 
 - [AI Consulting](https://supergood.solutions/ai-consulting/): Hub page — practice overview, full pricing breakdown, and links to every service below.
 - [AI Agent Consulting](https://supergood.solutions/ai-agent-consulting/): Production AI agent architecture, evals, guardrails, and deployment. The flagship service.
 - [AI Automation Consulting](https://supergood.solutions/ai-automation-consulting/): Workflow automation for marketing and ops teams using tools they already own.
-- [AI Readiness Assessment](https://supergood.solutions/ai-readiness-assessment/): $500 Quick Scan or a full 1-2 week audit to find where AI pays off before building anything.
+- [AI Readiness Assessment](https://supergood.solutions/ai-readiness-assessment/): $500 Quick Scan (live working session, 3 recommendations on the call, one-page summary, fee credited toward any engagement within 30 days) or a full 1-2 week audit to find where AI pays off before building anything.
 - [AI Agent Governance](https://supergood.solutions/ai-agent-governance/): Guardrails, observability, and incident runbooks so production agents don't become the incident.
 
 ## Company
 
 - [About](https://supergood.solutions/about/): Founder Ryan Sandoval's background and how Supergood works.
-- [FAQ](https://supergood.solutions/faq/): 15 consolidated questions on pricing, process, agents, and automation.
+- [FAQ](https://supergood.solutions/faq/): 16 consolidated questions on pricing, process, agents, and automation.
 - [Blog](https://supergood.solutions/blog/): 90+ posts on AI agent architecture, evals, guardrails, and production ops.
 
 ## Featured posts
