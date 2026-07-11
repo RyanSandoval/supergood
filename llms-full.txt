@@ -21,7 +21,7 @@ Supergood is an AI consulting practice that builds production AI agents and auto
 4. AI Agent Governance — guardrails, observability, and incident runbooks.
 
 **How much does AI consulting cost?** Independent AI consultants typically run $150–$350/hour, and custom agent builds usually land between $15,000 and $75,000 for mid-market scope — climbing past $500,000 for enterprise-grade, multi-agent systems with compliance layers. Supergood pricing:
-- Quick Scan: $500 — 30-minute live screen-share, 3 recommendations on the spot
+- Quick Scan: $500 — 30-minute live working session on your actual workflows, 3 prioritized recommendations on the call, a one-page written summary the next business day, and the $500 credited toward any engagement within 30 days
 - Readiness Assessment: $2,500–$6,000 — 1–2 weeks, prioritized opportunity map with ROI estimates
 - Workflow / Agent Build: $8,000–$40,000 — 3–8 weeks, project-based
 - Monthly Retainer: $3,000–$8,000/month — ongoing agent ops, automation maintenance, team training
@@ -111,7 +111,7 @@ Q: Do you sell new software?
 A: No, by default. Most teams already have enough automation horsepower in Microsoft 365, their CRM, and existing AI subscriptions.
 
 Q: How fast can I see results?
-A: A Quick Scan gives 3 recommendations in 30 minutes. A single-workflow automation typically ships in 2–4 weeks.
+A: A Quick Scan gets you 3 prioritized recommendations on the call, plus a one-page written summary the next business day. A single-workflow automation typically ships in 2–4 weeks.
 
 Q: What if my workflows are too messy to automate?
 A: That's the norm, not the exception. Part of the audit is figuring out what's automatable now versus what should stay manual.
@@ -125,7 +125,7 @@ A: That's the norm, not the exception. Part of the audit is figuring out what's 
 An AI readiness assessment is a structured audit of your workflows, data, and systems that identifies which processes are worth automating or turning into an AI agent, which aren't, and what order to tackle them in.
 
 **Two tiers:**
-1. Quick Scan — $500, 30 minutes live. Live screen-share walkthrough, 3 specific recommendations, no report.
+1. Quick Scan — $500, 30 minutes live. A screen-share working session on your actual workflows: 3 prioritized recommendations on the call, a one-page written summary within one business day (written to be forwarded internally), and the full $500 credited toward any engagement booked within 30 days.
 2. Full Readiness Assessment — $2,500–$6,000, 1–2 weeks. Complete workflow inventory scored by effort/impact, prioritized opportunity map with ROI estimates, build-vs-buy call on every item, written 30/60/90-day action plan, live findings walkthrough.
 
 **Process:** Discover (interview the team, inventory every candidate workflow) → Score (effort vs. impact, agent-shaped vs. automation-shaped vs. stay-manual) → Roadmap (written 30/60/90-day plan, live walkthrough call).
@@ -149,7 +149,7 @@ Q: Do I have to hire Supergood to build after the assessment?
 A: No. You own the findings and can take them to any team, including your own.
 
 Q: What's the difference between the two tiers?
-A: The Quick Scan is a fast live gut-check with no written report. The full assessment is a complete audit with a scored inventory and a written roadmap.
+A: The Quick Scan is a live working session: 3 prioritized recommendations on the call, a one-page written summary after, and the $500 credited toward any engagement within 30 days. The full assessment is a complete audit with a scored inventory, ROI estimates, and a written 30/60/90-day roadmap.
 
 ---
 
@@ -200,7 +200,7 @@ LinkedIn: https://linkedin.com/in/RyanSandoval
 
 ## FAQ (consolidated) — https://supergood.solutions/faq/
 
-See https://supergood.solutions/faq/ for the full 15-question FAQ covering general questions, pricing & process, AI agents, and automation & governance — the same content summarized in each service section above, in one place with FAQPage structured data.
+See https://supergood.solutions/faq/ for the full 16-question FAQ covering general questions, pricing & process, AI agents, and automation & governance — the same content summarized in each service section above, in one place with FAQPage structured data.
 
 ---
 
