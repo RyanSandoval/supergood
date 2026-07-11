@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Agent Governance & Guardrails | Supergood Solutions</title>
+<meta name="description" content="AI agent governance: guardrails, observability, and incident runbooks so your agents don't become the incident. Book a free 30-minute audit.">
+<meta name="keywords" content="AI agent governance, AI agent guardrails, AI guardrails consulting, agent observability, LLM ops consulting">
+<meta name="author" content="Ryan Sandoval">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0a0a0b">
+<link rel="canonical" href="https://supergood.solutions/ai-agent-governance/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Supergood Solutions">
+<meta property="og:title" content="AI Agent Governance & Guardrails | Supergood Solutions">
+<meta property="og:description" content="Guardrails, observability, and incident runbooks so your agents don't become the incident.">
+<meta property="og:url" content="https://supergood.solutions/ai-agent-governance/">
+<meta property="og:image" content="https://supergood.solutions/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Agent Governance & Guardrails | Supergood Solutions">
+<meta name="twitter:description" content="Guardrails, observability, and incident runbooks so your agents don't become the incident.">
+<meta name="twitter:image" content="https://supergood.solutions/og-image.png">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Service","name":"AI Agent Governance","serviceType":"AI Agent Governance & Guardrails","description":"Guardrails, observability, and incident-response runbooks for production AI agents — tool allowlists, approval checkpoints, spend limits, and audit logging.","url":"https://supergood.solutions/ai-agent-governance/","provider":{"@type":"ProfessionalService","name":"Supergood Solutions","url":"https://supergood.solutions","founder":{"@type":"Person","name":"Ryan Sandoval","url":"https://linkedin.com/in/RyanSandoval"}},"areaServed":"US","offers":[{"@type":"Offer","name":"Governance & Guardrails Implementation","priceSpecification":{"@type":"PriceSpecification","minPrice":"8000","maxPrice":"40000","priceCurrency":"USD"},"description":"Project-based guardrails, observability, and runbook implementation for an existing or in-progress agent"},{"@type":"Offer","name":"Monthly Agent Ops Retainer","priceSpecification":{"@type":"PriceSpecification","minPrice":"3000","maxPrice":"8000","priceCurrency":"USD","unitText":"MONTH"},"description":"Ongoing monitoring, guardrail upkeep, and incident response"}],"isRelatedTo":{"@type":"Service","name":"AI Consulting Services","url":"https://supergood.solutions/ai-consulting/"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://supergood.solutions/"},{"@type":"ListItem","position":2,"name":"AI Consulting","item":"https://supergood.solutions/ai-consulting/"},{"@type":"ListItem","position":3,"name":"AI Agent Governance","item":"https://supergood.solutions/ai-agent-governance/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are AI agent guardrails?","acceptedAnswer":{"@type":"Answer","text":"Guardrails are the explicit constraints that keep an autonomous agent's actions inside a safe, reviewable boundary: tool allowlists, strict input/output schema validation, spend and rate limits, human-approval checkpoints for high-risk actions, and logging that lets you reconstruct exactly what the agent did and why. Without them, an agent's mistakes are silent until they're expensive."}},{"@type":"Question","name":"What is agent observability?","acceptedAnswer":{"@type":"Answer","text":"Agent observability is the ability to see what an agent is doing while it's doing it — which tools it called, what it reasoned, where it spent tokens, and where it deviated from the expected path. It's different from evaluation: observability tells you the agent ran, evals tell you whether it ran correctly. Production agents need both."}},{"@type":"Question","name":"Do I need agent governance if I'm just using ChatGPT?","acceptedAnswer":{"@type":"Answer","text":"If you're using ChatGPT as a chat window with a human reading every output before it's used, formal governance is overkill. The moment an AI system takes actions on its own — sends an email, updates a record, calls an internal API — without a human checking every single step, you need guardrails and logging, even if you'd never call it an \"agent.\""}},{"@type":"Question","name":"What's the difference between agent governance and agent evals?","acceptedAnswer":{"@type":"Answer","text":"Evals measure whether an agent produces correct outputs before and after you ship changes — they're a quality gate. Governance is the runtime layer: guardrails, permissions, and monitoring that constrain what the agent can do and catch it when something goes wrong live. You need evals to trust a release and governance to trust production."}},{"@type":"Question","name":"How much does AI agent governance cost?","acceptedAnswer":{"@type":"Answer","text":"Supergood prices guardrails and observability implementation at $8,000-$40,000 project-based, plus a $3,000-$8,000/month retainer for ongoing monitoring and incident response. Governance work is often bundled into an agent build rather than sold separately — ask during a Quick Scan."}},{"@type":"Question","name":"Who owns agent governance — engineering or ops?","acceptedAnswer":{"@type":"Answer","text":"Both, and that's usually where it falls through the cracks. Engineering owns the technical guardrails (schema validation, allowlists, logging infrastructure); ops or the business owner owns the policy decisions (what counts as high-risk, who approves what, what the incident response plan is). Governance fails when one side assumes the other has it covered."}}]}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #0a0a0b; --surface: #111113; --surface-2: #18181b; --border: #27272a;
+  --text: #fafafa; --text-2: #a1a1aa; --text-3: #8c8c96; --accent: #e4e4e7;
+  --green: #22c55e; --green-dim: #16a34a; --mono: 'JetBrains Mono', monospace;
+}
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+::selection { background: var(--green); color: var(--bg); }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; background: rgba(10, 10, 11, 0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color 0.3s; }
+nav.scrolled { border-bottom-color: var(--border); }
+nav .container { display: flex; justify-content: space-between; align-items: center; }
+.wordmark { font-weight: 800; font-size: 1.125rem; letter-spacing: -0.03em; color: var(--text); text-decoration: none; display: inline-flex; align-items: baseline; }
+.wordmark .dot-period { color: var(--green); }
+.wordmark .oo-wrap { display: inline-flex; gap: 2px; align-items: center; }
+.wordmark .oo-dot { display: inline-block; width: 0.45em; height: 0.45em; background: var(--green); border-radius: 50%; }
+.nav-links { display: flex; align-items: center; gap: 24px; }
+.nav-links a.nav-link { font-size: 0.875rem; color: var(--text-3); text-decoration: none; transition: color 0.2s; }
+.nav-links a.nav-link:hover { color: var(--text); }
+nav a.cta-nav { font-size: 0.875rem; font-weight: 500; color: var(--text-2); text-decoration: none; padding: 8px 16px; border: 1px solid var(--border); border-radius: 6px; transition: all 0.2s; }
+nav a.cta-nav:hover { color: var(--text); border-color: var(--text-3); }
+
+.crumb { font-family: var(--mono); font-size: 0.75rem; color: var(--text-3); margin-bottom: 20px; opacity: 0; animation: fadeUp 0.6s 0.05s forwards; }
+.crumb a { color: var(--text-3); text-decoration: none; }
+.crumb a:hover { color: var(--green); }
+
+.hero { padding: 160px 0 80px; position: relative; }
+.hero-label { font-family: var(--mono); font-size: 0.8125rem; font-weight: 500; color: var(--green); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 24px; opacity: 0; animation: fadeUp 0.6s 0.1s forwards; }
+.hero h1 { font-size: clamp(2.25rem, 5.5vw, 3.75rem); font-weight: 800; line-height: 1.08; letter-spacing: -0.035em; max-width: 820px; opacity: 0; animation: fadeUp 0.6s 0.2s forwards; }
+.answer { font-size: 1.1875rem; color: var(--text-2); max-width: 680px; margin-top: 28px; line-height: 1.65; padding-left: 20px; border-left: 3px solid var(--green); opacity: 0; animation: fadeUp 0.6s 0.35s forwards; }
+.hero-cta { margin-top: 40px; display: flex; gap: 16px; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.6s 0.5s forwards; }
+
+.btn { display: inline-flex; align-items: center; gap: 8px; font-family: 'Inter', sans-serif; font-size: 0.9375rem; font-weight: 600; padding: 14px 28px; border-radius: 8px; text-decoration: none; cursor: pointer; border: none; transition: all 0.2s; }
+.btn-primary { background: var(--text); color: var(--bg); }
+.btn-primary:hover { background: var(--accent); transform: translateY(-1px); }
+.btn-ghost { background: transparent; color: var(--text-2); border: 1px solid var(--border); }
+.btn-ghost:hover { color: var(--text); border-color: var(--text-3); }
+
+section { padding: 90px 0; }
+.section-label { font-family: var(--mono); font-size: 0.75rem; font-weight: 500; color: var(--text-3); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px; }
+section h2 { font-size: clamp(1.625rem, 3.2vw, 2.25rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; }
+section > .container > p.lede { font-size: 1.0625rem; color: var(--text-2); max-width: 680px; margin-top: 20px; line-height: 1.7; }
+.divider { height: 1px; background: var(--border); max-width: 1100px; margin: 0 auto; }
+
+.problem-grid { margin-top: 48px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2px; background: var(--border); border-radius: 12px; overflow: hidden; }
+.problem-card { background: var(--surface); padding: 36px 30px; }
+.problem-card .num { font-family: var(--mono); font-size: 0.75rem; color: var(--text-3); margin-bottom: 14px; }
+.problem-card h3 { font-size: 1.0625rem; font-weight: 600; margin-bottom: 10px; letter-spacing: -0.01em; }
+.problem-card p { font-size: 0.9375rem; color: var(--text-2); line-height: 1.6; }
+.problem-card .links { margin-top: 14px; }
+.problem-card .links a { font-family: var(--mono); font-size: 0.75rem; color: var(--green); text-decoration: none; }
+.problem-card .links a:hover { text-decoration: underline; }
+
+.pillars { margin-top: 56px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--border); border-radius: 12px; overflow: hidden; }
+.pillar { background: var(--surface); padding: 36px 30px; transition: background 0.3s; }
+.pillar:hover { background: var(--surface-2); }
+.pillar-icon { font-family: var(--mono); font-size: 0.875rem; font-weight: 500; color: var(--green); margin-bottom: 18px; }
+.pillar h3 { font-size: 1.0625rem; font-weight: 600; margin-bottom: 10px; }
+.pillar p { font-size: 0.9375rem; color: var(--text-2); line-height: 1.6; margin-bottom: 12px; }
+.pillar .links a { font-family: var(--mono); font-size: 0.75rem; color: var(--text-3); text-decoration: none; display: block; margin-top: 6px; }
+.pillar .links a:hover { color: var(--green); }
+
+.faq-section { margin-top: 8px; }
+.faq-grid { margin-top: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 32px 48px; }
+.faq-item h3 { font-size: 1.0625rem; font-weight: 600; color: var(--text); margin-bottom: 10px; }
+.faq-item p { font-size: 0.9375rem; color: var(--text-2); line-height: 1.65; }
+
+.post-links { margin-top: 40px; display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.post-links a { display: block; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 22px 24px; text-decoration: none; transition: border-color 0.2s; }
+.post-links a:hover { border-color: var(--green); }
+.post-links .tag { font-family: var(--mono); font-size: 0.625rem; color: var(--green); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+.post-links .ptitle { font-size: 0.9375rem; font-weight: 600; color: var(--text); line-height: 1.4; }
+
+.cta-section { padding: 110px 0 130px; text-align: center; }
+.cta-section h2 { font-size: clamp(1.875rem, 4vw, 2.75rem); font-weight: 800; letter-spacing: -0.035em; max-width: 600px; margin: 0 auto; }
+.cta-section p { color: var(--text-2); font-size: 1.0625rem; margin-top: 18px; max-width: 480px; margin-left: auto; margin-right: auto; }
+.cta-section .btn { margin-top: 36px; }
+.related-services { margin-top: 40px; display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+.related-services a { font-family: var(--mono); font-size: 0.8125rem; color: var(--text-3); text-decoration: none; padding: 10px 18px; border: 1px solid var(--border); border-radius: 8px; transition: all 0.2s; }
+.related-services a:hover { color: var(--text); border-color: var(--text-3); }
+
+footer { border-top: 1px solid var(--border); padding: 40px 0; }
+footer .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+footer p { font-size: 0.8125rem; color: var(--text-3); }
+footer a { color: var(--text-3); text-decoration: none; }
+footer a:hover { color: var(--text-2); }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s, transform 0.5s; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 768px) {
+  section { padding: 64px 0; }
+  .hero { padding: 130px 0 60px; }
+  .pillars { grid-template-columns: 1fr; }
+  .problem-grid { grid-template-columns: 1fr; }
+  .faq-grid { grid-template-columns: 1fr; gap: 28px; }
+}
+@media (max-width: 480px) {
+  .hero-cta { flex-direction: column; }
+  .btn { width: 100%; justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="container">
+    <a href="/" class="wordmark">superg<span class="oo-wrap"><span class="oo-dot"></span><span class="oo-dot"></span></span>d<span class="dot-period">.</span></a>
+    <div class="nav-links">
+      <a href="/ai-consulting/" class="nav-link">Services</a>
+      <a href="/blog/" class="nav-link">Blog</a>
+      <a href="#contact" class="cta-nav">Get in touch</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main-content">
+<header class="hero" role="banner">
+  <div class="container">
+    <div class="crumb"><a href="/">Home</a> / <a href="/ai-consulting/">AI Consulting</a> / AI Agent Governance</div>
+    <div class="hero-label">AI agent governance</div>
+    <h1>Guardrails, observability, and runbooks — so your agents don't become the incident.</h1>
+    <p class="answer">AI agent governance means putting real constraints and monitoring around autonomous AI systems — tool allowlists, approval checkpoints, spend limits, and incident runbooks — so an agent's mistakes stay small and visible instead of silent and expensive. Supergood builds governance in from day one, not as a bolt-on after the first incident.</p>
+    <div class="hero-cta">
+      <a href="https://calendar.app.google/BkcFDB21jWhMwCiq7" class="btn btn-primary">Book 30 minutes</a>
+      <a href="#without" class="btn btn-ghost">What breaks without it</a>
+    </div>
+  </div>
+</header>
+
+<div class="divider"></div>
+
+<section id="what">
+  <div class="container">
+    <div class="section-label reveal">Define</div>
+    <h2 class="reveal">What are AI agent guardrails?</h2>
+    <p class="lede reveal">Guardrails are the explicit constraints that keep an agent's actions inside a boundary you actually reviewed: tool allowlists instead of open-ended capability, strict schema validation on every parameter, spend and rate limits, human-approval checkpoints before high-risk actions, and logging detailed enough to reconstruct exactly what happened and why. Governance is what turns "the agent probably won't do anything weird" into "here's the evidence the agent can't do anything weird."</p>
+    <p class="lede reveal">Most teams treat governance as something you bolt on after the agent proves itself in a pilot — a chore for "later." That's backwards. The pilot worked because a human was reading every output and would have caught a bad tool call before it mattered. Remove that human for production scale, and every constraint you didn't build in becomes a constraint the agent discovers by accident, usually at the worst possible time.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="without">
+  <div class="container">
+    <div class="section-label reveal">Without governance</div>
+    <h2 class="reveal">This is what breaks — quietly, then all at once.</h2>
+    <div class="problem-grid reveal">
+      <div class="problem-card">
+        <div class="num">01</div>
+        <h3>Silent failures</h3>
+        <p>An ungoverned agent doesn't crash when it's wrong — it confidently does the wrong thing and nobody notices until a customer, or an auditor, does.</p>
+        <div class="links"><a href="/blog/the-agents-that-don-t-crash-are-the-dangerous-ones/">Read: The agents that don't crash →</a></div>
+      </div>
+      <div class="problem-card">
+        <div class="num">02</div>
+        <h3>Unbounded tool access</h3>
+        <p>A loose tool schema lets a model invent parameters it was never meant to have — a quiet path to capability it shouldn't exercise.</p>
+        <div class="links"><a href="/blog/your-agent-s-tool-schema-is-a-security-attack-surface/">Read: Your tool schema is an attack surface →</a></div>
+      </div>
+      <div class="problem-card">
+        <div class="num">03</div>
+        <h3>No audit trail</h3>
+        <p>When something does go wrong, "we're not sure what the agent did" is not an acceptable answer to a customer, a regulator, or your own leadership.</p>
+        <div class="links"><a href="/blog/your-ai-agent-is-an-exfiltration-vector-treat-it-like-one/">Read: Your agent is an exfiltration vector →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="pillars">
+  <div class="container">
+    <div class="section-label reveal">What we build</div>
+    <h2 class="reveal">Three layers of governance.</h2>
+    <div class="pillars reveal">
+      <div class="pillar">
+        <div class="pillar-icon">guardrails_</div>
+        <h3>Guardrails &amp; Policy</h3>
+        <p>Tool allowlists, schema validation, spend limits, and approval checkpoints scoped to what each agent actually needs — not what's convenient to leave open.</p>
+        <div class="links">
+          <a href="/blog/agent-identity-authorization-least-privilege-2026/">Identity & least privilege →</a>
+          <a href="/blog/secrets-management-agent-environments-2026/">Secrets management →</a>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">observability_</div>
+        <h3>Observability &amp; Evals</h3>
+        <p>Logging that reconstructs what an agent did and why, plus the eval harness that tells you whether it's actually right — not just fluent.</p>
+        <div class="links">
+          <a href="/blog/tech-tuesday-agentops-observability-2026/">AgentOps observability stack →</a>
+          <a href="/blog/observability-isn-t-evaluation-and-the-difference-is-killing-your-ai-rollout/">Observability isn't evaluation →</a>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">runbooks_</div>
+        <h3>Incident Response &amp; Runbooks</h3>
+        <p>A written plan for the day the agent does something surprising — who gets paged, how you roll it back, and how you patch the gap it found.</p>
+        <div class="links">
+          <a href="/blog/systems-sunday-agent-ops-runbook/">The agent ops runbook →</a>
+          <a href="/blog/case-study-thursday-agent-write-access-2026/">What broke with agent write access →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="faq">
+  <div class="container">
+    <div class="section-label reveal">FAQ</div>
+    <h2 class="reveal">Questions that come up before something breaks.</h2>
+    <div class="faq-section">
+      <div class="faq-grid reveal">
+        <div class="faq-item">
+          <h3>What are AI agent guardrails?</h3>
+          <p>Explicit constraints — tool allowlists, schema validation, spend limits, approval checkpoints, and audit logging — that keep an agent's actions inside a boundary you reviewed, instead of trusting it to behave.</p>
+        </div>
+        <div class="faq-item">
+          <h3>What is agent observability?</h3>
+          <p>The ability to see what an agent is doing while it does it — tool calls, reasoning, token spend, deviations from the expected path. Observability tells you the agent ran; evals tell you whether it ran correctly. Production needs both.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Do I need governance if I'm just using ChatGPT?</h3>
+          <p>If a human reviews every output before it's used, formal governance is overkill. The moment an AI system takes actions on its own — sends an email, updates a record — without a human checking each step, you need guardrails, even if you wouldn't call it an "agent."</p>
+        </div>
+        <div class="faq-item">
+          <h3>Governance vs. evals — what's the difference?</h3>
+          <p>Evals are a quality gate: do the outputs stay correct as you change the system. Governance is the runtime layer: guardrails and monitoring that constrain what the agent can do and catch problems live. You need evals to trust a release and governance to trust production.</p>
+        </div>
+        <div class="faq-item">
+          <h3>How much does this cost?</h3>
+          <p>$8,000–$40,000 project-based for guardrails and observability implementation, plus a $3,000–$8,000/month retainer for ongoing monitoring. Often bundled into an agent build rather than sold standalone.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Who owns agent governance — engineering or ops?</h3>
+          <p>Both. Engineering owns the technical guardrails; ops or the business owner owns the policy calls — what's high-risk, who approves what. Governance fails when each side assumes the other has it covered.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="reading">
+  <div class="container">
+    <div class="section-label reveal">From the blog</div>
+    <h2 class="reveal">The security and ops writing behind this page.</h2>
+    <div class="post-links reveal">
+      <a href="/blog/your-agent-s-tool-schema-is-a-security-attack-surface/">
+        <div class="tag">Security</div>
+        <div class="ptitle">Your Agent's Tool Schema Is a Security Attack Surface</div>
+      </a>
+      <a href="/blog/your-agent-s-open-source-dependencies-are-a-new-attack-surface/">
+        <div class="tag">Security</div>
+        <div class="ptitle">Your Agent's Open-Source Dependencies Are a New Attack Surface</div>
+      </a>
+      <a href="/blog/your-agent-s-persistent-memory-is-a-compliance-liability/">
+        <div class="tag">Governance</div>
+        <div class="ptitle">Your Agent's Persistent Memory Is a Compliance Liability</div>
+      </a>
+      <a href="/blog/future-friday-agent-guardrails-production-2026/">
+        <div class="tag">Safety</div>
+        <div class="ptitle">Your Agent Is in Production. Now What? A Field Guide to Runtime Guardrails</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="cta-section">
+  <div class="container">
+    <div class="section-label reveal">Let's talk</div>
+    <h2 class="reveal">Get ahead of the incident, not behind it.</h2>
+    <p class="reveal">30 minutes. Bring the agent you're worried about — or the one you haven't built yet because you're worried about it.</p>
+    <a href="https://calendar.app.google/BkcFDB21jWhMwCiq7" class="btn btn-primary reveal">Book 30 minutes</a>
+    <div class="related-services reveal">
+      <a href="/ai-consulting/">← All services</a>
+      <a href="/ai-agent-consulting/">AI Agent Consulting</a>
+      <a href="/ai-readiness-assessment/">AI Readiness Assessment</a>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer>
+  <div class="container">
+    <p>© 2026 superg●●d.</p>
+    <p><a href="/about/">About</a> · <a href="/faq/">FAQ</a> · <a href="/blog/">Blog</a></p>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20);
+});
+</script>
+
+</body>
+</html>
