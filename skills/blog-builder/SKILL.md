@@ -187,3 +187,15 @@ Good examples of properly formatted posts:
 - `SKILL.md` - This instruction file
 - `template.html` - Complete HTML template for blog posts
 - `example-content.md` - Sample content structure
+
+## Editorial Addendum: SEO/AEO Requirements (added 2026-07-11)
+
+Every new post — no exceptions — must do all five of the following. This is what makes a post rankable (SEO) and quotable by AI answer engines like ChatGPT, Perplexity, and Google AI Overviews (AEO). See `/AI-CONSULTING-SEO-AEO-PLAN.md` for the full repositioning context and `/supergood/keyword-backlog.md` for the maintained keyword list.
+
+1. **Target one query from the keyword backlog.** Before writing, pick one target from `/supergood/keyword-backlog.md` (or add a new one if the topic isn't there yet) and mark it used. Don't write posts with no query in mind — that's how you end up with content nobody searches for.
+2. **Open with a quotable 2-3 sentence answer.** The first thing after the title/meta and the `.callout` TL;DR must directly answer the implied question in 2-3 sentences, phrased so it can be lifted verbatim into an AI answer. Sales pitch and personality come after, not before.
+3. **Include an FAQ block with schema.** 3-6 questions in a `.faq-section`/`.faq-item` block (see pattern in any retrofitted post, e.g. `/blog/power-automate-for-marketing/` or `/blog/your-agent-s-tool-schema-is-a-security-attack-surface/`), plus a matching `FAQPage` JSON-LD script in `<head>`. Questions should be things a reader would actually type into ChatGPT or Google, not invented filler.
+4. **Link to at least 1 service page and at least 2 sibling posts.** Every post should route readers toward `/ai-consulting/`, `/ai-agent-consulting/`, `/ai-automation-consulting/`, `/ai-readiness-assessment/`, or `/ai-agent-governance/` — whichever is topically closest — plus 2+ other blog posts on related topics. No orphan posts.
+5. **Update sitemap.xml, and llms.txt if it's pillar-quality.** Every post goes in `sitemap.xml` (priority 0.8, today's date as `lastmod`). If the post is a genuine pillar piece — the kind you'd want an answer engine to cite as the canonical explainer on its topic — add it to the "Featured posts" section of `/llms.txt` too, with a one-line description. Not every post qualifies; be honest about which ones do.
+
+Also carry forward from the housekeeping pass: don't let `.bak` files or stray workspace files (`.DS_Store`, scratch `.md` files, LinkedIn draft assets) end up in the web root or `blog/` — they belong in `/supergood/` or should be `.gitignore`'d.

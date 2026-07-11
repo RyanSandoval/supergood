@@ -1,0 +1,207 @@
+# Supergood Solutions — Full Content Reference
+
+> Supergood is an AI consulting practice that builds production AI agents and automations using tools clients already pay for — with the guardrails, observability, and runbooks to keep them running. Founded by Ryan Sandoval, 14 years of product experience at Viking Cruises, Live Nation/Ticketmaster, and Logitech.
+
+This file contains the full text content of Supergood Solutions' service pages, about page, and FAQ in markdown, for AI systems that want to ingest the site without crawling HTML. For the short index, see [/llms.txt](https://supergood.solutions/llms.txt). Canonical HTML pages are linked in each section heading.
+
+---
+
+## AI Consulting (hub) — https://supergood.solutions/ai-consulting/
+
+### AI consulting for teams who need agents that work, not a strategy deck.
+
+Supergood is an AI consulting practice that builds production AI agents and automations using tools clients already pay for — with the guardrails, observability, and runbooks to keep them running. Founded by Ryan Sandoval, 14 years of product experience at Viking Cruises, Live Nation/Ticketmaster, and Logitech.
+
+**What does an AI consultant actually do?** A good one does four things, in order: audits your workflows and systems to find where AI genuinely pays off (and says so honestly when it doesn't), designs the architecture — agent, automation, or plain old workflow — that fits the problem, builds it using tools you already have where possible, and stays around long enough to make sure it survives contact with the real world.
+
+**Four ways Supergood helps:**
+1. AI Agent Consulting (flagship) — production AI agents: architecture, evals, deployment, and the discipline to get past demo-ware.
+2. AI Automation Consulting — workflow automation using the tools you already pay for.
+3. AI Readiness Assessment (from $500) — know exactly where AI pays off before you spend a dollar building it.
+4. AI Agent Governance — guardrails, observability, and incident runbooks.
+
+**How much does AI consulting cost?** Independent AI consultants typically run $150–$350/hour, and custom agent builds usually land between $15,000 and $75,000 for mid-market scope — climbing past $500,000 for enterprise-grade, multi-agent systems with compliance layers. Supergood pricing:
+- Quick Scan: $500 — 30-minute live screen-share, 3 recommendations on the spot
+- Readiness Assessment: $2,500–$6,000 — 1–2 weeks, prioritized opportunity map with ROI estimates
+- Workflow / Agent Build: $8,000–$40,000 — 3–8 weeks, project-based
+- Monthly Retainer: $3,000–$8,000/month — ongoing agent ops, automation maintenance, team training
+
+These are flat fees, not hourly billing.
+
+**FAQ:**
+Q: What does an AI consultant do?
+A: Audits your workflows, finds where AI genuinely pays off, designs and builds the solution, and stays around to make sure it survives production — not just a demo.
+
+Q: Do I need an AI consultant, or can I just use ChatGPT?
+A: ChatGPT is fine for one-off answers. A workflow that has to run reliably every day needs architecture, guardrails, and monitoring a chat window doesn't provide.
+
+Q: How is Supergood different from a big consulting firm?
+A: No committee, no army of junior analysts, no six-figure floor. One senior practitioner builds the thing himself and stays reachable after it ships.
+
+Q: How long does an engagement take?
+A: Quick Scan: 30 minutes. Readiness Assessment: 1–2 weeks. A build: 3–8 weeks depending on scope. Retainers run monthly with no fixed end date.
+
+Q: What industries does Supergood work with?
+A: Mid-market marketing and ops teams are the core focus, drawing on experience from travel, live entertainment, and consumer hardware.
+
+Q: What if the assessment says I don't need AI?
+A: Then that's what gets said. Half the value of an honest readiness assessment is being told to automate with a spreadsheet formula, not an agent.
+
+---
+
+## AI Agent Consulting — https://supergood.solutions/ai-agent-consulting/
+
+### AI agent consulting for teams shipping agents that survive contact with production.
+
+AI agent consulting means designing, building, and hardening autonomous AI systems — not prompting a chatbot. Supergood builds production AI agents with the architecture, evals, and guardrails to run unsupervised: tool use, multi-step reasoning, error recovery, and the observability to catch it when something goes wrong.
+
+**What does an AI agent consultant actually do?** Three things, tightly coupled: architecture (deciding what the agent is allowed to do and how it hands off to a human), evals (measuring whether the agent is actually right, not just fluent), and deployment (guardrails, observability, and a rollback plan).
+
+**The production gap** — where demos fail to become systems:
+- No eval harness: teams ship an agent, watch it work three times, call it done, then it fails silently on input four.
+- No stopping condition: an agent that doesn't know when to stop keeps looping and taking actions past where it should escalate to a human.
+- No guardrails on tools: a loose tool schema lets the model invent parameters it was never meant to have.
+
+**Pricing:** Agent build $8,000–$40,000 project-based, 3–8 weeks. Optional $3,000–$8,000/month retainer for ongoing ops.
+
+**FAQ:**
+Q: How do I get AI agents into production?
+A: Start narrow: one workflow, a clear success definition, a limited tool set. Add evals before features. Put guardrails around anything that writes data or spends money.
+
+Q: What are AI agent guardrails?
+A: Tool allowlists, input/output validation, spend and rate limits, human-approval checkpoints, and logging that reconstructs what the agent did and why.
+
+Q: What's the difference between an agent and a workflow?
+A: A workflow follows a fixed sequence you define. An agent decides its own sequence based on what it observes. Many production systems are better built as a workflow with one or two AI-powered steps.
+
+Q: How long does it take to build a production AI agent?
+A: A single-workflow agent with a small tool set: 3–6 weeks. Multi-agent systems or agents touching many internal systems: 8+ weeks.
+
+Q: How much does AI agent consulting cost?
+A: $8,000–$40,000 project-based, plus an optional $3,000–$8,000/month ops retainer. Industry-wide, custom agent builds run $15,000 to $500,000+.
+
+Q: Do I need a multi-agent system?
+A: Probably not at first. Most problems that look like they need coordinating agents are actually one agent with a well-designed tool set.
+
+---
+
+## AI Automation Consulting — https://supergood.solutions/ai-automation-consulting/
+
+### Your team wastes 20 hours a week on work a robot should do.
+
+AI automation consulting means auditing your marketing or ops workflows, then building the automations that eliminate the manual busywork — using tools you already pay for, not a new platform. Supergood automates data entry, reporting, lead routing, and campaign setup.
+
+**Proof:** A pricing team spent 16 hours/week manually pulling data and emailing three departments. Supergood automated the entire pipeline using the existing M365 stack — $0 in new software. Separately, a SaaS marketing team saved 12 hours/week automating lead enrichment for $49/month in tooling — a 1,369% ROI in 30 days.
+
+**What we do:** Workflow Audits & Builds (map ops, find waste, build automations that stick), Monthly Automation Sprints (ongoing retainer — identify new workflows, maintain what's running, train the team), and the Human Part (14 years of product/ops judgment on which reports and workflows actually matter).
+
+**Pricing:** $8,000–$40,000 project-based depending on scope, plus an optional $3,000–$8,000/month retainer.
+
+**FAQ:**
+Q: What is AI automation consulting?
+A: Auditing manual workflows, then building automations that eliminate them using tools you already pay for. Not every fix needs an AI agent.
+
+Q: How much does it cost?
+A: $8,000–$40,000 project-based, plus an optional $3,000–$8,000/month retainer.
+
+Q: What's the difference between AI automation and RPA?
+A: Traditional RPA replays fixed clicks and breaks when a screen changes. AI-assisted automation uses APIs plus language models for parts that need judgment.
+
+Q: Do you sell new software?
+A: No, by default. Most teams already have enough automation horsepower in Microsoft 365, their CRM, and existing AI subscriptions.
+
+Q: How fast can I see results?
+A: A Quick Scan gives 3 recommendations in 30 minutes. A single-workflow automation typically ships in 2–4 weeks.
+
+Q: What if my workflows are too messy to automate?
+A: That's the norm, not the exception. Part of the audit is figuring out what's automatable now versus what should stay manual.
+
+---
+
+## AI Readiness Assessment — https://supergood.solutions/ai-readiness-assessment/
+
+### Know where AI actually pays off — before you spend a dollar building it.
+
+An AI readiness assessment is a structured audit of your workflows, data, and systems that identifies which processes are worth automating or turning into an AI agent, which aren't, and what order to tackle them in.
+
+**Two tiers:**
+1. Quick Scan — $500, 30 minutes live. Live screen-share walkthrough, 3 specific recommendations, no report.
+2. Full Readiness Assessment — $2,500–$6,000, 1–2 weeks. Complete workflow inventory scored by effort/impact, prioritized opportunity map with ROI estimates, build-vs-buy call on every item, written 30/60/90-day action plan, live findings walkthrough.
+
+**Process:** Discover (interview the team, inventory every candidate workflow) → Score (effort vs. impact, agent-shaped vs. automation-shaped vs. stay-manual) → Roadmap (written 30/60/90-day plan, live walkthrough call).
+
+**Who it's for:** Good fit — marketing/ops teams with recurring manual workflows, an M365-or-comparable stack, a leader who wants a numbered plan. Not a good fit yet — teams with only one or two workflows worth automating, or a mandate that's really about headcount reduction.
+
+**FAQ:**
+Q: What is an AI readiness assessment?
+A: A structured audit scoring which workflows are worth automating or turning into an agent, which aren't yet, and what order to tackle them in.
+
+Q: How much does it cost?
+A: $500 for the Quick Scan, $2,500–$6,000 for the full assessment. Industry-wide, independent mid-market AI readiness engagements typically run $15,000–$75,000, and Big Four assessments run $100,000–$500,000+.
+
+Q: What do I get at the end?
+A: A scored workflow inventory, prioritized opportunity map with ROI estimates, build-vs-buy call per item, written 30/60/90-day action plan, and a live walkthrough call.
+
+Q: How long does it take?
+A: Quick Scan: 30 minutes. Full assessment: 1–2 weeks.
+
+Q: Do I have to hire Supergood to build after the assessment?
+A: No. You own the findings and can take them to any team, including your own.
+
+Q: What's the difference between the two tiers?
+A: The Quick Scan is a fast live gut-check with no written report. The full assessment is a complete audit with a scored inventory and a written roadmap.
+
+---
+
+## AI Agent Governance — https://supergood.solutions/ai-agent-governance/
+
+### Guardrails, observability, and runbooks — so your agents don't become the incident.
+
+AI agent governance means putting real constraints and monitoring around autonomous AI systems — tool allowlists, approval checkpoints, spend limits, and incident runbooks — so an agent's mistakes stay small and visible instead of silent and expensive.
+
+**What breaks without governance:** Silent failures (an ungoverned agent doesn't crash when wrong, it confidently does the wrong thing), unbounded tool access (a loose tool schema lets a model invent parameters it shouldn't have), no audit trail ("we're not sure what the agent did" is not an acceptable answer).
+
+**Three layers:** Guardrails & Policy (tool allowlists, schema validation, spend limits, approval checkpoints), Observability & Evals (logging that reconstructs what an agent did and why, plus an eval harness), Incident Response & Runbooks (a written plan for the day the agent surprises you).
+
+**Pricing:** $8,000–$40,000 project-based for guardrails/observability implementation, plus $3,000–$8,000/month for ongoing monitoring.
+
+**FAQ:**
+Q: What are AI agent guardrails?
+A: Explicit constraints — tool allowlists, schema validation, spend limits, approval checkpoints, and audit logging — that keep an agent's actions inside a reviewed boundary.
+
+Q: What is agent observability?
+A: The ability to see what an agent is doing while it does it. Observability tells you the agent ran; evals tell you whether it ran correctly.
+
+Q: Do I need governance if I'm just using ChatGPT?
+A: If a human reviews every output before use, governance is overkill. The moment a system takes actions on its own without a human checking every step, you need guardrails.
+
+Q: Governance vs. evals — what's the difference?
+A: Evals are a quality gate for releases. Governance is the runtime layer that constrains what the agent can do and catches problems live.
+
+Q: How much does this cost?
+A: $8,000–$40,000 project-based, plus $3,000–$8,000/month retainer. Often bundled into an agent build.
+
+Q: Who owns agent governance — engineering or ops?
+A: Both. Engineering owns technical guardrails; ops or the business owner owns the policy calls.
+
+---
+
+## About Ryan Sandoval — https://supergood.solutions/about/
+
+Founder & AI Automation Consultant, Supergood Solutions. 14 years of product experience at Viking Cruises (travel/hospitality), Live Nation/Ticketmaster (live entertainment, high-scale ticketing), and Logitech/Ultimate Ears (consumer hardware) before starting an AI consulting practice.
+
+Works audit → build → govern: audits honestly (including telling clients when they don't need a build), builds with tools clients already pay for wherever possible, and governs what ships so it survives real data and real stakes, not just a demo. Pricing is flat and published, not a call-to-find-out mystery.
+
+Writes the Supergood blog (90+ posts) on agent architecture, evals & observability, guardrails & governance, multi-agent systems, RAG & fine-tuning, model routing & cost ops, marketing automation, and agent security.
+
+LinkedIn: https://linkedin.com/in/RyanSandoval
+
+---
+
+## FAQ (consolidated) — https://supergood.solutions/faq/
+
+See https://supergood.solutions/faq/ for the full 15-question FAQ covering general questions, pricing & process, AI agents, and automation & governance — the same content summarized in each service section above, in one place with FAQPage structured data.
+
+---
+
+Full URL list: https://supergood.solutions/sitemap.xml

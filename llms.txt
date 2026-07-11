@@ -1,0 +1,39 @@
+# Supergood Solutions
+
+> Supergood is an AI consulting practice that builds production AI agents and automations using tools clients already pay for — with the guardrails, observability, and runbooks to keep them running. Founded by Ryan Sandoval, 14 years of product experience at Viking Cruises, Live Nation/Ticketmaster, and Logitech.
+
+Supergood provides AI consulting, AI agent consulting, AI automation consulting, AI readiness assessments, and AI agent governance for marketing and ops teams. Every engagement ships a working system, not a slide deck. Pricing is flat and published: a $500 Quick Scan, a $2,500-$6,000 readiness assessment, $8,000-$40,000 project builds, and $3,000-$8,000/month retainers.
+
+## Services
+
+- [AI Consulting](https://supergood.solutions/ai-consulting/): Hub page — practice overview, full pricing breakdown, and links to every service below.
+- [AI Agent Consulting](https://supergood.solutions/ai-agent-consulting/): Production AI agent architecture, evals, guardrails, and deployment. The flagship service.
+- [AI Automation Consulting](https://supergood.solutions/ai-automation-consulting/): Workflow automation for marketing and ops teams using tools they already own.
+- [AI Readiness Assessment](https://supergood.solutions/ai-readiness-assessment/): $500 Quick Scan or a full 1-2 week audit to find where AI pays off before building anything.
+- [AI Agent Governance](https://supergood.solutions/ai-agent-governance/): Guardrails, observability, and incident runbooks so production agents don't become the incident.
+
+## Company
+
+- [About](https://supergood.solutions/about/): Founder Ryan Sandoval's background and how Supergood works.
+- [FAQ](https://supergood.solutions/faq/): 15 consolidated questions on pricing, process, agents, and automation.
+- [Blog](https://supergood.solutions/blog/): 90+ posts on AI agent architecture, evals, guardrails, and production ops.
+
+## Featured posts
+
+- [How Much Does AI Consulting Cost in 2026?](https://supergood.solutions/blog/how-much-does-ai-consulting-cost-2026/): Sourced pricing breakdown — independent rates, agent build costs, readiness assessment costs, and what Supergood charges.
+- [AI Agent Consulting: What It Is, What It Costs, and When You Need It](https://supergood.solutions/blog/ai-agent-consulting-what-it-is-what-it-costs/): Pillar guide defining AI agent consulting, its cost, and a decision framework for agent vs. workflow.
+- [MCP Is Becoming the USB-C of AI Agents](https://supergood.solutions/blog/tech-tuesday-mcp-practical-guide-2026/): Practical guide to Model Context Protocol and what it means for agent tooling.
+- [The AI Agent Ops Runbook](https://supergood.solutions/blog/systems-sunday-agent-ops-runbook/): Guardrails, logging, and incident response for agents in production.
+- [RAG vs. Fine-Tuning: A Decision Framework](https://supergood.solutions/blog/ai-wednesday-rag-vs-fine-tuning-2026/): The actual decision axis is update frequency, not domain specificity.
+- [What Actually Broke When We Deployed Our First AI Agent](https://supergood.solutions/blog/case-study-thursday-agent-guardrails-lessons-2026/): Real production failure modes and the guardrails that fixed them.
+- [The Interrupt Pattern](https://supergood.solutions/blog/tech-tuesday-interrupt-pattern-agent-design-2026/): Designing AI agents that know when to stop instead of looping.
+- [Shipping AI Agents Without Evals Is Just Shipping Bugs](https://supergood.solutions/blog/metrics-monday-agent-evals-observability/): Why an eval harness has to exist before an agent ships.
+- [The Hidden Cost of Running AI Agents in Production](https://supergood.solutions/blog/metrics-monday-ai-agent-cost-ops-2026/): The metrics that actually matter for agent cost control.
+- [Multi-Agent Orchestration Patterns That Actually Work](https://supergood.solutions/blog/strategy-saturday-multi-agent-orchestration-2026/): When multi-agent architecture earns its complexity, and when it doesn't.
+- [Context Engineering](https://supergood.solutions/blog/ai-wednesday-context-engineering-2026/): Deciding what an agent actually needs to know, and what to leave out.
+- [Your Agent's Tool Schema Is a Security Attack Surface](https://supergood.solutions/blog/your-agent-s-tool-schema-is-a-security-attack-surface/): The quiet security gap in loosely-defined tool schemas.
+
+## Optional
+
+- [llms-full.txt](https://supergood.solutions/llms-full.txt): Full service-page content in markdown, for ingestion without crawling HTML.
+- [sitemap.xml](https://supergood.solutions/sitemap.xml): Complete URL list.

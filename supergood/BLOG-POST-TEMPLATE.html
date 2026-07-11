@@ -8,6 +8,7 @@
 <link rel="canonical" href="https://supergood.solutions/blog/{{SLUG}}/">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <meta name="author" content="Ryan Sandoval">
+<meta name="theme-color" content="#0a0a0b">
 
 <!-- Open Graph -->
 <meta property="og:type" content="article">
@@ -34,7 +35,8 @@
   "author": {
     "@type": "Person",
     "name": "Ryan Sandoval",
-    "url": "https://linkedin.com/in/RyanSandoval",
+    "url": "https://supergood.solutions/about/",
+    "sameAs": ["https://linkedin.com/in/RyanSandoval"],
     "jobTitle": "AI Automation Consultant",
     "worksFor": {
       "@type": "Organization",
@@ -113,7 +115,10 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
 <nav>
   <div class="inner">
     <a href="/" class="wordmark">superg<span class="oo-wrap"><span class="oo-dot"></span><span class="oo-dot"></span></span>d<span class="dot-period">.</span></a>
-    <a href="/blog/" class="back">← All posts</a>
+    <div style="display:flex;align-items:center;gap:20px;">
+      <a href="/ai-consulting/" class="back">Services</a>
+      <a href="/blog/" class="back">← All posts</a>
+    </div>
   </div>
 </nav>
 
@@ -121,7 +126,7 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
   <div class="tag">{{TAG}} · {{CATEGORY}}</div>
   <h1>{{TITLE}}</h1>
   <p class="subtitle">{{SUBTITLE}}</p>
-  <div class="meta">Published {{MONTH DD, YYYY}} — {{X}} min read</div>
+  <div class="meta">Published {{MONTH DD, YYYY}} — {{X}} min read · By <a href="/about/">Ryan Sandoval</a></div>
 
   {{CONTENT}}
 

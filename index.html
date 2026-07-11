@@ -3,18 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Supergood Solutions — AI Agent Consulting for Marketing & Ops Teams</title>
-<meta name="description" content="Supergood Solutions helps marketing and ops teams build, deploy, and govern AI agents in production. Practical AI automation consulting — from agent architecture to guardrails, observability, and ops runbooks.">
-<meta name="keywords" content="AI agent consulting, AI automation consulting, agentic AI ops, AI guardrails, AI agent production, marketing automation AI, enterprise AI consulting, AI workflow automation, agent observability, LLM ops consulting">
+<title>AI Consulting & AI Agent Consulting | Supergood Solutions</title>
+<meta name="description" content="AI consulting for teams who need production AI agents, workflow automation, and the guardrails to keep them running. Founded by a 14-year product veteran.">
+<meta name="keywords" content="AI consulting, AI consultant, AI agent consulting, AI automation consulting, AI readiness assessment, AI agent governance, agentic AI ops, AI guardrails, marketing automation AI, enterprise AI consulting">
 <meta name="author" content="Ryan Sandoval">
 <meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0a0a0b">
 <link rel="canonical" href="https://supergood.solutions/">
+<!-- TODO: Ryan pastes verification token — generate at https://search.google.com/search-console and https://www.bing.com/webmasters -->
+<!-- <meta name="google-site-verification" content="PASTE_TOKEN_HERE"> -->
+<!-- <meta name="msvalidate.01" content="PASTE_TOKEN_HERE"> -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="Supergood Solutions — AI Agent Consulting">
-<meta property="og:description" content="We help marketing and ops teams build production AI agents that actually work — with the guardrails, observability, and runbooks to keep them running.">
+<meta property="og:title" content="AI Consulting & AI Agent Consulting | Supergood Solutions">
+<meta property="og:description" content="AI consulting for teams who need production AI agents, workflow automation, and the guardrails to keep them running.">
 <meta property="og:url" content="https://supergood.solutions/">
 <meta property="og:site_name" content="Supergood Solutions">
 <meta property="og:image" content="https://supergood.solutions/og-image.png">
@@ -23,8 +27,8 @@
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Supergood Solutions — AI Automation for Marketing">
-<meta name="twitter:description" content="Marketing teams waste 20 hours/week on manual work. We audit your workflows, build automations using your existing tools, and give you your time back.">
+<meta name="twitter:title" content="AI Consulting & AI Agent Consulting | Supergood Solutions">
+<meta name="twitter:description" content="AI consulting for teams who need production AI agents, workflow automation, and the guardrails to keep them running.">
 <meta name="twitter:image" content="https://supergood.solutions/og-image.png">
 
 <!-- Structured Data -->
@@ -35,7 +39,7 @@
     {
       "@type": "ProfessionalService",
       "name": "Supergood Solutions",
-      "description": "AI agent consulting for marketing and ops teams. We help teams build, deploy, and govern AI agents in production — from architecture to guardrails, observability, and ops runbooks.",
+      "description": "Supergood is an AI consulting practice that builds production AI agents and automations using tools clients already pay for — with the guardrails, observability, and runbooks to keep them running.",
       "url": "https://supergood.solutions",
       "founder": {
         "@type": "Person",
@@ -44,9 +48,16 @@
         "url": "https://linkedin.com/in/RyanSandoval"
       },
       "areaServed": "US",
-      "serviceType": ["AI Agent Consulting", "AI Automation Consulting", "Agent Ops", "AI Guardrails Implementation", "Marketing Automation AI", "LLM Ops Consulting"],
-      "knowsAbout": ["AI Agents", "Agentic AI", "LLM Ops", "AI Guardrails", "Agent Observability", "Marketing Automation", "AI Workflow Design"],
-      "sameAs": ["https://linkedin.com/in/RyanSandoval"]
+      "serviceType": ["AI Consulting", "AI Agent Consulting", "AI Automation Consulting", "AI Readiness Assessment", "AI Agent Governance", "Agent Ops", "AI Guardrails Implementation", "Marketing Automation AI", "LLM Ops Consulting"],
+      "knowsAbout": ["AI Consulting", "AI Agents", "Agentic AI", "LLM Ops", "AI Guardrails", "Agent Observability", "Marketing Automation", "AI Workflow Design"],
+      "sameAs": ["https://linkedin.com/in/RyanSandoval"],
+      "makesOffer": [
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "AI Consulting Services", "url": "https://supergood.solutions/ai-consulting/"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "AI Agent Consulting", "url": "https://supergood.solutions/ai-agent-consulting/"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "AI Automation Consulting", "url": "https://supergood.solutions/ai-automation-consulting/"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "AI Readiness Assessment", "url": "https://supergood.solutions/ai-readiness-assessment/"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "AI Agent Governance", "url": "https://supergood.solutions/ai-agent-governance/"}}
+      ]
     },
     {
       "@type": "WebSite",
@@ -277,53 +288,24 @@ section h2 {
 }
 .problem-card p { font-size: 0.9375rem; color: var(--text-2); line-height: 1.6; }
 
-/* What We Do */
-.before-after {
+/* Services grid */
+.services-grid {
   margin-top: 56px;
-  display: grid; grid-template-columns: 1fr auto 1fr; gap: 0; align-items: stretch;
-  border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;
 }
-.ba-col { padding: 40px 32px; }
-.ba-col.before { background: var(--surface); }
-.ba-col.after { background: var(--surface-2); }
-.ba-col h3 {
-  font-family: var(--mono); font-size: 0.75rem; font-weight: 500;
-  text-transform: uppercase; letter-spacing: 0.08em;
-  margin-bottom: 24px;
+.service-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+  padding: 32px 28px;
+  text-decoration: none; display: block;
+  transition: border-color 0.2s, background 0.3s;
 }
-.ba-col.before h3 { color: var(--text-3); }
-.ba-col.after h3 { color: var(--green); }
-.ba-col ul { list-style: none; }
-.ba-col li {
-  font-size: 0.9375rem; color: var(--text-2); padding: 10px 0;
-  border-bottom: 1px solid var(--border);
-}
-.ba-col li:last-child { border-bottom: none; }
-.ba-col.before li::before { content: '✕ '; color: var(--text-3); font-size: 0.75rem; }
-.ba-col.after li::before { content: '→ '; color: var(--green); }
-.ba-arrow {
-  display: flex; align-items: center; justify-content: center;
-  width: 60px; background: var(--bg); color: var(--text-3);
-  font-size: 1.5rem; border-left: 1px solid var(--border); border-right: 1px solid var(--border);
-}
-
-/* Pillars */
-.pillars {
-  margin-top: 64px;
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
-  background: var(--border); border-radius: 12px; overflow: hidden;
-}
-.pillar {
-  background: var(--surface); padding: 40px 32px;
-  transition: background 0.3s;
-}
-.pillar:hover { background: var(--surface-2); }
-.pillar-icon {
-  font-family: var(--mono); font-size: 0.875rem; font-weight: 500;
-  color: var(--green); margin-bottom: 20px;
-}
-.pillar h3 { font-size: 1.125rem; font-weight: 600; margin-bottom: 10px; }
-.pillar p { font-size: 0.9375rem; color: var(--text-2); line-height: 1.6; }
+.service-card:hover { border-color: var(--green); background: var(--surface-2); }
+.service-card .num { font-family: var(--mono); font-size: 0.75rem; color: var(--green); margin-bottom: 16px; }
+.service-card h3 { font-size: 1.125rem; font-weight: 700; color: var(--text); margin-bottom: 10px; letter-spacing: -0.01em; }
+.service-card p { font-size: 0.9375rem; color: var(--text-2); line-height: 1.6; }
+.service-card .go { font-family: var(--mono); font-size: 0.8125rem; color: var(--text-3); margin-top: 16px; }
+.service-card:hover .go { color: var(--green); }
+.service-card.hub { background: var(--surface-2); border-color: var(--text-3); }
 
 /* Proof */
 .proof-card {
@@ -345,6 +327,23 @@ section h2 {
   font-family: var(--mono); font-size: 0.8125rem;
   color: var(--text-3); margin-top: 20px;
 }
+.proof-secondary {
+  margin-top: 20px;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;
+}
+.proof-mini {
+  display: block; text-decoration: none;
+  border: 1px solid var(--border); border-radius: 12px;
+  padding: 28px 26px; background: var(--surface);
+  transition: border-color 0.2s;
+}
+.proof-mini:hover { border-color: var(--green); }
+.proof-mini-stat {
+  font-family: var(--mono); font-weight: 700; font-size: 1.375rem;
+  color: var(--green); margin-bottom: 10px;
+}
+.proof-mini p { font-size: 0.875rem; color: var(--text-2); line-height: 1.6; }
+.proof-mini .go { font-family: var(--mono); font-size: 0.75rem; color: var(--green); }
 
 /* How It Works */
 .steps {
@@ -489,8 +488,11 @@ footer a:hover { color: var(--text-2); }
 <nav id="nav">
   <div class="container">
     <a href="#" class="wordmark">superg<span class="oo-wrap"><span class="oo-dot"></span><span class="oo-dot"></span></span>d<span class="dot-period">.</span></a>
-    <a href="/blog/" style="font-size:0.875rem;color:var(--text-3);text-decoration:none;margin-right:16px;">Blog</a>
-    <a href="#contact" class="cta-nav">Get in touch</a>
+    <div style="display:flex;align-items:center;gap:24px;">
+      <a href="/ai-consulting/" style="font-size:0.875rem;color:var(--text-3);text-decoration:none;">Services</a>
+      <a href="/blog/" style="font-size:0.875rem;color:var(--text-3);text-decoration:none;">Blog</a>
+      <a href="#contact" class="cta-nav">Get in touch</a>
+    </div>
   </div>
 </nav>
 
@@ -498,12 +500,12 @@ footer a:hover { color: var(--text-2); }
 <header class="hero" role="banner">
   <div class="container">
     <div class="hero-logo" aria-label="Supergood">superg<span class="oo-wrap"><span class="oo-dot" id="hd1"></span><span class="oo-dot" id="hd2"></span></span>d<span class="dot-period">.</span></div>
-    <div class="hero-label">AI automation consulting</div>
-    <h1>Your team wastes 20&nbsp;hours a&nbsp;week on work <em>a&nbsp;robot should&nbsp;do.</em></h1>
-    <p class="sub">Somewhere in your marketing org, a human being is copy-pasting between spreadsheets like it's 2009. We find that person. We set them free. Using tools you already pay for.</p>
+    <div class="hero-label">AI consulting &amp; agent engineering</div>
+    <h1>AI consulting for teams who need agents that work in production, not <em>another demo.</em></h1>
+    <p class="sub">Somewhere on your team, a person is doing work an agent could do — and somewhere else, an AI pilot is stuck in demo purgatory. Supergood is an AI consulting practice that fixes both: workflow automation that runs today, and production AI agents built with the guardrails to keep running tomorrow.</p>
     <div class="hero-cta">
-      <a href="#contact" class="btn btn-primary">Find your wasted hours</a>
-      <a href="#how" class="btn btn-ghost">How it works</a>
+      <a href="#contact" class="btn btn-primary">Book 30 minutes</a>
+      <a href="#services" class="btn btn-ghost">See how we help</a>
     </div>
   </div>
 </header>
@@ -526,7 +528,7 @@ footer a:hover { color: var(--text-2); }
 <section id="problem">
   <div class="container">
     <div class="section-label reveal">The problem</div>
-    <h2 class="reveal">You're not behind on AI.<br>You're drowning in busywork.</h2>
+    <h2 class="reveal">You're not behind on AI.<br>You're stuck between two problems.</h2>
     <div class="problem-grid reveal">
       <div class="problem-card">
         <div class="num">01</div>
@@ -535,13 +537,13 @@ footer a:hover { color: var(--text-2); }
       </div>
       <div class="problem-card">
         <div class="num">02</div>
-        <h3>Reports nobody reads</h3>
-        <p>Hours building weekly reports that get glanced at for 30 seconds. It's like writing a novel and your audience only reads the back cover. Every. Single. Week.</p>
+        <h3>Demo-ware that never ships</h3>
+        <p>Your AI pilot works great in the sandbox. Then it hits real data, real edge cases, real stakes — and quietly gets shelved. A demo isn't a system.</p>
       </div>
       <div class="problem-card">
         <div class="num">03</div>
         <h3>Broken handoffs</h3>
-        <p>Your tools don't talk to each other. So your people play telephone between platforms — and like the game, the message arrives completely wrong.</p>
+        <p>Your tools don't talk to each other — human or agent. So work gets stuck at every seam, and like a game of telephone, the message arrives completely wrong.</p>
       </div>
     </div>
   </div>
@@ -552,46 +554,39 @@ footer a:hover { color: var(--text-2); }
 <section id="services">
   <div class="container">
     <div class="section-label reveal">What we do</div>
-    <h2 class="reveal">Less grunt work. More real work.</h2>
-    <div class="before-after reveal">
-      <div class="ba-col before">
-        <h3>Before</h3>
-        <ul>
-          <li>Manual data entry across 4 platforms</li>
-          <li>Weekly reports built by hand in Sheets</li>
-          <li>Leads sitting in forms for 6+ hours</li>
-          <li>Campaign setup takes a full day</li>
-          <li>"Can someone update the tracker?" (again)</li>
-        </ul>
-      </div>
-      <div class="ba-arrow">→</div>
-      <div class="ba-col after">
-        <h3>After</h3>
-        <ul>
-          <li>Data flows automatically, zero touch</li>
-          <li>Reports build and send themselves</li>
-          <li>Leads routed in under 5 minutes</li>
-          <li>Campaign setup in 20 minutes</li>
-          <li>The tracker? It gets it, baby.</li>
-        </ul>
-      </div>
-    </div>
-    <div class="pillars reveal">
-      <div class="pillar">
-        <div class="pillar-icon">services_</div>
-        <h3>Workflow Audits &amp; Builds</h3>
-        <p>We map your ops, find the waste, and build automations that actually stick. Not a slide deck you'll forget by Thursday — working systems, running in production.</p>
-      </div>
-      <div class="pillar">
-        <div class="pillar-icon">retainer_</div>
-        <h3>Monthly Automation Sprints</h3>
-        <p>We don't build it and bail. Monthly retainer: identify new workflows to automate, maintain what's running, train your team. Think of us as your ops immune system. No committee meetings about committee meetings.</p>
-      </div>
-      <div class="pillar">
-        <div class="pillar-icon">relationships_</div>
-        <h3>The Human Part</h3>
-        <p>AI can automate your reports. It can't tell you which reports matter. We bring 14 years of product and ops experience — the kind of judgment you can't download.</p>
-      </div>
+    <h2 class="reveal">Five ways into AI consulting. Pick your problem.</h2>
+    <p class="reveal" style="font-size:1.0625rem;color:var(--text-2);max-width:680px;margin-top:20px;line-height:1.7;">Whether you're drowning in manual busywork or trying to get an AI pilot past the demo stage, it's the same AI consulting practice underneath: audit, build, govern.</p>
+    <div class="services-grid reveal">
+      <a href="/ai-consulting/" class="service-card hub">
+        <div class="num">Start here</div>
+        <h3>AI Consulting</h3>
+        <p>The hub: what we do, how we price it, and which service below fits your problem.</p>
+        <div class="go">See the overview →</div>
+      </a>
+      <a href="/ai-agent-consulting/" class="service-card">
+        <div class="num">Flagship</div>
+        <h3>AI Agent Consulting</h3>
+        <p>Production AI agents — architecture, evals, deployment, and the discipline to get past demo-ware.</p>
+        <div class="go">Learn more →</div>
+      </a>
+      <a href="/ai-automation-consulting/" class="service-card">
+        <div class="num">Workflows</div>
+        <h3>AI Automation Consulting</h3>
+        <p>Workflow automation using tools you already pay for. No new platform, no rip-and-replace.</p>
+        <div class="go">Learn more →</div>
+      </a>
+      <a href="/ai-readiness-assessment/" class="service-card">
+        <div class="num">From $500</div>
+        <h3>AI Readiness Assessment</h3>
+        <p>Know exactly where AI pays off before you spend a dollar building it.</p>
+        <div class="go">Learn more →</div>
+      </a>
+      <a href="/ai-agent-governance/" class="service-card">
+        <div class="num">Guardrails</div>
+        <h3>AI Agent Governance</h3>
+        <p>Guardrails, observability, and incident runbooks so your agents don't become the incident.</p>
+        <div class="go">Learn more →</div>
+      </a>
     </div>
   </div>
 </section>
@@ -609,6 +604,18 @@ footer a:hover { color: var(--text-2); }
         <div class="detail">Tools used: existing M365 stack — $0 in new software. The best tool is the one you're already paying for.</div>
       </div>
     </div>
+    <div class="proof-secondary reveal">
+      <a href="/blog/case-study-thursday-agent-guardrails-lessons-2026/" class="proof-mini">
+        <div class="proof-mini-stat">3 failures → 4 guardrails</div>
+        <p>Three production failure modes hit on our first shipped marketing-ops agent. Four guardrails fixed them for good — documented, not hand-waved.</p>
+        <div class="go" style="margin-top:12px;">Read the case study →</div>
+      </a>
+      <a href="/blog/lead-enrichment-automation-12-hours-saved/" class="proof-mini">
+        <div class="proof-mini-stat">1,369% ROI</div>
+        <p>In the first 30 days automating lead enrichment for a SaaS marketing team — $49/month in tooling, 12 hours/week back.</p>
+        <div class="go" style="margin-top:12px;">Read the case study →</div>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -625,7 +632,7 @@ footer a:hover { color: var(--text-2); }
       </div>
       <div class="step">
         <h3>Build</h3>
-        <p>We build the automations using your existing tools. No vendor lock-in, no proprietary black boxes, no "we'll need another 6 months." You own everything.</p>
+        <p>We build the automation or agent using your existing tools, with guardrails baked in from the start. No vendor lock-in, no proprietary black boxes, no "we'll need another 6 months." You own everything.</p>
       </div>
       <div class="step">
         <h3>Run</h3>
@@ -646,7 +653,8 @@ footer a:hover { color: var(--text-2); }
       <div class="about-text">
         <h3>Ryan Sandoval</h3>
         <div class="about-title">Founder &amp; AI Automation Consultant</div>
-        <p>14 years building digital products at Viking Cruises, Live Nation, Ticketmaster, and Logitech. I've sat in enough standups to know that half the "work" people do isn't work — it's busywork wearing a lanyard. I started Supergood because I kept seeing the same problem everywhere: brilliant teams spending their days on tasks a well-configured flow could handle before breakfast. I don't sell AI hype. I find the manual processes killing your team and I make them disappear.</p>
+        <p>14 years building digital products at Viking Cruises, Live Nation, Ticketmaster, and Logitech. I've sat in enough standups to know that half the "work" people do isn't work — it's busywork wearing a lanyard. I started Supergood because I kept seeing the same problem everywhere: brilliant teams spending their days on tasks a well-configured flow — or a well-governed agent — could handle before breakfast. I don't sell AI hype. I find the manual processes killing your team and I make them disappear.</p>
+        <p style="margin-top:16px;"><a href="/about/" style="color:var(--green);text-decoration:underline;text-underline-offset:3px;">More about Ryan and how Supergood works →</a></p>
       </div>
     </div>
   </div>
@@ -709,7 +717,7 @@ footer a:hover { color: var(--text-2); }
 <footer>
   <div class="container">
     <p>© 2026 superg●●d.</p>
-    <p>14 years shipping product at Viking, Live Nation, and Logitech. Now we automate yours.</p>
+    <p><a href="/about/">About</a> · <a href="/faq/">FAQ</a> · <a href="/ai-consulting/">Services</a> · <a href="/blog/">Blog</a></p>
   </div>
 </footer>
 

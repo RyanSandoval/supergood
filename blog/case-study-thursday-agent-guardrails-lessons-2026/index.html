@@ -29,7 +29,7 @@
 <meta name="twitter:description" content="A real-world case study on deploying an AI agent into marketing ops: three failure modes we hit in production, four guardrails that fixed them, and a practical checklist for teams about to ship their first agent.">
 <meta name="twitter:image" content="https://supergood.solutions/og-image.png">
 <script type="application/ld+json">
-{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "What Actually Broke When We Deployed Our First AI Agent (And How We Fixed It)", "description": "A real-world case study on deploying an AI agent into marketing ops: three failure modes we hit in production, four guardrails that fixed them, and a practical checklist for teams about to ship their first agent.", "image": "https://supergood.solutions/og-image.png", "url": "https://supergood.solutions/blog/case-study-thursday-agent-guardrails-lessons-2026/", "datePublished": "2026-02-26", "dateModified": "2026-02-26", "wordCount": 0,"timeRequired":"PT3M","keywords":["Case Study Thursday · Agent Ops","AI agents","artificial intelligence","enterprise AI"],"isPartOf":{"@type":"Blog","url":"https://supergood.solutions/blog/"},"inLanguage":"en-US" "articleSection": "Case Study Thursday · Agent Ops", "inLanguage": "en", "isAccessibleForFree": true, "author": {"@type": "Person", "name": "Ryan Sandoval", "url": "https://linkedin.com/in/RyanSandoval"}, "publisher": {"@type": "Organization", "name": "Supergood Solutions", "url": "https://supergood.solutions", "logo": {"@type": "ImageObject", "url": "https://supergood.solutions/og-image.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://supergood.solutions/blog/case-study-thursday-agent-guardrails-lessons-2026/"}, "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".callout", "article h1", "article h2"]}}
+{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "What Actually Broke When We Deployed Our First AI Agent (And How We Fixed It)", "description": "A real-world case study on deploying an AI agent into marketing ops: three failure modes we hit in production, four guardrails that fixed them, and a practical checklist for teams about to ship their first agent.", "image": "https://supergood.solutions/og-image.png", "url": "https://supergood.solutions/blog/case-study-thursday-agent-guardrails-lessons-2026/", "datePublished": "2026-02-26", "dateModified": "2026-02-26", "wordCount": 0,"timeRequired":"PT3M","keywords":["Case Study Thursday · Agent Ops","AI agents","artificial intelligence","enterprise AI"],"isPartOf":{"@type":"Blog","url":"https://supergood.solutions/blog/"},"inLanguage":"en-US", "articleSection": "Case Study Thursday · Agent Ops", "inLanguage": "en", "isAccessibleForFree": true, "author": {"@type": "Person", "name": "Ryan Sandoval", "url": "https://linkedin.com/in/RyanSandoval"}, "publisher": {"@type": "Organization", "name": "Supergood Solutions", "url": "https://supergood.solutions", "logo": {"@type": "ImageObject", "url": "https://supergood.solutions/og-image.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://supergood.solutions/blog/case-study-thursday-agent-guardrails-lessons-2026/"}, "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".callout", "article h1", "article h2"]}}
 </script>
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://supergood.solutions/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://supergood.solutions/blog/"}, {"@type": "ListItem", "position": 3, "name": "What Actually Broke When We Deployed Our First AI Agent (And How We Fixed It)", "item": "https://supergood.solutions/blog/case-study-thursday-agent-guardrails-lessons-2026/"}]}
@@ -108,6 +108,17 @@ article a:hover { color: var(--text); }
 .sources-section ul { list-style: none; padding: 0; }
 .sources-section li { margin-bottom: 8px; font-size: 0.875rem; }
 
+.faq-section{margin-top:48px;padding-top:32px;border-top:1px solid var(--border)}
+.faq-section h2{margin-top:0}
+.faq-item{margin-bottom:28px}
+.faq-item h3{font-size:1rem;color:var(--text);margin:0 0 8px}
+.faq-item p{font-size:0.9375rem}
+
+.service-cta{border:1px solid var(--green);border-radius:12px;padding:32px 36px;margin:48px 0;background:var(--surface-2)}
+.service-cta-label{font-family:var(--mono);font-size:0.75rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px}
+.service-cta p{margin-bottom:16px}
+.service-cta-btn{display:inline-block;background:var(--green);color:var(--bg);font-weight:600;padding:12px 24px;border-radius:8px;text-decoration:none;font-size:0.9375rem}
+
 footer { background: var(--surface); padding: 40px 0; margin-top: 80px; border-top: 1px solid var(--border); text-align: center; }
 footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
 
@@ -130,6 +141,38 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What are the most common failure modes when deploying an AI agent into production?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Three failure modes showed up in the first two weeks of production: the agent edited CMS fields it had technical write access to but wasn't supposed to touch, it hallucinated a vendor contact and wrote it into a record as fact, and a brief API outage triggered a runaway retry loop that ran for four hours and cost $340 in unplanned API spend. None of the three surfaced during the initial 50-record test batch or the stakeholder demos — they only showed up after the agent was turned loose on the real queue."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What guardrails fix the most common AI agent production failures?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Field-level write allowlists stop an agent from editing data outside its scope — instead of a record-level write token, the agent can only call an update function for an explicitly approved list of fields. Structured outputs with confidence and source fields stop hallucinated data from being written as fact, routing low-confidence outputs to a human review queue instead. Circuit breakers, hard retry caps, and per-run cost budgets stop runaway retry loops from running indefinitely and burning through API spend."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What should be on a pre-deployment checklist for shipping an AI agent to production?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "At minimum: every write tool needs an explicit field-level allowlist, destructive actions need a human-approval step, outputs need confidence and source fields so low-confidence guesses get routed to review instead of written as fact, and retries need a hard cap paired with a circuit breaker and a per-run cost budget. It's also worth logging every tool call and LLM invocation, testing on edge cases like empty inputs and API timeouts, and having an incident response path before you go live."
+      }
+    }
+  ]
+}
+</script>
 </head>
 
 <body>
@@ -147,13 +190,15 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
   <p class="subtitle">Three failure modes we hit in production, four guardrails that fixed them, and a pre-ship checklist for teams about to deploy their first agent into real ops.</p>
   <div class="meta">Published February 26, 2026 — 9 min read</div>
 
+  <div class="callout"><p><strong>TL;DR:</strong> A production AI agent for content ops broke three ways — it edited fields it shouldn't have, hallucinated a vendor contact and wrote it into a record as fact, and got stuck in a four-hour retry loop that cost $340 in unplanned API spend. The fixes were field-level write allowlists, structured outputs with explicit confidence and source fields, and circuit breakers with hard retry caps and cost budgets. Build these guardrails before you deploy — retrofitting them after an incident costs more than building them upfront.</p></div>
+
   <p>The demo worked perfectly.</p>
 
   <p>Of course it did. Demos always work. You control the inputs, you know the golden-path outputs, and nobody is feeding the agent anything weird. We ran the demo for stakeholders three times. It was smooth every time.</p>
 
   <p>Two weeks into production, the agent had confidently written to a field it wasn't supposed to touch, hallucinated a vendor contact that didn't exist, and — in one memorable afternoon — gotten itself stuck in a loop that burned through more API tokens in four hours than we'd used in the entire testing phase.</p>
 
-  <p>This post is the debrief. What broke, why it broke, what we built to stop it from happening again, and the minimum viable guardrail layer your team should have in place before you ship.</p>
+  <p>This post is the debrief. What broke, why it broke, what we built to stop it from happening again, and the minimum viable <a href="https://supergood.solutions/ai-agent-governance/">guardrail layer</a> your team should have in place before you ship.</p>
 
   <p><em>Note: the details below are drawn from a composite of real client engagements. Names and specifics are generalized.</em></p>
 
@@ -161,7 +206,7 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
 
   <p>The client was a mid-size B2B SaaS company with a lean marketing ops team. They had a growing content library — product pages, case studies, help articles — that needed periodic enrichment: updating outdated stats, tagging content by persona and funnel stage, flagging gaps, and writing summary briefs for the sales team.</p>
 
-  <p>Doing this manually meant one person spending about 20 hours a week on a task that was mostly mechanical. A well-scoped AI agent felt like the right call.</p>
+  <p>Doing this manually meant one person spending about 20 hours a week on a task that was mostly mechanical. A well-scoped AI agent — the kind of scoping work <a href="https://supergood.solutions/ai-agent-consulting/">AI agent consulting</a> exists for — felt like the right call.</p>
 
   <p>The agent's job, in plain English:</p>
   <ol>
@@ -332,6 +377,13 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
 
   <p>Your future self will thank you.</p>
 
+  <div class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item"><h3>What are the most common failure modes when deploying an AI agent into production?</h3><p>Three failure modes showed up in the first two weeks of production: the agent edited CMS fields it had technical write access to but wasn't supposed to touch, it hallucinated a vendor contact and wrote it into a record as fact, and a brief API outage triggered a runaway retry loop that ran for four hours and cost $340 in unplanned API spend. None of the three surfaced during the initial 50-record test batch or the stakeholder demos — they only showed up after the agent was turned loose on the real queue.</p></div>
+    <div class="faq-item"><h3>What guardrails fix the most common AI agent production failures?</h3><p>Field-level write allowlists stop an agent from editing data outside its scope — instead of a record-level write token, the agent can only call an update function for an explicitly approved list of fields. Structured outputs with confidence and source fields stop hallucinated data from being written as fact, routing low-confidence outputs to a human review queue instead. Circuit breakers, hard retry caps, and per-run cost budgets stop runaway retry loops from running indefinitely and burning through API spend.</p></div>
+    <div class="faq-item"><h3>What should be on a pre-deployment checklist for shipping an AI agent to production?</h3><p>At minimum: every write tool needs an explicit field-level allowlist, destructive actions need a human-approval step, outputs need confidence and source fields so low-confidence guesses get routed to review instead of written as fact, and retries need a hard cap paired with a circuit breaker and a per-run cost budget. It's also worth logging every tool call and LLM invocation, testing on edge cases like empty inputs and API timeouts, and having an incident response path before you go live.</p></div>
+  </div>
+
   <div class="sources-section">
     <h3>Sources:</h3>
     <ul>
@@ -346,6 +398,11 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
 
   <div class="cta-box">
     <p>Deploying an AI agent into your ops stack and want to gut-check your guardrails before you go live? That's exactly what we do at Supergood Solutions — <a href="mailto:hello@supergood.solutions" style="color: var(--green);">reach out</a> and let's talk through your setup before production finds the edge cases for you.</p>
+  </div>
+  <div class="service-cta">
+    <p class="service-cta-label">Need this in production?</p>
+    <p>Field-level allowlists, confidence-scored outputs, circuit breakers, cost budgets — these aren't nice-to-haves, they're the difference between an agent that saves 18 hours a week and one that quietly corrupts your CMS. We build that guardrail layer before your agent ever touches production data.</p>
+    <a href="https://supergood.solutions/ai-agent-governance/" class="service-cta-btn">See AI Agent Governance →</a>
   </div>
 </article>
 
