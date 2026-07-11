@@ -28,22 +28,71 @@
 <meta name="twitter:description" content="A layered evaluation strategy for AI agents combining trajectory metrics, outcome metrics, continuous red teaming, and CI/CD pipelines to catch failures before users do.">
 <meta name="twitter:image" content="https://supergood.solutions/og-image.png">
 <script type="application/ld+json">
-{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to Test AI Agents Before They Break in Production", "description": "A layered evaluation strategy for AI agents combining trajectory metrics, outcome metrics, continuous red teaming, and CI/CD pipelines to catch failures before users do.", "image": "https://supergood.solutions/og-image.png", "url": "https://supergood.solutions/blog/future-friday-agent-security-amazon-onyx-2026/", "datePublished": "2026-03-13", "dateModified": "2026-03-13", "wordCount": 0,"timeRequired":"PT3M","keywords":["AI Agent Ops","AI agents","artificial intelligence","enterprise AI"],"isPartOf":{"@type":"Blog","url":"https://supergood.solutions/blog/"},"inLanguage":"en-US" "articleSection": "AI Agent Ops", "inLanguage": "en", "isAccessibleForFree": true, "author": {"@type": "Person", "name": "Ryan Sandoval", "url": "https://linkedin.com/in/RyanSandoval"}, "publisher": {"@type": "Organization", "name": "Supergood Solutions", "url": "https://supergood.solutions", "logo": {"@type": "ImageObject", "url": "https://supergood.solutions/og-image.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://supergood.solutions/blog/future-friday-agent-security-amazon-onyx-2026/"}, "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".callout", "article h1", "article h2"]}}
+{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to Test AI Agents Before They Break in Production", "description": "A layered evaluation strategy for AI agents combining trajectory metrics, outcome metrics, continuous red teaming, and CI/CD pipelines to catch failures before users do.", "image": "https://supergood.solutions/og-image.png", "url": "https://supergood.solutions/blog/future-friday-agent-security-amazon-onyx-2026/", "datePublished": "2026-03-13", "dateModified": "2026-03-13", "wordCount": 0,"timeRequired":"PT3M","keywords":["AI Agent Ops","AI agents","artificial intelligence","enterprise AI"],"isPartOf":{"@type":"Blog","url":"https://supergood.solutions/blog/"},"inLanguage":"en-US", "articleSection": "AI Agent Ops", "inLanguage": "en", "isAccessibleForFree": true, "author": {"@type": "Person", "name": "Ryan Sandoval", "url": "https://linkedin.com/in/RyanSandoval"}, "publisher": {"@type": "Organization", "name": "Supergood Solutions", "url": "https://supergood.solutions", "logo": {"@type": "ImageObject", "url": "https://supergood.solutions/og-image.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://supergood.solutions/blog/future-friday-agent-security-amazon-onyx-2026/"}, "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".callout", "article h1", "article h2"]}}
 </script>
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://supergood.solutions/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://supergood.solutions/blog/"}, {"@type": "ListItem", "position": 3, "name": "How to Test AI Agents Before They Break in Production", "item": "https://supergood.solutions/blog/future-friday-agent-security-amazon-onyx-2026/"}]}
 </script>
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://supergood.solutions/"},
-    {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://supergood.solutions/blog/"},
-    {"@type": "ListItem", "position": 3, "name": "How to Test AI Agents Before They Break in Production", "item": "https://supergood.solutions/blog/future-friday-agent-security-amazon-onyx-2026/"}
-  ]
-}
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+{"@type":"Question","name":"How is AI agent evaluation different from standard LLM evaluation?","acceptedAnswer":{"@type":"Answer","text":"Standard LLM evaluation tests model outputs in isolation. Agent evaluation tests the entire system: multi-step reasoning, tool selection and execution, memory retrieval, error recovery, and end-to-end task completion — agents have trajectories, not just outputs, and those trajectories need independent evaluation."}},
+{"@type":"Question","name":"What are the most important metrics for evaluating AI agents in production?","acceptedAnswer":{"@type":"Answer","text":"Both trajectory metrics (tool selection accuracy, reasoning coherence, trajectory precision/recall, error recovery rate) and outcome metrics (task success rate, response quality, latency, cost per completion)."}},
+{"@type":"Question","name":"Can I use an LLM to evaluate another LLM's agent behavior?","acceptedAnswer":{"@type":"Answer","text":"Yes — LLM-as-judge is standard practice, targeting 0.80+ Spearman correlation with human judgment. Caveats: LLM judges favor verbose outputs, struggle with domain-specific correctness, and need periodic recalibration."}},
+{"@type":"Question","name":"What is continuous red teaming for AI agents?","acceptedAnswer":{"@type":"Answer","text":"Running adversarial tests against an agent on an ongoing basis, not just once before launch — automated prompt injection scanning, behavioral probing, and business-logic exploit testing specific to the agent's domain and tool access."}},
+{"@type":"Question","name":"What's the minimum eval setup for a small team shipping AI agents?","acceptedAnswer":{"@type":"Answer","text":"Instrument full execution traces with a tool like Langfuse or Arize Phoenix, build a regression test suite from every production failure, and add commit-triggered eval checks to the deployment pipeline. Having any structured evaluation beats having none."}}
+]}
 </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0b;--surface:#111113;--surface-2:#18181b;--border:#27272a;--text:#fafafa;--text-2:#a1a1aa;--text-3:#8c8c96;--green:#22c55e;--mono:'JetBrains Mono',monospace}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;background:rgba(10,10,11,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .inner{max-width:720px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
+.wordmark{font-weight:800;font-size:1.125rem;letter-spacing:-0.03em;color:var(--text);text-decoration:none}
+.wordmark .dot{color:var(--green)}
+nav a.back{font-size:0.875rem;color:var(--text-3);text-decoration:none}
+nav a.back:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:140px 24px 80px}
+article .tag{font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:16px}
+article h1{font-size:clamp(2rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin-bottom:20px}
+article .hero{width:100%;height:auto;display:block;border:1px solid var(--border);border-radius:12px;margin-bottom:32px}
+article .meta{font-family:var(--mono);font-size:0.75rem;color:var(--text-3);margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+article h2{font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;margin:56px 0 16px}
+article h3{font-size:1.125rem;font-weight:600;margin:40px 0 12px}
+article p{font-size:1rem;color:var(--text-2);margin-bottom:20px}
+article strong{color:var(--text)}
+article ul,article ol{color:var(--text-2);margin-bottom:20px;padding-left:24px}
+article li{margin-bottom:8px}
+article a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+article a:hover{color:var(--text)}
+article hr{border:none;border-top:1px solid var(--border);margin:40px 0}
+article code{font-family:var(--mono);font-size:0.875em;background:var(--surface-2);color:var(--text);padding:2px 6px;border-radius:4px;border:1px solid var(--border)}
+article pre{background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:16px 20px;margin:24px 0;overflow-x:auto;font-family:var(--mono);font-size:0.8125rem;line-height:1.6}
+article pre code{color:var(--text);background:transparent;padding:0;border:none;border-radius:0;font-size:inherit;white-space:pre}
+.callout{background:var(--surface-2);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:20px 24px;margin:32px 0}
+.callout code{background:rgba(255,255,255,0.04)}
+.callout p{margin-bottom:0;font-size:0.9375rem}
+.faq-section{margin-top:48px;padding-top:32px;border-top:1px solid var(--border)}
+.faq-section h2{margin-top:0}
+.faq-item{margin-bottom:28px}
+.faq-item h3{font-size:1rem;color:var(--text);margin:0 0 8px}
+.faq-item p{font-size:0.9375rem}
+.service-cta{border:1px solid var(--green);border-radius:12px;padding:32px 36px;margin:48px 0;background:var(--surface-2)}
+.service-cta-label{font-family:var(--mono);font-size:0.75rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px}
+.service-cta p{margin-bottom:16px}
+.service-cta-btn{display:inline-block;background:var(--green);color:var(--bg);font-weight:600;padding:12px 24px;border-radius:8px;text-decoration:none;font-size:0.9375rem}
+.sources-section{margin-top:48px;padding-top:32px;border-top:1px solid var(--border)}
+.sources-section h3{font-size:1rem;font-weight:600;margin-bottom:12px;color:var(--text)}
+.sources-section ul{list-style:none;padding:0}
+.sources-section li{margin-bottom:8px;font-size:0.875rem}
+footer{background:var(--surface);padding:40px 0;margin-top:80px;border-top:1px solid var(--border);text-align:center}
+footer p{color:var(--text-3);font-size:0.875rem;margin:0}
+.reading-progress{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--green);z-index:200;will-change:transform}
+@media(max-width:768px){article{padding:120px 20px 60px}article h1{font-size:2rem}}
+</style>
 </head>
 <body>
 <div class="reading-progress" aria-hidden="true"></div>
@@ -166,25 +215,27 @@
 <li><strong>Sample for human review</strong> — Pick 5–10% of edge cases weekly for domain expert validation.</li>
 </ol>
 
-<h2>FAQ</h2>
+<div class="faq-section">
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item"><h3>How is AI agent evaluation different from standard LLM evaluation?</h3>
+<p>Standard LLM evaluation tests model outputs in isolation. Agent evaluation tests the entire system: multi-step reasoning, tool selection and execution, memory retrieval, error recovery, and end-to-end task completion. The key difference is that agents have <em>trajectories</em> (sequences of actions), not just outputs, and those trajectories need independent evaluation to diagnose failures.</p></div>
+<div class="faq-item"><h3>What are the most important metrics for evaluating AI agents in production?</h3>
+<p>You need both trajectory metrics and outcome metrics. Trajectory metrics include tool selection accuracy, reasoning coherence, trajectory precision/recall, and error recovery rate. Outcome metrics include task success rate, response quality, latency, and cost per completion.</p></div>
+<div class="faq-item"><h3>Can I use an LLM to evaluate another LLM's agent behavior?</h3>
+<p>Yes — LLM-as-judge is now standard practice. The benchmark to aim for is 0.80+ Spearman correlation with human judgment. The main caveats: LLM judges tend to favor verbose outputs, struggle with domain-specific correctness, and need periodic recalibration.</p></div>
+<div class="faq-item"><h3>What is continuous red teaming for AI agents?</h3>
+<p>Continuous red teaming means running adversarial tests against your agent on an ongoing basis — not just once before launch. This includes automated prompt injection scanning, behavioral probing, and business-logic exploit testing specific to your agent's domain and tool access.</p></div>
+<div class="faq-item"><h3>How do I integrate agent evaluation into a CI/CD pipeline?</h3>
+<p>Use three trigger types: commit-triggered evals (fast baseline checks on every prompt or config change), scheduled evals (comprehensive suites run daily/weekly), and event-driven evals (triggered by anomalies). Pair with progressive canary deployment — route a small percentage of traffic to new versions and promote only if quality gates pass.</p></div>
+<div class="faq-item"><h3>What's the minimum eval setup for a small team shipping AI agents?</h3>
+<p>Start with three things: (1) instrument full execution traces using an open-source tool like Langfuse or Arize Phoenix, (2) build a regression test suite from every production failure, and (3) add commit-triggered eval checks to your deployment pipeline. The most important thing is having <em>any</em> structured evaluation — most teams currently have none.</p></div>
+</div>
 
-<h3>How is AI agent evaluation different from standard LLM evaluation?</h3>
-<p>Standard LLM evaluation tests model outputs in isolation. Agent evaluation tests the entire system: multi-step reasoning, tool selection and execution, memory retrieval, error recovery, and end-to-end task completion. The key difference is that agents have <em>trajectories</em> (sequences of actions), not just outputs, and those trajectories need independent evaluation to diagnose failures.</p>
-
-<h3>What are the most important metrics for evaluating AI agents in production?</h3>
-<p>You need both trajectory metrics and outcome metrics. Trajectory metrics include tool selection accuracy, reasoning coherence, trajectory precision/recall, and error recovery rate. Outcome metrics include task success rate, response quality, latency, and cost per completion.</p>
-
-<h3>Can I use an LLM to evaluate another LLM's agent behavior?</h3>
-<p>Yes — LLM-as-judge is now standard practice. The benchmark to aim for is 0.80+ Spearman correlation with human judgment. The main caveats: LLM judges tend to favor verbose outputs, struggle with domain-specific correctness, and need periodic recalibration.</p>
-
-<h3>What is continuous red teaming for AI agents?</h3>
-<p>Continuous red teaming means running adversarial tests against your agent on an ongoing basis — not just once before launch. This includes automated prompt injection scanning, behavioral probing, and business-logic exploit testing specific to your agent's domain and tool access.</p>
-
-<h3>How do I integrate agent evaluation into a CI/CD pipeline?</h3>
-<p>Use three trigger types: commit-triggered evals (fast baseline checks on every prompt or config change), scheduled evals (comprehensive suites run daily/weekly), and event-driven evals (triggered by anomalies). Pair with progressive canary deployment — route a small percentage of traffic to new versions and promote only if quality gates pass.</p>
-
-<h3>What's the minimum eval setup for a small team shipping AI agents?</h3>
-<p>Start with three things: (1) instrument full execution traces using an open-source tool like Langfuse or Arize Phoenix, (2) build a regression test suite from every production failure, and (3) add commit-triggered eval checks to your deployment pipeline. The most important thing is having <em>any</em> structured evaluation — most teams currently have none.</p>
+<div class="service-cta">
+<p class="service-cta-label">Need this in production?</p>
+<p>Trajectory metrics, LLM-as-judge calibration, red-teaming, and CI/CD eval gates are exactly the kind of testing infrastructure we build into agents before they ship, not after the first bad release.</p>
+<a href="https://supergood.solutions/ai-agent-consulting/" class="service-cta-btn">See AI Agent Consulting →</a>
+</div>
 
 <div class="sources-section">
 <h3>Sources</h3>

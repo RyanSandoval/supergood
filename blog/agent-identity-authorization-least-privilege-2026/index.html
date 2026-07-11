@@ -28,22 +28,72 @@
 <meta name="twitter:description" content="How to implement per-agent identities, least-privilege tool scoping, and MCP gateway authorization for production AI agents — with a look at WIMSE, SPIFFE, and the emerging IETF standards.">
 <meta name="twitter:image" content="https://supergood.solutions/og-image.png">
 <script type="application/ld+json">
-{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Who Are Your Agents? Identity, Authorization, and Least Privilege in Production AI Systems", "description": "How to implement per-agent identities, least-privilege tool scoping, and MCP gateway authorization for production AI agents — with a look at WIMSE, SPIFFE, and the emerging IETF standards.", "image": "https://supergood.solutions/og-image.png", "url": "https://supergood.solutions/blog/agent-identity-authorization-least-privilege-2026/", "datePublished": "2026-03-16", "dateModified": "2026-03-16", "wordCount": 0,"timeRequired":"PT3M","keywords":["AI Agent Ops","AI agents","artificial intelligence","enterprise AI"],"isPartOf":{"@type":"Blog","url":"https://supergood.solutions/blog/"},"inLanguage":"en-US" "articleSection": "AI Agent Ops", "inLanguage": "en", "isAccessibleForFree": true, "author": {"@type": "Person", "name": "Ryan Sandoval", "url": "https://linkedin.com/in/RyanSandoval"}, "publisher": {"@type": "Organization", "name": "Supergood Solutions", "url": "https://supergood.solutions", "logo": {"@type": "ImageObject", "url": "https://supergood.solutions/og-image.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://supergood.solutions/blog/agent-identity-authorization-least-privilege-2026/"}, "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".callout", "article h1", "article h2"]}}
+{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Who Are Your Agents? Identity, Authorization, and Least Privilege in Production AI Systems", "description": "How to implement per-agent identities, least-privilege tool scoping, and MCP gateway authorization for production AI agents — with a look at WIMSE, SPIFFE, and the emerging IETF standards.", "image": "https://supergood.solutions/og-image.png", "url": "https://supergood.solutions/blog/agent-identity-authorization-least-privilege-2026/", "datePublished": "2026-03-16", "dateModified": "2026-03-16", "wordCount": 0,"timeRequired":"PT3M","keywords":["AI Agent Ops","AI agents","artificial intelligence","enterprise AI"],"isPartOf":{"@type":"Blog","url":"https://supergood.solutions/blog/"},"inLanguage":"en-US", "articleSection": "AI Agent Ops", "inLanguage": "en", "isAccessibleForFree": true, "author": {"@type": "Person", "name": "Ryan Sandoval", "url": "https://linkedin.com/in/RyanSandoval"}, "publisher": {"@type": "Organization", "name": "Supergood Solutions", "url": "https://supergood.solutions", "logo": {"@type": "ImageObject", "url": "https://supergood.solutions/og-image.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://supergood.solutions/blog/agent-identity-authorization-least-privilege-2026/"}, "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".callout", "article h1", "article h2"]}}
 </script>
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://supergood.solutions/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://supergood.solutions/blog/"}, {"@type": "ListItem", "position": 3, "name": "Who Are Your Agents? Identity, Authorization, and Least Privilege in Production AI Systems", "item": "https://supergood.solutions/blog/agent-identity-authorization-least-privilege-2026/"}]}
 </script>
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://supergood.solutions/"},
-    {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://supergood.solutions/blog/"},
-    {"@type": "ListItem", "position": 3, "name": "Who Are Your Agents? Identity, Authorization, and Least Privilege in Production AI Systems", "item": "https://supergood.solutions/blog/agent-identity-authorization-least-privilege-2026/"}
-  ]
-}
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+{"@type":"Question","name":"Do AI agents need separate identities from regular service accounts?","acceptedAnswer":{"@type":"Answer","text":"Yes. Agents need per-agent identities (not shared credentials) because they take autonomous actions that need to be attributed, audited, and constrained individually. A shared service account makes incident investigation nearly impossible and maximizes blast radius when an agent over-reaches."}},
+{"@type":"Question","name":"What's the difference between SPIFFE and OAuth 2.0 for agent identity?","acceptedAnswer":{"@type":"Answer","text":"SPIFFE answers who is this workload — it issues cryptographic identities to processes and services. OAuth 2.0 answers what is this identity authorized to do — it manages access tokens with defined scopes and expiry. In practice, you compose them: SPIFFE for workload identity, OAuth 2.0 for delegated authorization."}},
+{"@type":"Question","name":"What is MCP authorization and why does it matter for AI agents?","acceptedAnswer":{"@type":"Answer","text":"MCP (Model Context Protocol) is the standard interface through which agents connect to tools, APIs, and data sources. Treating your MCP layer as a gateway — with per-request authorization checks, audit logging, and OAuth 2.1 enforcement — is the most leveraged place to enforce agent access controls."}},
+{"@type":"Question","name":"What is a non-human identity (NHI) and how do AI agents relate?","acceptedAnswer":{"@type":"Answer","text":"Non-human identities are credentials or identities assigned to software systems rather than people — service accounts, API keys, bots, and now AI agents. NHIs already outnumber human identities 50:1 in enterprises, and AI agents are accelerating that ratio."}},
+{"@type":"Question","name":"How do I implement least-privilege access for an AI agent?","acceptedAnswer":{"@type":"Answer","text":"Assign unique identity to each agent role, issue short-lived task-scoped tokens instead of permanent API keys, enforce authorization at the gateway layer instead of inside agent code, and use policy-as-code (OPA) to version-control what each agent is allowed to do."}},
+{"@type":"Question","name":"What tools exist for managing AI agent identity in 2026?","acceptedAnswer":{"@type":"Answer","text":"Aembit for workload identity and access management, SPIFFE/SPIRE for cryptographic workload identity, OPA for policy-as-code authorization, HashiCorp Vault for dynamic secrets and short-lived credentials, and Entro Security for mapping and auditing NHI and MCP access."}}
+]}
 </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0b;--surface:#111113;--surface-2:#18181b;--border:#27272a;--text:#fafafa;--text-2:#a1a1aa;--text-3:#8c8c96;--green:#22c55e;--mono:'JetBrains Mono',monospace}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;background:rgba(10,10,11,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .inner{max-width:720px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
+.wordmark{font-weight:800;font-size:1.125rem;letter-spacing:-0.03em;color:var(--text);text-decoration:none}
+.wordmark .dot{color:var(--green)}
+nav a.back{font-size:0.875rem;color:var(--text-3);text-decoration:none}
+nav a.back:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:140px 24px 80px}
+article .tag{font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:16px}
+article h1{font-size:clamp(2rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin-bottom:20px}
+article .hero{width:100%;height:auto;display:block;border:1px solid var(--border);border-radius:12px;margin-bottom:32px}
+article .meta{font-family:var(--mono);font-size:0.75rem;color:var(--text-3);margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+article h2{font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;margin:56px 0 16px}
+article h3{font-size:1.125rem;font-weight:600;margin:40px 0 12px}
+article p{font-size:1rem;color:var(--text-2);margin-bottom:20px}
+article strong{color:var(--text)}
+article ul,article ol{color:var(--text-2);margin-bottom:20px;padding-left:24px}
+article li{margin-bottom:8px}
+article a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+article a:hover{color:var(--text)}
+article hr{border:none;border-top:1px solid var(--border);margin:40px 0}
+article code{font-family:var(--mono);font-size:0.875em;background:var(--surface-2);color:var(--text);padding:2px 6px;border-radius:4px;border:1px solid var(--border)}
+article pre{background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:16px 20px;margin:24px 0;overflow-x:auto;font-family:var(--mono);font-size:0.8125rem;line-height:1.6}
+article pre code{color:var(--text);background:transparent;padding:0;border:none;border-radius:0;font-size:inherit;white-space:pre}
+.callout{background:var(--surface-2);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:20px 24px;margin:32px 0}
+.callout code{background:rgba(255,255,255,0.04)}
+.callout p{margin-bottom:0;font-size:0.9375rem}
+.faq-section{margin-top:48px;padding-top:32px;border-top:1px solid var(--border)}
+.faq-section h2{margin-top:0}
+.faq-item{margin-bottom:28px}
+.faq-item h3{font-size:1rem;color:var(--text);margin:0 0 8px}
+.faq-item p{font-size:0.9375rem}
+.service-cta{border:1px solid var(--green);border-radius:12px;padding:32px 36px;margin:48px 0;background:var(--surface-2)}
+.service-cta-label{font-family:var(--mono);font-size:0.75rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px}
+.service-cta p{margin-bottom:16px}
+.service-cta-btn{display:inline-block;background:var(--green);color:var(--bg);font-weight:600;padding:12px 24px;border-radius:8px;text-decoration:none;font-size:0.9375rem}
+.sources-section{margin-top:48px;padding-top:32px;border-top:1px solid var(--border)}
+.sources-section h3{font-size:1rem;font-weight:600;margin-bottom:12px;color:var(--text)}
+.sources-section ul{list-style:none;padding:0}
+.sources-section li{margin-bottom:8px;font-size:0.875rem}
+footer{background:var(--surface);padding:40px 0;margin-top:80px;border-top:1px solid var(--border);text-align:center}
+footer p{color:var(--text-3);font-size:0.875rem;margin:0}
+.reading-progress{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--green);z-index:200;will-change:transform}
+@media(max-width:768px){article{padding:120px 20px 60px}article h1{font-size:2rem}}
+</style>
 </head>
 <body>
 <div class="reading-progress" aria-hidden="true"></div>
@@ -127,25 +177,27 @@
 <p>Start with unique agent identities and per-task scoped authorization. Build your MCP layer as a gateway, not a pipe. Log everything with identity context. The teams that do this now will have dramatically lower blast radius when — not if — an agent misbehaves in production.</p>
 <p>The question isn't <em>whether</em> to give agents identity. It's what kind, how granular, and enforced by what. <a href="mailto:ryan@supergood.solutions">Let's talk</a> — most teams find critical gaps in under an hour.</p>
 
-<h2>FAQ</h2>
+<div class="faq-section">
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item"><h3>Do AI agents need separate identities from regular service accounts?</h3>
+<p>Yes. Agents need per-agent identities (not shared credentials) because they take autonomous actions that need to be attributed, audited, and constrained individually. A shared service account makes incident investigation nearly impossible and maximizes blast radius when an agent over-reaches. Treat each agent role as a distinct workload identity.</p></div>
+<div class="faq-item"><h3>What's the difference between SPIFFE and OAuth 2.0 for agent identity?</h3>
+<p>SPIFFE answers "who is this workload" — it issues cryptographic identities to processes and services so they can authenticate to each other without stored secrets. OAuth 2.0 answers "what is this identity authorized to do" — it manages access tokens with defined scopes and expiry. In practice, you compose them: SPIFFE for workload identity, OAuth 2.0 for delegated authorization. The new IETF <code>draft-klrc-aiagent-auth-00</code> documents this composition pattern explicitly.</p></div>
+<div class="faq-item"><h3>What is MCP authorization and why does it matter for AI agents?</h3>
+<p>MCP (Model Context Protocol) is the standard interface through which agents connect to tools, APIs, and data sources. It's the primary surface through which an agent acts in the world. Treating your MCP layer as a gateway — with per-request authorization checks, audit logging, and OAuth 2.1 enforcement — is the most leveraged place to enforce agent access controls. If you only harden one layer, harden MCP.</p></div>
+<div class="faq-item"><h3>What is a non-human identity (NHI) and how do AI agents relate?</h3>
+<p>Non-human identities are credentials or identities assigned to software systems rather than people — service accounts, API keys, bots, and now AI agents. NHIs already outnumber human identities 50:1 in enterprises, and AI agents are accelerating that ratio. The security risks are the same as for any NHI (credential sprawl, over-privilege, no rotation) but higher-stakes because agents take autonomous actions, not just passive API calls.</p></div>
+<div class="faq-item"><h3>How do I implement least-privilege access for an AI agent?</h3>
+<p>The core pattern: assign unique identity to each agent role, issue short-lived task-scoped tokens (not permanent API keys), enforce authorization at the gateway layer (not inside agent code), and use policy-as-code (OPA) to version-control what each agent is allowed to do. Permissions should be calculated at runtime based on task scope — not granted statically at deploy time.</p></div>
+<div class="faq-item"><h3>What tools exist for managing AI agent identity in 2026?</h3>
+<p>The main options: Aembit for workload identity and access management (supports MCP, A2A, OAuth, SPIFFE), SPIFFE/SPIRE for cryptographic workload identity (CNCF project), OPA for policy-as-code authorization at the gateway layer, HashiCorp Vault for dynamic secrets and short-lived credentials, and Entro Security for mapping and auditing NHI and MCP access across your environment.</p></div>
+</div>
 
-<h3>Do AI agents need separate identities from regular service accounts?</h3>
-<p>Yes. Agents need per-agent identities (not shared credentials) because they take autonomous actions that need to be attributed, audited, and constrained individually. A shared service account makes incident investigation nearly impossible and maximizes blast radius when an agent over-reaches. Treat each agent role as a distinct workload identity.</p>
-
-<h3>What's the difference between SPIFFE and OAuth 2.0 for agent identity?</h3>
-<p>SPIFFE answers "who is this workload" — it issues cryptographic identities to processes and services so they can authenticate to each other without stored secrets. OAuth 2.0 answers "what is this identity authorized to do" — it manages access tokens with defined scopes and expiry. In practice, you compose them: SPIFFE for workload identity, OAuth 2.0 for delegated authorization. The new IETF <code>draft-klrc-aiagent-auth-00</code> documents this composition pattern explicitly.</p>
-
-<h3>What is MCP authorization and why does it matter for AI agents?</h3>
-<p>MCP (Model Context Protocol) is the standard interface through which agents connect to tools, APIs, and data sources. It's the primary surface through which an agent acts in the world. Treating your MCP layer as a gateway — with per-request authorization checks, audit logging, and OAuth 2.1 enforcement — is the most leveraged place to enforce agent access controls. If you only harden one layer, harden MCP.</p>
-
-<h3>What is a non-human identity (NHI) and how do AI agents relate?</h3>
-<p>Non-human identities are credentials or identities assigned to software systems rather than people — service accounts, API keys, bots, and now AI agents. NHIs already outnumber human identities 50:1 in enterprises, and AI agents are accelerating that ratio. The security risks are the same as for any NHI (credential sprawl, over-privilege, no rotation) but higher-stakes because agents take autonomous actions, not just passive API calls.</p>
-
-<h3>How do I implement least-privilege access for an AI agent?</h3>
-<p>The core pattern: assign unique identity to each agent role, issue short-lived task-scoped tokens (not permanent API keys), enforce authorization at the gateway layer (not inside agent code), and use policy-as-code (OPA) to version-control what each agent is allowed to do. Permissions should be calculated at runtime based on task scope — not granted statically at deploy time.</p>
-
-<h3>What tools exist for managing AI agent identity in 2026?</h3>
-<p>The main options: Aembit for workload identity and access management (supports MCP, A2A, OAuth, SPIFFE), SPIFFE/SPIRE for cryptographic workload identity (CNCF project), OPA for policy-as-code authorization at the gateway layer, HashiCorp Vault for dynamic secrets and short-lived credentials, and Entro Security for mapping and auditing NHI and MCP access across your environment.</p>
+<div class="service-cta">
+<p class="service-cta-label">Need this in production?</p>
+<p>Per-agent identity, least-privilege tool scoping, and MCP gateway authorization are exactly the kind of infrastructure work we build into every agent from day one — not bolted on after an audit finds the gap.</p>
+<a href="https://supergood.solutions/ai-agent-governance/" class="service-cta-btn">See AI Agent Governance →</a>
+</div>
 
 <div class="sources-section">
 <h3>Sources</h3>

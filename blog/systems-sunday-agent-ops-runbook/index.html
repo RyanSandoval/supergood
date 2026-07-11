@@ -29,7 +29,7 @@
 <meta name="twitter:description" content="If you’re putting AI agents into marketing ops, you need more than prompts. Here’s a practical ops runbook: boundaries, tool allowlists, approvals, logging, evals, and incident response.">
 <meta name="twitter:image" content="https://supergood.solutions/og-image.png">
 <script type="application/ld+json">
-{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "The AI Agent Ops Runbook: Guardrails, Logging, and Incident Response", "description": "If you’re putting AI agents into marketing ops, you need more than prompts. Here’s a practical ops runbook: boundaries, tool allowlists, approvals, logging, evals, and incident response.", "image": "https://supergood.solutions/og-image.png", "url": "https://supergood.solutions/blog/systems-sunday-agent-ops-runbook/", "datePublished": "2026-02-22", "dateModified": "2026-02-22", "wordCount": 0,"timeRequired":"PT3M","keywords":["Systems Sunday · Ops","AI agents","artificial intelligence","enterprise AI"],"isPartOf":{"@type":"Blog","url":"https://supergood.solutions/blog/"},"inLanguage":"en-US" "articleSection": "Systems Sunday · Ops", "inLanguage": "en", "isAccessibleForFree": true, "author": {"@type": "Person", "name": "Ryan Sandoval", "url": "https://linkedin.com/in/RyanSandoval"}, "publisher": {"@type": "Organization", "name": "Supergood Solutions", "url": "https://supergood.solutions", "logo": {"@type": "ImageObject", "url": "https://supergood.solutions/og-image.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://supergood.solutions/blog/systems-sunday-agent-ops-runbook/"}, "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".callout", "article h1", "article h2"]}}
+{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "The AI Agent Ops Runbook: Guardrails, Logging, and Incident Response", "description": "If you’re putting AI agents into marketing ops, you need more than prompts. Here’s a practical ops runbook: boundaries, tool allowlists, approvals, logging, evals, and incident response.", "image": "https://supergood.solutions/og-image.png", "url": "https://supergood.solutions/blog/systems-sunday-agent-ops-runbook/", "datePublished": "2026-02-22", "dateModified": "2026-02-22", "wordCount": 0,"timeRequired":"PT3M","keywords":["Systems Sunday · Ops","AI agents","artificial intelligence","enterprise AI"],"isPartOf":{"@type":"Blog","url":"https://supergood.solutions/blog/"},"inLanguage":"en-US", "articleSection": "Systems Sunday · Ops", "inLanguage": "en", "isAccessibleForFree": true, "author": {"@type": "Person", "name": "Ryan Sandoval", "url": "https://linkedin.com/in/RyanSandoval"}, "publisher": {"@type": "Organization", "name": "Supergood Solutions", "url": "https://supergood.solutions", "logo": {"@type": "ImageObject", "url": "https://supergood.solutions/og-image.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://supergood.solutions/blog/systems-sunday-agent-ops-runbook/"}, "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".callout", "article h1", "article h2"]}}
 </script>
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://supergood.solutions/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://supergood.solutions/blog/"}, {"@type": "ListItem", "position": 3, "name": "The AI Agent Ops Runbook: Guardrails, Logging, and Incident Response", "item": "https://supergood.solutions/blog/systems-sunday-agent-ops-runbook/"}]}
@@ -80,6 +80,20 @@ article a:hover { color: var(--text); }
 .sources-section ul { list-style: none; padding: 0; }
 .sources-section li { margin-bottom: 8px; font-size: 0.875rem; }
 
+.callout{background:var(--surface-2);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:20px 24px;margin:32px 0}
+.callout p{margin-bottom:0;font-size:0.9375rem}
+
+.faq-section{margin-top:48px;padding-top:32px;border-top:1px solid var(--border)}
+.faq-section h2{margin-top:0}
+.faq-item{margin-bottom:28px}
+.faq-item h3{font-size:1rem;color:var(--text);margin:0 0 8px}
+.faq-item p{font-size:0.9375rem}
+
+.service-cta{border:1px solid var(--green);border-radius:12px;padding:32px 36px;margin:48px 0;background:var(--surface-2)}
+.service-cta-label{font-family:var(--mono);font-size:0.75rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px}
+.service-cta p{margin-bottom:16px}
+.service-cta-btn{display:inline-block;background:var(--green);color:var(--bg);font-weight:600;padding:12px 24px;border-radius:8px;text-decoration:none;font-size:0.9375rem}
+
 footer { background: var(--surface); padding: 40px 0; margin-top: 80px; border-top: 1px solid var(--border); text-align: center; }
 footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
 
@@ -101,6 +115,9 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
   ]
 }
 </script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What’s the first step before deploying an AI agent into production?","acceptedAnswer":{"@type":"Answer","text":"Write a one-paragraph boundary statement in plain English — before you touch models, tools, or prompts. It should state what decisions the agent can make, what actions it can take, and what’s explicitly forbidden. It’s boring on purpose: boring is how ops stays alive."}},{"@type":"Question","name":"What should you log for every AI agent run?","acceptedAnswer":{"@type":"Answer","text":"At minimum: run ID, owner, trigger, inputs (with sensitive fields masked), tool calls (name, parameters, timestamps, results), decisions, outputs, cost and latency, and policy outcomes like approvals or blocks. You don’t need raw model chain-of-thought — you need enough to answer “what did the agent do?” in under 60 seconds."}},{"@type":"Question","name":"What is a kill switch, and why does an AI agent need one?","acceptedAnswer":{"@type":"Answer","text":"A kill switch is the ability to instantly disable an agent and revoke its tool credentials the moment something goes wrong. It’s the first line of a one-page incident response plan — followed by containment (stopping outbound actions like email, ads, and CRM writes), scoping the impact, and recovery."}}]}
+</script>
 </head>
 
 <body>
@@ -117,6 +134,8 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
   <h1>The AI Agent Ops Runbook: Guardrails, Logging, and Incident Response</h1>
   <p class="subtitle">AI agents are being dropped into production like they’re just “smarter workflows.” They’re not. Treat them like production software: permissions, logs, evals, and a plan for when they do something weird at 2:13 AM.</p>
   <div class="meta">Published February 22, 2026 — 8 min read</div>
+
+  <div class="callout"><p><strong>TL;DR:</strong> Putting AI agents into marketing ops takes more than a good prompt — it takes the same rigor as shipping production software: a written boundary statement, least-privilege tools, human approval on anything irreversible, and logs for every run. Ship agent changes like software (offline evals, shadow mode, canary releases) and write your incident response plan — kill switch included — before you need it. Do that, and you’re ahead of 90% of the “agent deployments” out there.</p></div>
 
   <p>There are two ways most teams ship agentic automation:</p>
   <ul>
@@ -160,7 +179,7 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
     <li><strong>Reasoning island</strong>: classification, summarization, draft generation, “best guess” enrichment.</li>
   </ul>
 
-  <p>In other words: let the agent <em>think</em> where it adds value, and force it to <em>execute</em> through guardrailed steps where consistency matters.</p>
+  <p>In other words: let the agent <em>think</em> where it adds value, and force it to <em>execute</em> through <a href="https://supergood.solutions/ai-agent-governance/">guardrailed steps</a> where consistency matters.</p>
 
   <p>This aligns with mainstream governance thinking: manage risk across design, development, and use — not just at the moment you hit “Run” (<a href="https://www.nist.gov/itl/ai-risk-management-framework">NIST AI RMF</a>).</p>
 
@@ -240,7 +259,14 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
     <li><strong>Define a kill switch</strong> (where and who).</li>
   </ol>
 
-  <p>If you do only those six things, you’ll be ahead of 90% of “agent deployments” I see in the wild.</p>
+  <p>If you do only those six things, you’ll be ahead of 90% of “agent deployments” I see in the wild — and if you’d rather not find out the hard way, that’s what <a href="https://supergood.solutions/ai-agent-consulting/">AI agent consulting</a> is for.</p>
+
+  <div class="faq-section">
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item"><h3>What’s the first step before deploying an AI agent into production?</h3><p>Write a one-paragraph boundary statement in plain English — before you touch models, tools, or prompts. It should state what decisions the agent can make, what actions it can take, and what’s explicitly forbidden. It’s boring on purpose: boring is how ops stays alive.</p></div>
+<div class="faq-item"><h3>What should you log for every AI agent run?</h3><p>At minimum: run ID, owner, trigger, inputs (with sensitive fields masked), tool calls (name, parameters, timestamps, results), decisions, outputs, cost and latency, and policy outcomes like approvals or blocks. You don’t need raw model chain-of-thought — you need enough to answer “what did the agent do?” in under 60 seconds.</p></div>
+<div class="faq-item"><h3>What is a kill switch, and why does an AI agent need one?</h3><p>A kill switch is the ability to instantly disable an agent and revoke its tool credentials the moment something goes wrong. It’s the first line of a one-page incident response plan — followed by containment (stopping outbound actions like email, ads, and CRM writes), scoping the impact, and recovery.</p></div>
+</div>
 
   <div class="sources-section">
     <h3>Sources:</h3>
@@ -257,6 +283,12 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
   <div class="cta-box">
     <p>If you want to deploy AI agents in marketing ops without giving them the keys to the kingdom, Supergood can help: boundaries, least-privilege tooling, approvals, logging, and a rollout plan that won’t ruin your Monday. Reach out via <a href="https://supergood.solutions/">supergood.solutions</a> or reply on LinkedIn.</p>
   </div>
+
+  <div class="service-cta">
+<p class="service-cta-label">Need this in production?</p>
+<p>Everything in this runbook — boundaries, least-privilege tools, approvals, logging, kill switches — is agent governance. Writing it down is step one; running it without someone paging you at 2:13 AM is the actual job.</p>
+<a href="https://supergood.solutions/ai-agent-governance/" class="service-cta-btn">See AI Agent Governance →</a>
+</div>
 </article>
 
 <footer>

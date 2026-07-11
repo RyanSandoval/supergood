@@ -36,6 +36,9 @@
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://supergood.solutions/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://supergood.solutions/blog/"}, {"@type": "ListItem", "position": 3, "name": "Your Agent's Tool Schema Is a Security Attack Surface", "item": "https://supergood.solutions/blog/your-agent-s-tool-schema-is-a-security-attack-surface/"}]}
 </script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Why is a tool schema a security risk instead of just documentation?", "acceptedAnswer": {"@type": "Answer", "text": "Most teams write the description field like a docstring and skip it in security review because it's configuration, not code. But for a language model, the schema is the contract — it reads your description to decide what a tool is for and your parameters to decide what values are plausible. A free-form string where there should be an enum, or a missing required list, tells the model that whatever it invents is fair game on a tool that might touch your database, internal APIs, or customer emails."}}, {"@type": "Question", "name": "What's the fastest way to stop a model from inventing tool parameter values?", "acceptedAnswer": {"@type": "Answer", "text": "Lock enums on anything categorical. If a field's valid values number fewer than about 20, enumerate them in the schema instead of leaving it as an open string — a priority field constrained to low, normal, or high can't be filled with an invented value like bypass_filter. It's the single fastest fix, and it eliminates the largest class of hallucinated parameter values."}}, {"@type": "Question", "name": "Is tool schema hardening different from prompt injection defense?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — it's a separate, quieter attack surface that sits right next to it. Prompt injection gets most of the attention, usually by way of the OWASP LLM Top 10, but a model with a hardened system prompt and a loose tool schema is still steerable toward unintended actions, just through the parameters instead of the instructions. Schema discipline is the other half of agent security, and it's currently skipped in most enterprise deployments."}}]}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -68,6 +71,15 @@ article pre code{color:var(--text);background:transparent;padding:0;border:none;
 .callout{background:var(--surface-2);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:20px 24px;margin:32px 0}
 .callout code{background:rgba(255,255,255,0.04)}
 .callout p{margin-bottom:0;font-size:0.9375rem}
+.faq-section{margin-top:48px;padding-top:32px;border-top:1px solid var(--border)}
+.faq-section h2{margin-top:0}
+.faq-item{margin-bottom:28px}
+.faq-item h3{font-size:1rem;color:var(--text);margin:0 0 8px}
+.faq-item p{font-size:0.9375rem}
+.service-cta{border:1px solid var(--green);border-radius:12px;padding:32px 36px;margin:48px 0;background:var(--surface-2)}
+.service-cta-label{font-family:var(--mono);font-size:0.75rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px}
+.service-cta p{margin-bottom:16px}
+.service-cta-btn{display:inline-block;background:var(--green);color:var(--bg);font-weight:600;padding:12px 24px;border-radius:8px;text-decoration:none;font-size:0.9375rem}
 footer{background:var(--surface);padding:40px 0;margin-top:80px;border-top:1px solid var(--border);text-align:center}
 footer p{color:var(--text-3);font-size:0.875rem;margin:0}
 .reading-progress{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--green);z-index:200;will-change:transform}
@@ -107,7 +119,7 @@ footer p{color:var(--text-3);font-size:0.875rem;margin:0}
 <p>The mental model most teams carry is that the tool schema is documentation, not policy. The description field gets written like a docstring. Parameters get added "so the model knows what's available." Nobody runs the schema through a security review because it's not code — it's configuration.</p>
 <p>But for a language model, the schema <em>is</em> the contract. The model reads your <code>description</code> field and decides what the tool is for. It reads your <code>parameters</code> and decides what values are plausible. If you define <code>action</code> as a free-form string instead of an enum, you've just told the model that any action name it can imagine is potentially valid. A compromised prompt — or even just an unusual user input — can steer that parameter somewhere you never tested.</p>
 <p>Research on hallucination-as-security-risk (covered extensively in <a href="https://beyondscale.tech/blog/ai-hallucination-security-risk-enterprise">beyondscale.tech's enterprise controls guide</a>) documents that LLMs repeat and elaborate on false premises injected into context rather than rejecting them — in up to 83% of tested cases with planted false inputs. Tool call parameters are context. An injected value in a user message becomes a plausible parameter value if your schema doesn't constrain it.</p>
-<p>OWASP's LLM09:2025 formally categorizes misinformation risk as a control requirement. Most teams implementing that guidance focus on output validation. They're skipping the input side: the tool schema that defines what the model thinks it's allowed to invoke.</p>
+<p>OWASP's LLM09:2025 formally categorizes misinformation risk as a control requirement. Most teams implementing that guidance focus on output validation. They're skipping the input side: the tool schema that defines what the model thinks it's allowed to invoke — exactly the layer that <a href="https://supergood.solutions/ai-agent-governance/">agent governance</a> is supposed to lock down.</p>
 <h2>How to Actually Do It</h2>
 <p>Schema discipline is a four-step audit you should run on every registered tool before it ships to production.</p>
 <p><strong>1. Lock enums on anything categorical.</strong></p>
@@ -148,8 +160,14 @@ footer p{color:var(--text-3);font-size:0.875rem;margin:0}
 }</code></pre>
 <p>Note what changed: the raw <code>to</code> address is gone entirely — the handler resolves it from <code>customer_id</code>, so a manipulated email address can't be passed in. The <code>template</code> enum means the model can't invent email content. And the description scopes the tool's purpose to "transactional" and "verified," which matters because models use descriptions to reason about whether invoking a tool is appropriate.</p>
 <h2>What We've Learned</h2>
-<p>Run a tool schema audit against your current agent stack this week. Count every <code>"type": "string"</code> property without an enum, every tool with no <code>required</code> block, and every description that claims a capability you haven't deliberately scoped. Each one is a place where a model under adversarial or unexpected input can do something you didn't intend.</p>
+<p>Run a tool schema audit against your current agent stack this week — the kind of audit our <a href="https://supergood.solutions/ai-agent-consulting/">AI agent consulting</a> engagements start with. Count every <code>"type": "string"</code> property without an enum, every tool with no <code>required</code> block, and every description that claims a capability you haven't deliberately scoped. Each one is a place where a model under adversarial or unexpected input can do something you didn't intend.</p>
 <p>The prompt hardening community is right that system prompts matter. But a model with a hardened system prompt and a loose tool schema is still a model that can be steered toward unintended actions — just through the parameters instead of the instructions. Schema discipline is the other half of agent security, and it's currently skipped in most enterprise deployments.</p>
+<div class="faq-section">
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item"><h3>Why is a tool schema a security risk instead of just documentation?</h3><p>Most teams write the description field like a docstring and skip it in security review because it's configuration, not code. But for a language model, the schema is the contract — it reads your description to decide what a tool is for and your parameters to decide what values are plausible. A free-form string where there should be an enum, or a missing required list, tells the model that whatever it invents is fair game on a tool that might touch your database, internal APIs, or customer emails.</p></div>
+<div class="faq-item"><h3>What's the fastest way to stop a model from inventing tool parameter values?</h3><p>Lock enums on anything categorical. If a field's valid values number fewer than about 20, enumerate them in the schema instead of leaving it as an open string — a priority field constrained to low, normal, or high can't be filled with an invented value like bypass_filter. It's the single fastest fix, and it eliminates the largest class of hallucinated parameter values.</p></div>
+<div class="faq-item"><h3>Is tool schema hardening different from prompt injection defense?</h3><p>Yes — it's a separate, quieter attack surface that sits right next to it. Prompt injection gets most of the attention, usually by way of the OWASP LLM Top 10, but a model with a hardened system prompt and a loose tool schema is still steerable toward unintended actions, just through the parameters instead of the instructions. Schema discipline is the other half of agent security, and it's currently skipped in most enterprise deployments.</p></div>
+</div>
 <h2>Sources</h2>
 <ul>
 <li><a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/">OWASP Top 10 for LLM Applications</a> — the definitive community taxonomy for LLM security risks including LLM09:2025 (misinformation/hallucination controls)</li>
@@ -158,6 +176,12 @@ footer p{color:var(--text-3);font-size:0.875rem;margin:0}
 <li><a href="https://eastondev.com/blog/en/posts/ai/20260506-llm-structured-output/">LLM Structured Outputs: JSON Schema Enforcement and Tool Calling</a> — production-grade schema enforcement patterns across OpenAI, Claude, and Gemini</li>
 <li><a href="https://www.mckinsey.com/capabilities/risk-and-resilience/our-insights/deploying-agentic-ai-with-safety-and-security-a-playbook-for-technology-leaders">McKinsey: Deploying Agentic AI with Safety and Security</a> — enterprise governance playbook for agentic systems</li>
 </ul>
+
+<div class="service-cta">
+<p class="service-cta-label">Need this in production?</p>
+<p>Locking down enums and required fields stops one class of failure — it doesn't add the tool allowlists, spend limits, and approval checkpoints an agent needs around it, and most teams aren't auditing any of it. AI Agent Governance builds and reviews the whole stack, schema discipline included, so a missing enum or an over-scoped description never becomes the incident.</p>
+<a href="https://supergood.solutions/ai-agent-governance/" class="service-cta-btn">See AI Agent Governance →</a>
+</div>
 
 </article></main>
 <footer><p>&copy; 2026 Supergood Solutions. Helping teams automate smarter, not harder.</p></footer>
