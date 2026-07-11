@@ -20,6 +20,8 @@ Supergood provides AI consulting, AI agent consulting, AI automation consulting,
 
 ## Featured posts
 
+- [How Much Does AI Consulting Cost in 2026?](https://supergood.solutions/blog/how-much-does-ai-consulting-cost-2026/): Sourced pricing breakdown — independent rates, agent build costs, readiness assessment costs, and what Supergood charges.
+- [AI Agent Consulting: What It Is, What It Costs, and When You Need It](https://supergood.solutions/blog/ai-agent-consulting-what-it-is-what-it-costs/): Pillar guide defining AI agent consulting, its cost, and a decision framework for agent vs. workflow.
 - [MCP Is Becoming the USB-C of AI Agents](https://supergood.solutions/blog/tech-tuesday-mcp-practical-guide-2026/): Practical guide to Model Context Protocol and what it means for agent tooling.
 - [The AI Agent Ops Runbook](https://supergood.solutions/blog/systems-sunday-agent-ops-runbook/): Guardrails, logging, and incident response for agents in production.
 - [RAG vs. Fine-Tuning: A Decision Framework](https://supergood.solutions/blog/ai-wednesday-rag-vs-fine-tuning-2026/): The actual decision axis is update frequency, not domain specificity.
