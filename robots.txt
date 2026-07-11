@@ -1,3 +1,26 @@
+# This site is intentionally crawlable by AI answer engines and assistants.
+# Being cited by ChatGPT, Perplexity, Claude, and Google AI Overviews is the
+# point of the AEO work here — see /llms.txt for a structured summary.
+
 User-agent: *
 Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
 Sitemap: https://supergood.solutions/sitemap.xml
