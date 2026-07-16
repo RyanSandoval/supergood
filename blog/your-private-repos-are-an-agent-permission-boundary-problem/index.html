@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Private Repos Are an Agent Permission Boundary Problem — Supergood Solutions</title>
+<meta name="description" content="Enterprise IAM was designed assuming a human at the keyboard. When you give an AI agent access to a private repo, you're not granting &quot;read access to code&quot;…">
+<meta name="author" content="Ryan Sandoval">
+<meta name="keywords" content="Security, AI agents, artificial intelligence, enterprise AI">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0a0a0b">
+<link rel="canonical" href="https://supergood.solutions/blog/your-private-repos-are-an-agent-permission-boundary-problem/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preload" as="image" href="hero.svg" fetchpriority="high">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Supergood Solutions">
+<meta property="og:title" content="Your Private Repos Are an Agent Permission Boundary Problem">
+<meta property="og:description" content="Enterprise IAM was designed assuming a human at the keyboard. When you give an AI agent access to a private repo, you're not granting &quot;read access to code&quot;…">
+<meta property="og:url" content="https://supergood.solutions/blog/your-private-repos-are-an-agent-permission-boundary-problem/">
+<meta property="og:image" content="https://supergood.solutions/blog/your-private-repos-are-an-agent-permission-boundary-problem/hero-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Your Private Repos Are an Agent Permission Boundary Problem">
+<meta property="article:published_time" content="2026-07-15">
+<meta property="article:modified_time" content="2026-07-15">
+<meta property="article:author" content="Ryan Sandoval">
+<meta property="article:section" content="Security">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Your Private Repos Are an Agent Permission Boundary Problem">
+<meta name="twitter:description" content="Enterprise IAM was designed assuming a human at the keyboard. When you give an AI agent access to a private repo, you're not granting &quot;read access to code&quot;…">
+<meta name="twitter:image" content="https://supergood.solutions/blog/your-private-repos-are-an-agent-permission-boundary-problem/hero-og.png">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Your Private Repos Are an Agent Permission Boundary Problem", "description": "Enterprise IAM was designed assuming a human at the keyboard. When you give an AI agent access to a private repo, you're not granting \"read access to code\"…", "image": "https://supergood.solutions/blog/your-private-repos-are-an-agent-permission-boundary-problem/hero-og.png", "url": "https://supergood.solutions/blog/your-private-repos-are-an-agent-permission-boundary-problem/", "datePublished": "2026-07-15", "dateModified": "2026-07-15", "wordCount": 777, "timeRequired": "PT3M", "articleSection": "Security", "keywords": ["Security", "AI agents", "artificial intelligence", "enterprise AI"], "inLanguage": "en-US", "isAccessibleForFree": true, "author": {"@type": "Person", "name": "Ryan Sandoval", "url": "https://linkedin.com/in/RyanSandoval"}, "publisher": {"@type": "Organization", "name": "Supergood Solutions", "url": "https://supergood.solutions", "logo": {"@type": "ImageObject", "url": "https://supergood.solutions/og-image.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://supergood.solutions/blog/your-private-repos-are-an-agent-permission-boundary-problem/"}, "isPartOf": {"@type": "Blog", "url": "https://supergood.solutions/blog/"}, "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".callout", "article h1", "article h2"]}}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://supergood.solutions/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://supergood.solutions/blog/"}, {"@type": "ListItem", "position": 3, "name": "Your Private Repos Are an Agent Permission Boundary Problem", "item": "https://supergood.solutions/blog/your-private-repos-are-an-agent-permission-boundary-problem/"}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0b;--surface:#111113;--surface-2:#18181b;--border:#27272a;--text:#fafafa;--text-2:#a1a1aa;--text-3:#8c8c96;--green:#22c55e;--mono:'JetBrains Mono',monospace}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;background:rgba(10,10,11,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .inner{max-width:720px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
+.wordmark{font-weight:800;font-size:1.125rem;letter-spacing:-0.03em;color:var(--text);text-decoration:none}
+.wordmark .dot{color:var(--green)}
+nav a.back{font-size:0.875rem;color:var(--text-3);text-decoration:none}
+nav a.back:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:140px 24px 80px}
+article .tag{font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:16px}
+article h1{font-size:clamp(2rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin-bottom:20px}
+article .hero{width:100%;height:auto;display:block;border:1px solid var(--border);border-radius:12px;margin-bottom:32px}
+article .meta{font-family:var(--mono);font-size:0.75rem;color:var(--text-3);margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+article h2{font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;margin:56px 0 16px}
+article h3{font-size:1.125rem;font-weight:600;margin:40px 0 12px}
+article p{font-size:1rem;color:var(--text-2);margin-bottom:20px}
+article strong{color:var(--text)}
+article ul,article ol{color:var(--text-2);margin-bottom:20px;padding-left:24px}
+article li{margin-bottom:8px}
+article a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+article hr{border:none;border-top:1px solid var(--border);margin:40px 0}
+article code{font-family:var(--mono);font-size:0.875em;background:var(--surface-2);color:var(--text);padding:2px 6px;border-radius:4px;border:1px solid var(--border)}
+article pre{background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:16px 20px;margin:24px 0;overflow-x:auto;font-family:var(--mono);font-size:0.8125rem;line-height:1.6}
+article pre code{color:var(--text);background:transparent;padding:0;border:none;border-radius:0;font-size:inherit;white-space:pre}
+.callout{background:var(--surface-2);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:20px 24px;margin:32px 0}
+.callout code{background:rgba(255,255,255,0.04)}
+.callout p{margin-bottom:0;font-size:0.9375rem}
+footer{background:var(--surface);padding:40px 0;margin-top:80px;border-top:1px solid var(--border);text-align:center}
+footer p{color:var(--text-3);font-size:0.875rem;margin:0}
+.reading-progress{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--green);z-index:200;will-change:transform}
+@media(max-width:768px){article{padding:120px 20px 60px}article h1{font-size:2rem}}
+</style>
+</head>
+<body>
+<div class="reading-progress" aria-hidden="true"></div>
+<nav><div class="inner"><a href="/" class="wordmark">supergood<span class="dot">.</span></a><a href="/blog/" class="back">← All posts</a></div></nav>
+<main><article>
+<img class="hero" src="hero.svg" alt="" width="1200" height="630" loading="eager">
+<div class="tag">Security</div>
+<h1>Your Private Repos Are an Agent Permission Boundary Problem</h1>
+<div class="meta">Published July 15, 2026 — 3 min read</div>
+<div class="callout"><p><strong>TL;DR:</strong> Enterprise IAM was designed assuming a human at the keyboard. When you give an AI agent access to a private repo, you're not granting "read access to code" — you're handing the agent a screwdriver next to every config file, secret, and instruction set your other agents rely on. Most security teams haven't caught up to this yet.</p></div>
+
+<h2>Key Insight</h2>
+<p>The standard mental model for repo access goes like this: grant least privilege, scope tokens to the repos that matter, rotate them regularly. Problem solved.</p>
+<p>But that model breaks when the actor is an agent, not a human.</p>
+<p>Security researcher Johann Rehberger's <a href="https://embracethered.com/blog/posts/2025/cross-agent-privilege-escalation-agents-that-free-each-other/">cross-agent privilege escalation research</a> demonstrated this precisely: a coding agent with normal file access can write to <code>.mcp.json</code>, <code>.claude/settings.local.json</code>, <code>AGENTS.md</code>, or <code>.vscode/copilot-instructions.md</code> — which are effectively <em>the permission boundaries of every other agent running on the same repo</em>. One compromised agent can "free" another by rewriting its config, injecting instructions, or adding a malicious MCP server. No elevated API permissions required. Just write access to a directory.</p>
+<p>The attack surface isn't your GitHub token scope. It's the entire file tree.</p>
+<h2>Why Teams Miss This</h2>
+<p>IAM teams think about agent access the same way they think about service account access: what APIs can it call, what S3 buckets can it read, what repos can it clone. Those are the right questions for a passive consumer.</p>
+<p>Agents are not passive consumers. They are read-write participants in a shared filesystem that also contains the configuration for every other agent on your stack.</p>
+<p>When you add GitHub Copilot, Claude Code, and a CI agent to the same repo, you've created a mesh of agents that can all influence each other's instruction sets and tool configurations — not via any formal coordination protocol, but because they all read and write to the same directories. The file system <em>is</em> the coordination layer, and it has no access control for agent-to-agent influence.</p>
+<p>The <a href="https://embracethered.com/blog/posts/2026/agent-commander-your-agent-works-for-me-now/">Agent Commander research</a> makes the threat model concrete: once one agent in your mesh is compromised via indirect prompt injection — say, it reads a malicious PR comment or processes a poisoned document — it can persistently rewrite the instructions for every other agent in the repo. The attacker never needs shell access. They need one LLM call to succeed.</p>
+<p>Enterprise IAM was never designed for this. There's no <code>scope: read:file-except-dot-mcp-json</code> in your OAuth grant.</p>
+<h2>How to Actually Do It</h2>
+<p>Fixing agent permission boundaries requires thinking at the file level, not the API level:</p>
+<p><strong>1. Isolate agent config directories</strong></p>
+<p>Treat <code>.claude/</code>, <code>.mcp.json</code>, <code>AGENTS.md</code>, <code>.vscode/copilot-instructions.md</code>, and similar files as <strong>security-critical assets</strong>. Add them to your repo's protected files list and fail PRs that touch them without an explicit reviewer.</p>
+<pre><code class="language-bash"># .github/CODEOWNERS — protect agent config
+/.claude/                   @security-team
+/.mcp.json                  @security-team
+/AGENTS.md                  @security-team
+/.vscode/copilot-instructions.md  @security-team</code></pre>
+<p><strong>2. Scope agents to read-only where possible</strong></p>
+<p>If a CI analysis agent doesn't need to write anything back to the repo, give it a token that can't. This sounds obvious, but most setups hand agents full write access because it's easier to configure once.</p>
+<p><strong>3. Audit cross-agent instruction drift</strong></p>
+<p>Diff agent config files in your CI pipeline. If <code>AGENTS.md</code> or <code>.claude/settings.local.json</code> changed between commits without a human-authored commit touching them, that's a flag.</p>
+<pre><code class="language-bash"># In your CI — detect unexpected agent config changes
+git diff origin/main -- AGENTS.md .mcp.json .claude/ .vscode/copilot-instructions.md</code></pre>
+<p><strong>4. Assume indirect prompt injection is a live threat</strong></p>
+<p>If any agent in your pipeline reads external content — PR body text, issue comments, documents, web pages — that input can contain adversarial instructions. Treat it as untrusted input entering a privileged execution environment, because that's what it is.</p>
+<h2>What We've Learned</h2>
+<p>The framing shift that actually helps: stop thinking of an AI agent as a user with an access level. Think of it as a <strong>process running in your repo's filesystem with full write access to all configuration</strong>. Then ask whether your security model was designed for that process.</p>
+<p>For most organizations, the answer is no — and the gap between "we scoped the GitHub token correctly" and "we've secured agent access" is wider than it looks.</p>
+<p>Start with the CODEOWNERS gate. It's the fastest control you can add without changing your agent setup, and it immediately creates a human checkpoint for the highest-value attack surface.</p>
+<h2>Sources</h2>
+<ul>
+<li>Cross-agent privilege escalation research: <a href="https://embracethered.com/blog/posts/2025/cross-agent-privilege-escalation-agents-that-free-each-other/">embracethered.com — Cross-Agent Privilege Escalation: When Agents Free Each Other</a></li>
+<li>Agent Commander C2 research: <a href="https://embracethered.com/blog/posts/2026/agent-commander-your-agent-works-for-me-now/">embracethered.com — Agent Commander: Promptware-Powered Command and Control</a></li>
+<li>GitHub Copilot indirect prompt injection: <a href="https://embracethered.com/blog/posts/2025/github-copilot-remote-code-execution-via-prompt-injection/">embracethered.com — GitHub Copilot: Remote Code Execution via Prompt Injection</a></li>
+<li>AWS Kiro arbitrary code execution: <a href="https://embracethered.com/blog/posts/2025/aws-kiro-aribtrary-command-execution-with-indirect-prompt-injection/">embracethered.com — AWS Kiro: Arbitrary Code Execution via Indirect Prompt Injection</a></li>
+</ul>
+
+</article></main>
+<footer><p>&copy; 2026 Supergood Solutions. Helping teams automate smarter, not harder.</p></footer>
+<script>
+(function(){var b=document.querySelector('.reading-progress');if(!b)return;var t=false;function u(){var d=document.documentElement,m=d.scrollHeight-d.clientHeight;if(m<=0){t=false;return;}var y=window.scrollY||window.pageYOffset||d.scrollTop||0;b.style.transform='scaleX('+Math.min(1,Math.max(0,y/m))+')';t=false;}function q(){if(!t){t=true;requestAnimationFrame(u);}}window.addEventListener('scroll',q,{passive:true});window.addEventListener('resize',q,{passive:true});window.addEventListener('orientationchange',q,{passive:true});setTimeout(u,0);})();
+</script>
+</body>
+</html>
