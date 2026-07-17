@@ -49,6 +49,12 @@ nav a.back:hover { color: var(--text); }
 .post-card h2 { font-size: 1.375rem; font-weight: 700; letter-spacing: -0.02em; color: var(--text); margin-bottom: 8px; }
 .post-card p { font-size: 0.9375rem; color: var(--text-2); line-height: 1.6; }
 .post-card .meta { font-size: 0.75rem; color: var(--text-3); margin-top: 16px; font-family: var(--mono); }
+.post-card.is-hidden { display: none; }
+.blog-filters { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 0 32px; }
+.filter-pill { font-family: var(--mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-2); background: var(--surface); border: 1px solid var(--border); border-radius: 999px; padding: 6px 14px; cursor: pointer; transition: border-color 0.2s, color 0.2s; }
+.filter-pill:hover { color: var(--text); border-color: var(--text-3); }
+.filter-pill.active { color: var(--bg); background: var(--green); border-color: var(--green); }
+.filter-count { color: var(--text-3); font-size: 0.75rem; padding: 0 0 24px; font-family: var(--mono); }
 footer { border-top: 1px solid var(--border); padding: 40px 0; }
 footer .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
 footer p { font-size: 0.8125rem; color: var(--text-3); }
@@ -95,567 +101,572 @@ footer p { font-size: 0.8125rem; color: var(--text-3); }
   </div>
 </div>
 
+<div class="container">
+  <div id="blog-filters" class="blog-filters"></div>
+  <div id="filter-count" class="filter-count"></div>
+</div>
+
 <div class="post-list">
   <div class="container">
-<a href="/blog/your-private-repos-are-an-agent-permission-boundary-problem/" class="post-card">
+<a href="/blog/your-private-repos-are-an-agent-permission-boundary-problem/" class="post-card" data-cat="Security">
   <div class="tag">Security</div>
   <h2>Your Private Repos Are an Agent Permission Boundary Problem</h2>
   <p>Enterprise IAM was designed assuming a human at the keyboard. When you give an AI agent access to a private repo, you're not granting &quot;read access to code&quot;…</p>
   <div class="meta">July 15, 2026 · 3 min read</div>
 </a>
-<a href="/blog/the-capability-reliability-gap-is-your-real-agent-risk/" class="post-card">
+<a href="/blog/the-capability-reliability-gap-is-your-real-agent-risk/" class="post-card" data-cat="Evals">
   <div class="tag">Evals</div>
   <h2>The Capability-Reliability Gap Is Your Real Agent Risk</h2>
   <p>An agent that completes a task 80% of the time is not 80% deployed — it's a liability waiting to detonate in production. Before any agent touches a real…</p>
   <div class="meta">July 13, 2026 · 5 min read</div>
 </a>
-<a href="/blog/ai-agent-consulting-what-it-is-what-it-costs/" class="post-card">
+<a href="/blog/ai-agent-consulting-what-it-is-what-it-costs/" class="post-card" data-cat="Guide">
   <div class="tag">Guide · AI Agent Consulting</div>
   <h2>ai-agent-consulting-what-it-is-what-it-costs</h2>
   <p>AI agent consulting means building production AI agents with real architecture, evals, and guardrails. Here's what it costs, and how to tell if you need it.</p>
   <div class="meta">July 11, 2026 · 7 min read</div>
 </a>
-<a href="/blog/ai-agents-can-t-review-their-own-pull-requests/" class="post-card">
+<a href="/blog/ai-agents-can-t-review-their-own-pull-requests/" class="post-card" data-cat="Governance">
   <div class="tag">GOVERNANCE</div>
   <h2>AI Agents Can't Review Their Own Pull Requests</h2>
   <p>AI agents that write code and then write the PR description for that code are grading their own homework — and the data shows it's making reviewers slower and…</p>
   <div class="meta">July 11, 2026 · 3 min read</div>
 </a>
-<a href="/blog/how-much-does-ai-consulting-cost-2026/" class="post-card">
+<a href="/blog/how-much-does-ai-consulting-cost-2026/" class="post-card" data-cat="Guide">
   <div class="tag">Guide · AI Consulting</div>
   <h2>How Much Does AI Consulting Cost in 2026? (Real Numbers)</h2>
   <p>Independent AI consultants charge $150-$350/hour. Agent builds run $15K-$500K+. Here's the real 2026 pricing breakdown, sourced and broken down by tier.</p>
   <div class="meta">July 11, 2026 · 7 min read</div>
 </a>
-<a href="/blog/your-agent-s-tool-schema-is-a-security-attack-surface/" class="post-card">
+<a href="/blog/your-agent-s-tool-schema-is-a-security-attack-surface/" class="post-card" data-cat="Security">
   <div class="tag">SECURITY</div>
   <h2>Your Agent's Tool Schema Is a Security Attack Surface</h2>
   <p>Enterprises hardening agentic systems pour effort into prompt injection defenses while shipping tool definitions with no field validation, unconstrained enums…</p>
   <div class="meta">July 09, 2026 · 5 min read</div>
 </a>
-<a href="/blog/agent-readable-websites-will-break-your-enterprise-content-strategy/" class="post-card">
+<a href="/blog/agent-readable-websites-will-break-your-enterprise-content-strategy/" class="post-card" data-cat="Deployment">
   <div class="tag">DEPLOYMENT</div>
   <h2>Agent-Readable Websites Will Break Your Enterprise Content Strategy</h2>
   <p>AI agents now consume your website directly — not to surface it to humans, but to answer questions on their behalf. If your content isn't structured for…</p>
   <div class="meta">July 07, 2026 · 4 min read</div>
 </a>
-<a href="/blog/enterprise-java-migration-is-the-ai-agent-stress-test-nobody-talks-about/" class="post-card">
+<a href="/blog/enterprise-java-migration-is-the-ai-agent-stress-test-nobody-talks-about/" class="post-card" data-cat="Evals">
   <div class="tag">EVALS</div>
   <h2>Enterprise Java Migration Is the AI Agent Stress Test Nobody Talks About</h2>
   <p>Framework migration — the kind enterprise teams are secretly hoping agents will handle — is where production agents fall apart fastest. Benchmarks that test…</p>
   <div class="meta">July 05, 2026 · 4 min read</div>
 </a>
-<a href="/blog/your-agents-are-looping-but-nobody-s-steering/" class="post-card">
+<a href="/blog/your-agents-are-looping-but-nobody-s-steering/" class="post-card" data-cat="Architecture">
   <div class="tag">Architecture</div>
   <h2>Your Agents Are Looping But Nobody's Steering</h2>
   <p>Autonomous agent loops don't fail loudly — they drift quietly until a human audits the wreckage. The fix isn't fewer loops; it's deliberate escalation points…</p>
   <div class="meta">July 03, 2026 · 4 min read</div>
 </a>
-<a href="/blog/cheap-model-good-routing-beats-expensive-model-alone/" class="post-card">
+<a href="/blog/cheap-model-good-routing-beats-expensive-model-alone/" class="post-card" data-cat="Enterprise AI">
   <div class="tag">Enterprise AI</div>
   <h2>Cheap Model + Good Routing Beats Expensive Model Alone</h2>
   <p>Teams obsess over model choice (GPT-4 vs Sonnet vs Haiku) but ignore routing strategy—which model handle which query—yet routing decisions often deliver 3–5×…</p>
   <div class="meta">June 30, 2026 · 3 min read</div>
 </a>
-<a href="/blog/observability-isn-t-evaluation-and-the-difference-is-killing-your-ai-rollout/" class="post-card">
+<a href="/blog/observability-isn-t-evaluation-and-the-difference-is-killing-your-ai-rollout/" class="post-card" data-cat="AI in Production">
   <div class="tag">PRODUCTION AI</div>
   <h2>Observability Isn't Evaluation (And the Difference Is Killing Your AI Rollout)</h2>
   <p>89% of enterprise AI teams can watch their models run. Only 37% can tell you if the outputs are right. That gap — between observability and evaluation — is the…</p>
   <div class="meta">June 28, 2026 · 3 min read</div>
 </a>
-<a href="/blog/you-re-fine-tuning-when-you-should-be-prompting-and-vice-versa/" class="post-card">
+<a href="/blog/you-re-fine-tuning-when-you-should-be-prompting-and-vice-versa/" class="post-card" data-cat="Architecture">
   <div class="tag">Architecture</div>
   <h2>You're Fine-Tuning When You Should Be Prompting, and Vice Versa</h2>
   <p>Most enterprise teams reach for fine-tuning when domain knowledge gets specialized — but the actual decision axis isn't domain specificity, it's update…</p>
   <div class="meta">June 26, 2026 · 4 min read</div>
 </a>
-<a href="/blog/your-agentic-rag-system-is-not-a-retrieval-problem/" class="post-card">
+<a href="/blog/your-agentic-rag-system-is-not-a-retrieval-problem/" class="post-card" data-cat="RAG">
   <div class="tag">RAG</div>
   <h2>Your Agentic RAG System Is Not a Retrieval Problem</h2>
   <p>When production agentic RAG underperforms, teams reach for the vector store tuning knobs first — chunk size, embedding models, similarity thresholds. Bayer's PR</p>
   <div class="meta">June 23, 2026 · 4 min read</div>
 </a>
-<a href="/blog/multi-agent-safety-research-is-ahead-of-your-architecture/" class="post-card">
+<a href="/blog/multi-agent-safety-research-is-ahead-of-your-architecture/" class="post-card" data-cat="Architecture">
   <div class="tag">ARCHITECTURE</div>
   <h2>Multi-Agent Safety Research Is Ahead of Your Architecture</h2>
   <p>Labs like Google DeepMind and Anthropic have been formally mapping multi-agent failure modes for years — conflicting goals, shared state collisions, cascading e</p>
   <div class="meta">June 21, 2026 · 4 min read</div>
 </a>
-<a href="/blog/your-long-running-agent-has-no-midpoint-recovery-plan/" class="post-card">
+<a href="/blog/your-long-running-agent-has-no-midpoint-recovery-plan/" class="post-card" data-cat="Architecture">
   <div class="tag">Architecture</div>
   <h2>Your Long-Running Agent Has No Midpoint Recovery Plan</h2>
   <p>As enterprises push AI agents into multi-hour workflows, a silent budget killer is hiding in plain sight: when anything goes wrong, you restart from scratch. Ch</p>
   <div class="meta">June 18, 2026 · 4 min read</div>
 </a>
-<a href="/blog/your-agent-s-persistent-memory-is-a-compliance-liability/" class="post-card">
+<a href="/blog/your-agent-s-persistent-memory-is-a-compliance-liability/" class="post-card" data-cat="Governance">
   <div class="tag">Governance</div>
   <h2>Your Agent's Persistent Memory Is a Compliance Liability</h2>
   <p>Cross-session agent memory is the feature everyone wants and the data store nobody mapped to a retention schedule. Three regulatory deadlines converge in 2026-2</p>
   <div class="meta">June 16, 2026 · 4 min read</div>
 </a>
-<a href="/blog/your-enterprise-agents-discover-tools-through-vibes/" class="post-card">
+<a href="/blog/your-enterprise-agents-discover-tools-through-vibes/" class="post-card" data-cat="Architecture">
   <div class="tag">Architecture</div>
   <h2>Your Enterprise Agents Discover Tools Through Vibes</h2>
   <p>Multi-agent systems fail at scale not because of model quality but because agents decide which tools to call based on vibes — fuzzy natural language description</p>
   <div class="meta">June 12, 2026 · 4 min read</div>
 </a>
-<a href="/blog/your-agent-s-open-source-dependencies-are-a-new-attack-surface/" class="post-card">
+<a href="/blog/your-agent-s-open-source-dependencies-are-a-new-attack-surface/" class="post-card" data-cat="Security">
   <div class="tag">SECURITY</div>
   <h2>Your Agent's Open-Source Dependencies Are a New Attack Surface</h2>
   <p>Coding agents like Claude Code, Codex, and Gemini CLI consume markdown instruction files (</p>
   <div class="meta">June 09, 2026 · 4 min read</div>
 </a>
-<a href="/blog/your-agent-doesn-t-need-a-smarter-model-it-needs-a-graceful-exit/" class="post-card">
+<a href="/blog/your-agent-doesn-t-need-a-smarter-model-it-needs-a-graceful-exit/" class="post-card" data-cat="Agents">
   <div class="tag">Agents</div>
   <h2>Your Agent Doesn't Need a Smarter Model — It Needs a Graceful Exit</h2>
   <p>When enterprise AI agents fail in production, the reflex is to upgrade the model. The real fix is designing explicit failure paths before the agent ever goes li</p>
   <div class="meta">June 07, 2026 · 3 min read</div>
 </a>
-<a href="/blog/your-ai-agent-needs-a-human-checkpoint-not-just-a-fallback/" class="post-card">
+<a href="/blog/your-ai-agent-needs-a-human-checkpoint-not-just-a-fallback/" class="post-card" data-cat="Architecture">
   <div class="tag">Architecture</div>
   <h2>Your AI Agent Needs a Human Checkpoint, Not Just a Fallback</h2>
   <p>Silently failing agents and confident hallucinations aren't eval problems — they're architecture problems. The fix is deliberate human checkpoints at high-stake</p>
   <div class="meta">June 05, 2026 · 4 min read</div>
 </a>
-<a href="/blog/stop-letting-your-coding-agent-read-the-whole-repo/" class="post-card">
+<a href="/blog/stop-letting-your-coding-agent-read-the-whole-repo/" class="post-card" data-cat="Architecture">
   <div class="tag">Architecture</div>
   <h2>Stop Letting Your Coding Agent Read the Whole Repo</h2>
   <p>Async coding agents like Codex and Devin can eat through a codebase in minutes — but giving them unlimited repo access is how you get hallucinated refactors and</p>
   <div class="meta">June 03, 2026 · 3 min read</div>
 </a>
-<a href="/blog/your-agent-s-reliability-gap-is-a-math-problem-not-a-vibes-problem/" class="post-card">
+<a href="/blog/your-agent-s-reliability-gap-is-a-math-problem-not-a-vibes-problem/" class="post-card" data-cat="Deployment">
   <div class="tag">DEPLOYMENT</div>
   <h2>Your Agent's Reliability Gap Is a Math Problem, Not a Vibes Problem</h2>
   <p>Capability benchmarks measure single-shot success — but production agents chain dozens of steps together, and compounding failure rates will wreck you. Before y</p>
   <div class="meta">June 02, 2026 · 4 min read</div>
 </a>
-<a href="/blog/your-ai-agent-is-an-exfiltration-vector-treat-it-like-one/" class="post-card">
+<a href="/blog/your-ai-agent-is-an-exfiltration-vector-treat-it-like-one/" class="post-card" data-cat="Security">
   <div class="tag">SECURITY</div>
   <h2>Your AI Agent Is an Exfiltration Vector. Treat It Like One.</h2>
   <p>Enterprise AI agents have legitimate access to your data and legitimate channels to the internet — that combination makes your security team's existing playbook</p>
   <div class="meta">May 29, 2026 · 4 min read</div>
 </a>
-<a href="/blog/stop-building-agents-build-pipelines-with-ai-steps/" class="post-card">
+<a href="/blog/stop-building-agents-build-pipelines-with-ai-steps/" class="post-card" data-cat="AI in Production">
   <div class="tag">AI IN PRODUCTION</div>
   <h2>Stop Building Agents. Build Pipelines with AI Steps.</h2>
   <p>Enterprise teams are failing in production because they're treating every AI workflow as an agent problem. Most of what you're trying to do doesn't need autonom</p>
   <div class="meta">May 23, 2026 · 4 min read</div>
 </a>
-<a href="/blog/you-re-probably-paying-5x-too-much-for-your-ai-calls/" class="post-card">
+<a href="/blog/you-re-probably-paying-5x-too-much-for-your-ai-calls/" class="post-card" data-cat="AI in Production">
   <div class="tag">AI IN PRODUCTION</div>
   <h2>You're Probably Paying 5x Too Much for Your AI Calls</h2>
   <p>Most enterprise teams default to the biggest model available — and bleed budget on problems that a much cheaper model handles just as well. The gap between Clau</p>
   <div class="meta">May 22, 2026 · 3 min read</div>
 </a>
-<a href="/blog/your-team-is-defaulting-to-the-wrong-model-and-paying-10x-for-it/" class="post-card">
+<a href="/blog/your-team-is-defaulting-to-the-wrong-model-and-paying-10x-for-it/" class="post-card" data-cat="Enterprise AI">
   <div class="tag">Enterprise AI</div>
   <h2>Your Team Is Defaulting to the Wrong Model — and Paying 10x for It</h2>
   <p>Most enterprise teams reach for frontier models out of habit, not need — and it's costing them 5–20x more than necessary. The teams winning in production aren't</p>
   <div class="meta">May 21, 2026 · 3 min read</div>
 </a>
-<a href="/blog/your-ai-agent-isn-t-broken-your-eval-system-is/" class="post-card">
+<a href="/blog/your-ai-agent-isn-t-broken-your-eval-system-is/" class="post-card" data-cat="AI in Production">
   <div class="tag">AI IN PRODUCTION</div>
   <h2>Your AI Agent Isn't Broken. Your Eval System Is.</h2>
   <p>Most enterprise AI agent failures get blamed on the model — wrong model, too small, not smart enough. The real culprit is almost always the absence of a working</p>
   <div class="meta">May 20, 2026 · 3 min read</div>
 </a>
-<a href="/blog/stop-using-your-frontier-model-as-a-workhorse/" class="post-card">
+<a href="/blog/stop-using-your-frontier-model-as-a-workhorse/" class="post-card" data-cat="Enterprise AI">
   <div class="tag">ENTERPRISE AI</div>
   <h2>Stop Using Your Frontier Model as a Workhorse</h2>
   <p>Most enterprise AI teams are routing every request — from simple classification to complex reasoning — through their most expensive model. That's not safe, it's</p>
   <div class="meta">May 19, 2026 · 3 min read</div>
 </a>
-<a href="/blog/your-default-model-is-quietly-bankrupting-your-ai-budget/" class="post-card">
+<a href="/blog/your-default-model-is-quietly-bankrupting-your-ai-budget/" class="post-card" data-cat="AI in Production">
   <div class="tag">AI IN PRODUCTION</div>
   <h2>Your Default Model Is Quietly Bankrupting Your AI Budget</h2>
   <p>Enterprises are leaving 45–85% of their AI compute budget on the table by defaulting every request to their most powerful (and most expensive) model. Model rout</p>
   <div class="meta">May 18, 2026 · 4 min read</div>
 </a>
-<a href="/blog/your-prompt-isn-t-the-problem-your-tools-are/" class="post-card">
+<a href="/blog/your-prompt-isn-t-the-problem-your-tools-are/" class="post-card" data-cat="Deep Dive">
   <div class="tag">Deep Dive</div>
   <h2>Your Prompt Isn't the Problem. Your Tools Are.</h2>
   <p>Enterprise teams invest weeks refining system prompts while their agent tools ship with two-line docstrings and undefined edge cases. Anthropic's own engineers</p>
   <div class="meta">May 17, 2026 · 3 min read</div>
 </a>
-<a href="/blog/your-agents-are-waiting-for-humans-that-s-the-bug/" class="post-card">
+<a href="/blog/your-agents-are-waiting-for-humans-that-s-the-bug/" class="post-card" data-cat="Future Friday">
   <div class="tag">Future Friday</div>
   <h2>Your Agents Are Waiting for Humans. That's the Bug.</h2>
   <p>Most enterprise AI agents are built as request-response systems — they sit idle until a human pings them. That's not agentic, that's a chatbot with extra steps.</p>
   <div class="meta">May 15, 2026 · 6 min read</div>
 </a>
-<a href="/blog/why-your-rule-based-workflow-migration-is-harder-than-it-looks/" class="post-card">
+<a href="/blog/why-your-rule-based-workflow-migration-is-harder-than-it-looks/" class="post-card" data-cat="Case Study Thursday">
   <div class="tag">Case Study Thursday</div>
   <h2>Why Your Rule-Based Workflow Migration Is Harder Than It Looks</h2>
   <p>Swapping an if/then workflow for an AI agent sounds like a straightforward upgrade — and that assumption is exactly what kills the project. The teams that succe</p>
   <div class="meta">May 14, 2026 · 5 min read</div>
 </a>
-<a href="/blog/you-re-renting-a-ferrari-to-deliver-pizza/" class="post-card">
+<a href="/blog/you-re-renting-a-ferrari-to-deliver-pizza/" class="post-card" data-cat="Practical AI">
   <div class="tag">PRACTICAL AI</div>
   <h2>You're Renting a Ferrari to Deliver Pizza</h2>
   <p>A 26M parameter model just matched Gemini Pro on tool-calling benchmarks. Most enterprise AI teams are burning 10-100x more compute than their tasks actually re</p>
   <div class="meta">May 13, 2026 · 3 min read</div>
 </a>
-<a href="/blog/your-agent-is-calling-too-many-tools-and-it-s-costing-you/" class="post-card">
+<a href="/blog/your-agent-is-calling-too-many-tools-and-it-s-costing-you/" class="post-card" data-cat="Tech Tuesday">
   <div class="tag">Tech Tuesday</div>
   <h2>Your Agent Is Calling Too Many Tools — And It's Costing You</h2>
   <p>Most enterprise teams building LLM agents spend their energy on prompts and model selection, then wire up every possible tool and call it done. The real perform</p>
   <div class="meta">May 12, 2026 · 6 min read</div>
 </a>
-<a href="/blog/your-agent-eval-is-lying-to-you/" class="post-card">
+<a href="/blog/your-agent-eval-is-lying-to-you/" class="post-card" data-cat="Metrics Monday">
   <div class="tag">Metrics Monday</div>
   <h2>Your Agent Eval Is Lying to You</h2>
   <p>Enterprise teams evaluating tool-calling agents obsess over task completion rates — and miss the three metrics that actually predict production failure. An agen</p>
   <div class="meta">May 11, 2026 · 6 min read</div>
 </a>
-<a href="/blog/the-document-delegation-trap-why-ai-makes-your-specs-worse/" class="post-card">
+<a href="/blog/the-document-delegation-trap-why-ai-makes-your-specs-worse/" class="post-card" data-cat="Sunday Brief">
   <div class="tag">Sunday Brief</div>
   <h2>The Document Delegation Trap: Why AI Makes Your Specs Worse</h2>
   <p>Enterprise teams are using AI backwards — delegating document *editing* instead of *drafting* — and the result is polished, fluent text that quietly means less.</p>
   <div class="meta">May 10, 2026 · 4 min read</div>
 </a>
-<a href="/blog/stop-writing-better-prompts-start-engineering-better-context/" class="post-card">
+<a href="/blog/stop-writing-better-prompts-start-engineering-better-context/" class="post-card" data-cat="Framework Friday">
   <div class="tag">Framework Friday</div>
   <h2>Stop Writing Better Prompts. Start Engineering Better Context.</h2>
   <p>Teams spending months tuning prompts while their agents fail in production are solving the wrong problem — 82% of AI leaders now say prompt engineering alone ca</p>
   <div class="meta">May 08, 2026 · 5 min read</div>
 </a>
-<a href="/blog/the-agents-that-don-t-crash-are-the-dangerous-ones/" class="post-card">
+<a href="/blog/the-agents-that-don-t-crash-are-the-dangerous-ones/" class="post-card" data-cat="Case Study Thursday">
   <div class="tag">Case Study Thursday</div>
   <h2>The Agents That Don't Crash Are the Dangerous Ones</h2>
   <p>The most expensive AI agent failures in production aren't errors or exceptions — they're silent: the agent runs cleanly, returns a result, and nobody realizes t</p>
   <div class="meta">May 07, 2026 · 6 min read</div>
 </a>
-<a href="/blog/reasoning-models-are-architecture-changes-not-model-upgrades/" class="post-card">
+<a href="/blog/reasoning-models-are-architecture-changes-not-model-upgrades/" class="post-card" data-cat="AI Wednesday">
   <div class="tag">AI Wednesday</div>
   <h2>Reasoning Models Are Architecture Changes, Not Model Upgrades</h2>
   <p>Swapping your existing LLM for a reasoning model (o3, Claude with extended thinking, Gemini 2.5 Pro) without redesigning your pipeline is one of the most common</p>
   <div class="meta">May 06, 2026 · 7 min read</div>
 </a>
-<a href="/blog/your-1m-token-context-window-is-a-crutch/" class="post-card">
+<a href="/blog/your-1m-token-context-window-is-a-crutch/" class="post-card" data-cat="Enterprise AI">
   <div class="tag">Enterprise AI</div>
   <h2>Your 1M Token Context Window Is a Crutch</h2>
   <p>Every model vendor is racing to sell you a bigger context window — and most enterprise teams are using it as a substitute for building real retrieval systems. T</p>
   <div class="meta">May 01, 2026 · 3 min read</div>
 </a>
-<a href="/blog/contributor-poker-what-zig-s-ai-ban-teaches-every-engineering-team-about-developer-pipelines/" class="post-card">
+<a href="/blog/contributor-poker-what-zig-s-ai-ban-teaches-every-engineering-team-about-developer-pipelines/" class="post-card" data-cat="Case Study Thursday">
   <div class="tag">Case Study Thursday</div>
   <h2>Contributor Poker: What Zig's AI Ban Teaches Every Engineering Team About Developer Pipelines</h2>
   <p>Zig's blanket ban on AI contributions isn't about code quality—it's about protecting the fundamental return on investment of open-source development: betting on</p>
   <div class="meta">April 30, 2026 · 9 min read</div>
 </a>
-<a href="/blog/enforce-the-gate-why-human-oversight-fails-without-architecture/" class="post-card">
+<a href="/blog/enforce-the-gate-why-human-oversight-fails-without-architecture/" class="post-card" data-cat="AI in Production">
   <div class="tag">PRODUCTION</div>
   <h2>Enforce the Gate: Why Human Oversight Fails Without Architecture</h2>
   <p>Human oversight in AI systems isn't a policy problem—it's an architecture problem. Adding a human approver changes nothing unless you enforce the gate at the ir</p>
   <div class="meta">April 28, 2026 · 6 min read</div>
 </a>
-<a href="/blog/stop-asking-build-or-buy-ask-what-do-we-wrap/" class="post-card">
+<a href="/blog/stop-asking-build-or-buy-ask-what-do-we-wrap/" class="post-card" data-cat="Strategy Saturday">
   <div class="tag">Strategy Saturday</div>
   <h2>Stop Asking "Build or Buy?" — Ask "What Do We Wrap?"</h2>
   <p>The build-vs-buy frame for enterprise AI agents is a trap: it forces a binary choice between a 12-month internal build and a vendor lock-in that owns your roadm</p>
   <div class="meta">April 25, 2026 · 9 min read</div>
 </a>
-<a href="/blog/your-multi-agent-system-is-one-agent-in-a-trench-coat-and-that-s-usually-fine/" class="post-card">
+<a href="/blog/your-multi-agent-system-is-one-agent-in-a-trench-coat-and-that-s-usually-fine/" class="post-card" data-cat="Future Friday">
   <div class="tag">Future Friday</div>
   <h2>Your "Multi-Agent System" Is One Agent in a Trench Coat — And That's Usually Fine</h2>
   <p>A lot of what ships as</p>
   <div class="meta">April 24, 2026 · 8 min read</div>
 </a>
-<a href="/blog/we-rolled-back-our-agent-to-a-workflow-and-it-was-the-right-call/" class="post-card">
+<a href="/blog/we-rolled-back-our-agent-to-a-workflow-and-it-was-the-right-call/" class="post-card" data-cat="Case Study Thursday">
   <div class="tag">Case Study Thursday</div>
   <h2>We Rolled Back Our Agent to a Workflow — And It Was the Right Call</h2>
   <p>A team replaced a finicky LLM agent with a boring deterministic workflow and a *narrow* LLM call at one step. Latency dropped ~70%, monthly spend fell by an ord</p>
   <div class="meta">April 23, 2026 · 6 min read</div>
 </a>
-<a href="/blog/your-vector-database-isn-t-the-problem-your-retrieval-strategy-is/" class="post-card">
+<a href="/blog/your-vector-database-isn-t-the-problem-your-retrieval-strategy-is/" class="post-card" data-cat="AI Wednesday">
   <div class="tag">AI Wednesday</div>
   <h2>Your Vector Database Isn't the Problem — Your Retrieval Strategy Is</h2>
   <p>Pure vector search is the default for enterprise RAG, and it's the wrong default. Teams that ship reliable retrieval in production run hybrid search (BM25 + vec</p>
   <div class="meta">April 22, 2026 · 5 min read</div>
 </a>
-<a href="/blog/tech-tuesday-why-your-agent-is-worse-than-your-api-and-when-it-should-be/" class="post-card">
+<a href="/blog/tech-tuesday-why-your-agent-is-worse-than-your-api-and-when-it-should-be/" class="post-card" data-cat="Tech Tuesday">
   <div class="tag">Tech Tuesday</div>
   <h2>Tech Tuesday: Why Your Agent is Worse Than Your API—And When It Should Be</h2>
   <p>The hottest trend in enterprise AI is replacing APIs with autonomous agents. But agents are slower, less reliable, and more expensive than well-designed APIs fo</p>
   <div class="meta">April 21, 2026 · 4 min read</div>
 </a>
-<a href="/blog/event-driven-agent-architectures-how-to-scale-agentic-workflows-without-polling/" class="post-card">
+<a href="/blog/event-driven-agent-architectures-how-to-scale-agentic-workflows-without-polling/" class="post-card" data-cat="Future Friday">
   <div class="tag">Future Friday</div>
   <h2>Event-Driven Agent Architectures: How to Scale Agentic Workflows Without Polling</h2>
   <p>As agent deployments grow, request-response patterns become bottlenecks. Event-driven architectures decouple agents from synchronous calls, letting them listen</p>
   <div class="meta">April 18, 2026 · 4 min read</div>
 </a>
-<a href="/blog/why-your-ai-center-of-excellence-will-fail/" class="post-card">
+<a href="/blog/why-your-ai-center-of-excellence-will-fail/" class="post-card" data-cat="Strategy Saturday">
   <div class="tag">Strategy Saturday</div>
   <h2>Why Your AI Center of Excellence Will Fail</h2>
   <p></p>
   <div class="meta">April 18, 2026 · 3 min read</div>
 </a>
-<a href="/blog/5-ways-agent-autonomy-breaks-in-production/" class="post-card">
+<a href="/blog/5-ways-agent-autonomy-breaks-in-production/" class="post-card" data-cat="Case Study Thursday">
   <div class="tag">Case Study Thursday</div>
   <h2>5 Ways Agent Autonomy Breaks in Production</h2>
   <p>Agent systems fail catastrophically when teams delegate too much autonomy too fast. We've seen silent failures, cost explosions, guardrail bypasses, and state corruption across production deployments.</p>
   <div class="meta">April 16, 2026 · 3 min read</div>
 </a>
-<a href="/blog/ai-wednesday-context-rot-active-context-management/" class="post-card">
+<a href="/blog/ai-wednesday-context-rot-active-context-management/" class="post-card" data-cat="AI Wednesday">
   <div class="tag">AI Wednesday</div>
   <h2>AI Wednesday: Context Rot & Active Context Management for Production Agents</h2>
   <p>As agents handle longer tasks, larger context windows expose a hidden problem: context rot—the model's ability to find critical information degrades as context size grows. The solution isn't bigger windows; it's smarter memory and active context curation.</p>
   <div class="meta">April 15, 2026</div>
 </a>
-<a href="/blog/tech-tuesday-testing-agent-output-contracts-2026/" class="post-card">
+<a href="/blog/tech-tuesday-testing-agent-output-contracts-2026/" class="post-card" data-cat="Tech Tuesday">
   <div class="tag">Tech Tuesday</div>
   <h2>Testing Your Agent Output Contracts Before Production</h2>
   <p>How to test agent output schemas before they hit production — validation patterns, error handling, and why contracts beat documentation.</p>
   <div class="meta">April 14, 2026 · 8 min read</div>
 </a>
-<a href="/blog/metrics-monday-accuracy-floor-production-agents-2026/" class="post-card">
+<a href="/blog/metrics-monday-accuracy-floor-production-agents-2026/" class="post-card" data-cat="Metrics Monday">
   <div class="tag">Metrics Monday</div>
   <h2>Finding Your Accuracy Floor: When Good Enough Beats Best</h2>
   <p>Most teams tune agents for ceiling accuracy when they should be targeting the floor — the minimum quality users actually care about. Optimize for speed and cost beneath that line.</p>
   <div class="meta">April 13, 2026 · 5 min read</div>
 </a>
-<a href="/blog/future-friday-when-to-split-a-single-agent-into-many-a-routing-pattern-guide/" class="post-card">
+<a href="/blog/future-friday-when-to-split-a-single-agent-into-many-a-routing-pattern-guide/" class="post-card" data-cat="Future Friday">
   <div class="tag">Future Friday</div>
   <h2>[Future Friday] When to Split a Single Agent Into Many: A Routing Pattern Guide</h2>
   <p>A single complex agent is slower, harder to debug, and more prone to hallucination than a team of specialized agents.</p>
   <div class="meta">April 10, 2026 · 4 min read</div>
 </a>
-<a href="/blog/when-your-agent-fails-silently/" class="post-card">
+<a href="/blog/when-your-agent-fails-silently/" class="post-card" data-cat="Case Study Thursday">
   <div class="tag">Case Study Thursday</div>
   <h2>When Your Agent Fails Silently—Retry Logic & Graceful Degradation in Production</h2>
   <p>A production-grade AI agent isn't just smart—it's resilient. We walked through a real deployment where tool timeouts and API rate-limits cascaded into silent failures. The fix: exponential backoff retry logic, circuit breakers, and a fallback chain that degrades gracefully instead of crashing.</p>
   <div class="meta">April 09, 2026 · 11 min read</div>
 </a>
-<a href="/blog/metrics-monday-latency-vs-accuracy-production-ai-agents-2026/" class="post-card">
+<a href="/blog/metrics-monday-latency-vs-accuracy-production-ai-agents-2026/" class="post-card" data-cat="Metrics Monday">
   <div class="tag">Metrics Monday</div>
   <h2>Metrics Monday: The Latency vs. Accuracy Tradeoff in Production AI Agents</h2>
   <p>Speed and accuracy pull in opposite directions in agentic systems — and the teams shipping reliably in production have learned to stop treating this as a binary choice.</p>
   <div class="meta">March 30, 2026 · 8 min read</div>
 </a>
-<a href="/blog/systems-sunday-circuit-breakers-llm-calls-2026/" class="post-card">
+<a href="/blog/systems-sunday-circuit-breakers-llm-calls-2026/" class="post-card" data-cat="Systems Sunday">
   <div class="tag">Systems Sunday</div>
   <h2>Systems Sunday: Circuit Breakers for LLM Calls — Stop Cascading Failures Before They Start</h2>
   <p>Retrying a failing LLM call into oblivion isn't resilience — it's how one provider outage takes down your whole agent.</p>
   <div class="meta">March 29, 2026 · 7 min read</div>
 </a>
-<a href="/blog/strategy-saturday-ai-center-of-excellence-2026/" class="post-card">
+<a href="/blog/strategy-saturday-ai-center-of-excellence-2026/" class="post-card" data-cat="Strategy Saturday">
   <div class="tag">Strategy Saturday</div>
   <h2>Strategy Saturday: How to Build an Internal AI Center of Excellence (Without It Becoming a Bottleneck)</h2>
   <p>An AI Center of Excellence sounds like a good idea until it becomes the team everyone has to wait on.</p>
   <div class="meta">March 28, 2026 · 7 min read</div>
 </a>
-<a href="/blog/future-friday-ai-agents-cybersecurity-2026/" class="post-card">
+<a href="/blog/future-friday-ai-agents-cybersecurity-2026/" class="post-card" data-cat="Future Friday">
   <div class="tag">Future Friday · Agent Security</div>
   <h2>Future Friday: AI Agents Are Coming for Cybersecurity — Both Sides</h2>
   <p>AI agents are simultaneously the biggest new attack surface and the most promising defense tool in cybersecurity. Amazon's new AI security agent tanked cybersecurity stocks, AI-powered attackers reduced breach breakout times to 27 seconds, and the agentic security market is projected to hit $47B by 2035.</p>
   <div class="meta">March 27, 2026</div>
 </a>
-<a href="/blog/ai-wednesday-two-memory-problems-production-agents-2026/" class="post-card">
+<a href="/blog/ai-wednesday-two-memory-problems-production-agents-2026/" class="post-card" data-cat="AI Wednesday">
   <div class="tag">AI Wednesday · AI Engineering</div>
   <h2>The Two Memory Problems Every Production Agent Has</h2>
   <p>Most agent failures aren't model failures — they're memory failures. Agents need two completely different memory systems working together: working memory and long-term memory.</p>
   <div class="meta">March 25, 2026 · 5 min read</div>
 </a>
-<a href="/blog/structured-output-contracts-agent-to-agent-communication/" class="post-card">
+<a href="/blog/structured-output-contracts-agent-to-agent-communication/" class="post-card" data-cat="Tech Tuesday">
   <div class="tag">Tech Tuesday · Practical AI Tooling Patterns</div>
   <h2>Structured Output Contracts for Agent-to-Agent Communication</h2>
   <p>When two AI agents talk to each other, the interface between them is a contract — and untyped, free-form text is a bad contract.</p>
   <div class="meta">March 24, 2026 · 13 min read</div>
 </a>
-<a href="/blog/token-budget-management-production-ai-agents-2026/" class="post-card">
+<a href="/blog/token-budget-management-production-ai-agents-2026/" class="post-card" data-cat="Metrics Monday">
   <div class="tag">Metrics Monday · AI Agent Evaluation, Cost Ops &amp; Measurement</div>
   <h2>Token Budget Management in Production AI Agents</h2>
   <p>Token spend is the most underestimated line item in production AI agent infrastructure — and it compounds fast.</p>
   <div class="meta">March 23, 2026 · 10 min read</div>
 </a>
-<a href="/blog/secrets-management-agent-environments-2026/" class="post-card">
+<a href="/blog/secrets-management-agent-environments-2026/" class="post-card" data-cat="Systems Sunday">
   <div class="tag">Systems Sunday · Agent Security</div>
   <h2>Secrets Management in Agent Environments</h2>
   <p>AI agents need credentials to do anything useful, but static API keys and hardcoded secrets are one of the most exploitable surfaces in agentic systems today.</p>
   <div class="meta">March 22, 2026 · 8 min read</div>
 </a>
-<a href="/blog/future-friday-recursive-multi-agent-risks-2026/" class="post-card">
+<a href="/blog/future-friday-recursive-multi-agent-risks-2026/" class="post-card" data-cat="Future Friday">
   <div class="tag">Future Friday · Multi-Agent Systems</div>
   <h2>Agents That Spawn Agents: Risks and Controls in Recursive Multi-Agent Systems</h2>
   <p>Recursive multi-agent systems unlock real power but introduce compounding failure modes. Here's what goes wrong and the concrete controls that keep recursive architectures safe in production.</p>
   <div class="meta">March 20, 2026</div>
 </a>
-<a href="/blog/case-study-thursday-agent-write-access-2026/" class="post-card">
+<a href="/blog/case-study-thursday-agent-write-access-2026/" class="post-card" data-cat="Case Study Thursday">
   <div class="tag">Case Study Thursday · Agent Ops</div>
   <h2>What Broke When We Gave Agents Write Access</h2>
   <p>Real AI agent incidents, failure patterns, and practical controls to contain blast radius when agents have write access to production systems.</p>
   <div class="meta">March 19, 2026</div>
 </a>
-<a href="/blog/ai-wednesday-rag-vs-fine-tuning-2026/" class="post-card">
+<a href="/blog/ai-wednesday-rag-vs-fine-tuning-2026/" class="post-card" data-cat="AI Wednesday">
   <div class="tag">AI Wednesday · AI Engineering</div>
   <h2>RAG vs. Fine-Tuning: A Decision Framework for AI Teams in 2026</h2>
   <p>RAG and fine-tuning solve different problems — and most teams pick the wrong one. Here's a 6-question decision framework, practical cost comparison, and the hybrid pattern that actually works in production.</p>
   <div class="meta">March 18, 2026 · 12 min read</div>
 </a>
-<a href="/blog/agent-identity-authorization-least-privilege-2026/" class="post-card">
+<a href="/blog/agent-identity-authorization-least-privilege-2026/" class="post-card" data-cat="AI Agent Ops">
   <div class="tag">AI Agent Ops</div>
   <h2>Who Are Your Agents? Identity, Authorization, and Least Privilege in Production AI Systems</h2>
   <p>How to implement per-agent identities, least-privilege tool scoping, and MCP gateway authorization for production AI agents — with a look at WIMSE, SPIFFE, and the emerging IETF standards.</p>
   <div class="meta">March 16, 2026 · 9 min read</div>
 </a>
-<a href="/blog/systems-sunday-sre-for-ai-agents-2026/" class="post-card">
+<a href="/blog/systems-sunday-sre-for-ai-agents-2026/" class="post-card" data-cat="Systems Sunday">
   <div class="tag">Systems Sunday · Agent Reliability</div>
   <h2>Systems Sunday: Applying SRE Principles to AI Agents</h2>
   <p>How to adapt the SRE playbook — runbooks, incident response, SLOs, and chaos engineering — for AI agent systems that fail differently than traditional services.</p>
   <div class="meta">March 15, 2026 · 9 min read</div>
 </a>
-<a href="/blog/strategy-saturday-multi-agent-orchestration-2026/" class="post-card">
+<a href="/blog/strategy-saturday-multi-agent-orchestration-2026/" class="post-card" data-cat="AI Agent Ops">
   <div class="tag">AI Agent Ops</div>
   <h2>Multi-Agent Orchestration Patterns That Actually Work in Production</h2>
   <p>Four battle-tested multi-agent orchestration patterns and the protocol standards (MCP, A2A) for building production-ready agent systems that scale without a 17x error rate.</p>
   <div class="meta">March 14, 2026 · 10 min read</div>
 </a>
-<a href="/blog/future-friday-agent-security-amazon-onyx-2026/" class="post-card">
+<a href="/blog/future-friday-agent-security-amazon-onyx-2026/" class="post-card" data-cat="AI Agent Ops">
   <div class="tag">AI Agent Ops</div>
   <h2>How to Test AI Agents Before They Break in Production</h2>
   <p>A layered evaluation strategy for AI agents combining trajectory metrics, outcome metrics, continuous red teaming, and CI/CD pipelines to catch failures before users do.</p>
   <div class="meta">March 13, 2026 · 11 min read</div>
 </a>
-<a href="/blog/ai-agent-control-plane-governance-2026/" class="post-card">
+<a href="/blog/ai-agent-control-plane-governance-2026/" class="post-card" data-cat="AI Agent Ops">
   <div class="tag">AI Agent Ops · Infrastructure</div>
   <h2>The AI Agent Control Plane: Why Governing Agents at Scale Is the Next Infrastructure Problem</h2>
   <p>Most AI agents in production today have no centralized governance. A new category of infrastructure is emerging: the agent control plane, which lets teams write governance policies once and enforce them across every agent in their stack.</p>
   <div class="meta">March 12, 2026 · 11 min read</div>
 </a>
-<a href="/blog/tech-tuesday-output-validation-ai-agents-2026/" class="post-card">
+<a href="/blog/tech-tuesday-output-validation-ai-agents-2026/" class="post-card" data-cat="Tech Tuesday">
   <div class="tag">Tech Tuesday · AI Tooling</div>
   <h2>Structured Outputs Won't Save You: Building a Real Validation Layer for AI Agents</h2>
   <p>JSON schema compliance is not the same as correctness. Here's how to build a three-tier validation layer — schema, semantic, and business logic — that actually catches what structured outputs miss.</p>
   <div class="meta">March 10, 2026 · 9 min read</div>
 </a>
-<a href="/blog/systems-sunday-agent-failure-recovery-2026/" class="post-card">
+<a href="/blog/systems-sunday-agent-failure-recovery-2026/" class="post-card" data-cat="Systems Sunday">
   <div class="tag">Systems Sunday · Agent Reliability</div>
   <h2>When Agents Fail: Retry Logic, Circuit Breakers, and Dead Letter Queues for AI Pipelines</h2>
   <p>Your AI agents will fail. The question is whether your system fails with them. Here's a vendor-neutral guide to retry patterns, circuit breakers, dead letter queues, and idempotency for production agentic pipelines.</p>
   <div class="meta">March 08, 2026 · 10 min read</div>
 </a>
-<a href="/blog/strategy-saturday-ai-model-routing-2026/" class="post-card">
+<a href="/blog/strategy-saturday-ai-model-routing-2026/" class="post-card" data-cat="Strategy Saturday">
   <div class="tag">Strategy Saturday · AI Tooling</div>
   <h2>Stop Using One Model for Everything: A Practical Guide to AI Model Routing</h2>
   <p>Your AI stack doesn't need a single best model — it needs a router. Here's the practical guide to routing requests across multiple LLMs by cost, capability, and compliance, with the real tooling that makes it work.</p>
   <div class="meta">March 07, 2026 · 10 min read</div>
 </a>
-<a href="/blog/future-friday-agent-guardrails-production-2026/" class="post-card">
+<a href="/blog/future-friday-agent-guardrails-production-2026/" class="post-card" data-cat="Future Friday">
   <div class="tag">Future Friday · Agent Safety</div>
   <h2>Your Agent Is in Production. Now What? A 2026 Field Guide to Runtime Guardrails</h2>
   <p>AI agents that work in demos break in production — not because of capability gaps, but because of missing guardrails. Here's the practical framework for runtime safety: input filters, action constraints, behavioral monitoring, and the tools that actually work.</p>
   <div class="meta">March 06, 2026 · 11 min read</div>
 </a>
-<a href="/blog/case-study-thursday-two-agent-handoff-2026/" class="post-card">
+<a href="/blog/case-study-thursday-two-agent-handoff-2026/" class="post-card" data-cat="Case Study Thursday">
   <div class="tag">Case Study Thursday · Agent Architecture</div>
   <h2>We Wired Two AI Agents Together. Here's What Kept Breaking at the Handoff.</h2>
   <p>A real-world case study on building a two-agent review pipeline: the four failure modes that hit us at the handoff seam, the fixes that made it production-stable, and a practical checklist for teams designing multi-agent workflows.</p>
   <div class="meta">March 05, 2026 · 10 min read</div>
 </a>
-<a href="/blog/ai-wednesday-context-engineering-2026/" class="post-card">
+<a href="/blog/ai-wednesday-context-engineering-2026/" class="post-card" data-cat="AI Wednesday">
   <div class="tag">AI Wednesday · AI Tooling</div>
   <h2>Context Engineering: The Art of Deciding What Your Agent Actually Needs to Know</h2>
   <p>A bigger context window doesn't fix bad context management. Here's the emerging discipline of context engineering — compression strategies, selective injection, multi-agent handoffs, and a production checklist.</p>
   <div class="meta">March 04, 2026 · 10 min read</div>
 </a>
-<a href="/blog/tech-tuesday-agentops-observability-2026/" class="post-card">
+<a href="/blog/tech-tuesday-agentops-observability-2026/" class="post-card" data-cat="Tech Tuesday">
   <div class="tag">Tech Tuesday · Agent Ops</div>
   <h2>AgentOps: The Observability Stack That Keeps AI Agents Out of Trouble</h2>
   <p>57% of companies have AI agents in production. Most can't tell you what those agents did yesterday. Here's the observability layer that changes that — without requiring a platform rebuild.</p>
   <div class="meta">March 03, 2026 · 9 min read</div>
 </a>
-<a href="/blog/tech-tuesday-interrupt-pattern-agent-design-2026/" class="post-card">
+<a href="/blog/tech-tuesday-interrupt-pattern-agent-design-2026/" class="post-card" data-cat="Tech Tuesday">
   <div class="tag">Tech Tuesday · Agent Design</div>
   <h2>The Interrupt Pattern: How to Design AI Agents That Know When to Stop</h2>
   <p>Most AI agents are wired to run until they finish — or crash. A practical guide to the interrupt pattern: the threshold design, escalation logic, and implementation mechanics that separate production-grade agents from expensive demos.</p>
   <div class="meta">March 03, 2026 · 9 min read</div>
 </a>
-<a href="/blog/metrics-monday-ai-agent-cost-ops-2026/" class="post-card">
+<a href="/blog/metrics-monday-ai-agent-cost-ops-2026/" class="post-card" data-cat="Metrics Monday">
   <div class="tag">Metrics Monday · Agent Ops</div>
   <h2>The Hidden Cost of Running AI Agents in Production (And the Metrics That Actually Matter)</h2>
   <p>Token bills, latency trade-offs, the Unreliability Tax — a practical operator's guide to understanding and controlling what AI agents actually cost in production.</p>
   <div class="meta">March 02, 2026 · 9 min read</div>
 </a>
-<a href="/blog/systems-sunday-prompt-version-control-2026/" class="post-card">
+<a href="/blog/systems-sunday-prompt-version-control-2026/" class="post-card" data-cat="Systems Sunday">
   <div class="tag">Systems Sunday · AI Ops</div>
   <h2>Prompt Version Control: Treat Your System Prompts Like Production Code</h2>
   <p>Most teams edit AI prompts in place and hope nothing breaks. That's not a workflow — it's a time bomb. Here's a vendor-neutral system for versioning, testing, and rolling back prompts like the production assets they are.</p>
   <div class="meta">March 01, 2026 · 9 min read</div>
 </a>
-<a href="/blog/future-friday-multi-agent-orchestration-patterns-2026/" class="post-card">
+<a href="/blog/future-friday-multi-agent-orchestration-patterns-2026/" class="post-card" data-cat="Future Friday">
   <div class="tag">Future Friday · Agent Architecture</div>
   <h2>The Multi-Agent Future Is Already Here: Five Architecture Patterns That Separate Production Systems from Demos</h2>
   <p>Multi-agent AI systems have moved from research papers to production ops. Here are five architecture patterns—typed schemas, orchestration layers, human checkpoints, cost envelopes, and agent identities—that make them reliable at scale.</p>
   <div class="meta">February 27, 2026 · 9 min read</div>
 </a>
-<a href="/blog/case-study-thursday-agent-guardrails-lessons-2026/" class="post-card">
+<a href="/blog/case-study-thursday-agent-guardrails-lessons-2026/" class="post-card" data-cat="Case Study Thursday">
   <div class="tag">Case Study Thursday · Agent Ops</div>
   <h2>What Actually Broke When We Deployed Our First AI Agent (And How We Fixed It)</h2>
   <p>A real-world case study on deploying an AI agent into marketing ops: three failure modes we hit in production, four guardrails that fixed them, and a practical checklist for teams about to ship their first agent.</p>
   <div class="meta">February 26, 2026 · 9 min read</div>
 </a>
-<a href="/blog/ai-wednesday-agent-memory-architecture-2026/" class="post-card">
+<a href="/blog/ai-wednesday-agent-memory-architecture-2026/" class="post-card" data-cat="AI Wednesday">
   <div class="tag">AI Wednesday · AI Tooling</div>
   <h2>Your AI Agent Has Amnesia. Here's the Fix.</h2>
   <p>Most AI agents have no persistent memory — and most teams ship them that way. Here's the three-layer memory architecture production agents actually need, the real tradeoffs, and a practical implementation checklist.</p>
   <div class="meta">February 25, 2026 · 9 min read</div>
 </a>
-<a href="/blog/tech-tuesday-mcp-practical-guide-2026/" class="post-card">
+<a href="/blog/tech-tuesday-mcp-practical-guide-2026/" class="post-card" data-cat="Tech Tuesday">
   <div class="tag">Tech Tuesday · AI Tooling</div>
   <h2>MCP Is Becoming the USB-C of AI Agents — Here's What That Means for Your Stack</h2>
   <p>The Model Context Protocol is now an industry standard adopted by OpenAI, Anthropic, and Google. Before you bolt it onto your automation stack, here's what practitioners need to know — including the supply chain risks nobody's talking about.</p>
   <div class="meta">February 24, 2026 · 8 min read</div>
 </a>
-<a href="/blog/metrics-monday-agent-evals-observability/" class="post-card">
+<a href="/blog/metrics-monday-agent-evals-observability/" class="post-card" data-cat="Manual Work Monday">
   <div class="tag">Manual Work Monday · Workflows</div>
   <h2>Shipping AI Agents Without Evals Is Just Shipping Bugs (Here’s the Practical Fix)</h2>
   <p>A vendor-neutral playbook for agent reliability: eval sets, regression gates, shadow mode, tracing, and cost budgets — the minimum guardrails before an AI agent touches your ops stack.</p>
   <div class="meta">February 23, 2026 · 8 min read</div>
 </a>
-<a href="/blog/systems-sunday-agent-ops-runbook/" class="post-card">
+<a href="/blog/systems-sunday-agent-ops-runbook/" class="post-card" data-cat="Systems Sunday">
   <div class="tag">Systems Sunday · Ops</div>
   <h2>The AI Agent Ops Runbook: Guardrails, Logging, and Incident Response</h2>
   <p>If you’re putting AI agents into marketing ops, you need more than prompts. Here’s a practical ops runbook: boundaries, tool allowlists, approvals, logging, evals, and incident response.</p>
   <div class="meta">February 22, 2026 · 8 min read</div>
 </a>
-<a href="/blog/utm-governance-automation/" class="post-card">
+<a href="/blog/utm-governance-automation/" class="post-card" data-cat="Guide">
   <div class="tag">Guide · Workflows</div>
   <h2>UTMs Are a Mess. Here’s the 30‑Minute Fix (and the Automation to Keep Them Clean)</h2>
   <p>A simple UTM governance system + a Power Automate flow that rejects bad links before they wreck your reporting.</p>
   <div class="meta">February 21, 2026 · 7 min read</div>
 </a>
-<a href="/blog/future-friday-agentic-workflows-2026/" class="post-card">
+<a href="/blog/future-friday-agentic-workflows-2026/" class="post-card" data-cat="Future Friday">
   <div class="tag">Future Friday · Trends</div>
   <h2>Workflows Are Becoming Agents (and Marketing Teams Need Guardrails)</h2>
   <p>2026’s automation shift: workflows are turning into autonomous agents. Here’s a practical guardrail system for marketing ops—permissions, logging, approvals, and cost control.</p>
   <div class="meta">February 20, 2026 · 7 min read</div>
 </a>
-<a href="/blog/lead-enrichment-automation-12-hours-saved/" class="post-card">
+<a href="/blog/lead-enrichment-automation-12-hours-saved/" class="post-card" data-cat="Case Study Thursday">
   <div class="tag">Case Study Thursday</div>
   <h2>12 Hours Saved Every Week: How We Automated Lead Enrichment for a SaaS Team</h2>
   <p>A mid-market SaaS company was spending 30 hours per week manually enriching leads. We built an automated pipeline that saved 12 hours/week for $49/month. 1,369% ROI in 30 days.</p>
   <div class="meta">February 19, 2026 · 8 min read</div>
 </a>
-<a href="/blog/ai-wednesday-openai-openclaw-acquisition/" class="post-card">
+<a href="/blog/ai-wednesday-openai-openclaw-acquisition/" class="post-card" data-cat="AI Wednesday">
   <div class="tag">AI Wednesday · News</div>
   <h2>This Week in AI: 4 Updates Marketing Teams Actually Need to Know</h2>
   <p>OpenAI acquired OpenClaw, DeepSeek V4 is coming, and the AI agent wars just got serious. Here's what marketing teams need to know this week.</p>
   <div class="meta">February 18, 2026 · 6 min read</div>
 </a>
-<a href="/blog/power-automate-february-2026-updates/" class="post-card">
+<a href="/blog/power-automate-february-2026-updates/" class="post-card" data-cat="Tech Tuesday">
   <div class="tag">Tech Tuesday · Updates</div>
   <h2>Power Automate's February 2026 Updates: What Marketing Teams Actually Need to Know</h2>
   <p>Microsoft's latest Power Automate updates include ROI tracking and better automation. Plus the AI trends reshaping marketing automation in 2026.</p>
   <div class="meta">February 17, 2026</div>
 </a>
-<a href="/blog/power-automate-for-marketing/" class="post-card">
+<a href="/blog/power-automate-for-marketing/" class="post-card" data-cat="Guide">
   <div class="tag">Guide · Power Platform</div>
   <h2>Power Automate for Marketing Teams: A PM's Guide (Not an Engineer's)</h2>
   <p>Most marketing teams waste 15+ hours per week on manual tasks. Power Automate fixes this. Here's how to implement it without hiring developers.</p>
   <div class="meta">February 16, 2026</div>
 </a>
-<a href="/blog/marketing-ops-automation-guide/" class="post-card">
+<a href="/blog/marketing-ops-automation-guide/" class="post-card" data-cat="Guide">
   <div class="tag">Guide · Marketing Ops</div>
   <h2>The Marketing Ops Automation Guide: What to Automate First</h2>
   <p>A practical framework for identifying which marketing workflows to automate first, with ROI estimates and implementation guides using Power Automate, Office Scripts, and existing M365 tools.</p>
@@ -672,5 +683,64 @@ footer p { font-size: 0.8125rem; color: var(--text-3); }
     <p><a href="/" style="color: var(--text-3); text-decoration: none;">supergood.solutions</a></p>
   </div>
 </footer>
+<script>
+(function () {
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.post-card'));
+  var counts = {};
+  cards.forEach(function (c) {
+    var cat = c.getAttribute('data-cat') || 'Other';
+    counts[cat] = (counts[cat] || 0) + 1;
+  });
+  var sorted = Object.keys(counts).sort(function (a, b) { return counts[b] - counts[a]; });
+  var MAX_PILLS = 9;
+  var top = sorted.slice(0, MAX_PILLS);
+  var rest = sorted.slice(MAX_PILLS);
+
+  var bar = document.getElementById('blog-filters');
+  var countEl = document.getElementById('filter-count');
+  if (!bar || !cards.length) return;
+
+  function makePill(label, matchCats) {
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'filter-pill';
+    btn.textContent = label;
+    btn.dataset.cats = JSON.stringify(matchCats);
+    return btn;
+  }
+
+  var pills = [makePill('All (' + cards.length + ')', null)];
+  top.forEach(function (cat) {
+    pills.push(makePill(cat + ' (' + counts[cat] + ')', [cat]));
+  });
+  if (rest.length) {
+    var restCount = rest.reduce(function (sum, cat) { return sum + counts[cat]; }, 0);
+    pills.push(makePill('More (' + restCount + ')', rest));
+  }
+  pills.forEach(function (p) { bar.appendChild(p); });
+
+  function applyFilter(cats) {
+    var shown = 0;
+    cards.forEach(function (c) {
+      var cat = c.getAttribute('data-cat') || 'Other';
+      var match = !cats || cats.indexOf(cat) !== -1;
+      c.classList.toggle('is-hidden', !match);
+      if (match) shown++;
+    });
+    countEl.textContent = shown + ' of ' + cards.length + ' posts';
+  }
+
+  bar.addEventListener('click', function (e) {
+    var btn = e.target.closest('.filter-pill');
+    if (!btn) return;
+    pills.forEach(function (p) { p.classList.remove('active'); });
+    btn.classList.add('active');
+    applyFilter(btn.dataset.cats ? JSON.parse(btn.dataset.cats) : null);
+  });
+
+  pills[0].classList.add('active');
+  applyFilter(null);
+})();
+</script>
 </body>
 </html>
