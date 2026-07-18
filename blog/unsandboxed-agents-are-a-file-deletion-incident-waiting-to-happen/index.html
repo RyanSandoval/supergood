@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unsandboxed Agents Are a File Deletion Incident Waiting to Happen — Supergood Solutions</title>
+<meta name="description" content="When a coding agent wipes your production database or nukes a directory, that's not a model alignment failure — it's an ops decision you made when you gave an…">
+<meta name="author" content="Ryan Sandoval">
+<meta name="keywords" content="DEPLOYMENT, AI agents, artificial intelligence, enterprise AI">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0a0a0b">
+<link rel="canonical" href="https://supergood.solutions/blog/unsandboxed-agents-are-a-file-deletion-incident-waiting-to-happen/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preload" as="image" href="hero.svg" fetchpriority="high">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Supergood Solutions">
+<meta property="og:title" content="Unsandboxed Agents Are a File Deletion Incident Waiting to Happen">
+<meta property="og:description" content="When a coding agent wipes your production database or nukes a directory, that's not a model alignment failure — it's an ops decision you made when you gave an…">
+<meta property="og:url" content="https://supergood.solutions/blog/unsandboxed-agents-are-a-file-deletion-incident-waiting-to-happen/">
+<meta property="og:image" content="https://supergood.solutions/blog/unsandboxed-agents-are-a-file-deletion-incident-waiting-to-happen/hero-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Unsandboxed Agents Are a File Deletion Incident Waiting to Happen">
+<meta property="article:published_time" content="2026-07-17">
+<meta property="article:modified_time" content="2026-07-17">
+<meta property="article:author" content="Ryan Sandoval">
+<meta property="article:section" content="DEPLOYMENT">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Unsandboxed Agents Are a File Deletion Incident Waiting to Happen">
+<meta name="twitter:description" content="When a coding agent wipes your production database or nukes a directory, that's not a model alignment failure — it's an ops decision you made when you gave an…">
+<meta name="twitter:image" content="https://supergood.solutions/blog/unsandboxed-agents-are-a-file-deletion-incident-waiting-to-happen/hero-og.png">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Unsandboxed Agents Are a File Deletion Incident Waiting to Happen", "description": "When a coding agent wipes your production database or nukes a directory, that's not a model alignment failure — it's an ops decision you made when you gave an…", "image": "https://supergood.solutions/blog/unsandboxed-agents-are-a-file-deletion-incident-waiting-to-happen/hero-og.png", "url": "https://supergood.solutions/blog/unsandboxed-agents-are-a-file-deletion-incident-waiting-to-happen/", "datePublished": "2026-07-17", "dateModified": "2026-07-17", "wordCount": 760, "timeRequired": "PT3M", "articleSection": "DEPLOYMENT", "keywords": ["DEPLOYMENT", "AI agents", "artificial intelligence", "enterprise AI"], "inLanguage": "en-US", "isAccessibleForFree": true, "author": {"@type": "Person", "name": "Ryan Sandoval", "url": "https://linkedin.com/in/RyanSandoval"}, "publisher": {"@type": "Organization", "name": "Supergood Solutions", "url": "https://supergood.solutions", "logo": {"@type": "ImageObject", "url": "https://supergood.solutions/og-image.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://supergood.solutions/blog/unsandboxed-agents-are-a-file-deletion-incident-waiting-to-happen/"}, "isPartOf": {"@type": "Blog", "url": "https://supergood.solutions/blog/"}, "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".callout", "article h1", "article h2"]}}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://supergood.solutions/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://supergood.solutions/blog/"}, {"@type": "ListItem", "position": 3, "name": "Unsandboxed Agents Are a File Deletion Incident Waiting to Happen", "item": "https://supergood.solutions/blog/unsandboxed-agents-are-a-file-deletion-incident-waiting-to-happen/"}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0b;--surface:#111113;--surface-2:#18181b;--border:#27272a;--text:#fafafa;--text-2:#a1a1aa;--text-3:#8c8c96;--green:#22c55e;--mono:'JetBrains Mono',monospace}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;background:rgba(10,10,11,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .inner{max-width:720px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
+.wordmark{font-weight:800;font-size:1.125rem;letter-spacing:-0.03em;color:var(--text);text-decoration:none}
+.wordmark .dot{color:var(--green)}
+nav a.back{font-size:0.875rem;color:var(--text-3);text-decoration:none}
+nav a.back:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:140px 24px 80px}
+article .tag{font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:16px}
+article h1{font-size:clamp(2rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin-bottom:20px}
+article .hero{width:100%;height:auto;display:block;border:1px solid var(--border);border-radius:12px;margin-bottom:32px}
+article .meta{font-family:var(--mono);font-size:0.75rem;color:var(--text-3);margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+article h2{font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;margin:56px 0 16px}
+article h3{font-size:1.125rem;font-weight:600;margin:40px 0 12px}
+article p{font-size:1rem;color:var(--text-2);margin-bottom:20px}
+article strong{color:var(--text)}
+article ul,article ol{color:var(--text-2);margin-bottom:20px;padding-left:24px}
+article li{margin-bottom:8px}
+article a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+article hr{border:none;border-top:1px solid var(--border);margin:40px 0}
+article code{font-family:var(--mono);font-size:0.875em;background:var(--surface-2);color:var(--text);padding:2px 6px;border-radius:4px;border:1px solid var(--border)}
+article pre{background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:16px 20px;margin:24px 0;overflow-x:auto;font-family:var(--mono);font-size:0.8125rem;line-height:1.6}
+article pre code{color:var(--text);background:transparent;padding:0;border:none;border-radius:0;font-size:inherit;white-space:pre}
+.callout{background:var(--surface-2);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:20px 24px;margin:32px 0}
+.callout code{background:rgba(255,255,255,0.04)}
+.callout p{margin-bottom:0;font-size:0.9375rem}
+footer{background:var(--surface);padding:40px 0;margin-top:80px;border-top:1px solid var(--border);text-align:center}
+footer p{color:var(--text-3);font-size:0.875rem;margin:0}
+.reading-progress{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--green);z-index:200;will-change:transform}
+::selection{background:var(--green);color:var(--bg)}
+@media(max-width:768px){article{padding:120px 20px 60px}article h1{font-size:2rem}}
+</style>
+</head>
+<body>
+<div class="reading-progress" aria-hidden="true"></div>
+<nav><div class="inner"><a href="/" class="wordmark">supergood<span class="dot">.</span></a><a href="/blog/" class="back">← All posts</a></div></nav>
+<main><article>
+<img class="hero" src="hero.svg" alt="" width="1200" height="630" loading="eager">
+<div class="tag">DEPLOYMENT</div>
+<h1>Unsandboxed Agents Are a File Deletion Incident Waiting to Happen</h1>
+<div class="meta">Published July 17, 2026 — 3 min read</div>
+<div class="callout"><p><strong>TL;DR:</strong> When a coding agent wipes your production database or nukes a directory, that's not a model alignment failure — it's an ops decision you made when you gave an LLM shell access without a sandbox. The blast radius belongs to whoever made that call.</p></div>
+
+<h2>Key Insight</h2>
+<p>Every enterprise post-mortem I've seen blaming "the AI deleted our files" is actually describing a deployment architecture mistake.</p>
+<p>Here's the uncomfortable framing from Solomon Hykes, co-founder of Docker: "An AI agent is an LLM wrecking its environment in a loop." Simon Willison quotes him approvingly in his piece on <a href="https://simonwillison.net/2025/Sep/30/designing-agentic-loops/">designing agentic loops</a>, and the point is sharp: agents are <em>designed</em> to act on the environment. Giving one production filesystem access and then being surprised when it deletes something is like giving an intern root access and blaming the intern when <code>rm -rf</code> happens.</p>
+<p>The model isn't malfunctioning. Your deployment is.</p>
+<h2>Why Teams Miss This</h2>
+<p>Teams reach for YOLO mode — auto-approve everything, no human checkpoints — because it's <em>effective</em>. Willison is direct: constant approval prompts "dramatically reduce effectiveness at solving problems through brute force." So engineers disable them. Understandable. But the next move matters enormously.</p>
+<p>Most teams skip straight to "take a risk and hope we catch mistakes before they cause damage." That's option 3 out of three, and Willison says most people choose it. In a dev environment with a throwaway repo, this is a totally reasonable bet. In production, it's an incident report you haven't filed yet.</p>
+<p>The three real threat surfaces are:</p>
+<ul>
+<li><strong>Destructive shell commands</strong> — bad path assumptions + <code>rm</code>, <code>DROP TABLE</code>, or a misconfigured migration script</li>
+<li><strong>Exfiltration</strong> — an agent with access to environment variables and network egress is a credential leak waiting on the right malicious instruction in context</li>
+<li><strong>Proxy abuse</strong> — your infrastructure used as a launchpad for other attacks</li>
+</ul>
+<p>None of these require the model to "go rogue." All of them require only that the agent gets an ambiguous instruction, a malformed context, or a prompt injection somewhere in its tool call chain.</p>
+<h2>How to Actually Do It</h2>
+<p>Three patterns that work in production:</p>
+<p><strong>1. Sandbox first, YOLO inside the sandbox</strong></p>
+<p>Containers are the obvious answer. Docker, <a href="https://github.com/features/codespaces">GitHub Codespaces</a>, or Apple's <a href="https://github.com/apple/container">container tool</a> give you a disposable environment where an agent can operate freely. Container escapes exist but are rare enough for most enterprise threat models. The win: your agent gets full autonomy, your production filesystem is never in scope.</p>
+<p>For code execution specifically, Simon Willison's <a href="https://github.com/simonw/micropython-wasm">micropython-wasm</a> approach — sandboxing Python via WASM — is interesting for cases where you need the agent to run code but don't want to spin up a full container.</p>
+<p><strong>2. Scope credentials to the minimum viable blast radius</strong></p>
+<p>Before any agent gets credentials, ask: what's the worst case if these credentials are used adversarially? If the answer is "production data loss," scope them down. Read-only DB creds for analysis tasks. Scoped IAM roles for infrastructure tasks. The agent does not need write access to things it won't write to.</p>
+<pre><code class="language-bash"># Bad: agent gets your full AWS profile
+AWS_PROFILE=default claude-code "optimize our S3 bucket structure"
+
+# Better: agent gets a scoped role with only what it needs
+AWS_ROLE_ARN=arn:aws:iam::123456789:role/s3-read-only claude-code "audit our S3 bucket structure"</code></pre>
+<p><strong>3. Build a kill switch into the loop</strong></p>
+<p>Agentic loops need interruption points. For any task that touches production state, add a confirmation step before the destructive action. This doesn't have to be a human — it can be a cheap validation layer that checks "does this operation match the stated goal?" before executing. The goal is to add one second of friction before an irreversible action, which is usually enough to catch the obvious mistakes.</p>
+<h2>What We've Learned</h2>
+<p>The teams that have had agents in production for 12+ months aren't the ones with the most sophisticated models. They're the ones who treated "what can this agent touch?" as a first-class architecture decision, not an afterthought.</p>
+<p>The experiment worth running this week: map every tool in your agent's loop against a two-column table — what it can <em>read</em> vs. what it can <em>write or delete</em>. If the write/delete column includes anything you'd be paged for at 2 AM, that's the thing to sandbox before your next incident.</p>
+<p>Model capability is not the bottleneck here. Deployment architecture is.</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://simonwillison.net/2025/Sep/30/designing-agentic-loops/">Designing agentic loops — Simon Willison</a></li>
+<li><a href="https://simonwillison.net/2026/Jun/6/micropython-in-a-sandbox/">Running Python code in a sandbox with MicroPython and WASM — Simon Willison</a></li>
+<li><a href="https://simonwillison.net/2026/Jan/9/sprites-dev/">Sprites.dev: stateful sandbox environments for coding agents — Simon Willison</a></li>
+<li><a href="https://github.com/features/codespaces">GitHub Codespaces — use someone else's computer for YOLO mode</a></li>
+<li><a href="https://github.com/apple/container">Apple container tool</a></li>
+</ul>
+
+<div style="border-left:3px solid var(--green);background:var(--surface-2);border-radius:0 8px 8px 0;padding:28px;margin:48px 0 24px;">
+<p style="font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px;">Have a specific workflow in mind?</p>
+<p style="color:var(--text-2);font-size:0.9375rem;margin-bottom:16px;">Bring it to a Quick Scan — a live working session where we'll tell you honestly whether it should be an agent, a workflow, or left alone, before you spend a dollar building it. You get 3 prioritized recommendations on the call, a one-page summary after, and the $500 credited toward any engagement within 30 days.</p>
+<p style="margin:0;font-size:0.9375rem;"><a href="/ai-agent-consulting/" style="color:var(--green);text-decoration:underline;text-underline-offset:3px;font-weight:600;">See AI Agent Consulting →</a><span style="color:var(--text-3);margin:0 12px;">·</span><a href="https://calendar.app.google/BkcFDB21jWhMwCiq7" style="color:var(--green);text-decoration:underline;text-underline-offset:3px;font-weight:600;">Book an intro call →</a></p>
+</div>
+<div data-lead-capture-wrap style="border:1px solid var(--border);border-radius:12px;padding:28px;">
+<p style="font-weight:700;color:var(--text);margin-bottom:6px;font-size:1rem;">Get new posts + practical agent-ops notes</p>
+<p style="color:var(--text-3);font-size:0.8125rem;margin-bottom:20px;">One email when something new goes up. No nurture sequence, no spam — unsubscribe whenever you want.</p>
+<form data-lead-capture style="display:flex;flex-wrap:wrap;gap:10px;align-items:flex-start;">
+<div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+<label>Company <input type="text" name="company" tabindex="-1" autocomplete="off"></label>
+</div>
+<input type="text" name="name" placeholder="Name (optional)" autocomplete="name" style="flex:1 1 160px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-size:0.875rem;font-family:inherit;">
+<input type="email" name="email" placeholder="you@email.com" required autocomplete="email" style="flex:2 1 220px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-size:0.875rem;font-family:inherit;">
+<button type="submit" style="flex:0 0 auto;background:var(--green);color:var(--bg);border:none;border-radius:8px;padding:10px 20px;font-size:0.875rem;font-weight:600;cursor:pointer;font-family:inherit;">Subscribe</button>
+</form>
+<p data-lead-error style="display:none;color:#f87171;font-size:0.8125rem;margin-top:10px;"></p>
+<p data-lead-success style="display:none;color:var(--green);font-size:0.875rem;margin-top:4px;">Thanks — you're on the list.</p>
+</div>
+</article></main>
+<footer><p>&copy; 2026 Supergood Solutions. Helping teams automate smarter, not harder.</p></footer>
+<script>
+(function(){var b=document.querySelector('.reading-progress');if(!b)return;var t=false;function u(){var d=document.documentElement,m=d.scrollHeight-d.clientHeight;if(m<=0){t=false;return;}var y=window.scrollY||window.pageYOffset||d.scrollTop||0;b.style.transform='scaleX('+Math.min(1,Math.max(0,y/m))+')';t=false;}function q(){if(!t){t=true;requestAnimationFrame(u);}}window.addEventListener('scroll',q,{passive:true});window.addEventListener('resize',q,{passive:true});window.addEventListener('orientationchange',q,{passive:true});setTimeout(u,0);})();
+</script>
+<script src="/assets/lead-capture.js" defer></script>
+</body>
+</html>
