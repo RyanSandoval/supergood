@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent Handoff Is the New API Contract Nobody Writes Down — Supergood Solutions</title>
+<meta name="description" content="In multi-agent pipelines, the agent that crashes your orchestration isn't the one writing bad code — it's the one silently receiving the wrong context. Treat…">
+<meta name="author" content="Ryan Sandoval">
+<meta name="keywords" content="Architecture, AI agents, artificial intelligence, enterprise AI">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0a0a0b">
+<link rel="canonical" href="https://supergood.solutions/blog/agent-handoff-is-the-new-api-contract-nobody-writes-down/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preload" as="image" href="hero.svg" fetchpriority="high">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Supergood Solutions">
+<meta property="og:title" content="Agent Handoff Is the New API Contract Nobody Writes Down">
+<meta property="og:description" content="In multi-agent pipelines, the agent that crashes your orchestration isn't the one writing bad code — it's the one silently receiving the wrong context. Treat…">
+<meta property="og:url" content="https://supergood.solutions/blog/agent-handoff-is-the-new-api-contract-nobody-writes-down/">
+<meta property="og:image" content="https://supergood.solutions/blog/agent-handoff-is-the-new-api-contract-nobody-writes-down/hero-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Agent Handoff Is the New API Contract Nobody Writes Down">
+<meta property="article:published_time" content="2026-07-21">
+<meta property="article:modified_time" content="2026-07-21">
+<meta property="article:author" content="Ryan Sandoval">
+<meta property="article:section" content="Architecture">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Agent Handoff Is the New API Contract Nobody Writes Down">
+<meta name="twitter:description" content="In multi-agent pipelines, the agent that crashes your orchestration isn't the one writing bad code — it's the one silently receiving the wrong context. Treat…">
+<meta name="twitter:image" content="https://supergood.solutions/blog/agent-handoff-is-the-new-api-contract-nobody-writes-down/hero-og.png">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Agent Handoff Is the New API Contract Nobody Writes Down", "description": "In multi-agent pipelines, the agent that crashes your orchestration isn't the one writing bad code — it's the one silently receiving the wrong context. Treat…", "image": "https://supergood.solutions/blog/agent-handoff-is-the-new-api-contract-nobody-writes-down/hero-og.png", "url": "https://supergood.solutions/blog/agent-handoff-is-the-new-api-contract-nobody-writes-down/", "datePublished": "2026-07-21", "dateModified": "2026-07-21", "wordCount": 1013, "timeRequired": "PT5M", "articleSection": "Architecture", "keywords": ["Architecture", "AI agents", "artificial intelligence", "enterprise AI"], "inLanguage": "en-US", "isAccessibleForFree": true, "author": {"@type": "Person", "name": "Ryan Sandoval", "url": "https://linkedin.com/in/RyanSandoval"}, "publisher": {"@type": "Organization", "name": "Supergood Solutions", "url": "https://supergood.solutions", "logo": {"@type": "ImageObject", "url": "https://supergood.solutions/og-image.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://supergood.solutions/blog/agent-handoff-is-the-new-api-contract-nobody-writes-down/"}, "isPartOf": {"@type": "Blog", "url": "https://supergood.solutions/blog/"}, "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".callout", "article h1", "article h2"]}}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://supergood.solutions/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://supergood.solutions/blog/"}, {"@type": "ListItem", "position": 3, "name": "Agent Handoff Is the New API Contract Nobody Writes Down", "item": "https://supergood.solutions/blog/agent-handoff-is-the-new-api-contract-nobody-writes-down/"}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0b;--surface:#111113;--surface-2:#18181b;--border:#27272a;--text:#fafafa;--text-2:#a1a1aa;--text-3:#8c8c96;--green:#22c55e;--mono:'JetBrains Mono',monospace}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;background:rgba(10,10,11,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .inner{max-width:720px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
+.wordmark{font-weight:800;font-size:1.125rem;letter-spacing:-0.03em;color:var(--text);text-decoration:none}
+.wordmark .dot{color:var(--green)}
+nav a.back{font-size:0.875rem;color:var(--text-3);text-decoration:none}
+nav a.back:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:140px 24px 80px}
+article .tag{font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:16px}
+article h1{font-size:clamp(2rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin-bottom:20px}
+article .hero{width:100%;height:auto;display:block;border:1px solid var(--border);border-radius:12px;margin-bottom:32px}
+article .meta{font-family:var(--mono);font-size:0.75rem;color:var(--text-3);margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+article h2{font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;margin:56px 0 16px}
+article h3{font-size:1.125rem;font-weight:600;margin:40px 0 12px}
+article p{font-size:1rem;color:var(--text-2);margin-bottom:20px}
+article strong{color:var(--text)}
+article ul,article ol{color:var(--text-2);margin-bottom:20px;padding-left:24px}
+article li{margin-bottom:8px}
+article a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+article hr{border:none;border-top:1px solid var(--border);margin:40px 0}
+article code{font-family:var(--mono);font-size:0.875em;background:var(--surface-2);color:var(--text);padding:2px 6px;border-radius:4px;border:1px solid var(--border)}
+article pre{background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:16px 20px;margin:24px 0;overflow-x:auto;font-family:var(--mono);font-size:0.8125rem;line-height:1.6}
+article pre code{color:var(--text);background:transparent;padding:0;border:none;border-radius:0;font-size:inherit;white-space:pre}
+.callout{background:var(--surface-2);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:20px 24px;margin:32px 0}
+.callout code{background:rgba(255,255,255,0.04)}
+.callout p{margin-bottom:0;font-size:0.9375rem}
+footer{background:var(--surface);padding:40px 0;margin-top:80px;border-top:1px solid var(--border);text-align:center}
+footer p{color:var(--text-3);font-size:0.875rem;margin:0}
+.reading-progress{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--green);z-index:200;will-change:transform}
+::selection{background:var(--green);color:var(--bg)}
+@media(max-width:768px){article{padding:120px 20px 60px}article h1{font-size:2rem}}
+</style>
+</head>
+<body>
+<div class="reading-progress" aria-hidden="true"></div>
+<nav><div class="inner"><a href="/" class="wordmark">supergood<span class="dot">.</span></a><a href="/blog/" class="back">← All posts</a></div></nav>
+<main><article>
+<img class="hero" src="hero.svg" alt="" width="1200" height="630" loading="eager">
+<div class="tag">Architecture</div>
+<h1>Agent Handoff Is the New API Contract Nobody Writes Down</h1>
+<div class="meta">Published July 21, 2026 — 5 min read</div>
+<div class="callout"><p><strong>TL;DR:</strong> In multi-agent pipelines, the agent that crashes your orchestration isn't the one writing bad code — it's the one silently receiving the wrong context. Treat inter-agent handoffs with the same rigor as a versioned REST contract or your pipeline degrades without a single error log to show for it.</p></div>
+
+<h2>Key Insight</h2>
+<p>Everyone instrument the individual agents. Nobody instruments the seams between them.</p>
+<p>When teams build multi-agent pipelines — a Planner feeds a Researcher feeds a Writer feeds a Publisher — the typical debugging strategy is to look at each agent in isolation. Did it get the right model? Did its prompt make sense? Did it time out? These are real questions worth asking, but they're not where most production failures actually originate.</p>
+<p>The real failure mode is the handoff: the JSON blob, the text chunk, or the conversation snippet that one agent hands to the next. It almost never has a schema. It almost never has a version. It's usually just "whatever the upstream agent produced," passed forward with zero validation that the downstream agent was designed to consume exactly that shape.</p>
+<p>This is how a pipeline that works perfectly in staging silently collapses in production. The Planner starts summarizing differently because the model was swapped. The Researcher never notices — it just processes a truncated task description. The Writer produces something generic. Nobody threw an exception. The orchestration "succeeded."</p>
+<p>The failure was undocumented in every direction.</p>
+<h2>Why Teams Miss This</h2>
+<p>Teams think of agent-to-agent communication as an implementation detail, not a contract surface.</p>
+<p>When you expose an HTTP API between two services, you write a schema. You version it. You write tests that break if the shape changes. You add deprecation notices. Engineers treat that boundary with respect because they know exactly how badly a silent schema drift can hurt.</p>
+<p>Agent-to-agent message passing gets none of that treatment because the messages are usually natural language or loosely typed JSON. "It's just text" is the unspoken assumption, and it's wrong. A downstream agent is just as dependent on upstream structure as any REST consumer — it's just that its "schema" is baked into its system prompt instead of an OpenAPI spec.</p>
+<p>The Hugging Face <a href="https://github.com/huggingface/smolagents">smolagents</a> architecture makes this concrete: in a multi-agent system, "one agentic workflow can start another agentic workflow," and the triggering context is whatever the parent agent decides to pass. There's no enforcement layer. If the parent changes how it summarizes completed work, the child agent has no idea it just received a different shape of world.</p>
+<p>There's also a compounding problem: agents are stateless across calls. If the context window gets trimmed, summarized, or passed through a lossy handoff, the receiving agent doesn't know what it's missing. It just works with what it got and produces output that looks plausible.</p>
+<p>Plausible-but-wrong is the worst kind of failure because it doesn't alert anyone.</p>
+<h2>How to Actually Do It</h2>
+<p>Treat every agent-to-agent boundary like a versioned API. That means three things in practice.</p>
+<p><strong>1. Define the handoff schema explicitly.</strong></p>
+<p>For each hand-off point in your pipeline, write down what fields the downstream agent depends on. This doesn't have to be a full JSON Schema — a simple typed dictionary with required vs. optional fields is enough to start.</p>
+<pre><code class="language-python"># handoffs/planner_to_researcher.py
+
+SCHEMA_VERSION = "1.2"
+
+REQUIRED_FIELDS = [
+    "task_description",   # str: the narrowed research question
+    "context_summary",    # str: what the planner already knows
+    "output_format",      # str: "bullet_list" | "narrative" | "structured_json"
+    "source_budget",      # int: max number of sources to retrieve
+]
+
+OPTIONAL_FIELDS = [
+    "excluded_domains",   # list[str]: skip these
+    "prior_attempts",     # list[str]: what was tried and failed
+]</code></pre>
+<p><strong>2. Validate at the boundary, not inside the agent.</strong></p>
+<p>Don't make the downstream agent defensive about malformed input. Put a thin validation layer at the handoff point that fails loudly when required fields are missing or the wrong type. Loud failures at the seam are a feature — they catch upstream drift before it propagates.</p>
+<pre><code class="language-python">def validate_handoff(payload: dict, schema_version: str) -&gt; None:
+    if payload.get("schema_version") != schema_version:
+        raise ValueError(
+            f"Handoff schema mismatch: expected {schema_version}, "
+            f"got {payload.get('schema_version', 'MISSING')}"
+        )
+    for field in REQUIRED_FIELDS:
+        if field not in payload:
+            raise KeyError(f"Required handoff field missing: {field}")</code></pre>
+<p><strong>3. Log the handoff payload, not just the agent outputs.</strong></p>
+<p>Your observability should capture what crossed the boundary, not just what each agent returned. If a pipeline run produces bad output, you want to be able to diff the handoff payloads across two runs and spot exactly where the upstream agent started passing a different shape. One JSON log line per handoff pays for itself the first time you have to debug a production regression.</p>
+<pre><code class="language-python">import logging, json
+
+def log_handoff(source_agent: str, target_agent: str, payload: dict) -&gt; None:
+    logging.info(json.dumps({
+        "event": "agent_handoff",
+        "source": source_agent,
+        "target": target_agent,
+        "schema_version": payload.get("schema_version"),
+        "payload_keys": list(payload.keys()),
+        "payload_size_chars": len(json.dumps(payload)),
+    }))</code></pre>
+<p>None of this requires a new framework. It's just discipline applied to the right boundary.</p>
+<h2>What We've Learned</h2>
+<p>Pick your most critical multi-agent handoff — the one where a bad payload would do the most damage downstream — and spend 30 minutes writing its schema and a validation function this week.</p>
+<p>You don't need to retrofit the whole pipeline. Start at the highest-stakes seam, run one production cycle with handoff logging enabled, and compare what you expected the payload to look like versus what it actually was. The delta is usually more interesting than you expect.</p>
+<p>Versioning comes next. Once you have a logged schema, add a <code>schema_version</code> field and bump it whenever the upstream agent's output format changes. That one field turns a silent regression into a caught exception.</p>
+<p>The teams that get multi-agent pipelines working reliably in production aren't the ones with the best models at each node. They're the ones who stopped treating the space between agents as someone else's problem.</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://huggingface.co/blog/smolagents">smolagents: simple agents that write actions in code</a> — Hugging Face Blog; introduces multi-agent architecture and the agency spectrum</li>
+<li><a href="https://github.com/huggingface/smolagents">smolagents GitHub repository</a> — source for multi-agent orchestration patterns</li>
+<li><a href="https://www.anthropic.com/research/building-effective-agents">Building Effective Agents</a> — Anthropic; covers orchestrator-subagent patterns and when agent complexity is warranted</li>
+<li><a href="https://swagger.io/specification/">OpenAPI Specification</a> — the REST contract model that agent handoffs should borrow from</li>
+</ul>
+
+<div style="border-left:3px solid var(--green);background:var(--surface-2);border-radius:0 8px 8px 0;padding:28px;margin:48px 0 24px;">
+<p style="font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px;">Have a specific workflow in mind?</p>
+<p style="color:var(--text-2);font-size:0.9375rem;margin-bottom:16px;">Bring it to a Quick Scan — a live working session where we'll tell you honestly whether it should be an agent, a workflow, or left alone, before you spend a dollar building it. You get 3 prioritized recommendations on the call, a one-page summary after, and the $500 credited toward any engagement within 30 days.</p>
+<p style="margin:0;font-size:0.9375rem;"><a href="/ai-agent-consulting/" style="color:var(--green);text-decoration:underline;text-underline-offset:3px;font-weight:600;">See AI Agent Consulting →</a><span style="color:var(--text-3);margin:0 12px;">·</span><a href="https://calendar.app.google/BkcFDB21jWhMwCiq7" style="color:var(--green);text-decoration:underline;text-underline-offset:3px;font-weight:600;">Book an intro call →</a></p>
+</div>
+<div data-lead-capture-wrap style="border:1px solid var(--border);border-radius:12px;padding:28px;">
+<p style="font-weight:700;color:var(--text);margin-bottom:6px;font-size:1rem;">Get new posts + practical agent-ops notes</p>
+<p style="color:var(--text-3);font-size:0.8125rem;margin-bottom:20px;">One email when something new goes up. No nurture sequence, no spam — unsubscribe whenever you want.</p>
+<form data-lead-capture style="display:flex;flex-wrap:wrap;gap:10px;align-items:flex-start;">
+<div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+<label>Company <input type="text" name="company" tabindex="-1" autocomplete="off"></label>
+</div>
+<input type="text" name="name" placeholder="Name (optional)" autocomplete="name" style="flex:1 1 160px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-size:0.875rem;font-family:inherit;">
+<input type="email" name="email" placeholder="you@email.com" required autocomplete="email" style="flex:2 1 220px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-size:0.875rem;font-family:inherit;">
+<button type="submit" style="flex:0 0 auto;background:var(--green);color:var(--bg);border:none;border-radius:8px;padding:10px 20px;font-size:0.875rem;font-weight:600;cursor:pointer;font-family:inherit;">Subscribe</button>
+</form>
+<p data-lead-error style="display:none;color:#f87171;font-size:0.8125rem;margin-top:10px;"></p>
+<p data-lead-success style="display:none;color:var(--green);font-size:0.875rem;margin-top:4px;">Thanks — you're on the list.</p>
+</div>
+</article></main>
+<footer><p>&copy; 2026 Supergood Solutions. Helping teams automate smarter, not harder.</p></footer>
+<script>
+(function(){var b=document.querySelector('.reading-progress');if(!b)return;var t=false;function u(){var d=document.documentElement,m=d.scrollHeight-d.clientHeight;if(m<=0){t=false;return;}var y=window.scrollY||window.pageYOffset||d.scrollTop||0;b.style.transform='scaleX('+Math.min(1,Math.max(0,y/m))+')';t=false;}function q(){if(!t){t=true;requestAnimationFrame(u);}}window.addEventListener('scroll',q,{passive:true});window.addEventListener('resize',q,{passive:true});window.addEventListener('orientationchange',q,{passive:true});setTimeout(u,0);})();
+</script>
+<script src="/assets/lead-capture.js" defer></script>
+</body>
+</html>
