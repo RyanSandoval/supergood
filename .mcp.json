@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "gsc": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": ["mcp-search-console"],
+      "env": {
+        "GSC_CREDENTIALS_PATH": "${GSC_CREDENTIALS_PATH:-/root/.config/gsc/service-account.json}",
+        "GSC_SKIP_OAUTH": "true"
+      }
+    }
+  }
+}
