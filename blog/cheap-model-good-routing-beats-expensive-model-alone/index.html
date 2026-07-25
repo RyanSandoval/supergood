@@ -133,7 +133,7 @@ def classify_complexity(query: str) -&gt; str:
 <p>- Every wrong routing decision is a signal. Did you escalate unnecessarily? Miss an easy win? Adjust the thresholds and keywords.</p>
 <p>- Most teams iterate on the model (fine-tune, prompt engineering) when they should be iterating on the router.</p>
 <h2>What We've Learned</h2>
-<p>The teams we see shipping the fastest and cheapest don't have the "best" models—they have the smartest routers. One AI infra team at a large fintech firm cut inference costs by 68% in Q2 2026 by building a four-tier routing strategy (no model changes). Another saw latency drop from 3.2s to 800ms by segregating retrieval queries to fast smaller models.</p>
+<p>The teams shipping the fastest and cheapest don't have the "best" models — they have the smartest routers. A four-tier routing strategy, with no model changes at all, cuts inference costs substantially just by matching each call to the cheapest model that can actually handle it. Segregating retrieval queries to fast, smaller models cuts latency the same way — the win comes from routing, not from swapping in a bigger model.</p>
 <p>Start here: measure your current deployment. What % of queries could be answered with a smaller model? Build a classifier for that % first. You'll ship value faster than waiting for the next GPT release.</p>
 <h2>Sources</h2>
 <ul>

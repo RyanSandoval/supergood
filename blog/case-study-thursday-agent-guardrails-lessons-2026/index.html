@@ -363,7 +363,7 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
 
   <p>We didn't run into this in the content ops case, but it's worth flagging: <strong>if your agent reads external content and then acts on it, prompt injection is a live threat</strong>.</p>
 
-  <p>Indirect prompt injection — where malicious instructions are embedded in content the agent reads — has moved from theoretical to documented in the wild. Real incidents include the Perplexity Comet data leak and zero-click RCE exploits in MCP-connected IDEs. If your agent reads emails, web pages, CMS records, or any other user-controlled content before taking actions, you need to treat that content as untrusted input.</p>
+  <p>Indirect prompt injection — where malicious instructions are embedded in content the agent reads — has moved from theoretical to documented in the wild. Security researchers hijacked <a href="https://www.theregister.com/security/2026/03/03/perplexity-comet-browser-hole-was-exploitable-via-cal-invite/4675985" target="_blank" rel="noopener noreferrer">Perplexity's Comet browser via a malicious calendar invite</a> to exfiltrate local files, and separately tricked it into a phishing scam using GAN-trained pages. If your agent reads emails, web pages, CMS records, or any other user-controlled content before taking actions, you need to treat that content as untrusted input.</p>
 
   <p>Practical mitigation: separate the reading step from the action step. Have the agent summarize or extract structured data from external content first (in a sandboxed step with no tool access), then pass only that structured data to the action step. Don't let the agent read a web page and immediately act on whatever it finds there.</p>
 
@@ -393,6 +393,7 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
       <li><a href="https://www.lakera.ai/blog/indirect-prompt-injection" target="_blank" rel="noopener noreferrer">Lakera — "Indirect Prompt Injection: The Hidden Threat Breaking Modern AI Systems"</a></li>
       <li><a href="https://orq.ai/blog/llm-guardrails" target="_blank" rel="noopener noreferrer">Orq.ai — "Mastering LLM Guardrails: Complete 2025 Guide"</a></li>
       <li><a href="https://www.deloitte.com/us/en/insights/topics/technology-management/tech-trends/2026/agentic-ai-strategy.html" target="_blank" rel="noopener noreferrer">Deloitte Insights — "Agentic AI Strategy," Tech Trends 2026</a></li>
+      <li><a href="https://www.theregister.com/security/2026/03/03/perplexity-comet-browser-hole-was-exploitable-via-cal-invite/4675985" target="_blank" rel="noopener noreferrer">The Register — "Perplexity Comet browser hole was exploitable via cal invite," March 2026</a></li>
     </ul>
   </div>
 
