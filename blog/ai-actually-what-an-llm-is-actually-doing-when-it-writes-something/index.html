@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI, Actually: What an LLM Is Actually Doing When It &quot;Writes&quot; Something — Supergood Solutions</title>
+<meta name="description" content="Your AI tool is not writing — it is guessing the next word, one word at a time, billions of times fast. That distinction isn't pedantic; it is the single most…">
+<meta name="author" content="Ryan Sandoval">
+<meta name="keywords" content="Blog, AI agents, artificial intelligence, enterprise AI">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0a0a0b">
+<link rel="canonical" href="https://supergood.solutions/blog/ai-actually-what-an-llm-is-actually-doing-when-it-writes-something/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preload" as="image" href="hero.svg" fetchpriority="high">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Supergood Solutions">
+<meta property="og:title" content="AI, Actually: What an LLM Is Actually Doing When It &quot;Writes&quot; Something">
+<meta property="og:description" content="Your AI tool is not writing — it is guessing the next word, one word at a time, billions of times fast. That distinction isn't pedantic; it is the single most…">
+<meta property="og:url" content="https://supergood.solutions/blog/ai-actually-what-an-llm-is-actually-doing-when-it-writes-something/">
+<meta property="og:image" content="https://supergood.solutions/blog/ai-actually-what-an-llm-is-actually-doing-when-it-writes-something/hero-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="AI, Actually: What an LLM Is Actually Doing When It &quot;Writes&quot; Something">
+<meta property="article:published_time" content="2026-08-01">
+<meta property="article:modified_time" content="2026-08-01">
+<meta property="article:author" content="Ryan Sandoval">
+<meta property="article:section" content="Blog">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI, Actually: What an LLM Is Actually Doing When It &quot;Writes&quot; Something">
+<meta name="twitter:description" content="Your AI tool is not writing — it is guessing the next word, one word at a time, billions of times fast. That distinction isn't pedantic; it is the single most…">
+<meta name="twitter:image" content="https://supergood.solutions/blog/ai-actually-what-an-llm-is-actually-doing-when-it-writes-something/hero-og.png">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "AI, Actually: What an LLM Is Actually Doing When It \"Writes\" Something", "description": "Your AI tool is not writing — it is guessing the next word, one word at a time, billions of times fast. That distinction isn't pedantic; it is the single most…", "image": "https://supergood.solutions/blog/ai-actually-what-an-llm-is-actually-doing-when-it-writes-something/hero-og.png", "url": "https://supergood.solutions/blog/ai-actually-what-an-llm-is-actually-doing-when-it-writes-something/", "datePublished": "2026-08-01", "dateModified": "2026-08-01", "wordCount": 874, "timeRequired": "PT4M", "articleSection": "Blog", "keywords": ["Blog", "AI agents", "artificial intelligence", "enterprise AI"], "inLanguage": "en-US", "isAccessibleForFree": true, "author": {"@type": "Person", "name": "Ryan Sandoval", "url": "https://linkedin.com/in/RyanSandoval"}, "publisher": {"@type": "Organization", "name": "Supergood Solutions", "url": "https://supergood.solutions", "logo": {"@type": "ImageObject", "url": "https://supergood.solutions/og-image.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://supergood.solutions/blog/ai-actually-what-an-llm-is-actually-doing-when-it-writes-something/"}, "isPartOf": {"@type": "Blog", "url": "https://supergood.solutions/blog/"}, "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".callout", "article h1", "article h2"]}}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://supergood.solutions/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://supergood.solutions/blog/"}, {"@type": "ListItem", "position": 3, "name": "AI, Actually: What an LLM Is Actually Doing When It \"Writes\" Something", "item": "https://supergood.solutions/blog/ai-actually-what-an-llm-is-actually-doing-when-it-writes-something/"}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0b;--surface:#111113;--surface-2:#18181b;--border:#27272a;--text:#fafafa;--text-2:#a1a1aa;--text-3:#8c8c96;--green:#22c55e;--mono:'JetBrains Mono',monospace}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;background:rgba(10,10,11,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .inner{max-width:720px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
+.wordmark{font-weight:800;font-size:1.125rem;letter-spacing:-0.03em;color:var(--text);text-decoration:none}
+.wordmark .dot{color:var(--green)}
+nav a.back{font-size:0.875rem;color:var(--text-3);text-decoration:none}
+nav a.back:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:140px 24px 80px}
+article .tag{font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:16px}
+article h1{font-size:clamp(2rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin-bottom:20px}
+article .hero{width:100%;height:auto;display:block;border:1px solid var(--border);border-radius:12px;margin-bottom:32px}
+article .meta{font-family:var(--mono);font-size:0.75rem;color:var(--text-3);margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+article h2{font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;margin:56px 0 16px}
+article h3{font-size:1.125rem;font-weight:600;margin:40px 0 12px}
+article p{font-size:1rem;color:var(--text-2);margin-bottom:20px}
+article strong{color:var(--text)}
+article ul,article ol{color:var(--text-2);margin-bottom:20px;padding-left:24px}
+article li{margin-bottom:8px}
+article a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+article hr{border:none;border-top:1px solid var(--border);margin:40px 0}
+article code{font-family:var(--mono);font-size:0.875em;background:var(--surface-2);color:var(--text);padding:2px 6px;border-radius:4px;border:1px solid var(--border)}
+article pre{background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:16px 20px;margin:24px 0;overflow-x:auto;font-family:var(--mono);font-size:0.8125rem;line-height:1.6}
+article pre code{color:var(--text);background:transparent;padding:0;border:none;border-radius:0;font-size:inherit;white-space:pre}
+.callout{background:var(--surface-2);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:20px 24px;margin:32px 0}
+.callout code{background:rgba(255,255,255,0.04)}
+.callout p{margin-bottom:0;font-size:0.9375rem}
+footer{background:var(--surface);padding:40px 0;margin-top:80px;border-top:1px solid var(--border);text-align:center}
+footer p{color:var(--text-3);font-size:0.875rem;margin:0}
+.reading-progress{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--green);z-index:200;will-change:transform}
+::selection{background:var(--green);color:var(--bg)}
+@media(max-width:768px){article{padding:120px 20px 60px}article h1{font-size:2rem}}
+</style>
+</head>
+<body>
+<div class="reading-progress" aria-hidden="true"></div>
+<nav><div class="inner"><a href="/" class="wordmark">supergood<span class="dot">.</span></a><a href="/blog/" class="back">← All posts</a></div></nav>
+<main><article>
+<img class="hero" src="hero.svg" alt="" width="1200" height="630" loading="eager">
+<div class="tag">Blog</div>
+<h1>AI, Actually: What an LLM Is Actually Doing When It "Writes" Something</h1>
+<div class="meta">Published August 01, 2026 — 4 min read</div>
+<div class="callout"><p><strong>TL;DR:</strong> Your AI tool is not writing — it is guessing the next word, one word at a time, billions of times fast. That distinction isn't pedantic; it is the single most useful mental model for anyone building or using AI systems at work.</p></div>
+
+<h2>Key Insight</h2>
+<p>The word "write" is doing a lot of dishonest work in the AI industry right now.</p>
+<p>When ChatGPT or Claude produces a response, it is not composing thoughts and expressing them. It is running a very specific mechanical process: given everything in front of it, predict the single most likely next chunk of text (a "token" — roughly a word or part of a word), output it, then repeat. That is the whole trick. No understanding, no intent, no authorship in any meaningful sense. Just: <strong>what comes next, statistically?</strong></p>
+<p>That sounds reductive, but it is actually the opposite of a knock on the technology. A model that has been trained on hundreds of billions of words has built up extremely sophisticated intuitions about what "comes next" in almost every context you can imagine — code, contracts, medical notes, marketing copy, philosophy. The predictions are so good, so contextually aware, that the output looks indistinguishable from intentional writing.</p>
+<p>But "looks like" and "is" are not the same thing. Teams that confuse them build systems that fail in predictable ways.</p>
+<h2>Why Teams Miss This</h2>
+<p>The most common enterprise failure pattern is treating an LLM like a database or a calculator — as something that retrieves or computes a correct answer.</p>
+<p>When you ask it "what is our refund policy," it does not look it up. It predicts what a plausible-sounding answer looks like, based on whatever context you gave it plus everything it learned during training. If you did not put the refund policy in the prompt, the model will confidently hallucinate one.</p>
+<p>This is not a bug. It is the mechanism doing exactly what it was designed to do. The mechanism has no concept of "I don't know." It only has "what probably comes next."</p>
+<p>Two other things that break when teams misunderstand the mechanism:</p>
+<p><strong>Prompt engineering becomes guesswork.</strong> If you think the model is "thinking about" your question, you'll write prompts that try to convince it. If you know it is predicting likely continuations, you'll write prompts that look like the beginning of the document you want — which is far more effective.</p>
+<p><strong>Evaluation becomes unreliable.</strong> Teams test their AI system by asking it questions and reading the answers. But fluent, confident output is the model's default — not a signal of accuracy. You need ground-truth comparison, not vibe checks.</p>
+<h2>How to Actually Do It</h2>
+<p><strong>Mental model shift — write prompts as document openings, not questions.</strong></p>
+<p>Instead of:</p>
+<pre><code>What are best practices for onboarding new enterprise customers?</code></pre>
+<p>Try:</p>
+<pre><code>Enterprise Customer Onboarding: Best Practices
+
+The following is a structured guide for onboarding new enterprise accounts, based on common patterns in B2B SaaS companies. Key areas include:</code></pre>
+<p>You are not asking a question. You are starting the document you want, and handing it off. The model's job is to continue it. That framing produces more structured, reliable output because you are working with the mechanism instead of against it.</p>
+<p><strong>For anything factual, retrieval is not optional.</strong></p>
+<p>If your use case requires accuracy — legal, financial, product specs, support policies — you need Retrieval-Augmented Generation (RAG). This means fetching the real source content and putting it in the prompt before the model generates anything. The model is still predicting tokens, but now the "what comes next" context includes your actual document, not just its training data.</p>
+<p>RAG is not magic. It is the practical fix for what next-token prediction cannot do on its own: know things that are specific, current, or proprietary.</p>
+<p><strong>Temperature is a dial on randomness, not creativity.</strong></p>
+<p>Lower temperature (closer to 0) makes the model pick the highest-probability token almost every time — deterministic, consistent, great for structured extraction. Higher temperature introduces randomness — the model will occasionally pick lower-probability tokens, which produces more varied output. "Creative" is one possible result. "Nonsensical" is another. Set it deliberately, not by default.</p>
+<h2>What We've Learned</h2>
+<p>If your team is hitting AI reliability issues in production — hallucinations, inconsistent output, confident wrong answers — the root cause is almost always a mismatch between what the mechanism actually does and what the system was designed to expect.</p>
+<p>Run this diagnostic: for each AI failure your team has hit in the last month, ask whether the failure makes total sense if the model is just predicting the next token. It usually does. That framing points directly at the fix.</p>
+<p>The mechanism is not the ceiling. It is the foundation. Build on it correctly and it holds an enormous amount of weight. Build on a misunderstanding and the cracks show fast.</p>
+<hr>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://ai-tldr.dev/learn/llm-fundamentals/llm-basics/how-llms-work/">How Do LLMs Work? Next-Token Prediction Explained</a> — solid plain-language walkthrough of the token prediction loop</li>
+<li><a href="https://python.plainenglish.io/the-art-of-prediction-how-llms-master-next-token-generation-b8f81dc16de2">The Art of Prediction: How LLMs Master Next-Token Generation</a> — technical depth on decoding strategies and training objectives</li>
+<li><a href="https://www.microscale.academy/act/landscape/lesson/tokens-and-probs">LLM Tokenization and Next-Token Prediction Explained</a> — covers softmax probabilities, logits, and nucleus sampling without requiring a math degree</li>
+<li><a href="https://www.anthropic.com/news/core-views-on-ai-safety">Anthropic: Core Views on AI Safety</a> — useful framing on what current models are and are not doing internally</li>
+</ul>
+
+<div style="border-left:3px solid var(--green);background:var(--surface-2);border-radius:0 8px 8px 0;padding:28px;margin:48px 0 24px;">
+<p style="font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px;">Have a specific workflow in mind?</p>
+<p style="color:var(--text-2);font-size:0.9375rem;margin-bottom:16px;">Bring it to a Quick Scan — a live working session where we'll tell you honestly whether it should be an agent, a workflow, or left alone, before you spend a dollar building it. You get 3 prioritized recommendations on the call, a one-page summary after, and the $500 credited toward any engagement within 30 days.</p>
+<p style="margin:0;font-size:0.9375rem;"><a href="/ai-agent-consulting/" style="color:var(--green);text-decoration:underline;text-underline-offset:3px;font-weight:600;">See AI Agent Consulting →</a><span style="color:var(--text-3);margin:0 12px;">·</span><a href="https://calendar.app.google/BkcFDB21jWhMwCiq7" style="color:var(--green);text-decoration:underline;text-underline-offset:3px;font-weight:600;">Book an intro call →</a></p>
+</div>
+<div data-lead-capture-wrap style="border:1px solid var(--border);border-radius:12px;padding:28px;">
+<p style="font-weight:700;color:var(--text);margin-bottom:6px;font-size:1rem;">Get new posts + practical agent-ops notes</p>
+<p style="color:var(--text-3);font-size:0.8125rem;margin-bottom:20px;">One email when something new goes up. No nurture sequence, no spam — unsubscribe whenever you want.</p>
+<form data-lead-capture style="display:flex;flex-wrap:wrap;gap:10px;align-items:flex-start;">
+<div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+<label>Company <input type="text" name="company" tabindex="-1" autocomplete="off"></label>
+</div>
+<input type="text" name="name" placeholder="Name (optional)" autocomplete="name" style="flex:1 1 160px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-size:0.875rem;font-family:inherit;">
+<input type="email" name="email" placeholder="you@email.com" required autocomplete="email" style="flex:2 1 220px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-size:0.875rem;font-family:inherit;">
+<button type="submit" style="flex:0 0 auto;background:var(--green);color:var(--bg);border:none;border-radius:8px;padding:10px 20px;font-size:0.875rem;font-weight:600;cursor:pointer;font-family:inherit;">Subscribe</button>
+</form>
+<p data-lead-error style="display:none;color:#f87171;font-size:0.8125rem;margin-top:10px;"></p>
+<p data-lead-success style="display:none;color:var(--green);font-size:0.875rem;margin-top:4px;">Thanks — you're on the list.</p>
+</div>
+</article></main>
+<footer><p>&copy; 2026 Supergood Solutions. Helping teams automate smarter, not harder.</p></footer>
+<script>
+(function(){var b=document.querySelector('.reading-progress');if(!b)return;var t=false;function u(){var d=document.documentElement,m=d.scrollHeight-d.clientHeight;if(m<=0){t=false;return;}var y=window.scrollY||window.pageYOffset||d.scrollTop||0;b.style.transform='scaleX('+Math.min(1,Math.max(0,y/m))+')';t=false;}function q(){if(!t){t=true;requestAnimationFrame(u);}}window.addEventListener('scroll',q,{passive:true});window.addEventListener('resize',q,{passive:true});window.addEventListener('orientationchange',q,{passive:true});setTimeout(u,0);})();
+</script>
+<script src="/assets/lead-capture.js" defer></script>
+</body>
+</html>
