@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Model's Reasoning Trace Is Stored on Someone Else's Server — Supergood Solutions</title>
+<meta name="description" content="When your agent reasons through a sensitive business problem, that chain of thought is not ephemeral inference — on most reasoning APIs it defaults to stored…">
+<meta name="author" content="Ryan Sandoval">
+<meta name="keywords" content="SECURITY, AI agents, artificial intelligence, enterprise AI">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0a0a0b">
+<link rel="canonical" href="https://supergood.solutions/blog/your-model-s-reasoning-trace-is-stored-on-someone-else-s-server/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preload" as="image" href="hero.svg" fetchpriority="high">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Supergood Solutions">
+<meta property="og:title" content="Your Model's Reasoning Trace Is Stored on Someone Else's Server">
+<meta property="og:description" content="When your agent reasons through a sensitive business problem, that chain of thought is not ephemeral inference — on most reasoning APIs it defaults to stored…">
+<meta property="og:url" content="https://supergood.solutions/blog/your-model-s-reasoning-trace-is-stored-on-someone-else-s-server/">
+<meta property="og:image" content="https://supergood.solutions/blog/your-model-s-reasoning-trace-is-stored-on-someone-else-s-server/hero-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Your Model's Reasoning Trace Is Stored on Someone Else's Server">
+<meta property="article:published_time" content="2026-09-04">
+<meta property="article:modified_time" content="2026-09-04">
+<meta property="article:author" content="Ryan Sandoval">
+<meta property="article:section" content="SECURITY">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Your Model's Reasoning Trace Is Stored on Someone Else's Server">
+<meta name="twitter:description" content="When your agent reasons through a sensitive business problem, that chain of thought is not ephemeral inference — on most reasoning APIs it defaults to stored…">
+<meta name="twitter:image" content="https://supergood.solutions/blog/your-model-s-reasoning-trace-is-stored-on-someone-else-s-server/hero-og.png">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Your Model's Reasoning Trace Is Stored on Someone Else's Server", "description": "When your agent reasons through a sensitive business problem, that chain of thought is not ephemeral inference — on most reasoning APIs it defaults to stored…", "image": "https://supergood.solutions/blog/your-model-s-reasoning-trace-is-stored-on-someone-else-s-server/hero-og.png", "url": "https://supergood.solutions/blog/your-model-s-reasoning-trace-is-stored-on-someone-else-s-server/", "datePublished": "2026-09-04", "dateModified": "2026-09-04", "wordCount": 1200, "timeRequired": "PT6M", "articleSection": "SECURITY", "keywords": ["SECURITY", "AI agents", "artificial intelligence", "enterprise AI"], "inLanguage": "en-US", "isAccessibleForFree": true, "author": {"@type": "Person", "name": "Ryan Sandoval", "url": "https://linkedin.com/in/RyanSandoval"}, "publisher": {"@type": "Organization", "name": "Supergood Solutions", "url": "https://supergood.solutions", "logo": {"@type": "ImageObject", "url": "https://supergood.solutions/og-image.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://supergood.solutions/blog/your-model-s-reasoning-trace-is-stored-on-someone-else-s-server/"}, "isPartOf": {"@type": "Blog", "url": "https://supergood.solutions/blog/"}, "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".callout", "article h1", "article h2"]}}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://supergood.solutions/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://supergood.solutions/blog/"}, {"@type": "ListItem", "position": 3, "name": "Your Model's Reasoning Trace Is Stored on Someone Else's Server", "item": "https://supergood.solutions/blog/your-model-s-reasoning-trace-is-stored-on-someone-else-s-server/"}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0b;--surface:#111113;--surface-2:#18181b;--border:#27272a;--text:#fafafa;--text-2:#a1a1aa;--text-3:#8c8c96;--green:#22c55e;--mono:'JetBrains Mono',monospace}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;background:rgba(10,10,11,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .inner{max-width:720px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
+.wordmark{font-weight:800;font-size:1.125rem;letter-spacing:-0.03em;color:var(--text);text-decoration:none}
+.wordmark .dot{color:var(--green)}
+nav a.back{font-size:0.875rem;color:var(--text-3);text-decoration:none}
+nav a.back:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:140px 24px 80px}
+article .tag{font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:16px}
+article h1{font-size:clamp(2rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin-bottom:20px}
+article .hero{width:100%;height:auto;display:block;border:1px solid var(--border);border-radius:12px;margin-bottom:32px}
+article .meta{font-family:var(--mono);font-size:0.75rem;color:var(--text-3);margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+article h2{font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;margin:56px 0 16px}
+article h3{font-size:1.125rem;font-weight:600;margin:40px 0 12px}
+article p{font-size:1rem;color:var(--text-2);margin-bottom:20px}
+article strong{color:var(--text)}
+article ul,article ol{color:var(--text-2);margin-bottom:20px;padding-left:24px}
+article li{margin-bottom:8px}
+article a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+article hr{border:none;border-top:1px solid var(--border);margin:40px 0}
+article code{font-family:var(--mono);font-size:0.875em;background:var(--surface-2);color:var(--text);padding:2px 6px;border-radius:4px;border:1px solid var(--border)}
+article pre{background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:16px 20px;margin:24px 0;overflow-x:auto;font-family:var(--mono);font-size:0.8125rem;line-height:1.6}
+article pre code{color:var(--text);background:transparent;padding:0;border:none;border-radius:0;font-size:inherit;white-space:pre}
+.callout{background:var(--surface-2);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:20px 24px;margin:32px 0}
+.callout code{background:rgba(255,255,255,0.04)}
+.callout p{margin-bottom:0;font-size:0.9375rem}
+footer{background:var(--surface);padding:40px 0;margin-top:80px;border-top:1px solid var(--border);text-align:center}
+footer p{color:var(--text-3);font-size:0.875rem;margin:0}
+.reading-progress{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--green);z-index:200;will-change:transform}
+::selection{background:var(--green);color:var(--bg)}
+@media(max-width:768px){article{padding:120px 20px 60px}article h1{font-size:2rem}}
+</style>
+</head>
+<body>
+<div class="reading-progress" aria-hidden="true"></div>
+<nav><div class="inner"><a href="/" class="wordmark">supergood<span class="dot">.</span></a><a href="/blog/" class="back">← All posts</a></div></nav>
+<main><article>
+<img class="hero" src="hero.svg" alt="" width="1200" height="630" loading="eager">
+<div class="tag">SECURITY</div>
+<h1>Your Model's Reasoning Trace Is Stored on Someone Else's Server</h1>
+<div class="meta">Published September 04, 2026 — 6 min read</div>
+<div class="callout"><p><strong>TL;DR:</strong> When your agent reasons through a sensitive business problem, that chain of thought is not ephemeral inference — on most reasoning APIs it defaults to stored data on the provider's side, and the "encrypted" alternative just moves an opaque, un-redactable blob into your own logs. Either way, you now own a data class your DPIA has never heard of.</p></div>
+
+<h2>Key Insight</h2>
+<p>Everyone treats reasoning tokens as exhaust. You pay for them, you never see most of them, and the mental model is "the model thought, then it answered, and the thinking evaporated."</p>
+<p>It doesn't evaporate. Reasoning models have to carry their reasoning state across turns, or multi-step agents get dramatically worse at tool use — the model loses the plan it just made. So the state has to live <em>somewhere</em> between turn N and turn N+1. There are only two places it can live, and both of them are storage:</p>
+<ol>
+<li><strong>The provider's server.</strong> In OpenAI's Responses API, <code>store</code> defaults to <code>true</code>. Your reasoning items are persisted server-side and referenced by response ID on the next turn. That's the happy path most SDK quickstarts put you on without a word.</li>
+<li><strong>Your own infrastructure.</strong> Set <code>store: false</code> and ask for <code>include: ["reasoning.encrypted_content"]</code> and the API hands you an encrypted blob representing the model's reasoning state, which you pass back yourself. OpenAI's cookbook is explicit that this is "persisted entirely on the client side with OpenAI retaining no data." Anthropic does the analogous thing with <code>thinking</code> blocks and their <code>signature</code> field, which must be returned byte-for-byte unmodified.</li>
+</ol>
+<p>Here is the contrarian part: <strong>option 2 is the privacy fix and a new compliance problem at the same time.</strong> You just took a ciphertext you cannot read, cannot redact, cannot inspect for PII, and cannot decrypt during an incident review — and you put it in your session store, your Redis, your Postgres, your S3 conversation archive. It's now covered by your retention policy, your breach notification obligations, and your customer's right-to-deletion request. And you have no idea what's inside it.</p>
+<p>The reasoning trace was never ephemeral. The only question was ever <em>whose</em> database it lands in.</p>
+<h2>Why Teams Miss This</h2>
+<p>Three reasons, in rough order of how often we see them.</p>
+<p><strong>The threat model stops at the prompt.</strong> Teams do serious work scrubbing inputs — PII redaction on user messages, DLP on retrieved documents, careful system prompts. Then the model reasons over that scrubbed input and produces a trace that re-derives, restates, and expands on exactly the sensitive material you were careful about. Nobody scrubs the reasoning, because nobody thinks of it as data the system produced.</p>
+<p><strong>"Encrypted" reads as "handled."</strong> The word does a lot of unearned work in a security review. Encrypted-at-rest-by-someone-else's-key, held in your database, is not the same posture as data you control. You have confidentiality against a casual reader and zero ability to satisfy an auditor who asks "what's in this field?"</p>
+<p><strong>Nobody owns the boundary.</strong> The infra team sees an opaque string in a conversations table. The ML team sees a required API parameter for multi-turn tool use. Neither one files it as a data category. It shows up in no data map, no DPIA, no records-of-processing register — right up until a customer asks you to delete everything about them and someone realizes the deletion job doesn't know what that column is.</p>
+<p>There's a fourth, quieter one: reasoning state is provider-bound and deployment-bound. Teams load-balancing across OpenAI direct, Azure, and a gateway assume these blobs are portable. They are not reliably portable, which means your "just fail over" resilience story has an undocumented coupling in it.</p>
+<h2>How to Actually Do It</h2>
+<p>Treat reasoning state as a first-class data category with its own lifecycle. Concretely:</p>
+<p><strong>1. Decide where it lives, explicitly, in code.</strong> Not by SDK default. Make the choice visible at the call site so a reviewer can see it:</p>
+<pre><code class="language-python"># Explicit: nothing about this conversation is persisted provider-side.
+# The encrypted reasoning blob comes back to us and WE own its lifecycle.
+resp = client.responses.create(
+    model="o4-mini",
+    input=messages,
+    store=False,                                   # no server-side retention
+    include=["reasoning.encrypted_content"],       # we carry the state
+)</code></pre>
+<p>If you're on the stateful path instead, own that too — keep the response IDs, and wire <code>DELETE /v1/responses/{id}</code> into the same job that handles user deletion requests. A stored response you can't enumerate is a stored response you can't delete.</p>
+<p><strong>2. Give the blob a real column and a real TTL.</strong> Don't let it ride along inside a JSON <code>messages</code> dump. It belongs in a named column with a documented type, an owner, and an expiry that matches your conversation retention policy — usually much shorter than the rest of the transcript, because reasoning state is only useful for the life of the active task.</p>
+<pre><code class="language-sql">ALTER TABLE agent_turns
+  ADD COLUMN reasoning_state   bytea,           -- opaque provider ciphertext
+  ADD COLUMN reasoning_expires timestamptz;     -- TTL; sweep on schedule</code></pre>
+<p>Then actually sweep it. The blob's usefulness ends when the task ends; its liability does not.</p>
+<p><strong>3. Write it into the data map before legal finds it.</strong> One line in your records of processing: <em>model reasoning state, provider-encrypted, opaque to us, retained N hours, deleted with the parent conversation.</em> That sentence is cheap to write today and expensive to retrofit during an audit.</p>
+<p><strong>4. Pin the deployment.</strong> If you round-robin across OpenAI, Azure, and a gateway, don't assume reasoning state carries across them. Pin a conversation to one deployment for its lifetime, or drop reasoning state on failover and accept the quality hit — a degraded turn beats a hard 400 mid-agent-run.</p>
+<p><strong>5. If it's truly sensitive, don't carry it.</strong> Drop reasoning state between turns and re-establish context from your own structured summary. You'll pay in latency and a little accuracy on long tool chains. For a workflow touching regulated data, that's a trade many teams should take and almost none consciously evaluate.</p>
+<h2>What We've Learned</h2>
+<p>The pattern generalizes past reasoning tokens: <strong>anything an agent needs to remember between turns is storage, and storage has a compliance surface — no matter how transient the API docs make it sound.</strong> Cached prompt prefixes, tool-call scratchpads, vector-store session buffers, and agent memory files all have the same shape. The moment state has to survive a request boundary, it's a data category, and somebody has to own it.</p>
+<p>Next experiment for your team, and it takes about an hour: grep your production conversation store for reasoning or thinking fields. Then ask three questions — do we know it's there, does the deletion job touch it, and does it appear in our data map? In most codebases we've looked at, the answer to at least one of those is no, and the team is genuinely surprised. That surprise is the finding.</p>
+<h2>Sources</h2>
+<ul>
+<li>OpenAI Cookbook, encrypted reasoning items and client-side persistence: <a href="https://developers.openai.com/cookbook/examples/responses_api/reasoning_items">developers.openai.com/cookbook/examples/responses_api/reasoning_items</a></li>
+<li>Same cookbook notebook on GitHub, including ZDR behavior (<code>store=false</code> enforced automatically): <a href="https://github.com/openai/openai-cookbook/blob/main/examples/responses_api/reasoning_items.ipynb">github.com/openai/openai-cookbook</a></li>
+<li>OpenAI API reference for <code>include</code> and <code>reasoning.encrypted_content</code>: <a href="https://developers.openai.com/api/reference/python/resources/responses/methods/create">developers.openai.com/api/reference</a></li>
+<li>OpenAI announcement of encrypted reasoning items and background mode: <a href="https://openai.com/index/new-tools-and-features-in-the-responses-api/">New tools and features in the Responses API</a></li>
+<li>Anthropic extended thinking, thinking blocks and signature verification: <a href="https://platform.claude.com/docs/en/build-with-claude/extended-thinking">platform.claude.com/docs/en/build-with-claude/extended-thinking</a></li>
+<li>Bedrock docs on thinking encryption and the <code>signature</code> field: <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/claude-messages-thinking-encryption.html">docs.aws.amazon.com — Thinking encryption</a></li>
+<li>Real-world breakage when thinking blocks aren't returned unmodified: <a href="https://github.com/agentscope-ai/agentscope/issues/2135">agentscope issue #2135</a></li>
+</ul>
+
+<div style="border-left:3px solid var(--green);background:var(--surface-2);border-radius:0 8px 8px 0;padding:28px;margin:48px 0 24px;">
+<p style="font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px;">Have a specific workflow in mind?</p>
+<p style="color:var(--text-2);font-size:0.9375rem;margin-bottom:16px;">Bring it to a Quick Scan — a live working session where we'll tell you honestly whether it should be an agent, a workflow, or left alone, before you spend a dollar building it. You get 3 prioritized recommendations on the call, a one-page summary after, and the $500 credited toward any engagement within 30 days.</p>
+<p style="margin:0;font-size:0.9375rem;"><a href="/ai-agent-consulting/" style="color:var(--green);text-decoration:underline;text-underline-offset:3px;font-weight:600;">See AI Agent Consulting →</a><span style="color:var(--text-3);margin:0 12px;">·</span><a href="https://calendar.app.google/BkcFDB21jWhMwCiq7" style="color:var(--green);text-decoration:underline;text-underline-offset:3px;font-weight:600;">Book an intro call →</a></p>
+</div>
+<div data-lead-capture-wrap style="border:1px solid var(--border);border-radius:12px;padding:28px;">
+<p style="font-weight:700;color:var(--text);margin-bottom:6px;font-size:1rem;">Get new posts + practical agent-ops notes</p>
+<p style="color:var(--text-3);font-size:0.8125rem;margin-bottom:20px;">One email when something new goes up. No nurture sequence, no spam — unsubscribe whenever you want.</p>
+<form data-lead-capture style="display:flex;flex-wrap:wrap;gap:10px;align-items:flex-start;">
+<div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+<label>Company <input type="text" name="company" tabindex="-1" autocomplete="off"></label>
+</div>
+<input type="text" name="name" placeholder="Name (optional)" autocomplete="name" style="flex:1 1 160px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-size:0.875rem;font-family:inherit;">
+<input type="email" name="email" placeholder="you@email.com" required autocomplete="email" style="flex:2 1 220px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-size:0.875rem;font-family:inherit;">
+<button type="submit" style="flex:0 0 auto;background:var(--green);color:var(--bg);border:none;border-radius:8px;padding:10px 20px;font-size:0.875rem;font-weight:600;cursor:pointer;font-family:inherit;">Subscribe</button>
+</form>
+<p data-lead-error style="display:none;color:#f87171;font-size:0.8125rem;margin-top:10px;"></p>
+<p data-lead-success style="display:none;color:var(--green);font-size:0.875rem;margin-top:4px;">Thanks — you're on the list.</p>
+</div>
+</article></main>
+<footer><p>&copy; 2026 Supergood Solutions. Helping teams automate smarter, not harder.</p></footer>
+<script>
+(function(){var b=document.querySelector('.reading-progress');if(!b)return;var t=false;function u(){var d=document.documentElement,m=d.scrollHeight-d.clientHeight;if(m<=0){t=false;return;}var y=window.scrollY||window.pageYOffset||d.scrollTop||0;b.style.transform='scaleX('+Math.min(1,Math.max(0,y/m))+')';t=false;}function q(){if(!t){t=true;requestAnimationFrame(u);}}window.addEventListener('scroll',q,{passive:true});window.addEventListener('resize',q,{passive:true});window.addEventListener('orientationchange',q,{passive:true});setTimeout(u,0);})();
+</script>
+<script src="/assets/lead-capture.js" defer></script>
+</body>
+</html>
