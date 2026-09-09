@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Every AI Transformation in Your Pipeline Loses Something — Supergood Solutions</title>
+<meta name="description" content="There is no such thing as a lossless AI text transformation — summarize, extract, reformat, translate, each step throws information away. Chain enough of these…">
+<meta name="author" content="Ryan Sandoval">
+<meta name="keywords" content="Architecture, AI agents, artificial intelligence, enterprise AI">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0a0a0b">
+<link rel="canonical" href="https://supergood.solutions/blog/every-ai-transformation-in-your-pipeline-loses-something/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preload" as="image" href="hero.svg" fetchpriority="high">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Supergood Solutions">
+<meta property="og:title" content="Every AI Transformation in Your Pipeline Loses Something">
+<meta property="og:description" content="There is no such thing as a lossless AI text transformation — summarize, extract, reformat, translate, each step throws information away. Chain enough of these…">
+<meta property="og:url" content="https://supergood.solutions/blog/every-ai-transformation-in-your-pipeline-loses-something/">
+<meta property="og:image" content="https://supergood.solutions/blog/every-ai-transformation-in-your-pipeline-loses-something/hero-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Every AI Transformation in Your Pipeline Loses Something">
+<meta property="article:published_time" content="2026-09-08">
+<meta property="article:modified_time" content="2026-09-08">
+<meta property="article:author" content="Ryan Sandoval">
+<meta property="article:section" content="Architecture">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Every AI Transformation in Your Pipeline Loses Something">
+<meta name="twitter:description" content="There is no such thing as a lossless AI text transformation — summarize, extract, reformat, translate, each step throws information away. Chain enough of these…">
+<meta name="twitter:image" content="https://supergood.solutions/blog/every-ai-transformation-in-your-pipeline-loses-something/hero-og.png">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Every AI Transformation in Your Pipeline Loses Something", "description": "There is no such thing as a lossless AI text transformation — summarize, extract, reformat, translate, each step throws information away. Chain enough of these…", "image": "https://supergood.solutions/blog/every-ai-transformation-in-your-pipeline-loses-something/hero-og.png", "url": "https://supergood.solutions/blog/every-ai-transformation-in-your-pipeline-loses-something/", "datePublished": "2026-09-08", "dateModified": "2026-09-08", "wordCount": 802, "timeRequired": "PT4M", "articleSection": "Architecture", "keywords": ["Architecture", "AI agents", "artificial intelligence", "enterprise AI"], "inLanguage": "en-US", "isAccessibleForFree": true, "author": {"@type": "Person", "name": "Ryan Sandoval", "url": "https://linkedin.com/in/RyanSandoval"}, "publisher": {"@type": "Organization", "name": "Supergood Solutions", "url": "https://supergood.solutions", "logo": {"@type": "ImageObject", "url": "https://supergood.solutions/og-image.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://supergood.solutions/blog/every-ai-transformation-in-your-pipeline-loses-something/"}, "isPartOf": {"@type": "Blog", "url": "https://supergood.solutions/blog/"}, "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".callout", "article h1", "article h2"]}}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://supergood.solutions/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://supergood.solutions/blog/"}, {"@type": "ListItem", "position": 3, "name": "Every AI Transformation in Your Pipeline Loses Something", "item": "https://supergood.solutions/blog/every-ai-transformation-in-your-pipeline-loses-something/"}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0b;--surface:#111113;--surface-2:#18181b;--border:#27272a;--text:#fafafa;--text-2:#a1a1aa;--text-3:#8c8c96;--green:#22c55e;--mono:'JetBrains Mono',monospace}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;background:rgba(10,10,11,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .inner{max-width:720px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
+.wordmark{font-weight:800;font-size:1.125rem;letter-spacing:-0.03em;color:var(--text);text-decoration:none}
+.wordmark .dot{color:var(--green)}
+nav a.back{font-size:0.875rem;color:var(--text-3);text-decoration:none}
+nav a.back:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:140px 24px 80px}
+article .tag{font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:16px}
+article h1{font-size:clamp(2rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin-bottom:20px}
+article .hero{width:100%;height:auto;display:block;border:1px solid var(--border);border-radius:12px;margin-bottom:32px}
+article .meta{font-family:var(--mono);font-size:0.75rem;color:var(--text-3);margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+article h2{font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;margin:56px 0 16px}
+article h3{font-size:1.125rem;font-weight:600;margin:40px 0 12px}
+article p{font-size:1rem;color:var(--text-2);margin-bottom:20px}
+article strong{color:var(--text)}
+article ul,article ol{color:var(--text-2);margin-bottom:20px;padding-left:24px}
+article li{margin-bottom:8px}
+article a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+article hr{border:none;border-top:1px solid var(--border);margin:40px 0}
+article code{font-family:var(--mono);font-size:0.875em;background:var(--surface-2);color:var(--text);padding:2px 6px;border-radius:4px;border:1px solid var(--border)}
+article pre{background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:16px 20px;margin:24px 0;overflow-x:auto;font-family:var(--mono);font-size:0.8125rem;line-height:1.6}
+article pre code{color:var(--text);background:transparent;padding:0;border:none;border-radius:0;font-size:inherit;white-space:pre}
+.callout{background:var(--surface-2);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:20px 24px;margin:32px 0}
+.callout code{background:rgba(255,255,255,0.04)}
+.callout p{margin-bottom:0;font-size:0.9375rem}
+footer{background:var(--surface);padding:40px 0;margin-top:80px;border-top:1px solid var(--border);text-align:center}
+footer p{color:var(--text-3);font-size:0.875rem;margin:0}
+.reading-progress{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--green);z-index:200;will-change:transform}
+::selection{background:var(--green);color:var(--bg)}
+@media(max-width:768px){article{padding:120px 20px 60px}article h1{font-size:2rem}}
+</style>
+</head>
+<body>
+<div class="reading-progress" aria-hidden="true"></div>
+<nav><div class="inner"><a href="/" class="wordmark">supergood<span class="dot">.</span></a><a href="/blog/" class="back">← All posts</a></div></nav>
+<main><article>
+<img class="hero" src="hero.svg" alt="" width="1200" height="630" loading="eager">
+<div class="tag">Architecture</div>
+<h1>Every AI Transformation in Your Pipeline Loses Something</h1>
+<div class="meta">Published September 08, 2026 — 4 min read</div>
+<div class="callout"><p><strong>TL;DR:</strong> There is no such thing as a lossless AI text transformation — summarize, extract, reformat, translate, each step throws information away. Chain enough of these steps in an enterprise pipeline and the loss compounds invisibly, until it surfaces as a wrong downstream decision nobody can trace back to its source.</p></div>
+
+<h2>Key Insight</h2>
+<p>Every step in an LLM pipeline is a compression step, and compression is lossy by definition. Simon Willison put this well when he described an LLM as a "lossy encyclopedia": it has a huge array of facts compressed into it, but the compression loses detail, the same way Ted Chiang once called ChatGPT "a blurry JPEG of the web." The lossiness isn't a bug you patch — it's the mechanism by which the model works at all. A model that remembered every training document verbatim wouldn't generalize; it would just be a search index.</p>
+<p>The part enterprise teams miss is that this same lossy-compression dynamic applies to <em>every intermediate step you build</em>, not just the base model. Summarize a support ticket, then extract entities from the summary, then reformat those entities into a CRM field, then translate the field for a regional team — each hop is its own act of compression, and each one discards a little context that seemed irrelevant <em>at that step</em> but turns out to matter three hops later.</p>
+<h2>Why Teams Miss This</h2>
+<p>Most teams evaluate each pipeline stage in isolation. The summarization prompt gets tested against ten tickets and looks great. The extraction step gets tested against ten summaries and looks great. Nobody tests the <em>whole chain</em> end-to-end against the original ticket, because that's harder to set up and the individual stages already "pass."</p>
+<p>This is the same blind spot that shows up in a multi-hop game of telephone: each translation is locally faithful, but the accumulated drift is only visible when you compare the last output to the first input — a comparison most pipelines never run. The failure mode isn't a single bad transformation; it's five adequate transformations compounding into a decision that's confidently wrong. A customer's "this is urgent, my production system is down" survives a summarization step as "customer reported downtime," survives extraction as <code>severity: medium</code>, and survives reformatting into a ticket that a human triages three hours later than they should have.</p>
+<h2>How to Actually Do It</h2>
+<p>You cannot make the transformations lossless, but you can make the loss visible and bounded.</p>
+<ol>
+<li><strong>Treat every hop as a data-loss checkpoint, not a black box.</strong> Log the input and output of each transformation stage separately, not just the final pipeline output. If you can't inspect what got dropped at step 3, you can't debug why step 5 is wrong.</li>
+</ol>
+<p>2. <strong>Carry the original alongside the derived artifact, not instead of it.</strong> Don't replace the raw ticket text with the summary in your data model — keep both, with the summary as a pointer/annotation. Willison's own fix for LLM lossiness generalizes here: "the way to solve this particular problem is to make a correct example available to it" — give the model (and the humans reviewing its output) access to ground truth, don't ask them to trust a compressed copy of a copy.</p>
+<p>3. <strong>Put a lossiness budget on high-stakes fields.</strong> Fields that drive automated decisions (severity, priority, dollar amount, legal obligation) should either skip the lossy chain entirely (extract directly from the source) or get a verification step that checks the final value against the original text before it's acted on.</p>
+<p>4. <strong>Test the chain, not the links.</strong> Build a small eval set of 20-30 real inputs, run them through the <em>entire</em> pipeline, and diff the final output against the source document by hand. This catches compounding drift that per-stage unit tests never will.</p>
+<pre><code class="language-python"># Minimal end-to-end drift check for a summarize -&gt; extract -&gt; format pipeline
+def check_pipeline_drift(raw_input: str, final_output: dict, source_fields: list[str]):
+    """Flag when a high-stakes field's derived value can't be traced
+    back to explicit language in the original source."""
+    flags = []
+    for field in source_fields:
+        value = str(final_output.get(field, "")).lower()
+        if value and value not in raw_input.lower():
+            flags.append(f"{field}={value!r} not directly grounded in source text")
+    return flags</code></pre>
+<p>This isn't a substitute for real evals — it's a cheap tripwire that catches the worst compounding-loss cases (a severity or amount field that the model inferred rather than extracted) before they hit production.</p>
+<h2>What We've Learned</h2>
+<p>The next experiment worth running on any multi-stage LLM pipeline: pick your highest-stakes field, trace it back through every transformation to the original source text, and see how many hops it actually survived unchanged. If the answer is "zero, but it got reworded twice," you've found your next lossiness budget to enforce.</p>
+<h2>Sources</h2>
+<ul>
+<li>Simon Willison's "lossy encyclopedia" analogy: <a href="https://simonwillison.net/2025/Aug/29/lossy-encyclopedia/">simonwillison.net/2025/Aug/29/lossy-encyclopedia</a></li>
+<li>Ted Chiang, "ChatGPT Is a Blurry JPEG of the Web," The New Yorker: <a href="https://www.newyorker.com/tech/annals-of-technology/chatgpt-is-a-blurry-jpeg-of-the-web">newyorker.com/tech/annals-of-technology/chatgpt-is-a-blurry-jpeg-of-the-web</a></li>
+</ul>
+
+<div style="border-left:3px solid var(--green);background:var(--surface-2);border-radius:0 8px 8px 0;padding:28px;margin:48px 0 24px;">
+<p style="font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px;">Have a specific workflow in mind?</p>
+<p style="color:var(--text-2);font-size:0.9375rem;margin-bottom:16px;">Bring it to a Quick Scan — a live working session where we'll tell you honestly whether it should be an agent, a workflow, or left alone, before you spend a dollar building it. You get 3 prioritized recommendations on the call, a one-page summary after, and the $500 credited toward any engagement within 30 days.</p>
+<p style="margin:0;font-size:0.9375rem;"><a href="/ai-agent-consulting/" style="color:var(--green);text-decoration:underline;text-underline-offset:3px;font-weight:600;">See AI Agent Consulting →</a><span style="color:var(--text-3);margin:0 12px;">·</span><a href="https://calendar.app.google/BkcFDB21jWhMwCiq7" style="color:var(--green);text-decoration:underline;text-underline-offset:3px;font-weight:600;">Book an intro call →</a></p>
+</div>
+<div data-lead-capture-wrap style="border:1px solid var(--border);border-radius:12px;padding:28px;">
+<p style="font-weight:700;color:var(--text);margin-bottom:6px;font-size:1rem;">Get new posts + practical agent-ops notes</p>
+<p style="color:var(--text-3);font-size:0.8125rem;margin-bottom:20px;">One email when something new goes up. No nurture sequence, no spam — unsubscribe whenever you want.</p>
+<form data-lead-capture style="display:flex;flex-wrap:wrap;gap:10px;align-items:flex-start;">
+<div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+<label>Company <input type="text" name="company" tabindex="-1" autocomplete="off"></label>
+</div>
+<input type="text" name="name" placeholder="Name (optional)" autocomplete="name" style="flex:1 1 160px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-size:0.875rem;font-family:inherit;">
+<input type="email" name="email" placeholder="you@email.com" required autocomplete="email" style="flex:2 1 220px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-size:0.875rem;font-family:inherit;">
+<button type="submit" style="flex:0 0 auto;background:var(--green);color:var(--bg);border:none;border-radius:8px;padding:10px 20px;font-size:0.875rem;font-weight:600;cursor:pointer;font-family:inherit;">Subscribe</button>
+</form>
+<p data-lead-error style="display:none;color:#f87171;font-size:0.8125rem;margin-top:10px;"></p>
+<p data-lead-success style="display:none;color:var(--green);font-size:0.875rem;margin-top:4px;">Thanks — you're on the list.</p>
+</div>
+</article></main>
+<footer><p>&copy; 2026 Supergood Solutions. Helping teams automate smarter, not harder.</p></footer>
+<script>
+(function(){var b=document.querySelector('.reading-progress');if(!b)return;var t=false;function u(){var d=document.documentElement,m=d.scrollHeight-d.clientHeight;if(m<=0){t=false;return;}var y=window.scrollY||window.pageYOffset||d.scrollTop||0;b.style.transform='scaleX('+Math.min(1,Math.max(0,y/m))+')';t=false;}function q(){if(!t){t=true;requestAnimationFrame(u);}}window.addEventListener('scroll',q,{passive:true});window.addEventListener('resize',q,{passive:true});window.addEventListener('orientationchange',q,{passive:true});setTimeout(u,0);})();
+</script>
+<script src="/assets/lead-capture.js" defer></script>
+</body>
+</html>
