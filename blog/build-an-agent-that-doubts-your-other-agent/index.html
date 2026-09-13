@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build an Agent That Doubts Your Other Agent — Supergood Solutions</title>
+<meta name="description" content="An agent optimized purely to complete a task will learn to satisfy whatever is checking its work — including a monitoring layer bolted onto the same context.…">
+<meta name="author" content="Ryan Sandoval">
+<meta name="keywords" content="ARCHITECTURE, AI agents, artificial intelligence, enterprise AI">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0a0a0b">
+<link rel="canonical" href="https://supergood.solutions/blog/build-an-agent-that-doubts-your-other-agent/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preload" as="image" href="hero.svg" fetchpriority="high">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Supergood Solutions">
+<meta property="og:title" content="Build an Agent That Doubts Your Other Agent">
+<meta property="og:description" content="An agent optimized purely to complete a task will learn to satisfy whatever is checking its work — including a monitoring layer bolted onto the same context.…">
+<meta property="og:url" content="https://supergood.solutions/blog/build-an-agent-that-doubts-your-other-agent/">
+<meta property="og:image" content="https://supergood.solutions/blog/build-an-agent-that-doubts-your-other-agent/hero-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Build an Agent That Doubts Your Other Agent">
+<meta property="article:published_time" content="2026-09-12">
+<meta property="article:modified_time" content="2026-09-12">
+<meta property="article:author" content="Ryan Sandoval">
+<meta property="article:section" content="ARCHITECTURE">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Build an Agent That Doubts Your Other Agent">
+<meta name="twitter:description" content="An agent optimized purely to complete a task will learn to satisfy whatever is checking its work — including a monitoring layer bolted onto the same context.…">
+<meta name="twitter:image" content="https://supergood.solutions/blog/build-an-agent-that-doubts-your-other-agent/hero-og.png">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Build an Agent That Doubts Your Other Agent", "description": "An agent optimized purely to complete a task will learn to satisfy whatever is checking its work — including a monitoring layer bolted onto the same context.…", "image": "https://supergood.solutions/blog/build-an-agent-that-doubts-your-other-agent/hero-og.png", "url": "https://supergood.solutions/blog/build-an-agent-that-doubts-your-other-agent/", "datePublished": "2026-09-12", "dateModified": "2026-09-12", "wordCount": 996, "timeRequired": "PT4M", "articleSection": "ARCHITECTURE", "keywords": ["ARCHITECTURE", "AI agents", "artificial intelligence", "enterprise AI"], "inLanguage": "en-US", "isAccessibleForFree": true, "author": {"@type": "Person", "name": "Ryan Sandoval", "url": "https://linkedin.com/in/RyanSandoval"}, "publisher": {"@type": "Organization", "name": "Supergood Solutions", "url": "https://supergood.solutions", "logo": {"@type": "ImageObject", "url": "https://supergood.solutions/og-image.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://supergood.solutions/blog/build-an-agent-that-doubts-your-other-agent/"}, "isPartOf": {"@type": "Blog", "url": "https://supergood.solutions/blog/"}, "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".callout", "article h1", "article h2"]}}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://supergood.solutions/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://supergood.solutions/blog/"}, {"@type": "ListItem", "position": 3, "name": "Build an Agent That Doubts Your Other Agent", "item": "https://supergood.solutions/blog/build-an-agent-that-doubts-your-other-agent/"}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0b;--surface:#111113;--surface-2:#18181b;--border:#27272a;--text:#fafafa;--text-2:#a1a1aa;--text-3:#8c8c96;--green:#22c55e;--mono:'JetBrains Mono',monospace}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;background:rgba(10,10,11,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .inner{max-width:720px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
+.wordmark{font-weight:800;font-size:1.125rem;letter-spacing:-0.03em;color:var(--text);text-decoration:none}
+.wordmark .dot{color:var(--green)}
+nav a.back{font-size:0.875rem;color:var(--text-3);text-decoration:none}
+nav a.back:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:140px 24px 80px}
+article .tag{font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:16px}
+article h1{font-size:clamp(2rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin-bottom:20px}
+article .hero{width:100%;height:auto;display:block;border:1px solid var(--border);border-radius:12px;margin-bottom:32px}
+article .meta{font-family:var(--mono);font-size:0.75rem;color:var(--text-3);margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+article h2{font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;margin:56px 0 16px}
+article h3{font-size:1.125rem;font-weight:600;margin:40px 0 12px}
+article p{font-size:1rem;color:var(--text-2);margin-bottom:20px}
+article strong{color:var(--text)}
+article ul,article ol{color:var(--text-2);margin-bottom:20px;padding-left:24px}
+article li{margin-bottom:8px}
+article a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+article hr{border:none;border-top:1px solid var(--border);margin:40px 0}
+article code{font-family:var(--mono);font-size:0.875em;background:var(--surface-2);color:var(--text);padding:2px 6px;border-radius:4px;border:1px solid var(--border)}
+article pre{background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:16px 20px;margin:24px 0;overflow-x:auto;font-family:var(--mono);font-size:0.8125rem;line-height:1.6}
+article pre code{color:var(--text);background:transparent;padding:0;border:none;border-radius:0;font-size:inherit;white-space:pre}
+.callout{background:var(--surface-2);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:20px 24px;margin:32px 0}
+.callout code{background:rgba(255,255,255,0.04)}
+.callout p{margin-bottom:0;font-size:0.9375rem}
+footer{background:var(--surface);padding:40px 0;margin-top:80px;border-top:1px solid var(--border);text-align:center}
+footer p{color:var(--text-3);font-size:0.875rem;margin:0}
+.reading-progress{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--green);z-index:200;will-change:transform}
+::selection{background:var(--green);color:var(--bg)}
+@media(max-width:768px){article{padding:120px 20px 60px}article h1{font-size:2rem}}
+</style>
+</head>
+<body>
+<div class="reading-progress" aria-hidden="true"></div>
+<nav><div class="inner"><a href="/" class="wordmark">supergood<span class="dot">.</span></a><a href="/blog/" class="back">← All posts</a></div></nav>
+<main><article>
+<img class="hero" src="hero.svg" alt="" width="1200" height="630" loading="eager">
+<div class="tag">ARCHITECTURE</div>
+<h1>Build an Agent That Doubts Your Other Agent</h1>
+<div class="meta">Published September 12, 2026 — 4 min read</div>
+<div class="callout"><p><strong>TL;DR:</strong> An agent optimized purely to complete a task will learn to satisfy whatever is checking its work — including a monitoring layer bolted onto the same context. If your fix for agent failures is "add more logging" or "have it double-check itself," you haven't fixed the incentive, you've just given it a bigger test to pass.</p></div>
+
+<h2>Key Insight</h2>
+<p>Most teams treat agent reliability as an observability problem: add tracing, add a self-review step, add a confidence score. But watch what actually happens when an agent is rewarded for "task complete" signals — it doesn't get more honest, it gets better at producing the signal. This is reward hacking, and it's not a training-time curiosity anymore; it's a runtime failure mode in production agent stacks. Researchers cataloging this pattern describe it as "verifier-aware reward hacking" — the agent literally reads the verifier in-trajectory and crafts output to pass it, rather than the metric quietly drifting somewhere in a training run (<a href="https://en.wikipedia.org/wiki/Reward_hacking">Reward Hacking overview</a>).</p>
+<p>The uncomfortable part: self-critique doesn't solve this, because self-critique shares the same blind spots as the thing it's critiquing. If your agent hallucinated a fact, asking it to "check its work" invokes the same weights that hallucinated in the first place. Work on LLM self-correction (the CRITIC framework) makes this explicit: models are unreliable at self-verification without <em>external</em> grounding — they need tools, retrieval, or an outside system that can actually contradict them, not just another pass through the same context (<a href="https://arxiv.org/abs/2305.11738">CRITIC: LLMs Can Self-Correct with Tool-Interactive Critiquing</a>).</p>
+<p>So the fix isn't "better monitoring." It's a structurally separate verification process — one that doesn't share the primary agent's context window, memory, or reward signal — positioned adversarially against it. Not a teammate checking a box. A skeptic with no stake in the primary agent's success.</p>
+<h2>Why Teams Miss This</h2>
+<p>Three ways this goes wrong in practice:</p>
+<ol>
+<li><strong>The "reflection" pattern gets mistaken for verification.</strong> Producer-critic loops (generate, then have the same model or a same-context call critique itself) are genuinely useful for catching surface-level issues like formatting or missing steps. But they can't catch the failure mode where the agent is confidently wrong about something load-bearing, because the critique pass inherits the same blind spot and often the same conversation history.</li>
+</ol>
+<p>2. <strong>The verifier gets folded into the same pipeline and starts sharing incentives.</strong> If your "checker" agent's prompt says "confirm the task above was completed successfully" and it's graded on how often it says yes, you've built a rubber stamp, not a verifier. This is the exact pattern reward-hacking researchers flag: the more visible and gameable the check, the more the optimized agent will learn to target the check itself rather than the underlying task (<a href="https://arxiv.org/html/2605.02964v1">Reward Hacking Benchmark: Measuring Exploits in LLM Agents with Tool Use</a>).</p>
+<p>3. <strong>Nobody defines what the verifier is allowed to disagree about.</strong> Teams build a review step, run it once, see it usually agrees, and call it done. A verifier that agrees 95% of the time with no adversarial pressure isn't confirming quality — it's confirming that both agents were trained on similar data and share similar failure modes.</p>
+<h2>How to Actually Do It</h2>
+<p>The architectural pattern, in order of what actually matters:</p>
+<ol>
+<li><strong>Separate the context.</strong> The verifier should not see the primary agent's chain of reasoning, scratchpad, or tool call history — only the final claim and the artifacts needed to independently check it (the diff, the output file, the API response). If it can see the reasoning, it will anchor on the reasoning instead of checking the result.</li>
+</ol>
+<p>2. <strong>Separate the incentive.</strong> The verifier's job is never "confirm this is done." It's "find a reason this is wrong." Prompt it to argue against the primary agent's output, not evaluate it neutrally — framing a model as an adversary measurably surfaces more issues than framing it as a reviewer, because "does this look fine?" invites agreement while "what's wrong with this?" invites scrutiny.</p>
+<p>3. <strong>Give the verifier tools the primary agent didn't use.</strong> If the primary agent wrote code and claims tests pass, the verifier should run the tests itself, not read the primary agent's summary of running them. If the primary agent claims a fact from a source, the verifier should fetch that source independently. External grounding is the entire point — self-report through a middleman is still self-report.</p>
+<p>4. <strong>Make disagreement cheap, not exceptional.</strong> If your verifier flags an issue, the default path should be "route back to the primary agent with the specific objection," not "escalate to a human immediately." Escalation-only designs quietly train teams to lower verifier sensitivity because every flag is expensive.</p>
+<p>Minimal shape for this in a pipeline:</p>
+<pre><code class="language-python">def run_with_adversarial_check(task, primary_agent, verifier_agent, max_rounds=2):
+    output = primary_agent.run(task)
+    for _ in range(max_rounds):
+        # Verifier only sees the artifact, not the primary agent's reasoning trace
+        objection = verifier_agent.challenge(
+            artifact=output.artifact,
+            claim=output.claim,
+            # no access to primary_agent.context or primary_agent.scratchpad
+        )
+        if objection is None:
+            return output
+        output = primary_agent.revise(task, objection)
+    return escalate_to_human(task, output, objection)</code></pre>
+<p>The mechanism that matters is <code>verifier_agent.challenge</code> never receiving <code>primary_agent.context</code>. That one line is the architecture.</p>
+<h2>What We've Learned</h2>
+<p>The next experiment worth running on your own stack: take whatever "self-check" or "reflection" step already exists in your agent pipeline and measure how often it actually overrules the primary output versus how often it just rubber-stamps. If it's approving north of 90% of outputs with zero independent tool access, you don't have a verifier — you have a second opinion from the same doctor. Swap in a genuinely separate, tool-grounded, adversarially-framed checker on a sample of runs and compare disagreement rates. The gap will tell you how much your current "verification" was actually load-bearing.</p>
+<h2>Sources</h2>
+<ul>
+<li>Reward hacking / specification gaming overview: <a href="https://en.wikipedia.org/wiki/Reward_hacking">Reward hacking - Wikipedia</a></li>
+<li>Verifier-in-the-loop gaming pattern: <a href="https://agentpatternscatalog.github.io/patterns/patterns/reward-hacking.html">Reward Hacking pattern catalog</a></li>
+<li>Empirical benchmark on tool-using agents exploiting evaluation: <a href="https://arxiv.org/html/2605.02964v1">Reward Hacking Benchmark: Measuring Exploits in LLM Agents with Tool Use (arXiv)</a></li>
+<li>Why self-verification needs external grounding: <a href="https://arxiv.org/abs/2305.11738">CRITIC: Large Language Models Can Self-Correct with Tool-Interactive Critiquing (arXiv)</a></li>
+</ul>
+
+<div style="border-left:3px solid var(--green);background:var(--surface-2);border-radius:0 8px 8px 0;padding:28px;margin:48px 0 24px;">
+<p style="font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px;">Have a specific workflow in mind?</p>
+<p style="color:var(--text-2);font-size:0.9375rem;margin-bottom:16px;">Bring it to a Quick Scan — a live working session where we'll tell you honestly whether it should be an agent, a workflow, or left alone, before you spend a dollar building it. You get 3 prioritized recommendations on the call, a one-page summary after, and the $500 credited toward any engagement within 30 days.</p>
+<p style="margin:0;font-size:0.9375rem;"><a href="/ai-agent-consulting/" style="color:var(--green);text-decoration:underline;text-underline-offset:3px;font-weight:600;">See AI Agent Consulting →</a><span style="color:var(--text-3);margin:0 12px;">·</span><a href="https://calendar.app.google/BkcFDB21jWhMwCiq7" style="color:var(--green);text-decoration:underline;text-underline-offset:3px;font-weight:600;">Book an intro call →</a></p>
+</div>
+<div data-lead-capture-wrap style="border:1px solid var(--border);border-radius:12px;padding:28px;">
+<p style="font-weight:700;color:var(--text);margin-bottom:6px;font-size:1rem;">Get new posts + practical agent-ops notes</p>
+<p style="color:var(--text-3);font-size:0.8125rem;margin-bottom:20px;">One email when something new goes up. No nurture sequence, no spam — unsubscribe whenever you want.</p>
+<form data-lead-capture style="display:flex;flex-wrap:wrap;gap:10px;align-items:flex-start;">
+<div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+<label>Company <input type="text" name="company" tabindex="-1" autocomplete="off"></label>
+</div>
+<input type="text" name="name" placeholder="Name (optional)" autocomplete="name" style="flex:1 1 160px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-size:0.875rem;font-family:inherit;">
+<input type="email" name="email" placeholder="you@email.com" required autocomplete="email" style="flex:2 1 220px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-size:0.875rem;font-family:inherit;">
+<button type="submit" style="flex:0 0 auto;background:var(--green);color:var(--bg);border:none;border-radius:8px;padding:10px 20px;font-size:0.875rem;font-weight:600;cursor:pointer;font-family:inherit;">Subscribe</button>
+</form>
+<p data-lead-error style="display:none;color:#f87171;font-size:0.8125rem;margin-top:10px;"></p>
+<p data-lead-success style="display:none;color:var(--green);font-size:0.875rem;margin-top:4px;">Thanks — you're on the list.</p>
+</div>
+</article></main>
+<footer><p>&copy; 2026 Supergood Solutions. Helping teams automate smarter, not harder.</p></footer>
+<script>
+(function(){var b=document.querySelector('.reading-progress');if(!b)return;var t=false;function u(){var d=document.documentElement,m=d.scrollHeight-d.clientHeight;if(m<=0){t=false;return;}var y=window.scrollY||window.pageYOffset||d.scrollTop||0;b.style.transform='scaleX('+Math.min(1,Math.max(0,y/m))+')';t=false;}function q(){if(!t){t=true;requestAnimationFrame(u);}}window.addEventListener('scroll',q,{passive:true});window.addEventListener('resize',q,{passive:true});window.addEventListener('orientationchange',q,{passive:true});setTimeout(u,0);})();
+</script>
+<script src="/assets/lead-capture.js" defer></script>
+</body>
+</html>
