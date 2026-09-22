@@ -38,6 +38,7 @@
   "@graph": [
     {
       "@type": "ProfessionalService",
+      "@id": "https://supergood.solutions/#organization",
       "name": "Supergood Solutions",
       "description": "Supergood is an AI consulting practice that builds production AI agents and automations using tools clients already pay for — with the guardrails, observability, and runbooks to keep them running.",
       "url": "https://supergood.solutions",
@@ -61,6 +62,7 @@
     },
     {
       "@type": "WebSite",
+      "@id": "https://supergood.solutions/#website",
       "name": "Supergood Solutions",
       "url": "https://supergood.solutions",
       "description": "Practical AI agent consulting — building, deploying, and governing AI agents in production.",
@@ -76,6 +78,15 @@
         },
         "query-input": "required name=search_term_string"
       }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://supergood.solutions/#webpage",
+      "url": "https://supergood.solutions/",
+      "name": "AI consulting for teams who need agents that work in production",
+      "isPartOf": { "@id": "https://supergood.solutions/#website" },
+      "about": { "@id": "https://supergood.solutions/#organization" },
+      "dateModified": "2026-09-22"
     }
   ]
 }
