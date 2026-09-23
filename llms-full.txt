@@ -91,7 +91,7 @@ A: Probably not at first. Most problems that look like they need coordinating ag
 
 AI automation consulting means auditing your marketing or ops workflows, then building the automations that eliminate the manual busywork — using tools you already pay for, not a new platform. Supergood automates data entry, reporting, lead routing, and campaign setup.
 
-**Proof:** A pricing team spent 16 hours/week manually pulling data and emailing three departments. Supergood automated the entire pipeline using the existing M365 stack — $0 in new software. Separately, a SaaS marketing team saved 12 hours/week automating lead enrichment for $49/month in tooling — a 1,369% ROI in 30 days.
+**Proof:** Supergood is a new practice and does not claim past client results. Two businesses currently run on systems it built. Sell With Lo (sellwithlo.com), a resale operation listed across Poshmark, Depop, eBay, Mercari and Vinted, where a nightly agent pulls inventory and orders, syncs sold items to the public storefront, and publishes per-consignor reports. And Butler Service Bar, mobile bartending in Tulsa, rebuilt from a single self-extracting HTML file into a routed site with CMS-authored content, per-town service-area pages and an FAQ.
 
 **What we do:** Workflow Audits & Builds (map ops, find waste, build automations that stick), Monthly Automation Sprints (ongoing retainer — identify new workflows, maintain what's running, train the team), and the Human Part (14 years of product/ops judgment on which reports and workflows actually matter).
 
