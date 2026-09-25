@@ -3,36 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>What Actually Broke When We Deployed Our First AI Agent (And How We Fixed It) — Supergood Solutions</title>
-<meta name="description" content="A real-world case study on deploying an AI agent into marketing ops: three failure modes we hit in production, four guardrails that fixed them, and a practical checklist for teams about to ship their first agent.">
+<title>The Agent Demo Always Works. Production Is Where It Breaks. — Supergood Solutions</title>
+<meta name="description" content="Three failure modes AI agents hit once they leave the demo environment, four guardrails that close them, and a pre-ship checklist for any agent about to touch production data.">
 <link rel="canonical" href="https://supergood.solutions/blog/case-study-thursday-agent-guardrails-lessons-2026/">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <meta name="author" content="Ryan Sandoval">
-<meta name="keywords" content="Case Study Thursday · Agent Ops, AI agents, artificial intelligence, enterprise AI">
+<meta name="keywords" content="Analysis · Agent Ops, AI agents, artificial intelligence, enterprise AI">
 
 <!-- Open Graph -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Supergood Solutions">
-<meta property="og:title" content="What Actually Broke When We Deployed Our First AI Agent (And How We Fixed It)">
-<meta property="og:description" content="A real-world case study on deploying an AI agent into marketing ops: three failure modes we hit in production, four guardrails that fixed them, and a practical checklist for teams about to ship their first agent.">
+<meta property="og:title" content="The Agent Demo Always Works. Production Is Where It Breaks.">
+<meta property="og:description" content="Three failure modes AI agents hit once they leave the demo environment, four guardrails that close them, and a pre-ship checklist for any agent about to touch production data.">
 <meta property="og:url" content="https://supergood.solutions/blog/case-study-thursday-agent-guardrails-lessons-2026/">
 <meta property="og:image" content="https://supergood.solutions/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="What Actually Broke When We Deployed Our First AI Agent (And How We Fixed It)">
+<meta property="og:image:alt" content="The Agent Demo Always Works. Production Is Where It Breaks.">
 <meta property="article:published_time" content="2026-02-26">
 <meta property="article:modified_time" content="2026-02-26">
 <meta property="article:author" content="Ryan Sandoval">
-<meta property="article:section" content="Case Study Thursday · Agent Ops">
+<meta property="article:section" content="Analysis · Agent Ops">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="What Actually Broke When We Deployed Our First AI Agent (And How We Fixed It)">
-<meta name="twitter:description" content="A real-world case study on deploying an AI agent into marketing ops: three failure modes we hit in production, four guardrails that fixed them, and a practical checklist for teams about to ship their first agent.">
+<meta name="twitter:title" content="The Agent Demo Always Works. Production Is Where It Breaks.">
+<meta name="twitter:description" content="Three failure modes AI agents hit once they leave the demo environment, four guardrails that close them, and a pre-ship checklist for any agent about to touch production data.">
 <meta name="twitter:image" content="https://supergood.solutions/og-image.png">
 <script type="application/ld+json">
-{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "What Actually Broke When We Deployed Our First AI Agent (And How We Fixed It)", "description": "A real-world case study on deploying an AI agent into marketing ops: three failure modes we hit in production, four guardrails that fixed them, and a practical checklist for teams about to ship their first agent.", "image": "https://supergood.solutions/og-image.png", "url": "https://supergood.solutions/blog/case-study-thursday-agent-guardrails-lessons-2026/", "datePublished": "2026-02-26", "dateModified": "2026-02-26", "wordCount": 0,"timeRequired":"PT3M","keywords":["Case Study Thursday · Agent Ops","AI agents","artificial intelligence","enterprise AI"],"isPartOf":{"@type":"Blog","url":"https://supergood.solutions/blog/"},"inLanguage":"en-US", "articleSection": "Case Study Thursday · Agent Ops", "isAccessibleForFree": true, "author": {"@type": "Person", "name": "Ryan Sandoval", "url": "https://linkedin.com/in/RyanSandoval"}, "publisher": {"@type": "Organization", "name": "Supergood Solutions", "url": "https://supergood.solutions", "logo": {"@type": "ImageObject", "url": "https://supergood.solutions/og-image.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://supergood.solutions/blog/case-study-thursday-agent-guardrails-lessons-2026/"}, "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".callout", "article h1", "article h2"]}}
+{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "The Agent Demo Always Works. Production Is Where It Breaks.", "description": "Three failure modes AI agents hit once they leave the demo environment, four guardrails that close them, and a pre-ship checklist for any agent about to touch production data.", "image": "https://supergood.solutions/og-image.png", "url": "https://supergood.solutions/blog/case-study-thursday-agent-guardrails-lessons-2026/", "datePublished": "2026-02-26", "dateModified": "2026-02-26", "wordCount": 0,"timeRequired":"PT3M","keywords":["Analysis · Agent Ops","AI agents","artificial intelligence","enterprise AI"],"isPartOf":{"@type":"Blog","url":"https://supergood.solutions/blog/"},"inLanguage":"en-US", "articleSection": "Analysis · Agent Ops", "isAccessibleForFree": true, "author": {"@type": "Person", "name": "Ryan Sandoval", "url": "https://linkedin.com/in/RyanSandoval"}, "publisher": {"@type": "Organization", "name": "Supergood Solutions", "url": "https://supergood.solutions", "logo": {"@type": "ImageObject", "url": "https://supergood.solutions/og-image.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://supergood.solutions/blog/case-study-thursday-agent-guardrails-lessons-2026/"}, "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".callout", "article h1", "article h2"]}}
 </script>
 <script type="application/ld+json">
-{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://supergood.solutions/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://supergood.solutions/blog/"}, {"@type": "ListItem", "position": 3, "name": "What Actually Broke When We Deployed Our First AI Agent (And How We Fixed It)", "item": "https://supergood.solutions/blog/case-study-thursday-agent-guardrails-lessons-2026/"}]}
+{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://supergood.solutions/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://supergood.solutions/blog/"}, {"@type": "ListItem", "position": 3, "name": "The Agent Demo Always Works. Production Is Where It Breaks.", "item": "https://supergood.solutions/blog/case-study-thursday-agent-guardrails-lessons-2026/"}]}
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -137,7 +137,7 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
   "itemListElement": [
     {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://supergood.solutions/"},
     {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://supergood.solutions/blog/"},
-    {"@type": "ListItem", "position": 3, "name": "What Actually Broke When We Deployed Our First AI Agent (And How We Fixed It)", "item": "https://supergood.solutions/blog/case-study-thursday-agent-guardrails-lessons-2026/"}
+    {"@type": "ListItem", "position": 3, "name": "The Agent Demo Always Works. Production Is Where It Breaks.", "item": "https://supergood.solutions/blog/case-study-thursday-agent-guardrails-lessons-2026/"}
   ]
 }
 </script>
@@ -151,7 +151,7 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
       "name": "What are the most common failure modes when deploying an AI agent into production?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Three failure modes showed up in the first two weeks of production: the agent edited CMS fields it had technical write access to but wasn't supposed to touch, it hallucinated a vendor contact and wrote it into a record as fact, and a brief API outage triggered a runaway retry loop that ran for four hours and cost $340 in unplanned API spend. None of the three surfaced during the initial 50-record test batch or the stakeholder demos — they only showed up after the agent was turned loose on the real queue."
+        "text": "Three account for most of the damage in the first weeks after launch. The agent writes to fields it has technical access to but was never scoped to touch, because a record-level write token grants far more than the task needs. It fills gaps with invented data and writes the guess as fact, because a required field with no null-handling is effectively an instruction to produce a value. And a transient API failure triggers a retry loop with no ceiling, re-running the full pipeline on the same few records until a human notices. None of the three reliably surface in a curated test batch, because a curated batch is built from records that already have the data the agent expects."
       }
     },
     {
@@ -159,7 +159,7 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
       "name": "What guardrails fix the most common AI agent production failures?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Field-level write allowlists stop an agent from editing data outside its scope — instead of a record-level write token, the agent can only call an update function for an explicitly approved list of fields. Structured outputs with confidence and source fields stop hallucinated data from being written as fact, routing low-confidence outputs to a human review queue instead. Circuit breakers, hard retry caps, and per-run cost budgets stop runaway retry loops from running indefinitely and burning through API spend."
+        "text": "Field-level write allowlists stop an agent from editing data outside its scope. Instead of a record-level write token, the agent can only call an update function for an explicitly approved list of fields. Structured outputs with confidence and source fields stop invented data from being written as fact, routing low-confidence outputs to a human review queue instead. Circuit breakers, hard retry caps, and per-run cost budgets stop runaway retry loops from running indefinitely and consuming an unplanned amount of API spend."
       }
     },
     {
@@ -185,152 +185,141 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
 </nav>
 
 <article>
-  <div class="tag">Case Study Thursday · Agent Ops</div>
-  <h1>What Actually Broke When We Deployed Our First AI Agent (And How We Fixed It)</h1>
-  <p class="subtitle">Three failure modes we hit in production, four guardrails that fixed them, and a pre-ship checklist for teams about to deploy their first agent into real ops.</p>
+  <div class="tag">Analysis · Agent Ops</div>
+  <h1>The Agent Demo Always Works. Production Is Where It Breaks.</h1>
+  <p class="subtitle">Three failure modes that only surface on a real queue, four guardrails that close them, and a pre-ship checklist for any agent about to touch production data.</p>
   <div class="meta">Published February 26, 2026 — 9 min read</div>
 
-  <div class="callout"><p><strong>TL;DR:</strong> A production AI agent for content ops broke three ways — it edited fields it shouldn't have, hallucinated a vendor contact and wrote it into a record as fact, and got stuck in a four-hour retry loop that cost $340 in unplanned API spend. The fixes were field-level write allowlists, structured outputs with explicit confidence and source fields, and circuit breakers with hard retry caps and cost budgets. Build these guardrails before you deploy — retrofitting them after an incident costs more than building them upfront.</p></div>
+  <div class="callout"><p><strong>TL;DR:</strong> Agents break in production in three predictable ways. They write to fields nobody scoped, they fill gaps with invented data, and they retry a transient failure until somebody notices the bill. The fixes are field-level write allowlists, structured outputs with explicit confidence and source fields, and circuit breakers with hard retry caps and cost budgets. Build them before deployment. A guardrail retrofitted after an incident costs more than the same guardrail designed in, and it costs trust as well as time.</p></div>
 
-  <p>The demo worked perfectly.</p>
+  <p>The demo works perfectly.</p>
 
-  <p>Of course it did. Demos always work. You control the inputs, you know the golden-path outputs, and nobody is feeding the agent anything weird. We ran the demo for stakeholders three times. It was smooth every time.</p>
+  <p>Of course it does. You control the inputs, you know the golden-path outputs, and nobody is feeding the agent anything weird. Run it for stakeholders three times and it will be smooth three times. That is what a demo is for.</p>
 
-  <p>Two weeks into production, the agent had confidently written to a field it wasn't supposed to touch, hallucinated a vendor contact that didn't exist, and — in one memorable afternoon — gotten itself stuck in a loop that burned through more API tokens in four hours than we'd used in the entire testing phase.</p>
+  <p>Then the agent meets a real queue.</p>
 
-  <p>This post is the debrief. What broke, why it broke, what we built to stop it from happening again, and the minimum viable <a href="https://supergood.solutions/ai-agent-governance/">guardrail layer</a> your team should have in place before you ship.</p>
+  <p>Three failure modes account for most of what goes wrong in the weeks after that handover. All three are close to invisible in a controlled test, because a controlled test gets built from the records that already have the data the agent expects. This post walks each one, the guardrail that closes it, and the minimum viable <a href="https://supergood.solutions/ai-agent-governance/">guardrail layer</a> to have in place before you ship.</p>
 
-  <p><em>Note: the details below are drawn from a composite of real client engagements. Names and specifics are generalized.</em></p>
+  <h2>A worked example: an agent for content ops</h2>
 
-  <h2>The setup: an AI agent for content ops</h2>
+  <p>Failure modes are easier to see against a concrete job, so here is one. A lean marketing ops team has a growing content library: product pages, case studies, help articles. All of it needs periodic enrichment. Update outdated stats, tag content by persona and funnel stage, flag gaps, write summary briefs for the sales team.</p>
 
-  <p>The client was a mid-size B2B SaaS company with a lean marketing ops team. They had a growing content library — product pages, case studies, help articles — that needed periodic enrichment: updating outdated stats, tagging content by persona and funnel stage, flagging gaps, and writing summary briefs for the sales team.</p>
-
-  <p>Doing this manually meant one person spending about 20 hours a week on a task that was mostly mechanical. A well-scoped AI agent — the kind of scoping work <a href="https://supergood.solutions/ai-agent-consulting/">AI agent consulting</a> exists for — felt like the right call.</p>
+  <p>The work is mechanical and it never ends, which makes it a reasonable candidate for an agent. Whether it is the right candidate is the kind of scoping question <a href="https://supergood.solutions/ai-agent-consulting/">AI agent consulting</a> exists to answer.</p>
 
   <p>The agent's job, in plain English:</p>
   <ol>
     <li>Pull a content record from the CMS queue</li>
     <li>Analyze it against a set of criteria (accuracy, completeness, persona alignment)</li>
-    <li>Enrich it — update the metadata fields, write a brief, flag anything that needed human review</li>
+    <li>Enrich it: update the metadata fields, write a brief, flag anything that needs human review</li>
     <li>Write the result back to the CMS and move to the next record</li>
   </ol>
 
-  <p>Straightforward. Tool calls to a CMS API. Structured outputs. A prompt with clear criteria. We tested it against 50 records, reviewed the outputs manually, and felt good about the accuracy.</p>
+  <p>Straightforward. Tool calls to a CMS API, structured outputs, a prompt with clear criteria. Test it against a batch of records, review the outputs by hand, and the accuracy will probably look good.</p>
 
-  <p>Then we turned it loose on the real queue.</p>
+  <p>Accuracy is not the part that breaks.</p>
 
-  <h2>Failure Mode #1: It edited things it wasn't supposed to touch</h2>
+  <h2>Failure mode #1: it writes to fields nobody scoped</h2>
 
   <div class="failure-card">
     <div class="failure-label">Failure 01 / Scope Creep</div>
-    <h3>The agent rewrote fields it had read access to but shouldn't have written</h3>
-    <p>Our CMS API didn't have granular field-level write permissions at the time. The agent had a write token scoped to the content record — meaning it could technically update any field on that record, including the canonical URL slug, the original author attribution, and the publication date.</p>
-    <p>The prompt said "update metadata fields." The agent interpreted "metadata" broadly. It helpfully "corrected" a publication date it thought was wrong. It overwrote an author field because the original author's name didn't match a pattern it had been trained to associate with the company. Three content records got their slugs silently changed, breaking inbound links.</p>
+    <h3>Give an agent a record-level write token and it will eventually use all of it</h3>
+    <p>Plenty of CMS APIs do not offer granular field-level write permissions. So the write token gets scoped to the content record, which means the agent can technically update any field on that record: the canonical URL slug, the original author attribution, the publication date.</p>
+    <p>The prompt says "update metadata fields." The agent reads "metadata" broadly, because nothing behind the prompt narrows it. So it corrects a publication date it has decided is wrong. It overwrites an author field because the name does not match a pattern it associates with the company. It normalizes a slug, and the inbound links to that page stop resolving. Every one of those writes is the agent doing what it understood the job to be.</p>
   </div>
 
-  <p>This is <strong>the blast radius problem</strong>. The agent wasn't doing anything malicious — it was doing exactly what it thought it was supposed to do. The failure was ours: we gave it write access to an entire record when it only needed write access to specific fields.</p>
+  <p>This is <strong>the blast radius problem</strong>. The agent is not being malicious. It is being obedient to an instruction that was vaguer than the permissions sitting behind it. The failure is in the scoping: write access to an entire record when the task needed write access to four fields.</p>
 
-  <p>The NIST AC-6 principle — least privilege — applies directly here. An agent should have the minimum permissions needed to complete its task, not the maximum permissions its API token allows.</p>
+  <p>The NIST AC-6 principle, least privilege, applies directly here. An agent should hold the minimum permissions its task requires, not the maximum its API token happens to allow. Those two numbers are rarely the same, and the gap between them is exactly where scope creep lives. Nobody decides to grant the extra access, either. It arrives as a default.</p>
 
   <div class="fix-card">
     <div class="fix-label">Fix 01</div>
     <h3>Field-level allowlists, not record-level write tokens</h3>
-    <p>We rebuilt the write tool to accept an explicit allowlist of writable fields — the agent could only call <code>update_field(field_name, value)</code> for fields on the approved list. Any attempt to write to a non-listed field threw a hard error, logged the attempt, and flagged it for human review.</p>
-    <p>We also added a dry-run mode: before any write, the agent produces a structured diff of what it intends to change. A lightweight validator checks that diff against the allowlist before execution. If anything looks off, it stops and queues for human review instead of proceeding.</p>
+    <p>Wrap the write path in a tool that takes an explicit allowlist of writable fields. The agent can only call <code>update_field(field_name, value)</code> for fields on the approved list. Anything else throws a hard error, logs the attempt, and flags it for human review.</p>
+    <p>Add a dry-run mode on top of that. Before any write, the agent produces a structured diff of what it intends to change. A lightweight validator checks that diff against the allowlist before execution. If something looks off, the record queues for a human instead of proceeding.</p>
   </div>
 
-  <h2>Failure Mode #2: Hallucinated data got written as fact</h2>
+  <h2>Failure mode #2: invented data gets written as fact</h2>
 
   <div class="failure-card">
     <div class="failure-label">Failure 02 / Hallucination at Write Time</div>
-    <h3>The agent invented a vendor contact and wrote it to the CRM</h3>
-    <p>One task involved enriching a case study with the client contact's name and title. The record had a company name but no contact info. The agent — instructed to "complete the record where possible" — searched its context, found nothing, and then fabricated a plausible-sounding person: a "Director of Marketing" with a name that sounded right for the company.</p>
-    <p>That invented contact got written to the record. Two weeks later, a sales rep tried to reach out to a person who didn't exist.</p>
+    <h3>Tell an agent to complete a record and it will complete the record</h3>
+    <p>Consider a task that enriches a case study with the client contact's name and title. The record has a company name and no contact info. The agent, instructed to "complete the record where possible," searches its context, finds nothing, and produces a plausible-sounding person: a Director of Marketing with a name that fits the company.</p>
+    <p>That contact is now a value in a field, indistinguishable from the values that came from somewhere real. Nothing downstream knows the difference. A sales rep eventually tries to reach a person who does not exist.</p>
   </div>
 
-  <p>This one is sneaky because it only happens on edge cases — records where the expected data isn't present. In testing, we'd used records that all had complete contact info. The "no data" case never surfaced.</p>
+  <p>This one is sneaky because it only fires on edge cases, and edge cases are the first thing a curated test batch removes. If every record used in testing has complete contact info, the no-data path never runs once, and the agent reaches production untested on the case that breaks it.</p>
+
+  <p>There is a structural version worth naming, because it survives any amount of prompt tuning. A required string field with no null-handling is, functionally, an instruction to produce a string. Give a model a slot and it fills the slot. That is a schema problem more than a prompt problem.</p>
 
   <div class="fix-card">
     <div class="fix-label">Fix 02</div>
     <h3>Structured outputs with explicit uncertainty handling</h3>
-    <p>We updated the output schema to include a <code>confidence</code> field and a <code>source</code> field for every populated value. The agent was re-prompted: if you don't have a reliable source for a value, return <code>null</code> and set <code>confidence: "low"</code>. Do not guess.</p>
+    <p>Put a <code>confidence</code> field and a <code>source</code> field in the output schema for every populated value. Then prompt for the behavior you want: if there is no reliable source for a value, return <code>null</code> and set <code>confidence: "low"</code>. Do not guess.</p>
     <ul>
-      <li>Any field with <code>confidence: "low"</code> gets written as blank, not with the hallucinated value</li>
+      <li>Any field with <code>confidence: "low"</code> gets written as blank, not with the guess</li>
       <li>A separate <code>needs_human_review</code> flag gets set to <code>true</code> on the record</li>
       <li>The record goes into a human review queue instead of the completed queue</li>
     </ul>
-    <p>The agent is still useful on these records — it can do the analysis, write the brief, update the tags — it just doesn't make things up to fill gaps it can't actually fill.</p>
+    <p>The agent stays useful on those records. It can still do the analysis, write the brief, update the tags. It just stops filling gaps it cannot actually fill, and a blank field is worth more than a populated field that might be wrong.</p>
   </div>
 
-  <h2>Failure Mode #3: A retry loop that couldn't stop itself</h2>
+  <h2>Failure mode #3: a retry loop that cannot stop itself</h2>
 
   <div class="failure-card">
     <div class="failure-label">Failure 03 / Runaway Retry Loop</div>
-    <h3>A transient API error triggered 4 hours of retries and $340 in unexpected API costs</h3>
-    <p>The CMS API had a brief outage — about 40 minutes. During that window, the agent's write calls were returning 503s. The retry logic we'd built was simple: if a write fails, wait 5 seconds and try again. Reasonable for a momentary blip.</p>
-    <p>What we hadn't accounted for: the agent was also re-reading the record before each retry to "refresh its context." Each re-read was a separate API call. Each retry involved re-running the analysis step. The LLM calls added up fast. Over four hours — until someone noticed and manually killed the process — it had retried the same three records hundreds of times, burning through tokens at a rate we hadn't budgeted for.</p>
+    <h3>A transient API error meets retry logic with no ceiling</h3>
+    <p>The CMS API has a brief outage. Write calls start coming back 503. The retry logic is the obvious kind: if a write fails, wait five seconds and try again. Reasonable for a momentary blip, and a momentary blip is what everyone designs for.</p>
+    <p>What that design misses is everything attached to the retry. If the agent re-reads the record before each attempt to refresh its context, that is another API call. If the retry re-runs the analysis step, that is another set of LLM calls. A failing write is cheap. A failing write wrapped in a full re-run of the pipeline is not, and it repeats at whatever interval you set, on the same handful of records, until a human notices. The outage ends long before the loop does.</p>
   </div>
+
+  <p>Cost is the visible symptom and the least interesting part. The real problem is that nothing in the system held an opinion about how long it should keep trying.</p>
 
   <div class="fix-card">
     <div class="fix-label">Fix 03</div>
     <h3>Circuit breakers, max retry caps, and cost budget enforcement</h3>
     <ul>
-      <li><strong>Hard retry cap:</strong> Maximum 3 retries per record, with exponential backoff (5s, 30s, 2min). After 3 failures, the record gets flagged as "blocked" and the agent moves on.</li>
-      <li><strong>Circuit breaker:</strong> If more than 3 consecutive records fail on the same step, the agent pauses, sends an alert, and waits for human acknowledgment before resuming.</li>
-      <li><strong>Per-run cost budget:</strong> We set a token budget per run. When the budget is 80% consumed, the agent logs a warning. At 100%, it hard-stops and queues remaining records for the next run.</li>
-      <li><strong>Observability:</strong> We added OpenTelemetry traces to every agent step. Every tool call, every LLM invocation, every retry is logged with timestamps and token counts. The runaway loop would have been visible in the dashboard within minutes.</li>
+      <li><strong>Hard retry cap:</strong> a maximum of three retries per record, with exponential backoff (5s, 30s, 2min). After the third failure the record gets flagged "blocked" and the agent moves on.</li>
+      <li><strong>Circuit breaker:</strong> if several consecutive records fail on the same step, the agent pauses, sends an alert, and waits for human acknowledgment before resuming. Consecutive failures on one step are a systems problem, not a data problem.</li>
+      <li><strong>Per-run cost budget:</strong> set a token budget per run. At 80% consumed, log a warning. At 100%, hard-stop and queue the remaining records for the next run.</li>
+      <li><strong>Observability:</strong> trace every agent step. Every tool call, every LLM invocation, every retry, logged with timestamps and token counts. A runaway loop is obvious in a dashboard within minutes and invisible in a log file nobody is reading.</li>
     </ul>
   </div>
 
-  <h2>The four guardrails that actually stuck</h2>
+  <h2>The four guardrails worth building every time</h2>
 
-  <p>After the smoke cleared, we built these four layers into every agent we deploy now — regardless of the use case.</p>
+  <p>These four belong in every agent regardless of the use case, for one reason: each is cheap at design time and expensive at every point after.</p>
 
   <div class="fix-card">
     <div class="fix-label">Guardrail 01</div>
     <h3>Least-privilege tool design</h3>
-    <p>Every tool the agent can call is scoped to the minimum action needed. Read tools are separate from write tools. Write tools have field-level allowlists, not record-level access. Destructive actions (delete, overwrite) require a separate confirmation step — a form of <a href="/blog/tech-tuesday-interrupt-pattern-agent-design-2026/">interrupt pattern</a> applied at the tool boundary. The agent's permission envelope is the first thing we design — not an afterthought.</p>
+    <p>Every tool the agent can call is scoped to the minimum action needed. Read tools stay separate from write tools. Write tools carry field-level allowlists, not record-level access. Destructive actions (delete, overwrite) require a separate confirmation step, a form of <a href="/blog/tech-tuesday-interrupt-pattern-agent-design-2026/">interrupt pattern</a> applied at the tool boundary. Design the agent's permission envelope first. It is the one layer that cannot be bolted on convincingly later.</p>
   </div>
 
   <div class="fix-card">
     <div class="fix-label">Guardrail 02</div>
     <h3>Structured outputs with explicit confidence and uncertainty</h3>
-    <p>Every output schema includes confidence levels and source fields. The agent never writes a null-handling guess as a real value. Low-confidence outputs get routed to a human review queue. This alone has prevented more embarrassing mistakes than any other single change.</p>
+    <p>Every output schema includes confidence levels and source fields. The agent never writes a guess as a committed value. Low-confidence outputs route to a human review queue. This is the highest-yield item on the list, because it converts a silent wrong answer into a queued question.</p>
   </div>
 
   <div class="fix-card">
     <div class="fix-label">Guardrail 03</div>
     <h3>Circuit breakers and cost caps</h3>
-    <p>Retry logic is not enough. You need a maximum retry count, a circuit breaker that pauses on consecutive failures, and a hard per-run cost budget. If your agent can run indefinitely on a bad input, it will — eventually. Set the boundaries before you deploy.</p>
+    <p>Retry logic is not enough. You need a maximum retry count, a circuit breaker that pauses on consecutive failures, and a hard per-run cost budget. An agent that can run indefinitely on a bad input eventually will. Set the boundaries before you deploy.</p>
   </div>
 
   <div class="fix-card">
     <div class="fix-label">Guardrail 04</div>
     <h3>A second model for output validation</h3>
-    <p>We added a lightweight validation step after each write: a separate (cheaper, smaller) model reviews the agent's output against a rubric before it's committed. This is a pattern that teams with production experience keep recommending — as the Digits ML team put it: "Use a different LLM to evaluate responses. Never trust a single model to police itself." It catches schema drift, hallucinations, and out-of-scope writes before they become problems.</p>
+    <p>Add a lightweight validation step after each write: a separate, cheaper, smaller model reviews the output against a rubric before it gets committed. Teams with production experience keep landing on this one. As the Digits ML team put it: "Use a different LLM to evaluate responses. Never trust a single model to police itself." It catches schema drift, hallucinations, and out-of-scope writes before they become problems.</p>
   </div>
 
-  <h2>What this cost to build (and what it saved)</h2>
+  <h2>The order you build these in is the whole argument</h2>
 
-  <div class="stat-row">
-    <div class="stat-box">
-      <div class="stat-num">~3 days</div>
-      <div class="stat-label">to retrofit guardrails after the incidents</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-num">18 hrs/wk</div>
-      <div class="stat-label">saved in ongoing manual content ops</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-num">0</div>
-      <div class="stat-label">production incidents in 6 weeks post-fix</div>
-    </div>
-  </div>
+  <p>Every guardrail above is cheap to design and expensive to retrofit. That asymmetry is the case for building them first, and it is not really a case about engineering hours.</p>
 
-  <p>The agent is genuinely useful now. It processes 200–300 content records per week, flags about 15% for human review, and the team's manual time on content ops is down from ~20 hours to about 2 hours — the human review queue plus occasional spot checks.</p>
+  <p>Retrofitting a guardrail means the incident already happened. The allowlist gets written after the slugs get rewritten. The confidence field gets added after someone tries to call a person who does not exist. The cost budget gets set after a bill arrives that nobody forecast. It is the same code either way. The difference is that you are now writing it in the middle of a conversation about whether the agent should be running at all.</p>
 
-  <p>But here's the honest accounting: if we'd built the guardrails before deployment instead of after, we'd have saved ourselves three incidents, one panicked stakeholder call, and $340 in wasted API spend. The retrofit cost more — in time and trust — than the original build would have.</p>
+  <p>That is the cost that never shows up in a ticket. An agent that quietly did the wrong thing to production data has spent trust, and trust is what buys the autonomy that makes the agent worth having. A team that got burned once will insist on human review of every write, which is defensible and also the end of most of the value. The guardrails exist to make a useful amount of autonomy defensible.</p>
 
   <h2>The pre-ship checklist</h2>
 
@@ -339,21 +328,21 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
   <div class="checklist">
     <h3>Agent Production Readiness Checklist</h3>
     <ul>
-      <li>Every write tool has an explicit field-level allowlist — the agent cannot write to anything not on the list</li>
+      <li>Every write tool has an explicit field-level allowlist: the agent cannot write to anything not on the list</li>
       <li>Destructive actions (delete, overwrite existing data) require a separate human-approval or confirmation step</li>
       <li>Output schema includes a <code>confidence</code> field and a <code>source</code> field for every AI-populated value</li>
       <li>Low-confidence outputs are routed to a review queue, not written as fact</li>
       <li>Retry logic has a hard maximum (no more than 3–5 retries per task)</li>
       <li>Circuit breaker pauses the agent after N consecutive failures and sends an alert</li>
-      <li>Per-run cost budget is set — agent hard-stops when the budget is hit</li>
+      <li>Per-run cost budget is set, and the agent hard-stops when the budget is hit</li>
       <li>Every tool call and LLM invocation is logged with timestamps and token counts (OpenTelemetry or equivalent)</li>
       <li>A second model or rule-based validator reviews outputs before they're committed</li>
-      <li>The agent has been tested on edge cases — empty inputs, malformed data, API timeouts</li>
+      <li>The agent has been tested on edge cases: empty inputs, malformed data, API timeouts</li>
       <li>An incident response path exists: who gets alerted, how to pause the agent, how to roll back a bad write</li>
     </ul>
   </div>
 
-  <p>This isn't a comprehensive security posture — for that, the <a href="https://genai.owasp.org/llmrisk/llm01-prompt-injection/" target="_blank" rel="noopener noreferrer">OWASP LLM Top 10</a> is worth a full read, particularly around prompt injection (the #1 risk) and insecure output handling. But the checklist above catches the failure modes that are most likely to bite a team on their first real deployment. For a broader framework covering all four runtime guardrail layers, see our post on <a href="/blog/future-friday-agent-guardrails-production-2026/">agent guardrails in production</a>.</p>
+  <p>This isn't a full security posture. For that, the <a href="https://genai.owasp.org/llmrisk/llm01-prompt-injection/" target="_blank" rel="noopener noreferrer">OWASP LLM Top 10</a> is worth a full read, particularly around prompt injection (the #1 risk) and insecure output handling. But the checklist above catches the failure modes most likely to bite a team on a first real deployment. For a broader framework covering all four runtime guardrail layers, see our post on <a href="/blog/future-friday-agent-guardrails-production-2026/">agent guardrails in production</a>.</p>
 
   <div class="callout">
     <p><strong>The uncomfortable truth about AI agents:</strong> the demo environment is not the production environment. The demo uses clean inputs, known edge cases, and a sympathetic reviewer. Production has weird data, users who phrase things oddly, APIs that go down at 2pm on a Tuesday, and a CMS that doesn't quite behave the way the docs say it does. Your guardrails need to be designed for that world, not the demo.</p>
@@ -361,26 +350,26 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
 
   <h2>One more thing: prompt injection is real</h2>
 
-  <p>We didn't run into this in the content ops case, but it's worth flagging: <strong>if your agent reads external content and then acts on it, prompt injection is a live threat</strong>.</p>
+  <p>The content ops example above never reads untrusted content, which is why prompt injection has not come up yet. Most real agents are not that lucky, so it is worth flagging: <strong>an agent that reads external content and then acts on it is exposed to prompt injection, and that is a live threat</strong>.</p>
 
-  <p>Indirect prompt injection — where malicious instructions are embedded in content the agent reads — has moved from theoretical to documented in the wild. Security researchers hijacked <a href="https://www.theregister.com/security/2026/03/03/perplexity-comet-browser-hole-was-exploitable-via-cal-invite/4675985" target="_blank" rel="noopener noreferrer">Perplexity's Comet browser via a malicious calendar invite</a> to exfiltrate local files, and separately tricked it into a phishing scam using GAN-trained pages. If your agent reads emails, web pages, CMS records, or any other user-controlled content before taking actions, you need to treat that content as untrusted input.</p>
+  <p>Indirect prompt injection, where malicious instructions sit embedded in content the agent reads, has moved from theoretical to documented in the wild. Security researchers hijacked <a href="https://www.theregister.com/security/2026/03/03/perplexity-comet-browser-hole-was-exploitable-via-cal-invite/4675985" target="_blank" rel="noopener noreferrer">Perplexity's Comet browser via a malicious calendar invite</a> to exfiltrate local files, and separately tricked it into a phishing scam using GAN-trained pages. If the agent reads emails, web pages, CMS records, or any other user-controlled content before taking actions, treat that content as untrusted input.</p>
 
-  <p>Practical mitigation: separate the reading step from the action step. Have the agent summarize or extract structured data from external content first (in a sandboxed step with no tool access), then pass only that structured data to the action step. Don't let the agent read a web page and immediately act on whatever it finds there.</p>
+  <p>Practical mitigation: separate the reading step from the action step. Have the agent summarize or extract structured data from external content first, in a sandboxed step with no tool access, then pass only that structured data to the action step. Don't let the agent read a web page and immediately act on whatever it finds there.</p>
 
   <h2>The bottom line</h2>
 
-  <p>AI agents are genuinely useful for operations work. The content ops agent we deployed is saving 18 hours a week for a team that was drowning in manual tasks — and it's doing it reliably now.</p>
+  <p>AI agents are useful for operations work. Mechanical, repetitive tasks with a clear success criterion are the shape of work they handle well.</p>
 
-  <p>But the "reliably" part didn't come for free. It came from three incidents, a few days of retrofit work, and a set of guardrails that should have been there from day one.</p>
+  <p>Reliability is the part that doesn't come free. It comes from deciding, before deployment, what the agent is allowed to touch, what it is allowed to assert, and how long it is allowed to keep trying. Those are three design questions, and a demo will never ask you a single one of them.</p>
 
-  <p>If you're about to ship your first agent into a production workflow: run the checklist, build the guardrails before you deploy, and treat the demo environment as what it is — a controlled simulation, not a proof of production-readiness.</p>
+  <p>If you're about to ship your first agent into a production workflow: run the checklist, build the guardrails first, and treat the demo as what it is. A controlled simulation, not evidence of production readiness.</p>
 
   <p>Your future self will thank you.</p>
 
   <div class="faq-section">
     <h2>Frequently Asked Questions</h2>
-    <div class="faq-item"><h3>What are the most common failure modes when deploying an AI agent into production?</h3><p>Three failure modes showed up in the first two weeks of production: the agent edited CMS fields it had technical write access to but wasn't supposed to touch, it hallucinated a vendor contact and wrote it into a record as fact, and a brief API outage triggered a runaway retry loop that ran for four hours and cost $340 in unplanned API spend. None of the three surfaced during the initial 50-record test batch or the stakeholder demos — they only showed up after the agent was turned loose on the real queue.</p></div>
-    <div class="faq-item"><h3>What guardrails fix the most common AI agent production failures?</h3><p>Field-level write allowlists stop an agent from editing data outside its scope — instead of a record-level write token, the agent can only call an update function for an explicitly approved list of fields. Structured outputs with confidence and source fields stop hallucinated data from being written as fact, routing low-confidence outputs to a human review queue instead. Circuit breakers, hard retry caps, and per-run cost budgets stop runaway retry loops from running indefinitely and burning through API spend.</p></div>
+    <div class="faq-item"><h3>What are the most common failure modes when deploying an AI agent into production?</h3><p>Three account for most of the damage in the first weeks after launch. The agent writes to fields it has technical access to but was never scoped to touch, because a record-level write token grants far more than the task needs. It fills gaps with invented data and writes the guess as fact, because a required field with no null-handling is effectively an instruction to produce a value. And a transient API failure triggers a retry loop with no ceiling, re-running the full pipeline on the same few records until a human notices. None of the three reliably surface in a curated test batch, because a curated batch is built from records that already have the data the agent expects.</p></div>
+    <div class="faq-item"><h3>What guardrails fix the most common AI agent production failures?</h3><p>Field-level write allowlists stop an agent from editing data outside its scope. Instead of a record-level write token, the agent can only call an update function for an explicitly approved list of fields. Structured outputs with confidence and source fields stop invented data from being written as fact, routing low-confidence outputs to a human review queue instead. Circuit breakers, hard retry caps, and per-run cost budgets stop runaway retry loops from running indefinitely and consuming an unplanned amount of API spend.</p></div>
     <div class="faq-item"><h3>What should be on a pre-deployment checklist for shipping an AI agent to production?</h3><p>At minimum: every write tool needs an explicit field-level allowlist, destructive actions need a human-approval step, outputs need confidence and source fields so low-confidence guesses get routed to review instead of written as fact, and retries need a hard cap paired with a circuit breaker and a per-run cost budget. It's also worth logging every tool call and LLM invocation, testing on edge cases like empty inputs and API timeouts, and having an incident response path before you go live.</p></div>
   </div>
 
@@ -402,7 +391,7 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
   </div>
   <div class="service-cta">
     <p class="service-cta-label">Need this in production?</p>
-    <p>Field-level allowlists, confidence-scored outputs, circuit breakers, cost budgets — these aren't nice-to-haves, they're the difference between an agent that saves 18 hours a week and one that quietly corrupts your CMS. We build that guardrail layer before your agent ever touches production data.</p>
+    <p>Field-level allowlists, confidence-scored outputs, circuit breakers, cost budgets. These aren't nice-to-haves. They're the difference between an agent you can leave running and one that quietly corrupts your CMS. We design that guardrail layer before an agent ever touches your production data.</p>
     <a href="https://supergood.solutions/ai-agent-governance/" class="service-cta-btn">See AI Agent Governance →</a>
   </div>
 <div style="border-left:3px solid var(--green);background:var(--surface-2);border-radius:0 8px 8px 0;padding:28px;margin:48px 0 24px;">

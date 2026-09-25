@@ -3,36 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>We Wired Two AI Agents Together. Here's What Kept Breaking at the Handoff. — Supergood Solutions</title>
-<meta name="description" content="A real-world case study on building a two-agent review pipeline: the four failure modes that hit us at the handoff seam, the fixes that made it production-stable, and a practical checklist for teams designing multi-agent workflows.">
+<title>Wire Two AI Agents Together and the Handoff Is What Breaks — Supergood Solutions</title>
+<meta name="description" content="An analysis of two-agent pipelines: the four failure modes that live at the handoff seam, the typed-state contract that closes them, and a practical checklist for teams designing multi-agent workflows.">
 <link rel="canonical" href="https://supergood.solutions/blog/case-study-thursday-two-agent-handoff-2026/">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <meta name="author" content="Ryan Sandoval">
-<meta name="keywords" content="Case Study Thursday · Agent Architecture, AI agents, artificial intelligence, enterprise AI">
+<meta name="keywords" content="Analysis · Agent Architecture, AI agents, artificial intelligence, enterprise AI">
 
 <!-- Open Graph -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Supergood Solutions">
-<meta property="og:title" content="We Wired Two AI Agents Together. Here's What Kept Breaking at the Handoff.">
-<meta property="og:description" content="A real-world case study on building a two-agent review pipeline: the four failure modes that hit us at the handoff seam, the fixes that made it production-stable, and a practical checklist for teams designing multi-agent workflows.">
+<meta property="og:title" content="Wire Two AI Agents Together and the Handoff Is What Breaks">
+<meta property="og:description" content="An analysis of two-agent pipelines: the four failure modes that live at the handoff seam, the typed-state contract that closes them, and a practical checklist for teams designing multi-agent workflows.">
 <meta property="og:url" content="https://supergood.solutions/blog/case-study-thursday-two-agent-handoff-2026/">
 <meta property="og:image" content="https://supergood.solutions/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="We Wired Two AI Agents Together. Here's What Kept Breaking at the Handoff.">
+<meta property="og:image:alt" content="Wire Two AI Agents Together and the Handoff Is What Breaks">
 <meta property="article:published_time" content="2026-03-05">
 <meta property="article:modified_time" content="2026-03-05">
 <meta property="article:author" content="Ryan Sandoval">
-<meta property="article:section" content="Case Study Thursday · Agent Architecture">
+<meta property="article:section" content="Analysis · Agent Architecture">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="We Wired Two AI Agents Together. Here's What Kept Breaking at the Handoff.">
-<meta name="twitter:description" content="A real-world case study on building a two-agent review pipeline: the four failure modes that hit us at the handoff seam, the fixes that made it production-stable, and a practical checklist for teams designing multi-agent workflows.">
+<meta name="twitter:title" content="Wire Two AI Agents Together and the Handoff Is What Breaks">
+<meta name="twitter:description" content="An analysis of two-agent pipelines: the four failure modes that live at the handoff seam, the typed-state contract that closes them, and a practical checklist for teams designing multi-agent workflows.">
 <meta name="twitter:image" content="https://supergood.solutions/og-image.png">
 <script type="application/ld+json">
-{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "We Wired Two AI Agents Together. Here's What Kept Breaking at the Handoff.", "description": "A real-world case study on building a two-agent review pipeline: the four failure modes that hit us at the handoff seam, the fixes that made it production-stable, and a practical checklist for teams designing multi-agent workflows.", "image": "https://supergood.solutions/og-image.png", "url": "https://supergood.solutions/blog/case-study-thursday-two-agent-handoff-2026/", "datePublished": "2026-03-05", "dateModified": "2026-03-05", "wordCount": 0,"timeRequired":"PT3M","keywords":["Case Study Thursday · Agent Architecture","AI agents","artificial intelligence","enterprise AI"],"isPartOf":{"@type":"Blog","url":"https://supergood.solutions/blog/"},"inLanguage":"en-US", "articleSection": "Case Study Thursday · Agent Architecture", "isAccessibleForFree": true, "author": {"@type": "Person", "name": "Ryan Sandoval", "url": "https://linkedin.com/in/RyanSandoval"}, "publisher": {"@type": "Organization", "name": "Supergood Solutions", "url": "https://supergood.solutions", "logo": {"@type": "ImageObject", "url": "https://supergood.solutions/og-image.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://supergood.solutions/blog/case-study-thursday-two-agent-handoff-2026/"}, "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".callout", "article h1", "article h2"]}}
+{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Wire Two AI Agents Together and the Handoff Is What Breaks", "description": "An analysis of two-agent pipelines: the four failure modes that live at the handoff seam, the typed-state contract that closes them, and a practical checklist for teams designing multi-agent workflows.", "image": "https://supergood.solutions/og-image.png", "url": "https://supergood.solutions/blog/case-study-thursday-two-agent-handoff-2026/", "datePublished": "2026-03-05", "dateModified": "2026-03-05", "wordCount": 0,"timeRequired":"PT3M","keywords":["Analysis · Agent Architecture","AI agents","artificial intelligence","enterprise AI"],"isPartOf":{"@type":"Blog","url":"https://supergood.solutions/blog/"},"inLanguage":"en-US", "articleSection": "Analysis · Agent Architecture", "isAccessibleForFree": true, "author": {"@type": "Person", "name": "Ryan Sandoval", "url": "https://linkedin.com/in/RyanSandoval"}, "publisher": {"@type": "Organization", "name": "Supergood Solutions", "url": "https://supergood.solutions", "logo": {"@type": "ImageObject", "url": "https://supergood.solutions/og-image.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://supergood.solutions/blog/case-study-thursday-two-agent-handoff-2026/"}, "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".callout", "article h1", "article h2"]}}
 </script>
 <script type="application/ld+json">
-{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://supergood.solutions/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://supergood.solutions/blog/"}, {"@type": "ListItem", "position": 3, "name": "We Wired Two AI Agents Together. Here's What Kept Breaking at the Handoff.", "item": "https://supergood.solutions/blog/case-study-thursday-two-agent-handoff-2026/"}]}
+{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://supergood.solutions/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://supergood.solutions/blog/"}, {"@type": "ListItem", "position": 3, "name": "Wire Two AI Agents Together and the Handoff Is What Breaks", "item": "https://supergood.solutions/blog/case-study-thursday-two-agent-handoff-2026/"}]}
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -146,7 +146,7 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
   "itemListElement": [
     {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://supergood.solutions/"},
     {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://supergood.solutions/blog/"},
-    {"@type": "ListItem", "position": 3, "name": "We Wired Two AI Agents Together. Here's What Kept Breaking at the Handoff.", "item": "https://supergood.solutions/blog/case-study-thursday-two-agent-handoff-2026/"}
+    {"@type": "ListItem", "position": 3, "name": "Wire Two AI Agents Together and the Handoff Is What Breaks", "item": "https://supergood.solutions/blog/case-study-thursday-two-agent-handoff-2026/"}
   ]
 }
 </script>
@@ -162,36 +162,36 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
 </nav>
 
 <article>
-  <div class="tag">Case Study Thursday · Agent Architecture</div>
-  <h1>We Wired Two AI Agents Together. Here's What Kept Breaking at the Handoff.</h1>
-  <p class="subtitle">A real-world case study on building a two-agent review pipeline: four failure modes we hit at the seam between agents, the typed-state contract that fixed them, and a pre-build checklist for any team designing multi-agent workflows.</p>
+  <div class="tag">Analysis · Agent Architecture</div>
+  <h1>Wire Two AI Agents Together and the Handoff Is What Breaks</h1>
+  <p class="subtitle">An analysis of the two-agent review pipeline: four failure modes that live at the seam between agents, the typed-state contract that closes them, and a pre-build checklist for any team designing multi-agent workflows.</p>
   <div class="meta">Published March 5, 2026 — 10 min read</div>
 
   <p>Single-agent failures are annoying. You ship, something breaks, you find it in the logs, you fix the prompt, you redeploy. Painful, but traceable.</p>
 
-  <p>Multi-agent failures are a different category of problem entirely. When two agents are wired together and something goes wrong, the failure often doesn't happen where either agent actually ran — it happens <em>between</em> them. In the seam. In the thing nobody thought to design carefully because everyone was focused on what the agents would do individually.</p>
+  <p>Multi-agent failures are a different category of problem. When two agents are wired together and something goes wrong, the failure often doesn't happen where either agent ran. It happens <em>between</em> them. In the seam. In the thing nobody designed carefully, because everyone was focused on what the agents would do individually.</p>
 
-  <p>This is the story of what we learned building a two-agent pipeline for a client's proposal review workflow. The agents themselves worked fine. The handoff between them was the part that kept breaking.</p>
+  <p>Wire two agents together and the handoff is what breaks. The agents can each be fine. The contract between them is the part that rots.</p>
 
-  <p><em>Details below are drawn from a composite of real client engagements. Specifics are generalized.</em></p>
+  <p>Below: a worked architecture, the four failure modes that show up at its boundary, and what closes each one. No vendor is required for any of it.</p>
 
   <div class="tldr">
     <div class="tldr-label">TL;DR</div>
-    <p>We built a two-agent pipeline where Agent 1 drafted enriched proposals and Agent 2 reviewed and scored them. The individual agents performed well in isolation. In production, we hit four distinct failure modes — all at the handoff boundary: format mismatches, context loss, conflicting ground truth assumptions, and silent partial failures that looked like successes. The fix was a typed state schema that both agents agreed to upfront, explicit handoff payloads with required fields, and observability instrumented specifically at the seam. Multi-agent systems fail at the seams, not the centers. Design the contract between agents as carefully as you design the agents themselves.</p>
+    <p>Take a two-agent pipeline where Agent 1 drafts enriched proposals and Agent 2 reviews and scores them. Both agents can perform well in isolation and the pipeline will still produce four distinct failures, all at the handoff boundary: format mismatches, context loss, conflicting ground truth, and silent partial failures that look like successes. What closes them is a typed state schema both agents validate against, an explicit handoff payload with required fields, and observability instrumented at the seam rather than inside each agent. Multi-agent systems fail at the seams, not the centers. Design the contract between agents as carefully as you design the agents.</p>
   </div>
 
   <h2>The setup: a two-agent proposal review pipeline</h2>
 
-  <p>The client was a professional services firm — about 60 people — that responded to a large volume of RFPs and client briefs. Their proposal process was bottlenecked at review: a senior consultant would draft, then two other people would review for completeness, tone, and alignment with the client's stated criteria. That review cycle averaged two days per proposal and was the single biggest drag on their capacity to respond to new opportunities.</p>
+  <p>Use a concrete shape to think with. A professional services firm responds to RFPs and client briefs. The process is bottlenecked at review: a senior consultant drafts, then other people read for completeness, tone, and alignment with the buyer's stated criteria. Review is the slow step, and it is the thing that caps how many opportunities the firm can answer.</p>
 
-  <p>The proposed solution: a two-agent pipeline to handle first-pass review automatically.</p>
+  <p>The obvious automation: a two-agent pipeline that handles first-pass review.</p>
 
   <ul>
-    <li><strong>Agent 1 (the Enricher):</strong> Takes the raw proposal draft and a brief with client criteria. Enriches the draft — identifies gaps, adds supporting data points, flags thin sections, and produces a structured output with the enriched text plus an annotated gap list.</li>
+    <li><strong>Agent 1 (the Enricher):</strong> Takes the raw proposal draft and a brief with the buyer's criteria. Enriches the draft: identifies gaps, adds supporting data points, flags thin sections, and produces a structured output with the enriched text plus an annotated gap list.</li>
     <li><strong>Agent 2 (the Reviewer):</strong> Takes the Enricher's output and the original client brief. Scores the proposal across five dimensions (completeness, tone, specificity, criteria alignment, competitive differentiation). Produces a structured review with scores, specific improvement notes, and a go/no-go recommendation.</li>
   </ul>
 
-  <p>A human reviewer would then look at the Reviewer's output and decide whether to approve, revise, or escalate. The goal was to compress that two-day review cycle to two hours — with the human's attention focused on the Reviewer's scorecard rather than reading every word of the draft.</p>
+  <p>A human then reads the Reviewer's output and decides whether to approve, revise, or escalate. The point of the design is to move the human's attention onto a scorecard instead of every word of the draft.</p>
 
   <div class="diagram">
     <div class="diagram-label">Pipeline Architecture</div>
@@ -206,187 +206,181 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
     </div>
   </div>
 
-  <p>In testing, it worked beautifully. We ran it against 30 historical proposals — ones where we already had human review notes — and the Reviewer's scores correlated well with the human reviewers' assessments. The stakeholders were happy. We went to production.</p>
+  <p>This design tests well. Run it against a backlog of historical proposals that already carry human review notes and the Reviewer's scores will track the humans' assessments closely enough to satisfy a stakeholder demo. Each agent does its job. Nothing in the test set stresses the line between them.</p>
 
-  <p>Two weeks later, the human reviewers were confused about what the agents were actually doing. Four failure modes had crept in, and none of them were obvious until we started digging.</p>
+  <p>Then it goes to production, and the reviewers stop trusting what the pipeline tells them. Four failure modes are waiting, and none of them announce themselves.</p>
 
   <h2>Failure Mode #1: Format drift at the handoff boundary</h2>
 
   <div class="failure-card">
     <div class="failure-label">Failure 01 / Schema Mismatch</div>
-    <h3>Agent 2 was reading a different shape of output than Agent 1 was producing</h3>
-    <p>Agent 1 was prompted to produce a structured output with two top-level keys: <code>enriched_draft</code> (the full text) and <code>gap_list</code> (an array of gap objects, each with a <code>section</code>, a <code>severity</code>, and a <code>description</code>). Agent 2 was prompted to read that structure and use the gap list as input to its scoring.</p>
-    <p>What we hadn't accounted for: LLM outputs are not deterministic. On some proposals, Agent 1 returned <code>gaps</code> instead of <code>gap_list</code>. On others, it returned <code>gap_list</code> as a flat string instead of an array. When severity was not immediately obvious from the text, it sometimes omitted the <code>severity</code> field entirely.</p>
-    <p>Agent 2, reading this variable-shape output, would silently adapt — sometimes reading the <code>gaps</code> key, sometimes failing to find either and defaulting to "no gaps identified." The Reviewer was scoring proposals as complete when the Enricher had flagged significant gaps that simply didn't survive the handoff in a readable format.</p>
+    <h3>Agent 2 reads a different shape of output than Agent 1 produces</h3>
+    <p>Agent 1 is prompted to produce a structured output with two top-level keys: <code>enriched_draft</code> (the full text) and <code>gap_list</code> (an array of gap objects, each with a <code>section</code>, a <code>severity</code>, and a <code>description</code>). Agent 2 is prompted to read that structure and feed the gap list into its scoring.</p>
+    <p>LLM outputs are not deterministic. On some proposals Agent 1 returns <code>gaps</code> instead of <code>gap_list</code>. On others it returns <code>gap_list</code> as a flat string instead of an array. When severity isn't obvious from the text, it drops the <code>severity</code> field entirely.</p>
+    <p>Agent 2, reading this variable-shape output, adapts silently. Sometimes it finds the <code>gaps</code> key. Sometimes it finds neither and defaults to "no gaps identified." Now the Reviewer is scoring proposals as complete while the Enricher's real findings sit one key name away, unread.</p>
   </div>
 
-  <p>This is the single most common multi-agent failure mode we've seen. When Agent A's output is Agent B's input, and that contract is defined only in natural language inside each agent's prompt, drift is inevitable. LLMs are probabilistic. They won't produce the exact same field names, nesting structures, or data types on every run — especially when the content varies.</p>
+  <p>Format drift is the default outcome, not the unlucky one. When Agent A's output is Agent B's input and that contract lives only in natural language inside each prompt, there is nothing holding the shape in place. LLMs are probabilistic. They will not produce identical field names, nesting, or data types on every run, and they vary most when the content varies.</p>
 
   <div class="fix-card">
     <div class="fix-label">Fix 01</div>
     <h3>A typed state schema, defined once and enforced at both ends</h3>
-    <p>We defined a single shared state schema — a Pydantic model — that both agents were required to validate against. Agent 1's output was parsed through the schema before being passed to Agent 2. If the parse failed, the run stopped and an error was logged. Agent 2 received a guaranteed-shape object, not a raw LLM string.</p>
-    <p>The schema also served as explicit documentation: every field, its type, whether it was required or optional, and a one-line description. Both agent prompts referenced it directly: "Your output must conform to the <code>EnricherOutput</code> schema. Required fields: <code>enriched_draft</code> (string), <code>gap_list</code> (array of GapItem objects). Do not invent field names."</p>
+    <p>Define one shared state schema, a Pydantic model or a TypeScript interface, and make both agents validate against it. Agent 1's output gets parsed through the schema before it reaches Agent 2. If the parse fails, the run stops and logs an error. Agent 2 receives a guaranteed-shape object, never a raw LLM string.</p>
+    <p>The schema doubles as documentation: every field, its type, required or optional, and a one-line description. Point both prompts at it directly. "Your output must conform to the <code>EnricherOutput</code> schema. Required fields: <code>enriched_draft</code> (string), <code>gap_list</code> (array of GapItem objects). Do not invent field names."</p>
     <ul>
-      <li>Schema validation failures go to a separate error queue — not the human review queue</li>
+      <li>Schema validation failures go to a separate error queue, not the human review queue</li>
       <li>The Enricher's prompt includes the full schema definition, not just field names</li>
       <li>Schema version is logged with every run; any schema change triggers a re-test pass</li>
     </ul>
   </div>
 
-  <h2>Failure Mode #2: Context loss — Agent 2 didn't know what Agent 1 knew</h2>
+  <h2>Failure Mode #2: Agent 2 doesn't know what Agent 1 knew</h2>
 
   <div class="failure-card">
     <div class="failure-label">Failure 02 / Context Truncation</div>
-    <h3>The Reviewer was scoring drafts without the context the Enricher had used to enrich them</h3>
-    <p>The Enricher had access to the original client brief, the draft, and a context document with firm-specific positioning data. It used all three to produce its enriched output. The handoff payload we passed to the Reviewer, however, was just the enriched draft and the gap list.</p>
-    <p>The Reviewer had the enriched draft — but not the original brief or the positioning context. It was scoring alignment with "client criteria" that it had to infer from the draft text, because we hadn't passed the actual criteria document. On proposals where the Enricher had done a lot of work — reframing language, adding specifics — the Reviewer would score the criteria alignment as "excellent" based on the enriched text, even when the original brief had criteria that the draft still didn't address.</p>
-    <p>The Reviewer was being asked to evaluate alignment with a target it couldn't see.</p>
+    <h3>The Reviewer scores drafts without the context the Enricher used to enrich them</h3>
+    <p>The Enricher reads three things: the original brief, the draft, and a context document with firm-specific positioning data. It uses all three. The handoff payload carries two things: the enriched draft and the gap list.</p>
+    <p>So the Reviewer has the enriched text and nothing else. It is scoring alignment against "the buyer's criteria" that it has to infer from the draft itself, because the criteria document never crossed the boundary. The harder the Enricher worked, reframing language and adding specifics, the better the draft reads, and the more confidently the Reviewer scores criteria alignment as excellent. Criteria the draft still doesn't address are invisible to it.</p>
+    <p>The Reviewer is being asked to evaluate alignment with a target it cannot see.</p>
   </div>
 
   <div class="fix-card">
     <div class="fix-label">Fix 02</div>
     <h3>Explicit context forwarding in the handoff payload</h3>
-    <p>We expanded the handoff schema to include a <code>context</code> object: the original client brief (not just the draft), the positioning context document reference, and a <code>enricher_notes</code> field — a structured summary of what the Enricher had changed and why.</p>
-    <p>The <code>enricher_notes</code> field turned out to be more valuable than we expected. It gave the Reviewer explicit visibility into the Enricher's reasoning — "I strengthened the competitive differentiation section based on the client's stated preference for outcome-oriented language" — which let the Reviewer evaluate the quality of the enrichment, not just the quality of the resulting text.</p>
-    <p>This is a pattern we now call <strong>the annotated handoff</strong>: the first agent passes not just its output, but a summary of its reasoning and the key decisions it made. The second agent can use that reasoning as context for its own evaluation, rather than reverse-engineering it from the output text alone.</p>
+    <p>Expand the handoff schema to carry a <code>context</code> object: the original brief, not just the draft, a reference to the positioning document, and an <code>enricher_notes</code> field holding a structured summary of what the Enricher changed and why.</p>
+    <p>That last field earns its keep twice. It gives the Reviewer direct visibility into the Enricher's reasoning, along the lines of "strengthened the competitive differentiation section based on the buyer's stated preference for outcome-oriented language." That lets the Reviewer judge the quality of the enrichment, not only the quality of the resulting prose. It also makes debugging possible, because the upstream decision is written down instead of inferred.</p>
+    <p>Call it <strong>the annotated handoff</strong>: the first agent passes its output plus a summary of its reasoning and the decisions behind it. The second agent treats that reasoning as context for its own evaluation instead of reverse-engineering it from the text.</p>
   </div>
 
-  <h2>Failure Mode #3: Conflicting ground truth — two agents, two sets of facts</h2>
+  <h2>Failure Mode #3: Conflicting ground truth, two agents with two sets of facts</h2>
 
   <div class="failure-card">
     <div class="failure-label">Failure 03 / Divergent Grounding</div>
-    <h3>The Enricher and Reviewer were using different versions of the firm's capability statements</h3>
-    <p>The firm's positioning context — the document describing their capabilities, differentiators, and client references — was stored in a knowledge base. Both agents retrieved from it via a RAG step. The problem: they weren't necessarily retrieving the same chunks.</p>
-    <p>The Enricher might retrieve and use a client reference from Q4 2025. The Reviewer, doing its own retrieval pass, might retrieve a different (or contradictory) set of references. On three proposals, the Reviewer flagged the Enricher's client references as "unverified" — because the Reviewer's own retrieval hadn't surfaced the same reference. The Enricher had good data; the Reviewer just hadn't seen it.</p>
-    <p>The two agents were grounded in different subsets of the same knowledge base. Their outputs were internally consistent but externally inconsistent with each other.</p>
+    <h3>The Enricher and the Reviewer are reading different versions of the firm's capability statements</h3>
+    <p>The positioning context, the document describing capabilities, differentiators, and past references, sits in a knowledge base. Both agents retrieve from it through their own RAG step. Nothing guarantees they retrieve the same chunks.</p>
+    <p>The Enricher pulls a reference and builds an argument on it. The Reviewer, running its own retrieval pass, pulls a different or contradictory set. The Reviewer then flags the Enricher's reference as unverified, because the Reviewer's retrieval never surfaced it. The Enricher had good data. The Reviewer simply never saw it.</p>
+    <p>Two agents, grounded in different subsets of the same knowledge base. Each output is internally consistent. Together they contradict, and neither one notices.</p>
   </div>
 
   <div class="fix-card">
     <div class="fix-label">Fix 03</div>
     <h3>Shared retrieval: the Enricher fetches, the Reviewer reads from the same payload</h3>
-    <p>We changed the architecture so that the Enricher performs all knowledge base retrieval for a given proposal run. The retrieved chunks are included in the handoff payload under a <code>retrieved_context</code> key. The Reviewer reads from that same set of chunks — it does not perform its own retrieval pass.</p>
-    <p>This has two benefits: consistency (both agents operate from the same retrieved facts) and traceability (every run's behavior is reproducible from the same inputs). The retrieved context is logged as part of the run record, which means you can replay any past run exactly. This is the same principle that frameworks like <a href="https://python.langchain.com/docs/langgraph/" target="_blank" rel="noopener noreferrer">LangGraph</a> bake into their state model — a single shared state that flows through the graph, rather than each node fetching its own.</p>
-    <p>The Reviewer can still flag low-confidence references — but it's now flagging them because the retrieved context itself is weak, not because it pulled different context than the Enricher did.</p>
+    <p>Retrieve once per run. Have the Enricher perform all knowledge base retrieval, then carry the retrieved chunks in the handoff payload under a <code>retrieved_context</code> key. The Reviewer reads that same set and runs no retrieval of its own.</p>
+    <p>Two things fall out of this. Consistency, because both agents reason over identical facts. Traceability, because the retrieved context is logged with the run record and any past run can be replayed exactly. This is the principle frameworks like <a href="https://python.langchain.com/docs/langgraph/" target="_blank" rel="noopener noreferrer">LangGraph</a> bake into their state model: a single shared state flowing through the graph, rather than each node fetching its own.</p>
+    <p>The Reviewer can still flag a low-confidence reference. Now it flags it because the retrieved context is weak, not because it pulled different context than the Enricher did.</p>
   </div>
 
-  <h2>Failure Mode #4: Silent partial success — the run looked fine but wasn't</h2>
+  <h2>Failure Mode #4: Silent partial success, where the run looks fine and isn't</h2>
 
   <div class="failure-card">
     <div class="failure-label">Failure 04 / Phantom Success</div>
-    <h3>The pipeline reported success on runs where the Reviewer had quietly skipped scoring dimensions it couldn't evaluate</h3>
-    <p>The Reviewer was asked to score across five dimensions. When it couldn't confidently score a dimension — because the relevant section was missing, or the context was insufficient — it would assign a midpoint score (3 out of 5) and move on. It didn't flag this. It didn't raise an error. The run completed. The scorecard looked complete. The human reviewer would act on a 3/5 score in "competitive differentiation" not knowing that the agent had essentially abstained rather than evaluated.</p>
-    <p>This is a variant of the hallucination problem from <a href="/blog/case-study-thursday-agent-guardrails-lessons-2026/">our earlier case study</a> — but more subtle. The agent wasn't making things up; it was quietly defaulting to a neutral value when it lacked the information to score honestly. From the outside, the output looked complete and confident.</p>
+    <h3>The pipeline reports success on runs where the Reviewer quietly skipped dimensions it couldn't evaluate</h3>
+    <p>The Reviewer scores five dimensions. When it can't confidently score one, because the relevant section is missing or the context is thin, it assigns the midpoint and moves on. It doesn't flag that. It doesn't raise an error. The run completes, the scorecard looks whole, and a human acts on a 3-out-of-5 in "competitive differentiation" without knowing the agent abstained rather than evaluated.</p>
+    <p>This is the quieter cousin of the hallucination problem covered in an earlier post on <a href="/blog/case-study-thursday-agent-guardrails-lessons-2026/">agent guardrails</a>. Nothing is invented here. The agent defaults to a neutral value when it lacks the information to score honestly, and from the outside the output looks complete and confident.</p>
   </div>
 
   <div class="fix-card">
     <div class="fix-label">Fix 04</div>
     <h3>Explicit abstention scores + confidence metadata on every dimension</h3>
-    <p>We updated the Reviewer's output schema to include, for each scoring dimension: a <code>score</code> (1–5), a <code>confidence</code> field (<code>"high"</code>, <code>"medium"</code>, <code>"low"</code>, or <code>"abstain"</code>), and a <code>rationale</code> string. The agent was re-prompted: "If you cannot evaluate a dimension with reasonable confidence, set confidence to 'abstain' and score to null. Do not guess. A visible abstention is more useful than a false midpoint score."</p>
+    <p>Give every scoring dimension three fields instead of one: a <code>score</code> (1–5), a <code>confidence</code> value (<code>"high"</code>, <code>"medium"</code>, <code>"low"</code>, or <code>"abstain"</code>), and a <code>rationale</code> string. Then say so in the prompt: "If you cannot evaluate a dimension with reasonable confidence, set confidence to 'abstain' and score to null. Do not guess. A visible abstention is more useful than a false midpoint score."</p>
     <ul>
       <li>Any dimension with <code>confidence: "abstain"</code> is highlighted in the human review queue with a visual indicator</li>
       <li>A run with more than two abstentions on a single proposal is flagged as "incomplete review" and routed to a different queue for fuller human evaluation</li>
-      <li>The overall review report shows a "confidence distribution" — how many dimensions were scored at high, medium, low, or abstain — so reviewers can calibrate how much to trust the automated scorecard</li>
+      <li>The overall review report shows a "confidence distribution", how many dimensions scored high, medium, low, or abstain, so reviewers can calibrate how much to trust the automated scorecard</li>
     </ul>
   </div>
 
   <h2>The pattern underneath all four failures</h2>
 
-  <p>Looking back at all four, there's a single underlying cause: we designed the agents but we didn't design the interface between them.</p>
+  <p>All four have one cause: the agents got designed and the interface between them did not.</p>
 
-  <p>Every software engineer knows that APIs have contracts — explicit definitions of what goes in, what comes out, what errors look like, and what the caller can rely on. We designed two agents without writing a contract between them. We assumed the prompts would keep both sides in sync. They didn't.</p>
+  <p>Every engineer knows an API has a contract. An explicit definition of what goes in, what comes out, what an error looks like, and what the caller is allowed to rely on. A two-agent pipeline built the usual way has two agents and no contract, just an assumption that the prompts will keep both sides in sync. Prompts do not do that job.</p>
 
   <div class="callout">
     <p><strong>The handoff is the product.</strong> In a single-agent system, you design the agent's behavior. In a multi-agent system, you design the agent's behavior <em>and</em> the contract between agents. If you only design the former, you'll spend your production debugging time on the latter.</p>
   </div>
 
-  <p>The LangChain team's <a href="https://www.langchain.com/state-of-agent-engineering" target="_blank" rel="noopener noreferrer">2026 State of Agent Engineering report</a> surveyed 1,300+ practitioners and found that quality — not cost, not latency — is now the top barrier to production agent deployment, cited by 32% of respondents. Our experience maps directly to this. The quality problems that block production confidence aren't in the agents' individual performance. They're in the seams between components — the parts that don't show up in a single-agent benchmark.</p>
+  <p>The LangChain team's <a href="https://www.langchain.com/state-of-agent-engineering" target="_blank" rel="noopener noreferrer">2026 State of Agent Engineering report</a> surveyed 1,300+ practitioners and found that quality, not cost and not latency, is the top barrier to putting agents in production, cited by 32% of respondents. That tracks. The quality problems blocking production confidence usually aren't in how either agent performs. They're in the seams between components, which is exactly what a single-agent benchmark cannot see.</p>
 
-  <h2>What the fixed pipeline actually looks like</h2>
+  <h2>What the pipeline looks like with all four fixes in</h2>
 
-  <p>After retrofitting all four fixes, the pipeline has now been running in production for eight weeks. Here's how it's structured:</p>
+  <p>Put the four fixes together and the architecture changes shape. Five steps, only two of which involve a model:</p>
 
   <ol>
     <li><strong>Retrieval step (pre-Enricher):</strong> A dedicated retrieval step pulls all relevant chunks from the knowledge base for this proposal. Output: a <code>retrieved_context</code> object with chunk IDs and text. This step runs once and its output flows through the entire pipeline.</li>
-    <li><strong>Enricher step:</strong> Agent 1 receives the draft, the client brief, and the <code>retrieved_context</code>. It produces an output conforming to the <code>EnricherOutput</code> Pydantic schema. Output is parsed and validated before proceeding. Parse failures go to an error queue.</li>
-    <li><strong>Handoff payload assembly:</strong> A deterministic step (no LLM) assembles the full handoff payload: enriched draft, gap list, enricher notes, original brief, retrieved context. This step is pure data transformation — it just structures what the Enricher produced plus the original inputs.</li>
+    <li><strong>Enricher step:</strong> Agent 1 receives the draft, the brief, and the <code>retrieved_context</code>. It produces an output conforming to the <code>EnricherOutput</code> Pydantic schema. Output is parsed and validated before proceeding. Parse failures go to an error queue.</li>
+    <li><strong>Handoff payload assembly:</strong> A deterministic step, no LLM, assembles the full handoff payload: enriched draft, gap list, enricher notes, original brief, retrieved context. Pure data transformation over what the Enricher produced plus the original inputs.</li>
     <li><strong>Reviewer step:</strong> Agent 2 receives the assembled handoff payload. It produces a scorecard conforming to the <code>ReviewOutput</code> Pydantic schema, with per-dimension confidence levels. Abstentions are explicit fields, not nulls.</li>
     <li><strong>Output routing:</strong> A deterministic routing step inspects the Reviewer's output and routes to the appropriate human queue: standard review, incomplete review (too many abstentions), or error review (schema validation failures).</li>
   </ol>
 
-  <p>The observability layer is instrumented at every step, with particular attention to the handoff boundaries — input size, output size, schema parse result, and wall-clock time are logged at each transition. When something goes wrong, the trace immediately shows which step and which field caused the issue.</p>
+  <p>Instrument the observability layer at every step, with the boundaries getting the most attention. Log input size, output size, schema parse result, and wall-clock time at each transition. When something goes wrong, the trace names the step and the field instead of leaving you to guess.</p>
 
-  <h2>The results</h2>
+  <h2>How to tell whether the seam is actually fixed</h2>
 
-  <div class="stat-row">
-    <div class="stat-box">
-      <div class="stat-num">~6 hrs</div>
-      <div class="stat-label">saved per proposal vs. full manual review</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-num">91%</div>
-      <div class="stat-label">of proposals clear human review in ≤ 45 min</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-num">0</div>
-      <div class="stat-label">silent partial-success failures in 8 weeks post-fix</div>
-    </div>
-  </div>
+  <p>Note what that redesign is doing. Two of the five steps call a model. The other three are ordinary code: retrieve, assemble, route. Every failure mode above came from asking a probabilistic component to do a deterministic job, so the fix in each case was to move that job out of the prompt and into the pipeline.</p>
 
-  <p>The human reviewers now describe their job as "reviewing the agent's review" rather than doing the review themselves. On a typical proposal, they spend about 20–30 minutes checking the Reviewer's scorecard, reading the flagged gaps, and making a final call. The two-day cycle is gone. Complex proposals still need deeper human attention — but the routing step identifies those automatically.</p>
+  <p>Which also means the seam is measurable, and you should measure it. Four signals are worth a dashboard:</p>
 
-  <p>The more important number: before the fixes, the team had lost confidence in the pipeline after the first two weeks of confusing outputs. After the fixes, confidence recovered and the team actually uses it now. A multi-agent system that works in theory but loses user trust in practice is not a working system.</p>
+  <ul>
+    <li><strong>Schema parse failure rate per boundary.</strong> This number should be visible and non-zero. Zero usually means validation isn't running, not that drift stopped happening.</li>
+    <li><strong>Abstention rate per scoring dimension.</strong> A dimension that abstains constantly is telling you the upstream payload is missing something, not that the model is weak.</li>
+    <li><strong>Payload size at each handoff.</strong> A sudden drop is context quietly falling out of the state object, which is failure mode two arriving without an error message.</li>
+    <li><strong>Replay success.</strong> Take a past run, feed its logged <code>retrieved_context</code> back in, and check you get the same behavior. If you can't reproduce a run, you can't debug one.</li>
+  </ul>
+
+  <p>The softer signal matters more than any of them: whether the humans downstream still trust the output. Reviewers who quietly start re-reading every draft have already rendered a verdict on the pipeline, and they usually do it weeks before anyone opens a dashboard. A multi-agent system that works on a benchmark and loses its users is not a working system.</p>
 
   <h2>The handoff design checklist</h2>
 
   <div class="checklist">
     <h3>Multi-Agent Handoff Design Checklist</h3>
     <ul>
-      <li>Define a <a href="/blog/structured-output-contracts-agent-to-agent-communication/">typed state schema</a> (Pydantic, TypeScript interface, or equivalent) before writing either agent's prompt — the schema is the contract</li>
-      <li>Parse and validate every agent output against the schema before passing it to the next agent — never pass raw LLM strings across agent boundaries</li>
-      <li>Schema validation failures route to an error queue, not the next step — a partial output is worse than a visible failure</li>
-      <li>The handoff payload includes not just the agent's output but its reasoning notes ("annotated handoff") — downstream agents shouldn't reverse-engineer upstream logic from output text</li>
-      <li>Shared retrieval: if multiple agents read from the same knowledge base, do the retrieval once and pass the chunks through the state — don't let each agent retrieve independently</li>
-      <li>Every scoring or evaluation output includes a confidence level per dimension — explicit abstention is always better than a false neutral score</li>
-      <li>Observability is instrumented at the seam, not just inside each agent — log input size, output size, schema parse result, and latency at every handoff boundary</li>
-      <li>A deterministic routing step (no LLM) handles the output dispatch — don't ask an agent to decide where its own output should go</li>
+      <li>Define a <a href="/blog/structured-output-contracts-agent-to-agent-communication/">typed state schema</a> (Pydantic, TypeScript interface, or equivalent) before writing either agent's prompt. The schema is the contract</li>
+      <li>Parse and validate every agent output against the schema before passing it to the next agent. Never pass raw LLM strings across agent boundaries</li>
+      <li>Schema validation failures route to an error queue, not the next step. A partial output is worse than a visible failure</li>
+      <li>The handoff payload includes not just the agent's output but its reasoning notes ("annotated handoff"). Downstream agents shouldn't reverse-engineer upstream logic from output text</li>
+      <li>Shared retrieval: if multiple agents read from the same knowledge base, do the retrieval once and pass the chunks through the state. Don't let each agent retrieve independently</li>
+      <li>Every scoring or evaluation output includes a confidence level per dimension. Explicit abstention beats a false neutral score</li>
+      <li>Observability is instrumented at the seam, not just inside each agent. Log input size, output size, schema parse result, and latency at every handoff boundary</li>
+      <li>A deterministic routing step (no LLM) handles the output dispatch. Don't ask an agent to decide where its own output should go</li>
       <li>The pipeline is tested with adversarial inputs: missing fields, wrong types, truncated outputs, and API timeouts at each step</li>
-      <li>Schema changes require a re-test pass against a regression set — you can't just update one agent's prompt without checking the downstream agent still reads the new structure correctly</li>
+      <li>Schema changes require a re-test pass against a regression set. You can't just update one agent's prompt without checking the downstream agent still reads the new structure correctly</li>
     </ul>
   </div>
 
-  <p>A note on frameworks: the patterns above work regardless of which agent framework you use. <a href="https://python.langchain.com/docs/langgraph/" target="_blank" rel="noopener noreferrer">LangGraph</a> makes some of this easier through its explicit shared state model and durable execution — failures can be replayed from exact stopping points rather than restarted from scratch, which is enormously useful for debugging handoff failures. For the broader pattern of how to handle retries, circuit breakers, and dead letter queues when those failures do occur, see our post on <a href="/blog/systems-sunday-agent-failure-recovery-2026/">agent failure recovery</a>. <a href="https://www.crewai.com/" target="_blank" rel="noopener noreferrer">CrewAI</a> takes a different approach with role-based agents passing structured task outputs, which also enforces some of this discipline implicitly. But the underlying principle — define the contract, validate the boundary, instrument the seam — is framework-agnostic.</p>
+  <p>A note on frameworks: the patterns above work regardless of which agent framework you use. <a href="https://python.langchain.com/docs/langgraph/" target="_blank" rel="noopener noreferrer">LangGraph</a> makes some of this easier through its explicit shared state model and durable execution. Failures replay from an exact stopping point rather than restarting from scratch, which matters a lot when the thing you're debugging is a handoff. For retries, circuit breakers, and dead letter queues once those failures occur, see the post on <a href="/blog/systems-sunday-agent-failure-recovery-2026/">agent failure recovery</a>. <a href="https://www.crewai.com/" target="_blank" rel="noopener noreferrer">CrewAI</a> goes a different route, with role-based agents passing structured task outputs, which enforces some of the same discipline implicitly. The underlying principle is framework-agnostic: define the contract, validate the boundary, instrument the seam.</p>
 
   <h2>What this means for your next multi-agent build</h2>
 
-  <p>If you're building a two-agent or multi-agent pipeline, here's the one thing to internalize before you write a single line of prompt: <strong>the hardest part will not be making each agent work — it will be making them work together.</strong></p>
+  <p>One thing to hold onto before writing a line of prompt: <strong>the hardest part is not making each agent work, it's making them work together.</strong></p>
 
-  <p>Individual agents are hard. But they're hard in ways that have well-understood fixes: better prompts, retrieval tuning, output constraints, evals. Multi-agent handoff failures are harder because they don't announce themselves. The run completes. The output looks plausible. The problems surface downstream — when a reviewer acts on a score the agent actually abstained on, when a gap list that should have been an array arrives as a string, when two agents operating on different retrieved context reach contradictory conclusions neither of them flags.</p>
+  <p>Individual agents are hard in well-understood ways. Better prompts, retrieval tuning, output constraints, evals. Handoff failures are harder because they never announce themselves. The run completes. The output looks plausible. The damage surfaces somewhere downstream, when a reviewer acts on a score the agent abstained on, when a gap list that should be an array arrives as a string, when two agents reading different retrieved context reach contradictory conclusions and neither flags it.</p>
 
-  <p>The investment is worth it. A well-designed two-agent pipeline can do things that no single agent can — parallel reasoning, specialized expertise, built-in self-review. But the investment is in the seam, not just the agents. Design the contract first. Build the schema before the prompts. Instrument the boundary as carefully as you instrument the steps.</p>
+  <p>The architecture is still worth building. A well-designed two-agent pipeline does things no single agent can: parallel reasoning, specialized expertise, built-in self-review. Just put the investment where the failures are. Design the contract first. Build the schema before the prompts. Instrument the boundary as carefully as you instrument the steps.</p>
 
-  <p>Your human reviewers — the ones who have to trust the output — will thank you.</p>
+  <p>The people who have to trust the output will notice the difference.</p>
 
   <div class="faq-section">
     <h2>Frequently Asked Questions</h2>
 
     <h3>What is an agent handoff in a multi-agent AI system?</h3>
-    <p>An agent handoff is the point where one AI agent passes its output to another agent as input. Unlike a simple function call, the handoff in a multi-agent system involves transferring not just data but context, reasoning state, and any retrieved information the downstream agent needs to continue the task. Poorly designed handoffs — where the output format or content doesn't match what the downstream agent expects — are one of the leading causes of quality failures in production multi-agent pipelines.</p>
+    <p>An agent handoff is the point where one AI agent passes its output to another agent as input. Unlike a simple function call, the handoff in a multi-agent system involves transferring not just data but context, reasoning state, and any retrieved information the downstream agent needs to continue the task. Poorly designed handoffs, where the output format or content doesn't match what the downstream agent expects, are one of the leading causes of quality failures in production multi-agent pipelines.</p>
 
     <h3>Why do multi-agent AI systems fail at the handoff between agents?</h3>
-    <p>LLM outputs are non-deterministic, meaning the same prompt can produce slightly different output structures across runs — different field names, different nesting, different data types. If Agent A's output is Agent B's input and there's no enforced schema between them, format drift accumulates over time. Downstream agents adapt silently, filling gaps with defaults or assumptions rather than raising errors. The result is a pipeline that looks like it's working while producing quietly incorrect outputs.</p>
+    <p>LLM outputs are non-deterministic, meaning the same prompt can produce slightly different output structures across runs: different field names, different nesting, different data types. If Agent A's output is Agent B's input and there's no enforced schema between them, format drift accumulates over time. Downstream agents adapt silently, filling gaps with defaults or assumptions rather than raising errors. The result is a pipeline that looks like it's working while producing quietly incorrect outputs.</p>
 
     <h3>What is a typed state schema in the context of AI agent pipelines?</h3>
-    <p>A typed state schema (commonly implemented with Pydantic in Python or TypeScript interfaces in JS/TS) is a formal definition of the data structure that flows between agents in a pipeline. It specifies every field, its type, whether it's required or optional, and validation constraints. Agent outputs are parsed against the schema before being passed to the next agent — if the parse fails, the run stops and an error is logged rather than passing malformed data downstream. This is the most effective single fix for multi-agent format drift failures.</p>
+    <p>A typed state schema (commonly implemented with Pydantic in Python or TypeScript interfaces in JS/TS) is a formal definition of the data structure that flows between agents in a pipeline. It specifies every field, its type, whether it's required or optional, and validation constraints. Agent outputs are parsed against the schema before being passed to the next agent. If the parse fails, the run stops and an error is logged rather than passing malformed data downstream. This is the most effective single fix for multi-agent format drift failures.</p>
 
     <h3>What is the "annotated handoff" pattern for multi-agent AI systems?</h3>
-    <p>The annotated handoff is a pattern where the first agent passes not just its output but a structured summary of its reasoning and key decisions alongside the output data. For example, an Enricher agent might include a field like <code>enricher_notes</code> explaining which sections it strengthened and why. The downstream Reviewer agent can then evaluate the quality of the enrichment process, not just the final text — which produces more accurate and actionable reviews. It also significantly helps with debugging, since the upstream agent's reasoning is explicit rather than having to be reverse-engineered from the output.</p>
+    <p>The annotated handoff is a pattern where the first agent passes not just its output but a structured summary of its reasoning and key decisions alongside the output data. For example, an Enricher agent might include a field like <code>enricher_notes</code> explaining which sections it strengthened and why. The downstream Reviewer agent can then evaluate the quality of the enrichment process, not just the final text, which produces sharper and more useful reviews. It also significantly helps with debugging, since the upstream agent's reasoning is explicit rather than having to be reverse-engineered from the output.</p>
 
     <h3>How should I instrument observability for a multi-agent AI pipeline?</h3>
-    <p>Standard agent observability (tracing LLM calls, logging token counts, timing steps) is necessary but not sufficient for multi-agent systems. You also need to instrument specifically at the handoff boundaries: log input size and output size at each agent boundary, record schema parse results (success/failure and which fields failed), and track per-dimension confidence levels if your agents produce scored outputs. Tools like <a href="https://smith.langchain.com/" target="_blank" rel="noopener noreferrer">LangSmith</a>, <a href="https://arize.com/" target="_blank" rel="noopener noreferrer">Arize Phoenix</a>, and <a href="https://braintrust.dev/" target="_blank" rel="noopener noreferrer">Braintrust</a> all support multi-step trace visualization; the goal is to make the seam between agents as visible as the agents themselves.</p>
+    <p>Standard agent observability (tracing LLM calls, logging token counts, timing steps) is necessary but not sufficient for multi-agent systems. You also need to instrument specifically at the handoff boundaries: log input size and output size at each agent boundary, record schema parse results (success/failure and which fields failed), and track per-dimension confidence levels wherever an agent produces scored outputs. Tools like <a href="https://smith.langchain.com/" target="_blank" rel="noopener noreferrer">LangSmith</a>, <a href="https://arize.com/" target="_blank" rel="noopener noreferrer">Arize Phoenix</a>, and <a href="https://braintrust.dev/" target="_blank" rel="noopener noreferrer">Braintrust</a> all support multi-step trace visualization; the goal is to make the seam between agents as visible as the agents themselves.</p>
 
     <h3>Should multiple agents in a pipeline each retrieve from the knowledge base independently?</h3>
-    <p>Generally no — if multiple agents in a pipeline need to reason about the same set of facts, it's safer to retrieve once (typically before the first agent step) and pass the retrieved chunks as part of the shared state through the entire pipeline. Independent retrieval by each agent introduces divergent grounding: two agents may retrieve different subsets of the knowledge base and reach contradictory conclusions neither of them flags as inconsistent. Single-retrieval pipelines are also more reproducible, since the same inputs will produce the same retrieved context and therefore more consistent behavior across runs. See the <a href="https://python.langchain.com/docs/langgraph/" target="_blank" rel="noopener noreferrer">LangGraph documentation</a> on shared state for a framework-level implementation of this pattern.</p>
+    <p>Generally no. If multiple agents in a pipeline need to reason about the same set of facts, it's safer to retrieve once (typically before the first agent step) and pass the retrieved chunks as part of the shared state through the entire pipeline. Independent retrieval by each agent introduces divergent grounding: two agents may retrieve different subsets of the knowledge base and reach contradictory conclusions neither of them flags as inconsistent. Single-retrieval pipelines are also more reproducible, since the same inputs will produce the same retrieved context and therefore more consistent behavior across runs. See the <a href="https://python.langchain.com/docs/langgraph/" target="_blank" rel="noopener noreferrer">LangGraph documentation</a> on shared state for a framework-level implementation of this pattern.</p>
   </div>
 
   <div class="sources-section">
@@ -402,7 +396,7 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
   </div>
 
   <div class="cta-box">
-    <p>Designing a multi-agent pipeline and want to stress-test the seams before you hit production? That's exactly the kind of architecture review we do at Supergood Solutions. <a href="mailto:hello@supergood.solutions" style="color: var(--green);">Drop us a line</a> and let's map out your handoff contracts before the agents find the gaps for you.</p>
+    <p>Designing a multi-agent pipeline and want to stress-test the seams before you hit production? Architecture review is what Supergood Solutions is for. <a href="mailto:hello@supergood.solutions" style="color: var(--green);">Get in touch</a> and let's map out your handoff contracts before the agents find the gaps for you.</p>
   </div>
 <div style="border-left:3px solid var(--green);background:var(--surface-2);border-radius:0 8px 8px 0;padding:28px;margin:48px 0 24px;">
 <p style="font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px;">Have a specific workflow in mind?</p>

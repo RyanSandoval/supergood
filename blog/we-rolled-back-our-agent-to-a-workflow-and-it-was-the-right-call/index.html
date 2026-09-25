@@ -3,36 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>We Rolled Back Our Agent to a Workflow — And It Was the Right Call — Supergood Solutions</title>
-<meta name="description" content="A team replaced a finicky LLM agent with a boring deterministic workflow and a *narrow* LLM call at one step. Latency dropped ~70%, monthly spend fell by an ord">
+<title>When a Workflow Beats an Agent — Supergood Solutions</title>
+<meta name="description" content="An agent decides its own control flow. A workflow has control flow you wrote, with LLM calls at specific steps. Most enterprise tasks want the second one.">
 <meta name="author" content="Ryan Sandoval">
-<meta name="keywords" content="Case Study Thursday, AI agents, artificial intelligence, enterprise AI">
+<meta name="keywords" content="Analysis, AI agents, artificial intelligence, enterprise AI">
 <meta name="theme-color" content="#0a0a0b">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://supergood.solutions/blog/we-rolled-back-our-agent-to-a-workflow-and-it-was-the-right-call/">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Supergood Solutions">
-<meta property="og:title" content="We Rolled Back Our Agent to a Workflow — And It Was the Right Call">
-<meta property="og:description" content="A team replaced a finicky LLM agent with a boring deterministic workflow and a *narrow* LLM call at one step. Latency dropped ~70%, monthly spend fell by an ord">
+<meta property="og:title" content="When a Workflow Beats an Agent">
+<meta property="og:description" content="An agent decides its own control flow. A workflow has control flow you wrote, with LLM calls at specific steps. Most enterprise tasks want the second one.">
 <meta property="og:url" content="https://supergood.solutions/blog/we-rolled-back-our-agent-to-a-workflow-and-it-was-the-right-call/">
 <meta property="og:image" content="https://supergood.solutions/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="We Rolled Back Our Agent to a Workflow — And It Was the Right Call">
+<meta property="og:image:alt" content="When a Workflow Beats an Agent">
 <meta property="article:published_time" content="2026-04-23">
 <meta property="article:modified_time" content="2026-04-23">
 <meta property="article:author" content="Ryan Sandoval">
-<meta property="article:section" content="Case Study Thursday">
+<meta property="article:section" content="Analysis">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="We Rolled Back Our Agent to a Workflow — And It Was the Right Call">
-<meta name="twitter:description" content="A team replaced a finicky LLM agent with a boring deterministic workflow and a *narrow* LLM call at one step. Latency dropped ~70%, monthly spend fell by an ord">
+<meta name="twitter:title" content="When a Workflow Beats an Agent">
+<meta name="twitter:description" content="An agent decides its own control flow. A workflow has control flow you wrote, with LLM calls at specific steps. Most enterprise tasks want the second one.">
 <meta name="twitter:image" content="https://supergood.solutions/og-image.png">
 <script type="application/ld+json">
-{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "We Rolled Back Our Agent to a Workflow — And It Was the Right Call", "description": "A team replaced a finicky LLM agent with a boring deterministic workflow and a *narrow* LLM call at one step. Latency dropped ~70%, monthly spend fell by an ord", "image": "https://supergood.solutions/og-image.png", "url": "https://supergood.solutions/blog/we-rolled-back-our-agent-to-a-workflow-and-it-was-the-right-call/", "datePublished": "2026-04-23", "dateModified": "2026-04-23", "wordCount": 1244,"timeRequired":"PT6M","keywords":["Case Study Thursday","AI agents","artificial intelligence","enterprise AI"],"isPartOf":{"@type":"Blog","url":"https://supergood.solutions/blog/"},"inLanguage":"en-US", "articleSection": "Case Study Thursday", "isAccessibleForFree": true, "author": {"@type": "Person", "name": "Ryan Sandoval", "url": "https://linkedin.com/in/RyanSandoval"}, "publisher": {"@type": "Organization", "name": "Supergood Solutions", "url": "https://supergood.solutions", "logo": {"@type": "ImageObject", "url": "https://supergood.solutions/og-image.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://supergood.solutions/blog/we-rolled-back-our-agent-to-a-workflow-and-it-was-the-right-call/"}, "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".callout", "article h1", "article h2"]}}
+{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "When a Workflow Beats an Agent", "description": "An agent decides its own control flow. A workflow has control flow you wrote, with LLM calls at specific steps. Most enterprise tasks want the second one.", "image": "https://supergood.solutions/og-image.png", "url": "https://supergood.solutions/blog/we-rolled-back-our-agent-to-a-workflow-and-it-was-the-right-call/", "datePublished": "2026-04-23", "dateModified": "2026-04-23", "wordCount": 1419,"timeRequired":"PT6M","keywords":["Analysis","AI agents","artificial intelligence","enterprise AI"],"isPartOf":{"@type":"Blog","url":"https://supergood.solutions/blog/"},"inLanguage":"en-US", "articleSection": "Analysis", "isAccessibleForFree": true, "author": {"@type": "Person", "name": "Ryan Sandoval", "url": "https://linkedin.com/in/RyanSandoval"}, "publisher": {"@type": "Organization", "name": "Supergood Solutions", "url": "https://supergood.solutions", "logo": {"@type": "ImageObject", "url": "https://supergood.solutions/og-image.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://supergood.solutions/blog/we-rolled-back-our-agent-to-a-workflow-and-it-was-the-right-call/"}, "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".callout", "article h1", "article h2"]}}
 </script>
 <script type="application/ld+json">
-{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://supergood.solutions/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://supergood.solutions/blog/"}, {"@type": "ListItem", "position": 3, "name": "We Rolled Back Our Agent to a Workflow — And It Was the Right Call", "item": "https://supergood.solutions/blog/we-rolled-back-our-agent-to-a-workflow-and-it-was-the-right-call/"}]}
+{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://supergood.solutions/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://supergood.solutions/blog/"}, {"@type": "ListItem", "position": 3, "name": "When a Workflow Beats an Agent", "item": "https://supergood.solutions/blog/we-rolled-back-our-agent-to-a-workflow-and-it-was-the-right-call/"}]}
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -72,26 +72,26 @@ footer p{color:var(--text-3);font-size:0.875rem;margin:0}
 <div class="reading-progress" aria-hidden="true"></div>
 <nav><div class="inner"><a href="/" class="wordmark">supergood<span class="dot">.</span></a><a href="/blog/" class="back">← All posts</a></div></nav>
 <main><article>
-<div class="tag">Case Study Thursday</div>
-<h1>We Rolled Back Our Agent to a Workflow — And It Was the Right Call</h1>
+<div class="tag">Analysis</div>
+<h1>When a Workflow Beats an Agent</h1>
 <div class="meta">Published April 23, 2026 — 6 min read</div>
-<div class="callout"><p><strong>TL;DR:</strong> A team replaced a finicky LLM agent with a boring deterministic workflow and a *narrow* LLM call at one step. Latency dropped ~70%, monthly spend fell by an order of magnitude, and the on-call rotation stopped paging at 3am. The contrarian lesson: "agentic" is a design choice, not a default, and the teams winning with AI in 2026 are the ones comfortable ripping out an agent when a workflow does the job.</p></div>
+<div class="callout"><p><strong>TL;DR:</strong> An agent decides its own control flow. A workflow has control flow you wrote, with LLM calls at specific steps. A lot of what ships as "agentic" is the second thing wearing the costume of the first, and swapping it back for a deterministic pipeline with one narrow LLM call is a legitimate design move rather than an admission of failure. "Agentic" is a choice, not a default.</p></div>
 
 <h2>Key Insight</h2>
-<p>The industry pushed "agents" as the next default architecture the moment tool-use matured. That framing collapsed a useful distinction: an <strong>agent</strong> decides its own control flow; a <strong>workflow</strong> has control flow you wrote, with LLM calls at specific steps. Anthropic's own 2024 essay on "Building effective agents" makes this explicit — most production value lives in workflows, not agents, and teams should reach for an agent only when the task genuinely needs dynamic planning.</p>
-<p>The contrarian take: <strong>rolling back from an agent to a workflow is a promotion, not a regression.</strong> It means you now understand the task well enough to encode its structure. That's a win. Most teams resist the rollback because it feels like admitting the agent "failed" — but an agent that taught you the shape of your problem did its job.</p>
+<p>The industry pushed "agents" as the next default architecture the moment tool-use matured. That framing collapsed a useful distinction: an <strong>agent</strong> decides its own control flow; a <strong>workflow</strong> has control flow you wrote, with LLM calls at specific steps. Anthropic's own 2024 essay on "Building effective agents" makes this explicit. Most production value lives in workflows, not agents, and an agent is the right reach only when the task needs dynamic planning.</p>
+<p>The contrarian take: <strong>rolling back from an agent to a workflow is a promotion, not a regression.</strong> It means you now understand the task well enough to encode its structure. That's a win. Teams resist the rollback because it feels like admitting the agent "failed." An agent that taught you the shape of your problem did its job.</p>
 <h2>Why Teams Miss This</h2>
-<p>Three patterns we keep seeing:</p>
+<p>Three patterns recur.</p>
 <ol>
-<li><strong>"Agent" became a status symbol.</strong> Leadership funds "agent" projects, not "workflow with two LLM calls" projects. So teams paper over a deterministic pipeline with a ReAct loop, pay a 4–8x token tax for the reasoning trace, and call it an agent. Then it flakes in production because the task never needed dynamic planning.</li>
+<li><strong>"Agent" became a status symbol.</strong> Leadership funds "agent" projects, not "workflow with two LLM calls" projects. So teams paper over a deterministic pipeline with a ReAct loop, pay a token tax for the reasoning trace, and call it an agent. Then it buckles in production because the task never needed dynamic planning.</li>
 </ol>
-<p>2. <strong>Eval sets hide the decision problem.</strong> The team's evals measure output quality on a fixed task distribution. They don't measure: <em>does the LLM actually need to decide the order of operations here?</em> On 90%+ of enterprise tasks, the order is stable. You're paying an LLM to re-derive it every run.</p>
-<p>3. <strong>Rollback feels like retreat.</strong> Engineers who shipped the agent are the ones being asked to delete it. That's culturally hard. Leadership doesn't help when the quarterly OKR says "ship agentic workflows." The fix is naming the pattern out loud: <em>"We ran the agent in shadow mode, learned the task shape, now we're hardening it as a workflow."</em></p>
+<p>2. <strong>Eval sets hide the decision problem.</strong> Evals measure output quality on a fixed task distribution. They don't measure the question that decides the architecture: <em>does the LLM actually need to pick the order of operations here?</em> On most enterprise tasks the order is stable. You're paying an LLM to re-derive it every run.</p>
+<p>3. <strong>Rollback feels like retreat.</strong> Engineers who shipped the agent are the ones being asked to delete it. That's politically awkward. Leadership doesn't help when the quarterly OKR says "ship agentic workflows." The fix is naming the pattern out loud: <em>"The agent ran in shadow mode, it taught the team the task shape, now it gets hardened into a workflow."</em></p>
 <h2>How to Actually Do It</h2>
-<p>Here's the decision framework we've seen work in three separate rollbacks:</p>
-<p><strong>Step 1 — Log the agent's decision trace in production for 2 weeks.</strong> Every tool call, every order, every branch. Don't change behavior, just capture the DAG the agent executed on each run.</p>
-<p><strong>Step 2 — Cluster the traces.</strong> If 85%+ of runs follow one of ≤5 distinct paths, you have a workflow. If the long tail of "unique paths" is a real 30%+ of traffic, you genuinely have an agent problem — keep it.</p>
-<p><strong>Step 3 — Encode the top paths as deterministic workflow steps.</strong> Python, a state machine, a DAG framework (Temporal, Prefect, LangGraph in workflow mode), whatever fits. Keep LLM calls at the <em>ambiguous</em> steps only — classification, extraction, generation. Everything else is code.</p>
+<p>A decision framework that fits the rollback:</p>
+<p><strong>Step 1: Log the agent's decision trace in production.</strong> Every tool call, every order, every branch. Don't change behavior, just capture the DAG the agent executed on each run. Give it long enough to cover a full traffic cycle, including whatever your weekly and month-end spikes look like.</p>
+<p><strong>Step 2: Cluster the traces.</strong> Pick the threshold before you look at the data, so the answer isn't retrofitted to the one you want. A reasonable line: if most runs follow one of a handful of distinct paths, you have a workflow. If one-off paths are a large, stable share of traffic, you have an agent problem. Keep the agent.</p>
+<p><strong>Step 3: Encode the top paths as deterministic workflow steps.</strong> Python, a state machine, a DAG framework (Temporal, Prefect, LangGraph in workflow mode), whatever fits. Keep LLM calls at the <em>ambiguous</em> steps only: classification, extraction, generation. Everything else is code.</p>
 <p>result = agent.run(user_request, tools=[search, fetch, summarize, email])</p>
 <p>intent = classify(user_request)          # 1 LLM call, structured output</p>
 <p>docs = search(intent.query)              # deterministic</p>
@@ -99,12 +99,17 @@ footer p{color:var(--text-3);font-size:0.875rem;margin:0}
 <p>summary = summarize(filtered)            # 1 LLM call</p>
 <p>if intent.requires_email:</p>
 <p>send_email(summary, intent.recipient)  # deterministic, audited</p>
-<p><strong>Step 4 — Keep the agent alive in shadow mode on the long tail.</strong> The 15% of weird requests that don't match the top paths still route to the agent. You now have two systems: a cheap reliable workflow doing most of the traffic, and an agent as a fallback. Over time, new clusters in the long tail can be promoted into the workflow.</p>
-<p><strong>Step 5 — Measure the rollback honestly.</strong> Track p50/p95 latency, cost per 1K requests, and the on-call page rate. In the three cases we've seen: latency dropped 50–80%, cost dropped 6–12x, and incidents dropped by half or more. If your numbers move less than that, the rollback was still worth it for the observability alone — workflow steps are easier to debug than an agent's reasoning chain.</p>
-<h2>What We've Learned</h2>
-<p>The "agent vs workflow" choice isn't a one-time decision; it's a dial you adjust as you learn the task. Ship an agent when you're genuinely uncertain about control flow. Roll it back to a workflow once the traces stabilize. Be willing to re-promote to an agent if requirements shift. Most teams miss the middle step.</p>
+<p>The split is obvious once you write it down. Retries, pagination, rate limits, schema validation, idempotency keys, audit logging: none of it improves by having a language model decide whether to do it.</p>
+<p><strong>Step 4: Keep the agent alive in shadow mode on the long tail.</strong> The oddball requests that don't match the top paths still route to the agent. You now run two systems: a cheap, predictable workflow handling the bulk of traffic, and an agent as a fallback. Over time, new clusters in the long tail can be promoted into the workflow.</p>
+<p><strong>Step 5: Measure the rollback honestly.</strong> Track p50/p95 latency, cost per 1K requests, and the on-call page rate, and record the baselines before you touch anything. Publish whatever the numbers say, including the unglamorous outcome where they barely move. Even then the rollback usually pays for itself in observability, because a named workflow step with typed inputs is easier to debug than an agent's reasoning chain.</p>
+<h2>When Not to Roll Back</h2>
+<p>The argument cuts both ways. Some tasks really are agent-shaped, and hardening them into a workflow trades flexibility for a pipeline that breaks the first week requirements move.</p>
+<p>Keep the agent when the input space is open-ended and you cannot enumerate the tool combinations in advance. Keep it when the task is exploratory by nature, like research or triage across systems you don't control. Keep it when the cost of a wrong path is low and the cost of a missed path is high. And keep it when the traces refuse to cluster, because a workflow built on top of an unstable path distribution is just an agent with worse error handling.</p>
+<p>The tell is not complexity. It's variance. A task can be extremely complicated and still run the same seven steps every time, which makes it a workflow.</p>
+<h2>What This Changes</h2>
+<p>The "agent vs workflow" choice isn't a one-time decision; it's a dial you adjust as you learn the task. Ship an agent when you don't yet know the control flow. Roll it back to a workflow once the traces stabilize. Be willing to re-promote to an agent if requirements shift. Most teams miss the middle step.</p>
 <p>The uncomfortable observation: a lot of what's marketed as "agentic AI" in 2026 is a workflow wearing a ReAct costume. That's fine as a prototype. It's expensive and flaky as a production system.</p>
-<p><strong>Next experiment:</strong> Pick one "agent" you've shipped in the last 6 months. Pull two weeks of its tool-call traces. Plot path frequency. If the top 3 paths cover more than 80% of runs, you have a candidate for rollback — and a ~week of engineering work to reclaim most of its cost and latency.</p>
+<p><strong>Next experiment:</strong> Pick one "agent" shipped in the last six months. Pull its tool-call traces. Plot path frequency as a histogram. If a small number of paths cover most of the runs, you have a rollback candidate, and the clustering exercise alone will tell you more about the task than another round of eval tuning.</p>
 <h2>Sources</h2>
 <ul>
 <li><a href="https://www.anthropic.com/research/building-effective-agents">Anthropic — Building Effective Agents (Dec 2024)</a></li>
@@ -116,17 +121,17 @@ footer p{color:var(--text-3);font-size:0.875rem;margin:0}
 <hr>
 <h2>FAQ</h2>
 <p><strong>Q: Isn't rolling back to a workflow just "not using AI"?</strong></p>
-<p>A: No — the LLM is still doing the work it's best at (classification, extraction, generation). You're removing the LLM from <em>control flow</em>, which is the expensive, unreliable part. The AI still runs; it just stops re-deciding what to run next on every request.</p>
+<p>A: No. The LLM is still doing the work it's best at (classification, extraction, generation). You're removing the LLM from <em>control flow</em>, which is the expensive, unreliable part. The AI still runs; it just stops re-deciding what to run next on every request.</p>
 <p><strong>Q: How do I know if my task actually needs agentic control flow?</strong></p>
-<p>A: Log 2 weeks of traces and cluster them. If the top 5 paths cover 85%+ of runs, you have a workflow. If runs look genuinely different each time (novel tool combinations, unpredictable branching), keep the agent. "Feels complex" is not the same as "is dynamically structured."</p>
-<p><strong>Q: Won't we lose the agent's ability to handle edge cases?</strong></p>
-<p>A: Keep the agent as a fallback. Route the common paths (80–90% of traffic) to the workflow and the long tail to the agent. You get the reliability of the workflow and the flexibility of the agent without paying agent prices on every request.</p>
+<p>A: Log traces and cluster them. If a handful of paths cover most runs, you have a workflow. If runs look different every time, with novel tool combinations and unpredictable branching, keep the agent. "Feels complex" is not the same as "is dynamically structured."</p>
+<p><strong>Q: Won't a workflow lose the agent's ability to handle edge cases?</strong></p>
+<p>A: Keep the agent as a fallback. Route the common paths to the workflow and the long tail to the agent. You get the reliability of the workflow and the flexibility of the agent without paying agent prices on every request.</p>
 <p><strong>Q: What frameworks support the workflow-with-LLM-steps pattern well?</strong></p>
-<p>A: LangGraph (workflow mode), Temporal, Prefect, Airflow with LLM operators, and AWS Step Functions all work. If you're early, plain Python with a state machine is fine — the framework matters less than having clear, named steps with typed inputs and outputs.</p>
+<p>A: LangGraph (workflow mode), Temporal, Prefect, Airflow with LLM operators, and AWS Step Functions all work. If you're early, plain Python with a state machine is fine. The framework matters less than having clear, named steps with typed inputs and outputs.</p>
 <p><strong>Q: How do I sell "rolling back the agent" to leadership that funded "agentic AI"?</strong></p>
-<p>A: Reframe it. You didn't roll back — you <em>promoted the agent's learned behavior into a hardened workflow</em>. The agent is still running on the ambiguous long tail. Numbers help: lead with the cost, latency, and incident reductions. "We made the agent 10x cheaper to run" lands differently than "we replaced the agent."</p>
+<p>A: Reframe it. Nothing got rolled back; the agent's learned behavior got <em>promoted into a hardened workflow</em>, and the agent is still running on the ambiguous long tail. Then bring your own measurements. Whatever cost, latency, and incident deltas you recorded in Step 5 are the argument, and they land better than the word "replaced."</p>
 <p><strong>Q: Does this mean multi-agent architectures are also overhyped?</strong></p>
-<p>A: For most enterprise tasks, yes. If a single agent didn't need dynamic planning, a committee of them won't either — you've just multiplied the token bill. Multi-agent starts to pay when you have genuinely different specializations that need to negotiate, which is rarer than conference talks suggest.</p>
+<p>A: For most enterprise tasks, yes. If a single agent didn't need dynamic planning, a committee of them won't either. You've just multiplied the token bill. Multi-agent starts to pay when you have distinct specializations that need to negotiate, which is rarer than conference keynotes suggest.</p>
 
 <div style="border-left:3px solid var(--green);background:var(--surface-2);border-radius:0 8px 8px 0;padding:28px;margin:48px 0 24px;">
 <p style="font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px;">Have a specific workflow in mind?</p>
