@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Language Models Don't Understand Physics. That's Half Your Use Cases. — Supergood Solutions</title>
+<meta name="description" content="A February 2026 survey of LLM reasoning failures (Song, Han &amp; Goodman) formally separates &quot;embodied&quot; reasoning — the physical, spatial, causal kind — from the…">
+<meta name="author" content="Ryan Sandoval">
+<meta name="keywords" content="BUSINESS, AI agents, artificial intelligence, enterprise AI">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0a0a0b">
+<link rel="canonical" href="https://supergood.solutions/blog/language-models-don-t-understand-physics-that-s-half-your-use-cases/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preload" as="image" href="hero.svg" fetchpriority="high">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Supergood Solutions">
+<meta property="og:title" content="Language Models Don't Understand Physics. That's Half Your Use Cases.">
+<meta property="og:description" content="A February 2026 survey of LLM reasoning failures (Song, Han &amp; Goodman) formally separates &quot;embodied&quot; reasoning — the physical, spatial, causal kind — from the…">
+<meta property="og:url" content="https://supergood.solutions/blog/language-models-don-t-understand-physics-that-s-half-your-use-cases/">
+<meta property="og:image" content="https://supergood.solutions/blog/language-models-don-t-understand-physics-that-s-half-your-use-cases/hero-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Language Models Don't Understand Physics. That's Half Your Use Cases.">
+<meta property="article:published_time" content="2026-09-27">
+<meta property="article:modified_time" content="2026-09-27">
+<meta property="article:author" content="Ryan Sandoval">
+<meta property="article:section" content="BUSINESS">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Language Models Don't Understand Physics. That's Half Your Use Cases.">
+<meta name="twitter:description" content="A February 2026 survey of LLM reasoning failures (Song, Han &amp; Goodman) formally separates &quot;embodied&quot; reasoning — the physical, spatial, causal kind — from the…">
+<meta name="twitter:image" content="https://supergood.solutions/blog/language-models-don-t-understand-physics-that-s-half-your-use-cases/hero-og.png">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Language Models Don't Understand Physics. That's Half Your Use Cases.", "description": "A February 2026 survey of LLM reasoning failures (Song, Han & Goodman) formally separates \"embodied\" reasoning — the physical, spatial, causal kind — from the…", "image": "https://supergood.solutions/blog/language-models-don-t-understand-physics-that-s-half-your-use-cases/hero-og.png", "url": "https://supergood.solutions/blog/language-models-don-t-understand-physics-that-s-half-your-use-cases/", "datePublished": "2026-09-27", "dateModified": "2026-09-27", "wordCount": 904, "timeRequired": "PT4M", "articleSection": "BUSINESS", "keywords": ["BUSINESS", "AI agents", "artificial intelligence", "enterprise AI"], "inLanguage": "en-US", "isAccessibleForFree": true, "author": {"@type": "Person", "name": "Ryan Sandoval", "url": "https://linkedin.com/in/RyanSandoval"}, "publisher": {"@type": "Organization", "name": "Supergood Solutions", "url": "https://supergood.solutions", "logo": {"@type": "ImageObject", "url": "https://supergood.solutions/og-image.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://supergood.solutions/blog/language-models-don-t-understand-physics-that-s-half-your-use-cases/"}, "isPartOf": {"@type": "Blog", "url": "https://supergood.solutions/blog/"}, "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".callout", "article h1", "article h2"]}}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://supergood.solutions/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://supergood.solutions/blog/"}, {"@type": "ListItem", "position": 3, "name": "Language Models Don't Understand Physics. That's Half Your Use Cases.", "item": "https://supergood.solutions/blog/language-models-don-t-understand-physics-that-s-half-your-use-cases/"}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0b;--surface:#111113;--surface-2:#18181b;--border:#27272a;--text:#fafafa;--text-2:#a1a1aa;--text-3:#8c8c96;--green:#22c55e;--mono:'JetBrains Mono',monospace}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;background:rgba(10,10,11,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .inner{max-width:720px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
+.wordmark{font-weight:800;font-size:1.125rem;letter-spacing:-0.03em;color:var(--text);text-decoration:none}
+.wordmark .dot{color:var(--green)}
+nav a.back{font-size:0.875rem;color:var(--text-3);text-decoration:none}
+nav a.back:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:140px 24px 80px}
+article .tag{font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:16px}
+article h1{font-size:clamp(2rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin-bottom:20px}
+article .hero{width:100%;height:auto;display:block;border:1px solid var(--border);border-radius:12px;margin-bottom:32px}
+article .meta{font-family:var(--mono);font-size:0.75rem;color:var(--text-3);margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+article h2{font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;margin:56px 0 16px}
+article h3{font-size:1.125rem;font-weight:600;margin:40px 0 12px}
+article p{font-size:1rem;color:var(--text-2);margin-bottom:20px}
+article strong{color:var(--text)}
+article ul,article ol{color:var(--text-2);margin-bottom:20px;padding-left:24px}
+article li{margin-bottom:8px}
+article a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+article hr{border:none;border-top:1px solid var(--border);margin:40px 0}
+article code{font-family:var(--mono);font-size:0.875em;background:var(--surface-2);color:var(--text);padding:2px 6px;border-radius:4px;border:1px solid var(--border)}
+article pre{background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:16px 20px;margin:24px 0;overflow-x:auto;font-family:var(--mono);font-size:0.8125rem;line-height:1.6}
+article pre code{color:var(--text);background:transparent;padding:0;border:none;border-radius:0;font-size:inherit;white-space:pre}
+.callout{background:var(--surface-2);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:20px 24px;margin:32px 0}
+.callout code{background:rgba(255,255,255,0.04)}
+.callout p{margin-bottom:0;font-size:0.9375rem}
+footer{background:var(--surface);padding:40px 0;margin-top:80px;border-top:1px solid var(--border);text-align:center}
+footer p{color:var(--text-3);font-size:0.875rem;margin:0}
+.reading-progress{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--green);z-index:200;will-change:transform}
+::selection{background:var(--green);color:var(--bg)}
+@media(max-width:768px){article{padding:120px 20px 60px}article h1{font-size:2rem}}
+</style>
+</head>
+<body>
+<div class="reading-progress" aria-hidden="true"></div>
+<nav><div class="inner"><a href="/" class="wordmark">supergood<span class="dot">.</span></a><a href="/blog/" class="back">← All posts</a></div></nav>
+<main><article>
+<img class="hero" src="hero.svg" alt="" width="1200" height="630" loading="eager">
+<div class="tag">BUSINESS</div>
+<h1>Language Models Don't Understand Physics. That's Half Your Use Cases.</h1>
+<div class="meta">Published September 27, 2026 — 4 min read</div>
+<div class="callout"><p><strong>TL;DR:</strong> A February 2026 survey of LLM reasoning failures (Song, Han & Goodman) formally separates "embodied" reasoning — the physical, spatial, causal kind — from the language-pattern reasoning models are actually trained on, and finds the embodied category is where failures are most persistent. If your use case touches a warehouse floor, a production line, or a delivery route, you're deploying a language engine into a physics problem, and that mismatch is why manufacturing and logistics AI projects miss their numbers more often than back-office ones.</p></div>
+
+<h2>Key Insight</h2>
+<p>The industry pitch for LLMs is "general intelligence" — one model, any task. The reality is narrower: LLMs are extremely good at next-token prediction over text, which makes them excellent at anything that reduces to language, code, or symbolic pattern-matching, and unreliable at anything that reduces to physical-world state.</p>
+<p>The arXiv survey <a href="https://arxiv.org/abs/2602.06176">"Large Language Model Reasoning Failures"</a> makes this precise instead of anecdotal. It splits reasoning into embodied and non-embodied types, and further splits non-embodied into informal (intuitive) and formal (logical) reasoning. The point isn't that LLMs fail randomly — it's that failures cluster by category, and embodied reasoning (spatial relationships, physical affordances, real-time state tracking, cause-and-effect in a physical system) is a distinct, harder category that text-trained models were never optimized for. A model can ace a bar exam and still be unable to reliably reason about whether a pallet fits through a doorway.</p>
+<p>This is the framework executives are missing when they greenlight AI in physical operations: the question isn't "is this model smart enough," it's "is this task language-shaped or physics-shaped."</p>
+<h2>Why Teams Miss This</h2>
+<p>The mistake is treating model capability as a single scalar — GPT-5-class vs. GPT-4-class, bigger vs. smaller — instead of asking what <em>kind</em> of reasoning the task requires.</p>
+<ul>
+<li><strong>Benchmarks reinforce the wrong intuition.</strong> Public LLM benchmarks are overwhelmingly language, code, and math tasks — domains where models excel because they're symbolic, not physical. A model topping those leaderboards looks "smarter" in a way that doesn't transfer to tracking inventory state, robotic motion planning, or sensor-fused anomaly detection on a line.</li>
+<li><strong>Demos hide the physical grounding problem.</strong> A chatbot demo answering questions about a manufacturing process looks the same whether the model actually understands the physical process or is pattern-matching from training text about similar processes. The gap only shows up in production, when the model has to reason about <em>this</em> specific physical state, not a generic description of one.</li>
+<li><strong>"Add more context" gets treated as the fix.</strong> Teams that hit a physical-reasoning wall often respond by stuffing more sensor data or documentation into the prompt, assuming it's a context problem. But the survey's framing suggests it's often architectural — the model's fundamental failure mode on embodied tasks isn't solved by feeding it more text about the physical world, because text-about-physics and physics aren't the same representation.</li>
+</ul>
+<h2>How to Actually Do It</h2>
+<p>Sort your AI use cases by reasoning type before you sort them by model tier:</p>
+<ol>
+<li><strong>Classify the task first.</strong> Ask: does this task resolve by manipulating language/symbols (drafting, summarizing, classifying, code generation, querying structured data) or by reasoning about physical state (spatial layout, motion, real-time sensor data, mechanical cause-and-effect)? The first category is squarely in LLM strength; the second needs help.</li>
+</ol>
+<p>2. <strong>Pair the LLM with a system that actually models the physical world.</strong> For embodied tasks, don't ask the LLM to reason about physics directly — use it as the language/orchestration layer on top of purpose-built systems: computer vision for spatial state, simulation or digital-twin models for physical prediction, control systems for real-time actuation. The LLM's job becomes translating between human intent and those systems, not doing the physical reasoning itself.</p>
+<p>3. <strong>Constrain physical-reasoning outputs with verification, not just prompting.</strong> If an LLM is going to output anything that touches a physical system (a route, a placement instruction, a torque setting), route that output through a deterministic validator — a physics check, a constraint solver, a simulation replay — before it reaches hardware or a human executor. Treat the LLM's physical suggestions as drafts, not conclusions.</p>
+<p>4. <strong>Re-audit your existing physical-ops AI projects against this split.</strong> For any manufacturing/logistics AI initiative already underway, identify which specific decisions the model is making unsupervised. If those decisions are embodied-reasoning calls (not language calls dressed up as physical ones), that's your highest-risk failure point — not model choice, not prompt engineering.</p>
+<pre><code class="language-python"># Rough shape: LLM as orchestrator, not physical reasoner
+def handle_warehouse_task(request):
+    intent = llm.parse_intent(request)          # language reasoning — LLM's strength
+    plan = digital_twin.simulate(intent)          # physical reasoning — purpose-built system
+    if not physics_validator.check(plan):         # deterministic verification
+        return llm.explain_infeasibility(plan)   # back to language reasoning
+    return plan</code></pre>
+<h2>What We've Learned</h2>
+<p>Before approving the next AI pilot in a physical-operations domain, run this filter: list the five decisions the model will make, and mark each one language-shaped or physics-shaped. If more than half are physics-shaped, the feasibility question isn't "which model" — it's "what's the non-LLM system doing the physical reasoning, and is the LLM just the interface to it." That reframe changes the vendor questions, the pilot scope, and the failure mode you're actually testing for.</p>
+<h2>Sources</h2>
+<ul>
+<li>Survey formally categorizing embodied vs. non-embodied LLM reasoning failures: <a href="https://arxiv.org/abs/2602.06176">Large Language Model Reasoning Failures (arXiv:2602.06176)</a></li>
+<li>Analysis of why text/cloud-trained foundation models underperform in physical-AI applications: <a href="https://neuramorphic.ai/blog/why-traditional-foundation-models-fall-short-in-physical-ai">Why Traditional Foundation Models Fail in Physical AI Applications</a></li>
+<li>Systematic review of LLM adoption patterns and constraints across manufacturing use cases: <a href="https://link.springer.com/article/10.1007/s00170-026-18711-4">Large language models in manufacturing: a comprehensive review</a></li>
+</ul>
+
+<div style="border-left:3px solid var(--green);background:var(--surface-2);border-radius:0 8px 8px 0;padding:28px;margin:48px 0 24px;">
+<p style="font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px;">Have a specific workflow in mind?</p>
+<p style="color:var(--text-2);font-size:0.9375rem;margin-bottom:16px;">Bring it to a Quick Scan — a live working session where we'll tell you honestly whether it should be an agent, a workflow, or left alone, before you spend a dollar building it. You get 3 prioritized recommendations on the call, a one-page summary after, and the $500 credited toward any engagement within 30 days.</p>
+<p style="margin:0;font-size:0.9375rem;"><a href="/ai-agent-consulting/" style="color:var(--green);text-decoration:underline;text-underline-offset:3px;font-weight:600;">See AI Agent Consulting →</a><span style="color:var(--text-3);margin:0 12px;">·</span><a href="https://calendar.app.google/BkcFDB21jWhMwCiq7" style="color:var(--green);text-decoration:underline;text-underline-offset:3px;font-weight:600;">Book an intro call →</a></p>
+</div>
+<div data-lead-capture-wrap style="border:1px solid var(--border);border-radius:12px;padding:28px;">
+<p style="font-weight:700;color:var(--text);margin-bottom:6px;font-size:1rem;">Get new posts + practical agent-ops notes</p>
+<p style="color:var(--text-3);font-size:0.8125rem;margin-bottom:20px;">One email when something new goes up. No nurture sequence, no spam — unsubscribe whenever you want.</p>
+<form data-lead-capture style="display:flex;flex-wrap:wrap;gap:10px;align-items:flex-start;">
+<div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+<label>Company <input type="text" name="company" tabindex="-1" autocomplete="off"></label>
+</div>
+<input type="text" name="name" placeholder="Name (optional)" autocomplete="name" style="flex:1 1 160px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-size:0.875rem;font-family:inherit;">
+<input type="email" name="email" placeholder="you@email.com" required autocomplete="email" style="flex:2 1 220px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-size:0.875rem;font-family:inherit;">
+<button type="submit" style="flex:0 0 auto;background:var(--green);color:var(--bg);border:none;border-radius:8px;padding:10px 20px;font-size:0.875rem;font-weight:600;cursor:pointer;font-family:inherit;">Subscribe</button>
+</form>
+<p data-lead-error style="display:none;color:#f87171;font-size:0.8125rem;margin-top:10px;"></p>
+<p data-lead-success style="display:none;color:var(--green);font-size:0.875rem;margin-top:4px;">Thanks — you're on the list.</p>
+</div>
+</article></main>
+<footer><p>&copy; 2026 Supergood Solutions. Helping teams automate smarter, not harder.</p></footer>
+<script>
+(function(){var b=document.querySelector('.reading-progress');if(!b)return;var t=false;function u(){var d=document.documentElement,m=d.scrollHeight-d.clientHeight;if(m<=0){t=false;return;}var y=window.scrollY||window.pageYOffset||d.scrollTop||0;b.style.transform='scaleX('+Math.min(1,Math.max(0,y/m))+')';t=false;}function q(){if(!t){t=true;requestAnimationFrame(u);}}window.addEventListener('scroll',q,{passive:true});window.addEventListener('resize',q,{passive:true});window.addEventListener('orientationchange',q,{passive:true});setTimeout(u,0);})();
+</script>
+<script src="/assets/lead-capture.js" defer></script>
+</body>
+</html>
