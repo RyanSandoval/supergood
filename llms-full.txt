@@ -198,6 +198,14 @@ LinkedIn: https://linkedin.com/in/RyanSandoval
 
 ---
 
+## Contact / Start a project — https://supergood.solutions/start/
+
+The primary contact path is the intake form at https://supergood.solutions/start/. It asks for name, work email, company and role (both optional), a description of the work you would hand off, where that work sits today, how many people touch it, timeline, and an optional budget range. Ryan reads every submission and replies in writing within one business day with a read on fit, which service it maps to, and what it would take.
+
+A 20-minute intro call at https://calendar.app.google/BkcFDB21jWhMwCiq7 is the alternative for anyone who would rather talk first. Contact details are used only to reply; there is no marketing list.
+
+---
+
 ## FAQ (consolidated) — https://supergood.solutions/faq/
 
 See https://supergood.solutions/faq/ for the full 16-question FAQ covering general questions, pricing & process, AI agents, and automation & governance — the same content summarized in each service section above, in one place with FAQPage structured data.

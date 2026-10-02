@@ -6,6 +6,7 @@ Supergood provides AI consulting, AI agent consulting, AI automation consulting,
 
 ## Services
 
+- [Start a project](https://supergood.solutions/start/): Intake form. Describe the manual work you want handed off and get a written answer on fit, service, and scope. This is the primary contact path; a 20-minute intro call is the alternative.
 - [AI Consulting](https://supergood.solutions/ai-consulting/): Hub page — practice overview, full pricing breakdown, and links to every service below.
 - [AI Agent Consulting](https://supergood.solutions/ai-agent-consulting/): Production AI agent architecture, evals, guardrails, and deployment. The flagship service.
 - [AI Automation Consulting](https://supergood.solutions/ai-automation-consulting/): Workflow automation for marketing and ops teams using tools they already own.

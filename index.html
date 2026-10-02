@@ -139,7 +139,13 @@ nav {
   transition: border-color 0.3s;
 }
 nav.scrolled { border-bottom-color: var(--border); }
-nav .container { display: flex; justify-content: space-between; align-items: center; }
+nav .container { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+/* At 375 the wordmark butted straight into "Services" and the CTA wrapped to
+   two lines, directly above the hero's primary CTA. */
+@media (max-width: 420px) {
+  .wordmark { font-size: 1rem; }
+  nav .container > div { gap: 14px !important; }
+}
 .wordmark {
   font-weight: 800; font-size: 1.125rem; letter-spacing: -0.03em;
   color: var(--text);
@@ -205,6 +211,7 @@ nav a.cta-nav {
   border: 1px solid var(--border);
   border-radius: 6px;
   transition: all 0.2s;
+  white-space: nowrap;
 }
 nav a.cta-nav:hover { color: var(--text); border-color: var(--text-3); }
 
@@ -502,7 +509,7 @@ footer a:hover { color: var(--text-2); }
     <div style="display:flex;align-items:center;gap:24px;">
       <a href="/ai-consulting/" style="font-size:0.875rem;color:var(--text-3);text-decoration:none;">Services</a>
       <a href="/blog/" style="font-size:0.875rem;color:var(--text-3);text-decoration:none;">Blog</a>
-      <a href="#contact" class="cta-nav">Get in touch</a>
+      <a href="/start/" class="cta-nav">Get in touch</a>
     </div>
   </div>
 </nav>
@@ -515,7 +522,8 @@ footer a:hover { color: var(--text-2); }
     <h1>AI consulting for teams who need agents that work in production, not <em>another demo.</em></h1>
     <p class="sub">Somewhere on your team, a person is doing work an agent could do — and somewhere else, an AI pilot is stuck in demo purgatory. Supergood is an AI consulting practice that fixes both: workflow automation that runs today, and production AI agents built with the guardrails to keep running tomorrow.</p>
     <div class="hero-cta">
-      <a href="#contact" class="btn btn-primary">Book an intro call</a>
+      <a href="/start/" class="btn btn-primary">Tell us what you'd hand off</a>
+      <a href="https://calendar.app.google/BkcFDB21jWhMwCiq7" class="btn btn-ghost">Book an intro call</a>
       <a href="#services" class="btn btn-ghost">See how we help</a>
     </div>
   </div>
@@ -708,8 +716,9 @@ footer a:hover { color: var(--text-2); }
   <div class="container">
     <div class="section-label reveal">Let's talk</div>
     <h2 class="reveal">Let's find the hours you're losing.</h2>
-    <p class="reveal">The first call is free, and it's a fit check, not a pitch — we'll tell you whether AI is the right tool and whether we're the right people to help. If the answer is no, you'll hear that too. Seriously, what's the worst that happens? You learn something.</p>
-    <a href="https://calendar.app.google/BkcFDB21jWhMwCiq7" class="btn btn-primary reveal">Book an intro call</a>
+    <p class="reveal">Describe the work you'd hand off and you get a written answer back: whether AI is the right tool, whether we're the right people, and what it would take. If the answer is no, you'll hear that too. Takes about two minutes and Ryan reads every one himself.</p>
+    <a href="/start/" class="btn btn-primary reveal">Tell us what you'd hand off</a>
+    <p class="reveal" style="font-size:0.9375rem;color:var(--text-3);margin-top:20px;">Rather just talk? <a href="https://calendar.app.google/BkcFDB21jWhMwCiq7" style="color:var(--green);text-decoration:underline;text-underline-offset:3px;">Book 20 minutes</a>.</p>
     <div class="quick-scan reveal">
       <h3>Want actual answers, not just a fit check?</h3>
       <p>That's the Quick Scan — a live working session on your actual workflows: 3 prioritized recommendations on the call, plus a one-page summary in your inbox the next business day, written to be forwarded to your boss. Think of it as a doctor's visit for your ops. Except we won't make you wait 45 minutes in a paper gown.</p>

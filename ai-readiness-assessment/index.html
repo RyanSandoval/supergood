@@ -52,7 +52,11 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); c
 
 nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; background: rgba(10, 10, 11, 0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color 0.3s; }
 nav.scrolled { border-bottom-color: var(--border); }
-nav .container { display: flex; justify-content: space-between; align-items: center; }
+nav .container { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+@media (max-width: 420px) {
+  .wordmark { font-size: 1rem; }
+  nav .container > div { gap: 14px !important; }
+}
 .wordmark { font-weight: 800; font-size: 1.125rem; letter-spacing: -0.03em; color: var(--text); text-decoration: none; display: inline-flex; align-items: baseline; }
 .wordmark .dot-period { color: var(--green); }
 .wordmark .oo-wrap { display: inline-flex; gap: 2px; align-items: center; }
@@ -153,7 +157,7 @@ footer a:hover { color: var(--text-2); }
     <div class="nav-links">
       <a href="/ai-consulting/" class="nav-link">Services</a>
       <a href="/blog/" class="nav-link">Blog</a>
-      <a href="#contact" class="cta-nav">Get in touch</a>
+      <a href="/start/" class="cta-nav">Get in touch</a>
     </div>
   </div>
 </nav>
@@ -166,7 +170,8 @@ footer a:hover { color: var(--text-2); }
     <h1>Know where AI actually pays off — before you spend a dollar building it.</h1>
     <p class="answer">An AI readiness assessment is a structured audit of your workflows, data, and systems that identifies which processes are worth automating or turning into an AI agent, which aren't, and what order to tackle them in. Supergood offers two tiers: a $500 Quick Scan — a fast gut-check that ends with a one-page written summary and the full fee credited toward any engagement within 30 days — and a full Readiness Assessment for a complete prioritized roadmap.</p>
     <div class="hero-cta">
-      <a href="https://calendar.app.google/BkcFDB21jWhMwCiq7" class="btn btn-primary">Book the Quick Scan — $500</a>
+      <a href="/start/" class="btn btn-primary">Tell us what you&rsquo;d hand off</a>
+      <a href="https://calendar.app.google/BkcFDB21jWhMwCiq7" class="btn btn-ghost">Book the Quick Scan — $500</a>
       <a href="#tiers" class="btn btn-ghost">Compare tiers</a>
     </div>
   </div>
@@ -321,7 +326,8 @@ footer a:hover { color: var(--text-2); }
     <div class="section-label reveal">Start here</div>
     <h2 class="reveal">One working session to know where you stand.</h2>
     <p class="reveal">No pitch, no pressure. If the Quick Scan says "you don't need us," we'll tell you that too.</p>
-    <a href="https://calendar.app.google/BkcFDB21jWhMwCiq7" class="btn btn-primary reveal">Book the Quick Scan — $500</a>
+    <a href="/start/" class="btn btn-primary reveal">Tell us what you&rsquo;d hand off</a>
+    <a href="https://calendar.app.google/BkcFDB21jWhMwCiq7" class="btn btn-ghost reveal" style="margin-left:12px;">Book the Quick Scan — $500</a>
     <div class="related-services reveal">
       <a href="/ai-consulting/">← All services</a>
       <a href="/ai-automation-consulting/">AI Automation Consulting</a>

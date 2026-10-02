@@ -137,6 +137,11 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
     </ul>
   </div>
 
+  <!-- Hand-authored posts only. Anything built by scripts/publish_blog.py gets
+       its CTA + capture block injected from scripts/lead_capture_block.py,
+       which is the single source of truth for that markup. Edit it there, not
+       here, or the two drift. The published CTA leads with /start/ (the intake
+       form) and keeps the booking link as the secondary option. -->
   <div class="cta-box">
     <p>{{CTA_TEXT}}</p>
   </div>

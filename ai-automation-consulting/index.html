@@ -52,7 +52,11 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); c
 
 nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; background: rgba(10, 10, 11, 0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color 0.3s; }
 nav.scrolled { border-bottom-color: var(--border); }
-nav .container { display: flex; justify-content: space-between; align-items: center; }
+nav .container { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+@media (max-width: 420px) {
+  .wordmark { font-size: 1rem; }
+  nav .container > div { gap: 14px !important; }
+}
 .wordmark { font-weight: 800; font-size: 1.125rem; letter-spacing: -0.03em; color: var(--text); text-decoration: none; display: inline-flex; align-items: baseline; }
 .wordmark .dot-period { color: var(--green); }
 .wordmark .oo-wrap { display: inline-flex; gap: 2px; align-items: center; }
@@ -181,7 +185,7 @@ footer a:hover { color: var(--text-2); }
     <div class="nav-links">
       <a href="/ai-consulting/" class="nav-link">Services</a>
       <a href="/blog/" class="nav-link">Blog</a>
-      <a href="#contact" class="cta-nav">Get in touch</a>
+      <a href="/start/" class="cta-nav">Get in touch</a>
     </div>
   </div>
 </nav>
@@ -194,7 +198,8 @@ footer a:hover { color: var(--text-2); }
     <h1>Your team wastes 20&nbsp;hours a&nbsp;week on work a&nbsp;robot should&nbsp;do.</h1>
     <p class="answer">AI automation consulting means auditing your marketing or ops workflows, then building the automations that eliminate the manual busywork — using tools you already pay for, not a new platform. Supergood automates data entry, reporting, lead routing, and campaign setup, so the person doing it by hand gets their week back.</p>
     <div class="hero-cta">
-      <a href="https://calendar.app.google/BkcFDB21jWhMwCiq7" class="btn btn-primary">Book an intro call</a>
+      <a href="/start/" class="btn btn-primary">Tell us what you&rsquo;d hand off</a>
+      <a href="https://calendar.app.google/BkcFDB21jWhMwCiq7" class="btn btn-ghost">Book an intro call</a>
       <a href="#how" class="btn btn-ghost">See the before/after</a>
     </div>
   </div>
@@ -390,8 +395,9 @@ footer a:hover { color: var(--text-2); }
   <div class="container">
     <div class="section-label reveal">Let's talk</div>
     <h2 class="reveal">Let's find the hours you're losing.</h2>
-    <p class="reveal">A free intro call, no pitch. We'll tell you whether AI is the right tool and whether we're the right people to help — even if you never talk to us again.</p>
-    <a href="https://calendar.app.google/BkcFDB21jWhMwCiq7" class="btn btn-primary reveal">Book an intro call</a>
+    <p class="reveal">Tell us where the hours are going and you get a written answer back on whether AI is the right tool and whether we're the right people, even if you never talk to us again.</p>
+    <a href="/start/" class="btn btn-primary reveal">Tell us what you&rsquo;d hand off</a>
+    <a href="https://calendar.app.google/BkcFDB21jWhMwCiq7" class="btn btn-ghost reveal" style="margin-left:12px;">Book an intro call</a>
     <div class="quick-scan reveal">
       <h3>Not ready for a full audit?</h3>
       <p>Try the Quick Scan — a live working session on your actual workflows: 3 prioritized recommendations on the call, plus a one-page summary in your inbox the next business day, written to be forwarded to your boss.</p>

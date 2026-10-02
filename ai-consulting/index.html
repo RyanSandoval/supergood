@@ -52,7 +52,11 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); c
 
 nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; background: rgba(10, 10, 11, 0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color 0.3s; }
 nav.scrolled { border-bottom-color: var(--border); }
-nav .container { display: flex; justify-content: space-between; align-items: center; }
+nav .container { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+@media (max-width: 420px) {
+  .wordmark { font-size: 1rem; }
+  nav .container > div { gap: 14px !important; }
+}
 .wordmark { font-weight: 800; font-size: 1.125rem; letter-spacing: -0.03em; color: var(--text); text-decoration: none; display: inline-flex; align-items: baseline; }
 .wordmark .dot-period { color: var(--green); }
 .wordmark .oo-wrap { display: inline-flex; gap: 2px; align-items: center; }
@@ -166,7 +170,7 @@ footer a:hover { color: var(--text-2); }
     <div class="nav-links">
       <a href="/ai-consulting/" class="nav-link">Services</a>
       <a href="/blog/" class="nav-link">Blog</a>
-      <a href="#contact" class="cta-nav">Get in touch</a>
+      <a href="/start/" class="cta-nav">Get in touch</a>
     </div>
   </div>
 </nav>
@@ -179,7 +183,8 @@ footer a:hover { color: var(--text-2); }
     <h1>AI consulting for teams who need agents that work, not a strategy deck.</h1>
     <p class="answer">Supergood is an AI consulting practice that builds production AI agents and automations using tools clients already pay for — with the guardrails, observability, and runbooks to keep them running. Founded by Ryan Sandoval, 14 years of product experience at Viking Cruises, Live Nation/Ticketmaster, and Logitech.</p>
     <div class="hero-cta">
-      <a href="https://calendar.app.google/BkcFDB21jWhMwCiq7" class="btn btn-primary">Book an intro call</a>
+      <a href="/start/" class="btn btn-primary">Tell us what you&rsquo;d hand off</a>
+      <a href="https://calendar.app.google/BkcFDB21jWhMwCiq7" class="btn btn-ghost">Book an intro call</a>
       <a href="#services" class="btn btn-ghost">See what we do</a>
     </div>
   </div>
@@ -365,8 +370,9 @@ footer a:hover { color: var(--text-2); }
   <div class="container">
     <div class="section-label reveal">Let's talk</div>
     <h2 class="reveal">Let's find out what you actually need.</h2>
-    <p class="reveal">A free intro call. No pitch, no pressure — we'll tell you honestly whether AI is the right tool and whether we're the right people to help, even if the answer is no.</p>
-    <a href="https://calendar.app.google/BkcFDB21jWhMwCiq7" class="btn btn-primary reveal">Book an intro call</a>
+    <p class="reveal">Describe the work you'd hand off and you get a written answer back: whether AI is the right tool, whether we're the right people, and what it would take. If the answer is no, you'll hear that too.</p>
+    <a href="/start/" class="btn btn-primary reveal">Tell us what you&rsquo;d hand off</a>
+    <a href="https://calendar.app.google/BkcFDB21jWhMwCiq7" class="btn btn-ghost reveal" style="margin-left:12px;">Book an intro call</a>
     <div class="quick-scan reveal">
       <h3>Not ready for a full engagement?</h3>
       <p>The Quick Scan is a live working session on your actual workflows: 3 prioritized recommendations on the call, plus a one-page summary in your inbox the next business day — written to be forwarded to your boss.</p>

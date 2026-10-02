@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tell Us What You'd Hand Off | Supergood Solutions</title>
+<meta name="description" content="Describe the manual work you want off your team's plate. You get a real answer back from Ryan, not a sales sequence. Takes about two minutes.">
+<meta name="keywords" content="AI consulting intake, AI automation consulting, AI agent consulting, workflow automation audit">
+<meta name="author" content="Ryan Sandoval">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0a0a0b">
+<link rel="canonical" href="https://supergood.solutions/start/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tell Us What You'd Hand Off | Supergood Solutions">
+<meta property="og:description" content="Describe the manual work you want off your team's plate. You get a real answer back from Ryan, not a sales sequence.">
+<meta property="og:url" content="https://supergood.solutions/start/">
+<meta property="og:site_name" content="Supergood Solutions">
+<meta property="og:image" content="https://supergood.solutions/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tell Us What You'd Hand Off | Supergood Solutions">
+<meta name="twitter:description" content="Describe the manual work you want off your team's plate. You get a real answer back from Ryan, not a sales sequence.">
+<meta name="twitter:image" content="https://supergood.solutions/og-image.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ContactPage",
+      "@id": "https://supergood.solutions/start/#webpage",
+      "url": "https://supergood.solutions/start/",
+      "name": "Tell us what you'd hand off",
+      "description": "Intake form for Supergood Solutions AI consulting. Describe the manual work you want off your team's plate and get a written answer back.",
+      "isPartOf": { "@id": "https://supergood.solutions/#website" },
+      "about": { "@id": "https://supergood.solutions/#organization" },
+      "primaryImageOfPage": "https://supergood.solutions/og-image.png",
+      "dateModified": "2026-10-01",
+      "significantLink": [
+        "https://supergood.solutions/ai-consulting/",
+        "https://supergood.solutions/ai-readiness-assessment/"
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://supergood.solutions/#organization",
+      "name": "Supergood Solutions",
+      "url": "https://supergood.solutions",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "url": "https://supergood.solutions/start/",
+        "availableLanguage": "English",
+        "areaServed": "US"
+      }
+    }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0a0a0b;
+  --surface: #111113;
+  --surface-2: #18181b;
+  --border: #27272a;
+  --text: #fafafa;
+  --text-2: #a1a1aa;
+  --text-3: #8c8c96;
+  --accent: #e4e4e7;
+  --green: #22c55e;
+  --green-dim: #16a34a;
+  --mono: 'JetBrains Mono', monospace;
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection { background: var(--green); color: var(--bg); }
+
+/* Layout */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+/* Nav */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 20px 0;
+  background: rgba(10, 10, 11, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s;
+}
+nav.scrolled { border-bottom-color: var(--border); }
+nav .container { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+@media (max-width: 420px) {
+  .wordmark { font-size: 1rem; }
+  nav .container > div { gap: 14px !important; }
+}
+.wordmark {
+  font-weight: 800; font-size: 1.125rem; letter-spacing: -0.03em;
+  color: var(--text);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: baseline;
+}
+.wordmark .dot-period { color: var(--green); }
+.wordmark .oo-wrap { display: inline-flex; gap: 2px; align-items: center; }
+.wordmark .oo-dot {
+  display: inline-block; width: 0.45em; height: 0.45em;
+  background: var(--green); border-radius: 50%;
+}
+nav a.cta-nav {
+  font-size: 0.875rem; font-weight: 500;
+  color: var(--text-2);
+  text-decoration: none;
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+nav a.cta-nav:hover { color: var(--text); border-color: var(--text-3); }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Inter', sans-serif; font-size: 0.9375rem; font-weight: 600;
+  padding: 14px 28px; border-radius: 8px;
+  text-decoration: none; cursor: pointer; border: none;
+  transition: all 0.2s;
+}
+.btn-primary { background: var(--text); color: var(--bg); }
+.btn-primary:hover { background: var(--accent); transform: translateY(-1px); }
+.btn-primary:disabled { opacity: 0.5; cursor: progress; transform: none; }
+.btn-ghost { background: transparent; color: var(--text-2); border: 1px solid var(--border); }
+.btn-ghost:hover { color: var(--text); border-color: var(--text-3); }
+
+/* Sections */
+section { padding: 100px 0; }
+.section-label {
+  font-family: var(--mono); font-size: 0.75rem; font-weight: 500;
+  color: var(--text-3); letter-spacing: 0.08em; text-transform: uppercase;
+  margin-bottom: 16px;
+}
+section h2 {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 700; letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+/* Divider */
+.divider { height: 1px; background: var(--border); max-width: 1100px; margin: 0 auto; }
+
+/* Intake header */
+.intake-head { padding: 160px 0 48px; }
+.intake-head .hero-label {
+  font-family: var(--mono); font-size: 0.8125rem; font-weight: 500;
+  color: var(--green); letter-spacing: 0.05em; text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.intake-head h1 {
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-weight: 800; line-height: 1.05; letter-spacing: -0.035em;
+  max-width: 760px;
+}
+.intake-head p.sub {
+  font-size: 1.125rem; color: var(--text-2); max-width: 600px;
+  margin-top: 24px; line-height: 1.7;
+}
+
+/* Form shell */
+.intake-section { padding: 0 0 100px; }
+.intake-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr));
+  gap: 40px;
+  align-items: start;
+}
+.intake-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+  padding: 40px;
+}
+
+/* Fields */
+.field { margin-bottom: 24px; }
+.field:last-of-type { margin-bottom: 0; }
+.field label {
+  display: block;
+  font-size: 0.875rem; font-weight: 600; letter-spacing: -0.005em;
+  margin-bottom: 8px;
+}
+.field .req { color: var(--green); }
+.field .hint {
+  display: block;
+  font-size: 0.8125rem; color: var(--text-3); font-weight: 400;
+  margin-top: 4px;
+}
+.field input[type="text"],
+.field input[type="email"],
+.field select,
+.field textarea,
+.field-primary textarea {
+  width: 100%; max-width: 100%;
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 1rem; line-height: 1.5;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border); border-radius: 8px;
+  padding: 12px 14px;
+  transition: border-color 0.2s;
+  -webkit-appearance: none; appearance: none;
+}
+.field select {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%238c8c96' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 38px;
+}
+.field textarea, .field-primary textarea {
+  display: block; resize: vertical; min-height: 140px;
+}
+.field input:focus, .field select:focus, .field textarea:focus,
+.field-primary textarea:focus {
+  outline: none; border-color: var(--green);
+}
+.field input:focus-visible, .field select:focus-visible, .field textarea:focus-visible,
+.field-primary textarea:focus-visible {
+  outline: 2px solid var(--green); outline-offset: 1px;
+}
+.field-pair {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(160px, 100%), 1fr));
+  gap: 16px;
+}
+.field-pair .field { margin-bottom: 24px; }
+
+/* The qualifying field gets the weight */
+.field-primary {
+  border: 1px solid var(--border); border-radius: 10px;
+  background: var(--surface-2);
+  padding: 24px;
+  margin-bottom: 24px;
+}
+.field-primary label {
+  display: block;
+  font-size: 1.0625rem; font-weight: 700; letter-spacing: -0.015em;
+  margin-bottom: 10px;
+}
+.field-primary textarea { background: var(--bg); min-height: 150px; }
+
+/* Honeypot */
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+/* Submit area */
+.submit-area { margin-top: 32px; }
+.submit-area .btn { width: 100%; justify-content: center; }
+.fineprint {
+  font-size: 0.8125rem; color: var(--text-3); line-height: 1.6;
+  margin-top: 16px; text-align: center;
+}
+.fineprint a { color: var(--text-2); text-decoration: underline; text-underline-offset: 3px; }
+.fineprint a:hover { color: var(--text); }
+.alt-path {
+  font-size: 0.875rem; color: var(--text-2); line-height: 1.6;
+  margin-top: 12px; text-align: center;
+}
+.alt-path a { color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
+
+/* Status panels */
+.panel {
+  border-radius: 12px; padding: 32px;
+  border: 1px solid var(--border); background: var(--surface);
+}
+.panel.success { border-color: var(--green); background: rgba(34, 197, 94, 0.06); }
+.panel.success h2 { font-size: 1.75rem; font-weight: 800; letter-spacing: -0.03em; color: var(--green); }
+.panel.success p { font-size: 1rem; color: var(--text-2); margin-top: 14px; line-height: 1.7; }
+.panel.success .detail { font-family: var(--mono); font-size: 0.8125rem; color: var(--text-3); margin-top: 20px; }
+.form-error {
+  margin-top: 24px;
+  border: 1px solid var(--green-dim); border-radius: 8px;
+  background: var(--surface-2);
+  padding: 16px 18px;
+  font-size: 0.9375rem; color: var(--text); line-height: 1.6;
+}
+.form-error a { color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
+
+/* Aside */
+.intake-aside { padding-top: 8px; }
+.intake-aside h2 { font-size: 1.0625rem; font-weight: 700; letter-spacing: -0.015em; margin-bottom: 12px; }
+.intake-aside ol { list-style: none; counter-reset: next; }
+.intake-aside li {
+  counter-increment: next;
+  font-size: 0.9375rem; color: var(--text-2); line-height: 1.6;
+  padding-left: 32px; position: relative; margin-bottom: 18px;
+}
+.intake-aside li::before {
+  content: '0' counter(next);
+  position: absolute; left: 0; top: 0;
+  font-family: var(--mono); font-size: 0.8125rem; color: var(--green);
+}
+.aside-note {
+  margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border);
+  font-size: 0.875rem; color: var(--text-3); line-height: 1.6;
+}
+.aside-note a { color: var(--text-2); text-decoration: underline; text-underline-offset: 3px; }
+
+/* Footer */
+footer { border-top: 1px solid var(--border); padding: 40px 0; }
+footer .container {
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 16px;
+}
+footer p { font-size: 0.8125rem; color: var(--text-3); }
+footer a { color: var(--text-3); text-decoration: none; }
+footer a:hover { color: var(--text-2); }
+
+/* Reveal */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s, transform 0.5s; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* Responsive */
+@media (max-width: 768px) {
+  section { padding: 72px 0; }
+  .intake-head { padding: 120px 0 32px; }
+  .intake-section { padding: 0 0 72px; }
+  .intake-card { padding: 28px 20px; }
+  .field-primary { padding: 20px 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="container">
+    <a href="/" class="wordmark">superg<span class="oo-wrap"><span class="oo-dot"></span><span class="oo-dot"></span></span>d<span class="dot-period">.</span></a>
+    <div style="display:flex;align-items:center;gap:24px;">
+      <a href="/ai-consulting/" style="font-size:0.875rem;color:var(--text-3);text-decoration:none;">Services</a>
+      <a href="/blog/" style="font-size:0.875rem;color:var(--text-3);text-decoration:none;">Blog</a>
+      <a href="/start/" class="cta-nav">Get in touch</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main-content">
+<header class="intake-head">
+  <div class="container">
+    <div class="hero-label">Intake</div>
+    <h1>Tell us what you'd hand off.</h1>
+    <p class="sub">Name the work you want off your team's plate and Ryan reads it himself. You get a written answer back: whether it's a fit, which service it maps to, and what it would take. If AI is the wrong tool for it, you'll hear that instead. Two minutes to fill out.</p>
+  </div>
+</header>
+
+<section class="intake-section">
+  <div class="container">
+    <div class="intake-layout">
+
+      <div class="intake-card">
+        <form id="intake-form" novalidate>
+          <!-- Honeypot. Real people never see this; bots fill it and get rejected
+               both here and in the Apps Script. -->
+          <div class="hp" aria-hidden="true">
+            <label for="company-hp">Company</label>
+            <input type="text" id="company-hp" name="company" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="field">
+            <label for="name">Name <span class="req" aria-hidden="true">*</span></label>
+            <input type="text" id="name" name="name" required autocomplete="name" placeholder="Who are we talking to?">
+          </div>
+
+          <div class="field">
+            <label for="email">Work email <span class="req" aria-hidden="true">*</span></label>
+            <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@company.com">
+          </div>
+
+          <div class="field-pair">
+            <div class="field">
+              <label for="companyName">Company <span class="hint">Optional</span></label>
+              <input type="text" id="companyName" name="companyName" autocomplete="organization">
+            </div>
+            <div class="field">
+              <label for="role">Role <span class="hint">Optional</span></label>
+              <input type="text" id="role" name="role" autocomplete="organization-title">
+            </div>
+          </div>
+
+          <div class="field-primary">
+            <label for="handoff">What's the work you'd hand off? <span class="req" aria-hidden="true">*</span></label>
+            <textarea id="handoff" name="handoff" rows="5" required placeholder="A report someone rebuilds every Monday. Lead research. Quote prep. Ticket triage. Whatever eats the hours, in your own words."></textarea>
+          </div>
+
+          <div class="field">
+            <label for="currentState">Where is it today?</label>
+            <select id="currentState" name="currentState">
+              <option value="">Pick the closest one</option>
+              <option value="Entirely manual">Entirely manual</option>
+              <option value="Spreadsheets and a few Zaps">Spreadsheets and a few Zaps</option>
+              <option value="A pilot that stalled">A pilot that stalled</option>
+              <option value="Running, but we don't trust it">Running, but we don't trust it</option>
+              <option value="Not sure yet">Not sure yet</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="teamSize">How many people touch it?</label>
+            <select id="teamSize" name="teamSize">
+              <option value="">Pick the closest one</option>
+              <option value="Just me">Just me</option>
+              <option value="2-5">2-5</option>
+              <option value="6-20">6-20</option>
+              <option value="20+">20+</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="timeline">Timeline</label>
+            <select id="timeline" name="timeline">
+              <option value="">Pick the closest one</option>
+              <option value="Just exploring">Just exploring</option>
+              <option value="Next quarter">Next quarter</option>
+              <option value="Now, it's blocking us">Now, it's blocking us</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="budget">Budget range <span class="hint">Optional. A rough number keeps us from pitching the wrong size of thing.</span></label>
+            <select id="budget" name="budget">
+              <option value="">Rather not say yet</option>
+              <option value="Under $5k">Under $5k</option>
+              <option value="$5k-15k">$5k-15k</option>
+              <option value="$15k+">$15k+</option>
+              <option value="Need help sizing it">Need help sizing it</option>
+            </select>
+          </div>
+
+          <div class="submit-area">
+            <button type="submit" class="btn btn-primary" id="submit-btn">Send it over</button>
+            <p class="fineprint">Your contact info is used to reply to this message. We don't send marketing email and we don't share it with anyone.</p>
+            <p class="alt-path">Rather just talk? <a href="https://calendar.app.google/BkcFDB21jWhMwCiq7" rel="noopener">Book 20 minutes</a> instead.</p>
+          </div>
+        </form>
+
+        <div id="success-panel" class="panel success" hidden>
+          <h2>Got it.</h2>
+          <p id="success-body">Your note is in and Ryan reads these himself. Expect a reply within one business day with a straight answer on fit, which service it maps to, and what it would take.</p>
+          <p class="detail">Check spam if nothing shows up by tomorrow.</p>
+        </div>
+      </div>
+
+      <aside class="intake-aside" aria-labelledby="aside-heading">
+        <h2 id="aside-heading">What happens after you hit send</h2>
+        <ol>
+          <li>Ryan reads it. Not a form router, not an SDR sequence.</li>
+          <li>You get a written reply within one business day: fit or no fit, and why.</li>
+          <li>If it's a fit, we book 20 minutes to size it. Pricing is published, so there's no mystery number waiting at the end.</li>
+        </ol>
+        <p class="aside-note">Not sure which service this falls under? That's fine, describe the work and we'll map it. The <a href="/ai-consulting/">services overview</a> has the full breakdown if you want to read first.</p>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+</main>
+<footer>
+  <div class="container">
+    <p>© 2026 superg●●d.</p>
+    <p><a href="/about/">About</a> · <a href="/faq/">FAQ</a> · <a href="/ai-consulting/">Services</a> · <a href="/blog/">Blog</a></p>
+  </div>
+</footer>
+
+<script>
+// Paste the Apps Script Web App URL here after deploying supergood-intake.gs.
+// Until then the form shows its error panel instead of faking a success.
+const WEBHOOK_URL = 'PASTE_APPS_SCRIPT_WEB_APP_URL_HERE';
+
+// Minimum seconds between first field focus and submit. A human filling six
+// fields cannot beat this; a script posting the form instantly does.
+// Upgrade path if spam gets through: swap this for Cloudflare Turnstile
+// (free, no-account widget + siteverify call from the Apps Script).
+const MIN_FILL_MS = 3000;
+
+const form = document.getElementById('intake-form');
+const btn = document.getElementById('submit-btn');
+const successPanel = document.getElementById('success-panel');
+
+let firstFocusAt = 0;
+form.addEventListener('focusin', () => {
+  if (!firstFocusAt) firstFocusAt = Date.now();
+}, { once: false });
+
+function clearError() {
+  const existing = document.getElementById('form-error');
+  if (existing) existing.remove();
+}
+
+function showError(message) {
+  clearError();
+  const el = document.createElement('p');
+  el.id = 'form-error';
+  el.className = 'form-error';
+  el.setAttribute('role', 'alert');
+  el.innerHTML = message;
+  form.querySelector('.submit-area').prepend(el);
+  el.scrollIntoView({ block: 'center', behavior: 'smooth' });
+}
+
+const FALLBACK = 'Try again in a minute, or <a href="https://calendar.app.google/BkcFDB21jWhMwCiq7" rel="noopener">book 20 minutes</a> and we\'ll pick it up on the call.';
+const INTAKE_EMAIL = 'hello@supergood.solutions';
+
+function showSent(bodyHtml) {
+  if (bodyHtml) {
+    document.getElementById('success-body').innerHTML = bodyHtml;
+    // "Check spam" only makes sense when we sent the mail, not the visitor.
+    const detail = successPanel.querySelector('.detail');
+    if (detail) detail.hidden = true;
+  }
+  form.hidden = true;
+  successPanel.hidden = false;
+  successPanel.setAttribute('tabindex', '-1');
+  successPanel.focus();
+  successPanel.scrollIntoView({ block: 'center', behavior: 'smooth' });
+}
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  clearError();
+
+  const fd = new FormData(form);
+  const name = (fd.get('name') || '').toString().trim();
+  const email = (fd.get('email') || '').toString().trim();
+  const handoff = (fd.get('handoff') || '').toString().trim();
+  const honeypot = (fd.get('company') || '').toString().trim();
+
+  if (honeypot) {
+    showError('Something in that submission looked automated. ' + FALLBACK);
+    return;
+  }
+
+  if (!name || !email || !handoff) {
+    showError('Name, work email, and the work you\'d hand off are all needed before we can reply to you.');
+    (!name ? document.getElementById('name')
+      : !email ? document.getElementById('email')
+      : document.getElementById('handoff')).focus();
+    return;
+  }
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+    showError('That email address does not look complete. Check it and send again.');
+    document.getElementById('email').focus();
+    return;
+  }
+
+  const elapsed = firstFocusAt ? Date.now() - firstFocusAt : 0;
+  if (elapsed < MIN_FILL_MS) {
+    showError('That came through faster than a person can type. Give it a moment and send again.');
+    return;
+  }
+
+  const payload = {
+    name: name,
+    email: email,
+    company: '',
+    companyName: (fd.get('companyName') || '').toString().trim(),
+    role: (fd.get('role') || '').toString().trim(),
+    handoff: handoff,
+    currentState: (fd.get('currentState') || '').toString(),
+    teamSize: (fd.get('teamSize') || '').toString(),
+    timeline: (fd.get('timeline') || '').toString(),
+    budget: (fd.get('budget') || '').toString(),
+    source: 'supergood.solutions/start',
+    submittedAt: new Date().toISOString(),
+    ua: navigator.userAgent
+  };
+
+  // Until the Apps Script web app is deployed there is no backend to POST to,
+  // and a form that takes a lead and drops it is worse than no form. So hand
+  // the same answers to the visitor's mail client, pre-filled, addressed to an
+  // inbox that already forwards. Replacing WEBHOOK_URL above retires this path
+  // on its own; nothing else needs editing.
+  if (WEBHOOK_URL === 'PASTE_APPS_SCRIPT_WEB_APP_URL_HERE') {
+    console.warn('[intake] WEBHOOK_URL is still the placeholder, falling back to mailto. Deploy supergood-intake.gs and paste its Web App URL here.');
+    const body = [
+      'Name: ' + payload.name,
+      'Email: ' + payload.email,
+      'Company: ' + (payload.companyName || '-'),
+      'Role: ' + (payload.role || '-'),
+      '',
+      'Work to hand off:',
+      payload.handoff,
+      '',
+      'Where it is today: ' + (payload.currentState || '-'),
+      'People who touch it: ' + (payload.teamSize || '-'),
+      'Timeline: ' + (payload.timeline || '-'),
+      'Budget range: ' + (payload.budget || '-')
+    ].join('\n');
+    window.location.href = 'mailto:' + INTAKE_EMAIL
+      + '?subject=' + encodeURIComponent('Intake: ' + payload.name + (payload.companyName ? ' (' + payload.companyName + ')' : ''))
+      + '&body=' + encodeURIComponent(body);
+    showSent('Your email app should have opened with all of that filled in. Send it and it lands with Ryan. If nothing opened, mail it to <a href="mailto:' + INTAKE_EMAIL + '">' + INTAKE_EMAIL + '</a>.');
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+
+  try {
+    // text/plain keeps this a simple request, which skips the CORS preflight
+    // that Apps Script web apps do not answer.
+    const res = await fetch(WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json();
+    if (!res.ok || !data.ok) throw new Error(data.error || 'rejected');
+
+    showSent();
+  } catch (err) {
+    console.warn('[intake] submit failed:', err);
+    btn.disabled = false;
+    btn.textContent = 'Send it over';
+    showError('That did not go through. ' + FALLBACK);
+  }
+});
+
+// Nav border on scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20);
+});
+</script>
+
+</body>
+</html>
