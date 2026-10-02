@@ -494,14 +494,16 @@ footer a:hover { color: var(--text-2); }
 </footer>
 
 <script>
-// Paste the Apps Script Web App URL here after deploying supergood-intake.gs.
-// Until then the form shows its error panel instead of faking a success.
-const WEBHOOK_URL = 'PASTE_APPS_SCRIPT_WEB_APP_URL_HERE';
+// Supergood's own intake lane: a Vercel function that mails this form through
+// Resend. Source lives in workspace/supergood-intake. Its Resend key is scoped
+// to supergood.solutions, so it cannot send as the other brands in that account.
+const WEBHOOK_URL = 'https://supergood-intake.vercel.app/api/intake';
 
 // Minimum seconds between first field focus and submit. A human filling six
-// fields cannot beat this; a script posting the form instantly does.
-// Upgrade path if spam gets through: swap this for Cloudflare Turnstile
-// (free, no-account widget + siteverify call from the Apps Script).
+// fields cannot beat this; a script posting the form instantly does. The
+// endpoint re-checks this, since a bot posting straight at it skips this file.
+// Upgrade path if spam gets through: Cloudflare Turnstile (free widget plus a
+// siteverify call from the function).
 const MIN_FILL_MS = 3000;
 
 const form = document.getElementById('intake-form');
@@ -530,16 +532,8 @@ function showError(message) {
 }
 
 const FALLBACK = 'Try again in a minute, or <a href="https://calendar.app.google/BkcFDB21jWhMwCiq7" rel="noopener">book 20 minutes</a> and we\'ll pick it up on the call.';
-const INTAKE_EMAIL = 'hello@supergood.solutions';
 
-function showSent(bodyHtml, heading) {
-  if (bodyHtml) {
-    document.getElementById('success-body').innerHTML = bodyHtml;
-    if (heading) successPanel.querySelector('h2').textContent = heading;
-    // "Check spam" only makes sense when we sent the mail, not the visitor.
-    const detail = successPanel.querySelector('.detail');
-    if (detail) detail.hidden = true;
-  }
+function showSent() {
   form.hidden = true;
   successPanel.hidden = false;
   successPanel.setAttribute('tabindex', '-1');
@@ -594,58 +588,18 @@ form.addEventListener('submit', async (e) => {
     timeline: (fd.get('timeline') || '').toString(),
     budget: (fd.get('budget') || '').toString(),
     source: 'supergood.solutions/start',
-    submittedAt: new Date().toISOString(),
-    ua: navigator.userAgent
+    // The endpoint re-checks this, so the speed trap survives someone
+    // posting at it directly with this script never having run.
+    elapsedMs: elapsed
   };
-
-  // Until the webhook is deployed there is no backend to POST to, and a form
-  // that takes a lead and drops it is worse than no form. So hand the same
-  // answers to the visitor's mail client, pre-filled. Replacing WEBHOOK_URL
-  // above retires this path on its own; nothing else needs editing.
-  //
-  // INTAKE_EMAIL must be an address that is confirmed to receive. It started
-  // as hello@, lifted from two old blog posts, which Ryan did not recognise on
-  // 2026-10-01 and which no page outside those posts uses. Deliverability
-  // could not be probed from here (port 25 blocked), so the copy below no
-  // longer promises an inbox it cannot vouch for and offers the booking link,
-  // which is known to work, alongside it.
-  if (WEBHOOK_URL === 'PASTE_APPS_SCRIPT_WEB_APP_URL_HERE') {
-    console.warn('[intake] WEBHOOK_URL is still the placeholder, falling back to mailto. Deploy supergood-intake.gs and paste its Web App URL here.');
-    const body = [
-      'Name: ' + payload.name,
-      'Email: ' + payload.email,
-      'Company: ' + (payload.companyName || '-'),
-      'Role: ' + (payload.role || '-'),
-      '',
-      'Work to hand off:',
-      payload.handoff,
-      '',
-      'Where it is today: ' + (payload.currentState || '-'),
-      'People who touch it: ' + (payload.teamSize || '-'),
-      'Timeline: ' + (payload.timeline || '-'),
-      'Budget range: ' + (payload.budget || '-')
-    ].join('\n');
-    const mailto = 'mailto:' + INTAKE_EMAIL
-      + '?subject=' + encodeURIComponent('Intake: ' + payload.name + (payload.companyName ? ' (' + payload.companyName + ')' : ''))
-      + '&body=' + encodeURIComponent(body);
-    showSent(
-      'The inbox for this form is still being set up, so nothing was filed. '
-      + 'The surest way through today is to <a href="https://calendar.app.google/BkcFDB21jWhMwCiq7" rel="noopener">book 20 minutes</a>. '
-      + 'If you would rather write it up, <a href="' + mailto + '">open it as an email</a> with everything you just typed already in the body.',
-      'Two ways to reach us today.'
-    );
-    return;
-  }
 
   btn.disabled = true;
   btn.textContent = 'Sending...';
 
   try {
-    // text/plain keeps this a simple request, which skips the CORS preflight
-    // that Apps Script web apps do not answer.
     const res = await fetch(WEBHOOK_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     });
     const data = await res.json();
