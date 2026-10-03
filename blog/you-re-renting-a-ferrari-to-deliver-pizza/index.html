@@ -70,6 +70,10 @@ footer p{color:var(--text-3);font-size:0.875rem;margin:0}
 ::selection{background:var(--green);color:var(--bg)}
 @media(max-width:768px){article{padding:120px 20px 60px}article h1{font-size:2rem}}
 </style>
+<!-- ga4:start -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JLBDSQ3B4P"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JLBDSQ3B4P');</script>
+<!-- ga4:end -->
 </head>
 <body>
 <div class="reading-progress" aria-hidden="true"></div>
@@ -173,5 +177,6 @@ footer p{color:var(--text-3);font-size:0.875rem;margin:0}
 (function(){var b=document.querySelector('.reading-progress');if(!b)return;var t=false;function u(){var d=document.documentElement,m=d.scrollHeight-d.clientHeight;if(m<=0){t=false;return;}var y=window.scrollY||window.pageYOffset||d.scrollTop||0;b.style.transform='scaleX('+Math.min(1,Math.max(0,y/m))+')';t=false;}function q(){if(!t){t=true;requestAnimationFrame(u);}}window.addEventListener('scroll',q,{passive:true});window.addEventListener('resize',q,{passive:true});window.addEventListener('orientationchange',q,{passive:true});setTimeout(u,0);})();
 </script>
 <script src="/assets/lead-capture.js" defer></script>
+<script src="/assets/analytics.js" defer></script>
 </body>
 </html>

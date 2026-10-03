@@ -121,6 +121,10 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is an eval set for an AI agent, and how big does it need to be?", "acceptedAnswer": {"@type": "Answer", "text": "An eval set is a collection of representative test cases — typically 25 to 100 — that define what “good” looks like before you ship a change. A solid set covers the common path (the 80%), the expensive path (money, email, consent), the embarrassing path (wrong segments or stakeholders), and the adversarial path (prompt injection attempts). You then score runs against decision accuracy, safety, stability across reruns, and cost/latency."}}, {"@type": "Question", "name": "What is shadow mode, and why use it before giving an agent write access?", "acceptedAnswer": {"@type": "Answer", "text": "Shadow mode means the agent runs on real triggers and produces decisions and proposed actions, but it only writes to a log or draft store instead of the real system. After about a week you end up with real inputs, real outputs, and what a human would have done — the most valuable artifact in agent ops, and the basis for your eval set v2. It lets you judge an agent’s decisions before trusting it to write to your CRM, email, or ad accounts."}}, {"@type": "Question", "name": "How do you protect an AI agent from prompt injection?", "acceptedAnswer": {"@type": "Answer", "text": "Prompt injection isn’t theoretical — it’s input manipulation, and agents are input-powered, so it should be treated as a real incident class. The core defenses are separating instructions from data (treating external docs as untrusted), restricting the agent to an allowlisted set of tools, validating outputs against schema and business rules before any write, and logging and alerting on attempted forbidden actions."}}]}
 </script>
+<!-- ga4:start -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JLBDSQ3B4P"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JLBDSQ3B4P');</script>
+<!-- ga4:end -->
 </head>
 
 <body>
@@ -331,5 +335,6 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
 (function(){var b=document.querySelector('.reading-progress');if(!b)return;var t=false;function u(){var d=document.documentElement,m=d.scrollHeight-d.clientHeight;if(m<=0){t=false;return;}var y=window.scrollY||window.pageYOffset||d.scrollTop||0;b.style.transform='scaleX('+Math.min(1,Math.max(0,y/m))+')';t=false;}function q(){if(!t){t=true;requestAnimationFrame(u);}}window.addEventListener('scroll',q,{passive:true});window.addEventListener('resize',q,{passive:true});window.addEventListener('orientationchange',q,{passive:true});setTimeout(u,0);})();
 </script>
 <script src="/assets/lead-capture.js" defer></script>
+<script src="/assets/analytics.js" defer></script>
 </body>
 </html>
