@@ -4,6 +4,8 @@
 
 This file contains the full text content of Supergood Solutions' service pages, about page, and FAQ in markdown, for AI systems that want to ingest the site without crawling HTML. For the short index, see [/llms.txt](https://supergood.solutions/llms.txt). Canonical HTML pages are linked in each section heading.
 
+Supergood is based in Los Angeles, California and works remotely with clients anywhere. Engagements run over video and shared docs, with no on-site requirement and no geographic restriction.
+
 ---
 
 ## AI Consulting (hub) — https://supergood.solutions/ai-consulting/

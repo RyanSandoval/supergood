@@ -2,7 +2,7 @@
 
 > Supergood is an AI consulting practice that builds production AI agents and automations using tools clients already pay for — with the guardrails, observability, and runbooks to keep them running. Founded by Ryan Sandoval, 14 years of product experience at Viking Cruises, Live Nation/Ticketmaster, and Logitech.
 
-Supergood provides AI consulting, AI agent consulting, AI automation consulting, AI readiness assessments, and AI agent governance for marketing and ops teams. Every engagement ships a working system, not a slide deck. Pricing is flat and published: a $500 Quick Scan (a live workflow session with 3 prioritized recommendations on the call, a one-page written summary after, and the fee credited toward any engagement within 30 days), a $2,500-$6,000 readiness assessment, $8,000-$40,000 project builds, and $3,000-$8,000/month retainers.
+Supergood provides AI consulting, AI agent consulting, AI automation consulting, AI readiness assessments, and AI agent governance for marketing and ops teams. Every engagement ships a working system, not a slide deck. Supergood is based in Los Angeles, California and works remotely with clients anywhere; engagements run over video and shared docs, with no on-site requirement and no geographic restriction. Pricing is flat and published: a $500 Quick Scan (a live workflow session with 3 prioritized recommendations on the call, a one-page written summary after, and the fee credited toward any engagement within 30 days), a $2,500-$6,000 readiness assessment, $8,000-$40,000 project builds, and $3,000-$8,000/month retainers.
 
 ## Services
 
