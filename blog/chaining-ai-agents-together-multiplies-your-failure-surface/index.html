@@ -94,7 +94,7 @@ footer p{color:var(--text-3);font-size:0.875rem;margin:0}
 
 <h2>Key Insight</h2>
 <p>The pitch for multi-agent architectures is decomposition: a researcher agent, a writer agent, a critic agent, each with a tight prompt and a narrow toolset. Smaller surface per agent, better results per agent. That part is true.</p>
-<p><strong>You didn't decompose the problem, you distributed it.</strong> And distributed systems have a failure class that monoliths simply do not have: the failure that lives in the space <em>between</em> components.</p>
+<p><strong>You didn't decompose the problem, you distributed it.</strong> And distributed systems have a failure class that monoliths simply do not have, the failure that lives in the space <em>between</em> components.</p>
 <p>The Berkeley MAST work (<a href="https://arxiv.org/abs/2503.13657">Why Do Multi-Agent LLM Systems Fail?</a>) is the clearest evidence for this. The authors annotated execution traces across seven popular multi-agent frameworks and derived 14 failure modes in 3 categories, with strong inter-annotator agreement (Cohen's kappa 0.88). The categories are worth memorizing:</p>
 <ol>
 <li><strong>Specification issues</strong>: disobeying task or role specification, step repetition, loss of conversation history, no awareness of stopping conditions.</li>

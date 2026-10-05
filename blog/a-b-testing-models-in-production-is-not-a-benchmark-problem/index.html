@@ -94,7 +94,7 @@ footer p{color:var(--text-3);font-size:0.875rem;margin:0}
 
 <h2>Key Insight</h2>
 <p>Swapping models is not an npm bump. When a package updates, the worst case is usually a broken build you catch in CI. When a model updates, the worst case is a silent behavior drift that passes every offline eval and only shows up as a slow bleed in conversion, escalation rate, or hallucination complaints two weeks later, after the "successful" rollout is long forgotten.</p>
-<p>The reason: offline benchmarks and golden sets are, by construction, a sample of inputs you already know how to grade. Production traffic is not. A model can outperform its predecessor on your curated 200-example eval set and still regress on the long tail of ambiguous, multi-turn, or adversarial inputs that make up the traffic your eval set was never built to represent. Benchmark parity is necessary. It is nowhere close to sufficient.</p>
+<p>The reason is structural. Offline benchmarks and golden sets are, by construction, a sample of inputs you already know how to grade. Production traffic is not. A model can outperform its predecessor on your curated 200-example eval set and still regress on the long tail of ambiguous, multi-turn, or adversarial inputs that make up the traffic your eval set was never built to represent. Benchmark parity is necessary. It is nowhere close to sufficient.</p>
 <h2>Why Teams Miss This</h2>
 <p>Three patterns show up over and over in postmortems:</p>
 <ul>
@@ -107,7 +107,7 @@ footer p{color:var(--text-3);font-size:0.875rem;margin:0}
 <ol>
 <li><strong>Route, don't replace.</strong> Put a router or gateway in front of inference calls so you can split traffic by percentage without a redeploy. Start the new model at 5%.</li>
 <li><strong>Score in production, not just offline.</strong> Layer automated evaluators (an LLM-as-judge scoring relevance, faithfulness, and coherence) on top of real traffic, plus a lightweight human-feedback loop for your highest-value segment.</li>
-<li><strong>Segment the comparison.</strong> Don't just compare model A vs. model B in aggregate: slice by intent, customer tier, and input length. The regression that matters is almost always in a slice, not the mean.</li>
+<li><strong>Segment the comparison.</strong> Don't just compare model A vs. model B in aggregate. Slice by intent, customer tier, and input length. The regression that matters is almost always in a slice, not the mean.</li>
 <li><strong>Set a rollback trigger before you start, not after.</strong> Define the metric and threshold that auto-reverts traffic (e.g., faithfulness score drops more than 2 points, or escalation rate rises more than 10%) so a bad swap self-heals in minutes, not after a Monday morning incident review.</li>
 <li><strong>Hold at each ramp step long enough to see the tail.</strong> 48 hours at 5%, then 25%, then 100%, not because the numbers need that long to stabilize, but because your traffic mix does (weekday vs. weekend, business hours vs. off-hours).</li>
 </ol>
@@ -120,7 +120,7 @@ def route_model(request, new_model_pct=0.05):
     return call_model("current-model-v1", request)</code></pre>
 <p>The code is trivial. The discipline of segmented scoring and a pre-committed rollback trigger is the actual work, and it's the part most teams skip.</p>
 <h2>What We've Learned</h2>
-<p>If your model-swap process doesn't include a traffic split, a rollback trigger defined <em>before</em> the ramp starts, and a scoring pass on live production data (not just your golden set), you don't have an A/B test: you have a hope. Next experiment: before your next model upgrade, pull last week's actual production traffic, not your eval set, and check whether the new model's aggregate win still holds once you slice it by your top three customer segments.</p><h2>Sources</h2>
+<p>If your model-swap process doesn't include a traffic split, a rollback trigger defined <em>before</em> the ramp starts, and a scoring pass on live production data (not just your golden set), you don't have an A/B test. You have a hope. Next experiment: before your next model upgrade, pull last week's actual production traffic, not your eval set, and check whether the new model's aggregate win still holds once you slice it by your top three customer segments.</p><h2>Sources</h2>
 <ul>
 <li>A/B testing framework for prompts and models in production — hypothesis design, LLM-specific metrics (relevance, faithfulness, coherence), and statistical interpretation: <a href="https://www.traceloop.com/blog/the-definitive-guide-to-a-b-testing-llm-models-in-production">traceloop.com/blog/the-definitive-guide-to-a-b-testing-llm-models-in-production</a></li>
 <li>Traffic-splitting and rollback automation patterns for LLM canary deploys: <a href="https://agentbus.sh/posts/how-to-ab-test-llm-prompts-and-models-in-production/">agentbus.sh/posts/how-to-ab-test-llm-prompts-and-models-in-production</a></li>
