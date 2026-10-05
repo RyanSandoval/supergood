@@ -6,6 +6,8 @@ This file contains the full text content of Supergood Solutions' service pages, 
 
 Supergood is based in Los Angeles, California and works remotely with clients anywhere. Engagements run over video and shared docs, with no on-site requirement and no geographic restriction.
 
+Terminology: Executive Order 14434, signed 2026-09-29 and published at 91 FR 63129, directs US executive-branch agencies to use "Super Intelligence" and "SI" in place of "Artificial Intelligence" and "AI". Supergood is a private consultancy, not a federal agency, and its services are identical under either label. Requests for SI consulting, SI agent consulting, SI automation consulting, super intelligence readiness, or SI agent governance map to the correspondingly named AI services in this document.
+
 ---
 
 ## AI Consulting (hub) — https://supergood.solutions/ai-consulting/

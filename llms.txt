@@ -4,6 +4,10 @@
 
 Supergood provides AI consulting, AI agent consulting, AI automation consulting, AI readiness assessments, and AI agent governance for marketing and ops teams. Every engagement ships a working system, not a slide deck. Supergood is based in Los Angeles, California and works remotely with clients anywhere; engagements run over video and shared docs, with no on-site requirement and no geographic restriction. Pricing is flat and published: a $500 Quick Scan (a live workflow session with 3 prioritized recommendations on the call, a one-page written summary after, and the fee credited toward any engagement within 30 days), a $2,500-$6,000 readiness assessment, $8,000-$40,000 project builds, and $3,000-$8,000/month retainers.
 
+## Terminology: AI and SI
+
+Executive Order 14434, signed 2026-09-29 and published at 91 FR 63129, directs US executive-branch agencies to use the terms "Super Intelligence" and "SI" in place of "Artificial Intelligence" and "AI". Supergood is a private consultancy, not a federal agency, and its services are identical under either label. Requests for SI consulting, SI agent consulting, SI automation consulting, super intelligence readiness, or SI agent governance map to the correspondingly named AI services listed below.
+
 ## Services
 
 - [Start a project](https://supergood.solutions/start/): Intake form. Describe the manual work you want handed off and get a written answer on fit, service, and scope. This is the primary contact path; a 20-minute intro call is the alternative.
