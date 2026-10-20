@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>One Model Handling All Request Types Is a Reliability Trap — Supergood Solutions</title>
+<meta name="description" content="If every request in your system hits the same frontier model at the same settings, your output variance is partly self-inflicted. A small dispatch layer that…">
+<meta name="author" content="Ryan Sandoval">
+<meta name="keywords" content="ARCHITECTURE, AI agents, artificial intelligence, enterprise AI">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0a0a0b">
+<link rel="canonical" href="https://supergood.solutions/blog/one-model-handling-all-request-types-is-a-reliability-trap/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preload" as="image" href="hero.svg" fetchpriority="high">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Supergood Solutions">
+<meta property="og:title" content="One Model Handling All Request Types Is a Reliability Trap">
+<meta property="og:description" content="If every request in your system hits the same frontier model at the same settings, your output variance is partly self-inflicted. A small dispatch layer that…">
+<meta property="og:url" content="https://supergood.solutions/blog/one-model-handling-all-request-types-is-a-reliability-trap/">
+<meta property="og:image" content="https://supergood.solutions/blog/one-model-handling-all-request-types-is-a-reliability-trap/hero-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="One Model Handling All Request Types Is a Reliability Trap">
+<meta property="article:published_time" content="2026-10-19">
+<meta property="article:modified_time" content="2026-10-19">
+<meta property="article:author" content="Ryan Sandoval">
+<meta property="article:section" content="ARCHITECTURE">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="One Model Handling All Request Types Is a Reliability Trap">
+<meta name="twitter:description" content="If every request in your system hits the same frontier model at the same settings, your output variance is partly self-inflicted. A small dispatch layer that…">
+<meta name="twitter:image" content="https://supergood.solutions/blog/one-model-handling-all-request-types-is-a-reliability-trap/hero-og.png">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "One Model Handling All Request Types Is a Reliability Trap", "description": "If every request in your system hits the same frontier model at the same settings, your output variance is partly self-inflicted. A small dispatch layer that…", "image": "https://supergood.solutions/blog/one-model-handling-all-request-types-is-a-reliability-trap/hero-og.png", "url": "https://supergood.solutions/blog/one-model-handling-all-request-types-is-a-reliability-trap/", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "wordCount": 915, "timeRequired": "PT4M", "articleSection": "ARCHITECTURE", "keywords": ["ARCHITECTURE", "AI agents", "artificial intelligence", "enterprise AI"], "inLanguage": "en-US", "isAccessibleForFree": true, "author": {"@type": "Person", "name": "Ryan Sandoval", "url": "https://linkedin.com/in/RyanSandoval"}, "publisher": {"@type": "Organization", "name": "Supergood Solutions", "url": "https://supergood.solutions", "logo": {"@type": "ImageObject", "url": "https://supergood.solutions/og-image.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://supergood.solutions/blog/one-model-handling-all-request-types-is-a-reliability-trap/"}, "isPartOf": {"@type": "Blog", "url": "https://supergood.solutions/blog/"}, "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".callout", "article h1", "article h2"]}}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://supergood.solutions/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://supergood.solutions/blog/"}, {"@type": "ListItem", "position": 3, "name": "One Model Handling All Request Types Is a Reliability Trap", "item": "https://supergood.solutions/blog/one-model-handling-all-request-types-is-a-reliability-trap/"}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0b;--surface:#111113;--surface-2:#18181b;--border:#27272a;--text:#fafafa;--text-2:#a1a1aa;--text-3:#8c8c96;--green:#22c55e;--mono:'JetBrains Mono',monospace}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;background:rgba(10,10,11,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .inner{max-width:720px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
+.wordmark{font-weight:800;font-size:1.125rem;letter-spacing:-0.03em;color:var(--text);text-decoration:none}
+.wordmark .dot{color:var(--green)}
+nav a.back{font-size:0.875rem;color:var(--text-3);text-decoration:none}
+nav a.back:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:140px 24px 80px}
+article .tag{font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:16px}
+article h1{font-size:clamp(2rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin-bottom:20px}
+article .hero{width:100%;height:auto;display:block;border:1px solid var(--border);border-radius:12px;margin-bottom:32px}
+article .meta{font-family:var(--mono);font-size:0.75rem;color:var(--text-3);margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+article h2{font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;margin:56px 0 16px}
+article h3{font-size:1.125rem;font-weight:600;margin:40px 0 12px}
+article p{font-size:1rem;color:var(--text-2);margin-bottom:20px}
+article strong{color:var(--text)}
+article ul,article ol{color:var(--text-2);margin-bottom:20px;padding-left:24px}
+article li{margin-bottom:8px}
+article a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+article hr{border:none;border-top:1px solid var(--border);margin:40px 0}
+article code{font-family:var(--mono);font-size:0.875em;background:var(--surface-2);color:var(--text);padding:2px 6px;border-radius:4px;border:1px solid var(--border)}
+article pre{background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:16px 20px;margin:24px 0;overflow-x:auto;font-family:var(--mono);font-size:0.8125rem;line-height:1.6}
+article pre code{color:var(--text);background:transparent;padding:0;border:none;border-radius:0;font-size:inherit;white-space:pre}
+.callout{background:var(--surface-2);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:20px 24px;margin:32px 0}
+.callout code{background:rgba(255,255,255,0.04)}
+.callout p{margin-bottom:0;font-size:0.9375rem}
+footer{background:var(--surface);padding:40px 0;margin-top:80px;border-top:1px solid var(--border);text-align:center}
+footer p{color:var(--text-3);font-size:0.875rem;margin:0}
+.reading-progress{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--green);z-index:200;will-change:transform}
+::selection{background:var(--green);color:var(--bg)}
+@media(max-width:768px){article{padding:120px 20px 60px}article h1{font-size:2rem}}
+</style>
+<!-- ga4:start -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JLBDSQ3B4P"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JLBDSQ3B4P');</script>
+<!-- ga4:end -->
+</head>
+<body>
+<div class="reading-progress" aria-hidden="true"></div>
+<nav><div class="inner"><a href="/" class="wordmark">supergood<span class="dot">.</span></a><a href="/blog/" class="back">← All posts</a></div></nav>
+<main><article>
+<img class="hero" src="hero.svg" alt="" width="1200" height="630" loading="eager">
+<div class="tag">ARCHITECTURE</div>
+<h1>One Model Handling All Request Types Is a Reliability Trap</h1>
+<div class="meta">Published October 19, 2026 — 4 min read</div>
+<div class="callout"><p><strong>TL;DR:</strong> If every request in your system hits the same frontier model at the same settings, your output variance is partly self-inflicted. A small dispatch layer that sorts requests before the model sees them fixes reliability first and saves money as a side effect.</p></div>
+
+<h2>Key Insight</h2>
+<p>Most teams treat model routing as a cost lever. Send the easy stuff to a cheap model, keep the bill down. That framing is why so many routers get cut in the first budget review.</p>
+<p>The stronger case is reliability. A request to classify a support ticket into one of twelve categories and a request to synthesize a forty-page contract into a risk memo are different jobs. They need different amounts of reasoning, different output constraints, and different failure handling. When both go through one model with one prompt style and one reasoning setting, the model has to guess how hard to think. Sometimes it overthinks the trivial case and returns a creative answer where you wanted a label. Sometimes it under-thinks the hard case and skips a step.</p>
+<p>That guessing is the variance you see in production and can't explain. The same model, the same prompt template, and two runs that disagree. The model didn't get worse. The task and the effort were mismatched.</p>
+<p>Research on routing backs up the basic premise. The <a href="https://github.com/lm-sys/RouteLLM">RouteLLM</a> project trained routers that choose between a strong and a weak model per query, and reported large cost reductions while holding most of the strong model's benchmark quality. A recent <a href="https://arxiv.org/abs/2603.04445v2">survey of dynamic routing and cascading</a> makes the same point from the other direction: static deployment ignores the complexity of the incoming query, and that leads to suboptimal results.</p>
+<h2>Why Teams Miss This</h2>
+<p>Three assumptions get in the way.</p>
+<p>First, "the frontier model can handle everything." True on average. But reliability is about the tail, and the tail is where a model with too much freedom does something unexpected on a simple task.</p>
+<p>Second, one endpoint is easier to operate. It is, until you are debugging why 3 percent of classifications came back as paragraphs. One endpoint hides the fact that you are running several distinct workloads with different quality bars.</p>
+<p>Third, routing sounds like a research project. It doesn't have to be. You do not need a learned router on day one. You need to admit that your traffic has more than one shape.</p>
+<p>A typical pattern in enterprise deployments: an intake assistant handles ticket tagging, field extraction from emails, policy questions, and multi-document escalation summaries through a single prompt and a single model. The tagging and extraction paths are high volume and need strict, boring output. The escalation path is low volume and needs deep reasoning. Tuning the shared prompt for one path degrades another, so the team keeps patching and never converges.</p>
+<h2>How to Actually Do It</h2>
+<p>Start with a binning pass, not a model zoo.</p>
+<ol>
+<li>Pull a week of real requests and label them by hand into three to five bins. Good starting bins: deterministic transforms (extract, classify, reformat), grounded lookups (answer from a retrieved passage), multi-step synthesis, and edge cases that need a human or a stronger model.</li>
+<li>For each bin, write down the output contract. A classifier returns one label from a closed set. A synthesis task returns structured sections with citations. If you can't state the contract, you can't measure reliability.</li>
+<li>Put a cheap classifier in front. A small model, a fine-tuned encoder, or even rules on input length and source system will cover most traffic. Log its decision with every request.</li>
+<li>Map each bin to a model tier and a reasoning setting. Trivial bins get a small model, low or no reasoning effort, and constrained decoding. Hard bins get the strong model with room to think.</li>
+<li>Add an escalation path. If a cheap-tier response fails schema validation or a confidence check, retry once on the next tier up instead of returning garbage.</li>
+<li>Evaluate per bin. A single aggregate accuracy number hides exactly the variance you are trying to remove.</li>
+</ol>
+<p>A minimal dispatcher looks like this:</p>
+<pre><code class="language-python">from dataclasses import dataclass
+
+@dataclass
+class Route:
+    model: str
+    effort: str  # "none", "low", "high"
+    schema: str
+
+ROUTES = {
+    "classify":   Route("small-model",    "none", "label_v1"),
+    "extract":    Route("small-model",    "low",  "fields_v2"),
+    "grounded_qa": Route("mid-model",     "low",  "answer_v1"),
+    "synthesize": Route("frontier-model", "high", "memo_v3"),
+}
+
+def dispatch(request, binner, call_model, validate):
+    bin_name = binner(request)  # cheap classifier or rules
+    route = ROUTES.get(bin_name, ROUTES["synthesize"])  # unknown goes up, not down
+    result = call_model(route.model, route.effort, request)
+    if not validate(result, route.schema) and route.model != "frontier-model":
+        route = ROUTES["synthesize"]
+        result = call_model(route.model, route.effort, request)
+    log(request.id, bin_name, route, result)
+    return result</code></pre>
+<p>Notice the default. When the binner is unsure, it routes up. A misrouted hard request is a quality incident. A misrouted easy request is a few extra cents.</p>
+<h2>What We've Learned</h2>
+<p>The first win from routing is usually not the invoice. It is that your eval numbers per bin stop wobbling, because each bin now has one job, one contract, and one set of settings.</p>
+<p>Your next experiment: take your highest-volume request type, route it to a smaller model with a strict output schema, and compare disagreement rates across repeated runs against what the frontier model gives you today. If variance drops, you have your case for building the rest of the dispatch layer.</p>
+<h2>Sources</h2>
+<ul>
+<li>RouteLLM, a framework for serving and evaluating LLM routers: <a href="https://github.com/lm-sys/RouteLLM">github.com/lm-sys/RouteLLM</a></li>
+<li>RouteLLM: Learning to Route LLMs with Preference Data: <a href="https://arxiv.org/pdf/2406.18665v1">arxiv.org/abs/2406.18665</a></li>
+<li>Dynamic Model Routing and Cascading for Efficient LLM Inference, a survey: <a href="https://arxiv.org/abs/2603.04445v2">arxiv.org/abs/2603.04445</a></li>
+<li>LLM Routing in Production, complexity-based routing signals: <a href="https://blog.nepexgroup.com/ai/engineering/architecture/2026/07/02/llm-routing-intelligent-model-selection-production.html">blog.nepexgroup.com</a></li>
+</ul>
+
+<div style="border-left:3px solid var(--green);background:var(--surface-2);border-radius:0 8px 8px 0;padding:28px;margin:48px 0 24px;">
+<p style="font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px;">Have a specific workflow in mind?</p>
+<p style="color:var(--text-2);font-size:0.9375rem;margin-bottom:16px;">Bring it to a Quick Scan — a live working session where we'll tell you honestly whether it should be an agent, a workflow, or left alone, before you spend a dollar building it. You get 3 prioritized recommendations on the call, a one-page summary after, and the $500 credited toward any engagement within 30 days.</p>
+<p style="margin:0 0 14px;"><a href="/start/" style="display:inline-block;background:var(--green);color:var(--bg);text-decoration:none;font-weight:700;font-size:0.9375rem;padding:11px 22px;border-radius:8px;">Tell us what you'd hand off →</a></p>
+<p style="margin:0;font-size:0.875rem;color:var(--text-3);"><a href="/ai-agent-consulting/" style="color:var(--green);text-decoration:underline;text-underline-offset:3px;">See AI Agent Consulting</a><span style="margin:0 10px;">·</span><a href="https://calendar.app.google/BkcFDB21jWhMwCiq7" style="color:var(--green);text-decoration:underline;text-underline-offset:3px;">Book an intro call</a></p>
+</div>
+<div data-lead-capture-wrap style="border:1px solid var(--border);border-radius:12px;padding:28px;">
+<p style="font-weight:700;color:var(--text);margin-bottom:6px;font-size:1rem;">Get new posts + practical agent-ops notes</p>
+<p style="color:var(--text-3);font-size:0.8125rem;margin-bottom:20px;">One email when something new goes up. No nurture sequence, no spam — unsubscribe whenever you want.</p>
+<form data-lead-capture style="display:flex;flex-wrap:wrap;gap:10px;align-items:flex-start;">
+<div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+<label>Company <input type="text" name="company" tabindex="-1" autocomplete="off"></label>
+</div>
+<input type="text" name="name" placeholder="Name (optional)" autocomplete="name" style="flex:1 1 160px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-size:0.875rem;font-family:inherit;">
+<input type="email" name="email" placeholder="you@email.com" required autocomplete="email" style="flex:2 1 220px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-size:0.875rem;font-family:inherit;">
+<button type="submit" style="flex:0 0 auto;background:var(--green);color:var(--bg);border:none;border-radius:8px;padding:10px 20px;font-size:0.875rem;font-weight:600;cursor:pointer;font-family:inherit;">Subscribe</button>
+</form>
+<p data-lead-error style="display:none;color:#f87171;font-size:0.8125rem;margin-top:10px;"></p>
+<p data-lead-success style="display:none;color:var(--green);font-size:0.875rem;margin-top:4px;">Thanks — you're on the list.</p>
+</div>
+</article></main>
+<footer><p>&copy; 2026 Supergood Solutions. Helping teams automate smarter, not harder.</p></footer>
+<script>
+(function(){var b=document.querySelector('.reading-progress');if(!b)return;var t=false;function u(){var d=document.documentElement,m=d.scrollHeight-d.clientHeight;if(m<=0){t=false;return;}var y=window.scrollY||window.pageYOffset||d.scrollTop||0;b.style.transform='scaleX('+Math.min(1,Math.max(0,y/m))+')';t=false;}function q(){if(!t){t=true;requestAnimationFrame(u);}}window.addEventListener('scroll',q,{passive:true});window.addEventListener('resize',q,{passive:true});window.addEventListener('orientationchange',q,{passive:true});setTimeout(u,0);})();
+</script>
+<script src="/assets/lead-capture.js" defer></script>
+<script src="/assets/analytics.js" defer></script>
+</body>
+</html>
