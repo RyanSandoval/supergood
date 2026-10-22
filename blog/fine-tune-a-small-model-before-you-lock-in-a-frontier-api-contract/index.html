@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fine-Tune a Small Model Before You Lock In a Frontier API Contract — Supergood Solutions</title>
+<meta name="description" content="For narrow, repeatable jobs like extraction and classification, a small model tuned on your own data usually beats a rented frontier model on accuracy and…">
+<meta name="author" content="Ryan Sandoval">
+<meta name="keywords" content="DEPLOYMENT, AI agents, artificial intelligence, enterprise AI">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0a0a0b">
+<link rel="canonical" href="https://supergood.solutions/blog/fine-tune-a-small-model-before-you-lock-in-a-frontier-api-contract/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preload" as="image" href="hero.svg" fetchpriority="high">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Supergood Solutions">
+<meta property="og:title" content="Fine-Tune a Small Model Before You Lock In a Frontier API Contract">
+<meta property="og:description" content="For narrow, repeatable jobs like extraction and classification, a small model tuned on your own data usually beats a rented frontier model on accuracy and…">
+<meta property="og:url" content="https://supergood.solutions/blog/fine-tune-a-small-model-before-you-lock-in-a-frontier-api-contract/">
+<meta property="og:image" content="https://supergood.solutions/blog/fine-tune-a-small-model-before-you-lock-in-a-frontier-api-contract/hero-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Fine-Tune a Small Model Before You Lock In a Frontier API Contract">
+<meta property="article:published_time" content="2026-10-21">
+<meta property="article:modified_time" content="2026-10-21">
+<meta property="article:author" content="Ryan Sandoval">
+<meta property="article:section" content="DEPLOYMENT">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fine-Tune a Small Model Before You Lock In a Frontier API Contract">
+<meta name="twitter:description" content="For narrow, repeatable jobs like extraction and classification, a small model tuned on your own data usually beats a rented frontier model on accuracy and…">
+<meta name="twitter:image" content="https://supergood.solutions/blog/fine-tune-a-small-model-before-you-lock-in-a-frontier-api-contract/hero-og.png">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Fine-Tune a Small Model Before You Lock In a Frontier API Contract", "description": "For narrow, repeatable jobs like extraction and classification, a small model tuned on your own data usually beats a rented frontier model on accuracy and…", "image": "https://supergood.solutions/blog/fine-tune-a-small-model-before-you-lock-in-a-frontier-api-contract/hero-og.png", "url": "https://supergood.solutions/blog/fine-tune-a-small-model-before-you-lock-in-a-frontier-api-contract/", "datePublished": "2026-10-21", "dateModified": "2026-10-21", "wordCount": 755, "timeRequired": "PT3M", "articleSection": "DEPLOYMENT", "keywords": ["DEPLOYMENT", "AI agents", "artificial intelligence", "enterprise AI"], "inLanguage": "en-US", "isAccessibleForFree": true, "author": {"@type": "Person", "name": "Ryan Sandoval", "url": "https://linkedin.com/in/RyanSandoval"}, "publisher": {"@type": "Organization", "name": "Supergood Solutions", "url": "https://supergood.solutions", "logo": {"@type": "ImageObject", "url": "https://supergood.solutions/og-image.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://supergood.solutions/blog/fine-tune-a-small-model-before-you-lock-in-a-frontier-api-contract/"}, "isPartOf": {"@type": "Blog", "url": "https://supergood.solutions/blog/"}, "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".callout", "article h1", "article h2"]}}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://supergood.solutions/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://supergood.solutions/blog/"}, {"@type": "ListItem", "position": 3, "name": "Fine-Tune a Small Model Before You Lock In a Frontier API Contract", "item": "https://supergood.solutions/blog/fine-tune-a-small-model-before-you-lock-in-a-frontier-api-contract/"}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0b;--surface:#111113;--surface-2:#18181b;--border:#27272a;--text:#fafafa;--text-2:#a1a1aa;--text-3:#8c8c96;--green:#22c55e;--mono:'JetBrains Mono',monospace}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;background:rgba(10,10,11,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .inner{max-width:720px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
+.wordmark{font-weight:800;font-size:1.125rem;letter-spacing:-0.03em;color:var(--text);text-decoration:none}
+.wordmark .dot{color:var(--green)}
+nav a.back{font-size:0.875rem;color:var(--text-3);text-decoration:none}
+nav a.back:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:140px 24px 80px}
+article .tag{font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:16px}
+article h1{font-size:clamp(2rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin-bottom:20px}
+article .hero{width:100%;height:auto;display:block;border:1px solid var(--border);border-radius:12px;margin-bottom:32px}
+article .meta{font-family:var(--mono);font-size:0.75rem;color:var(--text-3);margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+article h2{font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;margin:56px 0 16px}
+article h3{font-size:1.125rem;font-weight:600;margin:40px 0 12px}
+article p{font-size:1rem;color:var(--text-2);margin-bottom:20px}
+article strong{color:var(--text)}
+article ul,article ol{color:var(--text-2);margin-bottom:20px;padding-left:24px}
+article li{margin-bottom:8px}
+article a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+article hr{border:none;border-top:1px solid var(--border);margin:40px 0}
+article code{font-family:var(--mono);font-size:0.875em;background:var(--surface-2);color:var(--text);padding:2px 6px;border-radius:4px;border:1px solid var(--border)}
+article pre{background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:16px 20px;margin:24px 0;overflow-x:auto;font-family:var(--mono);font-size:0.8125rem;line-height:1.6}
+article pre code{color:var(--text);background:transparent;padding:0;border:none;border-radius:0;font-size:inherit;white-space:pre}
+.callout{background:var(--surface-2);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:20px 24px;margin:32px 0}
+.callout code{background:rgba(255,255,255,0.04)}
+.callout p{margin-bottom:0;font-size:0.9375rem}
+footer{background:var(--surface);padding:40px 0;margin-top:80px;border-top:1px solid var(--border);text-align:center}
+footer p{color:var(--text-3);font-size:0.875rem;margin:0}
+.reading-progress{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--green);z-index:200;will-change:transform}
+::selection{background:var(--green);color:var(--bg)}
+@media(max-width:768px){article{padding:120px 20px 60px}article h1{font-size:2rem}}
+</style>
+<!-- ga4:start -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JLBDSQ3B4P"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JLBDSQ3B4P');</script>
+<!-- ga4:end -->
+</head>
+<body>
+<div class="reading-progress" aria-hidden="true"></div>
+<nav><div class="inner"><a href="/" class="wordmark">supergood<span class="dot">.</span></a><a href="/blog/" class="back">← All posts</a></div></nav>
+<main><article>
+<img class="hero" src="hero.svg" alt="" width="1200" height="630" loading="eager">
+<div class="tag">DEPLOYMENT</div>
+<h1>Fine-Tune a Small Model Before You Lock In a Frontier API Contract</h1>
+<div class="meta">Published October 21, 2026 — 3 min read</div>
+<div class="callout"><p><strong>TL;DR:</strong> For narrow, repeatable jobs like extraction and classification, a small model tuned on your own data usually beats a rented frontier model on accuracy and consistency. Test that before you sign a multi-year API commitment.</p></div>
+
+<h2>Key Insight</h2>
+<p>Most enterprise AI workloads are not open-ended reasoning. They are the same task, thousands of times a day: pull the fields out of this invoice, route this ticket, tag this contract clause. For that shape of work, "bigger is better" is the wrong default.</p>
+<p>The evidence is public. The LoRA Land report fine-tuned 10 base models on 31 tasks, 310 models in total, using 4-bit low-rank adapters. On average the tuned models beat their untuned bases by 34 points and beat GPT-4 by 10 points. The standout was a 7B Mistral model, not a giant.</p>
+<p>Two things drive that result. First, a tuned model has seen thousands of your real examples, so it learns your label set, your edge cases, and your formatting quirks. A frontier model has to infer all of that from a prompt every single call. Second, output stability. A model trained to emit one schema emits that schema. A general model asked politely for JSON will mostly comply, and "mostly" is what pages someone at 2 a.m.</p>
+<p>This is pro-AI advice. The frontier API is still the right tool for messy, open-ended work and for prototyping. The point is to stop treating it as the permanent answer for tasks that have stopped changing.</p>
+<h2>Why Teams Miss This</h2>
+<p>Fine-tuning has a reputation problem. Two years ago it meant renting a GPU cluster, babysitting full-weight training runs, and storing a multi-gigabyte checkpoint per experiment. Plenty of teams wrote it off then and never reopened the question.</p>
+<p>That cost structure is gone. Parameter-efficient methods such as LoRA freeze the base model and train small adapter matrices, and QLoRA does the same on a 4-bit quantized base. The Hugging Face PEFT library wraps this in a few lines, and a 7B-class model can be tuned on a single GPU. The adapter you produce is megabytes, not gigabytes, so you can keep one per task and swap them at serving time.</p>
+<p>The second miss is sequencing. Teams sign the API contract first, build the workflow around it, and only then notice that the per-call price and the latency are baked into every downstream system. Switching later means re-validating everything.</p>
+<h2>How to Actually Do It</h2>
+<p>Start with the data you already have, because that is the real prerequisite.</p>
+<ol>
+<li>Pick one narrow task with a clear right answer, such as extracting 12 fields from vendor documents.</li>
+<li>Collect 500 to 2,000 examples of input and correct output. Your production logs plus human-corrected outputs from the frontier model are a good source.</li>
+<li>Hold out 20 percent as a test set before you train anything. Never tune on it.</li>
+<li>Tune a small open model with LoRA, then score it against the frontier model on the held-out set.</li>
+<li>Compare on three numbers: field-level accuracy, rate of malformed output, and cost per thousand calls.</li>
+</ol>
+<p>A minimal setup with the PEFT and TRL libraries looks like this:</p>
+<pre><code class="language-python">from peft import LoraConfig
+from trl import SFTTrainer, SFTConfig
+
+peft_config = LoraConfig(
+    r=16,
+    lora_alpha=32,
+    lora_dropout=0.05,
+    target_modules="all-linear",
+    task_type="CAUSAL_LM",
+)
+
+trainer = SFTTrainer(
+    model="mistralai/Mistral-7B-v0.3",
+    train_dataset=train_ds,
+    args=SFTConfig(output_dir="invoice-extractor", num_train_epochs=3),
+    peft_config=peft_config,
+)
+trainer.train()
+trainer.save_model("invoice-extractor")</code></pre>
+<p>Check the library docs for the current argument names, since TRL changes quickly. The shape stays the same: a base model, a small adapter config, and your examples.</p>
+<p>Keep the frontier model in the loop as a fallback. Route low-confidence or schema-failing outputs from the small model to the big one, and log those cases. They become your next training batch.</p>
+<h2>What We've Learned</h2>
+<p>Fine-tuning is not free. You own the dataset, the eval harness, and retraining when the task drifts. If your task changes every month, or you have fewer than a few hundred good examples, keep paying for the API.</p>
+<p>But the experiment is cheap now. Before your next renewal or commitment, pick your single highest-volume extraction or classification job and run the five steps above in a week. If the small model matches the frontier model on your held-out set, you have a negotiating position and a cheaper, steadier production path. If it does not, you have a clean eval that justifies the contract.</p>
+<h2>Sources</h2>
+<ul>
+<li>LoRA Land: 310 Fine-tuned LLMs that Rival GPT-4, A Technical Report: <a href="https://arxiv.org/abs/2405.00732">arxiv.org/abs/2405.00732</a></li>
+<li>LoRA Land overview: <a href="https://www.rubrik.com/blog/ai/24/lora-land-fine-tuned-open-source-llms-that-outperform-gpt-4">Rubrik blog post on LoRA Land</a></li>
+<li>Hugging Face PEFT documentation: <a href="https://huggingface.co/docs/peft/index">PEFT index</a></li>
+<li>Hugging Face PEFT LoRA conceptual guide: <a href="https://huggingface.co/docs/peft/main/conceptual_guides/lora">LoRA guide</a></li>
+<li>QLoRA: Efficient Finetuning of Quantized LLMs: <a href="https://arxiv.org/abs/2305.14314">arxiv.org/abs/2305.14314</a></li>
+</ul>
+
+<div style="border-left:3px solid var(--green);background:var(--surface-2);border-radius:0 8px 8px 0;padding:28px;margin:48px 0 24px;">
+<p style="font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px;">Have a specific workflow in mind?</p>
+<p style="color:var(--text-2);font-size:0.9375rem;margin-bottom:16px;">Bring it to a Quick Scan — a live working session where we'll tell you honestly whether it should be an agent, a workflow, or left alone, before you spend a dollar building it. You get 3 prioritized recommendations on the call, a one-page summary after, and the $500 credited toward any engagement within 30 days.</p>
+<p style="margin:0 0 14px;"><a href="/start/" style="display:inline-block;background:var(--green);color:var(--bg);text-decoration:none;font-weight:700;font-size:0.9375rem;padding:11px 22px;border-radius:8px;">Tell us what you'd hand off →</a></p>
+<p style="margin:0;font-size:0.875rem;color:var(--text-3);"><a href="/ai-agent-consulting/" style="color:var(--green);text-decoration:underline;text-underline-offset:3px;">See AI Agent Consulting</a><span style="margin:0 10px;">·</span><a href="https://calendar.app.google/BkcFDB21jWhMwCiq7" style="color:var(--green);text-decoration:underline;text-underline-offset:3px;">Book an intro call</a></p>
+</div>
+<div data-lead-capture-wrap style="border:1px solid var(--border);border-radius:12px;padding:28px;">
+<p style="font-weight:700;color:var(--text);margin-bottom:6px;font-size:1rem;">Get new posts + practical agent-ops notes</p>
+<p style="color:var(--text-3);font-size:0.8125rem;margin-bottom:20px;">One email when something new goes up. No nurture sequence, no spam — unsubscribe whenever you want.</p>
+<form data-lead-capture style="display:flex;flex-wrap:wrap;gap:10px;align-items:flex-start;">
+<div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+<label>Company <input type="text" name="company" tabindex="-1" autocomplete="off"></label>
+</div>
+<input type="text" name="name" placeholder="Name (optional)" autocomplete="name" style="flex:1 1 160px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-size:0.875rem;font-family:inherit;">
+<input type="email" name="email" placeholder="you@email.com" required autocomplete="email" style="flex:2 1 220px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-size:0.875rem;font-family:inherit;">
+<button type="submit" style="flex:0 0 auto;background:var(--green);color:var(--bg);border:none;border-radius:8px;padding:10px 20px;font-size:0.875rem;font-weight:600;cursor:pointer;font-family:inherit;">Subscribe</button>
+</form>
+<p data-lead-error style="display:none;color:#f87171;font-size:0.8125rem;margin-top:10px;"></p>
+<p data-lead-success style="display:none;color:var(--green);font-size:0.875rem;margin-top:4px;">Thanks — you're on the list.</p>
+</div>
+</article></main>
+<footer><p>&copy; 2026 Supergood Solutions. Helping teams automate smarter, not harder.</p></footer>
+<script>
+(function(){var b=document.querySelector('.reading-progress');if(!b)return;var t=false;function u(){var d=document.documentElement,m=d.scrollHeight-d.clientHeight;if(m<=0){t=false;return;}var y=window.scrollY||window.pageYOffset||d.scrollTop||0;b.style.transform='scaleX('+Math.min(1,Math.max(0,y/m))+')';t=false;}function q(){if(!t){t=true;requestAnimationFrame(u);}}window.addEventListener('scroll',q,{passive:true});window.addEventListener('resize',q,{passive:true});window.addEventListener('orientationchange',q,{passive:true});setTimeout(u,0);})();
+</script>
+<script src="/assets/lead-capture.js" defer></script>
+<script src="/assets/analytics.js" defer></script>
+</body>
+</html>
