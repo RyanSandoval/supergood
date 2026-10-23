@@ -10,6 +10,7 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
+<link rel="preload" as="image" href="hero.avif" type="image/avif" fetchpriority="high">
 <meta name="author" content="Ryan Sandoval">
 <meta name="keywords" content="Metrics Monday · Agent Ops, AI agents, artificial intelligence, enterprise AI">
 
@@ -19,10 +20,11 @@
 <meta property="og:title" content="The Hidden Cost of Running AI Agents in Production (And the Metrics That Actually Matter)">
 <meta property="og:description" content="Token bills, latency trade-offs, the Unreliability Tax — a practical operator's guide to understanding and controlling what AI agents actually cost in production.">
 <meta property="og:url" content="https://supergood.solutions/blog/metrics-monday-ai-agent-cost-ops-2026/">
-<meta property="og:image" content="https://supergood.solutions/og-image.png">
+<meta property="og:image" content="https://supergood.solutions/blog/metrics-monday-ai-agent-cost-ops-2026/hero-og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="The Hidden Cost of Running AI Agents in Production (And the Metrics That Actually Matter)">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="The Hidden Cost of Running AI Agents in Production (And the Metrics That Actually Matter) — a parking meter with an endlessly running coin counter next to a toy robot, green coins spilling.">
 <meta property="article:published_time" content="2026-03-02">
 <meta property="article:modified_time" content="2026-03-02">
 <meta property="article:author" content="Ryan Sandoval">
@@ -30,9 +32,9 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The Hidden Cost of Running AI Agents in Production (And the Metrics That Actually Matter)">
 <meta name="twitter:description" content="Token bills, latency trade-offs, the Unreliability Tax — a practical operator's guide to understanding and controlling what AI agents actually cost in production.">
-<meta name="twitter:image" content="https://supergood.solutions/og-image.png">
+<meta name="twitter:image" content="https://supergood.solutions/blog/metrics-monday-ai-agent-cost-ops-2026/hero-og.jpg">
 <script type="application/ld+json">
-{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "The Hidden Cost of Running AI Agents in Production (And the Metrics That Actually Matter)", "description": "Token bills, latency trade-offs, the Unreliability Tax — a practical operator's guide to understanding and controlling what AI agents actually cost in production.", "image": "https://supergood.solutions/og-image.png", "url": "https://supergood.solutions/blog/metrics-monday-ai-agent-cost-ops-2026/", "datePublished": "2026-03-02", "dateModified": "2026-03-02", "wordCount": 0,"timeRequired":"PT3M","keywords":["Metrics Monday · Agent Ops","AI agents","artificial intelligence","enterprise AI"],"isPartOf":{"@type":"Blog","url":"https://supergood.solutions/blog/"},"inLanguage":"en-US", "articleSection": "Metrics Monday · Agent Ops", "isAccessibleForFree": true, "author": {"@type": "Person", "name": "Ryan Sandoval", "url": "https://linkedin.com/in/RyanSandoval"}, "publisher": {"@type": "Organization", "name": "Supergood Solutions", "url": "https://supergood.solutions", "logo": {"@type": "ImageObject", "url": "https://supergood.solutions/og-image.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://supergood.solutions/blog/metrics-monday-ai-agent-cost-ops-2026/"}, "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".callout", "article h1", "article h2"]}}
+{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "The Hidden Cost of Running AI Agents in Production (And the Metrics That Actually Matter)", "description": "Token bills, latency trade-offs, the Unreliability Tax — a practical operator's guide to understanding and controlling what AI agents actually cost in production.", "image": {"@type": "ImageObject", "url": "https://supergood.solutions/blog/metrics-monday-ai-agent-cost-ops-2026/hero-og.jpg", "width": 1200, "height": 630, "encodingFormat": "image/jpeg"}, "url": "https://supergood.solutions/blog/metrics-monday-ai-agent-cost-ops-2026/", "datePublished": "2026-03-02", "dateModified": "2026-03-02", "wordCount": 0,"timeRequired":"PT3M","keywords":["Metrics Monday · Agent Ops","AI agents","artificial intelligence","enterprise AI"],"isPartOf":{"@type":"Blog","url":"https://supergood.solutions/blog/"},"inLanguage":"en-US", "articleSection": "Metrics Monday · Agent Ops", "isAccessibleForFree": true, "author": {"@type": "Person", "name": "Ryan Sandoval", "url": "https://linkedin.com/in/RyanSandoval"}, "publisher": {"@type": "Organization", "name": "Supergood Solutions", "url": "https://supergood.solutions", "logo": {"@type": "ImageObject", "url": "https://supergood.solutions/og-image.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://supergood.solutions/blog/metrics-monday-ai-agent-cost-ops-2026/"}, "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".callout", "article h1", "article h2"]}}
 </script>
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://supergood.solutions/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://supergood.solutions/blog/"}, {"@type": "ListItem", "position": 3, "name": "The Hidden Cost of Running AI Agents in Production (And the Metrics That Actually Matter)", "item": "https://supergood.solutions/blog/metrics-monday-ai-agent-cost-ops-2026/"}]}
@@ -64,6 +66,9 @@ nav a.back:hover { color: var(--text); }
 article { max-width: 720px; margin: 0 auto; padding: 140px 24px 80px; }
 article .tag { font-family: var(--mono); font-size: 0.6875rem; color: var(--green); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; }
 article h1 { font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px; }
+article picture { display: block; }
+article .hero { width: 100%; height: auto; display: block; border: 1px solid var(--border); border-radius: 12px; margin-bottom: 32px; }
+
 article .subtitle { font-size: 1.25rem; color: var(--text-2); line-height: 1.6; margin-bottom: 24px; }
 article .meta { font-family: var(--mono); font-size: 0.75rem; color: var(--text-3); margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
 article h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin: 56px 0 16px; }
@@ -166,6 +171,11 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
 </nav>
 
 <article>
+  <picture>
+    <source type="image/avif" srcset="hero.avif" width="1600" height="900">
+    <source type="image/webp" srcset="hero.webp" width="1600" height="900">
+    <img class="hero" src="hero.webp" alt="The Hidden Cost of Running AI Agents in Production (And the Metrics That Actually Matter) — a parking meter with an endlessly running coin counter next to a toy robot, green coins spilling." width="1600" height="900" loading="eager" fetchpriority="high">
+  </picture>
   <div class="tag">Metrics Monday · Agent Ops</div>
   <h1>The Hidden Cost of Running AI Agents in Production (And the Metrics That Actually Matter)</h1>
   <p class="subtitle">Your agent demo looked great at $0.12 a run. Your production bill looks very different. Here's what changed — and how to get it back under control.</p>

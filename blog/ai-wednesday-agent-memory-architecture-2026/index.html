@@ -10,6 +10,7 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
+<link rel="preload" as="image" href="hero.avif" type="image/avif" fetchpriority="high">
 <meta name="author" content="Ryan Sandoval">
 <meta name="keywords" content="AI Wednesday · AI Tooling, AI agents, artificial intelligence, enterprise AI">
 
@@ -19,10 +20,11 @@
 <meta property="og:title" content="Your AI Agent Has Amnesia. Here's the Fix.">
 <meta property="og:description" content="Most AI agents have no persistent memory — and most teams ship them that way. Here's the three-layer memory architecture production agents actually need, the real tradeoffs, and a practical implementation checklist.">
 <meta property="og:url" content="https://supergood.solutions/blog/ai-wednesday-agent-memory-architecture-2026/">
-<meta property="og:image" content="https://supergood.solutions/og-image.png">
+<meta property="og:image" content="https://supergood.solutions/blog/ai-wednesday-agent-memory-architecture-2026/hero-og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Your AI Agent Has Amnesia. Here's the Fix.">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="Your AI Agent Has Amnesia. Here's the Fix. — a tiny robot wearing a string tied around its finger as a reminder, surrounded by blank sticky notes, the string green.">
 <meta property="article:published_time" content="2026-02-25">
 <meta property="article:modified_time" content="2026-02-25">
 <meta property="article:author" content="Ryan Sandoval">
@@ -30,9 +32,9 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Your AI Agent Has Amnesia. Here's the Fix.">
 <meta name="twitter:description" content="Most AI agents have no persistent memory — and most teams ship them that way. Here's the three-layer memory architecture production agents actually need, the real tradeoffs, and a practical implementation checklist.">
-<meta name="twitter:image" content="https://supergood.solutions/og-image.png">
+<meta name="twitter:image" content="https://supergood.solutions/blog/ai-wednesday-agent-memory-architecture-2026/hero-og.jpg">
 <script type="application/ld+json">
-{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Your AI Agent Has Amnesia. Here's the Fix.", "description": "Most AI agents have no persistent memory — and most teams ship them that way. Here's the three-layer memory architecture production agents actually need, the real tradeoffs, and a practical implementation checklist.", "image": "https://supergood.solutions/og-image.png", "url": "https://supergood.solutions/blog/ai-wednesday-agent-memory-architecture-2026/", "datePublished": "2026-02-25", "dateModified": "2026-02-25", "wordCount": 0,"timeRequired":"PT3M","keywords":["AI Wednesday · AI Tooling","AI agents","artificial intelligence","enterprise AI"],"isPartOf":{"@type":"Blog","url":"https://supergood.solutions/blog/"},"inLanguage":"en-US", "articleSection": "AI Wednesday · AI Tooling", "isAccessibleForFree": true, "author": {"@type": "Person", "name": "Ryan Sandoval", "url": "https://linkedin.com/in/RyanSandoval"}, "publisher": {"@type": "Organization", "name": "Supergood Solutions", "url": "https://supergood.solutions", "logo": {"@type": "ImageObject", "url": "https://supergood.solutions/og-image.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://supergood.solutions/blog/ai-wednesday-agent-memory-architecture-2026/"}, "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".callout", "article h1", "article h2"]}}
+{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Your AI Agent Has Amnesia. Here's the Fix.", "description": "Most AI agents have no persistent memory — and most teams ship them that way. Here's the three-layer memory architecture production agents actually need, the real tradeoffs, and a practical implementation checklist.", "image": {"@type": "ImageObject", "url": "https://supergood.solutions/blog/ai-wednesday-agent-memory-architecture-2026/hero-og.jpg", "width": 1200, "height": 630, "encodingFormat": "image/jpeg"}, "url": "https://supergood.solutions/blog/ai-wednesday-agent-memory-architecture-2026/", "datePublished": "2026-02-25", "dateModified": "2026-02-25", "wordCount": 0,"timeRequired":"PT3M","keywords":["AI Wednesday · AI Tooling","AI agents","artificial intelligence","enterprise AI"],"isPartOf":{"@type":"Blog","url":"https://supergood.solutions/blog/"},"inLanguage":"en-US", "articleSection": "AI Wednesday · AI Tooling", "isAccessibleForFree": true, "author": {"@type": "Person", "name": "Ryan Sandoval", "url": "https://linkedin.com/in/RyanSandoval"}, "publisher": {"@type": "Organization", "name": "Supergood Solutions", "url": "https://supergood.solutions", "logo": {"@type": "ImageObject", "url": "https://supergood.solutions/og-image.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://supergood.solutions/blog/ai-wednesday-agent-memory-architecture-2026/"}, "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".callout", "article h1", "article h2"]}}
 </script>
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://supergood.solutions/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://supergood.solutions/blog/"}, {"@type": "ListItem", "position": 3, "name": "Your AI Agent Has Amnesia. Here's the Fix.", "item": "https://supergood.solutions/blog/ai-wednesday-agent-memory-architecture-2026/"}]}
@@ -64,6 +66,8 @@ nav a.back:hover { color: var(--text); }
 article { max-width: 720px; margin: 0 auto; padding: 140px 24px 80px; }
 article .tag { font-family: var(--mono); font-size: 0.6875rem; color: var(--green); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; }
 article h1 { font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px; }
+article picture { display: block; }
+article .hero { width: 100%; height: auto; display: block; border: 1px solid var(--border); border-radius: 12px; margin-bottom: 32px; }
 article .subtitle { font-size: 1.25rem; color: var(--text-2); line-height: 1.6; margin-bottom: 24px; }
 article .meta { font-family: var(--mono); font-size: 0.75rem; color: var(--text-3); margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
 article h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin: 56px 0 16px; }
@@ -141,6 +145,11 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
 </nav>
 
 <article>
+  <picture>
+    <source type="image/avif" srcset="hero.avif" width="1600" height="900">
+    <source type="image/webp" srcset="hero.webp" width="1600" height="900">
+    <img class="hero" src="hero.webp" alt="Your AI Agent Has Amnesia. Here's the Fix. — a tiny robot wearing a string tied around its finger as a reminder, surrounded by blank sticky notes, the string green." width="1600" height="900" loading="eager" fetchpriority="high">
+  </picture>
   <div class="tag">AI Wednesday · AI Tooling</div>
   <h1>Your AI Agent Has Amnesia. Here's the Fix.</h1>
   <p class="subtitle">Most production agents forget everything the moment a session ends. Here's the three-layer memory architecture that fixes it — and the real cost and complexity tradeoffs before you build.</p>
