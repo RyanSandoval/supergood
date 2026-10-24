@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent Reproducibility Is the Enterprise Requirement Nobody Is Specifying — Supergood Solutions</title>
+<meta name="description" content="Your agent passed the pilot, so you assume it will behave the same way next quarter. It won't, and almost no deployment contract says how much drift is…">
+<meta name="author" content="Ryan Sandoval">
+<meta name="keywords" content="Architecture, AI agents, artificial intelligence, enterprise AI">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0a0a0b">
+<link rel="canonical" href="https://supergood.solutions/blog/agent-reproducibility-is-the-enterprise-requirement-nobody-is-specifying/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preload" as="image" href="hero.svg" fetchpriority="high">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Supergood Solutions">
+<meta property="og:title" content="Agent Reproducibility Is the Enterprise Requirement Nobody Is Specifying">
+<meta property="og:description" content="Your agent passed the pilot, so you assume it will behave the same way next quarter. It won't, and almost no deployment contract says how much drift is…">
+<meta property="og:url" content="https://supergood.solutions/blog/agent-reproducibility-is-the-enterprise-requirement-nobody-is-specifying/">
+<meta property="og:image" content="https://supergood.solutions/blog/agent-reproducibility-is-the-enterprise-requirement-nobody-is-specifying/hero-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Agent Reproducibility Is the Enterprise Requirement Nobody Is Specifying">
+<meta property="article:published_time" content="2026-10-23">
+<meta property="article:modified_time" content="2026-10-23">
+<meta property="article:author" content="Ryan Sandoval">
+<meta property="article:section" content="Architecture">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Agent Reproducibility Is the Enterprise Requirement Nobody Is Specifying">
+<meta name="twitter:description" content="Your agent passed the pilot, so you assume it will behave the same way next quarter. It won't, and almost no deployment contract says how much drift is…">
+<meta name="twitter:image" content="https://supergood.solutions/blog/agent-reproducibility-is-the-enterprise-requirement-nobody-is-specifying/hero-og.png">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Agent Reproducibility Is the Enterprise Requirement Nobody Is Specifying", "description": "Your agent passed the pilot, so you assume it will behave the same way next quarter. It won't, and almost no deployment contract says how much drift is…", "image": "https://supergood.solutions/blog/agent-reproducibility-is-the-enterprise-requirement-nobody-is-specifying/hero-og.png", "url": "https://supergood.solutions/blog/agent-reproducibility-is-the-enterprise-requirement-nobody-is-specifying/", "datePublished": "2026-10-23", "dateModified": "2026-10-23", "wordCount": 770, "timeRequired": "PT3M", "articleSection": "Architecture", "keywords": ["Architecture", "AI agents", "artificial intelligence", "enterprise AI"], "inLanguage": "en-US", "isAccessibleForFree": true, "author": {"@type": "Person", "name": "Ryan Sandoval", "url": "https://linkedin.com/in/RyanSandoval"}, "publisher": {"@type": "Organization", "name": "Supergood Solutions", "url": "https://supergood.solutions", "logo": {"@type": "ImageObject", "url": "https://supergood.solutions/og-image.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://supergood.solutions/blog/agent-reproducibility-is-the-enterprise-requirement-nobody-is-specifying/"}, "isPartOf": {"@type": "Blog", "url": "https://supergood.solutions/blog/"}, "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".callout", "article h1", "article h2"]}}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://supergood.solutions/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://supergood.solutions/blog/"}, {"@type": "ListItem", "position": 3, "name": "Agent Reproducibility Is the Enterprise Requirement Nobody Is Specifying", "item": "https://supergood.solutions/blog/agent-reproducibility-is-the-enterprise-requirement-nobody-is-specifying/"}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0b;--surface:#111113;--surface-2:#18181b;--border:#27272a;--text:#fafafa;--text-2:#a1a1aa;--text-3:#8c8c96;--green:#22c55e;--mono:'JetBrains Mono',monospace}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;background:rgba(10,10,11,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .inner{max-width:720px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
+.wordmark{font-weight:800;font-size:1.125rem;letter-spacing:-0.03em;color:var(--text);text-decoration:none}
+.wordmark .dot{color:var(--green)}
+nav a.back{font-size:0.875rem;color:var(--text-3);text-decoration:none}
+nav a.back:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:140px 24px 80px}
+article .tag{font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:16px}
+article h1{font-size:clamp(2rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin-bottom:20px}
+article .hero{width:100%;height:auto;display:block;border:1px solid var(--border);border-radius:12px;margin-bottom:32px}
+article .meta{font-family:var(--mono);font-size:0.75rem;color:var(--text-3);margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+article h2{font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;margin:56px 0 16px}
+article h3{font-size:1.125rem;font-weight:600;margin:40px 0 12px}
+article p{font-size:1rem;color:var(--text-2);margin-bottom:20px}
+article strong{color:var(--text)}
+article ul,article ol{color:var(--text-2);margin-bottom:20px;padding-left:24px}
+article li{margin-bottom:8px}
+article a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+article hr{border:none;border-top:1px solid var(--border);margin:40px 0}
+article code{font-family:var(--mono);font-size:0.875em;background:var(--surface-2);color:var(--text);padding:2px 6px;border-radius:4px;border:1px solid var(--border)}
+article pre{background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:16px 20px;margin:24px 0;overflow-x:auto;font-family:var(--mono);font-size:0.8125rem;line-height:1.6}
+article pre code{color:var(--text);background:transparent;padding:0;border:none;border-radius:0;font-size:inherit;white-space:pre}
+.callout{background:var(--surface-2);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:20px 24px;margin:32px 0}
+.callout code{background:rgba(255,255,255,0.04)}
+.callout p{margin-bottom:0;font-size:0.9375rem}
+footer{background:var(--surface);padding:40px 0;margin-top:80px;border-top:1px solid var(--border);text-align:center}
+footer p{color:var(--text-3);font-size:0.875rem;margin:0}
+.reading-progress{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--green);z-index:200;will-change:transform}
+::selection{background:var(--green);color:var(--bg)}
+@media(max-width:768px){article{padding:120px 20px 60px}article h1{font-size:2rem}}
+</style>
+<!-- ga4:start -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JLBDSQ3B4P"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JLBDSQ3B4P');</script>
+<!-- ga4:end -->
+</head>
+<body>
+<div class="reading-progress" aria-hidden="true"></div>
+<nav><div class="inner"><a href="/" class="wordmark">supergood<span class="dot">.</span></a><a href="/blog/" class="back">← All posts</a></div></nav>
+<main><article>
+<img class="hero" src="hero.svg" alt="" width="1200" height="630" loading="eager">
+<div class="tag">Architecture</div>
+<h1>Agent Reproducibility Is the Enterprise Requirement Nobody Is Specifying</h1>
+<div class="meta">Published October 23, 2026 — 3 min read</div>
+<div class="callout"><p><strong>TL;DR:</strong> Your agent passed the pilot, so you assume it will behave the same way next quarter. It won't, and almost no deployment contract says how much drift is acceptable.</p></div>
+
+<h2>Key Insight</h2>
+<p>A successful run is one sample, not a guarantee. Ask an LLM the same question twice and you may get different answers, which most teams expect. The less obvious part is that setting temperature to 0 does not fix it.</p>
+<p>Thinking Machines Lab tested this by sampling 1000 completions of the same prompt at temperature 0 from a single open model. They got 80 unique completions. The most common one appeared only 78 times. The cause was not mainly GPU race conditions. It was that the server's batch size changes from request to request, which changes the order floating-point numbers get added in, which nudges a token choice, which then compounds across a long generation. When they used batch-invariant kernels, all 1000 completions came out identical.</p>
+<p>Now stack an agent on top. An agent run is dozens of model calls, each one conditioning on the last, plus tool results that change with the world. Small divergence early turns into a different plan late. The pilot you approved was one path through that tree.</p>
+<p>This is a pro-agent argument. Agents are the right tool. But "it worked" and "it will keep working" are two different claims, and only the first one has evidence behind it.</p>
+<h2>Why Teams Miss This</h2>
+<p>Three assumptions carry most of the weight.</p>
+<ul>
+<li>Temperature 0 means deterministic. It means greedy decoding. Across hosted APIs, batching, and provider-side model updates, you still get variance.</li>
+<li>A passing eval is a property of the agent. It is a property of one run, on one day, against one model snapshot.</li>
+<li>Reliability belongs to the vendor. The vendor's SLA covers uptime and latency. Nobody's SLA covers "the same input yields an equivalent output," so the gap falls to you by default.</li>
+</ul>
+<p>The result is that contracts specify response time and availability to the decimal, and say nothing about output stability. When something drifts, nobody can say whether that was a regression or ordinary variance, because no one wrote down what ordinary variance was.</p>
+<h2>How to Actually Do It</h2>
+<p>Treat reproducibility as a measured number with a threshold, the same way you treat latency.</p>
+<ol>
+<li>Pick a golden set. 30 to 50 real tasks with a clear definition of "equivalent outcome." Equivalent does not mean identical text. It means the same decision, the same tool calls in a compatible order, and the same final state.</li>
+<li>Run each task N times. Ten is a reasonable start. Record the pass rate per task, not just the average.</li>
+<li>Write the number down. For example: "Invoice triage agent reaches the same routing decision on at least 95% of repeated runs, and no task falls below 80%." That is a reproducibility SLO.</li>
+<li>Pin what you can. Model snapshot ID, prompt version, tool schema version, and seed where the provider supports one. Log all four with every run.</li>
+<li>Re-run on every change. A new model version, a prompt edit, or a tool update all count. Compare against the stored baseline distribution, not against a single previous run.</li>
+</ol>
+<p>A minimal harness looks like this:</p>
+<pre><code class="language-python">from collections import Counter
+
+def repro_score(agent, task, n=10):
+    outcomes = [agent.run(task).final_decision for _ in range(n)]
+    top, count = Counter(outcomes).most_common(1)[0]
+    return {"task": task.id, "modal": top, "agreement": count / n}
+
+scores = [repro_score(agent, t) for t in golden_set]
+worst = min(s["agreement"] for s in scores)
+assert worst &gt;= 0.8, f"reproducibility floor breached: {worst:.2f}"</code></pre>
+<p>If a task has low agreement, that is useful information. It usually means the task is underspecified, the tool output is noisy, or the agent has too many valid paths. Narrowing the allowed actions often fixes it faster than switching models.</p>
+<p>For workflows that need bit-exact output, such as audit trails or regulated records, store the output of the first run and replay it. Do not regenerate it and hope.</p>
+<h2>What We've Learned</h2>
+<p>Variance is not the enemy. Unmeasured variance is. A team that knows its agent agrees with itself 97% of the time can ship, monitor, and argue about the threshold. A team that has never run the same task twice is guessing.</p>
+<p>Next experiment: pick one production agent, run its ten most common tasks ten times each, and put the worst agreement score in the next deployment review. Then add a line to the contract template that asks for a reproducibility target alongside latency and uptime.</p>
+<h2>Sources</h2>
+<ul>
+<li>Thinking Machines Lab, Defeating Nondeterminism in LLM Inference: <a href="https://thinkingmachines.ai/blog/defeating-nondeterminism-in-llm-inference/">thinkingmachines.ai/blog/defeating-nondeterminism-in-llm-inference</a></li>
+<li>Related preprint on non-determinism in LLM outputs: <a href="https://arxiv.org/abs/2506.09501">arxiv.org/abs/2506.09501</a></li>
+<li>OpenAI Cookbook, reproducible outputs with the seed parameter: <a href="https://cookbook.openai.com/examples/reproducible_outputs_with_the_seed_parameter">cookbook.openai.com/examples/reproducible_outputs_with_the_seed_parameter</a></li>
+</ul>
+
+<div style="border-left:3px solid var(--green);background:var(--surface-2);border-radius:0 8px 8px 0;padding:28px;margin:48px 0 24px;">
+<p style="font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px;">Have a specific workflow in mind?</p>
+<p style="color:var(--text-2);font-size:0.9375rem;margin-bottom:16px;">Bring it to a Quick Scan — a live working session where we'll tell you honestly whether it should be an agent, a workflow, or left alone, before you spend a dollar building it. You get 3 prioritized recommendations on the call, a one-page summary after, and the $500 credited toward any engagement within 30 days.</p>
+<p style="margin:0 0 14px;"><a href="/start/" style="display:inline-block;background:var(--green);color:var(--bg);text-decoration:none;font-weight:700;font-size:0.9375rem;padding:11px 22px;border-radius:8px;">Tell us what you'd hand off →</a></p>
+<p style="margin:0;font-size:0.875rem;color:var(--text-3);"><a href="/ai-agent-consulting/" style="color:var(--green);text-decoration:underline;text-underline-offset:3px;">See AI Agent Consulting</a><span style="margin:0 10px;">·</span><a href="https://calendar.app.google/BkcFDB21jWhMwCiq7" style="color:var(--green);text-decoration:underline;text-underline-offset:3px;">Book an intro call</a></p>
+</div>
+<div data-lead-capture-wrap style="border:1px solid var(--border);border-radius:12px;padding:28px;">
+<p style="font-weight:700;color:var(--text);margin-bottom:6px;font-size:1rem;">Get new posts + practical agent-ops notes</p>
+<p style="color:var(--text-3);font-size:0.8125rem;margin-bottom:20px;">One email when something new goes up. No nurture sequence, no spam — unsubscribe whenever you want.</p>
+<form data-lead-capture style="display:flex;flex-wrap:wrap;gap:10px;align-items:flex-start;">
+<div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+<label>Company <input type="text" name="company" tabindex="-1" autocomplete="off"></label>
+</div>
+<input type="text" name="name" placeholder="Name (optional)" autocomplete="name" style="flex:1 1 160px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-size:0.875rem;font-family:inherit;">
+<input type="email" name="email" placeholder="you@email.com" required autocomplete="email" style="flex:2 1 220px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-size:0.875rem;font-family:inherit;">
+<button type="submit" style="flex:0 0 auto;background:var(--green);color:var(--bg);border:none;border-radius:8px;padding:10px 20px;font-size:0.875rem;font-weight:600;cursor:pointer;font-family:inherit;">Subscribe</button>
+</form>
+<p data-lead-error style="display:none;color:#f87171;font-size:0.8125rem;margin-top:10px;"></p>
+<p data-lead-success style="display:none;color:var(--green);font-size:0.875rem;margin-top:4px;">Thanks — you're on the list.</p>
+</div>
+</article></main>
+<footer><p>&copy; 2026 Supergood Solutions. Helping teams automate smarter, not harder.</p></footer>
+<script>
+(function(){var b=document.querySelector('.reading-progress');if(!b)return;var t=false;function u(){var d=document.documentElement,m=d.scrollHeight-d.clientHeight;if(m<=0){t=false;return;}var y=window.scrollY||window.pageYOffset||d.scrollTop||0;b.style.transform='scaleX('+Math.min(1,Math.max(0,y/m))+')';t=false;}function q(){if(!t){t=true;requestAnimationFrame(u);}}window.addEventListener('scroll',q,{passive:true});window.addEventListener('resize',q,{passive:true});window.addEventListener('orientationchange',q,{passive:true});setTimeout(u,0);})();
+</script>
+<script src="/assets/lead-capture.js" defer></script>
+<script src="/assets/analytics.js" defer></script>
+</body>
+</html>
