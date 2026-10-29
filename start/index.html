@@ -465,7 +465,7 @@ footer a:hover { color: var(--text-2); }
           <div class="submit-area">
             <button type="submit" class="btn btn-primary" id="submit-btn">Send it over</button>
             <p class="fineprint">Your contact info is used to reply to this message. We don't send marketing email and we don't share it with anyone.</p>
-            <p class="alt-path">Already sure? The next step is the Quick Scan ($1,000). <a href="https://calendar.app.google/BkcFDB21jWhMwCiq7" rel="noopener">Book the Quick Scan</a>.</p>
+            <p class="alt-path">This form is the fit check. If it's a fit, Ryan follows up to schedule the paid Quick Scan ($1,000).</p>
           </div>
         </form>
 
@@ -481,7 +481,7 @@ footer a:hover { color: var(--text-2); }
         <ol>
           <li>Ryan reads it. Not a form router, not an SDR sequence.</li>
           <li>You get a written reply within one business day: fit or no fit, and why.</li>
-          <li>If it's a fit, the next step is the Quick Scan ($1,000), credited toward a build if you sign within 14 days. The build timeline is quoted after that.</li>
+          <li>If it's a fit, Ryan follows up to schedule the paid Quick Scan ($1,000), credited toward a build if you sign within 14 days. The build timeline is quoted after that.</li>
         </ol>
         <p class="aside-note">Not sure which service this falls under? That's fine, describe the work and we'll map it. The <a href="/ai-consulting/">services overview</a> has the full breakdown if you want to read first.</p>
       </aside>
@@ -536,7 +536,7 @@ function showError(message) {
   el.scrollIntoView({ block: 'center', behavior: 'smooth' });
 }
 
-const FALLBACK = 'Try again in a minute, or <a href="https://calendar.app.google/BkcFDB21jWhMwCiq7" rel="noopener">book the Quick Scan</a> ($1,000) and we will pick it up there.';
+const FALLBACK = 'Try again in a minute.';
 
 function showSent() {
   form.hidden = true;

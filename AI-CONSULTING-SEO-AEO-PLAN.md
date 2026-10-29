@@ -64,7 +64,7 @@ Create the five pages from the keyword map. Shared requirements for **every** se
 - **FAQ section** (4–6 questions from the AEO list) with `FAQPage` JSON-LD.
 - **`Service` JSON-LD** with `provider` → Supergood Solutions Organization, `serviceType`, `areaServed`, and `offers` where a price exists (Quick Scan: $1,000, credited toward a build if you sign within 14 days. Builds from $4,000 per workflow. Run from $900 per month).
 - `BreadcrumbList` JSON-LD.
-- CTA to the Google Calendar booking link (`https://calendar.app.google/BkcFDB21jWhMwCiq7`) and the Quick Scan.
+- CTA to the fit check at `/start/`. If it is a fit, Ryan follows up to schedule the paid Quick Scan.
 - 3–5 contextual links to relevant blog posts, and cross-links between service pages.
 - Unique title (≤60 chars), meta description (≤155 chars), canonical, OG/Twitter tags.
 - 800–1,500 words of real substance each. Reuse the site's voice — no keyword-stuffed sludge. Draw content from existing blog posts (the expertise is already written; the service pages package it).
