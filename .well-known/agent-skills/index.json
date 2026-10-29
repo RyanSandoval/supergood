@@ -1,0 +1,36 @@
+{
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
+  "version": "1.0",
+  "name": "Supergood Solutions",
+  "description": "Supergood is an AI consulting practice that builds production AI agents and automations for marketing and ops teams. These skills read its public instructions, rate card, service pages and blog. Supergood has no API or agent endpoint.",
+  "skills": [
+    {
+      "name": "read-agent-instructions",
+      "description": "Read the llmstxt.org-format index of supergood.solutions: what Supergood is, what it sells, and where its pages live.",
+      "type": "skill-md",
+      "url": "https://supergood.solutions/.well-known/agent-skills/read-agent-instructions.md",
+      "digest": "sha256:07fd00812ab9ab48f6862d17163230d0240a9e35e26cf9abbc8e59e34dcf9167"
+    },
+    {
+      "name": "read-rate-card",
+      "description": "Read Supergood's published rate card: the free fit check, the Quick Scan, per-workflow Builds and the monthly Run retainer.",
+      "type": "skill-md",
+      "url": "https://supergood.solutions/.well-known/agent-skills/read-rate-card.md",
+      "digest": "sha256:9aa9f5dab6c27282583966a4c7cd85c1a7df9d3cba8e9b801dec3e5520271280"
+    },
+    {
+      "name": "read-service-catalog",
+      "description": "Read the full text of every Supergood service page, plus About, Start and FAQ, as one markdown document instead of crawling HTML.",
+      "type": "skill-md",
+      "url": "https://supergood.solutions/.well-known/agent-skills/read-service-catalog.md",
+      "digest": "sha256:54c47ad3983727a2ae919bbee03b6a88e0dfabf7893bdfac6a4ab0dcf3f3a069"
+    },
+    {
+      "name": "search-blog-corpus",
+      "description": "List every Supergood blog post from sitemap.xml, then fetch the posts that match a topic such as AI consulting cost or agent evals.",
+      "type": "skill-md",
+      "url": "https://supergood.solutions/.well-known/agent-skills/search-blog-corpus.md",
+      "digest": "sha256:14f24c32a0755db74f30b011be3d6b2d2123883de04072ee8c1664046e022d88"
+    }
+  ]
+}
