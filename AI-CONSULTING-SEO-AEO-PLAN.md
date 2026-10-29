@@ -35,7 +35,7 @@ Primary money terms (each needs a dedicated page — see Phase 2):
 | `/ai-consulting/` | AI consulting services | AI consultant, AI strategy consulting, hire AI consultant |
 | `/ai-agent-consulting/` | AI agent consulting | agentic AI consulting, AI agent development consultant, production AI agents |
 | `/ai-automation-consulting/` | AI automation consulting | AI workflow automation, business process automation with AI, marketing ops automation |
-| `/ai-readiness-assessment/` | AI readiness assessment | AI audit, AI opportunity assessment, Quick Scan ($500 offer lives here) |
+| `/ai-readiness-assessment/` | AI readiness assessment | AI audit, AI opportunity assessment, Quick Scan ($1,000 offer lives here) |
 | `/ai-agent-governance/` | AI agent governance & guardrails | AI guardrails consulting, agent observability, LLM ops consulting |
 
 AEO question targets (answer these verbatim in FAQ blocks + blog posts): "What does an AI consultant do?", "How much does AI consulting cost?", "What is an AI readiness assessment?", "How do I get AI agents into production?", "Do I need an AI consultant or can I use ChatGPT?", "What are AI agent guardrails?"
@@ -62,7 +62,7 @@ Create the five pages from the keyword map. Shared requirements for **every** se
 - **Answer-first structure (AEO):** open with a 2–3 sentence direct definition/answer under the H1 that could be lifted verbatim into an AI answer. Then the sales content.
 - H1 contains the primary keyword naturally; one H1 per page; H2s phrased as questions where natural ("What does an AI agent consultant actually do?").
 - **FAQ section** (4–6 questions from the AEO list) with `FAQPage` JSON-LD.
-- **`Service` JSON-LD** with `provider` → Supergood Solutions Organization, `serviceType`, `areaServed`, and `offers` where a price exists (Quick Scan: $500 — real prices are AEO gold, answer engines love citable pricing).
+- **`Service` JSON-LD** with `provider` → Supergood Solutions Organization, `serviceType`, `areaServed`, and `offers` where a price exists (Quick Scan: $1,000, credited toward a build if you sign within 14 days. Builds from $4,000 per workflow. Run from $900 per month).
 - `BreadcrumbList` JSON-LD.
 - CTA to the Google Calendar booking link (`https://calendar.app.google/BkcFDB21jWhMwCiq7`) and the Quick Scan.
 - 3–5 contextual links to relevant blog posts, and cross-links between service pages.
