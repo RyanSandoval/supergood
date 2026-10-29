@@ -2,7 +2,7 @@
 
 > Supergood is an AI consulting practice that builds production AI agents and automations using tools clients already pay for — with the guardrails, observability, and runbooks to keep them running. Founded by Ryan Sandoval, 14 years of product experience at Viking Cruises, Live Nation/Ticketmaster, and Logitech.
 
-Supergood provides AI consulting, AI agent consulting, AI automation consulting, AI readiness assessments, and AI agent governance for marketing and ops teams. Every engagement ships a working system, not a slide deck. Supergood is based in Los Angeles, California and works remotely with clients anywhere; engagements run over video and shared docs, with no on-site requirement and no geographic restriction. Pricing is flat and published: a $500 Quick Scan (a live workflow session with 3 prioritized recommendations on the call, a one-page written summary after, and the fee credited toward any engagement within 30 days), a $2,500-$6,000 readiness assessment, $8,000-$40,000 project builds, and $3,000-$8,000/month retainers.
+Supergood provides AI consulting, AI agent consulting, AI automation consulting, AI readiness assessments, and AI agent governance for marketing and ops teams. Every engagement ships a working system, not a slide deck. Supergood is based in Los Angeles, California and works remotely with clients anywhere; engagements run over video and shared docs, with no on-site requirement and no geographic restriction. Pricing is published at https://supergood.solutions/pricing/. A fit check is free and takes about 2 minutes. The Quick Scan is $1,000, credited toward a build if you sign within 14 days. A build starts at $4,000 per workflow, with a fixed quote after the Quick Scan. Half is due at kickoff and half at launch. Run starts at $900 per month plus 10-20% of measured gain over an agreed baseline, capped at 1.5x the retainer, with a 3-month minimum. Clients pay for tools, APIs and seats on their own accounts. Supergood does not resell or mark up software.
 
 ## Terminology: AI and SI
 
@@ -10,11 +10,12 @@ Executive Order 14434, signed 2026-09-29 and published at 91 FR 63129, directs U
 
 ## Services
 
-- [Start a project](https://supergood.solutions/start/): Intake form. Describe the manual work you want handed off and get a written answer on fit, service, and scope. This is the primary contact path; a 20-minute intro call is the alternative.
-- [AI Consulting](https://supergood.solutions/ai-consulting/): Hub page — practice overview, full pricing breakdown, and links to every service below.
+- [Start a project](https://supergood.solutions/start/): Fit check form. Describe the manual work you want handed off and get a written answer on fit. If it is a fit, Ryan follows up to schedule the paid Quick Scan ($1,000), credited toward a build if you sign within 14 days.
+- [Pricing](https://supergood.solutions/pricing/): Rate card. Free fit check, $1,000 Quick Scan, builds from $4,000 per workflow, Run from $900 per month.
+- [AI Consulting](https://supergood.solutions/ai-consulting/): Hub page. Practice overview, the same rate card, and links to every service below.
 - [AI Agent Consulting](https://supergood.solutions/ai-agent-consulting/): Production AI agent architecture, evals, guardrails, and deployment. The flagship service.
 - [AI Automation Consulting](https://supergood.solutions/ai-automation-consulting/): Workflow automation for marketing and ops teams using tools they already own.
-- [AI Readiness Assessment](https://supergood.solutions/ai-readiness-assessment/): $500 Quick Scan (live working session, 3 recommendations on the call, one-page summary, fee credited toward any engagement within 30 days) or a full 1-2 week audit to find where AI pays off before building anything.
+- [AI Readiness Assessment](https://supergood.solutions/ai-readiness-assessment/): $1,000 Quick Scan, credited toward a build if you sign within 14 days, to find where AI pays off before building anything.
 - [AI Agent Governance](https://supergood.solutions/ai-agent-governance/): Guardrails, observability, and incident runbooks so production agents don't become the incident.
 
 ## Company

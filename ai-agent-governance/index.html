@@ -29,13 +29,13 @@
 <meta name="twitter:image" content="https://supergood.solutions/og-image.png">
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Service","name":"AI Agent Governance","serviceType":"AI Agent Governance & Guardrails","description":"Guardrails, observability, and incident-response runbooks for production AI agents — tool allowlists, approval checkpoints, spend limits, and audit logging.","url":"https://supergood.solutions/ai-agent-governance/","provider":{"@type":"ProfessionalService","name":"Supergood Solutions","url":"https://supergood.solutions","founder":{"@type":"Person","name":"Ryan Sandoval","url":"https://linkedin.com/in/RyanSandoval"}},"areaServed":["Worldwide","US"],"offers":[{"@type":"Offer","name":"Governance & Guardrails Implementation","priceSpecification":{"@type":"PriceSpecification","minPrice":"8000","maxPrice":"40000","priceCurrency":"USD"},"description":"Project-based guardrails, observability, and runbook implementation for an existing or in-progress agent"},{"@type":"Offer","name":"Monthly Agent Ops Retainer","priceSpecification":{"@type":"PriceSpecification","minPrice":"3000","maxPrice":"8000","priceCurrency":"USD","unitText":"MONTH"},"description":"Ongoing monitoring, guardrail upkeep, and incident response"}],"isRelatedTo":{"@type":"Service","name":"AI Consulting Services","url":"https://supergood.solutions/ai-consulting/"}}
+{"@context":"https://schema.org","@type":"Service","name":"AI Agent Governance","serviceType":"AI Agent Governance & Guardrails","description":"Guardrails, observability, and incident-response runbooks for production AI agents — tool allowlists, approval checkpoints, spend limits, and audit logging.","url":"https://supergood.solutions/ai-agent-governance/","provider":{"@type":"ProfessionalService","name":"Supergood Solutions","url":"https://supergood.solutions","founder":{"@type":"Person","name":"Ryan Sandoval","url":"https://linkedin.com/in/RyanSandoval"}},"areaServed":["Worldwide","US"],"offers":[{"@type":"Offer","name":"Governance and Guardrails Implementation","priceSpecification":{"@type":"PriceSpecification","minPrice":"4000","priceCurrency":"USD"},"description":"From $4,000 per workflow. Fixed quote after the Quick Scan. Half at kickoff, half at launch."},{"@type":"Offer","name":"Run","priceSpecification":{"@type":"PriceSpecification","minPrice":"900","priceCurrency":"USD","unitText":"MONTH"},"description":"From $900 per month plus 10-20% of measured gain over an agreed baseline, capped at 1.5x the retainer. 3-month minimum."}],"isRelatedTo":{"@type":"Service","name":"AI Consulting Services","url":"https://supergood.solutions/ai-consulting/"}}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://supergood.solutions/"},{"@type":"ListItem","position":2,"name":"AI Consulting","item":"https://supergood.solutions/ai-consulting/"},{"@type":"ListItem","position":3,"name":"AI Agent Governance","item":"https://supergood.solutions/ai-agent-governance/"}]}
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are AI agent guardrails?","acceptedAnswer":{"@type":"Answer","text":"Guardrails are the explicit constraints that keep an autonomous agent's actions inside a safe, reviewable boundary: tool allowlists, strict input/output schema validation, spend and rate limits, human-approval checkpoints for high-risk actions, and logging that lets you reconstruct exactly what the agent did and why. Without them, an agent's mistakes are silent until they're expensive."}},{"@type":"Question","name":"What is agent observability?","acceptedAnswer":{"@type":"Answer","text":"Agent observability is the ability to see what an agent is doing while it's doing it — which tools it called, what it reasoned, where it spent tokens, and where it deviated from the expected path. It's different from evaluation: observability tells you the agent ran, evals tell you whether it ran correctly. Production agents need both."}},{"@type":"Question","name":"Do I need agent governance if I'm just using ChatGPT?","acceptedAnswer":{"@type":"Answer","text":"If you're using ChatGPT as a chat window with a human reading every output before it's used, formal governance is overkill. The moment an AI system takes actions on its own — sends an email, updates a record, calls an internal API — without a human checking every single step, you need guardrails and logging, even if you'd never call it an \"agent.\""}},{"@type":"Question","name":"What's the difference between agent governance and agent evals?","acceptedAnswer":{"@type":"Answer","text":"Evals measure whether an agent produces correct outputs before and after you ship changes — they're a quality gate. Governance is the runtime layer: guardrails, permissions, and monitoring that constrain what the agent can do and catch it when something goes wrong live. You need evals to trust a release and governance to trust production."}},{"@type":"Question","name":"How much does AI agent governance cost?","acceptedAnswer":{"@type":"Answer","text":"Supergood prices guardrails and observability implementation at $8,000-$40,000 project-based, plus a $3,000-$8,000/month retainer for ongoing monitoring and incident response. Governance work is often bundled into an agent build rather than sold separately — ask during a Quick Scan."}},{"@type":"Question","name":"Who owns agent governance — engineering or ops?","acceptedAnswer":{"@type":"Answer","text":"Both, and that's usually where it falls through the cracks. Engineering owns the technical guardrails (schema validation, allowlists, logging infrastructure); ops or the business owner owns the policy decisions (what counts as high-risk, who approves what, what the incident response plan is). Governance fails when one side assumes the other has it covered."}}]}
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are AI agent guardrails?","acceptedAnswer":{"@type":"Answer","text":"Guardrails are the explicit constraints that keep an autonomous agent's actions inside a safe, reviewable boundary: tool allowlists, strict input/output schema validation, spend and rate limits, human-approval checkpoints for high-risk actions, and logging that lets you reconstruct exactly what the agent did and why. Without them, an agent's mistakes are silent until they're expensive."}},{"@type":"Question","name":"What is agent observability?","acceptedAnswer":{"@type":"Answer","text":"Agent observability is the ability to see what an agent is doing while it's doing it — which tools it called, what it reasoned, where it spent tokens, and where it deviated from the expected path. It's different from evaluation: observability tells you the agent ran, evals tell you whether it ran correctly. Production agents need both."}},{"@type":"Question","name":"Do I need agent governance if I'm just using ChatGPT?","acceptedAnswer":{"@type":"Answer","text":"If you're using ChatGPT as a chat window with a human reading every output before it's used, formal governance is overkill. The moment an AI system takes actions on its own — sends an email, updates a record, calls an internal API — without a human checking every single step, you need guardrails and logging, even if you'd never call it an \"agent.\""}},{"@type":"Question","name":"What's the difference between agent governance and agent evals?","acceptedAnswer":{"@type":"Answer","text":"Evals measure whether an agent produces correct outputs before and after you ship changes — they're a quality gate. Governance is the runtime layer: guardrails, permissions, and monitoring that constrain what the agent can do and catch it when something goes wrong live. You need evals to trust a release and governance to trust production."}},{"@type":"Question","name":"How much does AI agent governance cost?","acceptedAnswer":{"@type":"Answer","text":"Builds start at $4,000 per workflow. The quote is fixed after the Quick Scan. Half is due at kickoff and half at launch. Run starts at $900 per month plus 10-20% of measured gain over an agreed baseline, capped at 1.5x the retainer, with a 3-month minimum. You pay for tools, APIs and seats on your own accounts. Governance work is often part of a build."}},{"@type":"Question","name":"Who owns agent governance — engineering or ops?","acceptedAnswer":{"@type":"Answer","text":"Both, and that's usually where it falls through the cracks. Engineering owns the technical guardrails (schema validation, allowlists, logging infrastructure); ops or the business owner owns the policy decisions (what counts as high-risk, who approves what, what the incident response plan is). Governance fails when one side assumes the other has it covered."}}]}
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -163,6 +163,7 @@ footer a:hover { color: var(--text-2); }
     <a href="/" class="wordmark">superg<span class="oo-wrap"><span class="oo-dot"></span><span class="oo-dot"></span></span>d<span class="dot-period">.</span></a>
     <div class="nav-links">
       <a href="/ai-consulting/" class="nav-link">Services</a>
+      <a href="/pricing/" class="nav-link">Pricing</a>
       <a href="/blog/" class="nav-link">Blog</a>
       <a href="/start/" class="cta-nav">Get in touch</a>
     </div>
@@ -177,8 +178,7 @@ footer a:hover { color: var(--text-2); }
     <h1>Guardrails, observability, and runbooks — so your agents don't become the incident.</h1>
     <p class="answer">AI agent governance means putting real constraints and monitoring around autonomous AI systems — tool allowlists, approval checkpoints, spend limits, and incident runbooks — so an agent's mistakes stay small and visible instead of silent and expensive. Supergood builds governance in from day one, not as a bolt-on after the first incident.</p>
     <div class="hero-cta">
-      <a href="/start/" class="btn btn-primary">Tell us what you&rsquo;d hand off</a>
-      <a href="https://calendar.app.google/BkcFDB21jWhMwCiq7" class="btn btn-ghost">Book an intro call</a>
+      <a href="/start/" class="btn btn-primary">Start the fit check</a>
       <a href="#without" class="btn btn-ghost">What breaks without it</a>
     </div>
   </div>
@@ -288,7 +288,7 @@ footer a:hover { color: var(--text-2); }
         </div>
         <div class="faq-item">
           <h3>How much does this cost?</h3>
-          <p>$8,000–$40,000 project-based for guardrails and observability implementation, plus a $3,000–$8,000/month retainer for ongoing monitoring. Often bundled into an agent build rather than sold standalone.</p>
+          <p>Builds start at $4,000 per workflow. Run starts at $900 per month plus 10-20% of measured gain over an agreed baseline, capped at 1.5x the retainer, with a 3-month minimum. Governance work is often part of a build. See the <a href="/pricing/" style="color:var(--green)">rate card</a>.</p>
         </div>
         <div class="faq-item">
           <h3>Who owns agent governance — engineering or ops?</h3>
@@ -330,9 +330,8 @@ footer a:hover { color: var(--text-2); }
   <div class="container">
     <div class="section-label reveal">Let's talk</div>
     <h2 class="reveal">Get ahead of the incident, not behind it.</h2>
-    <p class="reveal">Bring the agent you're worried about, or the one you haven't built yet because you're worried about it. Describe it and you get a written read back on what to put around it.</p>
-    <a href="/start/" class="btn btn-primary reveal">Tell us what you&rsquo;d hand off</a>
-    <a href="https://calendar.app.google/BkcFDB21jWhMwCiq7" class="btn btn-ghost reveal" style="margin-left:12px;">Book an intro call</a>
+    <p class="reveal">The fit check comes first. Describe the agent you're worried about, or the one you haven't built yet, and you get a written answer on fit. If it's a fit, Ryan follows up to schedule the paid Quick Scan.</p>
+    <a href="/start/" class="btn btn-primary reveal">Start the fit check</a>
     <div class="related-services reveal">
       <a href="/ai-consulting/">← All services</a>
       <a href="/ai-agent-consulting/">AI Agent Consulting</a>
@@ -345,7 +344,7 @@ footer a:hover { color: var(--text-2); }
 <footer>
   <div class="container">
     <p>© 2026 superg●●d.</p>
-    <p><a href="/about/">About</a> · <a href="/faq/">FAQ</a> · <a href="/blog/">Blog</a></p>
+    <p><a href="/about/">About</a> · <a href="/pricing/">Pricing</a> · <a href="/faq/">FAQ</a> · <a href="/blog/">Blog</a></p>
   </div>
 </footer>
 

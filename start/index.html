@@ -361,8 +361,9 @@ footer a:hover { color: var(--text-2); }
 <nav id="nav">
   <div class="container">
     <a href="/" class="wordmark">superg<span class="oo-wrap"><span class="oo-dot"></span><span class="oo-dot"></span></span>d<span class="dot-period">.</span></a>
-    <div style="display:flex;align-items:center;gap:24px;">
+    <div style="display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:12px 24px;">
       <a href="/ai-consulting/" style="font-size:0.875rem;color:var(--text-3);text-decoration:none;">Services</a>
+      <a href="/pricing/" style="font-size:0.875rem;color:var(--text-3);text-decoration:none;">Pricing</a>
       <a href="/blog/" style="font-size:0.875rem;color:var(--text-3);text-decoration:none;">Blog</a>
       <a href="/start/" class="cta-nav">Get in touch</a>
     </div>
@@ -454,17 +455,17 @@ footer a:hover { color: var(--text-2); }
             <label for="budget">Budget range <span class="hint">Optional. A rough number keeps us from pitching the wrong size of thing.</span></label>
             <select id="budget" name="budget">
               <option value="">Rather not say yet</option>
-              <option value="Under $5k">Under $5k</option>
-              <option value="$5k-15k">$5k-15k</option>
-              <option value="$15k+">$15k+</option>
-              <option value="Need help sizing it">Need help sizing it</option>
+              <option value="Under $4k (Quick Scan only)">Under $4k (Quick Scan only)</option>
+              <option value="$4k-$10k (one workflow)">$4k-$10k (one workflow)</option>
+              <option value="$10k+ (multiple workflows)">$10k+ (multiple workflows)</option>
+              <option value="Not sure yet">Not sure yet</option>
             </select>
           </div>
 
           <div class="submit-area">
             <button type="submit" class="btn btn-primary" id="submit-btn">Send it over</button>
             <p class="fineprint">Your contact info is used to reply to this message. We don't send marketing email and we don't share it with anyone.</p>
-            <p class="alt-path">Rather just talk? <a href="https://calendar.app.google/BkcFDB21jWhMwCiq7" rel="noopener">Book 20 minutes</a> instead.</p>
+            <p class="alt-path">This form is the fit check. If it's a fit, Ryan follows up to schedule the paid Quick Scan ($1,000).</p>
           </div>
         </form>
 
@@ -480,7 +481,7 @@ footer a:hover { color: var(--text-2); }
         <ol>
           <li>Ryan reads it. Not a form router, not an SDR sequence.</li>
           <li>You get a written reply within one business day: fit or no fit, and why.</li>
-          <li>If it's a fit, we book 20 minutes to size it. Pricing is published, so there's no mystery number waiting at the end.</li>
+          <li>If it's a fit, Ryan follows up to schedule the paid Quick Scan ($1,000), credited toward a build if you sign within 14 days. The build timeline is quoted after that.</li>
         </ol>
         <p class="aside-note">Not sure which service this falls under? That's fine, describe the work and we'll map it. The <a href="/ai-consulting/">services overview</a> has the full breakdown if you want to read first.</p>
       </aside>
@@ -493,7 +494,7 @@ footer a:hover { color: var(--text-2); }
 <footer>
   <div class="container">
     <p>© 2026 superg●●d.</p>
-    <p><a href="/about/">About</a> · <a href="/faq/">FAQ</a> · <a href="/ai-consulting/">Services</a> · <a href="/blog/">Blog</a></p>
+    <p><a href="/about/">About</a> · <a href="/pricing/">Pricing</a> · <a href="/faq/">FAQ</a> · <a href="/ai-consulting/">Services</a> · <a href="/blog/">Blog</a></p>
   </div>
 </footer>
 
@@ -535,7 +536,7 @@ function showError(message) {
   el.scrollIntoView({ block: 'center', behavior: 'smooth' });
 }
 
-const FALLBACK = 'Try again in a minute, or <a href="https://calendar.app.google/BkcFDB21jWhMwCiq7" rel="noopener">book 20 minutes</a> and we\'ll pick it up on the call.';
+const FALLBACK = 'Try again in a minute.';
 
 function showSent() {
   form.hidden = true;

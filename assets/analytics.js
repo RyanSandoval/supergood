@@ -7,8 +7,8 @@
 // the ones tied to *this* site's actual conversion path.
 //
 // Events emitted here:
-//   book_call_click   — click on the Google Calendar booking link (primary
-//                       conversion; mark as a key event in GA4)
+//   fit_check_click   — click through to the fit check form at /start/
+//                       (primary conversion; mark as a key event in GA4)
 //   cta_click         — click on a service-page link inside a post's CTA card
 //   newsletter_submit — subscribe form submitted and passed client validation
 //   generate_lead     — subscribe form actually accepted by the webhook
@@ -61,8 +61,8 @@
 
       var href = a.getAttribute('href') || '';
 
-      if (href.indexOf('calendar.app.google') !== -1) {
-        gtag('event', 'book_call_click', withBase({ link_url: href }));
+      if (href === '/start/' || href.indexOf('/start/') === 0) {
+        gtag('event', 'fit_check_click', withBase({ link_url: href, link_text: (a.textContent || '').trim().slice(0, 100) }));
         return;
       }
 
