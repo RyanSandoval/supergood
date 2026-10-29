@@ -177,6 +177,8 @@ The fit check comes first. Describe the work you'd hand off and you get a writte
 
 [Start the fit check](https://supergood.solutions/start/)
 
+[API docs for agents](https://supergood.solutions/developers/)
+
 ### The paid Quick Scan
 
 A live working session on your actual workflows: 3 prioritized recommendations on the call, plus a one-page summary in your inbox the next business day, written to be forwarded to your boss. Think of it as a doctor's visit for your ops, except we won't make you wait 45 minutes in a paper gown.

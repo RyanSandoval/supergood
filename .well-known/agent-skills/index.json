@@ -2,21 +2,35 @@
   "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
   "version": "1.0",
   "name": "Supergood Solutions",
-  "description": "Supergood is an AI consulting practice that builds production AI agents and automations for marketing and ops teams. These skills read its public instructions, rate card, service pages and blog. Supergood has no API or agent endpoint.",
+  "description": "When to use these skills: read Supergood's rate card, service list, and blog, or send one fit check. Public reads and the fit-check POST need no key. No MCP server is hosted here.",
   "skills": [
+    {
+      "name": "supergood",
+      "description": "When to use Supergood's public files, and how an agent should call the rate card, the service list, and the fit check.",
+      "type": "skill-md",
+      "url": "https://supergood.solutions/.well-known/agent-skills/SKILL.md",
+      "digest": "sha256:367c98de953005df408f534fd2eebb2d4d0f3feb564335909fbcb6a426f0c555"
+    },
+    {
+      "name": "submit-fit-check",
+      "description": "When to use the fit check, and the POST that emails one inquiry to Ryan.",
+      "type": "skill-md",
+      "url": "https://supergood.solutions/.well-known/agent-skills/submit-fit-check.md",
+      "digest": "sha256:109a25e24eb38c03f663944f527befa8f61180d9b1f8860e9a446259f0b32e12"
+    },
     {
       "name": "read-agent-instructions",
       "description": "Read the llmstxt.org-format index of supergood.solutions: what Supergood is, what it sells, and where its pages live.",
       "type": "skill-md",
       "url": "https://supergood.solutions/.well-known/agent-skills/read-agent-instructions.md",
-      "digest": "sha256:07fd00812ab9ab48f6862d17163230d0240a9e35e26cf9abbc8e59e34dcf9167"
+      "digest": "sha256:cc498992172c8b4b66fa2e6394291b1607a28b855b018b4eaf7616dcc5973dfb"
     },
     {
       "name": "read-rate-card",
       "description": "Read Supergood's published rate card: the free fit check, the Quick Scan, per-workflow Builds and the monthly Run retainer.",
       "type": "skill-md",
       "url": "https://supergood.solutions/.well-known/agent-skills/read-rate-card.md",
-      "digest": "sha256:9aa9f5dab6c27282583966a4c7cd85c1a7df9d3cba8e9b801dec3e5520271280"
+      "digest": "sha256:2a5c038d47496f43638cb3500fb9cabb0460e3bb3a1ba288d8e18f864d61b9ec"
     },
     {
       "name": "read-service-catalog",

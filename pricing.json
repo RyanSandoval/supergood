@@ -1,0 +1,45 @@
+{
+  "provider": "Supergood Solutions",
+  "url": "https://supergood.solutions/pricing/",
+  "currency": "USD",
+  "updated": "2026-10-29",
+  "offers": [
+    {
+      "id": "fit-check",
+      "name": "Fit check",
+      "price": 0,
+      "unit": "one-time",
+      "summary": "Free. About 2 minutes. Describe the work and get a written answer on fit. If it is a fit, Ryan follows up to schedule the paid Quick Scan.",
+      "url": "https://supergood.solutions/start/"
+    },
+    {
+      "id": "quick-scan",
+      "name": "Quick Scan",
+      "price": 1000,
+      "unit": "one-time",
+      "summary": "Scheduled after a fit. Credited toward a build if you sign within 14 days.",
+      "creditedTowardBuildIfSignedWithinDays": 14
+    },
+    {
+      "id": "build",
+      "name": "Build",
+      "priceFrom": 4000,
+      "unit": "workflow",
+      "summary": "Per workflow. Fixed quote after the Quick Scan. Half due at kickoff and half at launch."
+    },
+    {
+      "id": "run",
+      "name": "Run",
+      "priceFrom": 900,
+      "unit": "month",
+      "summary": "Plus 10-20% of measured gain over an agreed baseline, capped at 1.5x the retainer. 3-month minimum.",
+      "gainSharePercent": {
+        "min": 10,
+        "max": 20
+      },
+      "gainShareCapMultiple": 1.5,
+      "minimumMonths": 3
+    }
+  ],
+  "tooling": "Clients pay for tools, APIs and seats on their own accounts. Supergood does not resell or mark up software."
+}

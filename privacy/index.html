@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy | Supergood Solutions</title>
+<meta name="description" content="What the Supergood fit-check form sends, where that note goes, and the one analytics tag on the site.">
+<meta name="author" content="Ryan Sandoval">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0a0a0b">
+<link rel="canonical" href="https://supergood.solutions/privacy/">
+<link rel="alternate" href="/privacy/index.md" type="text/markdown">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Privacy | Supergood Solutions">
+<meta property="og:description" content="What the fit-check form sends and where that note goes.">
+<meta property="og:url" content="https://supergood.solutions/privacy/">
+<meta property="og:site_name" content="Supergood Solutions">
+<meta property="og:image" content="https://supergood.solutions/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Privacy | Supergood Solutions">
+<meta name="twitter:description" content="What the fit-check form sends and where that note goes.">
+<meta name="twitter:image" content="https://supergood.solutions/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "url": "https://supergood.solutions/privacy/",
+  "name": "Privacy",
+  "description": "What the fit-check form sends, where that note goes, and the analytics tag on supergood.solutions.",
+  "dateModified": "2026-10-29",
+  "isPartOf": { "@id": "https://supergood.solutions/#website" },
+  "about": { "@id": "https://supergood.solutions/#organization" }
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #0a0a0b; --border: #27272a;
+  --text: #fafafa; --text-2: #a1a1aa; --text-3: #8c8c96;
+  --green: #22c55e; --mono: 'JetBrains Mono', monospace;
+}
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; background: rgba(10,10,11,0.9); border-bottom: 1px solid var(--border); }
+nav .bar { max-width: 1100px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.wordmark { font-weight: 800; font-size: 1.125rem; letter-spacing: -0.03em; color: var(--text); text-decoration: none; display: inline-flex; align-items: baseline; }
+.wordmark .oo-wrap { display: inline-flex; gap: 2px; align-items: center; }
+.wordmark .oo-dot { display: inline-block; width: 0.45em; height: 0.45em; background: var(--green); border-radius: 50%; }
+.wordmark .dot-period { color: var(--green); }
+nav a.back { font-size: 0.875rem; color: var(--text-3); text-decoration: none; }
+main { padding: 140px 0 80px; }
+.kicker { font-family: var(--mono); font-size: 0.75rem; color: var(--green); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 16px; }
+h1 { font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; }
+h2 { font-size: 1.35rem; font-weight: 700; letter-spacing: -0.02em; margin: 36px 0 12px; }
+p { color: var(--text-2); margin-top: 12px; }
+a { color: var(--text); }
+code { font-family: var(--mono); font-size: 0.84rem; color: var(--text); }
+footer { border-top: 1px solid var(--border); padding: 32px 0; }
+footer p { font-size: 0.8125rem; color: var(--text-3); margin-top: 8px; }
+footer a { color: var(--text-3); text-decoration: none; }
+footer a:hover { color: var(--text-2); }
+</style>
+</head>
+<body>
+<nav>
+  <div class="bar">
+    <a href="/" class="wordmark">superg<span class="oo-wrap"><span class="oo-dot"></span><span class="oo-dot"></span></span>d<span class="dot-period">.</span></a>
+    <a href="/start/" class="back">Fit check</a>
+  </div>
+</nav>
+<main>
+  <article class="container">
+    <p class="kicker">Privacy</p>
+    <h1>Privacy</h1>
+    <p>Supergood Solutions is Ryan Sandoval's consulting practice in Los Angeles. This page says what the site collects and what happens to it.</p>
+
+    <h2>The fit check</h2>
+    <p>The form at <a href="/start/">/start/</a> asks for a name, a work email, and a description of the work you would hand off. Company, role, where the work sits today, how many people touch it, timeline, and budget are optional.</p>
+    <p>The page also sends how many milliseconds passed since you focused a field, and a source string (<code>supergood.solutions/start</code> from the form, <code>supergood.solutions/webmcp</code> from the in-page tool). A hidden field named <code>company</code> is a honeypot. Leave it empty. The employer name, if you give one, is <code>companyName</code>.</p>
+    <p>The browser posts that JSON to <code>https://supergood-intake.vercel.app/api/intake</code>. The function emails the note to Ryan through Resend. Resend carries that one message. The note is not added to a newsletter list, and it is not sold.</p>
+
+    <h2>Analytics</h2>
+    <p>Pages load Google Analytics, measurement id <code>G-JLBDSQ3B4P</code>. That is the only analytics tag. The static pages do not run an account system of their own.</p>
+
+    <h2>Accounts and payment</h2>
+    <p>The site has no accounts and no payment form. The rate card is public. Paying for a Quick Scan or a build happens after Ryan replies, off this domain.</p>
+
+    <h2>A note you already sent</h2>
+    <p>Email <a href="mailto:ryan@supergood.solutions">ryan@supergood.solutions</a> and say what you want done with it. He reads those. There is no login on this site that deletes a row, because the note lives in his inbox, not in a customer database on this domain.</p>
+    <p>Los Angeles, California. Last updated 2026-10-29.</p>
+  </article>
+</main>
+<footer>
+  <div class="container">
+    <p><a href="/about/">About</a> · <a href="/pricing/">Pricing</a> · <a href="/faq/">FAQ</a> · <a href="/ai-consulting/">Services</a> · <a href="/blog/">Blog</a> · <a href="/developers/">Developers</a> · <a href="/privacy/">Privacy</a></p>
+  </div>
+</footer>
+</body>
+</html>

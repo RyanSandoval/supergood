@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Supergood API and developer docs | Supergood Solutions</title>
+<meta name="description" content="How an agent reads pricing.json and services.json, and how it POSTs one fit check to Supergood. No API key.">
+<meta name="author" content="Ryan Sandoval">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0a0a0b">
+<link rel="canonical" href="https://supergood.solutions/developers/">
+<link rel="alternate" href="/developers/index.md" type="text/markdown">
+<link rel="service-desc" href="/openapi.json" type="application/openapi+json">
+<link rel="describedby" href="/auth.md" type="text/markdown">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Supergood API and developer docs | Supergood Solutions">
+<meta property="og:description" content="Public reads and the fit-check POST. No API key.">
+<meta property="og:url" content="https://supergood.solutions/developers/">
+<meta property="og:site_name" content="Supergood Solutions">
+<meta property="og:image" content="https://supergood.solutions/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Supergood API and developer docs | Supergood Solutions">
+<meta name="twitter:description" content="Public reads and the fit-check POST. No API key.">
+<meta name="twitter:image" content="https://supergood.solutions/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebAPI",
+      "name": "Supergood Solutions public API",
+      "description": "GET pricing.json and services.json on supergood.solutions, and POST a fit check to supergood-intake.vercel.app. No authentication.",
+      "documentation": "https://supergood.solutions/developers/",
+      "url": "https://supergood.solutions/openapi.json",
+      "provider": { "@id": "https://supergood.solutions/#organization" }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://supergood.solutions/developers/#webpage",
+      "url": "https://supergood.solutions/developers/",
+      "name": "Supergood API and developer docs",
+      "description": "How to call the public reads and the fit-check POST.",
+      "isPartOf": { "@id": "https://supergood.solutions/#website" },
+      "about": { "@id": "https://supergood.solutions/#organization" },
+      "dateModified": "2026-10-29"
+    }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #0a0a0b; --surface: #111113; --border: #27272a;
+  --text: #fafafa; --text-2: #a1a1aa; --text-3: #8c8c96;
+  --green: #22c55e; --mono: 'JetBrains Mono', monospace;
+}
+html { font-size: 16px; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; background: rgba(10,10,11,0.9); border-bottom: 1px solid var(--border); }
+nav .bar { max-width: 1100px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.wordmark { font-weight: 800; font-size: 1.125rem; letter-spacing: -0.03em; color: var(--text); text-decoration: none; display: inline-flex; align-items: baseline; }
+.wordmark .oo-wrap { display: inline-flex; gap: 2px; align-items: center; }
+.wordmark .oo-dot { display: inline-block; width: 0.45em; height: 0.45em; background: var(--green); border-radius: 50%; }
+.wordmark .dot-period { color: var(--green); }
+nav a.back { font-size: 0.875rem; color: var(--text-3); text-decoration: none; }
+nav a.back:hover { color: var(--text); }
+main { padding: 140px 0 80px; }
+.kicker { font-family: var(--mono); font-size: 0.75rem; color: var(--green); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 16px; }
+h1 { font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; }
+h2 { font-size: 1.35rem; font-weight: 700; letter-spacing: -0.02em; margin: 40px 0 12px; }
+p, li { color: var(--text-2); }
+p { margin-top: 12px; }
+ul, ol { margin: 12px 0 0 1.2rem; }
+li { margin: 6px 0; }
+a { color: var(--text); }
+code, pre { font-family: var(--mono); font-size: 0.84rem; }
+code { color: var(--text); }
+pre { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 16px; overflow-x: auto; margin-top: 16px; color: var(--text); }
+table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 0.92rem; }
+th, td { text-align: left; vertical-align: top; border-bottom: 1px solid var(--border); padding: 10px 8px; }
+th { color: var(--text-3); font-weight: 600; font-size: 0.75rem; letter-spacing: 0.04em; text-transform: uppercase; }
+td { color: var(--text-2); }
+footer { border-top: 1px solid var(--border); padding: 32px 0; }
+footer p { font-size: 0.8125rem; color: var(--text-3); margin-top: 8px; }
+footer a { color: var(--text-3); text-decoration: none; }
+footer a:hover { color: var(--text-2); }
+</style>
+</head>
+<body>
+<nav>
+  <div class="bar">
+    <a href="/" class="wordmark">superg<span class="oo-wrap"><span class="oo-dot"></span><span class="oo-dot"></span></span>d<span class="dot-period">.</span></a>
+    <a href="/start/" class="back">Fit check</a>
+  </div>
+</nav>
+<main>
+  <article class="container">
+    <p class="kicker">Developers</p>
+    <h1>Supergood API</h1>
+    <p>Supergood's site is static files on GitHub Pages. Two read endpoints live on that host. The fit-check form posts to a separate host. None of these calls need a key, a token, or an account. <a href="/auth.md">auth.md</a> says the same thing in the short form agents look for.</p>
+    <p>The contract is <a href="/openapi.json">openapi.json</a> (OpenAPI 3.1.0, version 1.0.0).</p>
+
+    <h2>Reads</h2>
+    <p><code>GET https://supergood.solutions/pricing.json</code></p>
+    <p>Returns the rate card as JSON. The fit check is free. The Quick Scan is $1,000, credited toward a build if you sign within 14 days. A build starts at $4,000 per workflow. Run starts at $900 per month plus 10-20% of measured gain over an agreed baseline, capped at 1.5x the retainer, with a 3-month minimum. Same numbers as the <a href="/pricing/">pricing page</a>.</p>
+    <p><code>GET https://supergood.solutions/services.json</code></p>
+    <p>Returns the five service pages and a one-line summary of each.</p>
+    <p>Both documents are the full list. They are not paged. A GET has no side effects.</p>
+    <pre><code>curl -sS https://supergood.solutions/pricing.json
+curl -sS https://supergood.solutions/services.json</code></pre>
+
+    <h2>Fit check</h2>
+    <p><code>POST https://supergood-intake.vercel.app/api/intake</code></p>
+    <p><code>Content-Type: application/json</code></p>
+    <p>This sends a real note to Ryan. One inquiry per person. A second POST with the same details can send a second email. There is no idempotency key and no published rate limit.</p>
+    <p>Required strings: <code>name</code>, <code>email</code>, <code>handoff</code>.</p>
+    <p>Optional: <code>companyName</code>, <code>role</code>, <code>currentState</code>, <code>teamSize</code>, <code>timeline</code>, <code>budget</code>, <code>source</code>, <code>elapsedMs</code>.</p>
+    <p>Send <code>company</code> as <code>""</code>. That field is a honeypot on the form. The employer's name goes in <code>companyName</code>.</p>
+    <p>The page at <a href="/start/">/start/</a> waits 3 seconds after the first field is focused before it will submit. Checked on 2026-10-29, the function returned 200 for a body whose <code>elapsedMs</code> was 1. Treat <code>elapsedMs</code> as the page's timer, not as a server lock.</p>
+    <p>Browser pages on <code>https://supergood.solutions</code> can call this URL. A request from another origin is not given <code>Access-Control-Allow-Origin</code>.</p>
+    <p>The in-page tool <code>submit_fit_check</code> (WebMCP, <code>document.modelContext.registerTool</code> in <a href="/assets/agent-tools.js">/assets/agent-tools.js</a>) waits 3 seconds and posts once. It is registered on the homepage, the fit-check page, and this page.</p>
+    <pre><code>curl -sS -X POST https://supergood-intake.vercel.app/api/intake \
+  -H 'Content-Type: application/json' \
+  -d '{"name":"Ada Lovelace","email":"ada@example.com","company":"","handoff":"A Monday report rebuilt from three spreadsheets.","source":"docs-example","elapsedMs":3000}'</code></pre>
+    <p>That command creates a real inquiry. Do not run it as a test.</p>
+
+    <h2>Errors</h2>
+    <p>The intake function returns JSON.</p>
+    <table>
+      <thead>
+        <tr><th>Status</th><th>Body</th><th>What to do</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>200</td><td><code>{"ok":true}</code></td><td>Ryan has the note.</td></tr>
+        <tr><td>400</td><td><code>{"ok":false,"error":"required"}</code></td><td>Send name, email, and handoff as non-empty strings.</td></tr>
+        <tr><td>400</td><td><code>{"ok":false,"error":"email"}</code></td><td>Send a complete email address, then one more POST.</td></tr>
+        <tr><td>405</td><td><code>{"ok":false,"error":"method"}</code></td><td>Use POST. A GET on this URL returns this body.</td></tr>
+      </tbody>
+    </table>
+    <p>The body has a code and no separate message field. Those three codes are the vocabulary observed on 2026-10-29.</p>
+    <p>A missing path on supergood.solutions returns the HTML 404 page. GitHub Pages does not return JSON for that.</p>
+
+    <h2>Versioning</h2>
+    <p>Version 1.0.0 is the document at <a href="/openapi.json">/openapi.json</a>. <code>pricing.json</code> and <code>services.json</code> are unpaged. If a change would break a caller, the old path stays and a new path is added. This page will say so. GitHub Pages cannot send a Sunset or Deprecation header.</p>
+
+    <h2>What this host cannot do</h2>
+    <p>No MCP server. Streamable HTTP needs a process this static repo does not run. The intake function lives in a separate project and is the place to add one. Until that exists, do not look for <code>/.well-known/mcp/server-card.json</code>.</p>
+    <p>No OAuth server and no API keys. Publishing an authorization-server document would point at endpoints that are not there.</p>
+    <p>GitHub Pages does not let this repo set response headers. <a href="/.well-known/api-catalog">/.well-known/api-catalog</a> is the RFC 9727 linkset, but the response will not carry <code>Content-Type: application/linkset+json</code>. There is also no HTTP Link header for the sitemap, the markdown twin, or the API catalog. The same URLs are linked from <a href="/robots.txt">robots.txt</a>, <a href="/sitemap.xml">sitemap.xml</a>, <a href="/llms.txt">llms.txt</a>, and the head of the homepage.</p>
+
+    <h2>Where to look</h2>
+    <ul>
+      <li><a href="/openapi.json">OpenAPI</a></li>
+      <li><a href="/auth.md">auth.md</a></li>
+      <li><a href="/.well-known/api-catalog">API catalog</a></li>
+      <li><a href="/.well-known/agent-card.json">Agent card</a></li>
+      <li><a href="/.well-known/agents.json">Agents index</a></li>
+      <li><a href="/.well-known/agent-skills/index.json">Skills index</a></li>
+      <li><a href="/.well-known/agent-skills/SKILL.md">SKILL.md</a></li>
+      <li><a href="/start/">Fit-check form</a></li>
+    </ul>
+  </article>
+</main>
+<footer>
+  <div class="container">
+    <p><a href="/about/">About</a> · <a href="/pricing/">Pricing</a> · <a href="/faq/">FAQ</a> · <a href="/ai-consulting/">Services</a> · <a href="/blog/">Blog</a> · <a href="/developers/">Developers</a> · <a href="/privacy/">Privacy</a></p>
+    <p>Los Angeles, CA · working remotely with clients anywhere</p>
+  </div>
+</footer>
+<script src="/assets/agent-tools.js"></script>
+</body>
+</html>

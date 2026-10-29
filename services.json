@@ -1,0 +1,37 @@
+{
+  "provider": "Supergood Solutions",
+  "url": "https://supergood.solutions/ai-consulting/",
+  "updated": "2026-10-29",
+  "services": [
+    {
+      "id": "ai-consulting",
+      "name": "AI Consulting",
+      "url": "https://supergood.solutions/ai-consulting/",
+      "summary": "Hub page. Practice overview, the rate card, and links to every service."
+    },
+    {
+      "id": "ai-agent-consulting",
+      "name": "AI Agent Consulting",
+      "url": "https://supergood.solutions/ai-agent-consulting/",
+      "summary": "Production AI agent architecture, evals, guardrails, and deployment."
+    },
+    {
+      "id": "ai-automation-consulting",
+      "name": "AI Automation Consulting",
+      "url": "https://supergood.solutions/ai-automation-consulting/",
+      "summary": "Workflow automation for marketing and ops teams using tools they already own."
+    },
+    {
+      "id": "ai-readiness-assessment",
+      "name": "AI Readiness Assessment",
+      "url": "https://supergood.solutions/ai-readiness-assessment/",
+      "summary": "$1,000 Quick Scan, credited toward a build if you sign within 14 days, to find where AI pays off before building anything."
+    },
+    {
+      "id": "ai-agent-governance",
+      "name": "AI Agent Governance",
+      "url": "https://supergood.solutions/ai-agent-governance/",
+      "summary": "Guardrails, observability, and incident runbooks for agents that already run in production."
+    }
+  ]
+}

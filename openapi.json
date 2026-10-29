@@ -1,0 +1,267 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Supergood Solutions public API",
+    "version": "1.0.0",
+    "summary": "Public reads of the rate card and service list, and the fit-check POST.",
+    "description": "Two GET documents are static files on https://supergood.solutions. The fit check is POST https://supergood-intake.vercel.app/api/intake. No API key, bearer token, or account is required. See https://supergood.solutions/auth.md.\n\nVersion 1.0.0 is the current contract. pricing.json and services.json are the full list in one response and are not paged. A breaking change keeps the old path and adds a new one. This host cannot send a Sunset or Deprecation header (GitHub Pages). The developers page records the change: https://supergood.solutions/developers/.\n\nThe intake POST is not idempotent. A retry can email Ryan twice. There is no Idempotency-Key support and no published rate limit.",
+    "contact": {
+      "name": "Ryan Sandoval",
+      "url": "https://supergood.solutions/start/",
+      "email": "ryan@supergood.solutions"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://supergood.solutions",
+      "description": "Static reads served by GitHub Pages."
+    }
+  ],
+  "tags": [
+    {"name": "reads", "description": "Side-effect free JSON documents."},
+    {"name": "intake", "description": "Fit-check submission. Each accepted POST emails Ryan."}
+  ],
+  "paths": {
+    "/pricing.json": {
+      "get": {
+        "operationId": "getPricing",
+        "tags": ["reads"],
+        "summary": "Read the published rate card.",
+        "description": "Returns the same offers as https://supergood.solutions/pricing/ in one JSON document. No query parameters. Not paged. Safe to call. No auth.",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "The full rate card.",
+            "content": {
+              "application/json": {
+                "schema": {"$ref": "#/components/schemas/PricingDocument"}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/services.json": {
+      "get": {
+        "operationId": "getServices",
+        "tags": ["reads"],
+        "summary": "Read the published service list.",
+        "description": "Returns the five public services in one JSON document. No query parameters. Not paged. Safe to call. No auth.",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "The full service list.",
+            "content": {
+              "application/json": {
+                "schema": {"$ref": "#/components/schemas/ServicesDocument"}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/intake": {
+      "servers": [
+        {
+          "url": "https://supergood-intake.vercel.app",
+          "description": "Fit-check function. Separate project from this static site."
+        }
+      ],
+      "post": {
+        "operationId": "submitFitCheck",
+        "tags": ["intake"],
+        "summary": "Submit one fit-check inquiry.",
+        "description": "Emails the inquiry to Ryan Sandoval. Send one request per person. A repeat POST sends another email. No auth. Browser pages on https://supergood.solutions receive Access-Control-Allow-Origin for this URL. The form at /start/ will not submit until 3 seconds after the first field focus. On 2026-10-29 the function returned 200 for elapsedMs of 1, so do not treat elapsedMs as a server-side lock. Leave company as an empty string. Put the employer in companyName.",
+        "security": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {"$ref": "#/components/schemas/FitCheckRequest"},
+              "example": {
+                "name": "Ada Lovelace",
+                "email": "ada@example.com",
+                "company": "",
+                "companyName": "Example Co",
+                "role": "Ops lead",
+                "handoff": "A Monday report rebuilt by hand from three spreadsheets.",
+                "currentState": "Entirely manual",
+                "teamSize": "2-5",
+                "timeline": "Next quarter",
+                "budget": "$4k-$10k (one workflow)",
+                "source": "supergood.solutions/start",
+                "elapsedMs": 3000
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The inquiry was accepted. Ryan reads it and replies.",
+            "content": {
+              "application/json": {
+                "schema": {"$ref": "#/components/schemas/FitCheckAccepted"}
+              }
+            }
+          },
+          "400": {
+            "description": "The body was rejected. error is required when name, email, or handoff is missing or not a string. Send all three as non-empty strings. error is email when the address is not a complete name@domain form. Fix the address and send once.",
+            "content": {
+              "application/json": {
+                "schema": {"$ref": "#/components/schemas/FitCheckError"},
+                "examples": {
+                  "required": {
+                    "summary": "Missing required field",
+                    "value": {"ok": false, "error": "required"}
+                  },
+                  "email": {
+                    "summary": "Email did not parse",
+                    "value": {"ok": false, "error": "email"}
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "The method was not POST. Send POST with Content-Type application/json. A GET to this URL returns this error.",
+            "content": {
+              "application/json": {
+                "schema": {"$ref": "#/components/schemas/FitCheckError"},
+                "example": {"ok": false, "error": "method"}
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "PricingDocument": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["provider", "url", "currency", "updated", "offers", "tooling"],
+        "properties": {
+          "provider": {"type": "string"},
+          "url": {"type": "string", "format": "uri"},
+          "currency": {"type": "string", "description": "ISO 4217 currency code for the numeric prices."},
+          "updated": {"type": "string", "description": "Calendar date the document was last edited, YYYY-MM-DD."},
+          "offers": {
+            "type": "array",
+            "items": {"$ref": "#/components/schemas/Offer"}
+          },
+          "tooling": {"type": "string"}
+        }
+      },
+      "Offer": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "unit", "summary"],
+        "properties": {
+          "id": {"type": "string"},
+          "name": {"type": "string"},
+          "price": {"type": "number", "description": "Fixed price in currency. Present when the offer has a single price."},
+          "priceFrom": {"type": "number", "description": "Lowest published price in currency. The quoted price can be higher."},
+          "unit": {"type": "string"},
+          "summary": {"type": "string"},
+          "url": {"type": "string", "format": "uri"},
+          "creditedTowardBuildIfSignedWithinDays": {"type": "integer"},
+          "gainSharePercent": {"$ref": "#/components/schemas/Range"},
+          "gainShareCapMultiple": {"type": "number"},
+          "minimumMonths": {"type": "integer"}
+        }
+      },
+      "Range": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["min", "max"],
+        "properties": {
+          "min": {"type": "number"},
+          "max": {"type": "number"}
+        }
+      },
+      "ServicesDocument": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["provider", "url", "updated", "services"],
+        "properties": {
+          "provider": {"type": "string"},
+          "url": {"type": "string", "format": "uri"},
+          "updated": {"type": "string"},
+          "services": {
+            "type": "array",
+            "items": {"$ref": "#/components/schemas/Service"}
+          }
+        }
+      },
+      "Service": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "url", "summary"],
+        "properties": {
+          "id": {"type": "string"},
+          "name": {"type": "string"},
+          "url": {"type": "string", "format": "uri"},
+          "summary": {"type": "string"}
+        }
+      },
+      "FitCheckRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "email", "handoff"],
+        "properties": {
+          "name": {"type": "string", "minLength": 1, "description": "Person to reply to."},
+          "email": {"type": "string", "minLength": 1, "format": "email", "description": "Work email Ryan should reply to."},
+          "handoff": {"type": "string", "minLength": 1, "description": "The manual work they want off the team's plate, in their words."},
+          "company": {"type": "string", "const": "", "description": "Honeypot. Send an empty string. The employer name goes in companyName."},
+          "companyName": {"type": "string", "description": "Employer. Optional."},
+          "role": {"type": "string", "description": "Job title. Optional."},
+          "currentState": {
+            "type": "string",
+            "enum": ["", "Entirely manual", "Spreadsheets and a few Zaps", "A pilot that stalled", "Running, but we don't trust it", "Not sure yet"],
+            "description": "Where the work sits today. Optional. Empty string if unknown."
+          },
+          "teamSize": {
+            "type": "string",
+            "enum": ["", "Just me", "2-5", "6-20", "20+"],
+            "description": "How many people touch the work. Optional."
+          },
+          "timeline": {
+            "type": "string",
+            "enum": ["", "Just exploring", "Next quarter", "Now, it's blocking us"],
+            "description": "When they want to move. Optional."
+          },
+          "budget": {
+            "type": "string",
+            "enum": ["", "Under $4k (Quick Scan only)", "$4k-$10k (one workflow)", "$10k+ (multiple workflows)", "Not sure yet"],
+            "description": "Rough budget. Optional."
+          },
+          "source": {"type": "string", "description": "Where the request came from. The form sends supergood.solutions/start. The in-page tool sends supergood.solutions/webmcp."},
+          "elapsedMs": {"type": "integer", "minimum": 0, "description": "Milliseconds since the person started the form. The /start/ page refuses to send before 3000. The function accepted 1 on 2026-10-29."}
+        }
+      },
+      "FitCheckAccepted": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["ok"],
+        "properties": {
+          "ok": {"type": "boolean", "const": true}
+        }
+      },
+      "FitCheckError": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["ok", "error"],
+        "description": "Observed error body. The code is the only machine-readable field. There is no separate message or hint property.",
+        "properties": {
+          "ok": {"type": "boolean", "const": false},
+          "error": {
+            "type": "string",
+            "enum": ["method", "required", "email"],
+            "description": "method: use POST. required: send name, email, and handoff as non-empty strings. email: send a complete email address."
+          }
+        }
+      }
+    }
+  }
+}

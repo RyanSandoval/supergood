@@ -1,0 +1,18 @@
+{
+  "name": "Supergood Solutions",
+  "website": "https://supergood.solutions/",
+  "updated": "2026-10-29",
+  "agents": [
+    {
+      "name": "Supergood public site",
+      "description": "Reads the published rate card and service list, and can submit one fit-check inquiry. No hosted MCP server and no A2A JSON-RPC endpoint.",
+      "agentCard": "https://supergood.solutions/.well-known/agent-card.json",
+      "skills": "https://supergood.solutions/.well-known/agent-skills/index.json",
+      "skillMd": "https://supergood.solutions/.well-known/agent-skills/SKILL.md",
+      "openapi": "https://supergood.solutions/openapi.json",
+      "apiCatalog": "https://supergood.solutions/.well-known/api-catalog",
+      "docs": "https://supergood.solutions/developers/",
+      "auth": "https://supergood.solutions/auth.md"
+    }
+  ]
+}
