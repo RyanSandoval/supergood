@@ -1,0 +1,51 @@
+{
+  "specVersion": "1.0",
+  "entries": [
+    {
+      "identifier": "urn:air:supergood.solutions:skills:supergood",
+      "displayName": "Supergood Agent Skills",
+      "type": "application/agent-skills+json",
+      "url": "https://supergood.solutions/.well-known/agent-skills/index.json",
+      "description": "Agent Skills index: read Supergood's agent instructions, rate card and service catalog, and find blog posts via the sitemap.",
+      "representativeQueries": [
+        "what skills does Supergood offer agents",
+        "how do I read Supergood's rate card"
+      ]
+    },
+    {
+      "identifier": "urn:air:supergood.solutions:docs:llms-txt",
+      "displayName": "Supergood llms.txt",
+      "type": "text/plain",
+      "url": "https://supergood.solutions/llms.txt",
+      "description": "llmstxt.org-format index of supergood.solutions: positioning, services, rate card summary and key pages.",
+      "representativeQueries": [
+        "how much does AI consulting cost",
+        "AI agent consulting for a marketing team",
+        "what does an AI readiness assessment include"
+      ]
+    },
+    {
+      "identifier": "urn:air:supergood.solutions:docs:llms-full",
+      "displayName": "Supergood Full Content Reference",
+      "type": "text/plain",
+      "url": "https://supergood.solutions/llms-full.txt",
+      "description": "Full text of Supergood's service pages, About, Start and FAQ as a single markdown document.",
+      "representativeQueries": [
+        "AI readiness assessment cost and process",
+        "AI agent governance guardrails and runbooks",
+        "who is behind Supergood Solutions"
+      ]
+    },
+    {
+      "identifier": "urn:air:supergood.solutions:docs:sitemap",
+      "displayName": "Supergood Sitemap",
+      "type": "application/xml",
+      "url": "https://supergood.solutions/sitemap.xml",
+      "description": "Complete URL list for supergood.solutions, including every blog post on AI agent architecture, evals, guardrails and cost.",
+      "representativeQueries": [
+        "find Supergood blog posts about AI agent evals",
+        "list pages on supergood.solutions"
+      ]
+    }
+  ]
+}
