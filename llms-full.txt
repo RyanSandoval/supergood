@@ -78,7 +78,7 @@ Q: What's the difference between an agent and a workflow?
 A: A workflow follows a fixed sequence you define. An agent decides its own sequence based on what it observes. Many production systems are better built as a workflow with one or two AI-powered steps.
 
 Q: How long does it take to build a production AI agent?
-A: A single-workflow agent with a small tool set: 3–6 weeks. Multi-agent systems or agents touching many internal systems: 8+ weeks.
+A: Build timeline is quoted after the Quick Scan.
 
 Q: How much does AI agent consulting cost?
 A: Builds start at $4,000 per workflow. Run starts at $900/month plus 10-20% of measured gain over an agreed baseline, capped at 1.5x the retainer. 3-month minimum. Industry-wide, custom agent builds run $15,000 to $500,000+.
@@ -114,7 +114,7 @@ Q: Do you sell new software?
 A: No, by default. Most teams already have enough automation horsepower in Microsoft 365, their CRM, and existing AI subscriptions.
 
 Q: How fast can I see results?
-A: A Quick Scan gets you 3 prioritized recommendations on the call, plus a one-page written summary the next business day. A single-workflow automation typically ships in 2–4 weeks.
+A: A Quick Scan gets you 3 prioritized recommendations on the call, plus a one-page written summary the next business day. Build timeline is quoted after the Quick Scan.
 
 Q: What if my workflows are too messy to automate?
 A: That's the norm, not the exception. Part of the audit is figuring out what's automatable now versus what should stay manual.
@@ -205,7 +205,7 @@ LinkedIn: https://linkedin.com/in/RyanSandoval
 
 The primary contact path is the intake form at https://supergood.solutions/start/. It asks for name, work email, company and role (both optional), a description of the work you would hand off, where that work sits today, how many people touch it, timeline, and an optional budget range. Ryan reads every submission and replies in writing within one business day with a read on fit, which service it maps to, and what it would take.
 
-A 20-minute intro call at https://calendar.app.google/BkcFDB21jWhMwCiq7 is the alternative for anyone who would rather talk first. Contact details are used only to reply; there is no marketing list.
+If it is a fit, the next step is the Quick Scan ($1,000), credited toward a build if you sign within 14 days. Book it at https://calendar.app.google/BkcFDB21jWhMwCiq7. The build timeline is quoted after the Quick Scan. Contact details are used only to reply; there is no marketing list.
 
 ---
 

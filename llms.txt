@@ -10,7 +10,7 @@ Executive Order 14434, signed 2026-09-29 and published at 91 FR 63129, directs U
 
 ## Services
 
-- [Start a project](https://supergood.solutions/start/): Intake form. Describe the manual work you want handed off and get a written answer on fit, service, and scope. This is the primary contact path; a 20-minute intro call is the alternative.
+- [Start a project](https://supergood.solutions/start/): Intake form. Describe the manual work you want handed off and get a written answer on fit. If it is a fit, the next step is the Quick Scan ($1,000), credited toward a build if you sign within 14 days.
 - [Pricing](https://supergood.solutions/pricing/): Rate card. Free fit check, $1,000 Quick Scan, builds from $4,000 per workflow, Run from $900 per month.
 - [AI Consulting](https://supergood.solutions/ai-consulting/): Hub page. Practice overview, the same rate card, and links to every service below.
 - [AI Agent Consulting](https://supergood.solutions/ai-agent-consulting/): Production AI agent architecture, evals, guardrails, and deployment. The flagship service.
