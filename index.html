@@ -155,7 +155,7 @@ nav .container { display: flex; justify-content: space-between; align-items: cen
    two lines, directly above the hero's primary CTA. */
 @media (max-width: 420px) {
   .wordmark { font-size: 1rem; }
-  nav .container > div { gap: 14px !important; }
+  nav .container > div { gap: 12px 14px !important; flex-wrap: wrap; justify-content: flex-end; }
 }
 .wordmark {
   font-weight: 800; font-size: 1.125rem; letter-spacing: -0.03em;
@@ -521,8 +521,9 @@ footer a:hover { color: var(--text-2); }
 <nav id="nav">
   <div class="container">
     <a href="#" class="wordmark">superg<span class="oo-wrap"><span class="oo-dot"></span><span class="oo-dot"></span></span>d<span class="dot-period">.</span></a>
-    <div style="display:flex;align-items:center;gap:24px;">
+    <div style="display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:12px 24px;">
       <a href="/ai-consulting/" style="font-size:0.875rem;color:var(--text-3);text-decoration:none;">Services</a>
+      <a href="/pricing/" style="font-size:0.875rem;color:var(--text-3);text-decoration:none;">Pricing</a>
       <a href="/blog/" style="font-size:0.875rem;color:var(--text-3);text-decoration:none;">Blog</a>
       <a href="/start/" class="cta-nav">Get in touch</a>
     </div>
@@ -610,7 +611,7 @@ footer a:hover { color: var(--text-2); }
         <div class="go">Learn more →</div>
       </a>
       <a href="/ai-readiness-assessment/" class="service-card">
-        <div class="num">From $500</div>
+        <div class="num">Quick Scan $1,000</div>
         <h3>AI Readiness Assessment</h3>
         <p>Know exactly where AI pays off before you spend a dollar building it.</p>
         <div class="go">Learn more →</div>
@@ -737,7 +738,7 @@ footer a:hover { color: var(--text-2); }
     <div class="quick-scan reveal">
       <h3>Want actual answers, not just a fit check?</h3>
       <p>That's the Quick Scan — a live working session on your actual workflows: 3 prioritized recommendations on the call, plus a one-page summary in your inbox the next business day, written to be forwarded to your boss. Think of it as a doctor's visit for your ops. Except we won't make you wait 45 minutes in a paper gown.</p>
-      <span class="price">$500 — and it counts toward whatever we build next</span>
+      <span class="price">$1,000, credited toward a build if you sign within 14 days</span>
     </div>
   </div>
 </section>
@@ -746,7 +747,7 @@ footer a:hover { color: var(--text-2); }
 <footer>
   <div class="container">
     <p>© 2026 superg●●d.</p>
-    <p><a href="/about/">About</a> · <a href="/faq/">FAQ</a> · <a href="/ai-consulting/">Services</a> · <a href="/blog/">Blog</a></p>
+    <p><a href="/about/">About</a> · <a href="/pricing/">Pricing</a> · <a href="/faq/">FAQ</a> · <a href="/ai-consulting/">Services</a> · <a href="/blog/">Blog</a></p>
     <p>Los Angeles, CA · working remotely with clients anywhere</p>
   </div>
 </footer>

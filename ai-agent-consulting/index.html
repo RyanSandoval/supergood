@@ -29,13 +29,13 @@
 <meta name="twitter:image" content="https://supergood.solutions/og-image.png">
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Service","name":"AI Agent Consulting","serviceType":"AI Agent Consulting","description":"Design, build, and harden production AI agents — architecture, evals, guardrails, and deployment for agents that run unsupervised.","url":"https://supergood.solutions/ai-agent-consulting/","provider":{"@type":"ProfessionalService","name":"Supergood Solutions","url":"https://supergood.solutions","founder":{"@type":"Person","name":"Ryan Sandoval","url":"https://linkedin.com/in/RyanSandoval"}},"areaServed":["Worldwide","US"],"offers":[{"@type":"Offer","name":"Agent Build","priceSpecification":{"@type":"PriceSpecification","minPrice":"8000","maxPrice":"40000","priceCurrency":"USD"},"description":"Project-based build of a production AI agent, 3-8 weeks depending on scope"},{"@type":"Offer","name":"Monthly Agent Ops Retainer","priceSpecification":{"@type":"PriceSpecification","minPrice":"3000","maxPrice":"8000","priceCurrency":"USD","unitText":"MONTH"},"description":"Ongoing agent maintenance, monitoring, and improvement"}],"isRelatedTo":{"@type":"Service","name":"AI Consulting Services","url":"https://supergood.solutions/ai-consulting/"}}
+{"@context":"https://schema.org","@type":"Service","name":"AI Agent Consulting","serviceType":"AI Agent Consulting","description":"Design, build, and harden production AI agents — architecture, evals, guardrails, and deployment for agents that run unsupervised.","url":"https://supergood.solutions/ai-agent-consulting/","provider":{"@type":"ProfessionalService","name":"Supergood Solutions","url":"https://supergood.solutions","founder":{"@type":"Person","name":"Ryan Sandoval","url":"https://linkedin.com/in/RyanSandoval"}},"areaServed":["Worldwide","US"],"offers":[{"@type":"Offer","name":"Agent Build","priceSpecification":{"@type":"PriceSpecification","minPrice":"4000","priceCurrency":"USD"},"description":"From $4,000 per workflow. Fixed quote after the Quick Scan. Half at kickoff, half at launch."},{"@type":"Offer","name":"Run","priceSpecification":{"@type":"PriceSpecification","minPrice":"900","priceCurrency":"USD","unitText":"MONTH"},"description":"From $900 per month plus 10-20% of measured gain over an agreed baseline, capped at 1.5x the retainer. 3-month minimum."}],"isRelatedTo":{"@type":"Service","name":"AI Consulting Services","url":"https://supergood.solutions/ai-consulting/"}}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://supergood.solutions/"},{"@type":"ListItem","position":2,"name":"AI Consulting","item":"https://supergood.solutions/ai-consulting/"},{"@type":"ListItem","position":3,"name":"AI Agent Consulting","item":"https://supergood.solutions/ai-agent-consulting/"}]}
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I get AI agents into production?","acceptedAnswer":{"@type":"Answer","text":"Start narrow: pick one workflow with a clear success definition, build the agent with a limited, well-scoped tool set, add evals before you add features, and put guardrails (allowlists, approval steps, logging) around anything that writes data or spends money. Most agents fail to reach production not because the model is weak, but because nobody defined what 'working' means or built the observability to catch it when it isn't."}},{"@type":"Question","name":"What are AI agent guardrails?","acceptedAnswer":{"@type":"Answer","text":"Guardrails are the constraints that keep an agent's autonomy inside a safe boundary: tool allowlists, input/output validation, spend and rate limits, human-approval checkpoints for high-risk actions, and logging that lets you reconstruct what the agent did and why. Guardrails are what separates an agent you can trust unsupervised from one that needs a human watching every step."}},{"@type":"Question","name":"What's the difference between an AI agent and a workflow?","acceptedAnswer":{"@type":"Answer","text":"A workflow follows a fixed sequence of steps you define in advance. An agent decides its own sequence of steps — which tools to call, in what order — based on the task and what it observes along the way. Agents are more flexible but harder to test and secure. Many production systems are best built as a workflow with one or two AI-powered steps, not a fully autonomous agent — see our post on pipelines vs. agents."}},{"@type":"Question","name":"How long does it take to build a production AI agent?","acceptedAnswer":{"@type":"Answer","text":"A single-workflow agent with a small tool set typically takes 3-6 weeks: architecture and tool design, build, eval harness, guardrails, and a supervised rollout period before it runs unattended. Multi-agent systems or agents touching many internal systems take longer — 8+ weeks — because the integration and compliance work usually costs more than the agent logic itself."}},{"@type":"Question","name":"How much does AI agent consulting cost?","acceptedAnswer":{"@type":"Answer","text":"Supergood prices agent builds at $8,000-$40,000 project-based depending on scope, plus an optional $3,000-$8,000/month retainer for ongoing ops. For context, independent AI consultants generally charge $150-$350/hour, and custom agent builds industry-wide range from $15,000 for simple single-task agents to $500,000+ for enterprise multi-agent systems."}},{"@type":"Question","name":"Do I need a multi-agent system?","acceptedAnswer":{"@type":"Answer","text":"Probably not, at least not at first. Most problems that look like they need multiple coordinating agents are actually one agent with a well-designed tool set, or a pipeline with a couple of AI-powered steps. Multi-agent architectures add real coordination and failure-mode complexity — reach for them only after a single-agent version has proven it can't handle the task."}}]}
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I get AI agents into production?","acceptedAnswer":{"@type":"Answer","text":"Start narrow: pick one workflow with a clear success definition, build the agent with a limited, well-scoped tool set, add evals before you add features, and put guardrails (allowlists, approval steps, logging) around anything that writes data or spends money. Most agents fail to reach production not because the model is weak, but because nobody defined what 'working' means or built the observability to catch it when it isn't."}},{"@type":"Question","name":"What are AI agent guardrails?","acceptedAnswer":{"@type":"Answer","text":"Guardrails are the constraints that keep an agent's autonomy inside a safe boundary: tool allowlists, input/output validation, spend and rate limits, human-approval checkpoints for high-risk actions, and logging that lets you reconstruct what the agent did and why. Guardrails are what separates an agent you can trust unsupervised from one that needs a human watching every step."}},{"@type":"Question","name":"What's the difference between an AI agent and a workflow?","acceptedAnswer":{"@type":"Answer","text":"A workflow follows a fixed sequence of steps you define in advance. An agent decides its own sequence of steps — which tools to call, in what order — based on the task and what it observes along the way. Agents are more flexible but harder to test and secure. Many production systems are best built as a workflow with one or two AI-powered steps, not a fully autonomous agent — see our post on pipelines vs. agents."}},{"@type":"Question","name":"How long does it take to build a production AI agent?","acceptedAnswer":{"@type":"Answer","text":"A single-workflow agent with a small tool set typically takes 3-6 weeks: architecture and tool design, build, eval harness, guardrails, and a supervised rollout period before it runs unattended. Multi-agent systems or agents touching many internal systems take longer — 8+ weeks — because the integration and compliance work usually costs more than the agent logic itself."}},{"@type":"Question","name":"How much does AI agent consulting cost?","acceptedAnswer":{"@type":"Answer","text":"Builds start at $4,000 per workflow. The quote is fixed after the Quick Scan. Half is due at kickoff and half at launch. Run starts at $900 per month plus 10-20% of measured gain over an agreed baseline, capped at 1.5x the retainer, with a 3-month minimum. You pay for tools, APIs and seats on your own accounts. Industry-wide, custom agent builds run from about $15,000 to $500,000+ depending on scale."}},{"@type":"Question","name":"Do I need a multi-agent system?","acceptedAnswer":{"@type":"Answer","text":"Probably not, at least not at first. Most problems that look like they need multiple coordinating agents are actually one agent with a well-designed tool set, or a pipeline with a couple of AI-powered steps. Multi-agent architectures add real coordination and failure-mode complexity — reach for them only after a single-agent version has proven it can't handle the task."}}]}
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -169,6 +169,7 @@ footer a:hover { color: var(--text-2); }
     <a href="/" class="wordmark">superg<span class="oo-wrap"><span class="oo-dot"></span><span class="oo-dot"></span></span>d<span class="dot-period">.</span></a>
     <div class="nav-links">
       <a href="/ai-consulting/" class="nav-link">Services</a>
+      <a href="/pricing/" class="nav-link">Pricing</a>
       <a href="/blog/" class="nav-link">Blog</a>
       <a href="/start/" class="cta-nav">Get in touch</a>
     </div>
@@ -268,9 +269,9 @@ footer a:hover { color: var(--text-2); }
     <div class="pricing-inline reveal">
       <div>
         <div class="label2">Agent build</div>
-        <div class="amt">$8,000–$40,000</div>
+        <div class="amt">From $4,000</div>
       </div>
-      <p>Project-based, 3–8 weeks depending on scope. Optional $3,000–$8,000/month retainer for ongoing ops once it's live. See full <a href="/ai-consulting/#pricing" style="color:var(--text-2)">pricing breakdown</a>.</p>
+      <p>Per workflow. Fixed quote after the Quick Scan. Half at kickoff, half at launch. Run starts at $900/month. See the <a href="/pricing/" style="color:var(--text-2)">rate card</a>.</p>
     </div>
   </div>
 </section>
@@ -301,7 +302,7 @@ footer a:hover { color: var(--text-2); }
         </div>
         <div class="faq-item">
           <h3>How much does AI agent consulting cost?</h3>
-          <p>Supergood prices agent builds at $8,000–$40,000 project-based, plus an optional $3,000–$8,000/month ops retainer. Industry-wide, custom agent builds run $15,000 to $500,000+ depending on scale.</p>
+          <p>Builds start at $4,000 per workflow. Run starts at $900 per month plus 10-20% of measured gain over an agreed baseline, capped at 1.5x the retainer, with a 3-month minimum. Industry-wide, custom agent builds run $15,000 to $500,000+ depending on scale.</p>
         </div>
         <div class="faq-item">
           <h3>Do I need a multi-agent system?</h3>
@@ -344,9 +345,9 @@ footer a:hover { color: var(--text-2); }
   <div class="container">
     <div class="section-label reveal">Let's talk</div>
     <h2 class="reveal">Bring the workflow you want to turn into an agent.</h2>
-    <p class="reveal">That's the Quick Scan's whole job. A live working session where we tell you honestly whether it should be an agent, a workflow, or left alone — before you spend a dollar building it. You get 3 prioritized recommendations on the call, a one-page summary the next business day, and the full $500 credited toward any engagement within 30 days.</p>
+    <p class="reveal">The Quick Scan is a live working session on the workflow you want to turn into an agent. You get 3 prioritized recommendations on the call, a one-page summary the next business day, and the $1,000 credited toward a build if you sign within 14 days.</p>
     <a href="/start/" class="btn btn-primary reveal">Tell us what you&rsquo;d hand off</a>
-    <a href="https://calendar.app.google/BkcFDB21jWhMwCiq7" class="btn btn-ghost reveal" style="margin-left:12px;">Book the Quick Scan — $500</a>
+    <a href="https://calendar.app.google/BkcFDB21jWhMwCiq7" class="btn btn-ghost reveal" style="margin-left:12px;">Book the Quick Scan</a>
     <div class="related-services reveal">
       <a href="/ai-consulting/">← All services</a>
       <a href="/ai-agent-governance/">AI Agent Governance</a>
@@ -359,7 +360,7 @@ footer a:hover { color: var(--text-2); }
 <footer>
   <div class="container">
     <p>© 2026 superg●●d.</p>
-    <p><a href="/about/">About</a> · <a href="/faq/">FAQ</a> · <a href="/blog/">Blog</a></p>
+    <p><a href="/about/">About</a> · <a href="/pricing/">Pricing</a> · <a href="/faq/">FAQ</a> · <a href="/blog/">Blog</a></p>
   </div>
 </footer>
 

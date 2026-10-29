@@ -21,16 +21,15 @@ Supergood is an AI consulting practice that builds production AI agents and auto
 **Four ways Supergood helps:**
 1. AI Agent Consulting (flagship) — production AI agents: architecture, evals, deployment, and the discipline to get past demo-ware.
 2. AI Automation Consulting — workflow automation using the tools you already pay for.
-3. AI Readiness Assessment (from $500) — know exactly where AI pays off before you spend a dollar building it.
+3. AI Readiness Assessment (Quick Scan $1,000) — know exactly where AI pays off before you spend a dollar building it.
 4. AI Agent Governance — guardrails, observability, and incident runbooks.
 
-**How much does AI consulting cost?** Independent AI consultants typically run $150–$350/hour, and custom agent builds usually land between $15,000 and $75,000 for mid-market scope — climbing past $500,000 for enterprise-grade, multi-agent systems with compliance layers. Supergood pricing:
-- Quick Scan: $500 — 30-minute live working session on your actual workflows, 3 prioritized recommendations on the call, a one-page written summary the next business day, and the $500 credited toward any engagement within 30 days
-- Readiness Assessment: $2,500–$6,000 — 1–2 weeks, prioritized opportunity map with ROI estimates
-- Workflow / Agent Build: $8,000–$40,000 — 3–8 weeks, project-based
-- Monthly Retainer: $3,000–$8,000/month — ongoing agent ops, automation maintenance, team training
-
-These are flat fees, not hourly billing.
+**How much does AI consulting cost?** Independent AI consultants typically run $150–$350/hour, and custom agent builds usually land between $15,000 and $75,000 for mid-market scope. Supergood pricing, also at https://supergood.solutions/pricing/ :
+- Fit check: free, about 2 minutes
+- Quick Scan: $1,000, credited toward a build if you sign within 14 days
+- Build: from $4,000 per workflow. Fixed quote after the Quick Scan. Half at kickoff, half at launch.
+- Run: from $900/month plus 10-20% of measured gain over an agreed baseline, capped at 1.5x the retainer. 3-month minimum.
+- Tooling: clients pay for tools, APIs and seats on their own accounts. Supergood does not resell or mark up software.
 
 **FAQ:**
 Q: What does an AI consultant do?
@@ -43,7 +42,7 @@ Q: How is Supergood different from a big consulting firm?
 A: No committee, no army of junior analysts, no six-figure floor. One senior practitioner builds the thing himself and stays reachable after it ships.
 
 Q: How long does an engagement take?
-A: Quick Scan: 30 minutes. Readiness Assessment: 1–2 weeks. A build: 3–8 weeks depending on scope. Retainers run monthly with no fixed end date.
+A: The fit check takes about 2 minutes. Build length is quoted after the Quick Scan. Run has a 3-month minimum and continues monthly after that.
 
 Q: What industries does Supergood work with?
 A: Mid-market marketing and ops teams are the core focus, drawing on experience from travel, live entertainment, and consumer hardware.
@@ -66,7 +65,7 @@ AI agent consulting means designing, building, and hardening autonomous AI syste
 - No stopping condition: an agent that doesn't know when to stop keeps looping and taking actions past where it should escalate to a human.
 - No guardrails on tools: a loose tool schema lets the model invent parameters it was never meant to have.
 
-**Pricing:** Agent build $8,000–$40,000 project-based, 3–8 weeks. Optional $3,000–$8,000/month retainer for ongoing ops.
+**Pricing:** Builds start at $4,000 per workflow. Fixed quote after the Quick Scan. Half at kickoff, half at launch. Run starts at $900/month plus 10-20% of measured gain over an agreed baseline, capped at 1.5x the retainer. 3-month minimum.
 
 **FAQ:**
 Q: How do I get AI agents into production?
@@ -82,7 +81,7 @@ Q: How long does it take to build a production AI agent?
 A: A single-workflow agent with a small tool set: 3–6 weeks. Multi-agent systems or agents touching many internal systems: 8+ weeks.
 
 Q: How much does AI agent consulting cost?
-A: $8,000–$40,000 project-based, plus an optional $3,000–$8,000/month ops retainer. Industry-wide, custom agent builds run $15,000 to $500,000+.
+A: Builds start at $4,000 per workflow. Run starts at $900/month plus 10-20% of measured gain over an agreed baseline, capped at 1.5x the retainer. 3-month minimum. Industry-wide, custom agent builds run $15,000 to $500,000+.
 
 Q: Do I need a multi-agent system?
 A: Probably not at first. Most problems that look like they need coordinating agents are actually one agent with a well-designed tool set.
@@ -99,14 +98,14 @@ AI automation consulting means auditing your marketing or ops workflows, then bu
 
 **What we do:** Workflow Audits & Builds (map ops, find waste, build automations that stick), Monthly Automation Sprints (ongoing retainer — identify new workflows, maintain what's running, train the team), and the Human Part (14 years of product/ops judgment on which reports and workflows actually matter).
 
-**Pricing:** $8,000–$40,000 project-based depending on scope, plus an optional $3,000–$8,000/month retainer.
+**Pricing:** Builds start at $4,000 per workflow. Run starts at $900/month plus 10-20% of measured gain over an agreed baseline, capped at 1.5x the retainer. 3-month minimum.
 
 **FAQ:**
 Q: What is AI automation consulting?
 A: Auditing manual workflows, then building automations that eliminate them using tools you already pay for. Not every fix needs an AI agent.
 
 Q: How much does it cost?
-A: $8,000–$40,000 project-based, plus an optional $3,000–$8,000/month retainer.
+A: Builds start at $4,000 per workflow. Run starts at $900/month plus 10-20% of measured gain over an agreed baseline, capped at 1.5x the retainer. 3-month minimum.
 
 Q: What's the difference between AI automation and RPA?
 A: Traditional RPA replays fixed clicks and breaks when a screen changes. AI-assisted automation uses APIs plus language models for parts that need judgment.
@@ -128,9 +127,9 @@ A: That's the norm, not the exception. Part of the audit is figuring out what's 
 
 An AI readiness assessment is a structured audit of your workflows, data, and systems that identifies which processes are worth automating or turning into an AI agent, which aren't, and what order to tackle them in.
 
-**Two tiers:**
-1. Quick Scan — $500, 30 minutes live. A screen-share working session on your actual workflows: 3 prioritized recommendations on the call, a one-page written summary within one business day (written to be forwarded internally), and the full $500 credited toward any engagement booked within 30 days.
-2. Full Readiness Assessment — $2,500–$6,000, 1–2 weeks. Complete workflow inventory scored by effort/impact, prioritized opportunity map with ROI estimates, build-vs-buy call on every item, written 30/60/90-day action plan, live findings walkthrough.
+**Rates:**
+1. Quick Scan: $1,000, credited toward a build if you sign within 14 days. A screen-share working session on your actual workflows: 3 prioritized recommendations on the call and a one-page written summary within one business day.
+2. Build: from $4,000 per workflow. Fixed quote after the Quick Scan. Half at kickoff, half at launch.
 
 **Process:** Discover (interview the team, inventory every candidate workflow) → Score (effort vs. impact, agent-shaped vs. automation-shaped vs. stay-manual) → Roadmap (written 30/60/90-day plan, live walkthrough call).
 
@@ -141,7 +140,7 @@ Q: What is an AI readiness assessment?
 A: A structured audit scoring which workflows are worth automating or turning into an agent, which aren't yet, and what order to tackle them in.
 
 Q: How much does it cost?
-A: $500 for the Quick Scan, $2,500–$6,000 for the full assessment. Industry-wide, independent mid-market AI readiness engagements typically run $15,000–$75,000, and Big Four assessments run $100,000–$500,000+.
+A: The Quick Scan is $1,000, credited toward a build if you sign within 14 days. A build starts at $4,000 per workflow. Industry-wide, independent mid-market AI readiness engagements typically run $15,000–$75,000, and Big Four assessments run $100,000–$500,000+.
 
 Q: What do I get at the end?
 A: A scored workflow inventory, prioritized opportunity map with ROI estimates, build-vs-buy call per item, written 30/60/90-day action plan, and a live walkthrough call.
@@ -153,7 +152,7 @@ Q: Do I have to hire Supergood to build after the assessment?
 A: No. You own the findings and can take them to any team, including your own.
 
 Q: What's the difference between the two tiers?
-A: The Quick Scan is a live working session: 3 prioritized recommendations on the call, a one-page written summary after, and the $500 credited toward any engagement within 30 days. The full assessment is a complete audit with a scored inventory, ROI estimates, and a written 30/60/90-day roadmap.
+A: The Quick Scan is $1,000, credited toward a build if you sign within 14 days. A build starts at $4,000 per workflow. The quote is fixed after the Quick Scan. Half is due at kickoff and half at launch.
 
 ---
 
@@ -167,7 +166,7 @@ AI agent governance means putting real constraints and monitoring around autonom
 
 **Three layers:** Guardrails & Policy (tool allowlists, schema validation, spend limits, approval checkpoints), Observability & Evals (logging that reconstructs what an agent did and why, plus an eval harness), Incident Response & Runbooks (a written plan for the day the agent surprises you).
 
-**Pricing:** $8,000–$40,000 project-based for guardrails/observability implementation, plus $3,000–$8,000/month for ongoing monitoring.
+**Pricing:** Builds start at $4,000 per workflow. Run starts at $900/month plus 10-20% of measured gain over an agreed baseline, capped at 1.5x the retainer. 3-month minimum. Governance work is often part of a build.
 
 **FAQ:**
 Q: What are AI agent guardrails?
@@ -183,7 +182,7 @@ Q: Governance vs. evals — what's the difference?
 A: Evals are a quality gate for releases. Governance is the runtime layer that constrains what the agent can do and catches problems live.
 
 Q: How much does this cost?
-A: $8,000–$40,000 project-based, plus $3,000–$8,000/month retainer. Often bundled into an agent build.
+A: Builds start at $4,000 per workflow. Run starts at $900/month plus 10-20% of measured gain over an agreed baseline, capped at 1.5x the retainer. 3-month minimum. Often part of an agent build.
 
 Q: Who owns agent governance — engineering or ops?
 A: Both. Engineering owns technical guardrails; ops or the business owner owns the policy calls.
