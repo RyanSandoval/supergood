@@ -1,3 +1,10 @@
+---
+title: "AI Automation Consulting | Supergood Solutions"
+description: "AI automation consulting for marketing and ops teams — workflow automation using tools you already pay for. No new platform, no rip-and-replace."
+canonical: https://supergood.solutions/ai-automation-consulting/
+last-updated: 2026-10-30
+---
+
 [Home](https://supergood.solutions/) / [AI Consulting](https://supergood.solutions/ai-consulting/) / AI Automation Consulting
 
 AI automation consulting

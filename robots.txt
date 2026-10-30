@@ -24,6 +24,7 @@ User-agent: Google-Extended
 Allow: /
 
 Sitemap: https://supergood.solutions/sitemap.xml
+schemamap: https://supergood.solutions/schemamap.xml
 
 # Agent discovery. GitHub Pages cannot set HTTP Link headers, so the
 # same URLs are listed here, in sitemap.xml, and in llms.txt.

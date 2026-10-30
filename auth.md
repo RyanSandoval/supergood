@@ -1,3 +1,10 @@
+---
+title: "Supergood authentication"
+description: "No authentication is needed for the public reads, the fit-check POST, or the MCP server. This page says so in the format agents look for."
+canonical: https://supergood.solutions/auth.md
+last-updated: 2026-10-30
+---
+
 # Supergood authentication
 
 Public reads and the fit-check POST do not use authentication. Send no `Authorization` header, no API key, and no cookie. There is no account to sign in to.

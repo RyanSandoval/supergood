@@ -106,7 +106,7 @@ footer a:hover { color: var(--text-2); }
     <p class="kicker">Developers</p>
     <h1>Supergood API</h1>
     <p>Supergood's site is static files on GitHub Pages. Two read endpoints live on that host. The fit-check form posts to a separate host. None of these calls need a key, a token, or an account. <a href="/auth.md">auth.md</a> says the same thing in the short form agents look for.</p>
-    <p>The contract is <a href="/openapi.json">openapi.json</a> (OpenAPI 3.1.0, version 1.0.0).</p>
+    <p>The contract is <a href="/openapi.json">openapi.json</a> (OpenAPI 3.1.0, version 1.1.0). Prices are also in <a href="/pricing.md">pricing.md</a>.</p>
 
     <h2>Reads</h2>
     <p><code>GET https://supergood.solutions/pricing.json</code></p>
@@ -120,18 +120,24 @@ curl -sS https://supergood.solutions/services.json</code></pre>
     <h2>Fit check</h2>
     <p><code>POST https://supergood-intake.vercel.app/api/intake</code></p>
     <p><code>Content-Type: application/json</code></p>
-    <p>This sends a real note to Ryan. One inquiry per person. A second POST with the same details can send a second email. There is no idempotency key.</p>
+    <p>This sends a real note to Ryan. One inquiry per person. Send an <code>Idempotency-Key</code> header (1 to 200 printable characters, no spaces, such as a UUID) and a retry of the same body within 24 hours does not send a second email. Without the header, a second POST with the same details can send a second email. The same key with a different body is <code>422 idempotency_conflict</code>. Two requests with the same key at the same time give <code>409 idempotency_in_progress</code>.</p>
     <p>Required strings: <code>name</code>, <code>email</code>, <code>handoff</code>.</p>
     <p>Also send <code>paysForTools</code>: <code>Yes</code>, <code>Not sure</code>, or <code>No</code>. It answers "Are you OK paying for the software and tools your workflows run on, on your own accounts?" The form and the MCP tool require it. The endpoint accepts a request without it.</p>
     <p>Optional: <code>companyName</code>, <code>role</code>, <code>currentState</code>, <code>teamSize</code>, <code>timeline</code>, <code>budget</code>, <code>source</code>, <code>elapsedMs</code>.</p>
     <p>Send <code>company</code> as <code>""</code>. That field is a honeypot on the form. The employer's name goes in <code>companyName</code>.</p>
     <p>The page at <a href="/start/">/start/</a> waits 3 seconds after the first field is focused before it will submit. The function also drops a body whose <code>elapsedMs</code> is under 3000, and a body with a filled <code>company</code> field. It answers <code>200 {"ok":true}</code> to both and sends no email.</p>
-    <p>Browser requests are allowed from <code>https://supergood.solutions</code> only. A request with another <code>Origin</code> gets 403. Server-side callers that send no <code>Origin</code> header are fine. Each IP gets 10 requests per 10 minutes.</p>
+    <p>Browser requests are allowed from <code>https://supergood.solutions</code> only. A request with another <code>Origin</code> gets 403. Server-side callers that send no <code>Origin</code> header are fine. Each IP gets 10 requests per 10 minutes. Every response carries <code>RateLimit-Limit</code>, <code>RateLimit-Remaining</code>, <code>RateLimit-Reset</code> and <code>RateLimit-Policy</code>, and a 429 adds <code>Retry-After</code>.</p>
     <p>The in-page tool <code>submit_fit_check</code> (WebMCP, <code>document.modelContext.registerTool</code> in <a href="/assets/agent-tools.js">/assets/agent-tools.js</a>) waits 3 seconds and posts once. It is registered on the homepage, the fit-check page, and this page.</p>
     <pre><code>curl -sS -X POST https://supergood-intake.vercel.app/api/intake \
   -H 'Content-Type: application/json' \
   -d '{"name":"Ada Lovelace","email":"ada@example.com","company":"","handoff":"A Monday report rebuilt from three spreadsheets.","paysForTools":"Yes","source":"docs-example","elapsedMs":3000}'</code></pre>
-    <p>That command creates a real inquiry. Do not run it as a test.</p>
+    <p>That command creates a real inquiry. Do not run it as a test. To test, use the sandbox below.</p>
+
+    <h2>Sandbox</h2>
+    <p><code>POST https://supergood-intake.vercel.app/api/sandbox/intake</code> takes the same body, runs the same validation and returns <code>200 {"ok":true,"sandbox":true}</code>. It never sends an email. Each IP gets 30 requests per 10 minutes.</p>
+    <pre><code>curl -sS -X POST https://supergood-intake.vercel.app/api/sandbox/intake \
+  -H 'Content-Type: application/json' \
+  -d '{"name":"Ada Lovelace","email":"ada@example.com","handoff":"A Monday report rebuilt from three spreadsheets.","paysForTools":"Yes"}'</code></pre>
 
     <h2>Errors</h2>
     <p>Every error is JSON: <code>{"ok":false,"error":"&lt;code&gt;","message":"...","hint":"..."}</code>. <code>error</code> is a stable code, <code>message</code> says what went wrong, and <code>hint</code> says how to fix it. The MCP tool returns the same fields.</p>
@@ -145,26 +151,31 @@ curl -sS https://supergood.solutions/services.json</code></pre>
         <tr><td>400</td><td><code>error: required</code></td><td>Send name, email, and handoff as non-empty strings.</td></tr>
         <tr><td>400</td><td><code>error: email</code></td><td>Send a complete email address, then one more POST.</td></tr>
         <tr><td>400</td><td><code>error: paysForTools</code></td><td>Send Yes, Not sure, or No.</td></tr>
+        <tr><td>400</td><td><code>error: idempotency_key</code></td><td>The Idempotency-Key header is not 1 to 200 printable characters. Fix it or leave it out.</td></tr>
         <tr><td>403</td><td><code>error: origin</code></td><td>Browser request from an origin other than supergood.solutions. Call from a server, or use the form.</td></tr>
+        <tr><td>404</td><td><code>error: not_found</code></td><td>No such path on the intake host. <code>GET /</code> lists the endpoints.</td></tr>
         <tr><td>405</td><td><code>error: method</code></td><td>Use POST. A GET on this URL returns this error.</td></tr>
-        <tr><td>429</td><td><code>error: rate_limited</code></td><td>Wait a minute and retry.</td></tr>
+        <tr><td>409</td><td><code>error: idempotency_in_progress</code></td><td>A request with this Idempotency-Key is still running. Wait a few seconds, then retry with the same key.</td></tr>
+        <tr><td>422</td><td><code>error: idempotency_conflict</code></td><td>This Idempotency-Key was already used with a different body. Use a new key for a new inquiry.</td></tr>
+        <tr><td>429</td><td><code>error: rate_limited</code></td><td>Wait for <code>Retry-After</code> seconds and retry.</td></tr>
         <tr><td>500</td><td><code>error: server</code></td><td>The endpoint is not configured. Try later.</td></tr>
         <tr><td>502</td><td><code>error: send</code></td><td>The email was not delivered. Try again in a minute.</td></tr>
       </tbody>
     </table>
-    <p>A missing path on supergood.solutions returns the HTML 404 page. GitHub Pages does not return JSON for that.</p>
+    <p>A missing path on supergood-intake.vercel.app returns this JSON with status 404. A missing path on supergood.solutions returns the HTML 404 page. GitHub Pages does not return JSON for that.</p>
 
     <h2>Versioning</h2>
-    <p>Version 1.0.0 is the document at <a href="/openapi.json">/openapi.json</a>. <code>pricing.json</code> and <code>services.json</code> are unpaged. If a change would break a caller, the old path stays and a new path is added. This page will say so. GitHub Pages cannot send a Sunset or Deprecation header.</p>
+    <p>The API is version 1. Every intake response carries <code>API-Version: 1</code>. The document at <a href="/openapi.json">/openapi.json</a> is version 1.1.0: 1.1.0 added the Idempotency-Key header, the sandbox, the RateLimit headers and the JSON 404, and removed nothing. <code>pricing.json</code> and <code>services.json</code> are unpaged.</p>
+    <p>A breaking change ships as a new path, for example <code>/api/v2/intake</code>. The old path keeps working for at least 90 days after the change is announced on this page and in <code>info.description</code> of <code>openapi.json</code>. During those 90 days the old path returns <code>Deprecation</code> and <code>Sunset</code> headers. Adding a field to a response or an optional field to a request is not a breaking change. GitHub Pages cannot send those headers for the two JSON files on this host, so a change to them is announced here only.</p>
 
     <h2>MCP server</h2>
     <p>The intake project hosts an MCP server. Streamable HTTP, stateless, no key: <code>https://supergood-intake.vercel.app/api/mcp</code>.</p>
     <ul>
-      <li><code>get_pricing</code>: the rate card. Read-only.</li>
-      <li><code>get_services</code>: the service list. Read-only.</li>
-      <li><code>submit_fit_check</code>: emails Ryan one fit check. Takes <code>name</code>, <code>email</code>, <code>handoff</code>, and <code>paysForTools</code>, plus the optional fields above. Each call sends one email.</li>
+      <li><code>get_pricing</code>: the rate card. Optional <code>offer</code> (<code>fit-check</code>, <code>quick-scan</code>, <code>build</code>, <code>run</code>) returns one offer. Read-only.</li>
+      <li><code>get_services</code>: the service list. Optional <code>service</code> returns one service. Read-only.</li>
+      <li><code>submit_fit_check</code>: emails Ryan one fit check. Takes <code>name</code>, <code>email</code>, <code>handoff</code>, and <code>paysForTools</code>, plus the optional fields above and an optional <code>idempotencyKey</code>. Each call sends one email unless a retry repeats the same <code>idempotencyKey</code>.</li>
     </ul>
-    <p>The server card is at <a href="/.well-known/mcp/server-card.json">/.well-known/mcp/server-card.json</a>. The server accepts requests from any origin and rate limits by IP.</p>
+    <p>The server card is at <a href="/.well-known/mcp/server-card.json">/.well-known/mcp/server-card.json</a>. The server accepts requests from any origin and rate limits by IP (60 requests a minute, with the same RateLimit headers). An unknown tool name returns a JSON-RPC <code>-32602</code> error with a message that lists the tools. Bad arguments to a real tool return a tool result with <code>isError: true</code>.</p>
     <pre><code>curl -sS https://supergood-intake.vercel.app/api/mcp \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json, text/event-stream' \

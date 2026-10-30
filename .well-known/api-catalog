@@ -1,15 +1,26 @@
 {
   "linkset": [
     {
-      "anchor": "https://supergood.solutions/",
+      "anchor": "https://supergood.solutions/.well-known/api-catalog",
+      "item": [
+        {
+          "href": "https://supergood.solutions/openapi.json",
+          "type": "application/openapi+json",
+          "title": "Supergood Solutions public API (OpenAPI 3.1)"
+        },
+        {
+          "href": "https://supergood-intake.vercel.app/api/mcp",
+          "type": "application/json",
+          "title": "Supergood MCP server (Streamable HTTP)"
+        }
+      ]
+    },
+    {
+      "anchor": "https://supergood.solutions/openapi.json",
       "service-desc": [
         {
           "href": "https://supergood.solutions/openapi.json",
           "type": "application/openapi+json"
-        },
-        {
-          "href": "https://supergood.solutions/.well-known/mcp/server-card.json",
-          "type": "application/json"
         }
       ],
       "service-doc": [
@@ -24,6 +35,21 @@
         {
           "href": "https://supergood.solutions/auth.md",
           "type": "text/markdown"
+        }
+      ]
+    },
+    {
+      "anchor": "https://supergood-intake.vercel.app/api/mcp",
+      "service-desc": [
+        {
+          "href": "https://supergood.solutions/.well-known/mcp/server-card.json",
+          "type": "application/json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://supergood.solutions/developers/",
+          "type": "text/html"
         }
       ]
     }

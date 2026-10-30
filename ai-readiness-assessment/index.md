@@ -1,3 +1,10 @@
+---
+title: "AI Readiness Consulting & Assessment | Supergood Solutions"
+description: "AI readiness consulting that tells you where AI actually pays off before you spend a dollar building it. Quick Scan is $1,000."
+canonical: https://supergood.solutions/ai-readiness-assessment/
+last-updated: 2026-10-30
+---
+
 [Home](https://supergood.solutions/) / [AI Consulting](https://supergood.solutions/ai-consulting/) / AI Readiness Assessment
 
 AI readiness assessment

@@ -1,6 +1,9 @@
 ---
 name: supergood
 description: When to use Supergood's public files, and how an agent should call the rate card, the service list, and the fit check.
+title: Supergood
+canonical: https://supergood.solutions/.well-known/agent-skills/SKILL.md
+last-updated: 2026-10-30
 ---
 
 # Supergood

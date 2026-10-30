@@ -69,3 +69,9 @@ Executive Order 14434, signed 2026-09-29 and published at 91 FR 63129, directs U
 - [Skills index](https://supergood.solutions/.well-known/agent-skills/index.json): Skill files, including when to use Supergood and how to submit a fit check.
 - [SKILL.md](https://supergood.solutions/.well-known/agent-skills/SKILL.md): Short when-to-use and how-to-call note.
 - [Privacy](https://supergood.solutions/privacy/): What the fit check sends and where the note goes.
+
+## Section indexes
+
+- [Developer docs index](https://supergood.solutions/developers/llms.txt): API, MCP server, auth, sandbox.
+- [Blog index](https://supergood.solutions/blog/llms.txt): Every post with a one-line summary.
+- [Pricing](https://supergood.solutions/pricing.md): The rate card as markdown.
