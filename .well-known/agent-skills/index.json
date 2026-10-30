@@ -2,28 +2,28 @@
   "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
   "version": "1.0",
   "name": "Supergood Solutions",
-  "description": "When to use these skills: read Supergood's rate card, service list, and blog, or send one fit check. Public reads and the fit-check POST need no key. The MCP server is at https://supergood-intake.vercel.app/api/mcp.",
+  "description": "When to use these skills: read Supergood's rate card, service list, and blog, or send one fit check. Public reads and the fit-check POST need no key. The MCP server is at https://api.supergood.solutions/api/mcp.",
   "skills": [
     {
       "name": "supergood",
       "description": "When to use Supergood's public files, and how an agent should call the rate card, the service list, and the fit check.",
       "type": "skill-md",
       "url": "https://supergood.solutions/.well-known/agent-skills/SKILL.md",
-      "digest": "sha256:8d35825b6119bf6c4dd5810d021567684533e826d9ac0c33223bbfd683b524fe"
+      "digest": "sha256:47589d6e06a8693e76fe8a914186c298c9748f2036a95a8f25173d5e06365d73"
     },
     {
       "name": "submit-fit-check",
       "description": "When to use the fit check, and the POST that emails one inquiry to Ryan.",
       "type": "skill-md",
       "url": "https://supergood.solutions/.well-known/agent-skills/submit-fit-check.md",
-      "digest": "sha256:2ebfc8742791b05b8e0da66a7a1c060c187b808e72d63f191f74e98f55eec37e"
+      "digest": "sha256:fc958b129d66e902507911e333028abcf10341d904153f308196207ab4ad0e6d"
     },
     {
       "name": "read-agent-instructions",
       "description": "Read the llmstxt.org-format index of supergood.solutions: what Supergood is, what it sells, and where its pages live.",
       "type": "skill-md",
       "url": "https://supergood.solutions/.well-known/agent-skills/read-agent-instructions.md",
-      "digest": "sha256:0fa480efd163dca80f57dacc99526f70d455ef5f9ddf5dcf95459d815d5d9056"
+      "digest": "sha256:261bfec4c8dd02e5ba90f57581f512ba9aad357d00bc215bb4a17ec6709e3e22"
     },
     {
       "name": "read-rate-card",

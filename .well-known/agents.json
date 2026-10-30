@@ -14,7 +14,7 @@
       "docs": "https://supergood.solutions/developers/",
       "auth": "https://supergood.solutions/auth.md",
       "mcpServerCard": "https://supergood.solutions/.well-known/mcp/server-card.json",
-      "mcp": "https://supergood-intake.vercel.app/api/mcp"
+      "mcp": "https://api.supergood.solutions/api/mcp"
     }
   ]
 }

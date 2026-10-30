@@ -50,7 +50,7 @@
     {
       "id": "submit-fit-check",
       "name": "Submit a fit check",
-      "description": "POST https://supergood-intake.vercel.app/api/intake. No key. Sends one real email to Ryan. Required JSON fields are name, email, and handoff. paysForTools (Yes, Not sure, No) is asked on the form and required by the MCP tool.",
+      "description": "POST https://api.supergood.solutions/api/intake. No key. Sends one real email to Ryan. Required JSON fields are name, email, and handoff. paysForTools (Yes, Not sure, No) is asked on the form and required by the MCP tool.",
       "tags": [
         "intake",
         "write"
@@ -62,7 +62,7 @@
     {
       "id": "use-mcp-server",
       "name": "Use the MCP server",
-      "description": "Streamable HTTP at https://supergood-intake.vercel.app/api/mcp. No key. Tools: get_pricing, get_services, submit_fit_check. Server card: https://supergood.solutions/.well-known/mcp/server-card.json.",
+      "description": "Streamable HTTP at https://api.supergood.solutions/api/mcp. No key. Tools: get_pricing, get_services, submit_fit_check. Server card: https://supergood.solutions/.well-known/mcp/server-card.json.",
       "tags": [
         "mcp"
       ],

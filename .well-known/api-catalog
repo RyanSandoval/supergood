@@ -9,7 +9,7 @@
           "title": "Supergood Solutions public API (OpenAPI 3.1)"
         },
         {
-          "href": "https://supergood-intake.vercel.app/api/mcp",
+          "href": "https://api.supergood.solutions/api/mcp",
           "type": "application/json",
           "title": "Supergood MCP server (Streamable HTTP)"
         }
@@ -39,7 +39,7 @@
       ]
     },
     {
-      "anchor": "https://supergood-intake.vercel.app/api/mcp",
+      "anchor": "https://api.supergood.solutions/api/mcp",
       "service-desc": [
         {
           "href": "https://supergood.solutions/.well-known/mcp/server-card.json",

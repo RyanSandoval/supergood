@@ -143,7 +143,7 @@
       "displayName": "Supergood MCP server card",
       "type": "application/mcp-server-card+json",
       "url": "https://supergood.solutions/.well-known/mcp/server-card.json",
-      "description": "MCP server card for the Streamable HTTP server at https://supergood-intake.vercel.app/api/mcp. Tools: get_pricing, get_services, submit_fit_check. No authentication.",
+      "description": "MCP server card for the Streamable HTTP server at https://api.supergood.solutions/api/mcp. Tools: get_pricing, get_services, submit_fit_check. No authentication.",
       "representativeQueries": [
         "Supergood MCP server",
         "how does an agent submit a Supergood fit check over MCP"

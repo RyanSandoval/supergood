@@ -13,7 +13,7 @@
 
 - [Rate card JSON](https://supergood.solutions/pricing.json)
 - [Services JSON](https://supergood.solutions/services.json)
-- [Fit check POST](https://supergood-intake.vercel.app/api/intake): Accepts Idempotency-Key.
-- [Sandbox POST](https://supergood-intake.vercel.app/api/sandbox/intake): Same validation, sends nothing.
-- [MCP server](https://supergood-intake.vercel.app/api/mcp): Tools get_pricing, get_services, submit_fit_check.
+- [Fit check POST](https://api.supergood.solutions/api/intake): Accepts Idempotency-Key.
+- [Sandbox POST](https://api.supergood.solutions/api/sandbox/intake): Same validation, sends nothing.
+- [MCP server](https://api.supergood.solutions/api/mcp): Tools get_pricing, get_services, submit_fit_check.
 - [MCP server card](https://supergood.solutions/.well-known/mcp/server-card.json)

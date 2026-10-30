@@ -8,7 +8,7 @@
   "remotes": [
     {
       "type": "streamable-http",
-      "url": "https://supergood-intake.vercel.app/api/mcp",
+      "url": "https://api.supergood.solutions/api/mcp",
       "supportedProtocolVersions": [
         "2025-06-18"
       ]
