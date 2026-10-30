@@ -9,7 +9,11 @@
       "representativeQueries": [
         "what skills does Supergood offer agents",
         "how do I read Supergood's rate card"
-      ]
+      ],
+      "trustManifest": {
+        "identity": "https://supergood.solutions",
+        "identityType": "https"
+      }
     },
     {
       "identifier": "urn:air:supergood.solutions:docs:llms-txt",
@@ -21,7 +25,11 @@
         "how much does AI consulting cost",
         "AI agent consulting for a marketing team",
         "what does an AI readiness assessment include"
-      ]
+      ],
+      "trustManifest": {
+        "identity": "https://supergood.solutions",
+        "identityType": "https"
+      }
     },
     {
       "identifier": "urn:air:supergood.solutions:docs:llms-full",
@@ -33,7 +41,11 @@
         "AI readiness assessment cost and process",
         "AI agent governance guardrails and runbooks",
         "who is behind Supergood Solutions"
-      ]
+      ],
+      "trustManifest": {
+        "identity": "https://supergood.solutions",
+        "identityType": "https"
+      }
     },
     {
       "identifier": "urn:air:supergood.solutions:docs:sitemap",
@@ -44,7 +56,11 @@
       "representativeQueries": [
         "find Supergood blog posts about AI agent evals",
         "list pages on supergood.solutions"
-      ]
+      ],
+      "trustManifest": {
+        "identity": "https://supergood.solutions",
+        "identityType": "https"
+      }
     },
     {
       "identifier": "urn:air:supergood.solutions:api:openapi",
@@ -55,7 +71,11 @@
       "representativeQueries": [
         "Supergood OpenAPI spec",
         "how does an agent submit a Supergood fit check"
-      ]
+      ],
+      "trustManifest": {
+        "identity": "https://supergood.solutions",
+        "identityType": "https"
+      }
     },
     {
       "identifier": "urn:air:supergood.solutions:api:catalog",
@@ -66,7 +86,11 @@
       "representativeQueries": [
         "Supergood API catalog",
         "where is the Supergood service description"
-      ]
+      ],
+      "trustManifest": {
+        "identity": "https://supergood.solutions",
+        "identityType": "https"
+      }
     },
     {
       "identifier": "urn:air:supergood.solutions:docs:developers",
@@ -77,7 +101,11 @@
       "representativeQueries": [
         "Supergood API documentation",
         "Supergood developer docs"
-      ]
+      ],
+      "trustManifest": {
+        "identity": "https://supergood.solutions",
+        "identityType": "https"
+      }
     },
     {
       "identifier": "urn:air:supergood.solutions:docs:auth",
@@ -88,7 +116,11 @@
       "representativeQueries": [
         "does the Supergood API need a key",
         "Supergood authentication"
-      ]
+      ],
+      "trustManifest": {
+        "identity": "https://supergood.solutions",
+        "identityType": "https"
+      }
     },
     {
       "identifier": "urn:air:supergood.solutions:agent:card",
@@ -99,7 +131,11 @@
       "representativeQueries": [
         "Supergood agent card",
         "what can an agent do on supergood.solutions"
-      ]
+      ],
+      "trustManifest": {
+        "identity": "https://supergood.solutions",
+        "identityType": "https"
+      }
     }
   ]
 }
