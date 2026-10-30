@@ -1,3 +1,10 @@
+---
+title: "AI Agent Consulting | Supergood Solutions"
+description: "AI agent consulting for teams shipping agents that survive production — architecture, evals, guardrails, and deployment. Start with a free fit check."
+canonical: https://supergood.solutions/ai-agent-consulting/
+last-updated: 2026-10-30
+---
+
 [Home](https://supergood.solutions/) / [AI Consulting](https://supergood.solutions/ai-consulting/) / AI Agent Consulting
 
 AI agent consulting

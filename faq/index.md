@@ -1,3 +1,10 @@
+---
+title: "FAQ | Supergood Solutions"
+description: "Answers to the most common questions about AI consulting, AI agents, automation, pricing, and governance — from Supergood Solutions."
+canonical: https://supergood.solutions/faq/
+last-updated: 2026-10-30
+---
+
 [Home](https://supergood.solutions/) / FAQ
 
 FAQ

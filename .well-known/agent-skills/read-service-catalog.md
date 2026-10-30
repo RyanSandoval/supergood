@@ -1,6 +1,9 @@
 ---
 name: read-service-catalog
 description: Read the full text of every Supergood service page, plus About, Start and FAQ, as one markdown document instead of crawling HTML.
+title: Read the service catalog
+canonical: https://supergood.solutions/.well-known/agent-skills/read-service-catalog.md
+last-updated: 2026-10-30
 ---
 
 # Read the service catalog

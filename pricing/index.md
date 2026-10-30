@@ -1,3 +1,10 @@
+---
+title: "Pricing | Supergood Solutions"
+description: "Fit check is free. Quick Scan is $1,000. Builds start at $4,000 per workflow. Run starts at $900 per month."
+canonical: https://supergood.solutions/pricing/
+last-updated: 2026-10-30
+---
+
 [Home](https://supergood.solutions/) / Pricing
 
 Rate card

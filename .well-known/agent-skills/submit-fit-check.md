@@ -1,6 +1,9 @@
 ---
 name: submit-fit-check
 description: When to use the fit check, and the POST that emails one inquiry to Ryan.
+title: Submit a fit check
+canonical: https://supergood.solutions/.well-known/agent-skills/submit-fit-check.md
+last-updated: 2026-10-30
 ---
 
 # Submit a fit check
@@ -27,7 +30,7 @@ Allowed values for the optional selects are the enums in `https://supergood.solu
 
 The page at `https://supergood.solutions/start/` waits 3 seconds after the first field is focused before it submits. The function also drops a body whose `elapsedMs` is under 3000 and a body with a filled `company` field. It answers `200 {"ok":true}` to both and sends no email.
 
-Browser requests are allowed from `https://supergood.solutions` only. A request with another `Origin` gets `403`. Server-side callers with no `Origin` header are fine. Each IP gets 10 requests per 10 minutes.
+Browser requests are allowed from `https://supergood.solutions` only. A request with another `Origin` gets `403`. Server-side callers with no `Origin` header are fine. Each IP gets 10 requests per 10 minutes. Responses carry `RateLimit-Limit`, `RateLimit-Remaining`, `RateLimit-Reset`, and a 429 adds `Retry-After`.
 
 ## Responses
 
@@ -48,4 +51,4 @@ Browser requests are allowed from `https://supergood.solutions` only. A request 
 
 The MCP server at `https://supergood-intake.vercel.app/api/mcp` has the same tool, `submit_fit_check`, with the same checks.
 
-A retry of a `200` can send a second email. There is no idempotency key.
+Send an `Idempotency-Key` header (1 to 200 printable characters, no spaces) and a retry of the same body within 24 hours does not send a second email. Without it, a retry of a `200` can send a second email. To test without sending anything, POST the same body to `https://supergood-intake.vercel.app/api/sandbox/intake`.

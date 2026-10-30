@@ -1,6 +1,9 @@
 ---
 name: search-blog-corpus
 description: List every Supergood blog post from sitemap.xml, then fetch the posts that match a topic such as AI consulting cost or agent evals.
+title: Search the blog corpus
+canonical: https://supergood.solutions/.well-known/agent-skills/search-blog-corpus.md
+last-updated: 2026-10-30
 ---
 
 # Search the blog corpus

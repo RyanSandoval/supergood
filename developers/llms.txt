@@ -1,0 +1,19 @@
+# Supergood Solutions developer docs
+
+> The public API, MCP server and discovery files for Supergood Solutions. No API key. Full site index: https://supergood.solutions/llms.txt
+
+## Docs
+
+- [Developer guide](https://supergood.solutions/developers/index.md): Reads, the fit-check POST, Idempotency-Key, sandbox, errors, versioning, MCP.
+- [OpenAPI](https://supergood.solutions/openapi.json): The contract, OpenAPI 3.1.0, version 1.1.0.
+- [Auth](https://supergood.solutions/auth.md): No authentication is needed.
+- [Pricing](https://supergood.solutions/pricing.md): The rate card as markdown.
+
+## Endpoints
+
+- [Rate card JSON](https://supergood.solutions/pricing.json)
+- [Services JSON](https://supergood.solutions/services.json)
+- [Fit check POST](https://supergood-intake.vercel.app/api/intake): Accepts Idempotency-Key.
+- [Sandbox POST](https://supergood-intake.vercel.app/api/sandbox/intake): Same validation, sends nothing.
+- [MCP server](https://supergood-intake.vercel.app/api/mcp): Tools get_pricing, get_services, submit_fit_check.
+- [MCP server card](https://supergood.solutions/.well-known/mcp/server-card.json)

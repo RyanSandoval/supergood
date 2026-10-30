@@ -1,3 +1,10 @@
+---
+title: "AI Consulting Services | Supergood Solutions"
+description: "AI consulting that builds production AI agents and automations — with guardrails, observability, and honest pricing. Founded by a 14-year product veteran."
+canonical: https://supergood.solutions/ai-consulting/
+last-updated: 2026-10-30
+---
+
 [Home](https://supergood.solutions/) / AI Consulting
 
 AI consulting

@@ -9,42 +9,42 @@
       "description": "When to use Supergood's public files, and how an agent should call the rate card, the service list, and the fit check.",
       "type": "skill-md",
       "url": "https://supergood.solutions/.well-known/agent-skills/SKILL.md",
-      "digest": "sha256:6e629a00142e539d4cd92529f76e006e4bfded8bcd448ff6d443dd7738061997"
+      "digest": "sha256:8d35825b6119bf6c4dd5810d021567684533e826d9ac0c33223bbfd683b524fe"
     },
     {
       "name": "submit-fit-check",
       "description": "When to use the fit check, and the POST that emails one inquiry to Ryan.",
       "type": "skill-md",
       "url": "https://supergood.solutions/.well-known/agent-skills/submit-fit-check.md",
-      "digest": "sha256:c2ceb964efbd791ad2fd94ad544e90b51876c20ed23510a187e7c4bed778c33d"
+      "digest": "sha256:2ebfc8742791b05b8e0da66a7a1c060c187b808e72d63f191f74e98f55eec37e"
     },
     {
       "name": "read-agent-instructions",
       "description": "Read the llmstxt.org-format index of supergood.solutions: what Supergood is, what it sells, and where its pages live.",
       "type": "skill-md",
       "url": "https://supergood.solutions/.well-known/agent-skills/read-agent-instructions.md",
-      "digest": "sha256:fad671341290468223294e4372c10bc04410993de1aeefd7c211a34666b1574e"
+      "digest": "sha256:0fa480efd163dca80f57dacc99526f70d455ef5f9ddf5dcf95459d815d5d9056"
     },
     {
       "name": "read-rate-card",
       "description": "Read Supergood's published rate card: the free fit check, the Quick Scan, per-workflow Builds and the monthly Run retainer.",
       "type": "skill-md",
       "url": "https://supergood.solutions/.well-known/agent-skills/read-rate-card.md",
-      "digest": "sha256:2a5c038d47496f43638cb3500fb9cabb0460e3bb3a1ba288d8e18f864d61b9ec"
+      "digest": "sha256:279ba4e55390d26d95a5477fa619adb873d6b691cca65c29e2ab748ee045a4ab"
     },
     {
       "name": "read-service-catalog",
       "description": "Read the full text of every Supergood service page, plus About, Start and FAQ, as one markdown document instead of crawling HTML.",
       "type": "skill-md",
       "url": "https://supergood.solutions/.well-known/agent-skills/read-service-catalog.md",
-      "digest": "sha256:54c47ad3983727a2ae919bbee03b6a88e0dfabf7893bdfac6a4ab0dcf3f3a069"
+      "digest": "sha256:ecb4f06d63ed8416af98be9179e9c7bf64f91b9a809204a9d3c07a48be07b53e"
     },
     {
       "name": "search-blog-corpus",
       "description": "List every Supergood blog post from sitemap.xml, then fetch the posts that match a topic such as AI consulting cost or agent evals.",
       "type": "skill-md",
       "url": "https://supergood.solutions/.well-known/agent-skills/search-blog-corpus.md",
-      "digest": "sha256:14f24c32a0755db74f30b011be3d6b2d2123883de04072ee8c1664046e022d88"
+      "digest": "sha256:07565f596c8c689fdd69c18e102a5a10d37a6a5e22b59e401b5a80f7aeaae852"
     }
   ]
 }

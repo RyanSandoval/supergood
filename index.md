@@ -1,3 +1,10 @@
+---
+title: "Supergood Solutions (Supergood AI) | AI Agent & Automation Consulting"
+description: "AI consulting for teams who need production AI agents, workflow automation, and the guardrails to keep them running. Founded by a 14-year product veteran."
+canonical: https://supergood.solutions/
+last-updated: 2026-10-30
+---
+
 supergood.
 
 AI consulting & agent engineering

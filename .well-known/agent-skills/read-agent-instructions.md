@@ -1,6 +1,9 @@
 ---
 name: read-agent-instructions
 description: Read the llmstxt.org-format index of supergood.solutions: what Supergood is, what it sells, and where its pages live.
+title: Read agent instructions
+canonical: https://supergood.solutions/.well-known/agent-skills/read-agent-instructions.md
+last-updated: 2026-10-30
 ---
 
 # Read agent instructions

@@ -1,3 +1,10 @@
+---
+title: "About Ryan Sandoval | Supergood Solutions"
+description: "Ryan Sandoval, founder of Supergood Solutions — 14 years building products at Viking Cruises, Live Nation/Ticketmaster, and Logitech. Now AI consulting."
+canonical: https://supergood.solutions/about/
+last-updated: 2026-10-30
+---
+
 [Home](https://supergood.solutions/) / About
 
 About

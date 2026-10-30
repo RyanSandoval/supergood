@@ -1,6 +1,9 @@
 ---
 name: read-rate-card
 description: Read Supergood's published rate card: the free fit check, the Quick Scan, per-workflow Builds and the monthly Run retainer.
+title: Read the rate card
+canonical: https://supergood.solutions/.well-known/agent-skills/read-rate-card.md
+last-updated: 2026-10-30
 ---
 
 # Read the rate card
@@ -9,6 +12,7 @@ Supergood publishes its pricing openly. These places carry it, all plain GETs wi
 
 1. `GET https://supergood.solutions/pricing.json` is the machine-readable rate card, served as `application/json`.
 2. `GET https://supergood.solutions/pricing/` is the same card as a page, served as `text/html`.
+   `GET https://supergood.solutions/pricing.md` is the same card as markdown.
 3. `GET https://supergood.solutions/llms.txt` states the same model in the opening paragraph, as `text/plain`.
 4. `GET https://supergood.solutions/llms-full.txt` repeats it under each service heading, with FAQ answers and market-rate comparisons, as `text/plain` markdown.
 
