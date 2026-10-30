@@ -17,8 +17,17 @@
       "description": "Intake API host. Fit check, sandbox, and the JSON index at GET /."
     },
     {
-      "url": "https://supergood-intake.vercel.app/api/v1/sandbox",
-      "description": "Sandbox base. POST /intake on this server is POST /api/v1/sandbox/intake. Same validation as production, sends nothing."
+      "url": "https://supergood-intake.vercel.app/api/v1/{environment}",
+      "description": "Sandbox environment. GET returns a sandbox index and POST /intake here is POST /api/v1/sandbox/intake. Same validation as production, sends nothing, no live data touched.",
+      "variables": {
+        "environment": {
+          "default": "sandbox",
+          "enum": [
+            "sandbox"
+          ],
+          "description": "The only environment served under this base path."
+        }
+      }
     },
     {
       "url": "https://supergood.solutions",
