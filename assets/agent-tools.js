@@ -2,7 +2,7 @@
    Reads are GETs of static JSON. The fit check waits 3 seconds, then POSTs
    one real inquiry to the intake function. No key. */
 (function () {
-  var INTAKE = 'https://supergood-intake.vercel.app/api/intake';
+  var INTAKE = 'https://api.supergood.solutions/api/intake';
   var MIN_MS = 3000;
 
   var SELECTS = {

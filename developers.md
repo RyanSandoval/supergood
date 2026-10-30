@@ -30,7 +30,7 @@ curl -sS https://supergood.solutions/services.json
 
 ## Fit check
 
-`POST https://supergood-intake.vercel.app/api/intake`
+`POST https://api.supergood.solutions/api/intake`
 
 `Content-Type: application/json`
 
@@ -51,7 +51,7 @@ Browser requests are allowed from `https://supergood.solutions` only. A request 
 The in-page tool `submit_fit_check` (WebMCP, `document.modelContext.registerTool` in `/assets/agent-tools.js`) waits 3 seconds and posts once. It is registered on the homepage, the fit-check page, and this page.
 
 ```bash
-curl -sS -X POST https://supergood-intake.vercel.app/api/intake \
+curl -sS -X POST https://api.supergood.solutions/api/intake \
   -H 'Content-Type: application/json' \
   -d '{"name":"Ada Lovelace","email":"ada@example.com","company":"","handoff":"A Monday report rebuilt from three spreadsheets.","paysForTools":"Yes","source":"docs-example","elapsedMs":3000}'
 ```
@@ -60,10 +60,10 @@ That command creates a real inquiry. Do not run it as a test. To test, use the s
 
 ## Sandbox
 
-`POST https://supergood-intake.vercel.app/api/sandbox/intake` takes the same body, runs the same validation and returns `200 {"ok":true,"sandbox":true}`. It never sends an email. Each IP gets 30 requests per 10 minutes.
+`POST https://api.supergood.solutions/api/sandbox/intake` takes the same body, runs the same validation and returns `200 {"ok":true,"sandbox":true}`. It never sends an email. Each IP gets 30 requests per 10 minutes.
 
 ```bash
-curl -sS -X POST https://supergood-intake.vercel.app/api/sandbox/intake \
+curl -sS -X POST https://api.supergood.solutions/api/sandbox/intake \
   -H 'Content-Type: application/json' \
   -d '{"name":"Ada Lovelace","email":"ada@example.com","handoff":"A Monday report rebuilt from three spreadsheets.","paysForTools":"Yes"}'
 ```
@@ -89,7 +89,7 @@ Every error is JSON: `{"ok":false,"error":"<code>","message":"...","hint":"..."}
 | 500 | `error: server` | The endpoint is not configured. Try later. |
 | 502 | `error: send` | The email was not delivered. Try again in a minute. |
 
-A missing path on `supergood-intake.vercel.app` returns this JSON with status 404. A missing path on `supergood.solutions` returns the HTML 404 page. GitHub Pages does not return JSON for that.
+A missing path on `api.supergood.solutions` returns this JSON with status 404. A missing path on `supergood.solutions` returns the HTML 404 page. GitHub Pages does not return JSON for that.
 
 ## Versioning
 
@@ -99,7 +99,7 @@ A breaking change ships as a new path, for example `/api/v2/intake`. The old pat
 
 ## MCP server
 
-The intake project hosts an MCP server. Streamable HTTP, stateless, no key: `https://supergood-intake.vercel.app/api/mcp`.
+The intake project hosts an MCP server. Streamable HTTP, stateless, no key: `https://api.supergood.solutions/api/mcp`.
 
 - `get_pricing`: the rate card. Optional `offer` (`fit-check`, `quick-scan`, `build`, `run`) returns one offer. Read-only.
 - `get_services`: the service list. Optional `service` returns one service. Read-only.
@@ -108,7 +108,7 @@ The intake project hosts an MCP server. Streamable HTTP, stateless, no key: `htt
 The server card is at [/.well-known/mcp/server-card.json](https://supergood.solutions/.well-known/mcp/server-card.json). The server accepts requests from any origin and rate limits by IP (60 requests a minute, with the same RateLimit headers). An unknown tool name returns a JSON-RPC `-32602` error with a message that lists the tools. Bad arguments to a real tool return a tool result with `isError: true`.
 
 ```bash
-curl -sS https://supergood-intake.vercel.app/api/mcp \
+curl -sS https://api.supergood.solutions/api/mcp \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json, text/event-stream' \
   -d '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'

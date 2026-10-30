@@ -84,7 +84,7 @@ footer a:hover { color: var(--text-2); }
     <h2>The fit check</h2>
     <p>The form at <a href="/start/">/start/</a> asks for a name, a work email, and a description of the work you would hand off. It also asks whether you are OK paying for the tools your workflows run on (Yes, Not sure, or No). Company, role, where the work sits today, how many people touch it, timeline, and budget are optional.</p>
     <p>The page also sends how many milliseconds passed since you focused a field, and a source string (<code>supergood.solutions/start</code> from the form, <code>supergood.solutions/webmcp</code> from the in-page tool). A hidden field named <code>company</code> is a honeypot. Leave it empty. The employer name, if you give one, is <code>companyName</code>.</p>
-    <p>The browser posts that JSON to <code>https://supergood-intake.vercel.app/api/intake</code>. The function emails the note to Ryan through Resend. Resend carries that one message. The note is not added to a newsletter list, and it is not sold.</p>
+    <p>The browser posts that JSON to <code>https://api.supergood.solutions/api/intake</code>. The function emails the note to Ryan through Resend. Resend carries that one message. The note is not added to a newsletter list, and it is not sold.</p>
 
     <h2>Analytics</h2>
     <p>Pages load Google Analytics, measurement id <code>G-JLBDSQ3B4P</code>. That is the only analytics tag. The static pages do not run an account system of their own.</p>

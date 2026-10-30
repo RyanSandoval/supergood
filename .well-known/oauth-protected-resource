@@ -1,0 +1,13 @@
+{
+  "resource": "https://supergood.solutions",
+  "resource_name": "Supergood Solutions public documents",
+  "resource_documentation": "https://supergood.solutions/developers/",
+  "authorization_servers": [],
+  "bearer_methods_supported": [],
+  "scopes_supported": [],
+  "authentication_required": false,
+  "agent_auth": {
+    "skill": "https://supergood.solutions/auth.md",
+    "identity_types_supported": ["anonymous"]
+  }
+}

@@ -17,9 +17,9 @@ Supergood provides AI consulting, AI agent consulting, AI automation consulting,
 
 Public reads need no key. `GET https://supergood.solutions/pricing.json` returns the rate card. `GET https://supergood.solutions/services.json` returns the service list. Both are the full document in one response.
 
-To start a fit check, `POST https://supergood-intake.vercel.app/api/intake` with JSON (`name`, `email`, `handoff`, and `paysForTools`: `Yes`, `Not sure` or `No`). That POST emails Ryan. Send it once. Leave `company` as an empty string. The employer goes in `companyName`. Details, error codes, and the OpenAPI document are on [Developers](https://supergood.solutions/developers/). Authentication is [auth.md](https://supergood.solutions/auth.md): there is none on these calls.
+To start a fit check, `POST https://api.supergood.solutions/api/intake` with JSON (`name`, `email`, `handoff`, and `paysForTools`: `Yes`, `Not sure` or `No`). That POST emails Ryan. Send it once. Leave `company` as an empty string. The employer goes in `companyName`. Details, error codes, and the OpenAPI document are on [Developers](https://supergood.solutions/developers/). Authentication is [auth.md](https://supergood.solutions/auth.md): there is none on these calls.
 
-There is an MCP server, hosted by the intake project. It uses Streamable HTTP at `https://supergood-intake.vercel.app/api/mcp`, needs no key, and has three tools: `get_pricing`, `get_services` and `submit_fit_check`. The server card is at [/.well-known/mcp/server-card.json](https://supergood.solutions/.well-known/mcp/server-card.json). Errors from the form endpoint and the MCP tool are JSON with `ok`, `error`, `message` and `hint`.
+There is an MCP server, hosted by the intake project. It uses Streamable HTTP at `https://api.supergood.solutions/api/mcp`, needs no key, and has three tools: `get_pricing`, `get_services` and `submit_fit_check`. The server card is at [/.well-known/mcp/server-card.json](https://supergood.solutions/.well-known/mcp/server-card.json). Errors from the form endpoint and the MCP tool are JSON with `ok`, `error`, `message` and `hint`.
 
 ## Terminology: AI and SI
 

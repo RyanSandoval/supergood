@@ -12,7 +12,7 @@ last-updated: 2026-10-30
 
 Use this when a person wants Ryan Sandoval to say whether Supergood should take the work. The work is usually a manual process a marketing or ops team wants off its plate, a demo-stage agent that has to run in production, or agents that already need guardrails.
 
-Do not use it as a chat endpoint. `POST https://supergood-intake.vercel.app/api/intake` sends a real email. Send one.
+Do not use it as a chat endpoint. `POST https://api.supergood.solutions/api/intake` sends a real email. Send one.
 
 ## Call
 
@@ -49,6 +49,6 @@ Browser requests are allowed from `https://supergood.solutions` only. A request 
 | 500 | `server` | The endpoint is not configured. Try later. |
 | 502 | `send` | The email could not be delivered. Try again. |
 
-The MCP server at `https://supergood-intake.vercel.app/api/mcp` has the same tool, `submit_fit_check`, with the same checks.
+The MCP server at `https://api.supergood.solutions/api/mcp` has the same tool, `submit_fit_check`, with the same checks.
 
-Send an `Idempotency-Key` header (1 to 200 printable characters, no spaces) and a retry of the same body within 24 hours does not send a second email. Without it, a retry of a `200` can send a second email. To test without sending anything, POST the same body to `https://supergood-intake.vercel.app/api/sandbox/intake`.
+Send an `Idempotency-Key` header (1 to 200 printable characters, no spaces) and a retry of the same body within 24 hours does not send a second email. Without it, a retry of a `200` can send a second email. To test without sending anything, POST the same body to `https://api.supergood.solutions/api/sandbox/intake`.

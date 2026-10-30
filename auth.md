@@ -1,34 +1,29 @@
----
-title: "Supergood authentication"
-description: "No authentication is needed for the public reads, the fit-check POST, or the MCP server. This page says so in the format agents look for."
-canonical: https://supergood.solutions/auth.md
-last-updated: 2026-10-30
----
-
 # Supergood authentication
 
 Public reads and the fit-check POST do not use authentication. Send no `Authorization` header, no API key, and no cookie. There is no account to sign in to.
+
+Last updated: 2026-10-30.
 
 The calls are:
 
 - `GET https://supergood.solutions/pricing.json`
 - `GET https://supergood.solutions/services.json`
-- `POST https://supergood-intake.vercel.app/api/intake`
-- MCP server (Streamable HTTP): `https://supergood-intake.vercel.app/api/mcp`. Server card: `https://supergood.solutions/.well-known/mcp/server-card.json`.
+- `POST https://api.supergood.solutions/api/intake`
+- MCP server (Streamable HTTP): `https://api.supergood.solutions/api/mcp`. Server card: `https://supergood.solutions/.well-known/mcp/server-card.json`.
 
 The request and response shapes are in [openapi.json](https://supergood.solutions/openapi.json). A prose walkthrough is on the [developers page](https://supergood.solutions/developers/).
 
 ## Discover
 
-There is no protected-resource metadata and no authorization-server metadata, because these URLs are public. A call does not return `401` and does not send `WWW-Authenticate`. Do not look for an `agent_auth` block. None is published.
+Fetch `https://api.supergood.solutions/.well-known/oauth-protected-resource` (RFC 9728). It returns `200` JSON. `authorization_servers` is an empty list because no authorization server exists. The `agent_auth` block is `{"skill":"https://supergood.solutions/auth.md","identity_types_supported":["anonymous"]}`. The same document is at `https://supergood.solutions/.well-known/oauth-protected-resource`. No call returns `401` and none sends `WWW-Authenticate`. There is no authorization-server metadata to fetch.
 
 ## Pick a method
 
-The only method is to call the URL. `anonymous`, `identity_assertion`, `service_auth`, and `id-jag` are not offered. There is no identity to register and no assertion to mint.
+`anonymous` is the only identity type. Use it by sending the request with no credential. `identity_assertion`, `service_auth`, and `id-jag` are not offered. There is no identity to mint and no assertion to sign.
 
 ## Register
 
-Do not register a client. There is no `identity_endpoint`.
+Do not register a client. There is no `identity_endpoint` and no registration endpoint. An anonymous caller is already allowed.
 
 ## Claim
 
@@ -55,7 +50,7 @@ The intake function and the MCP tool return JSON: `{"ok":false,"error":"<code>",
 - `429` `rate_limited`: too many requests. Wait a minute.
 - `500` `server` and `502` `send`: the endpoint or the email delivery failed. Try again later.
 
-A missing path on `supergood.solutions` is an HTML 404 from GitHub Pages, not a JSON error.
+A missing path on `api.supergood.solutions` returns the same JSON shape with status `404`. A missing path on `supergood.solutions` is an HTML 404 from GitHub Pages, not a JSON error. Send API calls to `api.supergood.solutions`.
 
 ## Revocation
 

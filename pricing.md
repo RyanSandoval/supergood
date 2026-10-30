@@ -31,5 +31,5 @@ Clients pay for tools, APIs and seats on their own accounts. Supergood does not 
 
 - JSON: https://supergood.solutions/pricing.json
 - Page: https://supergood.solutions/pricing/
-- MCP tool `get_pricing`: https://supergood-intake.vercel.app/api/mcp
+- MCP tool `get_pricing`: https://api.supergood.solutions/api/mcp
 - Contract: https://supergood.solutions/openapi.json

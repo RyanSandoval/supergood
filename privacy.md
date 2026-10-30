@@ -15,7 +15,7 @@ The form at [https://supergood.solutions/start/](https://supergood.solutions/sta
 
 The page also sends how many milliseconds passed since you focused a field, and a source string (`supergood.solutions/start` from the form, `supergood.solutions/webmcp` from the in-page tool). A hidden field named `company` is a honeypot. Leave it empty. The employer name, if you give one, is `companyName`.
 
-The browser posts that JSON to `https://supergood-intake.vercel.app/api/intake`. The function emails the note to Ryan through Resend. Resend carries that one message. The note is not added to a newsletter list, and it is not sold.
+The browser posts that JSON to `https://api.supergood.solutions/api/intake`. The function emails the note to Ryan through Resend. Resend carries that one message. The note is not added to a newsletter list, and it is not sold.
 
 ## Analytics
 
