@@ -45,7 +45,7 @@
       "isPartOf": { "@id": "https://supergood.solutions/#website" },
       "about": { "@id": "https://supergood.solutions/#organization" },
       "primaryImageOfPage": "https://supergood.solutions/og-image.png",
-      "dateModified": "2026-10-01",
+      "dateModified": "2026-10-29",
       "significantLink": [
         "https://supergood.solutions/ai-consulting/",
         "https://supergood.solutions/ai-readiness-assessment/"
@@ -264,6 +264,16 @@ section h2 {
   gap: 16px;
 }
 .field-pair .field { margin-bottom: 24px; }
+.choice-group { display: flex; flex-wrap: wrap; gap: 8px; }
+.choice {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.9375rem; font-weight: 500; color: var(--text);
+  background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
+  padding: 10px 14px; cursor: pointer; line-height: 1.3;
+}
+.choice input { accent-color: var(--green); width: 16px; height: 16px; margin: 0; }
+.choice:has(input:checked) { border-color: var(--green); }
+.choice:has(input:focus-visible) { outline: 2px solid var(--green); outline-offset: 1px; }
 
 /* The qualifying field gets the weight */
 .field-primary {
@@ -469,6 +479,15 @@ footer a:hover { color: var(--text-2); }
             </select>
           </div>
 
+          <div class="field">
+            <label id="paysForTools-label">Are you OK paying for the software and tools your workflows run on, on your own accounts? <span class="req" aria-hidden="true">*</span></label>
+            <div class="choice-group" role="radiogroup" aria-labelledby="paysForTools-label" aria-required="true">
+              <label class="choice"><input type="radio" name="paysForTools" value="Yes" required> Yes</label>
+              <label class="choice"><input type="radio" name="paysForTools" value="Not sure"> Not sure</label>
+              <label class="choice"><input type="radio" name="paysForTools" value="No"> No</label>
+            </div>
+          </div>
+
           <div class="submit-area">
             <button type="submit" class="btn btn-primary" id="submit-btn">Send it over</button>
             <p class="fineprint" id="intake-fineprint">Your contact info is used to reply to this message. We don't send marketing email. <a href="/privacy/">Privacy</a> says where the note goes.</p>
@@ -578,6 +597,7 @@ form.addEventListener('submit', async (e) => {
   const name = (fd.get('name') || '').toString().trim();
   const email = (fd.get('email') || '').toString().trim();
   const handoff = (fd.get('handoff') || '').toString().trim();
+  const paysForTools = (fd.get('paysForTools') || '').toString().trim();
   const honeypot = (fd.get('company') || '').toString().trim();
 
   if (honeypot) {
@@ -585,11 +605,12 @@ form.addEventListener('submit', async (e) => {
     return;
   }
 
-  if (!name || !email || !handoff) {
+  if (!name || !email || !handoff || !paysForTools) {
     const missing = !name ? document.getElementById('name')
       : !email ? document.getElementById('email')
-      : document.getElementById('handoff');
-    showError('Name, work email, and the work you\'d hand off are all needed before we can reply to you.', missing);
+      : !handoff ? document.getElementById('handoff')
+      : document.querySelector('input[name="paysForTools"]');
+    showError('Name, work email, the work you\'d hand off, and whether you are OK paying for tools on your own accounts are all needed before we can reply to you.', missing);
     return;
   }
 
@@ -615,6 +636,7 @@ form.addEventListener('submit', async (e) => {
     teamSize: (fd.get('teamSize') || '').toString(),
     timeline: (fd.get('timeline') || '').toString(),
     budget: (fd.get('budget') || '').toString(),
+    paysForTools: paysForTools,
     source: 'supergood.solutions/start',
     elapsedMs: elapsed
   };

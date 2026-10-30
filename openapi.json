@@ -4,7 +4,7 @@
     "title": "Supergood Solutions public API",
     "version": "1.0.0",
     "summary": "Public reads of the rate card and service list, and the fit-check POST.",
-    "description": "Two GET documents are static files on https://supergood.solutions. The fit check is POST https://supergood-intake.vercel.app/api/intake. No API key, bearer token, or account is required. See https://supergood.solutions/auth.md.\n\nVersion 1.0.0 is the current contract. pricing.json and services.json are the full list in one response and are not paged. A breaking change keeps the old path and adds a new one. This host cannot send a Sunset or Deprecation header (GitHub Pages). The developers page records the change: https://supergood.solutions/developers/.\n\nThe intake POST is not idempotent. A retry can email Ryan twice. There is no Idempotency-Key support and no published rate limit.",
+    "description": "Two GET documents are static files on https://supergood.solutions. The fit check is POST https://supergood-intake.vercel.app/api/intake. No API key, bearer token, or account is required. See https://supergood.solutions/auth.md.\n\nVersion 1.0.0 is the current contract. pricing.json and services.json are the full list in one response and are not paged. A breaking change keeps the old path and adds a new one. This host cannot send a Sunset or Deprecation header (GitHub Pages). The developers page records the change: https://supergood.solutions/developers/.\n\nThe intake POST is not idempotent. A retry can email Ryan twice. There is no Idempotency-Key support. Each IP gets 10 requests per 10 minutes. The same fit check is also available as the submit_fit_check tool on the MCP server at https://supergood-intake.vercel.app/api/mcp (card: https://supergood.solutions/.well-known/mcp/server-card.json).",
     "contact": {
       "name": "Ryan Sandoval",
       "url": "https://supergood.solutions/start/",
@@ -28,6 +28,50 @@
         "tags": ["reads"],
         "summary": "Read the published rate card.",
         "description": "Returns the same offers as https://supergood.solutions/pricing/ in one JSON document. No query parameters. Not paged. Safe to call. No auth.",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "The full rate card.",
+            "content": {
+              "application/json": {
+                "schema": {"$ref": "#/components/schemas/PricingDocument"}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/services.json": {
+      "get": {
+        "operationId": "getServices",
+        "tags": ["reads"],
+        "summary": "Read the published service list.",
+        "description": "Returns the five public services in one JSON document. No query parameters. Not paged. Safe to call. No auth.",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "The full service list.",
+            "content": {
+              "application/json": {
+                "schema": {"$ref": "#/components/schemas/ServicesDocument"}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/intake": {
+      "servers": [
+        {
+          "url": "https://supergood-intake.vercel.app",
+          "description": "Fit-check function. Separate project from this static site."
+        }
+      ],
+      "post": {
+        "operationId": "submitFitCheck",
+        "tags": ["intake"],
+        "summary": "Submit one fit-check inquiry.",
+        "description": "Emails the inquiry to Ryan Sandoval. Send one request per person. A repeat POST sends another email. No auth. Browser requests are allowed from https://supergood.solutions only; another Origin gets 403. Callers with no Origin header are fine. The form at /start/ will not submit until 3 seconds after the first field focus. The function drops a body whose elapsedMs is under 3000 or whose company field is filled, answers 200 {ok:true}, and sends no email. Leave company as an empty string. Put the employer in companyName.",
         "security": [],
         "responses": {
           "200": {
@@ -105,20 +149,38 @@
             }
           },
           "400": {
-            "description": "The body was rejected. error is required when name, email, or handoff is missing or not a string. Send all three as non-empty strings. error is email when the address is not a complete name@domain form. Fix the address and send once.",
+            "description": "The body was rejected. error is json when the body is not a JSON object, required when name, email, or handoff is missing, email when the address is not valid, and paysForTools when the value is not Yes, Not sure, or No. Read hint, fix the body, and send once.",
             "content": {
               "application/json": {
                 "schema": {"$ref": "#/components/schemas/FitCheckError"},
                 "examples": {
                   "required": {
                     "summary": "Missing required field",
-                    "value": {"ok": false, "error": "required"}
+                    "value": {"ok": false, "error": "required", "message": "Name, email and handoff are required.", "hint": "Include non-empty \"name\", \"email\" and \"handoff\" (the work you want handed off)."}
                   },
                   "email": {
                     "summary": "Email did not parse",
-                    "value": {"ok": false, "error": "email"}
+                    "value": {"ok": false, "error": "email", "message": "The email address does not look valid.", "hint": "Use an address like you@company.com."}
                   }
                 }
+              }
+            }
+          },
+          "403": {
+            "description": "A browser request from an origin other than supergood.solutions. Call from a server, or use the form at /start/.",
+            "content": {
+              "application/json": {
+                "schema": {"$ref": "#/components/schemas/FitCheckError"},
+                "example": {"ok": false, "error": "origin", "message": "Browser requests from this origin are not allowed.", "hint": "Submit from https://supergood.solutions/start/, or call the API from a server (no Origin header)."}
+              }
+            }
+          },
+          "429": {
+            "description": "More than 10 requests from one IP in 10 minutes. A Retry-After header gives the seconds to wait.",
+            "content": {
+              "application/json": {
+                "schema": {"$ref": "#/components/schemas/FitCheckError"},
+                "example": {"ok": false, "error": "rate_limited", "message": "Too many requests from this address.", "hint": "Wait a minute and try again. Real submissions are rarely sent more than a few times an hour."}
               }
             }
           },
@@ -127,9 +189,17 @@
             "content": {
               "application/json": {
                 "schema": {"$ref": "#/components/schemas/FitCheckError"},
-                "example": {"ok": false, "error": "method"}
+                "example": {"ok": false, "error": "method", "message": "This endpoint only accepts POST.", "hint": "Send a POST request with a JSON body."}
               }
             }
+          },
+          "500": {
+            "description": "The endpoint is not configured. Try again later.",
+            "content": {"application/json": {"schema": {"$ref": "#/components/schemas/FitCheckError"}}}
+          },
+          "502": {
+            "description": "The email could not be delivered. Try again in a minute.",
+            "content": {"application/json": {"schema": {"$ref": "#/components/schemas/FitCheckError"}}}
           }
         }
       }
@@ -213,6 +283,11 @@
           "name": {"type": "string", "minLength": 1, "description": "Person to reply to."},
           "email": {"type": "string", "minLength": 1, "format": "email", "description": "Work email Ryan should reply to."},
           "handoff": {"type": "string", "minLength": 1, "description": "The manual work they want off the team's plate, in their words."},
+          "paysForTools": {
+            "type": "string",
+            "enum": ["Yes", "Not sure", "No"],
+            "description": "Are you OK paying for the software and tools your workflows run on, on your own accounts? The form and the MCP tool require it. The endpoint accepts a request without it."
+          },
           "company": {"type": "string", "const": "", "description": "Honeypot. Send an empty string. The employer name goes in companyName."},
           "companyName": {"type": "string", "description": "Employer. Optional."},
           "role": {"type": "string", "description": "Job title. Optional."},
@@ -237,7 +312,7 @@
             "description": "Rough budget. Optional."
           },
           "source": {"type": "string", "description": "Where the request came from. The form sends supergood.solutions/start. The in-page tool sends supergood.solutions/webmcp."},
-          "elapsedMs": {"type": "integer", "minimum": 0, "description": "Milliseconds since the person started the form. The /start/ page refuses to send before 3000. The function accepted 1 on 2026-10-29."}
+          "elapsedMs": {"type": "integer", "minimum": 0, "description": "Milliseconds since the person started the form. The function drops a value under 3000: it answers 200 and sends no email."}
         }
       },
       "FitCheckAccepted": {
@@ -251,15 +326,16 @@
       "FitCheckError": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["ok", "error"],
-        "description": "Observed error body. The code is the only machine-readable field. There is no separate message or hint property.",
+        "required": ["ok", "error", "message", "hint"],
+        "description": "Every error from the intake function. error is a stable code, message says what went wrong, hint says how to fix it.",
         "properties": {
           "ok": {"type": "boolean", "const": false},
           "error": {
             "type": "string",
-            "enum": ["method", "required", "email"],
-            "description": "method: use POST. required: send name, email, and handoff as non-empty strings. email: send a complete email address."
-          }
+            "enum": ["method", "origin", "json", "required", "email", "paysForTools", "rate_limited", "server", "send"]
+          },
+          "message": {"type": "string"},
+          "hint": {"type": "string"}
         }
       }
     }

@@ -19,4 +19,4 @@ It returns:
 - Links to About, FAQ, Blog, the project fit-check form at `https://supergood.solutions/start/`, and a list of featured blog posts.
 - Pointers to `llms-full.txt`, `sitemap.xml`, the OpenAPI document, and `auth.md`.
 
-Machine-readable calls, all without a key: `GET https://supergood.solutions/pricing.json`, `GET https://supergood.solutions/services.json`, and `POST https://supergood-intake.vercel.app/api/intake` for one fit check. The contract is `https://supergood.solutions/openapi.json`. No MCP server is hosted on this domain. A person can also use the form at `https://supergood.solutions/start/`.
+Machine-readable calls, all without a key: `GET https://supergood.solutions/pricing.json`, `GET https://supergood.solutions/services.json`, and `POST https://supergood-intake.vercel.app/api/intake` for one fit check. The contract is `https://supergood.solutions/openapi.json`. An MCP server is at `https://supergood-intake.vercel.app/api/mcp` (card: `https://supergood.solutions/.well-known/mcp/server-card.json`). A person can also use the form at `https://supergood.solutions/start/`.

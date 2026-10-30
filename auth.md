@@ -7,6 +7,7 @@ The calls are:
 - `GET https://supergood.solutions/pricing.json`
 - `GET https://supergood.solutions/services.json`
 - `POST https://supergood-intake.vercel.app/api/intake`
+- MCP server (Streamable HTTP): `https://supergood-intake.vercel.app/api/mcp`. Server card: `https://supergood.solutions/.well-known/mcp/server-card.json`.
 
 The request and response shapes are in [openapi.json](https://supergood.solutions/openapi.json). A prose walkthrough is on the [developers page](https://supergood.solutions/developers/).
 
@@ -24,7 +25,7 @@ Do not register a client. There is no `identity_endpoint`.
 
 ## Claim
 
-There is no claim step and no claim URL. The fit check is the message itself: `name`, `email`, and `handoff` in the JSON body.
+There is no claim step and no claim URL. The fit check is the message itself: `name`, `email`, `handoff`, and `paysForTools` in the JSON body.
 
 ## Exchange
 
@@ -32,11 +33,22 @@ There is no token endpoint and nothing to exchange. Do not mint an access token.
 
 ## Use the access_token
 
-There is no access token. Call the three URLs above with `Content-Type: application/json` on the POST and no credential on any of them.
+There is no access token. Call the URLs above with `Content-Type: application/json` on the POST and no credential on any of them. The MCP server takes no `Authorization` header either.
 
 ## Errors
 
-The intake function returns JSON. `405` with `{"ok":false,"error":"method"}` means you used a method other than POST. `400` with `{"ok":false,"error":"required"}` means `name`, `email`, or `handoff` was missing or not a string. `400` with `{"ok":false,"error":"email"}` means the email did not look like a complete address. Fix the body and send one request. A missing path on `supergood.solutions` is an HTML 404 from GitHub Pages, not a JSON error.
+The intake function and the MCP tool return JSON: `{"ok":false,"error":"<code>","message":"...","hint":"..."}`. `error` is a stable code, `message` says what went wrong, and `hint` says how to fix it. No call here returns `401` or `WWW-Authenticate`.
+
+- `400` `required`: `name`, `email`, or `handoff` was missing or empty.
+- `400` `email`: the address was not complete.
+- `400` `paysForTools`: send `Yes`, `Not sure`, or `No`.
+- `400` `json`: the body was not a JSON object.
+- `403` `origin`: a browser request from an origin other than supergood.solutions. Call from a server, or use the form.
+- `405` `method`: use POST.
+- `429` `rate_limited`: too many requests. Wait a minute.
+- `500` `server` and `502` `send`: the endpoint or the email delivery failed. Try again later.
+
+A missing path on `supergood.solutions` is an HTML 404 from GitHub Pages, not a JSON error.
 
 ## Revocation
 

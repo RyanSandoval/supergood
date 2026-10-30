@@ -2,28 +2,28 @@
   "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
   "version": "1.0",
   "name": "Supergood Solutions",
-  "description": "When to use these skills: read Supergood's rate card, service list, and blog, or send one fit check. Public reads and the fit-check POST need no key. No MCP server is hosted here.",
+  "description": "When to use these skills: read Supergood's rate card, service list, and blog, or send one fit check. Public reads and the fit-check POST need no key. The MCP server is at https://supergood-intake.vercel.app/api/mcp.",
   "skills": [
     {
       "name": "supergood",
       "description": "When to use Supergood's public files, and how an agent should call the rate card, the service list, and the fit check.",
       "type": "skill-md",
       "url": "https://supergood.solutions/.well-known/agent-skills/SKILL.md",
-      "digest": "sha256:367c98de953005df408f534fd2eebb2d4d0f3feb564335909fbcb6a426f0c555"
+      "digest": "sha256:6e629a00142e539d4cd92529f76e006e4bfded8bcd448ff6d443dd7738061997"
     },
     {
       "name": "submit-fit-check",
       "description": "When to use the fit check, and the POST that emails one inquiry to Ryan.",
       "type": "skill-md",
       "url": "https://supergood.solutions/.well-known/agent-skills/submit-fit-check.md",
-      "digest": "sha256:109a25e24eb38c03f663944f527befa8f61180d9b1f8860e9a446259f0b32e12"
+      "digest": "sha256:c2ceb964efbd791ad2fd94ad544e90b51876c20ed23510a187e7c4bed778c33d"
     },
     {
       "name": "read-agent-instructions",
       "description": "Read the llmstxt.org-format index of supergood.solutions: what Supergood is, what it sells, and where its pages live.",
       "type": "skill-md",
       "url": "https://supergood.solutions/.well-known/agent-skills/read-agent-instructions.md",
-      "digest": "sha256:cc498992172c8b4b66fa2e6394291b1607a28b855b018b4eaf7616dcc5973dfb"
+      "digest": "sha256:fad671341290468223294e4372c10bc04410993de1aeefd7c211a34666b1574e"
     },
     {
       "name": "read-rate-card",

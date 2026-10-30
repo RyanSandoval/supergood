@@ -21,10 +21,10 @@ No key and no token.
 
 1. `GET https://supergood.solutions/pricing.json` for the rate card.
 2. `GET https://supergood.solutions/services.json` for the service list.
-3. `POST https://supergood-intake.vercel.app/api/intake` with `name`, `email`, and `handoff` to send one fit check. Leave `company` as `""`. Put the employer in `companyName`.
+3. `POST https://supergood-intake.vercel.app/api/intake` with `name`, `email`, `handoff`, and `paysForTools` (`Yes`, `Not sure`, or `No`) to send one fit check. Leave `company` as `""`. Put the employer in `companyName`.
 
 The field list, error codes, and examples are in `https://supergood.solutions/openapi.json` and `https://supergood.solutions/developers/`. Authentication is `https://supergood.solutions/auth.md`.
 
 The other skills in `https://supergood.solutions/.well-known/agent-skills/index.json` point at the long-form pages and the blog. This file is the short version of how to call.
 
-No MCP server is hosted on this domain.
+An MCP server (Streamable HTTP, no key) is at `https://supergood-intake.vercel.app/api/mcp`. Tools: `get_pricing`, `get_services`, `submit_fit_check`. Card: `https://supergood.solutions/.well-known/mcp/server-card.json`.

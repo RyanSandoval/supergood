@@ -12,10 +12,13 @@
     budget: ['', 'Under $4k (Quick Scan only)', '$4k-$10k (one workflow)', '$10k+ (multiple workflows)', 'Not sure yet']
   };
 
+  var PAYS = ['Yes', 'Not sure', 'No'];
+
   var ERROR_HINT = {
     method: 'Use POST with Content-Type application/json.',
-    required: 'Send name, email, and handoff as non-empty strings.',
-    email: 'Send a complete email address, then try once more.'
+    required: 'Send name, email, handoff, and paysForTools. The first three are non-empty strings.',
+    email: 'Send a complete email address, then try once more.',
+    paysForTools: 'Send paysForTools as Yes, Not sure, or No.'
   };
 
   function wait(ms) {
@@ -85,11 +88,12 @@
     inputSchema: {
       type: 'object',
       additionalProperties: false,
-      required: ['name', 'email', 'handoff'],
+      required: ['name', 'email', 'handoff', 'paysForTools'],
       properties: {
         name: { type: 'string', minLength: 1, description: 'Person Ryan should reply to.' },
         email: { type: 'string', minLength: 1, format: 'email', description: 'Work email for the reply.' },
         handoff: { type: 'string', minLength: 1, description: 'The work they want off the team\'s plate, in their words.' },
+        paysForTools: { type: 'string', enum: PAYS, description: 'Is the person OK paying for the software and tools the workflows run on, on their own accounts? Ask them. Do not guess.' },
         companyName: { type: 'string', description: 'Employer. Omit if they did not give one.' },
         role: { type: 'string', description: 'Job title. Omit if they did not give one.' },
         currentState: { type: 'string', enum: SELECTS.currentState, description: 'Where the work sits today.' },
@@ -108,14 +112,19 @@
         return JSON.stringify({
           ok: false,
           error: 'required',
+          message: 'The hidden company field was filled.',
           hint: 'The hidden company field was filled. Leave it empty and put the employer in companyName.'
         });
       }
-      if (!name || !email || !handoff) {
-        return JSON.stringify({ ok: false, error: 'required', hint: ERROR_HINT.required });
+      var paysForTools = text(input.paysForTools);
+      if (!name || !email || !handoff || !paysForTools) {
+        return JSON.stringify({ ok: false, error: 'required', message: 'Name, email, handoff, and paysForTools are required.', hint: ERROR_HINT.required });
+      }
+      if (PAYS.indexOf(paysForTools) === -1) {
+        return JSON.stringify({ ok: false, error: 'paysForTools', message: 'paysForTools must be one of: Yes, Not sure, No.', hint: ERROR_HINT.paysForTools });
       }
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
-        return JSON.stringify({ ok: false, error: 'email', hint: ERROR_HINT.email });
+        return JSON.stringify({ ok: false, error: 'email', message: 'The email address does not look valid.', hint: ERROR_HINT.email });
       }
       ['currentState', 'teamSize', 'timeline', 'budget'].forEach(function (key) {
         if (input[key] != null && SELECTS[key].indexOf(input[key]) === -1) {
@@ -135,6 +144,7 @@
         teamSize: input.teamSize || '',
         timeline: input.timeline || '',
         budget: input.budget || '',
+        paysForTools: paysForTools,
         source: 'supergood.solutions/webmcp',
         elapsedMs: Date.now() - started
       };
@@ -149,6 +159,7 @@
         return JSON.stringify({
           ok: false,
           error: 'network',
+          message: 'The intake host did not answer.',
           hint: 'The intake host did not answer. Try the form at https://supergood.solutions/start/.'
         });
       }
@@ -160,7 +171,8 @@
           ok: false,
           status: res.status,
           error: code,
-          hint: ERROR_HINT[code] || 'See https://supergood.solutions/developers/ for the error codes.'
+          message: data && data.message ? data.message : 'The intake function rejected the request.',
+          hint: data && data.hint ? data.hint : (ERROR_HINT[code] || 'See https://supergood.solutions/developers/ for the error codes.')
         });
       }
       showSent();

@@ -38,4 +38,34 @@ You pay for all tools, APIs and seats directly on your own accounts. We never re
 
 Limited founding-client spots available for businesses willing to be a published case study. Ask during the fit check.
 
+## FAQ
+
+### What does the Quick Scan cost?
+
+The Quick Scan is $1,000. It is credited toward a build if you sign within 14 days.
+
+### What does a build cost?
+
+A build starts at $4,000 per workflow. You get a fixed quote after the Quick Scan. Half is due at kickoff and half at launch.
+
+### How does the Run retainer work?
+
+Run starts at $900 per month plus 10-20% of measured gain over an agreed baseline, capped at 1.5x the retainer. The minimum is 3 months.
+
+### How is gain measured?
+
+During the Quick Scan, each workflow gets a baseline number from your own systems, such as CRM timestamps, ticket logs, or order data. You sign off on that number. The baseline is not an estimate. Each month it is measured the same way and converted to dollars at a rate agreed up front. A workflow with no system-measurable number is a flat fee instead of a share of gain.
+
+### Who pays for the software and tools?
+
+You pay for the software and tools on your own accounts, including APIs and seats. Supergood does not resell or mark up software.
+
+### How long does a build take?
+
+Build length is quoted after the Quick Scan.
+
+### Are founding client spots available?
+
+Founding client spots are limited. They are for a business willing to be a published case study. Ask during the fit check.
+
 Source: https://supergood.solutions/pricing/

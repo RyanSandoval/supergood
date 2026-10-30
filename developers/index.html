@@ -120,39 +120,58 @@ curl -sS https://supergood.solutions/services.json</code></pre>
     <h2>Fit check</h2>
     <p><code>POST https://supergood-intake.vercel.app/api/intake</code></p>
     <p><code>Content-Type: application/json</code></p>
-    <p>This sends a real note to Ryan. One inquiry per person. A second POST with the same details can send a second email. There is no idempotency key and no published rate limit.</p>
+    <p>This sends a real note to Ryan. One inquiry per person. A second POST with the same details can send a second email. There is no idempotency key.</p>
     <p>Required strings: <code>name</code>, <code>email</code>, <code>handoff</code>.</p>
+    <p>Also send <code>paysForTools</code>: <code>Yes</code>, <code>Not sure</code>, or <code>No</code>. It answers "Are you OK paying for the software and tools your workflows run on, on your own accounts?" The form and the MCP tool require it. The endpoint accepts a request without it.</p>
     <p>Optional: <code>companyName</code>, <code>role</code>, <code>currentState</code>, <code>teamSize</code>, <code>timeline</code>, <code>budget</code>, <code>source</code>, <code>elapsedMs</code>.</p>
     <p>Send <code>company</code> as <code>""</code>. That field is a honeypot on the form. The employer's name goes in <code>companyName</code>.</p>
-    <p>The page at <a href="/start/">/start/</a> waits 3 seconds after the first field is focused before it will submit. Checked on 2026-10-29, the function returned 200 for a body whose <code>elapsedMs</code> was 1. Treat <code>elapsedMs</code> as the page's timer, not as a server lock.</p>
-    <p>Browser pages on <code>https://supergood.solutions</code> can call this URL. A request from another origin is not given <code>Access-Control-Allow-Origin</code>.</p>
+    <p>The page at <a href="/start/">/start/</a> waits 3 seconds after the first field is focused before it will submit. The function also drops a body whose <code>elapsedMs</code> is under 3000, and a body with a filled <code>company</code> field. It answers <code>200 {"ok":true}</code> to both and sends no email.</p>
+    <p>Browser requests are allowed from <code>https://supergood.solutions</code> only. A request with another <code>Origin</code> gets 403. Server-side callers that send no <code>Origin</code> header are fine. Each IP gets 10 requests per 10 minutes.</p>
     <p>The in-page tool <code>submit_fit_check</code> (WebMCP, <code>document.modelContext.registerTool</code> in <a href="/assets/agent-tools.js">/assets/agent-tools.js</a>) waits 3 seconds and posts once. It is registered on the homepage, the fit-check page, and this page.</p>
     <pre><code>curl -sS -X POST https://supergood-intake.vercel.app/api/intake \
   -H 'Content-Type: application/json' \
-  -d '{"name":"Ada Lovelace","email":"ada@example.com","company":"","handoff":"A Monday report rebuilt from three spreadsheets.","source":"docs-example","elapsedMs":3000}'</code></pre>
+  -d '{"name":"Ada Lovelace","email":"ada@example.com","company":"","handoff":"A Monday report rebuilt from three spreadsheets.","paysForTools":"Yes","source":"docs-example","elapsedMs":3000}'</code></pre>
     <p>That command creates a real inquiry. Do not run it as a test.</p>
 
     <h2>Errors</h2>
-    <p>The intake function returns JSON.</p>
+    <p>Every error is JSON: <code>{"ok":false,"error":"&lt;code&gt;","message":"...","hint":"..."}</code>. <code>error</code> is a stable code, <code>message</code> says what went wrong, and <code>hint</code> says how to fix it. The MCP tool returns the same fields.</p>
     <table>
       <thead>
         <tr><th>Status</th><th>Body</th><th>What to do</th></tr>
       </thead>
       <tbody>
         <tr><td>200</td><td><code>{"ok":true}</code></td><td>Ryan has the note.</td></tr>
-        <tr><td>400</td><td><code>{"ok":false,"error":"required"}</code></td><td>Send name, email, and handoff as non-empty strings.</td></tr>
-        <tr><td>400</td><td><code>{"ok":false,"error":"email"}</code></td><td>Send a complete email address, then one more POST.</td></tr>
-        <tr><td>405</td><td><code>{"ok":false,"error":"method"}</code></td><td>Use POST. A GET on this URL returns this body.</td></tr>
+        <tr><td>400</td><td><code>error: json</code></td><td>The body was not a JSON object. Send JSON with Content-Type: application/json.</td></tr>
+        <tr><td>400</td><td><code>error: required</code></td><td>Send name, email, and handoff as non-empty strings.</td></tr>
+        <tr><td>400</td><td><code>error: email</code></td><td>Send a complete email address, then one more POST.</td></tr>
+        <tr><td>400</td><td><code>error: paysForTools</code></td><td>Send Yes, Not sure, or No.</td></tr>
+        <tr><td>403</td><td><code>error: origin</code></td><td>Browser request from an origin other than supergood.solutions. Call from a server, or use the form.</td></tr>
+        <tr><td>405</td><td><code>error: method</code></td><td>Use POST. A GET on this URL returns this error.</td></tr>
+        <tr><td>429</td><td><code>error: rate_limited</code></td><td>Wait a minute and retry.</td></tr>
+        <tr><td>500</td><td><code>error: server</code></td><td>The endpoint is not configured. Try later.</td></tr>
+        <tr><td>502</td><td><code>error: send</code></td><td>The email was not delivered. Try again in a minute.</td></tr>
       </tbody>
     </table>
-    <p>The body has a code and no separate message field. Those three codes are the vocabulary observed on 2026-10-29.</p>
     <p>A missing path on supergood.solutions returns the HTML 404 page. GitHub Pages does not return JSON for that.</p>
 
     <h2>Versioning</h2>
     <p>Version 1.0.0 is the document at <a href="/openapi.json">/openapi.json</a>. <code>pricing.json</code> and <code>services.json</code> are unpaged. If a change would break a caller, the old path stays and a new path is added. This page will say so. GitHub Pages cannot send a Sunset or Deprecation header.</p>
 
+    <h2>MCP server</h2>
+    <p>The intake project hosts an MCP server. Streamable HTTP, stateless, no key: <code>https://supergood-intake.vercel.app/api/mcp</code>.</p>
+    <ul>
+      <li><code>get_pricing</code>: the rate card. Read-only.</li>
+      <li><code>get_services</code>: the service list. Read-only.</li>
+      <li><code>submit_fit_check</code>: emails Ryan one fit check. Takes <code>name</code>, <code>email</code>, <code>handoff</code>, and <code>paysForTools</code>, plus the optional fields above. Each call sends one email.</li>
+    </ul>
+    <p>The server card is at <a href="/.well-known/mcp/server-card.json">/.well-known/mcp/server-card.json</a>. The server accepts requests from any origin and rate limits by IP.</p>
+    <pre><code>curl -sS https://supergood-intake.vercel.app/api/mcp \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json, text/event-stream' \
+  -d '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'</code></pre>
+
     <h2>What this host cannot do</h2>
-    <p>No MCP server. Streamable HTTP needs a process this static repo does not run. The intake function lives in a separate project and is the place to add one. Until that exists, do not look for <code>/.well-known/mcp/server-card.json</code>.</p>
+    <p>This host is static, so the MCP server runs on the intake project, not here.</p>
     <p>No OAuth server and no API keys. Publishing an authorization-server document would point at endpoints that are not there.</p>
     <p>GitHub Pages does not let this repo set response headers. <a href="/.well-known/api-catalog">/.well-known/api-catalog</a> is the RFC 9727 linkset, but the response will not carry <code>Content-Type: application/linkset+json</code>. There is also no HTTP Link header for the sitemap, the markdown twin, or the API catalog. The same URLs are linked from <a href="/robots.txt">robots.txt</a>, <a href="/sitemap.xml">sitemap.xml</a>, <a href="/llms.txt">llms.txt</a>, and the head of the homepage.</p>
 
@@ -161,6 +180,7 @@ curl -sS https://supergood.solutions/services.json</code></pre>
       <li><a href="/openapi.json">OpenAPI</a></li>
       <li><a href="/auth.md">auth.md</a></li>
       <li><a href="/.well-known/api-catalog">API catalog</a></li>
+      <li><a href="/.well-known/mcp/server-card.json">MCP server card</a></li>
       <li><a href="/.well-known/agent-card.json">Agent card</a></li>
       <li><a href="/.well-known/agents.json">Agents index</a></li>
       <li><a href="/.well-known/agent-skills/index.json">Skills index</a></li>

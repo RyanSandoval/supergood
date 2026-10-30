@@ -34,40 +34,46 @@ curl -sS https://supergood.solutions/services.json
 
 `Content-Type: application/json`
 
-This sends a real note to Ryan. One inquiry per person. A second POST with the same details can send a second email. There is no idempotency key and no published rate limit.
+This sends a real note to Ryan. One inquiry per person. A second POST with the same details can send a second email. There is no idempotency key.
 
 Required strings: `name`, `email`, `handoff`.
+
+Also send `paysForTools`: `Yes`, `Not sure`, or `No`. It answers "Are you OK paying for the software and tools your workflows run on, on your own accounts?" The form and the MCP tool require it. The endpoint accepts a request without it.
 
 Optional: `companyName`, `role`, `currentState`, `teamSize`, `timeline`, `budget`, `source`, `elapsedMs`.
 
 Send `company` as `""`. That field is a honeypot on the form. The employer's name goes in `companyName`.
 
-The page at [/start/](https://supergood.solutions/start/) waits 3 seconds after the first field is focused before it will submit. Checked on 2026-10-29, the function returned `200` for a body whose `elapsedMs` was `1`. Treat `elapsedMs` as the page's timer, not as a server lock.
+The page at [/start/](https://supergood.solutions/start/) waits 3 seconds after the first field is focused before it will submit. The function also drops a body whose `elapsedMs` is under 3000, and a body with a filled `company` field. It answers `200 {"ok":true}` to both and sends no email.
 
-Browser pages on `https://supergood.solutions` can call this URL. A request from another origin is not given `Access-Control-Allow-Origin`.
+Browser requests are allowed from `https://supergood.solutions` only. A request with another `Origin` gets 403. Server-side callers that send no `Origin` header are fine. Each IP gets 10 requests per 10 minutes.
 
 The in-page tool `submit_fit_check` (WebMCP, `document.modelContext.registerTool` in `/assets/agent-tools.js`) waits 3 seconds and posts once. It is registered on the homepage, the fit-check page, and this page.
 
 ```bash
 curl -sS -X POST https://supergood-intake.vercel.app/api/intake \
   -H 'Content-Type: application/json' \
-  -d '{"name":"Ada Lovelace","email":"ada@example.com","company":"","handoff":"A Monday report rebuilt from three spreadsheets.","source":"docs-example","elapsedMs":3000}'
+  -d '{"name":"Ada Lovelace","email":"ada@example.com","company":"","handoff":"A Monday report rebuilt from three spreadsheets.","paysForTools":"Yes","source":"docs-example","elapsedMs":3000}'
 ```
 
 That command creates a real inquiry. Do not run it as a test.
 
 ## Errors
 
-The intake function returns JSON.
+Every error is JSON: `{"ok":false,"error":"<code>","message":"...","hint":"..."}`. `error` is a stable code, `message` says what went wrong, and `hint` says how to fix it. The MCP tool returns the same fields.
 
 | Status | Body | What to do |
 | --- | --- | --- |
 | 200 | `{"ok":true}` | Ryan has the note. |
-| 400 | `{"ok":false,"error":"required"}` | Send `name`, `email`, and `handoff` as non-empty strings. |
-| 400 | `{"ok":false,"error":"email"}` | Send a complete email address, then one more POST. |
-| 405 | `{"ok":false,"error":"method"}` | Use POST. A GET on this URL returns this body. |
-
-The body has a code and no separate message field. Those three codes are the vocabulary observed on 2026-10-29.
+| 400 | `error: json` | The body was not a JSON object. Send JSON with Content-Type: application/json. |
+| 400 | `error: required` | Send name, email, and handoff as non-empty strings. |
+| 400 | `error: email` | Send a complete email address, then one more POST. |
+| 400 | `error: paysForTools` | Send Yes, Not sure, or No. |
+| 403 | `error: origin` | Browser request from an origin other than supergood.solutions. Call from a server, or use the form. |
+| 405 | `error: method` | Use POST. A GET on this URL returns this error. |
+| 429 | `error: rate_limited` | Wait a minute and retry. |
+| 500 | `error: server` | The endpoint is not configured. Try later. |
+| 502 | `error: send` | The email was not delivered. Try again in a minute. |
 
 A missing path on `supergood.solutions` returns the HTML 404 page. GitHub Pages does not return JSON for that.
 
@@ -75,9 +81,26 @@ A missing path on `supergood.solutions` returns the HTML 404 page. GitHub Pages 
 
 Version 1.0.0 is the document at `/openapi.json`. `pricing.json` and `services.json` are unpaged. If a change would break a caller, the old path stays and a new path is added. This page will say so. GitHub Pages cannot send a `Sunset` or `Deprecation` header.
 
+## MCP server
+
+The intake project hosts an MCP server. Streamable HTTP, stateless, no key: `https://supergood-intake.vercel.app/api/mcp`.
+
+- `get_pricing`: the rate card. Read-only.
+- `get_services`: the service list. Read-only.
+- `submit_fit_check`: emails Ryan one fit check. Takes `name`, `email`, `handoff`, and `paysForTools`, plus the optional fields above. Each call sends one email.
+
+The server card is at [/.well-known/mcp/server-card.json](https://supergood.solutions/.well-known/mcp/server-card.json). The server accepts requests from any origin and rate limits by IP.
+
+```bash
+curl -sS https://supergood-intake.vercel.app/api/mcp \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json, text/event-stream' \
+  -d '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'
+```
+
 ## What this host cannot do
 
-No MCP server. Streamable HTTP needs a process this static repo does not run. The intake function lives in a separate project and is the place to add one. Until that exists, do not look for `/.well-known/mcp/server-card.json`.
+This host is static, so the MCP server runs on the intake project, not here.
 
 No OAuth server and no API keys. Publishing an authorization-server document would point at endpoints that are not there.
 
@@ -88,6 +111,7 @@ GitHub Pages does not let this repo set response headers. `/.well-known/api-cata
 - [OpenAPI](https://supergood.solutions/openapi.json)
 - [auth.md](https://supergood.solutions/auth.md)
 - [API catalog](https://supergood.solutions/.well-known/api-catalog)
+- [MCP server card](https://supergood.solutions/.well-known/mcp/server-card.json)
 - [Agent card](https://supergood.solutions/.well-known/agent-card.json)
 - [Agents index](https://supergood.solutions/.well-known/agents.json)
 - [Skills index](https://supergood.solutions/.well-known/agent-skills/index.json)

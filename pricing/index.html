@@ -91,6 +91,69 @@
           "description": "From $900 per month plus 10-20% of measured gain over an agreed baseline, capped at 1.5x the retainer. 3-month minimum."
         }
       ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://supergood.solutions/pricing/#faq",
+      "url": "https://supergood.solutions/pricing/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does the Quick Scan cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Quick Scan is $1,000. It is credited toward a build if you sign within 14 days."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does a build cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A build starts at $4,000 per workflow. You get a fixed quote after the Quick Scan. Half is due at kickoff and half at launch."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the Run retainer work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Run starts at $900 per month plus 10-20% of measured gain over an agreed baseline, capped at 1.5x the retainer. The minimum is 3 months."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is gain measured?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "During the Quick Scan, each workflow gets a baseline number from your own systems, such as CRM timestamps, ticket logs, or order data. You sign off on that number. The baseline is not an estimate. Each month it is measured the same way and converted to dollars at a rate agreed up front. A workflow with no system-measurable number is a flat fee instead of a share of gain."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who pays for the software and tools?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You pay for the software and tools on your own accounts, including APIs and seats. Supergood does not resell or mark up software."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does a build take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Build length is quoted after the Quick Scan."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are founding client spots available?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Founding client spots are limited. They are for a business willing to be a published case study. Ask during the fit check."
+          }
+        }
+      ]
     }
   ]
 }
@@ -150,6 +213,12 @@ section { padding: 48px 0 100px; }
 .tooling h2 { font-size: 1rem; font-weight: 600; margin-bottom: 8px; }
 .tooling p, .founding { font-size: 0.9375rem; color: var(--text-2); line-height: 1.65; }
 .founding { margin-top: 20px; max-width: 720px; }
+.faq { margin-top: 56px; max-width: 720px; }
+.faq-label { font-family: var(--mono); font-size: 0.75rem; font-weight: 500; color: var(--green); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 20px; }
+.faq-item { padding: 22px 0; border-top: 1px solid var(--border); }
+.faq-item:last-child { border-bottom: 1px solid var(--border); }
+.faq-item h2 { font-size: 1.0625rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 8px; }
+.faq-item p { font-size: 0.9375rem; color: var(--text-2); line-height: 1.7; }
 
 footer { border-top: 1px solid var(--border); padding: 40px 0; }
 footer .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
@@ -231,6 +300,37 @@ footer a:hover { color: var(--text-2); }
       <p>You pay for all tools, APIs and seats directly on your own accounts. We never resell or mark up software.</p>
     </div>
     <p class="founding reveal">Limited founding-client spots available for businesses willing to be a published case study. Ask during the fit check.</p>
+    <div class="faq reveal" id="faq">
+      <p class="faq-label">FAQ</p>
+      <div class="faq-item">
+        <h2>What does the Quick Scan cost?</h2>
+        <p>The Quick Scan is $1,000. It is credited toward a build if you sign within 14 days.</p>
+      </div>
+      <div class="faq-item">
+        <h2>What does a build cost?</h2>
+        <p>A build starts at $4,000 per workflow. You get a fixed quote after the Quick Scan. Half is due at kickoff and half at launch.</p>
+      </div>
+      <div class="faq-item">
+        <h2>How does the Run retainer work?</h2>
+        <p>Run starts at $900 per month plus 10-20% of measured gain over an agreed baseline, capped at 1.5x the retainer. The minimum is 3 months.</p>
+      </div>
+      <div class="faq-item">
+        <h2>How is gain measured?</h2>
+        <p>During the Quick Scan, each workflow gets a baseline number from your own systems, such as CRM timestamps, ticket logs, or order data. You sign off on that number. The baseline is not an estimate. Each month it is measured the same way and converted to dollars at a rate agreed up front. A workflow with no system-measurable number is a flat fee instead of a share of gain.</p>
+      </div>
+      <div class="faq-item">
+        <h2>Who pays for the software and tools?</h2>
+        <p>You pay for the software and tools on your own accounts, including APIs and seats. Supergood does not resell or mark up software.</p>
+      </div>
+      <div class="faq-item">
+        <h2>How long does a build take?</h2>
+        <p>Build length is quoted after the Quick Scan.</p>
+      </div>
+      <div class="faq-item">
+        <h2>Are founding client spots available?</h2>
+        <p>Founding client spots are limited. They are for a business willing to be a published case study. Ask during the fit check.</p>
+      </div>
+    </div>
   </div>
 </section>
 </main>

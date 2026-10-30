@@ -6,6 +6,10 @@
         {
           "href": "https://supergood.solutions/openapi.json",
           "type": "application/openapi+json"
+        },
+        {
+          "href": "https://supergood.solutions/.well-known/mcp/server-card.json",
+          "type": "application/json"
         }
       ],
       "service-doc": [

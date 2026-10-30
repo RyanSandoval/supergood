@@ -11,7 +11,7 @@ Supergood Solutions is Ryan Sandoval's consulting practice in Los Angeles. This 
 
 ## The fit check
 
-The form at [https://supergood.solutions/start/](https://supergood.solutions/start/) asks for a name, a work email, and a description of the work you would hand off. Company, role, where the work sits today, how many people touch it, timeline, and budget are optional.
+The form at [https://supergood.solutions/start/](https://supergood.solutions/start/) asks for a name, a work email, and a description of the work you would hand off. It also asks whether you are OK paying for the tools your workflows run on (Yes, Not sure, or No). Company, role, where the work sits today, how many people touch it, timeline, and budget are optional.
 
 The page also sends how many milliseconds passed since you focused a field, and a source string (`supergood.solutions/start` from the form, `supergood.solutions/webmcp` from the in-page tool). A hidden field named `company` is a honeypot. Leave it empty. The employer name, if you give one, is `companyName`.
 

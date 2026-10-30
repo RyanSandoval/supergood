@@ -212,9 +212,37 @@ LinkedIn: https://linkedin.com/in/RyanSandoval
 
 ---
 
+## Pricing — https://supergood.solutions/pricing/
+
+Fit check, Quick Scan, Build, and Run. Tooling stays on your accounts.
+
+**FAQ:**
+Q: What does the Quick Scan cost?
+A: The Quick Scan is $1,000. It is credited toward a build if you sign within 14 days.
+
+Q: What does a build cost?
+A: A build starts at $4,000 per workflow. You get a fixed quote after the Quick Scan. Half is due at kickoff and half at launch.
+
+Q: How does the Run retainer work?
+A: Run starts at $900 per month plus 10-20% of measured gain over an agreed baseline, capped at 1.5x the retainer. The minimum is 3 months.
+
+Q: How is gain measured?
+A: During the Quick Scan, each workflow gets a baseline number from your own systems, such as CRM timestamps, ticket logs, or order data. You sign off on that number. The baseline is not an estimate. Each month it is measured the same way and converted to dollars at a rate agreed up front. A workflow with no system-measurable number is a flat fee instead of a share of gain.
+
+Q: Who pays for the software and tools?
+A: You pay for the software and tools on your own accounts, including APIs and seats. Supergood does not resell or mark up software.
+
+Q: How long does a build take?
+A: Build length is quoted after the Quick Scan.
+
+Q: Are founding client spots available?
+A: Founding client spots are limited. They are for a business willing to be a published case study. Ask during the fit check.
+
+---
+
 ## Contact / Start a project — https://supergood.solutions/start/
 
-The primary contact path is the intake form at https://supergood.solutions/start/. It asks for name, work email, company and role (both optional), a description of the work you would hand off, where that work sits today, how many people touch it, timeline, and an optional budget range. Ryan reads every submission and replies in writing within one business day with a read on fit, which service it maps to, and what it would take.
+The primary contact path is the intake form at https://supergood.solutions/start/. It asks for name, work email, company and role (both optional), a description of the work you would hand off, where that work sits today, how many people touch it, timeline, an optional budget range, and whether you are OK paying for the software and tools your workflows run on, on your own accounts (required: Yes, Not sure, or No). Ryan reads every submission and replies in writing within one business day with a read on fit, which service it maps to, and what it would take.
 
 If it is a fit, Ryan follows up to schedule the paid Quick Scan ($1,000), credited toward a build if you sign within 14 days. The build timeline is quoted after the Quick Scan. Contact details are used only to reply; there is no marketing list.
 

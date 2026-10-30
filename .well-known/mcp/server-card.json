@@ -1,0 +1,17 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/v1/server-card.schema.json",
+  "name": "solutions.supergood/intake",
+  "title": "Supergood Solutions",
+  "version": "1.0.0",
+  "description": "Read Supergood's rate card and services, or send one fit check.",
+  "websiteUrl": "https://supergood.solutions/",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://supergood-intake.vercel.app/api/mcp",
+      "supportedProtocolVersions": [
+        "2025-06-18"
+      ]
+    }
+  ]
+}
