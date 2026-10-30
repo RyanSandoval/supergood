@@ -46,6 +46,72 @@
         "find Supergood blog posts about AI agent evals",
         "list pages on supergood.solutions"
       ]
+    },
+    {
+      "identifier": "urn:air:supergood.solutions:api:openapi",
+      "displayName": "Supergood OpenAPI",
+      "type": "application/openapi+json",
+      "url": "https://supergood.solutions/openapi.json",
+      "description": "OpenAPI 3.1 for the public rate-card GET, service-list GET, and fit-check POST. No authentication.",
+      "representativeQueries": [
+        "Supergood OpenAPI spec",
+        "how does an agent submit a Supergood fit check"
+      ]
+    },
+    {
+      "identifier": "urn:air:supergood.solutions:api:catalog",
+      "displayName": "Supergood API catalog",
+      "type": "application/linkset+json",
+      "url": "https://supergood.solutions/.well-known/api-catalog",
+      "description": "RFC 9727 linkset pointing at the OpenAPI document, the developers page, and auth.md.",
+      "representativeQueries": [
+        "Supergood API catalog",
+        "where is the Supergood service description"
+      ]
+    },
+    {
+      "identifier": "urn:air:supergood.solutions:docs:developers",
+      "displayName": "Supergood developer docs",
+      "type": "text/html",
+      "url": "https://supergood.solutions/developers/",
+      "description": "How to call the public reads and the fit-check POST, including the error codes the intake function actually returns.",
+      "representativeQueries": [
+        "Supergood API documentation",
+        "Supergood developer docs"
+      ]
+    },
+    {
+      "identifier": "urn:air:supergood.solutions:docs:auth",
+      "displayName": "Supergood auth.md",
+      "type": "text/markdown",
+      "url": "https://supergood.solutions/auth.md",
+      "description": "States that the public reads and the fit-check POST need no credentials, token, or account.",
+      "representativeQueries": [
+        "does the Supergood API need a key",
+        "Supergood authentication"
+      ]
+    },
+    {
+      "identifier": "urn:air:supergood.solutions:agent:card",
+      "displayName": "Supergood agent card",
+      "type": "application/json",
+      "url": "https://supergood.solutions/.well-known/agent-card.json",
+      "description": "Agent card for the public HTTP surface. Not an A2A JSON-RPC endpoint. The calls are in the OpenAPI document.",
+      "representativeQueries": [
+        "Supergood agent card",
+        "what can an agent do on supergood.solutions"
+      ]
+    },
+    {
+      "identifier": "urn:air:supergood.solutions:mcp:server-card",
+      "displayName": "Supergood MCP server card",
+      "type": "application/mcp-server-card+json",
+      "url": "https://supergood.solutions/.well-known/mcp/server-card.json",
+      "description": "MCP server card for the Streamable HTTP server at https://supergood-intake.vercel.app/api/mcp. Tools: get_pricing, get_services, submit_fit_check. No authentication.",
+      "representativeQueries": [
+        "Supergood MCP server",
+        "how does an agent submit a Supergood fit check over MCP"
+      ]
     }
   ]
 }

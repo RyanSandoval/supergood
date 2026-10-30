@@ -1,0 +1,74 @@
+{
+  "protocolVersion": "0.3.0",
+  "name": "Supergood Solutions",
+  "description": "Public read endpoints for Supergood's rate card and services, plus a fit-check POST that emails Ryan Sandoval. There is also an MCP server (card: https://supergood.solutions/.well-known/mcp/server-card.json). This file is not an A2A JSON-RPC server. Call the HTTP API in https://supergood.solutions/openapi.json.",
+  "url": "https://supergood.solutions/developers/",
+  "version": "1.0.0",
+  "documentationUrl": "https://supergood.solutions/developers/",
+  "provider": {
+    "organization": "Supergood Solutions",
+    "url": "https://supergood.solutions/"
+  },
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false,
+    "stateTransitionHistory": false
+  },
+  "defaultInputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "skills": [
+    {
+      "id": "read-rate-card",
+      "name": "Read the rate card",
+      "description": "GET https://supergood.solutions/pricing.json. No key. Returns the full rate card in one JSON document.",
+      "tags": [
+        "pricing",
+        "read"
+      ],
+      "examples": [
+        "What does Supergood charge for a Quick Scan?"
+      ]
+    },
+    {
+      "id": "read-services",
+      "name": "Read the service list",
+      "description": "GET https://supergood.solutions/services.json. No key. Returns the five public services in one JSON document.",
+      "tags": [
+        "services",
+        "read"
+      ],
+      "examples": [
+        "Which Supergood service covers agent guardrails?"
+      ]
+    },
+    {
+      "id": "submit-fit-check",
+      "name": "Submit a fit check",
+      "description": "POST https://supergood-intake.vercel.app/api/intake. No key. Sends one real email to Ryan. Required JSON fields are name, email, and handoff. paysForTools (Yes, Not sure, No) is asked on the form and required by the MCP tool.",
+      "tags": [
+        "intake",
+        "write"
+      ],
+      "examples": [
+        "Send a fit check for a Monday report the team rebuilds by hand."
+      ]
+    },
+    {
+      "id": "use-mcp-server",
+      "name": "Use the MCP server",
+      "description": "Streamable HTTP at https://supergood-intake.vercel.app/api/mcp. No key. Tools: get_pricing, get_services, submit_fit_check. Server card: https://supergood.solutions/.well-known/mcp/server-card.json.",
+      "tags": [
+        "mcp"
+      ],
+      "examples": [
+        "List Supergood's MCP tools."
+      ]
+    }
+  ]
+}

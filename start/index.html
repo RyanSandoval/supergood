@@ -401,7 +401,7 @@ footer a:hover { color: var(--text-2); }
     <div class="intake-layout">
 
       <div class="intake-card">
-        <form id="intake-form" novalidate>
+        <form id="intake-form" novalidate aria-describedby="intake-fineprint">
           <!-- Honeypot. Real people never see this; bots fill it and get rejected
                both here and in the Apps Script. -->
           <div class="hp" aria-hidden="true">
@@ -411,12 +411,12 @@ footer a:hover { color: var(--text-2); }
 
           <div class="field">
             <label for="name">Name <span class="req" aria-hidden="true">*</span></label>
-            <input type="text" id="name" name="name" required autocomplete="name" placeholder="Who are we talking to?">
+            <input type="text" id="name" name="name" required aria-required="true" autocomplete="name" placeholder="Who are we talking to?">
           </div>
 
           <div class="field">
             <label for="email">Work email <span class="req" aria-hidden="true">*</span></label>
-            <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@company.com">
+            <input type="email" id="email" name="email" required aria-required="true" autocomplete="email" inputmode="email" spellcheck="false" placeholder="you@company.com">
           </div>
 
           <div class="field-pair">
@@ -432,7 +432,7 @@ footer a:hover { color: var(--text-2); }
 
           <div class="field-primary">
             <label for="handoff">What's the work you'd hand off? <span class="req" aria-hidden="true">*</span></label>
-            <textarea id="handoff" name="handoff" rows="5" required placeholder="A report someone rebuilds every Monday. Lead research. Quote prep. Ticket triage. Whatever eats the hours, in your own words."></textarea>
+            <textarea id="handoff" name="handoff" rows="5" required aria-required="true" autocomplete="off" placeholder="A report someone rebuilds every Monday. Lead research. Quote prep. Ticket triage. Whatever eats the hours, in your own words."></textarea>
           </div>
 
           <div class="field">
@@ -469,8 +469,8 @@ footer a:hover { color: var(--text-2); }
           </div>
 
           <div class="field">
-            <label for="budget">Budget range <span class="hint">Optional. A rough number keeps us from pitching the wrong size of thing.</span></label>
-            <select id="budget" name="budget">
+            <label for="budget">Budget range <span class="hint" id="budget-hint">Optional. A rough number keeps us from pitching the wrong size of thing.</span></label>
+            <select id="budget" name="budget" aria-describedby="budget-hint">
               <option value="">Rather not say yet</option>
               <option value="Under $4k (Quick Scan only)">Under $4k (Quick Scan only)</option>
               <option value="$4k-$10k (one workflow)">$4k-$10k (one workflow)</option>
@@ -490,7 +490,7 @@ footer a:hover { color: var(--text-2); }
 
           <div class="submit-area">
             <button type="submit" class="btn btn-primary" id="submit-btn">Send it over</button>
-            <p class="fineprint">Your contact info is used to reply to this message. We don't send marketing email and we don't share it with anyone.</p>
+            <p class="fineprint" id="intake-fineprint">Your contact info is used to reply to this message. We don't send marketing email. <a href="/privacy/">Privacy</a> says where the note goes.</p>
             <p class="alt-path">This form is the fit check. If it's a fit, Ryan follows up to schedule the paid Quick Scan ($1,000).</p>
           </div>
         </form>
@@ -520,7 +520,7 @@ footer a:hover { color: var(--text-2); }
 <footer>
   <div class="container">
     <p>© 2026 superg●●d.</p>
-    <p><a href="/about/">About</a> · <a href="/pricing/">Pricing</a> · <a href="/faq/">FAQ</a> · <a href="/ai-consulting/">Services</a> · <a href="/blog/">Blog</a></p>
+    <p><a href="/about/">About</a> · <a href="/pricing/">Pricing</a> · <a href="/faq/">FAQ</a> · <a href="/ai-consulting/">Services</a> · <a href="/blog/">Blog</a> · <a href="/developers/">Developers</a> · <a href="/privacy/">Privacy</a></p>
   </div>
 </footer>
 
@@ -530,9 +530,10 @@ footer a:hover { color: var(--text-2); }
 // to supergood.solutions, so it cannot send as the other brands in that account.
 const WEBHOOK_URL = 'https://supergood-intake.vercel.app/api/intake';
 
-// Minimum seconds between first field focus and submit. A human filling six
-// fields cannot beat this; a script posting the form instantly does. The
-// endpoint re-checks this, since a bot posting straight at it skips this file.
+// Minimum time between first field focus and submit. A person filling the
+// form does not beat this. A script that posts the function directly skips
+// this file. On 2026-10-29 that function returned 200 for elapsedMs of 1,
+// so the wait lives here, not on the server.
 // Upgrade path if spam gets through: Cloudflare Turnstile (free widget plus a
 // siteverify call from the function).
 const MIN_FILL_MS = 3000;
@@ -546,19 +547,35 @@ form.addEventListener('focusin', () => {
   if (!firstFocusAt) firstFocusAt = Date.now();
 }, { once: false });
 
+const FIELD_IDS = ['name', 'email', 'handoff', 'companyName', 'role', 'currentState', 'teamSize', 'timeline', 'budget'];
+
 function clearError() {
   const existing = document.getElementById('form-error');
   if (existing) existing.remove();
+  FIELD_IDS.forEach((id) => {
+    const field = document.getElementById(id);
+    if (!field) return;
+    field.removeAttribute('aria-invalid');
+    field.removeAttribute('aria-errormessage');
+  });
 }
 
-function showError(message) {
+function markInvalid(field) {
+  if (!field) return;
+  field.setAttribute('aria-invalid', 'true');
+  field.setAttribute('aria-errormessage', 'form-error');
+}
+
+function showError(message, field) {
   clearError();
   const el = document.createElement('p');
   el.id = 'form-error';
   el.className = 'form-error';
   el.setAttribute('role', 'alert');
-  el.innerHTML = message;
+  el.textContent = message;
   form.querySelector('.submit-area').prepend(el);
+  markInvalid(field);
+  if (field) field.focus();
   el.scrollIntoView({ block: 'center', behavior: 'smooth' });
 }
 
@@ -589,17 +606,16 @@ form.addEventListener('submit', async (e) => {
   }
 
   if (!name || !email || !handoff || !paysForTools) {
-    showError('Name, work email, the work you\'d hand off, and whether you are OK paying for tools on your own accounts are all needed before we can reply to you.');
-    (!name ? document.getElementById('name')
+    const missing = !name ? document.getElementById('name')
       : !email ? document.getElementById('email')
       : !handoff ? document.getElementById('handoff')
-      : document.querySelector('input[name="paysForTools"]')).focus();
+      : document.querySelector('input[name="paysForTools"]');
+    showError('Name, work email, the work you\'d hand off, and whether you are OK paying for tools on your own accounts are all needed before we can reply to you.', missing);
     return;
   }
 
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
-    showError('That email address does not look complete. Check it and send again.');
-    document.getElementById('email').focus();
+    showError('That email address does not look complete. Check it and send again.', document.getElementById('email'));
     return;
   }
 
@@ -622,8 +638,6 @@ form.addEventListener('submit', async (e) => {
     budget: (fd.get('budget') || '').toString(),
     paysForTools: paysForTools,
     source: 'supergood.solutions/start',
-    // The endpoint re-checks this, so the speed trap survives someone
-    // posting at it directly with this script never having run.
     elapsedMs: elapsed
   };
 
@@ -655,5 +669,6 @@ window.addEventListener('scroll', () => {
 </script>
 
 <script src="/assets/analytics.js" defer></script>
+<script src="/assets/agent-tools.js"></script>
 </body>
 </html>

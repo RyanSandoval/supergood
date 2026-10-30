@@ -10,6 +10,11 @@
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#0a0a0b">
 <link rel="canonical" href="https://supergood.solutions/">
+<link rel="alternate" href="/index.md" type="text/markdown">
+<link rel="service-desc" href="/openapi.json" type="application/openapi+json">
+<link rel="service-doc" href="/developers/" type="text/html">
+<link rel="describedby" href="/auth.md" type="text/markdown">
+<link rel="api-catalog" href="/.well-known/api-catalog" type="application/linkset+json">
 <!-- TODO: Ryan pastes verification token — generate at https://search.google.com/search-console and https://www.bing.com/webmasters -->
 <!-- <meta name="google-site-verification" content="PASTE_TOKEN_HERE"> -->
 <!-- <meta name="msvalidate.01" content="PASTE_TOKEN_HERE"> -->
@@ -127,7 +132,19 @@
       "name": "AI consulting for teams who need agents that work in production",
       "isPartOf": { "@id": "https://supergood.solutions/#website" },
       "about": { "@id": "https://supergood.solutions/#organization" },
-      "dateModified": "2026-09-22"
+      "dateModified": "2026-10-29"
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://supergood.solutions/#services",
+      "name": "Supergood services",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "AI Consulting", "url": "https://supergood.solutions/ai-consulting/"},
+        {"@type": "ListItem", "position": 2, "name": "AI Agent Consulting", "url": "https://supergood.solutions/ai-agent-consulting/"},
+        {"@type": "ListItem", "position": 3, "name": "AI Automation Consulting", "url": "https://supergood.solutions/ai-automation-consulting/"},
+        {"@type": "ListItem", "position": 4, "name": "AI Readiness Assessment", "url": "https://supergood.solutions/ai-readiness-assessment/"},
+        {"@type": "ListItem", "position": 5, "name": "AI Agent Governance", "url": "https://supergood.solutions/ai-agent-governance/"}
+      ]
     }
   ]
 }
@@ -763,6 +780,7 @@ footer a:hover { color: var(--text-2); }
     <h2 class="reveal">Let's find the hours you're losing.</h2>
     <p class="reveal">The fit check comes first. Describe the work you'd hand off and you get a written answer on whether it's a fit. Takes about two minutes, and Ryan reads every one. If it's a fit, Ryan follows up to schedule the paid Quick Scan.</p>
     <a href="/start/" class="btn btn-primary reveal">Start the fit check</a>
+    <p class="reveal" style="margin-top:16px;font-size:0.875rem;"><a href="/developers/" style="color:var(--text-3);">API docs for agents</a></p>
     <div class="quick-scan reveal">
       <h3>The paid Quick Scan</h3>
       <p>A live working session on your actual workflows: 3 prioritized recommendations on the call, plus a one-page summary in your inbox the next business day, written to be forwarded to your boss. Think of it as a doctor's visit for your ops, except we won't make you wait 45 minutes in a paper gown.</p>
@@ -775,7 +793,7 @@ footer a:hover { color: var(--text-2); }
 <footer>
   <div class="container">
     <p>© 2026 superg●●d.</p>
-    <p><a href="/about/">About</a> · <a href="/pricing/">Pricing</a> · <a href="/faq/">FAQ</a> · <a href="/ai-consulting/">Services</a> · <a href="/blog/">Blog</a></p>
+    <p><a href="/about/">About</a> · <a href="/pricing/">Pricing</a> · <a href="/faq/">FAQ</a> · <a href="/ai-consulting/">Services</a> · <a href="/blog/">Blog</a> · <a href="/developers/">Developers</a> · <a href="/privacy/">Privacy</a></p>
     <p>Los Angeles, CA · working remotely with clients anywhere</p>
   </div>
 </footer>
@@ -800,5 +818,6 @@ setTimeout(() => {
 </script>
 
 <script src="/assets/analytics.js" defer></script>
+<script src="/assets/agent-tools.js"></script>
 </body>
 </html>

@@ -1,0 +1,31 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://supergood.solutions/",
+      "service-desc": [
+        {
+          "href": "https://supergood.solutions/openapi.json",
+          "type": "application/openapi+json"
+        },
+        {
+          "href": "https://supergood.solutions/.well-known/mcp/server-card.json",
+          "type": "application/json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://supergood.solutions/developers/",
+          "type": "text/html"
+        },
+        {
+          "href": "https://supergood.solutions/developers/index.md",
+          "type": "text/markdown"
+        },
+        {
+          "href": "https://supergood.solutions/auth.md",
+          "type": "text/markdown"
+        }
+      ]
+    }
+  ]
+}
