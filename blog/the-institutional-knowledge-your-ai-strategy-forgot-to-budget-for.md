@@ -6,7 +6,7 @@ published: 2026-10-25
 last-updated: 2026-10-29
 ---
 
-![](/blog/the-institutional-knowledge-your-ai-strategy-forgot-to-budget-for/hero.svg)
+![The Institutional Knowledge Your AI Strategy Forgot to Budget For — a brick holds an Enter key down while a tower of shrink-wrapped, unread printouts keeps growing beside it.](/blog/the-institutional-knowledge-your-ai-strategy-forgot-to-budget-for/hero.webp)
 
 Blog
 

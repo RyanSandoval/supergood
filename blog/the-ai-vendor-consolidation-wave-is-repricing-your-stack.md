@@ -6,7 +6,7 @@ published: 2026-10-28
 last-updated: 2026-10-29
 ---
 
-![](/blog/the-ai-vendor-consolidation-wave-is-repricing-your-stack/hero.svg)
+![The AI Vendor Consolidation Wave Is Repricing Your Stack — a garden hose chokepoint under a brass valve, with a glowing green price tag buried in layers of re-stuck price stickers.](/blog/the-ai-vendor-consolidation-wave-is-repricing-your-stack/hero.webp)
 
 BUSINESS
 

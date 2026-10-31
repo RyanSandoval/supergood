@@ -6,7 +6,7 @@ published: 2026-10-23
 last-updated: 2026-10-29
 ---
 
-![](/blog/agent-reproducibility-is-the-enterprise-requirement-nobody-is-specifying/hero.svg)
+![Agent Reproducibility Is the Enterprise Requirement Nobody Is Specifying — five cookies cut with the same star cutter come out five different shapes, one glazed green.](/blog/agent-reproducibility-is-the-enterprise-requirement-nobody-is-specifying/hero.webp)
 
 Architecture
 
