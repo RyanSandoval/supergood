@@ -3,7 +3,8 @@ title: "UTMs Are a Mess. Here’s the 30‑Minute Fix (and the Automation to Kee
 description: "A simple UTM governance system + a Power Automate flow that rejects bad links before they wreck your reporting."
 canonical: https://supergood.solutions/blog/utm-governance-automation/
 published: 2026-02-21
-last-updated: 2026-10-29
+last-updated: 2026-02-21
+updated: 2026-02-21
 ---
 
 ![UTMs Are a Mess. Here’s the 30‑Minute Fix (and the Automation to Keep Them Clean) — a tangle of blank luggage tags being combed straight with a green comb.](/blog/utm-governance-automation/hero.webp)

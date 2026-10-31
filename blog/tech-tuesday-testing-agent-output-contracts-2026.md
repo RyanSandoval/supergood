@@ -3,7 +3,8 @@ title: "Testing Your Agent Output Contracts Before Production"
 description: "How to test agent output schemas before they hit production — validation patterns, error handling, and why contracts beat documentation."
 canonical: https://supergood.solutions/blog/tech-tuesday-testing-agent-output-contracts-2026/
 published: 2026-04-14
-last-updated: 2026-10-29
+last-updated: 2026-04-14
+updated: 2026-04-14
 ---
 
 ![Testing Your Agent Output Contracts Before Production — a paper airplane in a little glass wind tunnel with green smoke streaming over the wing.](/blog/tech-tuesday-testing-agent-output-contracts-2026/hero.webp)

@@ -3,7 +3,8 @@ title: "Why Your Rule-Based Workflow Migration Is Harder Than It Looks"
 description: "Swapping an if/then workflow for an AI agent sounds like a straightforward upgrade — and that assumption is exactly what kills the project. The teams that succe"
 canonical: https://supergood.solutions/blog/why-your-rule-based-workflow-migration-is-harder-than-it-looks/
 published: 2026-05-14
-last-updated: 2026-10-29
+last-updated: 2026-09-25
+updated: 2026-09-25
 ---
 
 ![Why Your Rule-Based Workflow Migration Is Harder Than It Looks — a toy robot nudging a chain of dominoes that loops back and tangles into a knot, one green domino in the middle.](/blog/why-your-rule-based-workflow-migration-is-harder-than-it-looks/hero.webp)
@@ -12,7 +13,7 @@ Analysis
 
 # Why Your Rule-Based Workflow Migration Is Harder Than It Looks
 
-Published May 14, 2026 — 5 min read
+Published May 14, 2026 · Updated Sep 25, 2026 — 5 min read
 
 **TL;DR:** Swapping an if/then workflow for an AI agent sounds like a straightforward upgrade — and that assumption is exactly what kills the project. The teams that succeed migrate incrementally, encode their exception logic explicitly, and prove single-agent value before layering in orchestration.
 

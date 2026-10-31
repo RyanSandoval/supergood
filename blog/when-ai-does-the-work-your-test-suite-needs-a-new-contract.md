@@ -3,7 +3,8 @@ title: "When AI Does the Work, Your Test Suite Needs a New Contract"
 description: "If your agent's tests break every time you swap models or tweak a prompt, the problem isn't the model — it's that you're testing implementation, not intent.…"
 canonical: https://supergood.solutions/blog/when-ai-does-the-work-your-test-suite-needs-a-new-contract/
 published: 2026-09-15
-last-updated: 2026-10-29
+last-updated: 2026-10-05
+updated: 2026-10-05
 ---
 
 ![When AI Does the Work, Your Test Suite Needs a New Contract — a robot arm signing a blank scroll with a green quill.](/blog/when-ai-does-the-work-your-test-suite-needs-a-new-contract/hero.webp)
@@ -12,7 +13,7 @@ GOVERNANCE
 
 # When AI Does the Work, Your Test Suite Needs a New Contract
 
-Published September 15, 2026 — 3 min read
+Published September 15, 2026 · Updated Oct 5, 2026 — 3 min read
 
 **TL;DR:** If your agent's tests break every time you swap models or tweak a prompt, the problem isn't the model — it's that you're testing implementation, not intent. Teams that move to behavior-based contracts stop rewriting their test suite every release cycle.
 

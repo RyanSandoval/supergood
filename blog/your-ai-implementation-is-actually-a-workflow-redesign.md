@@ -3,7 +3,8 @@ title: "Your AI Implementation Is Actually a Workflow Redesign"
 description: "You budgeted for a software subscription and you are going to get a three-quarter change project. The model is the cheap part, and it creates no value until…"
 canonical: https://supergood.solutions/blog/your-ai-implementation-is-actually-a-workflow-redesign/
 published: 2026-10-14
-last-updated: 2026-10-29
+last-updated: 2026-10-14
+updated: 2026-10-14
 ---
 
 ![](/blog/your-ai-implementation-is-actually-a-workflow-redesign/hero.svg)

@@ -3,7 +3,8 @@ title: "You're Fine-Tuning When You Should Be Prompting, and Vice Versa"
 description: "Most enterprise teams reach for fine-tuning when domain knowledge gets specialized — but the actual decision axis isn't domain specificity, it's update…"
 canonical: https://supergood.solutions/blog/you-re-fine-tuning-when-you-should-be-prompting-and-vice-versa/
 published: 2026-06-26
-last-updated: 2026-10-29
+last-updated: 2026-06-26
+updated: 2026-06-26
 ---
 
 ![You're Fine-Tuning When You Should Be Prompting, and Vice Versa — a heavy wrench and a green sticky note side by side next to one tiny screw.](/blog/you-re-fine-tuning-when-you-should-be-prompting-and-vice-versa/hero.webp)

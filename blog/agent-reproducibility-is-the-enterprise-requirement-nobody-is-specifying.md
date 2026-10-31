@@ -3,7 +3,8 @@ title: "Agent Reproducibility Is the Enterprise Requirement Nobody Is Specifying
 description: "Your agent passed the pilot, so you assume it will behave the same way next quarter. It won't, and almost no deployment contract says how much drift is…"
 canonical: https://supergood.solutions/blog/agent-reproducibility-is-the-enterprise-requirement-nobody-is-specifying/
 published: 2026-10-23
-last-updated: 2026-10-29
+last-updated: 2026-10-23
+updated: 2026-10-23
 ---
 
 ![Agent Reproducibility Is the Enterprise Requirement Nobody Is Specifying — five cookies cut with the same star cutter come out five different shapes, one glazed green.](/blog/agent-reproducibility-is-the-enterprise-requirement-nobody-is-specifying/hero.webp)

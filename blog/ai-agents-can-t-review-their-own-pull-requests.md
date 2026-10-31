@@ -3,7 +3,8 @@ title: "AI Agents Can't Review Their Own Pull Requests"
 description: "AI agents that write code and then write the PR description for that code are grading their own homework — and the data shows it's making reviewers slower and…"
 canonical: https://supergood.solutions/blog/ai-agents-can-t-review-their-own-pull-requests/
 published: 2026-07-11
-last-updated: 2026-10-29
+last-updated: 2026-07-11
+updated: 2026-07-11
 ---
 
 ![AI Agents Can't Review Their Own Pull Requests — a robot hand holding a red pen grading its own homework paper, marking everything with green check marks.](/blog/ai-agents-can-t-review-their-own-pull-requests/hero.webp)

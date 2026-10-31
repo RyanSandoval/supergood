@@ -3,7 +3,8 @@ title: "Your Prompt Isn't the Problem. Your Tools Are."
 description: "Enterprise teams invest weeks refining system prompts while their agent tools ship with two-line docstrings and undefined edge cases. Anthropic's own engineers"
 canonical: https://supergood.solutions/blog/your-prompt-isn-t-the-problem-your-tools-are/
 published: 2026-05-17
-last-updated: 2026-10-29
+last-updated: 2026-05-17
+updated: 2026-05-17
 ---
 
 Deep Dive

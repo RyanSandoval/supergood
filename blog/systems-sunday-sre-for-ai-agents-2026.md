@@ -3,7 +3,8 @@ title: "Systems Sunday: Applying SRE Principles to AI Agents"
 description: "How to adapt the SRE playbook — runbooks, incident response, SLOs, and chaos engineering — for AI agent systems that fail differently than traditional services."
 canonical: https://supergood.solutions/blog/systems-sunday-sre-for-ai-agents-2026/
 published: 2026-03-15
-last-updated: 2026-10-29
+last-updated: 2026-03-15
+updated: 2026-03-15
 ---
 
 ![Systems Sunday: Applying SRE Principles to AI Agents — Runbooks, Incident Response, and the New Ops Stack — a toy robot in a tiny hospital bed hooked to a heart monitor with a green pulse, pager and coffee mug on the nightstand.](/blog/systems-sunday-sre-for-ai-agents-2026/hero.webp)

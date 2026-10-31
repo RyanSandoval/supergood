@@ -3,7 +3,8 @@ title: "Your \"Multi-Agent System\" Is One Agent in a Trench Coat — And That's
 description: "A lot of what ships as"
 canonical: https://supergood.solutions/blog/your-multi-agent-system-is-one-agent-in-a-trench-coat-and-that-s-usually-fine/
 published: 2026-04-24
-last-updated: 2026-10-29
+last-updated: 2026-04-24
+updated: 2026-04-24
 ---
 
 Future Friday

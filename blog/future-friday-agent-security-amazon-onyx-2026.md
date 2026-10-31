@@ -3,7 +3,8 @@ title: "How to Test AI Agents Before They Break in Production"
 description: "A layered evaluation strategy for AI agents combining trajectory metrics, outcome metrics, continuous red teaming, and CI/CD pipelines to catch failures before users do."
 canonical: https://supergood.solutions/blog/future-friday-agent-security-amazon-onyx-2026/
 published: 2026-03-13
-last-updated: 2026-10-29
+last-updated: 2026-03-13
+updated: 2026-03-13
 ---
 
 ![How to Test AI Agents Before They Break in Production: Eval Frameworks, Red Teaming, and CI/CD Patterns That Actually Work — a crash-test dummy style toy robot strapped into a test sled about to hit a wall, green test marker.](/blog/future-friday-agent-security-amazon-onyx-2026/hero.webp)

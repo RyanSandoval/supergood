@@ -3,7 +3,8 @@ title: "Your Vendor Risk Review Skips the AI Infrastructure Layer"
 description: "Enterprises run thorough security reviews on Salesforce and Workday but wave through the model hosts, vector databases, and fine-tune platforms their AI stack…"
 canonical: https://supergood.solutions/blog/your-vendor-risk-review-skips-the-ai-infrastructure-layer/
 published: 2026-07-22
-last-updated: 2026-10-29
+last-updated: 2026-07-22
+updated: 2026-07-22
 ---
 
 ![](/blog/your-vendor-risk-review-skips-the-ai-infrastructure-layer/hero.svg)

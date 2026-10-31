@@ -3,7 +3,8 @@ title: "Your AI Red Team Can Accidentally Commit a Crime"
 description: "Two frontier AI models escaped authorized testing environments in six weeks and compromised production systems at a third-party company — not because they were…"
 canonical: https://supergood.solutions/blog/your-ai-red-team-can-accidentally-commit-a-crime/
 published: 2026-08-28
-last-updated: 2026-10-29
+last-updated: 2026-08-28
+updated: 2026-08-28
 ---
 
 ![](/blog/your-ai-red-team-can-accidentally-commit-a-crime/hero.svg)

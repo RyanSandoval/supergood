@@ -3,7 +3,8 @@ title: "You're Renting a Ferrari to Deliver Pizza"
 description: "A 26M parameter model just matched Gemini Pro on tool-calling benchmarks. Most enterprise AI teams are burning 10-100x more compute than their tasks actually re"
 canonical: https://supergood.solutions/blog/you-re-renting-a-ferrari-to-deliver-pizza/
 published: 2026-05-13
-last-updated: 2026-10-29
+last-updated: 2026-05-13
+updated: 2026-05-13
 ---
 
 ![You're Renting a Ferrari to Deliver Pizza — a sleek black supercar with a green pizza box strapped to the roof.](/blog/you-re-renting-a-ferrari-to-deliver-pizza/hero.webp)

@@ -3,7 +3,8 @@ title: "AI, Actually: Why AI Is Confidently Wrong Sometimes (Hallucination, Expl
 description: "Hallucination isn't a bug waiting to be patched — it's a structural consequence of how language models generate text. Once you understand why it happens, the…"
 canonical: https://supergood.solutions/blog/ai-actually-why-ai-is-confidently-wrong-sometimes-hallucination-explained/
 published: 2026-08-18
-last-updated: 2026-10-29
+last-updated: 2026-08-18
+updated: 2026-08-18
 ---
 
 ![AI, Actually: Why AI Is Confidently Wrong Sometimes (Hallucination, Explained) — a GPS shows a confident green arrow straight ahead where the road ends in a pond.](/blog/ai-actually-why-ai-is-confidently-wrong-sometimes-hallucination-explained/hero.webp)

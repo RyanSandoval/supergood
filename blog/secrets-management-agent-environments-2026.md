@@ -3,7 +3,8 @@ title: "Secrets Management in Agent Environments"
 description: "AI agents need credentials to do anything useful, but static API keys and hardcoded secrets are one of the most exploitable surfaces in agentic systems today."
 canonical: https://supergood.solutions/blog/secrets-management-agent-environments-2026/
 published: 2026-03-22
-last-updated: 2026-10-29
+last-updated: 2026-03-22
+updated: 2026-03-22
 ---
 
 ![Secrets Management in Agent Environments — a doormat lifted up revealing a spare key hidden underneath, the key glowing green.](/blog/secrets-management-agent-environments-2026/hero.webp)

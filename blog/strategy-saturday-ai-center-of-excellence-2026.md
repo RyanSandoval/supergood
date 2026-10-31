@@ -3,7 +3,8 @@ title: "Strategy Saturday: How to Build an Internal AI Center of Excellence (Wit
 description: "An AI Center of Excellence sounds like a good idea until it becomes the team everyone has to wait on."
 canonical: https://supergood.solutions/blog/strategy-saturday-ai-center-of-excellence-2026/
 published: 2026-03-28
-last-updated: 2026-10-29
+last-updated: 2026-03-28
+updated: 2026-03-28
 ---
 
 ![Strategy Saturday: How to Build an Internal AI Center of Excellence (Without It Becoming a Bottleneck) — a traffic jam of toy robots waiting at a single toll booth, green toll light.](/blog/strategy-saturday-ai-center-of-excellence-2026/hero.webp)

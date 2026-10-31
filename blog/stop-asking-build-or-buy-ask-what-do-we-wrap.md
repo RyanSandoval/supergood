@@ -3,7 +3,8 @@ title: "Stop Asking \"Build or Buy?\" — Ask \"What Do We Wrap?\""
 description: "The build-vs-buy frame for enterprise AI agents is a trap: it forces a binary choice between a 12-month internal build and a vendor lock-in that owns your roadm"
 canonical: https://supergood.solutions/blog/stop-asking-build-or-buy-ask-what-do-we-wrap/
 published: 2026-04-25
-last-updated: 2026-10-29
+last-updated: 2026-04-25
+updated: 2026-04-25
 ---
 
 ![Stop Asking "Build or Buy?" — Ask "What Do We Wrap?" — an old toaster half gift-wrapped with a green bow instead of building something new.](/blog/stop-asking-build-or-buy-ask-what-do-we-wrap/hero.webp)

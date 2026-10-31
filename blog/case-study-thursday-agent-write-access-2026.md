@@ -3,7 +3,8 @@ title: "What Breaks When Agents Get Write Access"
 description: "An analysis of published AI agent incidents: the failure patterns that repeat when agents get production write access, and the controls that contain blast radius."
 canonical: https://supergood.solutions/blog/case-study-thursday-agent-write-access-2026/
 published: 2026-03-19
-last-updated: 2026-10-29
+last-updated: 2026-10-01
+updated: 2026-10-01
 ---
 
 ![What Breaks When Agents Get Write Access — a robot hand holding a permanent marker over a precious leather ledger, green ink cap removed, ominous.](/blog/case-study-thursday-agent-write-access-2026/hero.webp)

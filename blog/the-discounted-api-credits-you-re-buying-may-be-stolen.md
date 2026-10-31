@@ -3,7 +3,8 @@ title: "The Discounted API Credits You're Buying May Be Stolen"
 description: "A mature underground economy is reselling hijacked LLM API credentials at discounts as steep as 97% — and enterprises buying \"budget\" AI access may be routing…"
 canonical: https://supergood.solutions/blog/the-discounted-api-credits-you-re-buying-may-be-stolen/
 published: 2026-07-29
-last-updated: 2026-10-29
+last-updated: 2026-07-29
+updated: 2026-07-29
 ---
 
 ![The Discounted API Credits You're Buying May Be Stolen — a pried-open briefcase stuffed with green coupons, crowbar beside it.](/blog/the-discounted-api-credits-you-re-buying-may-be-stolen/hero.webp)

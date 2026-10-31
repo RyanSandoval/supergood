@@ -3,7 +3,8 @@ title: "AI, Actually: How Do You Know an AI Is Actually Good? (Evals, Explained)
 description: "Most AI pilots fail not because the model was bad, but because the team had no systematic way to measure whether it was good. Evals are QA for…"
 canonical: https://supergood.solutions/blog/ai-actually-how-do-you-know-an-ai-is-actually-good-evals-explained/
 published: 2026-08-13
-last-updated: 2026-10-29
+last-updated: 2026-08-13
+updated: 2026-08-13
 ---
 
 ![AI, Actually: How Do You Know an AI Is Actually Good? (Evals, Explained) — a quality-control magnifying glass over a single robot-made widget on a small conveyor, green pass stamp pad beside it.](/blog/ai-actually-how-do-you-know-an-ai-is-actually-good-evals-explained/hero.webp)

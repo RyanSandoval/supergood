@@ -3,7 +3,8 @@ title: "Finding Your Accuracy Floor: When Good Enough Beats Best"
 description: "Most teams tune agents for ceiling accuracy when they should be targeting the floor — the minimum quality users actually care about. Optimize for speed and cost beneath that line."
 canonical: https://supergood.solutions/blog/metrics-monday-accuracy-floor-production-agents-2026/
 published: 2026-04-13
-last-updated: 2026-10-29
+last-updated: 2026-04-13
+updated: 2026-04-13
 ---
 
 ![Finding Your Accuracy Floor: When Good Enough Beats Best — a high jump bar set very low with a toy robot easily stepping over it, green bar.](/blog/metrics-monday-accuracy-floor-production-agents-2026/hero.webp)

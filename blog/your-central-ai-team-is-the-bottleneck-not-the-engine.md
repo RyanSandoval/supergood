@@ -3,7 +3,8 @@ title: "Your Central AI Team Is the Bottleneck, Not the Engine"
 description: "Most enterprises built a central AI team to move faster, and that team is now the longest queue in the building. Put AI ownership inside each business unit…"
 canonical: https://supergood.solutions/blog/your-central-ai-team-is-the-bottleneck-not-the-engine/
 published: 2026-10-16
-last-updated: 2026-10-29
+last-updated: 2026-10-16
+updated: 2026-10-16
 ---
 
 ![](/blog/your-central-ai-team-is-the-bottleneck-not-the-engine/hero.svg)

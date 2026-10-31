@@ -3,7 +3,8 @@ title: "The Document Delegation Trap: Why AI Makes Your Specs Worse"
 description: "Enterprise teams are using AI backwards — delegating document *editing* instead of *drafting* — and the result is polished, fluent text that quietly means less."
 canonical: https://supergood.solutions/blog/the-document-delegation-trap-why-ai-makes-your-specs-worse/
 published: 2026-05-10
-last-updated: 2026-10-29
+last-updated: 2026-05-10
+updated: 2026-05-10
 ---
 
 ![The Document Delegation Trap: Why AI Makes Your Specs Worse — a vintage typewriter whose page is drenched in glossy dripping green paint.](/blog/the-document-delegation-trap-why-ai-makes-your-specs-worse/hero.webp)

@@ -3,7 +3,8 @@ title: "Your Enterprise Agents Discover Tools Through Vibes"
 description: "Multi-agent systems fail at scale not because of model quality but because agents decide which tools to call based on vibes — fuzzy natural language description"
 canonical: https://supergood.solutions/blog/your-enterprise-agents-discover-tools-through-vibes/
 published: 2026-06-12
-last-updated: 2026-10-29
+last-updated: 2026-06-12
+updated: 2026-06-12
 ---
 
 ![](/blog/your-enterprise-agents-discover-tools-through-vibes/hero.svg)

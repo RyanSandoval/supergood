@@ -3,7 +3,8 @@ title: "Your Long-Running Agent Has No Midpoint Recovery Plan"
 description: "As enterprises push AI agents into multi-hour workflows, a silent budget killer is hiding in plain sight: when anything goes wrong, you restart from scratch. Ch"
 canonical: https://supergood.solutions/blog/your-long-running-agent-has-no-midpoint-recovery-plan/
 published: 2026-06-18
-last-updated: 2026-10-29
+last-updated: 2026-06-18
+updated: 2026-06-18
 ---
 
 ![](/blog/your-long-running-agent-has-no-midpoint-recovery-plan/hero.svg)

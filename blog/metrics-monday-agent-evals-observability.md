@@ -3,7 +3,8 @@ title: "Shipping AI Agents Without Evals Is Just Shipping Bugs (Here’s the Pra
 description: "A vendor-neutral playbook for agent reliability: eval sets, regression gates, shadow mode, tracing, and cost budgets — the minimum guardrails before an AI agent touches your ops stack."
 canonical: https://supergood.solutions/blog/metrics-monday-agent-evals-observability/
 published: 2026-02-23
-last-updated: 2026-10-29
+last-updated: 2026-07-11
+updated: 2026-07-11
 ---
 
 ![Shipping AI Agents Without Evals Is Just Shipping Bugs (Here’s the Practical Fix) — a toy robot carrying a box of bugs, beetles crawling out, with a green inspection lamp.](/blog/metrics-monday-agent-evals-observability/hero.webp)
@@ -14,7 +15,7 @@ Manual Work Monday · Workflows
 
 “It worked in testing” doesn’t mean anything when your system is probabilistic, tool-connected, and one Slack message away from doing something creative in production.
 
-Published February 23, 2026 — 8 min read
+Published February 23, 2026 · Updated Jul 11, 2026 — 8 min read
 
 **TL;DR:** AI agents aren’t deterministic automations — they’re probabilistic, tool-connected software that fails like an intern, not a clock. Before you give one write access to production, you need a small eval set (25–100 cases) as a release gate, a shadow-mode trial, full run-level logging, and hard cost/rate limits. Do that and you’re ahead of most teams shipping agents on vibes.
 

@@ -3,7 +3,8 @@ title: "Unsandboxed Agents Are a File Deletion Incident Waiting to Happen"
 description: "When a coding agent wipes your production database or nukes a directory, that's not a model alignment failure — it's an ops decision you made when you gave an…"
 canonical: https://supergood.solutions/blog/unsandboxed-agents-are-a-file-deletion-incident-waiting-to-happen/
 published: 2026-07-17
-last-updated: 2026-10-29
+last-updated: 2026-07-17
+updated: 2026-07-17
 ---
 
 ![Unsandboxed Agents Are a File Deletion Incident Waiting to Happen — a toy robot holding giant green scissors beside a delicate hanging mobile of file folders.](/blog/unsandboxed-agents-are-a-file-deletion-incident-waiting-to-happen/hero.webp)

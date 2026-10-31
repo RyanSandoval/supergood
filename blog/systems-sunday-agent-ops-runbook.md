@@ -3,7 +3,8 @@ title: "The AI Agent Ops Runbook: Guardrails, Logging, and Incident Response"
 description: "If you’re putting AI agents into marketing ops, you need more than prompts. Here’s a practical ops runbook: boundaries, tool allowlists, approvals, logging, evals, and incident response."
 canonical: https://supergood.solutions/blog/systems-sunday-agent-ops-runbook/
 published: 2026-02-22
-last-updated: 2026-10-29
+last-updated: 2026-07-11
+updated: 2026-07-11
 ---
 
 ![The AI Agent Ops Runbook: Guardrails, Logging, and Incident Response — a black emergency runbook open to blank pages with a green tab, next to a fire extinguisher.](/blog/systems-sunday-agent-ops-runbook/hero.webp)
@@ -14,7 +15,7 @@ Systems Sunday · Ops
 
 AI agents are being dropped into production like they’re just “smarter workflows.” They’re not. Treat them like production software: permissions, logs, evals, and a plan for when they do something weird at 2:13 AM.
 
-Published February 22, 2026 — 8 min read
+Published February 22, 2026 · Updated Jul 11, 2026 — 8 min read
 
 **TL;DR:** Putting AI agents into marketing ops takes more than a good prompt — it takes the same rigor as shipping production software: a written boundary statement, least-privilege tools, human approval on anything irreversible, and logs for every run. Ship agent changes like software (offline evals, shadow mode, canary releases) and write your incident response plan — kill switch included — before you need it. Do that, and you’re ahead of 90% of the “agent deployments” out there.
 

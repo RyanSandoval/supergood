@@ -3,7 +3,8 @@ title: "Your AI Safety Defaults Belong to Whoever Bought the Seat"
 description: "On August 7, Anthropic made auto mode the default in Claude Code for Pro, Max, and Team plans. Enterprise customers were carved out and promised advance…"
 canonical: https://supergood.solutions/blog/your-ai-safety-defaults-belong-to-whoever-bought-the-seat/
 published: 2026-08-30
-last-updated: 2026-10-29
+last-updated: 2026-08-30
+updated: 2026-08-30
 ---
 
 ![](/blog/your-ai-safety-defaults-belong-to-whoever-bought-the-seat/hero.svg)

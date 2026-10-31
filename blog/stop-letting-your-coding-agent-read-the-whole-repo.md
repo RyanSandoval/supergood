@@ -3,7 +3,8 @@ title: "Stop Letting Your Coding Agent Read the Whole Repo"
 description: "Async coding agents like Codex and Devin can eat through a codebase in minutes — but giving them unlimited repo access is how you get hallucinated refactors and"
 canonical: https://supergood.solutions/blog/stop-letting-your-coding-agent-read-the-whole-repo/
 published: 2026-06-03
-last-updated: 2026-10-29
+last-updated: 2026-06-03
+updated: 2026-06-03
 ---
 
 ![Stop Letting Your Coding Agent Read the Whole Repo — a toy robot wearing blinders looking at only one drawer of a giant library card cabinet, green drawer.](/blog/stop-letting-your-coding-agent-read-the-whole-repo/hero.webp)

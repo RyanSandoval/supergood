@@ -3,7 +3,8 @@ title: "Observability Isn't Evaluation (And the Difference Is Killing Your AI Ro
 description: "89% of enterprise AI teams can watch their models run. Only 37% can tell you if the outputs are right. That gap — between observability and evaluation — is the…"
 canonical: https://supergood.solutions/blog/observability-isn-t-evaluation-and-the-difference-is-killing-your-ai-rollout/
 published: 2026-06-28
-last-updated: 2026-10-29
+last-updated: 2026-06-28
+updated: 2026-06-28
 ---
 
 ![Observability Isn't Evaluation (And the Difference Is Killing Your AI Rollout) — a security camera pointed at a plate of food it cannot taste, green camera light.](/blog/observability-isn-t-evaluation-and-the-difference-is-killing-your-ai-rollout/hero.webp)

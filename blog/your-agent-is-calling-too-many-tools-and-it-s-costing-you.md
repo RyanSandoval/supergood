@@ -3,7 +3,8 @@ title: "Your Agent Is Calling Too Many Tools — And It's Costing You"
 description: "Most enterprise teams building LLM agents spend their energy on prompts and model selection, then wire up every possible tool and call it done. The real perform"
 canonical: https://supergood.solutions/blog/your-agent-is-calling-too-many-tools-and-it-s-costing-you/
 published: 2026-05-12
-last-updated: 2026-10-29
+last-updated: 2026-05-12
+updated: 2026-05-12
 ---
 
 ![Your Agent Is Calling Too Many Tools — And It's Costing You — a toy robot weighed down by a bursting tool belt, holding up one green screwdriver.](/blog/your-agent-is-calling-too-many-tools-and-it-s-costing-you/hero.webp)

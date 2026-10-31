@@ -3,7 +3,8 @@ title: "Your Default Model Is Quietly Bankrupting Your AI Budget"
 description: "Enterprises are leaving 45–85% of their AI compute budget on the table by defaulting every request to their most powerful (and most expensive) model. Model rout"
 canonical: https://supergood.solutions/blog/your-default-model-is-quietly-bankrupting-your-ai-budget/
 published: 2026-05-18
-last-updated: 2026-10-29
+last-updated: 2026-05-18
+updated: 2026-05-18
 ---
 
 AI IN PRODUCTION

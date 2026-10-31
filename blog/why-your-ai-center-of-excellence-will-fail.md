@@ -3,7 +3,8 @@ title: "Why Your AI Center of Excellence Will Fail"
 description: ""
 canonical: https://supergood.solutions/blog/why-your-ai-center-of-excellence-will-fail/
 published: 2026-04-18
-last-updated: 2026-10-29
+last-updated: 2026-04-18
+updated: 2026-04-18
 ---
 
 ![Why Your AI Center of Excellence Will Fail — an ornate empty throne wrapped in cobwebs, a dusty green crown left on the seat.](/blog/why-your-ai-center-of-excellence-will-fail/hero.webp)

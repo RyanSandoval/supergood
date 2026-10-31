@@ -3,7 +3,8 @@ title: "Your Team Is Defaulting to the Wrong Model — and Paying 10x for It"
 description: "Most enterprise teams reach for frontier models out of habit, not need — and it's costing them 5–20x more than necessary. The teams winning in production aren't"
 canonical: https://supergood.solutions/blog/your-team-is-defaulting-to-the-wrong-model-and-paying-10x-for-it/
 published: 2026-05-21
-last-updated: 2026-10-29
+last-updated: 2026-05-21
+updated: 2026-05-21
 ---
 
 Enterprise AI

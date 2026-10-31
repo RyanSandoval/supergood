@@ -3,7 +3,8 @@ title: "Your Agents Are Waiting for Humans. That's the Bug."
 description: "Most enterprise AI agents are built as request-response systems — they sit idle until a human pings them. That's not agentic, that's a chatbot with extra steps."
 canonical: https://supergood.solutions/blog/your-agents-are-waiting-for-humans-that-s-the-bug/
 published: 2026-05-15
-last-updated: 2026-10-29
+last-updated: 2026-05-15
+updated: 2026-05-15
 ---
 
 Future Friday

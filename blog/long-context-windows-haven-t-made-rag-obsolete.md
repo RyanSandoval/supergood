@@ -3,7 +3,8 @@ title: "Long Context Windows Haven't Made RAG Obsolete"
 description: "Models now ship with 10-million-token windows, and the \"just put everything in context\" crowd declared RAG dead — but 60% of production LLM apps still use…"
 canonical: https://supergood.solutions/blog/long-context-windows-haven-t-made-rag-obsolete/
 published: 2026-08-04
-last-updated: 2026-10-29
+last-updated: 2026-08-04
+updated: 2026-08-04
 ---
 
 ![Long Context Windows Haven't Made RAG Obsolete — a huge stuffed filing cabinet next to a tidy librarian's card index with one green card pulled.](/blog/long-context-windows-haven-t-made-rag-obsolete/hero.webp)

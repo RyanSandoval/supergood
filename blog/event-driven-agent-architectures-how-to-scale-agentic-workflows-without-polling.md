@@ -3,7 +3,8 @@ title: "Event-Driven Agent Architectures: How to Scale Agentic Workflows Without
 description: "As agent deployments grow, request-response patterns become bottlenecks. Event-driven architectures decouple agents from synchronous calls, letting them listen"
 canonical: https://supergood.solutions/blog/event-driven-agent-architectures-how-to-scale-agentic-workflows-without-polling/
 published: 2026-04-18
-last-updated: 2026-10-29
+last-updated: 2026-04-18
+updated: 2026-04-18
 ---
 
 ![Event-Driven Agent Architectures: How to Scale Agentic Workflows Without Polling — a row of mailboxes with flags, one green flag raised, a toy robot waiting next to it without knocking on doors.](/blog/event-driven-agent-architectures-how-to-scale-agentic-workflows-without-polling/hero.webp)

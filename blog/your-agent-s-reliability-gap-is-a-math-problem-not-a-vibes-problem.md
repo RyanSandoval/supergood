@@ -3,14 +3,15 @@ title: "Your Agent's Reliability Gap Is a Math Problem, Not a Vibes Problem"
 description: "Capability benchmarks measure single-shot success — but production agents chain dozens of steps together, and compounding failure rates will wreck you. Before y"
 canonical: https://supergood.solutions/blog/your-agent-s-reliability-gap-is-a-math-problem-not-a-vibes-problem/
 published: 2026-06-02
-last-updated: 2026-10-29
+last-updated: 2026-07-25
+updated: 2026-07-25
 ---
 
 DEPLOYMENT
 
 # Your Agent's Reliability Gap Is a Math Problem, Not a Vibes Problem
 
-Published June 02, 2026 — 4 min read
+Published June 02, 2026 · Updated Jul 25, 2026 — 4 min read
 
 **TL;DR:** Capability benchmarks measure single-shot success — but production agents chain dozens of steps together, and compounding failure rates will wreck you. Before you ship, do the math.
 

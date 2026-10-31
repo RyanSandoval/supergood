@@ -3,7 +3,8 @@ title: "Your AI Agent Is an Exfiltration Vector. Treat It Like One."
 description: "Enterprise AI agents have legitimate access to your data and legitimate channels to the internet — that combination makes your security team's existing playbook"
 canonical: https://supergood.solutions/blog/your-ai-agent-is-an-exfiltration-vector-treat-it-like-one/
 published: 2026-05-29
-last-updated: 2026-10-29
+last-updated: 2026-05-29
+updated: 2026-05-29
 ---
 
 SECURITY

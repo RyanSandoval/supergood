@@ -3,7 +3,8 @@ title: "Stop Measuring AI Cost in Tokens and Start in Tasks"
 description: "Procurement teams compare AI vendors on per-token pricing, but the number that actually lands on the P&L is cost per *completed* task. The cheapest model per…"
 canonical: https://supergood.solutions/blog/stop-measuring-ai-cost-in-tokens-and-start-in-tasks/
 published: 2026-10-02
-last-updated: 2026-10-29
+last-updated: 2026-10-05
+updated: 2026-10-05
 ---
 
 ![Stop Measuring AI Cost in Tokens and Start in Tasks — a messy pile of jelly bean tokens next to one finished tiny model house wearing a green price tag.](/blog/stop-measuring-ai-cost-in-tokens-and-start-in-tasks/hero.webp)
@@ -12,7 +13,7 @@ BUSINESS
 
 # Stop Measuring AI Cost in Tokens and Start in Tasks
 
-Published October 02, 2026 — 3 min read
+Published October 02, 2026 · Updated Oct 5, 2026 — 3 min read
 
 **TL;DR:** Procurement teams compare AI vendors on per-token pricing, but the number that actually lands on the P&L is cost per *completed* task. The cheapest model per token is often the most expensive model per outcome.
 

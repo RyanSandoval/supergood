@@ -3,7 +3,8 @@ title: "The Marketing Ops Automation Guide: What to Automate First"
 description: "A practical framework for identifying which marketing workflows to automate first, with ROI estimates and implementation guides using Power Automate, Office Scripts, and existing M365 tools."
 canonical: https://supergood.solutions/blog/marketing-ops-automation-guide/
 published: 2026-02-15
-last-updated: 2026-10-29
+last-updated: 2026-02-15
+updated: 2026-02-15
 ---
 
 ![The Marketing Ops Automation Guide: What to Automate First (and What to Leave Alone) — a toolbox with half the drawers labeled with green dots to automate and half left alone, a robot arm reaching into green ones.](/blog/marketing-ops-automation-guide/hero.webp)

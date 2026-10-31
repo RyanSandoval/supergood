@@ -3,7 +3,8 @@ title: "Your Private Repos Are an Agent Permission Boundary Problem"
 description: "Enterprise IAM was designed assuming a human at the keyboard. When you give an AI agent access to a private repo, you're not granting \"read access to code\"…"
 canonical: https://supergood.solutions/blog/your-private-repos-are-an-agent-permission-boundary-problem/
 published: 2026-07-15
-last-updated: 2026-10-29
+last-updated: 2026-07-15
+updated: 2026-07-15
 ---
 
 ![](/blog/your-private-repos-are-an-agent-permission-boundary-problem/hero.svg)

@@ -3,7 +3,8 @@ title: "Your Agent's Open-Source Dependencies Are a New Attack Surface"
 description: "Coding agents like Claude Code, Codex, and Gemini CLI consume markdown instruction files ("
 canonical: https://supergood.solutions/blog/your-agent-s-open-source-dependencies-are-a-new-attack-surface/
 published: 2026-06-09
-last-updated: 2026-10-29
+last-updated: 2026-06-09
+updated: 2026-06-09
 ---
 
 SECURITY

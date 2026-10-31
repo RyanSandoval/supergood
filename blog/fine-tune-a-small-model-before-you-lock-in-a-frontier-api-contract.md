@@ -3,7 +3,8 @@ title: "Fine-Tune a Small Model Before You Lock In a Frontier API Contract"
 description: "For narrow, repeatable jobs like extraction and classification, a small model tuned on your own data usually beats a rented frontier model on accuracy and…"
 canonical: https://supergood.solutions/blog/fine-tune-a-small-model-before-you-lock-in-a-frontier-api-contract/
 published: 2026-10-21
-last-updated: 2026-10-29
+last-updated: 2026-10-21
+updated: 2026-10-21
 ---
 
 ![Fine-Tune a Small Model Before You Lock In a Frontier API Contract — a small hand-tuned go-kart with green racing stripes next to an expensive limousine with a rental contract clipboard.](/blog/fine-tune-a-small-model-before-you-lock-in-a-frontier-api-contract/hero.webp)

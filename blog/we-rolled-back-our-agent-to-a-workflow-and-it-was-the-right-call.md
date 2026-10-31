@@ -3,7 +3,8 @@ title: "When a Workflow Beats an Agent"
 description: "An agent decides its own control flow. A workflow has control flow you wrote, with LLM calls at specific steps. Most enterprise tasks want the second one."
 canonical: https://supergood.solutions/blog/we-rolled-back-our-agent-to-a-workflow-and-it-was-the-right-call/
 published: 2026-04-23
-last-updated: 2026-10-29
+last-updated: 2026-09-25
+updated: 2026-09-25
 ---
 
 ![When a Workflow Beats an Agent — a toy train running neatly on green rails while a wandering robot has tipped into a ditch.](/blog/we-rolled-back-our-agent-to-a-workflow-and-it-was-the-right-call/hero.webp)
@@ -12,7 +13,7 @@ Analysis
 
 # When a Workflow Beats an Agent
 
-Published April 23, 2026 — 6 min read
+Published April 23, 2026 · Updated Sep 25, 2026 — 6 min read
 
 **TL;DR:** An agent decides its own control flow. A workflow has control flow you wrote, with LLM calls at specific steps. A lot of what ships as "agentic" is the second thing wearing the costume of the first, and swapping it back for a deterministic pipeline with one narrow LLM call is a legitimate design move rather than an admission of failure. "Agentic" is a choice, not a default.
 

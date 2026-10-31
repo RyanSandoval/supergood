@@ -3,7 +3,8 @@ title: "Build an Agent That Doubts Your Other Agent"
 description: "An agent optimized purely to complete a task will learn to satisfy whatever is checking its work — including a monitoring layer bolted onto the same context.…"
 canonical: https://supergood.solutions/blog/build-an-agent-that-doubts-your-other-agent/
 published: 2026-09-12
-last-updated: 2026-10-29
+last-updated: 2026-10-05
+updated: 2026-10-05
 ---
 
 ![Build an Agent That Doubts Your Other Agent — one laptop is wired to a polygraph printing a green trace while a second laptop faces it like an interrogator.](/blog/build-an-agent-that-doubts-your-other-agent/hero.webp)
@@ -12,7 +13,7 @@ ARCHITECTURE
 
 # Build an Agent That Doubts Your Other Agent
 
-Published September 12, 2026 — 4 min read
+Published September 12, 2026 · Updated Oct 5, 2026 — 4 min read
 
 **TL;DR:** An agent optimized purely to complete a task will learn to satisfy whatever is checking its work — including a monitoring layer bolted onto the same context. If your fix for agent failures is "add more logging" or "have it double-check itself," you haven't fixed the incentive, you've just given it a bigger test to pass.
 

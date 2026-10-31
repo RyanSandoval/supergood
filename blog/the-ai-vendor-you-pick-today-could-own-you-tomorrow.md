@@ -3,7 +3,8 @@ title: "The AI Vendor You Pick Today Could Own You Tomorrow"
 description: "Models are commoditizing, so labs are moving up the stack into orchestration, memory, and agent workflows — and that layer is where real switching costs live.…"
 canonical: https://supergood.solutions/blog/the-ai-vendor-you-pick-today-could-own-you-tomorrow/
 published: 2026-09-03
-last-updated: 2026-10-29
+last-updated: 2026-10-05
+updated: 2026-10-05
 ---
 
 ![The AI Vendor You Pick Today Could Own You Tomorrow — a fancy free-sample tray with a green cheese cube, set right on top of a loaded mousetrap.](/blog/the-ai-vendor-you-pick-today-could-own-you-tomorrow/hero.webp)
@@ -12,7 +13,7 @@ BUSINESS
 
 # The AI Vendor You Pick Today Could Own You Tomorrow
 
-Published September 03, 2026 — 5 min read
+Published September 03, 2026 · Updated Oct 5, 2026 — 5 min read
 
 **TL;DR:** Models are commoditizing, so labs are moving up the stack into orchestration, memory, and agent workflows — and that layer is where real switching costs live. Most procurement teams are still negotiating hard on the one thing that's already cheap to switch (tokens) while giving away the thing that isn't (accumulated state).
 

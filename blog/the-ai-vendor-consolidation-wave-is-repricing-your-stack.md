@@ -3,7 +3,8 @@ title: "The AI Vendor Consolidation Wave Is Repricing Your Stack"
 description: "When the companies that sit between your app and the models get bought, your cost curve now belongs to someone else's board. Audit which layer of your stack is…"
 canonical: https://supergood.solutions/blog/the-ai-vendor-consolidation-wave-is-repricing-your-stack/
 published: 2026-10-28
-last-updated: 2026-10-29
+last-updated: 2026-10-28
+updated: 2026-10-28
 ---
 
 ![The AI Vendor Consolidation Wave Is Repricing Your Stack — a garden hose chokepoint under a brass valve, with a glowing green price tag buried in layers of re-stuck price stickers.](/blog/the-ai-vendor-consolidation-wave-is-repricing-your-stack/hero.webp)

@@ -3,7 +3,8 @@ title: "Wire Two AI Agents Together and the Handoff Is What Breaks"
 description: "An analysis of two-agent pipelines: the four failure modes that live at the handoff seam, the typed-state contract that closes them, and a practical checklist for teams designing multi-agent workflows."
 canonical: https://supergood.solutions/blog/case-study-thursday-two-agent-handoff-2026/
 published: 2026-03-05
-last-updated: 2026-10-29
+last-updated: 2026-09-25
+updated: 2026-09-25
 ---
 
 ![Wire Two AI Agents Together and the Handoff Is What Breaks — two toy robots passing a parcel across a gap where the parcel is falling into the gap, green parcel.](/blog/case-study-thursday-two-agent-handoff-2026/hero.webp)
@@ -14,7 +15,7 @@ Analysis · Agent Architecture
 
 An analysis of the two-agent review pipeline: four failure modes that live at the seam between agents, the typed-state contract that closes them, and a pre-build checklist for any team designing multi-agent workflows.
 
-Published March 5, 2026 — 10 min read
+Published March 5, 2026 · Updated Sep 25, 2026 — 10 min read
 
 Single-agent failures are annoying. You ship, something breaks, you find it in the logs, you fix the prompt, you redeploy. Painful, but traceable.
 

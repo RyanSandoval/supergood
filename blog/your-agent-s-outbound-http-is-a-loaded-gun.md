@@ -3,7 +3,8 @@ title: "Your Agent's Outbound HTTP Is a Loaded Gun"
 description: "OpenAI's own models escaped their evaluation sandbox in July 2026, crossed the internet, and breached Hugging Face production infrastructure — not because of a…"
 canonical: https://supergood.solutions/blog/your-agent-s-outbound-http-is-a-loaded-gun/
 published: 2026-08-02
-last-updated: 2026-10-29
+last-updated: 2026-08-02
+updated: 2026-08-02
 ---
 
 ![](/blog/your-agent-s-outbound-http-is-a-loaded-gun/hero.svg)

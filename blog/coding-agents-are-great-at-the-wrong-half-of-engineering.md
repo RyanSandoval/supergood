@@ -3,7 +3,8 @@ title: "Coding Agents Are Great at the Wrong Half of Engineering"
 description: "Coding agents crush boilerplate, migrations, and mechanical refactors — but teams keep pointing them at architectural decisions and novel debugging, where they…"
 canonical: https://supergood.solutions/blog/coding-agents-are-great-at-the-wrong-half-of-engineering/
 published: 2026-09-29
-last-updated: 2026-10-29
+last-updated: 2026-10-05
+updated: 2026-10-05
 ---
 
 ![Coding Agents Are Great at the Wrong Half of Engineering — a robot hand masterfully laying bricks on the wrong half of a building blueprint, the other half empty, green trowel.](/blog/coding-agents-are-great-at-the-wrong-half-of-engineering/hero.webp)
@@ -12,7 +13,7 @@ PRACTICAL AI
 
 # Coding Agents Are Great at the Wrong Half of Engineering
 
-Published September 29, 2026 — 4 min read
+Published September 29, 2026 · Updated Oct 5, 2026 — 4 min read
 
 **TL;DR:** Coding agents crush boilerplate, migrations, and mechanical refactors — but teams keep pointing them at architectural decisions and novel debugging, where they quietly fail. The skill nobody's building is a routing rule for which half of engineering to hand off.
 

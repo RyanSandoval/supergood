@@ -3,7 +3,8 @@ title: "The Neutral AI Middleware You Relied On Just Got Acquired"
 description: "Stripe's $7B+ acquisition of OpenRouter proves that the \"vendor-neutral routing layer\" enterprises adopted to escape model lock-in is itself a hot M&A target.…"
 canonical: https://supergood.solutions/blog/the-neutral-ai-middleware-you-relied-on-just-got-acquired/
 published: 2026-09-11
-last-updated: 2026-10-29
+last-updated: 2026-09-11
+updated: 2026-09-11
 ---
 
 ![The Neutral AI Middleware You Relied On Just Got Acquired — a grey middleware box, still wired in, being lifted away by a giant claw with a green sold tag.](/blog/the-neutral-ai-middleware-you-relied-on-just-got-acquired/hero.webp)

@@ -3,7 +3,8 @@ title: "Systems Sunday: Circuit Breakers for LLM Calls — Stop Cascading Failur
 description: "Retrying a failing LLM call into oblivion isn't resilience — it's how one provider outage takes down your whole agent."
 canonical: https://supergood.solutions/blog/systems-sunday-circuit-breakers-llm-calls-2026/
 published: 2026-03-29
-last-updated: 2026-10-29
+last-updated: 2026-03-29
+updated: 2026-03-29
 ---
 
 ![Systems Sunday: Circuit Breakers for LLM Calls — Stop Cascading Failures Before They Start — a household circuit breaker panel with one green switch flipped off stopping sparks.](/blog/systems-sunday-circuit-breakers-llm-calls-2026/hero.webp)

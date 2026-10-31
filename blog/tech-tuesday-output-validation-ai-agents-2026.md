@@ -3,7 +3,8 @@ title: "Structured Outputs Won't Save You: Building a Real Validation Layer for 
 description: "JSON schema compliance is not the same as correctness. Here's how to build a three-tier validation layer — schema, semantic, and business logic — that actually catches what structured outputs miss."
 canonical: https://supergood.solutions/blog/tech-tuesday-output-validation-ai-agents-2026/
 published: 2026-03-10
-last-updated: 2026-10-29
+last-updated: 2026-03-10
+updated: 2026-03-10
 ---
 
 ![Structured Outputs Won't Save You: Building a Real Validation Layer for AI Agents — a perfect green-frosted star cookie snapped in half to reveal corrugated cardboard inside.](/blog/tech-tuesday-output-validation-ai-agents-2026/hero.webp)

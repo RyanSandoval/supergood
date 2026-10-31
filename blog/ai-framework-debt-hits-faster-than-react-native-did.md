@@ -3,7 +3,8 @@ title: "AI Framework Debt Hits Faster Than React Native Did"
 description: "Shopify just spent 12 weeks rebuilding its Shop app from React Native into separate Swift and Kotlin codebases — a reversal of a bet it made nearly a decade…"
 canonical: https://supergood.solutions/blog/ai-framework-debt-hits-faster-than-react-native-did/
 published: 2026-10-04
-last-updated: 2026-10-29
+last-updated: 2026-10-05
+updated: 2026-10-05
 ---
 
 ![AI Framework Debt Hits Faster Than React Native Did — a stack of ornate framework boxes collapsing like a Jenga tower, one green block being pulled out.](/blog/ai-framework-debt-hits-faster-than-react-native-did/hero.webp)
@@ -12,7 +13,7 @@ Architecture
 
 # AI Framework Debt Hits Faster Than React Native Did
 
-Published October 04, 2026 — 3 min read
+Published October 04, 2026 · Updated Oct 5, 2026 — 3 min read
 
 **TL;DR:** Shopify just spent 12 weeks rebuilding its Shop app from React Native into separate Swift and Kotlin codebases — a reversal of a bet it made nearly a decade ago. Teams that locked their AI stack into a single orchestration framework in 2023-2024 are sitting on the same kind of debt, except the replacement cycle isn't measured in years anymore. It's measured in quarters.
 

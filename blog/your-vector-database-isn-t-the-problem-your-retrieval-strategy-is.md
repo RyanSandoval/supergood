@@ -3,7 +3,8 @@ title: "Your Vector Database Isn't the Problem — Your Retrieval Strategy Is"
 description: "Pure vector search is the default for enterprise RAG, and it's the wrong default. Teams that ship reliable retrieval in production run hybrid search (BM25 + vec"
 canonical: https://supergood.solutions/blog/your-vector-database-isn-t-the-problem-your-retrieval-strategy-is/
 published: 2026-04-22
-last-updated: 2026-10-29
+last-updated: 2026-04-22
+updated: 2026-04-22
 ---
 
 AI Wednesday

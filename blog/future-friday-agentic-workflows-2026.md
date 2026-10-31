@@ -3,7 +3,8 @@ title: "Workflows Are Becoming Agents (and Marketing Teams Need Guardrails)"
 description: "2026’s automation shift: workflows are turning into autonomous agents. Here’s a practical guardrail system for marketing ops—permissions, logging, approvals, and cost control."
 canonical: https://supergood.solutions/blog/future-friday-agentic-workflows-2026/
 published: 2026-02-20
-last-updated: 2026-10-29
+last-updated: 2026-02-20
+updated: 2026-02-20
 ---
 
 ![Workflows Are Becoming Agents (and Marketing Teams Need Guardrails) — a toy marketing robot on a leash holding a stack of envelopes, green leash.](/blog/future-friday-agentic-workflows-2026/hero.webp)

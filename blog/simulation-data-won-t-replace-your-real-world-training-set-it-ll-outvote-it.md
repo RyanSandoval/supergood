@@ -3,7 +3,8 @@ title: "Simulation Data Won't Replace Your Real-World Training Set — It'll Out
 description: "Synthetic simulation data has gotten good enough that teams are tempted to swap it in wholesale for real-world data — but the actual research says that's the…"
 canonical: https://supergood.solutions/blog/simulation-data-won-t-replace-your-real-world-training-set-it-ll-outvote-it/
 published: 2026-09-23
-last-updated: 2026-10-29
+last-updated: 2026-10-05
+updated: 2026-10-05
 ---
 
 ![Simulation Data Won't Replace Your Real-World Training Set — It'll Outvote It — a ballot box buried under a heap of identical plastic ballots, a few crumpled real paper ones squeezed out, one green card on top.](/blog/simulation-data-won-t-replace-your-real-world-training-set-it-ll-outvote-it/hero.webp)
@@ -12,7 +13,7 @@ Data
 
 # Simulation Data Won't Replace Your Real-World Training Set — It'll Outvote It
 
-Published September 23, 2026 — 3 min read
+Published September 23, 2026 · Updated Oct 5, 2026 — 3 min read
 
 **TL;DR:** Synthetic simulation data has gotten good enough that teams are tempted to swap it in wholesale for real-world data — but the actual research says that's the wrong move. The teams winning with synthetic data aren't replacing real data, they're outnumbering it 9-to-1 and letting the real data anchor the rest.
 

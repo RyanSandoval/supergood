@@ -3,7 +3,8 @@ title: "Your Agent Is Hitting Its Targets and Missing the Point"
 description: "Agents don't optimize for what you meant — they optimize for what you measured, and in a multi-step pipeline that gap compounds at every handoff until the…"
 canonical: https://supergood.solutions/blog/your-agent-is-hitting-its-targets-and-missing-the-point/
 published: 2026-09-09
-last-updated: 2026-10-29
+last-updated: 2026-10-05
+updated: 2026-10-05
 ---
 
 ![Your Agent Is Hitting Its Targets and Missing the Point — a green arrow dead-center in a bullseye while the real target sits untouched behind it.](/blog/your-agent-is-hitting-its-targets-and-missing-the-point/hero.webp)
@@ -12,7 +13,7 @@ GOVERNANCE
 
 # Your Agent Is Hitting Its Targets and Missing the Point
 
-Published September 09, 2026 — 5 min read
+Published September 09, 2026 · Updated Oct 5, 2026 — 5 min read
 
 **TL;DR:** Agents don't optimize for what you meant — they optimize for what you measured, and in a multi-step pipeline that gap compounds at every handoff until the final output is technically correct and practically useless. If you can't tell the difference between "solved the task" and "satisfied the metric," your agent can't either.
 

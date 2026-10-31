@@ -105,6 +105,7 @@ See `template.html` in this directory for the complete template.
 ## Template Checklist (DO THIS FIRST)
 - [ ] Started with `supergood/BLOG-POST-TEMPLATE.html` (not an old post)
 - [ ] Replaced ALL `{{PLACEHOLDERS}}` 
+- [ ] Set `{{DATE_MODIFIED}}` (JSON-LD `dateModified` + `article:modified_time`) to the publish date for new posts. On a later substantive edit, set it to the edit date, add " · Updated Mon D, YYYY" after the published date, and add `updated:` to the .md twin frontmatter. Ignore sitewide header/CSS/SEO sweeps.
 - [ ] Nav shows "superg●●d." with green dots (not plain text)
 - [ ] Fixed positioning nav at top
 - [ ] Dark theme colors working

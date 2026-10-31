@@ -3,7 +3,8 @@ title: "Long-Horizon Agents Fail Differently Than Chatbots — Plan Accordingly"
 description: "The safety risks teams obsess over — prompt injection, jailbreaks, hallucinations — barely register in long-running agent failures. What actually kills…"
 canonical: https://supergood.solutions/blog/long-horizon-agents-fail-differently-than-chatbots-plan-accordingly/
 published: 2026-07-24
-last-updated: 2026-10-29
+last-updated: 2026-07-24
+updated: 2026-07-24
 ---
 
 ![Long-Horizon Agents Fail Differently Than Chatbots — Plan Accordingly — a marathon runner robot lying exhausted at mile marker cone halfway, not tripped but just out of water, green water bottle empty.](/blog/long-horizon-agents-fail-differently-than-chatbots-plan-accordingly/hero.webp)

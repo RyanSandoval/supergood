@@ -3,7 +3,8 @@ title: "AI, Actually: What an LLM Is Actually Doing When It \"Writes\" Something
 description: "Your AI tool is not writing — it is guessing the next word, one word at a time, billions of times fast. That distinction isn't pedantic; it is the single most…"
 canonical: https://supergood.solutions/blog/ai-actually-what-an-llm-is-actually-doing-when-it-writes-something/
 published: 2026-08-01
-last-updated: 2026-10-29
+last-updated: 2026-08-01
+updated: 2026-08-01
 ---
 
 ![AI, Actually: What an LLM Is Actually Doing When It "Writes" Something — an old wooden typewriter with a long paper strip coming out made of scrabble-like blank tiles, one tile glowing green as the next one.](/blog/ai-actually-what-an-llm-is-actually-doing-when-it-writes-something/hero.webp)

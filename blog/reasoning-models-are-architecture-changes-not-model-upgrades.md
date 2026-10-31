@@ -3,7 +3,8 @@ title: "Reasoning Models Are Architecture Changes, Not Model Upgrades"
 description: "Swapping your existing LLM for a reasoning model (o3, Claude with extended thinking, Gemini 2.5 Pro) without redesigning your pipeline is one of the most common"
 canonical: https://supergood.solutions/blog/reasoning-models-are-architecture-changes-not-model-upgrades/
 published: 2026-05-06
-last-updated: 2026-10-29
+last-updated: 2026-05-06
+updated: 2026-05-06
 ---
 
 ![Reasoning Models Are Architecture Changes, Not Model Upgrades — a sleek engine block being installed into an old wooden cart that clearly can't handle it, green engine light.](/blog/reasoning-models-are-architecture-changes-not-model-upgrades/hero.webp)

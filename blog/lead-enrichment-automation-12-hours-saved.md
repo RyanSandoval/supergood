@@ -3,7 +3,8 @@ title: "Lead Enrichment Is the Right Thing to Automate First"
 description: "Lead enrichment is repetitive, rules-based, high-volume and low-judgment. That combination makes it the strongest first automation target in a sales stack. How to scope a pipeline, what enrichment vendors actually cost now, and what to measure."
 canonical: https://supergood.solutions/blog/lead-enrichment-automation-12-hours-saved/
 published: 2026-02-19
-last-updated: 2026-10-29
+last-updated: 2026-09-25
+updated: 2026-09-25
 ---
 
 ![Lead Enrichment Is the Right Thing to Automate First — a vintage card catalog drawer being auto-filled by a small conveyor of index cards, green tabs.](/blog/lead-enrichment-automation-12-hours-saved/hero.webp)
@@ -14,7 +15,7 @@ Analysis
 
 It is repetitive, rules-based, high-volume and low-judgment. Very little else in a sales stack scores that well on all four.
 
-Published February 19, 2026 — 4 min read
+Published February 19, 2026 · Updated Sep 25, 2026 — 4 min read
 
 ## The Work Nobody Signed Up For
 

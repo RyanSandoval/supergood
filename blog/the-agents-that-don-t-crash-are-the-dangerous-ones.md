@@ -3,7 +3,8 @@ title: "The Agents That Don't Crash Are the Dangerous Ones"
 description: "The most expensive AI agent failures in production aren't errors or exceptions — they're silent: the agent runs cleanly, returns a result, and nobody realizes t"
 canonical: https://supergood.solutions/blog/the-agents-that-don-t-crash-are-the-dangerous-ones/
 published: 2026-05-07
-last-updated: 2026-10-29
+last-updated: 2026-09-25
+updated: 2026-09-25
 ---
 
 ![The Agents That Don't Crash Are the Dangerous Ones — a toy robot quietly sweeping a pile of broken pieces under a rug, green broom.](/blog/the-agents-that-don-t-crash-are-the-dangerous-ones/hero.webp)
@@ -12,7 +13,7 @@ Analysis
 
 # The Agents That Don't Crash Are the Dangerous Ones
 
-Published May 07, 2026 — 6 min read
+Published May 07, 2026 · Updated Sep 25, 2026 — 6 min read
 
 **TL;DR:** The most expensive AI agent failures in production aren't errors or exceptions — they're silent: the agent runs cleanly, returns a result, and nobody realizes the output was wrong for weeks. Teams that have learned to catch these failures share one trait: they stopped trusting exit codes and started instrumenting \*correctness\*, not just health.
 

@@ -3,7 +3,8 @@ title: "Prompt Version Control: Treat Your System Prompts Like Production Code"
 description: "Most teams edit AI prompts in place and hope nothing breaks. That's not a workflow — it's a time bomb. Here's a vendor-neutral system for versioning, testing, and rolling back prompts like the production assets they are."
 canonical: https://supergood.solutions/blog/systems-sunday-prompt-version-control-2026/
 published: 2026-03-01
-last-updated: 2026-10-29
+last-updated: 2026-03-01
+updated: 2026-03-01
 ---
 
 ![Prompt Version Control: Treat Your System Prompts Like Production Code — a row of identical unlabeled jam jars lined up like versions, only the newest one filled with green jam.](/blog/systems-sunday-prompt-version-control-2026/hero.webp)

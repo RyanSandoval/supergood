@@ -3,7 +3,8 @@ title: "Your Agent's Tool Schema Is a Security Attack Surface"
 description: "Enterprises hardening agentic systems pour effort into prompt injection defenses while shipping tool definitions with no field validation, unconstrained enums…"
 canonical: https://supergood.solutions/blog/your-agent-s-tool-schema-is-a-security-attack-surface/
 published: 2026-07-09
-last-updated: 2026-10-29
+last-updated: 2026-07-11
+updated: 2026-07-11
 ---
 
 ![](/blog/your-agent-s-tool-schema-is-a-security-attack-surface/hero.svg)
@@ -12,7 +13,7 @@ SECURITY
 
 # Your Agent's Tool Schema Is a Security Attack Surface
 
-Published July 09, 2026 — 5 min read
+Published July 09, 2026 · Updated Jul 11, 2026 — 5 min read
 
 **TL;DR:** Enterprises hardening agentic systems pour effort into prompt injection defenses while shipping tool definitions with no field validation, unconstrained enums, and invented optional parameters — giving models a second, quieter path to capability hallucination. The real governance gap isn't your system prompt; it's your JSON schema.
 

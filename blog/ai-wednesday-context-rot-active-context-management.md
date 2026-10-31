@@ -3,7 +3,8 @@ title: "AI Wednesday: Context Rot & Active Context Management for Production Age
 description: "As agents handle longer tasks, larger context windows expose a hidden problem: context rot—the model's ability to find critical information degrades as context size grows. The solution isn't bigger windows; it's smarter memory and active context curation."
 canonical: https://supergood.solutions/blog/ai-wednesday-context-rot-active-context-management/
 published: 2026-04-15
-last-updated: 2026-10-29
+last-updated: 2026-04-15
+updated: 2026-04-15
 ---
 
 ![AI Wednesday: Context Rot & Active Context Management for Production Agents — a stack of papers on a desk where the bottom layers are moldy and rotting, a single fresh green sheet on top.](/blog/ai-wednesday-context-rot-active-context-management/hero.webp)

@@ -3,7 +3,8 @@ title: "Structured Output Contracts for Agent-to-Agent Communication"
 description: "When two AI agents talk to each other, the interface between them is a contract — and untyped, free-form text is a bad contract."
 canonical: https://supergood.solutions/blog/structured-output-contracts-agent-to-agent-communication/
 published: 2026-03-24
-last-updated: 2026-10-29
+last-updated: 2026-03-24
+updated: 2026-03-24
 ---
 
 ![Structured Output Contracts for Agent-to-Agent Communication — two toy robots exchanging a sealed contract envelope with a wax seal, green wax.](/blog/structured-output-contracts-agent-to-agent-communication/hero.webp)

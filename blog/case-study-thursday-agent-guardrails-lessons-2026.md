@@ -3,7 +3,8 @@ title: "The Agent Demo Always Works. Production Is Where It Breaks."
 description: "Three failure modes AI agents hit once they leave the demo environment, four guardrails that close them, and a pre-ship checklist for any agent about to touch production data."
 canonical: https://supergood.solutions/blog/case-study-thursday-agent-guardrails-lessons-2026/
 published: 2026-02-26
-last-updated: 2026-10-29
+last-updated: 2026-09-25
+updated: 2026-09-25
 ---
 
 ![The Agent Demo Always Works. Production Is Where It Breaks. — a toy robot performing perfectly on a small stage under a spotlight while behind the curtain wires are on fire, green spotlight.](/blog/case-study-thursday-agent-guardrails-lessons-2026/hero.webp)
@@ -14,7 +15,7 @@ Analysis · Agent Ops
 
 Three failure modes that only surface on a real queue, four guardrails that close them, and a pre-ship checklist for any agent about to touch production data.
 
-Published February 26, 2026 — 9 min read
+Published February 26, 2026 · Updated Sep 25, 2026 — 9 min read
 
 **TL;DR:** Agents break in production in three predictable ways. They write to fields nobody scoped, they fill gaps with invented data, and they retry a transient failure until somebody notices the bill. The fixes are field-level write allowlists, structured outputs with explicit confidence and source fields, and circuit breakers with hard retry caps and cost budgets. Build them before deployment. A guardrail retrofitted after an incident costs more than the same guardrail designed in, and it costs trust as well as time.
 

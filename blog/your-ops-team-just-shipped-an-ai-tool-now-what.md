@@ -3,7 +3,8 @@ title: "Your Ops Team Just Shipped an AI Tool. Now What?"
 description: "Low-code AI builders have handed finance, HR, and ops teams the keys to internal tooling — and they're shipping faster than your governance framework was built…"
 canonical: https://supergood.solutions/blog/your-ops-team-just-shipped-an-ai-tool-now-what/
 published: 2026-08-07
-last-updated: 2026-10-29
+last-updated: 2026-08-07
+updated: 2026-08-07
 ---
 
 ![](/blog/your-ops-team-just-shipped-an-ai-tool-now-what/hero.svg)

@@ -3,7 +3,8 @@ title: "Future Friday: AI Agents Are Coming for Cybersecurity — Both Sides"
 description: "AI agents are simultaneously the biggest new attack surface and the most promising defense tool in cybersecurity. Amazon's new AI security agent tanked cybersecurity stocks, AI-powered attackers reduced breach breakout times to 27 seconds, and the agentic security market is projected to hit $47B by 2035."
 canonical: https://supergood.solutions/blog/future-friday-ai-agents-cybersecurity-2026/
 published: 2026-03-27
-last-updated: 2026-10-29
+last-updated: 2026-03-27
+updated: 2026-03-27
 ---
 
 ![Future Friday: AI Agents Are Coming for Cybersecurity — Both Sides — a chess board where both black and white sides are robots, a green knight in the middle.](/blog/future-friday-ai-agents-cybersecurity-2026/hero.webp)

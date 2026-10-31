@@ -3,7 +3,8 @@ title: "Stop Using Your Frontier Model as a Workhorse"
 description: "Most enterprise AI teams are routing every request — from simple classification to complex reasoning — through their most expensive model. That's not safe, it's"
 canonical: https://supergood.solutions/blog/stop-using-your-frontier-model-as-a-workhorse/
 published: 2026-05-19
-last-updated: 2026-10-29
+last-updated: 2026-07-25
+updated: 2026-07-25
 ---
 
 ![Stop Using Your Frontier Model as a Workhorse — a racehorse pulling a heavy plow in a field, green harness.](/blog/stop-using-your-frontier-model-as-a-workhorse/hero.webp)
@@ -12,7 +13,7 @@ ENTERPRISE AI
 
 # Stop Using Your Frontier Model as a Workhorse
 
-Published May 19, 2026 — 3 min read
+Published May 19, 2026 · Updated Jul 25, 2026 — 3 min read
 
 **TL;DR:** Most enterprise AI teams are routing every request — from simple classification to complex reasoning — through their most expensive model. That's not safe, it's wasteful: teams overspend 50–90% of their LLM budget and call it "quality insurance."
 

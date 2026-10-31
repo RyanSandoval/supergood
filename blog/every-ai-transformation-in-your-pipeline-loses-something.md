@@ -3,7 +3,8 @@ title: "Every AI Transformation in Your Pipeline Loses Something"
 description: "There is no such thing as a lossless AI text transformation — summarize, extract, reformat, translate, each step throws information away. Chain enough of these…"
 canonical: https://supergood.solutions/blog/every-ai-transformation-in-your-pipeline-loses-something/
 published: 2026-09-08
-last-updated: 2026-10-29
+last-updated: 2026-10-05
+updated: 2026-10-05
 ---
 
 ![Every AI Transformation in Your Pipeline Loses Something — a game of telephone with tin cans on strings in a chain, the last can leaking green liquid out.](/blog/every-ai-transformation-in-your-pipeline-loses-something/hero.webp)
@@ -12,7 +13,7 @@ Architecture
 
 # Every AI Transformation in Your Pipeline Loses Something
 
-Published September 08, 2026 — 4 min read
+Published September 08, 2026 · Updated Oct 5, 2026 — 4 min read
 
 **TL;DR:** There is no such thing as a lossless AI text transformation — summarize, extract, reformat, translate, each step throws information away. Chain enough of these steps in an enterprise pipeline and the loss compounds invisibly, until it surfaces as a wrong downstream decision nobody can trace back to its source.
 

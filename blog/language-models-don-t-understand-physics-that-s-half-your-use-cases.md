@@ -3,7 +3,8 @@ title: "Language Models Don't Understand Physics. That's Half Your Use Cases."
 description: "A February 2026 survey of LLM reasoning failures (Song, Han & Goodman) formally separates \"embodied\" reasoning — the physical, spatial, causal kind — from the…"
 canonical: https://supergood.solutions/blog/language-models-don-t-understand-physics-that-s-half-your-use-cases/
 published: 2026-09-27
-last-updated: 2026-10-29
+last-updated: 2026-10-05
+updated: 2026-10-05
 ---
 
 ![Language Models Don't Understand Physics. That's Half Your Use Cases. — a toy robot confidently balancing a glass of water on a pencil tip while a green ball rolls up a ramp.](/blog/language-models-don-t-understand-physics-that-s-half-your-use-cases/hero.webp)
@@ -12,7 +13,7 @@ BUSINESS
 
 # Language Models Don't Understand Physics. That's Half Your Use Cases.
 
-Published September 27, 2026 — 4 min read
+Published September 27, 2026 · Updated Oct 5, 2026 — 4 min read
 
 **TL;DR:** A February 2026 survey of LLM reasoning failures (Song, Han & Goodman) formally separates "embodied" reasoning — the physical, spatial, causal kind — from the language-pattern reasoning models are actually trained on, and finds the embodied category is where failures are most persistent. If your use case touches a warehouse floor, a production line, or a delivery route, you're deploying a language engine into a physics problem, and that mismatch is why manufacturing and logistics AI projects miss their numbers more often than back-office ones.
 

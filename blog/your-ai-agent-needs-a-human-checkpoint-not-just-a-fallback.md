@@ -3,7 +3,8 @@ title: "Your AI Agent Needs a Human Checkpoint, Not Just a Fallback"
 description: "Silently failing agents and confident hallucinations aren't eval problems — they're architecture problems. The fix is deliberate human checkpoints at high-stake"
 canonical: https://supergood.solutions/blog/your-ai-agent-needs-a-human-checkpoint-not-just-a-fallback/
 published: 2026-06-05
-last-updated: 2026-10-29
+last-updated: 2026-06-05
+updated: 2026-06-05
 ---
 
 Architecture

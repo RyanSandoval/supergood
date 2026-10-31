@@ -3,7 +3,8 @@ title: "This Week in AI: 4 Updates Marketing Teams Actually Need to Know"
 description: "OpenAI acquired OpenClaw, DeepSeek V4 is coming, and the AI agent wars just got serious. Here's what marketing teams need to know this week."
 canonical: https://supergood.solutions/blog/ai-wednesday-openai-openclaw-acquisition/
 published: 2026-02-18
-last-updated: 2026-10-29
+last-updated: 2026-02-18
+updated: 2026-02-18
 ---
 
 ![This Week in AI: 4 Updates Marketing Teams Actually Need to Know — a small megaphone on a stack of four newspapers folded neatly, a green bookmark ribbon.](/blog/ai-wednesday-openai-openclaw-acquisition/hero.webp)

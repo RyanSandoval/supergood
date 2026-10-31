@@ -3,7 +3,8 @@ title: "Agent Interoperability Standards Are Here. Most Pipelines Aren't Ready."
 description: "Cross-vendor agent communication standards landed in production in 2026 — two of them, under neutral governance — and if your team is still writing bespoke…"
 canonical: https://supergood.solutions/blog/agent-interoperability-standards-are-here-most-pipelines-aren-t-ready/
 published: 2026-08-27
-last-updated: 2026-10-29
+last-updated: 2026-08-27
+updated: 2026-08-27
 ---
 
 ![Agent Interoperability Standards Are Here. Most Pipelines Aren't Ready. — two mismatched electrical plugs from different countries trying to connect through a tangle of improvised adapters, one green adapter in the middle.](/blog/agent-interoperability-standards-are-here-most-pipelines-aren-t-ready/hero.webp)

@@ -3,7 +3,8 @@ title: "AI Productivity Numbers in Case Studies Don't Transfer to Your Team"
 description: "Stampli's widely-shared case study says Codex cut launch production from 243 hours to 77 — a real 68% reduction. That number describes Stampli's pre-AI…"
 canonical: https://supergood.solutions/blog/ai-productivity-numbers-in-case-studies-don-t-transfer-to-your-team/
 published: 2026-09-17
-last-updated: 2026-10-29
+last-updated: 2026-10-05
+updated: 2026-10-05
 ---
 
 ![AI Productivity Numbers in Case Studies Don't Transfer to Your Team — a fitted bespoke suit on a mannequin that clearly does not fit a much smaller toy robot standing next to it, green tape measure.](/blog/ai-productivity-numbers-in-case-studies-don-t-transfer-to-your-team/hero.webp)
@@ -12,7 +13,7 @@ BUSINESS
 
 # AI Productivity Numbers in Case Studies Don't Transfer to Your Team
 
-Published September 17, 2026 — 3 min read
+Published September 17, 2026 · Updated Oct 5, 2026 — 3 min read
 
 **TL;DR:** Stampli's widely-shared case study says Codex cut launch production from 243 hours to 77 — a real 68% reduction. That number describes Stampli's pre-AI process, not yours, and buying a tool to chase someone else's delta is how teams overpay and underdeliver.
 

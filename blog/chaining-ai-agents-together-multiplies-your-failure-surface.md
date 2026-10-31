@@ -3,7 +3,8 @@ title: "Chaining AI Agents Together Multiplies Your Failure Surface"
 description: "Every agent you add to a pipeline adds a handoff, and handoffs are where multi-agent systems actually break — not inside the agents. The agent that visibly…"
 canonical: https://supergood.solutions/blog/chaining-ai-agents-together-multiplies-your-failure-surface/
 published: 2026-09-05
-last-updated: 2026-10-29
+last-updated: 2026-10-05
+updated: 2026-10-05
 ---
 
 ![Chaining AI Agents Together Multiplies Your Failure Surface — a long chain of paperclips where every link is slightly bent and one green link is snapping.](/blog/chaining-ai-agents-together-multiplies-your-failure-surface/hero.webp)
@@ -12,7 +13,7 @@ ARCHITECTURE
 
 # Chaining AI Agents Together Multiplies Your Failure Surface
 
-Published September 05, 2026 — 6 min read
+Published September 05, 2026 · Updated Oct 5, 2026 — 6 min read
 
 **TL;DR:** Every agent you add to a pipeline adds a handoff, and handoffs are where multi-agent systems actually break — not inside the agents. The agent that visibly fails is usually two steps downstream of the one that caused it, and you cannot tell which without a distributed trace most teams never instrumented.
 

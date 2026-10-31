@@ -3,7 +3,8 @@ title: "Stop Constraining AI Agents with Prompts. Use Sandboxes."
 description: "Every line you add to a system prompt telling an agent what it must never do is a probabilistic request, not a security control — and the same is true of the…"
 canonical: https://supergood.solutions/blog/stop-constraining-ai-agents-with-prompts-use-sandboxes/
 published: 2026-09-01
-last-updated: 2026-10-29
+last-updated: 2026-10-05
+updated: 2026-10-05
 ---
 
 ![Stop Constraining AI Agents with Prompts. Use Sandboxes. — a toy robot inside a glass terrarium sandbox playing safely in sand, green lid.](/blog/stop-constraining-ai-agents-with-prompts-use-sandboxes/hero.webp)
@@ -12,7 +13,7 @@ ARCHITECTURE
 
 # Stop Constraining AI Agents with Prompts. Use Sandboxes.
 
-Published September 01, 2026 — 6 min read
+Published September 01, 2026 · Updated Oct 5, 2026 — 6 min read
 
 **TL;DR:** Every line you add to a system prompt telling an agent what it must never do is a probabilistic request, not a security control — and the same is true of the approval dialog your users have been reflexively clicking "yes" on for six months. The correct architectural response to agent risk is a disposable, isolated execution environment that makes every action physically bounded regardless of what the model decides.
 

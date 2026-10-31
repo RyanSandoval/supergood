@@ -3,7 +3,8 @@ title: "Power Automate's February 2026 Updates: What Marketing Teams Actually Ne
 description: "Microsoft's latest Power Automate updates include ROI tracking and better automation. Plus the AI trends reshaping marketing automation in 2026."
 canonical: https://supergood.solutions/blog/power-automate-february-2026-updates/
 published: 2026-02-17
-last-updated: 2026-10-29
+last-updated: 2026-07-25
+updated: 2026-07-25
 ---
 
 ![Power Automate's February 2026 Updates: What Marketing Teams Actually Need to Know — a blank desk calendar with a gift bow on top and a toy robot sticking a green note on it.](/blog/power-automate-february-2026-updates/hero.webp)
@@ -14,7 +15,7 @@ Tech Tuesday · Updates
 
 Microsoft's latest updates include ROI tracking and better automation. Plus the AI trends reshaping marketing automation in 2026.
 
-By Ryan Sandoval · February 17, 2026 · 5 min read
+By Ryan Sandoval · February 17, 2026 · Updated Jul 25, 2026 · 5 min read
 
 Microsoft's [2025 Wave 2 release plan](https://learn.microsoft.com/en-us/power-platform/release-plan/2025wave2/power-automate/planned-features) includes several updates that marketing teams should actually care about. Buried in the technical jargon are three features worth your attention. Plus, we're seeing some bigger trends in automation that'll reshape how you work this year.
 

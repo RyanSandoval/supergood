@@ -3,7 +3,8 @@ title: "The Document Your Agent Just Read May Own It Now"
 description: "A Word doc your Copilot summarizes can contain hidden instructions that rewrite the output *and* copy themselves into every document it touches next. Most…"
 canonical: https://supergood.solutions/blog/the-document-your-agent-just-read-may-own-it-now/
 published: 2026-08-05
-last-updated: 2026-10-29
+last-updated: 2026-08-05
+updated: 2026-08-05
 ---
 
 ![The Document Your Agent Just Read May Own It Now — a stack of blank pages with a glowing green worm burrowing from one sheet into the next.](/blog/the-document-your-agent-just-read-may-own-it-now/hero.webp)

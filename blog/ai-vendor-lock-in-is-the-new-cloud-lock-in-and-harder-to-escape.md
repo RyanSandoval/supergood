@@ -3,7 +3,8 @@ title: "AI Vendor Lock-in Is the New Cloud Lock-in — and Harder to Escape"
 description: "The infrastructure bets enterprises are making right now — which LLM, which agent platform, which fine-tuned checkpoint — are accumulating switching costs…"
 canonical: https://supergood.solutions/blog/ai-vendor-lock-in-is-the-new-cloud-lock-in-and-harder-to-escape/
 published: 2026-07-27
-last-updated: 2026-10-29
+last-updated: 2026-07-27
+updated: 2026-07-27
 ---
 
 ![AI Vendor Lock-in Is the New Cloud Lock-in — and Harder to Escape — a binder of prompts sits locked inside a small jail cell under a single green bulb.](/blog/ai-vendor-lock-in-is-the-new-cloud-lock-in-and-harder-to-escape/hero.webp)

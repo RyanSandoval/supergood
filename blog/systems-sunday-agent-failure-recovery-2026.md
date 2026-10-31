@@ -3,7 +3,8 @@ title: "When Agents Fail: Retry Logic, Circuit Breakers, and Dead Letter Queues 
 description: "Your AI agents will fail. The question is whether your system fails with them. Here's a vendor-neutral guide to retry patterns, circuit breakers, dead letter queues, and idempotency for production agentic pipelines."
 canonical: https://supergood.solutions/blog/systems-sunday-agent-failure-recovery-2026/
 published: 2026-03-08
-last-updated: 2026-10-29
+last-updated: 2026-03-08
+updated: 2026-03-08
 ---
 
 ![When Agents Fail: Retry Logic, Circuit Breakers, and Dead Letter Queues for AI Pipelines — a toy robot that toppled over, caught safely by a green spring-loaded cushion.](/blog/systems-sunday-agent-failure-recovery-2026/hero.webp)

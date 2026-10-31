@@ -3,7 +3,8 @@ title: "The Institutional Knowledge Your AI Strategy Forgot to Budget For"
 description: "AI makes specs, tickets, and code nearly free to produce, but understanding them still costs a human's time. If nobody pays that cost, you are building a pile…"
 canonical: https://supergood.solutions/blog/the-institutional-knowledge-your-ai-strategy-forgot-to-budget-for/
 published: 2026-10-25
-last-updated: 2026-10-29
+last-updated: 2026-10-25
+updated: 2026-10-25
 ---
 
 ![The Institutional Knowledge Your AI Strategy Forgot to Budget For — a brick holds an Enter key down while a tower of shrink-wrapped, unread printouts keeps growing beside it.](/blog/the-institutional-knowledge-your-ai-strategy-forgot-to-budget-for/hero.webp)

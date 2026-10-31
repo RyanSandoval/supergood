@@ -3,7 +3,8 @@ title: "The Free Model Upgrade Won't Save Your AI Strategy"
 description: "For two years, the cheapest way to fix a bad AI product was to wait — the next model release would quietly paper over sloppy prompts and thin context handling.…"
 canonical: https://supergood.solutions/blog/the-free-model-upgrade-won-t-save-your-ai-strategy/
 published: 2026-09-19
-last-updated: 2026-10-29
+last-updated: 2026-10-05
+updated: 2026-10-05
 ---
 
 ![The Free Model Upgrade Won't Save Your AI Strategy — an upgrade gift box with a green ribbon holding nothing but a cracked chunk of wall with fresh paint over the crack.](/blog/the-free-model-upgrade-won-t-save-your-ai-strategy/hero.webp)
@@ -12,7 +13,7 @@ ARCHITECTURE
 
 # The Free Model Upgrade Won't Save Your AI Strategy
 
-Published September 19, 2026 — 3 min read
+Published September 19, 2026 · Updated Oct 5, 2026 — 3 min read
 
 **TL;DR:** For two years, the cheapest way to fix a bad AI product was to wait — the next model release would quietly paper over sloppy prompts and thin context handling. That subsidy is drying up, and teams that never built real harness or context discipline are about to feel it.
 

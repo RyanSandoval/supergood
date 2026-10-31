@@ -3,7 +3,8 @@ title: "Who Are Your Agents? Identity, Authorization, and Least Privilege in Pro
 description: "How to implement per-agent identities, least-privilege tool scoping, and MCP gateway authorization for production AI agents — with a look at WIMSE, SPIFFE, and the emerging IETF standards."
 canonical: https://supergood.solutions/blog/agent-identity-authorization-least-privilege-2026/
 published: 2026-03-16
-last-updated: 2026-10-29
+last-updated: 2026-03-16
+updated: 2026-03-16
 ---
 
 ![Who Are Your Agents? Identity, Authorization, and Least Privilege in Production AI Systems — a ring of many identical keys where one single small key glows green, hanging from a wall hook next to a row of locked doors in miniature.](/blog/agent-identity-authorization-least-privilege-2026/hero.webp)

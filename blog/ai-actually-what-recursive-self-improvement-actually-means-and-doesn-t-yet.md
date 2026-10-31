@@ -3,7 +3,8 @@ title: "AI, Actually: What \"Recursive Self-Improvement\" Actually Means (and Do
 description: "\"Recursive self-improvement\" has become a Rorschach test — sci-fi people see Skynet, safety people see an existential cliff, and the engineers actually…"
 canonical: https://supergood.solutions/blog/ai-actually-what-recursive-self-improvement-actually-means-and-doesn-t-yet/
 published: 2026-08-20
-last-updated: 2026-10-29
+last-updated: 2026-08-20
+updated: 2026-08-20
 ---
 
 ![AI, Actually: What "Recursive Self-Improvement" Actually Means (and Doesn't, Yet) — a tin toy robot twisting its arm over its shoulder to tighten a green bolt on its own back with a wrench.](/blog/ai-actually-what-recursive-self-improvement-actually-means-and-doesn-t-yet/hero.webp)

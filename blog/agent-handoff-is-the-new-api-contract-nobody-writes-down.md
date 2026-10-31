@@ -3,7 +3,8 @@ title: "Agent Handoff Is the New API Contract Nobody Writes Down"
 description: "In multi-agent pipelines, the agent that crashes your orchestration isn't the one writing bad code — it's the one silently receiving the wrong context. Treat…"
 canonical: https://supergood.solutions/blog/agent-handoff-is-the-new-api-contract-nobody-writes-down/
 published: 2026-07-21
-last-updated: 2026-10-29
+last-updated: 2026-07-21
+updated: 2026-07-21
 ---
 
 ![Agent Handoff Is the New API Contract Nobody Writes Down — a relay baton dropped on a dark running track between two empty starting blocks, baton glowing green.](/blog/agent-handoff-is-the-new-api-contract-nobody-writes-down/hero.webp)

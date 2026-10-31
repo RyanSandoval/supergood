@@ -3,7 +3,8 @@ title: "[Future Friday] When to Split a Single Agent Into Many: A Routing Patter
 description: "A single complex agent is slower, harder to debug, and more prone to hallucination than a team of specialized agents."
 canonical: https://supergood.solutions/blog/future-friday-when-to-split-a-single-agent-into-many-a-routing-pattern-guide/
 published: 2026-04-10
-last-updated: 2026-10-29
+last-updated: 2026-04-10
+updated: 2026-04-10
 ---
 
 ![[Future Friday] When to Split a Single Agent Into Many: A Routing Pattern Guide — a single overloaded toy robot juggling too many objects next to a team of small specialist robots each holding one, green objects.](/blog/future-friday-when-to-split-a-single-agent-into-many-a-routing-pattern-guide/hero.webp)

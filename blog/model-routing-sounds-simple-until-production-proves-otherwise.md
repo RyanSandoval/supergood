@@ -3,7 +3,8 @@ title: "Model Routing Sounds Simple Until Production Proves Otherwise"
 description: "Routing requests to the cheapest capable model sounds like solved engineering — classify, branch, save money. In production, the edge cases live in query…"
 canonical: https://supergood.solutions/blog/model-routing-sounds-simple-until-production-proves-otherwise/
 published: 2026-07-25
-last-updated: 2026-10-29
+last-updated: 2026-07-25
+updated: 2026-07-25
 ---
 
 ![Model Routing Sounds Simple Until Production Proves Otherwise — a mail sorting rack where envelopes keep jamming in the wrong slots, one green envelope stuck.](/blog/model-routing-sounds-simple-until-production-proves-otherwise/hero.webp)

@@ -3,7 +3,8 @@ title: "Multi-Agent Coordination Becomes a Reliability Problem Before a Feature"
 description: "Multi-agent systems do not usually fail because one model was not smart enough. They fail because the team shipped a small distributed system without…"
 canonical: https://supergood.solutions/blog/multi-agent-coordination-becomes-a-reliability-problem-before-a-feature/
 published: 2026-10-10
-last-updated: 2026-10-29
+last-updated: 2026-10-10
+updated: 2026-10-10
 ---
 
 ![Multi-Agent Coordination Becomes a Reliability Problem Before a Feature — five identical toy robots each yanking a green rope knot in a different direction, getting nowhere.](/blog/multi-agent-coordination-becomes-a-reliability-problem-before-a-feature/hero.webp)

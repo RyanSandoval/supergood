@@ -3,7 +3,8 @@ title: "Multi-Agent Safety Research Is Ahead of Your Architecture"
 description: "Labs like Google DeepMind and Anthropic have been formally mapping multi-agent failure modes for years — conflicting goals, shared state collisions, cascading e"
 canonical: https://supergood.solutions/blog/multi-agent-safety-research-is-ahead-of-your-architecture/
 published: 2026-06-21
-last-updated: 2026-10-29
+last-updated: 2026-06-21
+updated: 2026-06-21
 ---
 
 ![Multi-Agent Safety Research Is Ahead of Your Architecture — a stack of safety research binders towering over a tiny flimsy cardboard house, green bookmark.](/blog/multi-agent-safety-research-is-ahead-of-your-architecture/hero.webp)

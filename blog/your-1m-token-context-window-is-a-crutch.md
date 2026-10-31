@@ -3,7 +3,8 @@ title: "Your 1M Token Context Window Is a Crutch"
 description: "Every model vendor is racing to sell you a bigger context window — and most enterprise teams are using it as a substitute for building real retrieval systems. T"
 canonical: https://supergood.solutions/blog/your-1m-token-context-window-is-a-crutch/
 published: 2026-05-01
-last-updated: 2026-10-29
+last-updated: 2026-05-01
+updated: 2026-05-01
 ---
 
 ![Your 1M Token Context Window Is a Crutch — a toy robot leaning on a crutch made of an endlessly unrolled paper scroll with a green rubber tip.](/blog/your-1m-token-context-window-is-a-crutch/hero.webp)

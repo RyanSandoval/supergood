@@ -3,7 +3,8 @@ title: "Before You Budget for AI, Know Your Problem's Shape"
 description: "OpenAI spent somewhere between $15M and $40M+ running 10,000 agents for 88 hours to crack a single math problem. That number only makes sense for one kind of…"
 canonical: https://supergood.solutions/blog/before-you-budget-for-ai-know-your-problem-s-shape/
 published: 2026-10-06
-last-updated: 2026-10-29
+last-updated: 2026-10-06
+updated: 2026-10-06
 ---
 
 ![Before You Budget for AI, Know Your Problem's Shape — a measuring tape wrapped around an oddly shaped green blob of clay to measure it before buying a box.](/blog/before-you-budget-for-ai-know-your-problem-s-shape/hero.webp)

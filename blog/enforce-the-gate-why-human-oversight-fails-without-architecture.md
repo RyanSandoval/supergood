@@ -3,7 +3,8 @@ title: "Enforce the Gate: Why Human Oversight Fails Without Architecture"
 description: "Human oversight in AI systems isn't a policy problem—it's an architecture problem. Adding a human approver changes nothing unless you enforce the gate at the ir"
 canonical: https://supergood.solutions/blog/enforce-the-gate-why-human-oversight-fails-without-architecture/
 published: 2026-04-28
-last-updated: 2026-10-29
+last-updated: 2026-04-28
+updated: 2026-04-28
 ---
 
 ![Enforce the Gate: Why Human Oversight Fails Without Architecture — a locked gate with a green padlock standing alone with no fence, footprints in the sand walking right around it.](/blog/enforce-the-gate-why-human-oversight-fails-without-architecture/hero.webp)

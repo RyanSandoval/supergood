@@ -3,7 +3,8 @@ title: "AI, Actually: A Prompt Isn't a Magic Spell, It's Context Management"
 description: "Teams obsess over \"better prompts\" when their real problem is bad context hygiene — wrong information, too much information, or stale information handed to the…"
 canonical: https://supergood.solutions/blog/ai-actually-a-prompt-isn-t-a-magic-spell-it-s-context-management/
 published: 2026-08-12
-last-updated: 2026-10-29
+last-updated: 2026-08-12
+updated: 2026-08-12
 ---
 
 ![AI, Actually: A Prompt Isn't a Magic Spell, It's Context Management — a wizard's wand lying abandoned next to a neatly organized green filing box of index cards, the wand looking useless.](/blog/ai-actually-a-prompt-isn-t-a-magic-spell-it-s-context-management/hero.webp)

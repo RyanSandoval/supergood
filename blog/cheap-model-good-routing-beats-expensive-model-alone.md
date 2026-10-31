@@ -3,7 +3,8 @@ title: "Cheap Model + Good Routing Beats Expensive Model Alone"
 description: "Teams obsess over model choice (GPT-4 vs Sonnet vs Haiku) but ignore routing strategy—which model handle which query—yet routing decisions often deliver 3–5×…"
 canonical: https://supergood.solutions/blog/cheap-model-good-routing-beats-expensive-model-alone/
 published: 2026-06-30
-last-updated: 2026-10-29
+last-updated: 2026-07-25
+updated: 2026-07-25
 ---
 
 ![Cheap Model + Good Routing Beats Expensive Model Alone — a cheap bicycle with an excellent green GPS router mounted outpacing a sports car stuck at a traffic cone.](/blog/cheap-model-good-routing-beats-expensive-model-alone/hero.webp)
@@ -12,7 +13,7 @@ Enterprise AI
 
 # Cheap Model + Good Routing Beats Expensive Model Alone
 
-Published June 30, 2026 — 3 min read
+Published June 30, 2026 · Updated Jul 25, 2026 — 3 min read
 
 **TL;DR:** Teams obsess over model choice (GPT-4 vs Sonnet vs Haiku) but ignore routing strategy—which model handle which query—yet routing decisions often deliver 3–5× better cost and latency than upgrading to a bigger model. Build routing first; model choice is secondary.
 

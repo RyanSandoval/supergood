@@ -3,7 +3,8 @@ title: "Contributor Poker: What Zig's AI Ban Teaches Every Engineering Team Abou
 description: "Zig's blanket ban on AI contributions isn't about code quality—it's about protecting the fundamental return on investment of open-source development: betting on"
 canonical: https://supergood.solutions/blog/contributor-poker-what-zig-s-ai-ban-teaches-every-engineering-team-about-developer-pipelines/
 published: 2026-04-30
-last-updated: 2026-10-29
+last-updated: 2026-09-25
+updated: 2026-09-25
 ---
 
 ![Contributor Poker: What Zig's AI Ban Teaches Every Engineering Team About Developer Pipelines — a robot arm pushing a green chip all-in at a poker table while a hand made of chips signals stop.](/blog/contributor-poker-what-zig-s-ai-ban-teaches-every-engineering-team-about-developer-pipelines/hero.webp)
@@ -12,7 +13,7 @@ Analysis
 
 # Contributor Poker: What Zig's AI Ban Teaches Every Engineering Team About Developer Pipelines
 
-Published April 30, 2026 — 9 min read
+Published April 30, 2026 · Updated Sep 25, 2026 — 9 min read
 
 **TL;DR:** Zig's blanket ban on AI contributions isn't about code quality—it's about protecting the fundamental return on investment of open-source development: betting on contributors, not code. Zig VP of Community Loris Cro articulated this in April 2026 as "contributor poker," and the logic maps directly to enterprise engineering teams. Bun (acquired by Anthropic in December 2025) proved the trade-off is real: they used AI-assisted development to achieve a 4x compile performance improvement on the Zig toolchain, and they can't upstream it. If your team has deployed AI coding assistants and only measured feature velocity, you're missing the second-order effect.
 

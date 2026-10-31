@@ -3,7 +3,8 @@ title: "One Model Handling All Request Types Is a Reliability Trap"
 description: "If every request in your system hits the same frontier model at the same settings, your output variance is partly self-inflicted. A small dispatch layer that…"
 canonical: https://supergood.solutions/blog/one-model-handling-all-request-types-is-a-reliability-trap/
 published: 2026-10-19
-last-updated: 2026-10-29
+last-updated: 2026-10-19
+updated: 2026-10-19
 ---
 
 ![One Model Handling All Request Types Is a Reliability Trap — a single huge Swiss army knife with every tool open trying to cut bread, green handle.](/blog/one-model-handling-all-request-types-is-a-reliability-trap/hero.webp)

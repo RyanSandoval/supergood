@@ -3,7 +3,8 @@ title: "Agents That Spawn Agents: Risks and Controls in Recursive Multi-Agent Sy
 description: "Recursive multi-agent systems unlock real power but introduce compounding failure modes. Here's what goes wrong and the concrete controls that keep recursive architectures safe in production."
 canonical: https://supergood.solutions/blog/future-friday-recursive-multi-agent-risks-2026/
 published: 2026-03-20
-last-updated: 2026-10-29
+last-updated: 2026-03-20
+updated: 2026-03-20
 ---
 
 ![Agents That Spawn Agents: Risks and Controls in Recursive Multi-Agent Systems — a set of Russian nesting dolls made of robots opened up revealing more and more robots, the smallest green.](/blog/future-friday-recursive-multi-agent-risks-2026/hero.webp)

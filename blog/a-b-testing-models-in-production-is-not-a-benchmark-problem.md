@@ -3,7 +3,8 @@ title: "A/B Testing Models in Production Is Not a Benchmark Problem"
 description: "Teams treat \"the new model scored higher on our eval set\" as permission to ship it everywhere. It isn't — a benchmark win tells you nothing about how the model…"
 canonical: https://supergood.solutions/blog/a-b-testing-models-in-production-is-not-a-benchmark-problem/
 published: 2026-09-14
-last-updated: 2026-10-29
+last-updated: 2026-10-05
+updated: 2026-10-05
 ---
 
 ![A/B Testing Models in Production Is Not a Benchmark Problem — a gleaming first-place trophy sitting on a lab bench next to a cracked real-world delivery box it failed to carry, trophy glowing green.](/blog/a-b-testing-models-in-production-is-not-a-benchmark-problem/hero.webp)
@@ -12,7 +13,7 @@ Blog
 
 # A/B Testing Models in Production Is Not a Benchmark Problem
 
-Published September 14, 2026 — 3 min read
+Published September 14, 2026 · Updated Oct 5, 2026 — 3 min read
 
 **TL;DR:** Teams treat "the new model scored higher on our eval set" as permission to ship it everywhere. It isn't — a benchmark win tells you nothing about how the model behaves on the 5% of live traffic that never looked like your test set.
 

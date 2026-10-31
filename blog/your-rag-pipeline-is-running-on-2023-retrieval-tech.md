@@ -3,7 +3,8 @@ title: "Your RAG Pipeline Is Running on 2023 Retrieval Tech"
 description: "If your RAG stack still does query-embedding-in, top-k-cosine-out with a single dense vector per chunk, you're leaving retrieval quality on the table that a…"
 canonical: https://supergood.solutions/blog/your-rag-pipeline-is-running-on-2023-retrieval-tech/
 published: 2026-09-10
-last-updated: 2026-10-29
+last-updated: 2026-10-05
+updated: 2026-10-05
 ---
 
 ![](/blog/your-rag-pipeline-is-running-on-2023-retrieval-tech/hero.svg)
@@ -12,7 +13,7 @@ Retrieval
 
 # Your RAG Pipeline Is Running on 2023 Retrieval Tech
 
-Published September 10, 2026 — 4 min read
+Published September 10, 2026 · Updated Oct 5, 2026 — 4 min read
 
 **TL;DR:** If your RAG stack still does query-embedding-in, top-k-cosine-out with a single dense vector per chunk, you're leaving retrieval quality on the table that a two-year-old technique — late-interaction, ColBERT-style multi-vector matching — already solves. Most teams shipped once and never looked back; that's the actual bug.
 

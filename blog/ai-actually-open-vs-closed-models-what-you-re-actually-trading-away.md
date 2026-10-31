@@ -3,7 +3,8 @@ title: "AI, Actually: Open vs. Closed Models — What You're Actually Trading Aw
 description: "Choosing between open-weight and closed-API models is a business decision, not a religion. The real tradeoff is who controls your data, your costs, and your…"
 canonical: https://supergood.solutions/blog/ai-actually-open-vs-closed-models-what-you-re-actually-trading-away/
 published: 2026-08-16
-last-updated: 2026-10-29
+last-updated: 2026-08-16
+updated: 2026-08-16
 ---
 
 ![AI, Actually: Open vs. Closed Models — What You're Actually Trading Away — two padlocks side by side, one open made of clear glass showing its gears, one closed black box, a green key between them.](/blog/ai-actually-open-vs-closed-models-what-you-re-actually-trading-away/hero.webp)

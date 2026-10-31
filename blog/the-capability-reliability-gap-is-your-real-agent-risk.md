@@ -3,7 +3,8 @@ title: "The Capability-Reliability Gap Is Your Real Agent Risk"
 description: "An agent that completes a task 80% of the time is not 80% deployed — it's a liability waiting to detonate in production. Before any agent touches a real…"
 canonical: https://supergood.solutions/blog/the-capability-reliability-gap-is-your-real-agent-risk/
 published: 2026-07-13
-last-updated: 2026-10-29
+last-updated: 2026-07-13
+updated: 2026-07-13
 ---
 
 ![The Capability-Reliability Gap Is Your Real Agent Risk — a ladder with green rungs, the top section of rungs missing.](/blog/the-capability-reliability-gap-is-your-real-agent-risk/hero.webp)

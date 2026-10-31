@@ -3,7 +3,8 @@ title: "Stop Building Agents. Build Pipelines with AI Steps."
 description: "Enterprise teams are failing in production because they're treating every AI workflow as an agent problem. Most of what you're trying to do doesn't need autonom"
 canonical: https://supergood.solutions/blog/stop-building-agents-build-pipelines-with-ai-steps/
 published: 2026-05-23
-last-updated: 2026-10-29
+last-updated: 2026-05-23
+updated: 2026-05-23
 ---
 
 ![Stop Building Agents. Build Pipelines with AI Steps. — a conveyor belt assembly line with one small AI robot station in the middle doing one task, green lamp.](/blog/stop-building-agents-build-pipelines-with-ai-steps/hero.webp)

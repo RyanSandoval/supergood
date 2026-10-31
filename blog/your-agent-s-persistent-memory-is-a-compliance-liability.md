@@ -3,7 +3,8 @@ title: "Your Agent's Persistent Memory Is a Compliance Liability"
 description: "Cross-session agent memory is the feature everyone wants and the data store nobody mapped to a retention schedule. Three regulatory deadlines converge in 2026-2"
 canonical: https://supergood.solutions/blog/your-agent-s-persistent-memory-is-a-compliance-liability/
 published: 2026-06-16
-last-updated: 2026-10-29
+last-updated: 2026-06-16
+updated: 2026-06-16
 ---
 
 ![](/blog/your-agent-s-persistent-memory-is-a-compliance-liability/hero.svg)

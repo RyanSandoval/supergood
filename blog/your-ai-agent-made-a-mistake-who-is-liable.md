@@ -3,7 +3,8 @@ title: "Your AI Agent Made a Mistake. Who Is Liable?"
 description: "The debate over AI legal personhood is a thought experiment for law journals. The debate over who eats the cost when your deployed agent books the wrong…"
 canonical: https://supergood.solutions/blog/your-ai-agent-made-a-mistake-who-is-liable/
 published: 2026-09-21
-last-updated: 2026-10-29
+last-updated: 2026-10-05
+updated: 2026-10-05
 ---
 
 ![](/blog/your-ai-agent-made-a-mistake-who-is-liable/hero.svg)
@@ -12,7 +13,7 @@ GOVERNANCE
 
 # Your AI Agent Made a Mistake. Who Is Liable?
 
-Published September 21, 2026 — 4 min read
+Published September 21, 2026 · Updated Oct 5, 2026 — 4 min read
 
 **TL;DR:** The debate over AI legal personhood is a thought experiment for law journals. The debate over who eats the cost when your deployed agent books the wrong refund, sends the wrong wire amount, or promises a discount that doesn't exist is happening in production right now — and most teams have no documented answer.
 

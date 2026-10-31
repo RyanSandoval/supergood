@@ -3,7 +3,8 @@ title: "The Two Memory Problems Every Production Agent Has"
 description: "Most agent failures aren't model failures — they're memory failures. Agents need two completely different memory systems working together: working memory and long-term memory."
 canonical: https://supergood.solutions/blog/ai-wednesday-two-memory-problems-production-agents-2026/
 published: 2026-03-25
-last-updated: 2026-10-29
+last-updated: 2026-03-25
+updated: 2026-03-25
 ---
 
 ![The Two Memory Problems Every Production Agent Has — a robot head with two drawers opened, one small notepad drawer and one big filing cabinet drawer, a green label light.](/blog/ai-wednesday-two-memory-problems-production-agents-2026/hero.webp)

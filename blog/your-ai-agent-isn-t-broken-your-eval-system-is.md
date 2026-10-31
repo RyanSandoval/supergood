@@ -3,7 +3,8 @@ title: "Your AI Agent Isn't Broken. Your Eval System Is."
 description: "Most enterprise AI agent failures get blamed on the model — wrong model, too small, not smart enough. The real culprit is almost always the absence of a working"
 canonical: https://supergood.solutions/blog/your-ai-agent-isn-t-broken-your-eval-system-is/
 published: 2026-05-20
-last-updated: 2026-10-29
+last-updated: 2026-05-20
+updated: 2026-05-20
 ---
 
 AI IN PRODUCTION

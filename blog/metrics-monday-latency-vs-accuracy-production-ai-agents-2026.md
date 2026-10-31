@@ -3,7 +3,8 @@ title: "Metrics Monday: The Latency vs. Accuracy Tradeoff in Production AI Agent
 description: "Speed and accuracy pull in opposite directions in agentic systems — and the teams shipping reliably in production have learned to stop treating this as a binary choice."
 canonical: https://supergood.solutions/blog/metrics-monday-latency-vs-accuracy-production-ai-agents-2026/
 published: 2026-03-30
-last-updated: 2026-10-29
+last-updated: 2026-03-30
+updated: 2026-03-30
 ---
 
 ![Metrics Monday: The Latency vs. Accuracy Tradeoff in Production AI Agents — a seesaw balancing a stopwatch on one end and a dartboard bullseye on the other, green fulcrum.](/blog/metrics-monday-latency-vs-accuracy-production-ai-agents-2026/hero.webp)

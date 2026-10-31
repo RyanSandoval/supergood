@@ -3,7 +3,8 @@ title: "Open-Weight Models Just Changed the Vendor API Math"
 description: "Models like Kimi K2 and DeepSeek V4 now match frontier quality at a fraction of the API cost — which means your \"build vs. buy\" spreadsheet has a third column…"
 canonical: https://supergood.solutions/blog/open-weight-models-just-changed-the-vendor-api-math/
 published: 2026-08-10
-last-updated: 2026-10-29
+last-updated: 2026-08-10
+updated: 2026-08-10
 ---
 
 ![Open-Weight Models Just Changed the Vendor API Math — a vintage balance scale with a third green pan bolted on between the original two.](/blog/open-weight-models-just-changed-the-vendor-api-math/hero.webp)

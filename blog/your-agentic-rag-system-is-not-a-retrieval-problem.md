@@ -3,7 +3,8 @@ title: "Your Agentic RAG System Is Not a Retrieval Problem"
 description: "When production agentic RAG underperforms, teams reach for the vector store tuning knobs first — chunk size, embedding models, similarity thresholds. Bayer's PR"
 canonical: https://supergood.solutions/blog/your-agentic-rag-system-is-not-a-retrieval-problem/
 published: 2026-06-23
-last-updated: 2026-10-29
+last-updated: 2026-06-23
+updated: 2026-06-23
 ---
 
 ![](/blog/your-agentic-rag-system-is-not-a-retrieval-problem/hero.svg)

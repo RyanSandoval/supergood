@@ -3,7 +3,8 @@ title: "RAG vs. Fine-Tuning: A Decision Framework for AI Teams in 2026"
 description: "RAG and fine-tuning solve different problems — and most teams pick the wrong one. Here's a 6-question decision framework, practical cost comparison, and the hybrid pattern that actually works in production."
 canonical: https://supergood.solutions/blog/ai-wednesday-rag-vs-fine-tuning-2026/
 published: 2026-03-18
-last-updated: 2026-10-29
+last-updated: 2026-07-11
+updated: 2026-07-11
 ---
 
 ![RAG vs. Fine-Tuning: A Decision Framework for AI Teams in 2026 — a toy robot standing between a stack of books and a dumbbell under a green lamp.](/blog/ai-wednesday-rag-vs-fine-tuning-2026/hero.webp)
@@ -14,7 +15,7 @@ AI Wednesday · AI Engineering
 
 RAG and fine-tuning solve different problems — and most teams pick the wrong one because they're asking the wrong question. Here's a 6-question decision framework, the hybrid pattern that actually works, and a practical cost comparison.
 
-Published March 18, 2026 — 12 min read
+Published March 18, 2026 · Updated Jul 11, 2026 — 12 min read
 
 TL;DR
 

@@ -3,7 +3,8 @@ title: "Your Agent Eval Is Lying to You"
 description: "Enterprise teams evaluating tool-calling agents obsess over task completion rates — and miss the three metrics that actually predict production failure. An agen"
 canonical: https://supergood.solutions/blog/your-agent-eval-is-lying-to-you/
 published: 2026-05-11
-last-updated: 2026-10-29
+last-updated: 2026-05-11
+updated: 2026-05-11
 ---
 
 ![Your Agent Eval Is Lying to You — a vintage lie detector clipped to a blank scorecard clipboard, drawing a wild green trace.](/blog/your-agent-eval-is-lying-to-you/hero.webp)
