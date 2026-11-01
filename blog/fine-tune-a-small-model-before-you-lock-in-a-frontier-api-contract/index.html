@@ -74,7 +74,7 @@ article pre code{color:var(--text);background:transparent;padding:0;border:none;
 .callout code{background:rgba(255,255,255,0.04)}
 .callout p{margin-bottom:0;font-size:0.9375rem}
 footer{background:var(--surface);padding:40px 0;margin-top:80px;border-top:1px solid var(--border);text-align:center}
-footer p{color:var(--text-3);font-size:0.875rem;margin:0}
+footer p{color:var(--text-3);font-size:0.875rem;margin:0}footer a{color:inherit}footer p+p{margin-top:8px}
 .reading-progress{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--green);z-index:200;will-change:transform}
 ::selection{background:var(--green);color:var(--bg)}
 @media(max-width:768px){article{padding:120px 20px 60px}article h1{font-size:2rem}}
@@ -171,7 +171,7 @@ trainer.save_model("invoice-extractor")</code></pre>
 <p data-lead-success style="display:none;color:var(--green);font-size:0.875rem;margin-top:4px;">Thanks — you're on the list.</p>
 </div>
 </article></main>
-<footer><p>&copy; 2026 Supergood Solutions. Helping teams automate smarter, not harder.</p></footer>
+<footer><p>&copy; 2026 Supergood Solutions. Helping teams automate smarter, not harder.</p><p><a href="/about/">About</a> · <a href="/pricing/">Pricing</a> · <a href="/faq/">FAQ</a> · <a href="/ai-consulting/">Services</a> · <a href="/blog/">Blog</a> · <a href="/developers/">Developers</a> · <a href="/privacy/">Privacy</a></p></footer>
 <script>
 (function(){var b=document.querySelector('.reading-progress');if(!b)return;var t=false;function u(){var d=document.documentElement,m=d.scrollHeight-d.clientHeight;if(m<=0){t=false;return;}var y=window.scrollY||window.pageYOffset||d.scrollTop||0;b.style.transform='scaleX('+Math.min(1,Math.max(0,y/m))+')';t=false;}function q(){if(!t){t=true;requestAnimationFrame(u);}}window.addEventListener('scroll',q,{passive:true});window.addEventListener('resize',q,{passive:true});window.addEventListener('orientationchange',q,{passive:true});setTimeout(u,0);})();
 </script>
