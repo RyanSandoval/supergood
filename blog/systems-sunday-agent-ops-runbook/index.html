@@ -113,17 +113,6 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
 .reading-progress{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--green);z-index:200;will-change:transform}
 </style>
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://supergood.solutions/"},
-    {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://supergood.solutions/blog/"},
-    {"@type": "ListItem", "position": 3, "name": "The AI Agent Ops Runbook: Guardrails, Logging, and Incident Response", "item": "https://supergood.solutions/blog/systems-sunday-agent-ops-runbook/"}
-  ]
-}
-</script>
-<script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What’s the first step before deploying an AI agent into production?","acceptedAnswer":{"@type":"Answer","text":"Write a one-paragraph boundary statement in plain English — before you touch models, tools, or prompts. It should state what decisions the agent can make, what actions it can take, and what’s explicitly forbidden. It’s boring on purpose: boring is how ops stays alive."}},{"@type":"Question","name":"What should you log for every AI agent run?","acceptedAnswer":{"@type":"Answer","text":"At minimum: run ID, owner, trigger, inputs (with sensitive fields masked), tool calls (name, parameters, timestamps, results), decisions, outputs, cost and latency, and policy outcomes like approvals or blocks. You don’t need raw model chain-of-thought — you need enough to answer “what did the agent do?” in under 60 seconds."}},{"@type":"Question","name":"What is a kill switch, and why does an AI agent need one?","acceptedAnswer":{"@type":"Answer","text":"A kill switch is the ability to instantly disable an agent and revoke its tool credentials the moment something goes wrong. It’s the first line of a one-page incident response plan — followed by containment (stopping outbound actions like email, ads, and CRM writes), scoping the impact, and recovery."}}]}
 </script>
 <!-- ga4:start -->

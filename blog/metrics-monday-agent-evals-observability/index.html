@@ -113,17 +113,6 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
 .reading-progress{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--green);z-index:200;will-change:transform}
 </style>
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://supergood.solutions/"},
-    {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://supergood.solutions/blog/"},
-    {"@type": "ListItem", "position": 3, "name": "Shipping AI Agents Without Evals Is Just Shipping Bugs (Here’s the Practical Fix)", "item": "https://supergood.solutions/blog/metrics-monday-agent-evals-observability/"}
-  ]
-}
-</script>
-<script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is an eval set for an AI agent, and how big does it need to be?", "acceptedAnswer": {"@type": "Answer", "text": "An eval set is a collection of representative test cases — typically 25 to 100 — that define what “good” looks like before you ship a change. A solid set covers the common path (the 80%), the expensive path (money, email, consent), the embarrassing path (wrong segments or stakeholders), and the adversarial path (prompt injection attempts). You then score runs against decision accuracy, safety, stability across reruns, and cost/latency."}}, {"@type": "Question", "name": "What is shadow mode, and why use it before giving an agent write access?", "acceptedAnswer": {"@type": "Answer", "text": "Shadow mode means the agent runs on real triggers and produces decisions and proposed actions, but it only writes to a log or draft store instead of the real system. After about a week you end up with real inputs, real outputs, and what a human would have done — the most valuable artifact in agent ops, and the basis for your eval set v2. It lets you judge an agent’s decisions before trusting it to write to your CRM, email, or ad accounts."}}, {"@type": "Question", "name": "How do you protect an AI agent from prompt injection?", "acceptedAnswer": {"@type": "Answer", "text": "Prompt injection isn’t theoretical — it’s input manipulation, and agents are input-powered, so it should be treated as a real incident class. The core defenses are separating instructions from data (treating external docs as untrusted), restricting the agent to an allowlisted set of tools, validating outputs against schema and business rules before any write, and logging and alerting on attempted forbidden actions."}}]}
 </script>
 <!-- ga4:start -->

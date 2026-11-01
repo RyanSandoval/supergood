@@ -136,17 +136,6 @@ footer p { color: var(--text-3); font-size: 0.875rem; margin: 0; }
 .reading-progress{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--green);z-index:200;will-change:transform}
 </style>
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://supergood.solutions/"},
-    {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://supergood.solutions/blog/"},
-    {"@type": "ListItem", "position": 3, "name": "Context Engineering: The Art of Deciding What Your Agent Actually Needs to Know", "item": "https://supergood.solutions/blog/ai-wednesday-context-engineering-2026/"}
-  ]
-}
-</script>
-<script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is context engineering in AI agents?","acceptedAnswer":{"@type":"Answer","text":"Context engineering is the practice of deliberately managing what information flows into an LLM's context window at runtime — rather than treating the context window as an append-only log. It includes techniques like prompt compression, selective context injection, retrieval-augmented generation, semantic chunking, and hierarchical summarization. The goal is to maximize the signal-to-noise ratio in what the model actually reads, which improves both answer quality and cost efficiency. For a deeper dive, see Google's ADK context engineering writeup."}},{"@type":"Question","name":"Why does a bigger context window not solve context management problems?","acceptedAnswer":{"@type":"Answer","text":"Larger context windows allow more information to fit, but they don't fix the underlying problems: cost grows with context size, model attention quality degrades for content buried in the middle of long contexts (the \"lost in the middle\" effect), and real-world long-running agent sessions can generate millions of tokens that exceed even the largest windows. The right answer is intentional context management — treating what goes in the window as a design decision, not a default accumulation."}},{"@type":"Question","name":"What is the best strategy for managing conversation history in a long-running AI agent?","acceptedAnswer":{"@type":"Answer","text":"The most effective strategy is hierarchical summarization with the \"3-2-1\" pattern: keep the first 2 turns verbatim (initialization matters), keep the last 5–10 turns verbatim (recency matters), and compress everything in the middle into a structured summary with explicit sections for decisions made, resources modified, and approaches already tried. Factory.ai's research found that structured summaries significantly outperform free-form prose summaries for agent task continuation — the agent retains the ability to answer \"what have we already done?\" far more reliably."}}]}
 </script>
 <!-- ga4:start -->
