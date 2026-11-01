@@ -7,7 +7,7 @@ last-updated: 2026-10-16
 updated: 2026-10-16
 ---
 
-![](/blog/your-central-ai-team-is-the-bottleneck-not-the-engine/hero.svg)
+![Your Central AI Team Is the Bottleneck, Not the Engine — a glass funnel jammed with grey marbles and one green marble on top, with an empty beaker underneath.](/blog/your-central-ai-team-is-the-bottleneck-not-the-engine/hero.webp)
 
 Architecture
 

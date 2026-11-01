@@ -7,7 +7,7 @@ last-updated: 2026-10-14
 updated: 2026-10-14
 ---
 
-![](/blog/your-ai-implementation-is-actually-a-workflow-redesign/hero.svg)
+![Your AI Implementation Is Actually a Workflow Redesign — a wooden rowing boat with the oars still in the oarlocks and a glowing green outboard motor bolted to the stern.](/blog/your-ai-implementation-is-actually-a-workflow-redesign/hero.webp)
 
 Business
 
