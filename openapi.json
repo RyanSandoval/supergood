@@ -415,7 +415,10 @@
               "Allow": {
                 "description": "Allowed methods.",
                 "schema": {
-                  "type": "string"
+                  "type": "string",
+                  "examples": [
+                    "POST"
+                  ]
                 }
               }
             }
@@ -780,7 +783,10 @@
               "Allow": {
                 "description": "Allowed methods.",
                 "schema": {
-                  "type": "string"
+                  "type": "string",
+                  "examples": [
+                    "POST"
+                  ]
                 }
               }
             }
@@ -804,6 +810,7 @@
     "schemas": {
       "PricingDocument": {
         "type": "object",
+        "description": "The published rate card. Same offers as https://supergood.solutions/pricing/. Served as a static file.",
         "additionalProperties": false,
         "required": [
           "provider",
@@ -815,10 +822,12 @@
         ],
         "properties": {
           "provider": {
-            "type": "string"
+            "type": "string",
+            "description": "Name of the business that publishes the rate card."
           },
           "url": {
             "type": "string",
+            "description": "Human-readable pricing page this document mirrors.",
             "format": "uri"
           },
           "currency": {
@@ -827,21 +836,26 @@
           },
           "updated": {
             "type": "string",
-            "description": "Calendar date the document was last edited, YYYY-MM-DD."
+            "description": "Calendar date the document was last edited, YYYY-MM-DD.",
+            "format": "date"
           },
           "offers": {
             "type": "array",
+            "description": "Every offer, in order from the free fit check to the monthly Run retainer.",
             "items": {
               "$ref": "#/components/schemas/Offer"
-            }
+            },
+            "minItems": 1
           },
           "tooling": {
-            "type": "string"
+            "type": "string",
+            "description": "Who pays for software, APIs and seats. Plain-language statement, not a price."
           }
         }
       },
       "Offer": {
         "type": "object",
+        "description": "One priced offer. An offer carries price (fixed) or priceFrom (starting price), not both. Gain-share and credit fields appear only on the offers they apply to.",
         "additionalProperties": false,
         "required": [
           "id",
@@ -851,45 +865,60 @@
         ],
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "description": "Stable machine identifier, for example fit-check, quick-scan, build or run."
           },
           "name": {
-            "type": "string"
+            "type": "string",
+            "description": "Display name of the offer."
           },
           "price": {
             "type": "number",
-            "description": "Fixed price in currency. Present when the offer has a single price."
+            "description": "Fixed price in currency. Present when the offer has a single price.",
+            "minimum": 0
           },
           "priceFrom": {
             "type": "number",
-            "description": "Lowest published price in currency. The quoted price can be higher."
+            "description": "Lowest published price in currency. The quoted price can be higher.",
+            "minimum": 0
           },
           "unit": {
-            "type": "string"
+            "type": "string",
+            "description": "What the price is charged per, for example one-time, workflow or month."
           },
           "summary": {
-            "type": "string"
+            "type": "string",
+            "description": "One or two sentences describing the offer and its terms."
           },
           "url": {
             "type": "string",
+            "description": "Page where the offer starts, when it has one.",
             "format": "uri"
           },
           "creditedTowardBuildIfSignedWithinDays": {
-            "type": "integer"
+            "type": "integer",
+            "description": "Days after the Quick Scan within which signing a build credits the Quick Scan fee toward it.",
+            "minimum": 0
           },
           "gainSharePercent": {
-            "$ref": "#/components/schemas/Range"
+            "$ref": "#/components/schemas/Range",
+            "description": "Share of measured gain over an agreed baseline, as a percentage range."
           },
           "gainShareCapMultiple": {
-            "type": "number"
+            "type": "number",
+            "description": "Gain share is capped at this multiple of the monthly retainer.",
+            "minimum": 0
           },
           "minimumMonths": {
-            "type": "integer"
+            "type": "integer",
+            "description": "Minimum commitment in months.",
+            "minimum": 0
           }
         }
       },
       "Range": {
         "type": "object",
+        "description": "An inclusive numeric range.",
         "additionalProperties": false,
         "required": [
           "min",
@@ -897,15 +926,18 @@
         ],
         "properties": {
           "min": {
-            "type": "number"
+            "type": "number",
+            "description": "Lower bound, inclusive."
           },
           "max": {
-            "type": "number"
+            "type": "number",
+            "description": "Upper bound, inclusive."
           }
         }
       },
       "ServicesDocument": {
         "type": "object",
+        "description": "The published service list. Five service pages with a one-line summary each. Served as a static file.",
         "additionalProperties": false,
         "required": [
           "provider",
@@ -915,25 +947,32 @@
         ],
         "properties": {
           "provider": {
-            "type": "string"
+            "type": "string",
+            "description": "Name of the business that publishes the service list."
           },
           "url": {
             "type": "string",
+            "description": "Page that introduces the services this document lists.",
             "format": "uri"
           },
           "updated": {
-            "type": "string"
+            "type": "string",
+            "description": "Calendar date the document was last edited, YYYY-MM-DD.",
+            "format": "date"
           },
           "services": {
             "type": "array",
+            "description": "Every public service page. Not paged.",
             "items": {
               "$ref": "#/components/schemas/Service"
-            }
+            },
+            "minItems": 1
           }
         }
       },
       "Service": {
         "type": "object",
+        "description": "One public service page.",
         "additionalProperties": false,
         "required": [
           "id",
@@ -943,17 +982,21 @@
         ],
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "description": "Stable machine identifier, the page slug."
           },
           "name": {
-            "type": "string"
+            "type": "string",
+            "description": "Display name of the service."
           },
           "url": {
             "type": "string",
+            "description": "Canonical page for the service.",
             "format": "uri"
           },
           "summary": {
-            "type": "string"
+            "type": "string",
+            "description": "One-line description of the service."
           }
         }
       },
@@ -1068,7 +1111,8 @@
         "properties": {
           "ok": {
             "type": "boolean",
-            "const": true
+            "const": true,
+            "description": "Always true on success."
           }
         },
         "description": "The inquiry was accepted. Also returned, with no email sent, when the form's spam checks drop it."
@@ -1086,7 +1130,8 @@
         "properties": {
           "ok": {
             "type": "boolean",
-            "const": false
+            "const": false,
+            "description": "Always false on an error."
           },
           "error": {
             "type": "string",
@@ -1104,13 +1149,16 @@
               "rate_limited",
               "server",
               "send"
-            ]
+            ],
+            "description": "Stable error code. Branch on this value."
           },
           "message": {
-            "type": "string"
+            "type": "string",
+            "description": "What went wrong, in a sentence."
           },
           "hint": {
-            "type": "string"
+            "type": "string",
+            "description": "How to fix the request."
           }
         }
       },
@@ -1125,19 +1173,24 @@
         "properties": {
           "ok": {
             "type": "boolean",
-            "const": true
+            "const": true,
+            "description": "Always true on success."
           },
           "sandbox": {
             "type": "boolean",
-            "const": true
+            "const": true,
+            "description": "Always true: the request was validated and nothing was sent."
           },
           "message": {
-            "type": "string"
+            "type": "string",
+            "description": "Plain-language confirmation that no email was sent."
           }
-        }
+        },
+        "description": "The body is valid. Returned by the sandbox endpoint. No email is sent."
       },
       "IntakeIndex": {
         "type": "object",
+        "description": "JSON index of the endpoints on the intake host, returned by GET /.",
         "additionalProperties": false,
         "required": [
           "ok",
@@ -1150,24 +1203,30 @@
         "properties": {
           "ok": {
             "type": "boolean",
-            "const": true
+            "const": true,
+            "description": "Always true on success."
           },
           "name": {
-            "type": "string"
+            "type": "string",
+            "description": "Name of the intake API."
           },
           "version": {
-            "type": "string"
+            "type": "string",
+            "description": "API major version as a string, currently 1."
           },
           "docs": {
             "type": "string",
+            "description": "Developer documentation page.",
             "format": "uri"
           },
           "openapi": {
             "type": "string",
+            "description": "Location of this OpenAPI document.",
             "format": "uri"
           },
           "endpoints": {
             "type": "array",
+            "description": "Every endpoint on the intake host, including the MCP server.",
             "items": {
               "type": "object",
               "additionalProperties": false,
@@ -1178,16 +1237,20 @@
               ],
               "properties": {
                 "method": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "HTTP method, for example GET or POST."
                 },
                 "url": {
                   "type": "string",
-                  "format": "uri"
+                  "format": "uri",
+                  "description": "Absolute URL of the endpoint."
                 },
                 "description": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "What the endpoint does."
                 }
-              }
+              },
+              "description": "One endpoint on the intake host."
             }
           }
         }

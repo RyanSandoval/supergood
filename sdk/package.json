@@ -1,0 +1,54 @@
+{
+  "name": "supergood-solutions",
+  "version": "0.1.0",
+  "description": "SDK and CLI for the Supergood Solutions public API: read AI consulting pricing and services, dry-run a fit check against the sandbox, and get MCP server config. Zero dependencies.",
+  "license": "MIT",
+  "author": "Supergood Solutions",
+  "type": "module",
+  "main": "./src/index.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./src/index.js",
+      "default": "./src/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "supergood-solutions": "bin/cli.js"
+  },
+  "files": [
+    "src",
+    "bin",
+    "index.d.ts",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "homepage": "https://supergood.solutions/developers/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RyanSandoval/supergood.git",
+    "directory": "sdk"
+  },
+  "bugs": {
+    "url": "https://github.com/RyanSandoval/supergood/issues"
+  },
+  "keywords": [
+    "supergood",
+    "ai-agents",
+    "ai-consulting",
+    "mcp",
+    "model-context-protocol",
+    "openapi",
+    "cli",
+    "sdk",
+    "pricing"
+  ]
+}

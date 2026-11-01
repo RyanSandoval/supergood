@@ -1,15 +1,17 @@
 ---
-title: Supergood API and developer docs
-description: How an agent reads pricing.json and services.json, and how it POSTs one fit check. No API key.
+title: Supergood API Documentation: OpenAPI, MCP and Sandbox
+description: Supergood API documentation: OpenAPI 3.1 spec, MCP server, sandbox and the fit-check POST. Public reads need no API key.
 canonical: https://supergood.solutions/developers/
-last-updated: 2026-10-29
+last-updated: 2026-11-01
 ---
 
-# Supergood API
+# Supergood API documentation
 
 Supergood's site is static files on GitHub Pages. Two read endpoints live on that host. The fit-check form posts to a separate host. None of these calls need a key, a token, or an account. [auth.md](https://supergood.solutions/auth.md) says the same thing in the short form agents look for.
 
 The contract is [openapi.json](https://supergood.solutions/openapi.json) (OpenAPI 3.1.0, version 1.1.0). Prices are also in [pricing.md](https://supergood.solutions/pricing.md).
+
+This page is the official documentation for the Supergood API. The API has two read endpoints, `pricing.json` and `services.json`, and one endpoint that submits a fit check. The OpenAPI document is at [https://supergood.solutions/openapi.json](https://supergood.solutions/openapi.json). The MCP server is at `https://api.supergood.solutions/api/mcp` and has three tools: `get_pricing`, `get_services` and `submit_fit_check`. The sandbox at `https://api.supergood.solutions/api/sandbox/intake` validates a fit check and sends no email. To submit a real fit check, POST to `https://api.supergood.solutions/api/intake` as described under Fit check below.
 
 ## Reads
 

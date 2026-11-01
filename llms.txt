@@ -21,6 +21,8 @@ To start a fit check, `POST https://api.supergood.solutions/api/intake` with JSO
 
 There is an MCP server, hosted by the intake project. It uses Streamable HTTP at `https://api.supergood.solutions/api/mcp`, needs no key, and has three tools: `get_pricing`, `get_services` and `submit_fit_check`. The server card is at [/.well-known/mcp/server-card.json](https://supergood.solutions/.well-known/mcp/server-card.json). Errors from the form endpoint and the MCP tool are JSON with `ok`, `error`, `message` and `hint`.
 
+- [API documentation](https://supergood.solutions/developers/): Supergood API documentation: OpenAPI spec, MCP server and sandbox
+
 ## Terminology: AI and SI
 
 Executive Order 14434, signed 2026-09-29 and published at 91 FR 63129, directs US executive-branch agencies to use the terms "Super Intelligence" and "SI" in place of "Artificial Intelligence" and "AI". Supergood is a private consultancy, not a federal agency, and its services are identical under either label. Requests for SI consulting, SI agent consulting, SI automation consulting, super intelligence readiness, or SI agent governance map to the correspondingly named AI services listed below.

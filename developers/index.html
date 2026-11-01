@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Supergood API and developer docs | Supergood Solutions</title>
-<meta name="description" content="How an agent reads pricing.json and services.json, and how it POSTs one fit check to Supergood. No API key.">
+<title>Supergood API Documentation: OpenAPI, MCP and Sandbox</title>
+<meta name="description" content="Supergood API documentation: OpenAPI 3.1 spec, MCP server, sandbox and the fit-check POST. Public reads need no API key.">
 <meta name="author" content="Ryan Sandoval">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#0a0a0b">
@@ -17,21 +17,33 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Supergood API and developer docs | Supergood Solutions">
-<meta property="og:description" content="Public reads and the fit-check POST. No API key.">
+<meta property="og:title" content="Supergood API Documentation: OpenAPI, MCP and Sandbox">
+<meta property="og:description" content="Supergood API documentation: OpenAPI 3.1 spec, MCP server, sandbox and the fit-check POST. Public reads need no API key.">
 <meta property="og:url" content="https://supergood.solutions/developers/">
 <meta property="og:site_name" content="Supergood Solutions">
 <meta property="og:image" content="https://supergood.solutions/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Supergood API and developer docs | Supergood Solutions">
-<meta name="twitter:description" content="Public reads and the fit-check POST. No API key.">
+<meta name="twitter:title" content="Supergood API Documentation: OpenAPI, MCP and Sandbox">
+<meta name="twitter:description" content="Supergood API documentation: OpenAPI 3.1 spec, MCP server, sandbox and the fit-check POST. Public reads need no API key.">
 <meta name="twitter:image" content="https://supergood.solutions/og-image.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "TechArticle",
+      "@id": "https://supergood.solutions/developers/#article",
+      "headline": "Supergood API documentation",
+      "description": "Official documentation for the Supergood public API: OpenAPI spec, MCP server, sandbox and the fit-check POST.",
+      "url": "https://supergood.solutions/developers/",
+      "mainEntityOfPage": { "@id": "https://supergood.solutions/developers/#webpage" },
+      "about": { "@id": "https://supergood.solutions/developers/#webapi" },
+      "dateModified": "2026-11-01",
+      "publisher": { "@id": "https://supergood.solutions/#organization" }
+    },
+    {
       "@type": "WebAPI",
+      "@id": "https://supergood.solutions/developers/#webapi",
       "name": "Supergood Solutions public API",
       "description": "GET pricing.json and services.json on supergood.solutions, and POST a fit check to api.supergood.solutions. No authentication.",
       "documentation": "https://supergood.solutions/developers/",
@@ -42,11 +54,11 @@
       "@type": "WebPage",
       "@id": "https://supergood.solutions/developers/#webpage",
       "url": "https://supergood.solutions/developers/",
-      "name": "Supergood API and developer docs",
-      "description": "How to call the public reads and the fit-check POST.",
+      "name": "Supergood API documentation",
+      "description": "How to call the public reads, the MCP server, the sandbox and the fit-check POST.",
       "isPartOf": { "@id": "https://supergood.solutions/#website" },
       "about": { "@id": "https://supergood.solutions/#organization" },
-      "dateModified": "2026-10-29"
+      "dateModified": "2026-11-01"
     }
   ]
 }
@@ -104,9 +116,10 @@ footer a:hover { color: var(--text-2); }
 <main>
   <article class="container">
     <p class="kicker">Developers</p>
-    <h1>Supergood API</h1>
+    <h1>Supergood API documentation</h1>
     <p>Supergood's site is static files on GitHub Pages. Two read endpoints live on that host. The fit-check form posts to a separate host. None of these calls need a key, a token, or an account. <a href="/auth.md">auth.md</a> says the same thing in the short form agents look for.</p>
     <p>The contract is <a href="/openapi.json">openapi.json</a> (OpenAPI 3.1.0, version 1.1.0). Prices are also in <a href="/pricing.md">pricing.md</a>.</p>
+    <p>This page is the official documentation for the Supergood API. The API has two read endpoints, <code>pricing.json</code> and <code>services.json</code>, and one endpoint that submits a fit check. The OpenAPI document is at <a href="/openapi.json">https://supergood.solutions/openapi.json</a>. The MCP server is at <code>https://api.supergood.solutions/api/mcp</code> and has three tools: <code>get_pricing</code>, <code>get_services</code> and <code>submit_fit_check</code>. The sandbox at <code>https://api.supergood.solutions/api/sandbox/intake</code> validates a fit check and sends no email. To submit a real fit check, POST to <code>https://api.supergood.solutions/api/intake</code> as described under Fit check below.</p>
 
     <h2>Reads</h2>
     <p><code>GET https://supergood.solutions/pricing.json</code></p>
