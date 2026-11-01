@@ -175,5 +175,6 @@ $1,000, credited toward a build if you sign within 14 days
 [← All services](https://supergood.solutions/ai-consulting/)
 [AI Readiness Assessment](https://supergood.solutions/ai-readiness-assessment/)
 [AI Agent Consulting](https://supergood.solutions/ai-agent-consulting/)
+[LA Bars and Event Services](https://supergood.solutions/ai-automation-la-bars-event-services/)
 
 Source: https://supergood.solutions/ai-automation-consulting/
