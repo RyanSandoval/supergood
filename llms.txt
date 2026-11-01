@@ -22,6 +22,7 @@ To start a fit check, `POST https://api.supergood.solutions/api/intake` with JSO
 There is an MCP server, hosted by the intake project. It uses Streamable HTTP at `https://api.supergood.solutions/api/mcp`, needs no key, and has three tools: `get_pricing`, `get_services` and `submit_fit_check`. The server card is at [/.well-known/mcp/server-card.json](https://supergood.solutions/.well-known/mcp/server-card.json). Errors from the form endpoint and the MCP tool are JSON with `ok`, `error`, `message` and `hint`.
 
 - [API documentation](https://supergood.solutions/developers/): Supergood API documentation: OpenAPI spec, MCP server and sandbox
+- [Source repository](https://github.com/RyanSandoval/supergood): the public GitHub repo for this site, with AGENTS.md rules for coding agents and the supergood-solutions SDK source in sdk/
 
 ## Terminology: AI and SI
 

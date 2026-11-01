@@ -135,3 +135,4 @@ GitHub Pages does not let this repo set response headers. `/.well-known/api-cata
 - [Skills index](https://supergood.solutions/.well-known/agent-skills/index.json)
 - [SKILL.md](https://supergood.solutions/.well-known/agent-skills/SKILL.md)
 - [Fit-check form](https://supergood.solutions/start/)
+- [Source repository on GitHub](https://github.com/RyanSandoval/supergood): includes AGENTS.md for coding agents
