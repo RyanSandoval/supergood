@@ -32,6 +32,7 @@ Executive Order 14434, signed 2026-09-29 and published at 91 FR 63129, directs U
 - [AI Consulting](https://supergood.solutions/ai-consulting/): Hub page. Practice overview, the same rate card, and links to every service below.
 - [AI Agent Consulting](https://supergood.solutions/ai-agent-consulting/): Production AI agent architecture, evals, guardrails, and deployment. The flagship service.
 - [AI Automation Consulting](https://supergood.solutions/ai-automation-consulting/): Workflow automation for marketing and ops teams using tools they already own.
+- [AI Automation for LA Bars and Event Services](https://supergood.solutions/ai-automation-la-bars-event-services/): Workflow automation for Los Angeles bars, mobile bartending companies and event service businesses.
 - [AI Readiness Assessment](https://supergood.solutions/ai-readiness-assessment/): $1,000 Quick Scan, credited toward a build if you sign within 14 days, to find where AI pays off before building anything.
 - [AI Agent Governance](https://supergood.solutions/ai-agent-governance/): Guardrails, observability, and incident runbooks so production agents don't become the incident.
 
