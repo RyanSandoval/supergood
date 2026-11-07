@@ -11,7 +11,7 @@ This repository is the static site for https://supergood.solutions. GitHub Pages
 - `/.well-known/agent-skills/index.json`: the agent skills index.
 - `/.well-known/ard.json`: the discovery catalog of the site's agent resources.
 - `/plugin/`: an Agent Plugins package (`plugin.json`, `mcp.json`, `skills/`) bundling the public skills and the MCP server. Its skill files are copies of the ones in `/.well-known/agent-skills/`; keep them in sync.
-- `/server.json`: the MCP Registry entry for the hosted MCP server, published with `mcp-publisher`.
+- `/server.json`: the MCP Registry entry for the hosted MCP server (namespace io.github.ryansandoval), published with `mcp-publisher login github` then `mcp-publisher publish`.
 - `/sdk/`: source of the `supergood-solutions` npm package (SDK and CLI).
 
 ## Public API and MCP server
