@@ -15,5 +15,7 @@
 - [Services JSON](https://supergood.solutions/services.json)
 - [Fit check POST](https://api.supergood.solutions/api/intake): Accepts Idempotency-Key.
 - [Sandbox POST](https://api.supergood.solutions/api/sandbox/intake): Same validation, sends nothing.
+- [Blog posts, paginated](https://api.supergood.solutions/api/v1/posts): GET, newest first, cursor pagination.
+- [Ask (NLWeb 0.55)](https://api.supergood.solutions/ask): GET or POST a question, get matching posts. SSE on request.
 - [MCP server](https://api.supergood.solutions/api/mcp): Tools get_pricing, get_services, submit_fit_check.
 - [MCP server card](https://supergood.solutions/.well-known/mcp/server-card.json)
