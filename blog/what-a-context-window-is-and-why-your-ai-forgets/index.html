@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What a Context Window Is and Why Your AI &quot;Forgets&quot;</title>
+<meta name="description" content="An AI model has no memory of yesterday. It reads only what is on its whiteboard right now, and the size of that whiteboard decides why long documents go…">
+<meta name="author" content="Ryan Sandoval">
+<meta name="keywords" content="AI, Actually, AI agents, artificial intelligence, enterprise AI">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0a0a0b">
+<link rel="canonical" href="https://supergood.solutions/blog/what-a-context-window-is-and-why-your-ai-forgets/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preload" as="image" href="hero.svg" fetchpriority="high">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Supergood Solutions">
+<meta property="og:title" content="What a Context Window Is and Why Your AI &quot;Forgets&quot;">
+<meta property="og:description" content="An AI model has no memory of yesterday. It reads only what is on its whiteboard right now, and the size of that whiteboard decides why long documents go…">
+<meta property="og:url" content="https://supergood.solutions/blog/what-a-context-window-is-and-why-your-ai-forgets/">
+<meta property="og:image" content="https://supergood.solutions/blog/what-a-context-window-is-and-why-your-ai-forgets/hero-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="What a Context Window Is and Why Your AI &quot;Forgets&quot;">
+<meta property="article:published_time" content="2026-11-07">
+<meta property="article:modified_time" content="2026-11-07">
+<meta property="article:author" content="Ryan Sandoval">
+<meta property="article:section" content="AI, Actually">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What a Context Window Is and Why Your AI &quot;Forgets&quot;">
+<meta name="twitter:description" content="An AI model has no memory of yesterday. It reads only what is on its whiteboard right now, and the size of that whiteboard decides why long documents go…">
+<meta name="twitter:image" content="https://supergood.solutions/blog/what-a-context-window-is-and-why-your-ai-forgets/hero-og.png">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "What a Context Window Is and Why Your AI \"Forgets\"", "description": "An AI model has no memory of yesterday. It reads only what is on its whiteboard right now, and the size of that whiteboard decides why long documents go…", "image": "https://supergood.solutions/blog/what-a-context-window-is-and-why-your-ai-forgets/hero-og.png", "url": "https://supergood.solutions/blog/what-a-context-window-is-and-why-your-ai-forgets/", "datePublished": "2026-11-07", "dateModified": "2026-11-07", "wordCount": 879, "timeRequired": "PT4M", "articleSection": "AI, Actually", "keywords": ["AI, Actually", "AI agents", "artificial intelligence", "enterprise AI"], "inLanguage": "en-US", "isAccessibleForFree": true, "author": {"@type": "Person", "name": "Ryan Sandoval", "url": "https://linkedin.com/in/RyanSandoval"}, "publisher": {"@type": "Organization", "name": "Supergood Solutions", "url": "https://supergood.solutions", "logo": {"@type": "ImageObject", "url": "https://supergood.solutions/og-image.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://supergood.solutions/blog/what-a-context-window-is-and-why-your-ai-forgets/"}, "isPartOf": {"@type": "Blog", "url": "https://supergood.solutions/blog/"}, "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".callout", "article h1", "article h2"]}}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://supergood.solutions/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://supergood.solutions/blog/"}, {"@type": "ListItem", "position": 3, "name": "What a Context Window Is and Why Your AI \"Forgets\"", "item": "https://supergood.solutions/blog/what-a-context-window-is-and-why-your-ai-forgets/"}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0b;--surface:#111113;--surface-2:#18181b;--border:#27272a;--text:#fafafa;--text-2:#a1a1aa;--text-3:#8c8c96;--green:#22c55e;--mono:'JetBrains Mono',monospace}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;background:rgba(10,10,11,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .inner{max-width:720px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
+.wordmark{font-weight:800;font-size:1.125rem;letter-spacing:-0.03em;color:var(--text);text-decoration:none}
+.wordmark .dot{color:var(--green)}
+nav a.back{font-size:0.875rem;color:var(--text-3);text-decoration:none}
+nav a.back:hover{color:var(--text)}
+article{max-width:720px;margin:0 auto;padding:140px 24px 80px}
+article .tag{font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:16px}
+article h1{font-size:clamp(2rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin-bottom:20px}
+article .hero{width:100%;height:auto;display:block;border:1px solid var(--border);border-radius:12px;margin-bottom:32px}
+article .meta{font-family:var(--mono);font-size:0.75rem;color:var(--text-3);margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+article h2{font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;margin:56px 0 16px}
+article h3{font-size:1.125rem;font-weight:600;margin:40px 0 12px}
+article p{font-size:1rem;color:var(--text-2);margin-bottom:20px}
+article strong{color:var(--text)}
+article ul,article ol{color:var(--text-2);margin-bottom:20px;padding-left:24px}
+article li{margin-bottom:8px}
+article a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+article hr{border:none;border-top:1px solid var(--border);margin:40px 0}
+article code{font-family:var(--mono);font-size:0.875em;background:var(--surface-2);color:var(--text);padding:2px 6px;border-radius:4px;border:1px solid var(--border)}
+article pre{background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:16px 20px;margin:24px 0;overflow-x:auto;font-family:var(--mono);font-size:0.8125rem;line-height:1.6}
+article pre code{color:var(--text);background:transparent;padding:0;border:none;border-radius:0;font-size:inherit;white-space:pre}
+.callout{background:var(--surface-2);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:20px 24px;margin:32px 0}
+.callout code{background:rgba(255,255,255,0.04)}
+.callout p{margin-bottom:0;font-size:0.9375rem}
+footer{background:var(--surface);padding:40px 0;margin-top:80px;border-top:1px solid var(--border);text-align:center}
+footer p{color:var(--text-3);font-size:0.875rem;margin:0}footer a{color:inherit}footer p+p{margin-top:8px}
+.reading-progress{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--green);z-index:200;will-change:transform}
+::selection{background:var(--green);color:var(--bg)}
+@media(max-width:768px){article{padding:120px 20px 60px}article h1{font-size:2rem}}
+</style>
+<!-- ga4:start -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JLBDSQ3B4P"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JLBDSQ3B4P');</script>
+<!-- ga4:end -->
+</head>
+<body>
+<div class="reading-progress" aria-hidden="true"></div>
+<nav><div class="inner"><a href="/" class="wordmark">supergood<span class="dot">.</span></a><a href="/blog/" class="back">← All posts</a></div></nav>
+<main><article>
+<img class="hero" src="hero.svg" alt="" width="1200" height="630" loading="eager">
+<div class="tag">AI, Actually</div>
+<h1>What a Context Window Is and Why Your AI "Forgets"</h1>
+<div class="meta">Published November 07, 2026 — 4 min read</div>
+<div class="callout"><p><strong>TL;DR:</strong> An AI model has no memory of yesterday. It reads only what is on its whiteboard right now, and the size of that whiteboard decides why long documents go sideways and why chatbots lose the thread.</p></div>
+
+<h2>Key Insight</h2>
+<p>Picture a very sharp consultant who is walked into a conference room with a whiteboard. Everything they know about your project is what is written on that board: your instructions, the chat so far, any files you pasted, and the answer they are drafting. When the board fills up, someone has to erase something. That board is the context window.</p>
+<p>When a chatbot seems to remember you, the application around the model is doing the remembering. Each time you send a message, the app re-sends the whole conversation, and the model reads it from the top like a stranger. Nothing is stored inside the model between turns. Once the transcript outgrows the board, the app drops the oldest messages or squeezes them into a summary, and that is the moment the bot "forgets" what you told it an hour ago.</p>
+<p>Board size is counted in tokens, which are chunks of text a little shorter than a word. A page of plain text runs roughly 500 to 700 tokens. Today's models advertise windows from a couple hundred thousand tokens to over a million, so "it doesn't fit" is rarer than it used to be.</p>
+<p>A bigger board does not mean the model reads all of it equally well. Chroma tested 18 models, including GPT-4.1, Claude 4 and Gemini 2.5, on deliberately simple tasks and found every one got less reliable as the input grew, long before the window was full. The earlier "Lost in the Middle" paper found models do best when the relevant fact sits at the start or end of the input and worse when it is buried in the middle. The window tells you what you can pass in. It does not tell you what will be reliably read.</p>
+<h2>Why Teams Miss This</h2>
+<p>Most teams meet the context window through a demo. Someone pastes a 200-page contract into a chat, the model summarizes it, and everyone nods. The demo works because the question was easy and nobody in the room knew the two places where the summary was wrong.</p>
+<p>Three assumptions come out of that demo, and each one breaks in production:</p>
+<ul>
+<li>"It will remember our last session." It won't. Cross-session memory is a feature your team has to build, usually by saving notes and feeding them back in next time.</li>
+<li>"If it fits, it works." Fitting is a hard limit. Working well is a soft one, and it degrades as you fill the board with material the question does not need.</li>
+<li>"More context is safer." Extra documents add noise. A model asked about your refund policy can latch onto a similar-looking policy you pasted in next to it.</li>
+</ul>
+<p>There is a billing surprise too. You pay for tokens on every turn, and a long chat re-sends its entire history each time. A 40-message conversation costs far more than 40 separate questions.</p>
+<h2>How to Actually Do It</h2>
+<p>Treat the window as a budget you spend on purpose, not a bucket you fill.</p>
+<ol>
+<li>Measure before you trust. Plant one known fact in the middle of a realistic document and ask for it back. If your model misses it at your real document size, you have found your working limit.</li>
+<li>Retrieve instead of paste. For a policy library, search first and send only the three or four relevant passages. A small, clean board beats a huge, cluttered one.</li>
+<li>Put the important material at the edges. Instructions and the key facts go at the start or the end, not the middle.</li>
+<li>Summarize on a schedule. For long-running chats, have the app write a short running summary and carry that forward instead of the raw transcript.</li>
+<li>Log token counts per request so finance sees cost growth before the invoice does.</li>
+</ol>
+<p>Here is a small check you can hand to an engineer. Swap in your own model call for the placeholder:</p>
+<pre><code class="language-python">import random
+
+NEEDLE = "The refund window for annual plans is 45 days."
+FILLER = "This sentence is neutral filler about unrelated company topics. "
+
+def build_prompt(filler_sentences: int, position: float) -&gt; str:
+    chunks = [FILLER] * filler_sentences
+    chunks.insert(int(len(chunks) * position), NEEDLE + " ")
+    return "".join(chunks) + "\n\nWhat is the refund window for annual plans?"
+
+for size in (200, 2000, 20000):
+    for pos in (0.0, 0.5, 1.0):
+        prompt = build_prompt(size, pos)
+        answer = ask_model(prompt)  # your model call here
+        print(size, pos, "45" in answer)</code></pre>
+<h2>What We've Learned</h2>
+<p>The failures we see most are not "the document was too long." They are quiet. A model answers confidently from the wrong paragraph. This week, pick one workflow where your team pastes long material into an AI, run the needle check above at your real document size, and write down the size where recall starts to slip. That number is your actual limit, and it is usually lower than the one on the vendor's spec sheet.</p>
+<h2>Sources</h2>
+<ul>
+<li>Chroma Research, Context Rot: How Increasing Input Tokens Impacts LLM Performance: <a href="https://research.trychroma.com/context-rot">Context Rot study</a></li>
+<li>Liu et al., Lost in the Middle: How Language Models Use Long Contexts: <a href="https://arxiv.org/abs/2307.03172">arXiv 2307.03172</a></li>
+<li>Anthropic documentation on how context windows work: <a href="https://docs.claude.com/en/docs/build-with-claude/context-windows">Context windows</a></li>
+</ul>
+
+<div style="border-left:3px solid var(--green);background:var(--surface-2);border-radius:0 8px 8px 0;padding:28px;margin:48px 0 24px;">
+<p style="font-family:var(--mono);font-size:0.6875rem;color:var(--green);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px;">Have a specific workflow in mind?</p>
+<p style="color:var(--text-2);font-size:0.9375rem;margin-bottom:16px;">Bring it to a Quick Scan — a live working session where we'll tell you honestly whether it should be an agent, a workflow, or left alone, before you spend a dollar building it. You get 3 prioritized recommendations on the call, a one-page summary after, and the $500 credited toward any engagement within 30 days.</p>
+<p style="margin:0 0 14px;"><a href="/start/" style="display:inline-block;background:var(--green);color:var(--bg);text-decoration:none;font-weight:700;font-size:0.9375rem;padding:11px 22px;border-radius:8px;">Tell us what you'd hand off →</a></p>
+<p style="margin:0;font-size:0.875rem;color:var(--text-3);"><a href="/ai-agent-consulting/" style="color:var(--green);text-decoration:underline;text-underline-offset:3px;">See AI Agent Consulting</a><span style="margin:0 10px;">·</span><a href="https://calendar.app.google/BkcFDB21jWhMwCiq7" style="color:var(--green);text-decoration:underline;text-underline-offset:3px;">Book an intro call</a></p>
+</div>
+<div data-lead-capture-wrap style="border:1px solid var(--border);border-radius:12px;padding:28px;">
+<p style="font-weight:700;color:var(--text);margin-bottom:6px;font-size:1rem;">Get new posts + practical agent-ops notes</p>
+<p style="color:var(--text-3);font-size:0.8125rem;margin-bottom:20px;">One email when something new goes up. No nurture sequence, no spam — unsubscribe whenever you want.</p>
+<form data-lead-capture style="display:flex;flex-wrap:wrap;gap:10px;align-items:flex-start;">
+<div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+<label>Company <input type="text" name="company" tabindex="-1" autocomplete="off"></label>
+</div>
+<input type="text" name="name" placeholder="Name (optional)" autocomplete="name" style="flex:1 1 160px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-size:0.875rem;font-family:inherit;">
+<input type="email" name="email" placeholder="you@email.com" required autocomplete="email" style="flex:2 1 220px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-size:0.875rem;font-family:inherit;">
+<button type="submit" style="flex:0 0 auto;background:var(--green);color:var(--bg);border:none;border-radius:8px;padding:10px 20px;font-size:0.875rem;font-weight:600;cursor:pointer;font-family:inherit;">Subscribe</button>
+</form>
+<p data-lead-error style="display:none;color:#f87171;font-size:0.8125rem;margin-top:10px;"></p>
+<p data-lead-success style="display:none;color:var(--green);font-size:0.875rem;margin-top:4px;">Thanks — you're on the list.</p>
+</div>
+</article></main>
+<footer><p>&copy; 2026 Supergood Solutions. Helping teams automate smarter, not harder.</p><p><a href="/about/">About</a> · <a href="/pricing/">Pricing</a> · <a href="/faq/">FAQ</a> · <a href="/ai-consulting/">Services</a> · <a href="/blog/">Blog</a> · <a href="/developers/">Developers</a> · <a href="/privacy/">Privacy</a></p></footer>
+<script>
+(function(){var b=document.querySelector('.reading-progress');if(!b)return;var t=false;function u(){var d=document.documentElement,m=d.scrollHeight-d.clientHeight;if(m<=0){t=false;return;}var y=window.scrollY||window.pageYOffset||d.scrollTop||0;b.style.transform='scaleX('+Math.min(1,Math.max(0,y/m))+')';t=false;}function q(){if(!t){t=true;requestAnimationFrame(u);}}window.addEventListener('scroll',q,{passive:true});window.addEventListener('resize',q,{passive:true});window.addEventListener('orientationchange',q,{passive:true});setTimeout(u,0);})();
+</script>
+<script src="/assets/lead-capture.js" defer></script>
+<script src="/assets/analytics.js" defer></script>
+</body>
+</html>
