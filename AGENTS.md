@@ -10,6 +10,9 @@ This repository is the static site for https://supergood.solutions. GitHub Pages
 - Each page has a Markdown twin next to it. `/pricing/` has `/pricing.md`, and `/developers/` has `/developers.md`.
 - `/.well-known/agent-skills/index.json`: the agent skills index.
 - `/.well-known/ard.json`: the discovery catalog of the site's agent resources.
+- `/plugin/`: an Agent Plugins package (`plugin.json`, `mcp.json`, `skills/`) bundling the public skills and the MCP server. Its skill files are copies of the ones in `/.well-known/agent-skills/`; keep them in sync.
+- `/server.json`: the MCP Registry entry for the hosted MCP server (namespace io.github.ryansandoval), published with `mcp-publisher login github` then `mcp-publisher publish`.
+- `/sdk/`: source of the `supergood-solutions` npm package (SDK and CLI).
 
 ## Public API and MCP server
 
@@ -18,6 +21,8 @@ The Supergood API documentation is at https://supergood.solutions/developers/ an
 - `GET https://supergood.solutions/pricing.json` and `GET https://supergood.solutions/services.json` are static reads.
 - `POST https://api.supergood.solutions/api/v1/intake` submits a fit check and emails the site owner. Send an `Idempotency-Key` header with it.
 - `POST https://api.supergood.solutions/api/v1/sandbox/intake` takes the same body, validates it and sends nothing. Use it for every test.
+- `GET https://api.supergood.solutions/api/v1/posts` lists blog posts newest first with cursor pagination (`limit`, `cursor`, `next_cursor`).
+- `GET` or `POST https://api.supergood.solutions/ask` is an NLWeb 0.55 endpoint: ask a question, get the blog posts that answer it. SSE with `streaming=true`.
 
 The Supergood MCP server is at `https://api.supergood.solutions/api/mcp` (Streamable HTTP, no key). Its tools are `get_pricing`, `get_services` and `submit_fit_check`. Only `submit_fit_check` has a side effect.
 

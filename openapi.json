@@ -2,8 +2,8 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Supergood Solutions public API",
-    "version": "1.1.0",
-    "summary": "Public reads of the rate card and service list, the fit-check POST with Idempotency-Key, and a sandbox that sends nothing.",
+    "version": "1.2.0",
+    "summary": "Public reads of the rate card, service list and blog (paginated), NLWeb /ask search over the blog, the fit-check POST with Idempotency-Key, and a sandbox that sends nothing.",
     "description": "The fit check is POST https://api.supergood.solutions/api/v1/intake. Two GET documents, /pricing.json and /services.json, are static files on https://supergood.solutions. No API key, bearer token, or account is required. See https://supergood.solutions/auth.md.\n\nIdempotency. POST /api/v1/intake accepts an Idempotency-Key header (1 to 200 printable characters, no spaces). A retry with the same key and the same body within 24 hours does not send a second email. The same key with a different body is 422 idempotency_conflict. Without the header, each POST sends one email.\n\nSandbox. POST /api/v1/sandbox/intake takes the same body, runs the same validation and sends nothing.\n\nRate limits. Every intake response carries RateLimit-Limit, RateLimit-Remaining, RateLimit-Reset and RateLimit-Policy. A 429 adds Retry-After. /api/v1/intake allows 10 requests per 10 minutes per IP and /api/v1/sandbox/intake allows 30. The limit is kept in memory per server instance, so treat it as approximate.\n\nVersioning. The API is version 1 and every intake response carries API-Version: 1. This document is 1.1.0. 1.1.0 added the Idempotency-Key header, the sandbox, the RateLimit headers and the JSON 404, and removed nothing. The unversioned paths /api/intake and /api/sandbox/intake are aliases of the v1 paths and keep working. A breaking change ships as a new path, for example /api/v2/intake. The old path keeps working for at least 90 days after the change is announced on https://supergood.solutions/developers/ and in this description, and during those 90 days it returns Deprecation and Sunset headers. Adding a response field or an optional request field is not a breaking change. pricing.json and services.json are unpaged and cannot send Sunset or Deprecation headers (GitHub Pages), so a change to them is announced on the developers page.\n\nThe same fit check is the submit_fit_check tool on the MCP server at https://api.supergood.solutions/api/mcp (card: https://supergood.solutions/.well-known/mcp/server-card.json).\n\nDeprecation and Sunset. During a deprecation window the old path adds a Deprecation header and a Sunset header (an HTTP date). Neither is sent today because nothing is deprecated.",
     "contact": {
       "name": "Ryan Sandoval",
@@ -46,6 +46,10 @@
     {
       "name": "sandbox",
       "description": "Same validation as the fit check. Sends nothing."
+    },
+    {
+      "name": "search",
+      "description": "Blog listing and question answering over the blog. Side-effect free."
     }
   ],
   "paths": {
@@ -804,6 +808,536 @@
           "description": "Sandbox path on the intake host."
         }
       ]
+    },
+    "/api/v1/posts": {
+      "get": {
+        "operationId": "listPosts",
+        "tags": [
+          "search"
+        ],
+        "summary": "List blog posts, newest first, one page at a time.",
+        "description": "Cursor pagination. Send limit (1-50, default 20). For the next page send the next_cursor value from the previous page as cursor. next_cursor is null on the last page, and a Link header with rel=\"next\" carries the same URL. No side effects. No auth.",
+        "security": [],
+        "servers": [
+          {
+            "url": "https://api.supergood.solutions"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Page size, 1 to 50.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 20
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "description": "Opaque next_cursor from the previous page. Omit for the first page.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "One page of posts.",
+            "headers": {
+              "RateLimit-Limit": {
+                "$ref": "#/components/headers/RateLimitLimit"
+              },
+              "RateLimit-Remaining": {
+                "$ref": "#/components/headers/RateLimitRemaining"
+              },
+              "RateLimit-Reset": {
+                "$ref": "#/components/headers/RateLimitReset"
+              },
+              "RateLimit-Policy": {
+                "$ref": "#/components/headers/RateLimitPolicy"
+              },
+              "API-Version": {
+                "$ref": "#/components/headers/APIVersion"
+              },
+              "Link": {
+                "description": "RFC 8288 link to the next page, rel=\"next\". Absent on the last page.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostPage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "limit out of range or cursor not valid.",
+            "headers": {
+              "RateLimit-Limit": {
+                "$ref": "#/components/headers/RateLimitLimit"
+              },
+              "RateLimit-Remaining": {
+                "$ref": "#/components/headers/RateLimitRemaining"
+              },
+              "RateLimit-Reset": {
+                "$ref": "#/components/headers/RateLimitReset"
+              },
+              "RateLimit-Policy": {
+                "$ref": "#/components/headers/RateLimitPolicy"
+              },
+              "API-Version": {
+                "$ref": "#/components/headers/APIVersion"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FitCheckError"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Only GET and HEAD are served.",
+            "headers": {
+              "RateLimit-Limit": {
+                "$ref": "#/components/headers/RateLimitLimit"
+              },
+              "RateLimit-Remaining": {
+                "$ref": "#/components/headers/RateLimitRemaining"
+              },
+              "RateLimit-Reset": {
+                "$ref": "#/components/headers/RateLimitReset"
+              },
+              "RateLimit-Policy": {
+                "$ref": "#/components/headers/RateLimitPolicy"
+              },
+              "API-Version": {
+                "$ref": "#/components/headers/APIVersion"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FitCheckError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "More than 120 requests from one IP in a minute.",
+            "headers": {
+              "RateLimit-Limit": {
+                "$ref": "#/components/headers/RateLimitLimit"
+              },
+              "RateLimit-Remaining": {
+                "$ref": "#/components/headers/RateLimitRemaining"
+              },
+              "RateLimit-Reset": {
+                "$ref": "#/components/headers/RateLimitReset"
+              },
+              "RateLimit-Policy": {
+                "$ref": "#/components/headers/RateLimitPolicy"
+              },
+              "API-Version": {
+                "$ref": "#/components/headers/APIVersion"
+              },
+              "Retry-After": {
+                "$ref": "#/components/headers/RetryAfter"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FitCheckError"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "The blog index could not be read.",
+            "headers": {
+              "RateLimit-Limit": {
+                "$ref": "#/components/headers/RateLimitLimit"
+              },
+              "RateLimit-Remaining": {
+                "$ref": "#/components/headers/RateLimitRemaining"
+              },
+              "RateLimit-Reset": {
+                "$ref": "#/components/headers/RateLimitReset"
+              },
+              "RateLimit-Policy": {
+                "$ref": "#/components/headers/RateLimitPolicy"
+              },
+              "API-Version": {
+                "$ref": "#/components/headers/APIVersion"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FitCheckError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ask": {
+      "get": {
+        "operationId": "askQuestionGet",
+        "tags": [
+          "search"
+        ],
+        "summary": "Ask a question and get the blog posts that answer it (NLWeb 0.55, GET).",
+        "description": "NLWeb /ask in list mode. Send exactly one of query or q. Add streaming=true, or Accept: text/event-stream, for SSE. No side effects. No auth.",
+        "security": [],
+        "servers": [
+          {
+            "url": "https://api.supergood.solutions"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "required": false,
+            "description": "The question, 2 to 500 characters. Send this or q.",
+            "schema": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 500
+            }
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "required": false,
+            "description": "Alias of query.",
+            "schema": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 500
+            }
+          },
+          {
+            "name": "top_k",
+            "in": "query",
+            "required": false,
+            "description": "How many posts to return.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10,
+              "default": 5
+            }
+          },
+          {
+            "name": "streaming",
+            "in": "query",
+            "required": false,
+            "description": "true returns text/event-stream.",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "name": "site",
+            "in": "query",
+            "required": false,
+            "description": "Optional. Only supergood.solutions is answered.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "supergood.solutions"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Matching posts. JSON by default; Server-Sent Events (start, result per post, complete) when streaming is requested.",
+            "headers": {
+              "RateLimit-Limit": {
+                "$ref": "#/components/headers/RateLimitLimit"
+              },
+              "RateLimit-Remaining": {
+                "$ref": "#/components/headers/RateLimitRemaining"
+              },
+              "RateLimit-Reset": {
+                "$ref": "#/components/headers/RateLimitReset"
+              },
+              "RateLimit-Policy": {
+                "$ref": "#/components/headers/RateLimitPolicy"
+              },
+              "API-Version": {
+                "$ref": "#/components/headers/APIVersion"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AskResponse"
+                }
+              },
+              "text/event-stream": {
+                "schema": {
+                  "type": "string",
+                  "description": "event: start, then event: result once per post (data is an AskResult plus query_id), then event: complete."
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing or too-long question, both query and q sent, a site other than supergood.solutions, or invalid JSON.",
+            "headers": {
+              "RateLimit-Limit": {
+                "$ref": "#/components/headers/RateLimitLimit"
+              },
+              "RateLimit-Remaining": {
+                "$ref": "#/components/headers/RateLimitRemaining"
+              },
+              "RateLimit-Reset": {
+                "$ref": "#/components/headers/RateLimitReset"
+              },
+              "RateLimit-Policy": {
+                "$ref": "#/components/headers/RateLimitPolicy"
+              },
+              "API-Version": {
+                "$ref": "#/components/headers/APIVersion"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FitCheckError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "More than 60 questions from one IP in a minute.",
+            "headers": {
+              "RateLimit-Limit": {
+                "$ref": "#/components/headers/RateLimitLimit"
+              },
+              "RateLimit-Remaining": {
+                "$ref": "#/components/headers/RateLimitRemaining"
+              },
+              "RateLimit-Reset": {
+                "$ref": "#/components/headers/RateLimitReset"
+              },
+              "RateLimit-Policy": {
+                "$ref": "#/components/headers/RateLimitPolicy"
+              },
+              "API-Version": {
+                "$ref": "#/components/headers/APIVersion"
+              },
+              "Retry-After": {
+                "$ref": "#/components/headers/RetryAfter"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FitCheckError"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "The blog index could not be read.",
+            "headers": {
+              "RateLimit-Limit": {
+                "$ref": "#/components/headers/RateLimitLimit"
+              },
+              "RateLimit-Remaining": {
+                "$ref": "#/components/headers/RateLimitRemaining"
+              },
+              "RateLimit-Reset": {
+                "$ref": "#/components/headers/RateLimitReset"
+              },
+              "RateLimit-Policy": {
+                "$ref": "#/components/headers/RateLimitPolicy"
+              },
+              "API-Version": {
+                "$ref": "#/components/headers/APIVersion"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FitCheckError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "askQuestion",
+        "tags": [
+          "search"
+        ],
+        "summary": "Ask a question and get the blog posts that answer it (NLWeb 0.55).",
+        "description": "NLWeb /ask in list mode with the structured 0.55 body. Set prefer.streaming to true, or send Accept: text/event-stream, for SSE. No side effects. No auth.",
+        "security": [],
+        "servers": [
+          {
+            "url": "https://api.supergood.solutions"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AskRequest"
+              },
+              "example": {
+                "query": {
+                  "text": "How should I add guardrails to an agent in production?"
+                },
+                "top_k": 3,
+                "meta": {
+                  "version": "0.55"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Matching posts. JSON by default; Server-Sent Events (start, result per post, complete) when streaming is requested.",
+            "headers": {
+              "RateLimit-Limit": {
+                "$ref": "#/components/headers/RateLimitLimit"
+              },
+              "RateLimit-Remaining": {
+                "$ref": "#/components/headers/RateLimitRemaining"
+              },
+              "RateLimit-Reset": {
+                "$ref": "#/components/headers/RateLimitReset"
+              },
+              "RateLimit-Policy": {
+                "$ref": "#/components/headers/RateLimitPolicy"
+              },
+              "API-Version": {
+                "$ref": "#/components/headers/APIVersion"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AskResponse"
+                }
+              },
+              "text/event-stream": {
+                "schema": {
+                  "type": "string",
+                  "description": "event: start, then event: result once per post (data is an AskResult plus query_id), then event: complete."
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing or too-long question, both query and q sent, a site other than supergood.solutions, or invalid JSON.",
+            "headers": {
+              "RateLimit-Limit": {
+                "$ref": "#/components/headers/RateLimitLimit"
+              },
+              "RateLimit-Remaining": {
+                "$ref": "#/components/headers/RateLimitRemaining"
+              },
+              "RateLimit-Reset": {
+                "$ref": "#/components/headers/RateLimitReset"
+              },
+              "RateLimit-Policy": {
+                "$ref": "#/components/headers/RateLimitPolicy"
+              },
+              "API-Version": {
+                "$ref": "#/components/headers/APIVersion"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FitCheckError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "More than 60 questions from one IP in a minute.",
+            "headers": {
+              "RateLimit-Limit": {
+                "$ref": "#/components/headers/RateLimitLimit"
+              },
+              "RateLimit-Remaining": {
+                "$ref": "#/components/headers/RateLimitRemaining"
+              },
+              "RateLimit-Reset": {
+                "$ref": "#/components/headers/RateLimitReset"
+              },
+              "RateLimit-Policy": {
+                "$ref": "#/components/headers/RateLimitPolicy"
+              },
+              "API-Version": {
+                "$ref": "#/components/headers/APIVersion"
+              },
+              "Retry-After": {
+                "$ref": "#/components/headers/RetryAfter"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FitCheckError"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "The blog index could not be read.",
+            "headers": {
+              "RateLimit-Limit": {
+                "$ref": "#/components/headers/RateLimitLimit"
+              },
+              "RateLimit-Remaining": {
+                "$ref": "#/components/headers/RateLimitRemaining"
+              },
+              "RateLimit-Reset": {
+                "$ref": "#/components/headers/RateLimitReset"
+              },
+              "RateLimit-Policy": {
+                "$ref": "#/components/headers/RateLimitPolicy"
+              },
+              "API-Version": {
+                "$ref": "#/components/headers/APIVersion"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FitCheckError"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1126,7 +1660,7 @@
           "message",
           "hint"
         ],
-        "description": "Every error from the intake function. error is a stable code, message says what went wrong, hint says how to fix it.",
+        "description": "Every error from the API host (api.supergood.solutions). error is a stable code, message says what went wrong, hint says how to fix it.",
         "properties": {
           "ok": {
             "type": "boolean",
@@ -1148,7 +1682,14 @@
               "idempotency_in_progress",
               "rate_limited",
               "server",
-              "send"
+              "send",
+              "method_get",
+              "method_ask",
+              "cursor",
+              "limit",
+              "query",
+              "site",
+              "upstream"
             ],
             "description": "Stable error code. Branch on this value."
           },
@@ -1251,6 +1792,293 @@
                 }
               },
               "description": "One endpoint on the intake host."
+            }
+          }
+        }
+      },
+      "Post": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "url",
+          "title",
+          "datePublished",
+          "section",
+          "description"
+        ],
+        "description": "One blog post on https://supergood.solutions/blog/.",
+        "properties": {
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "Canonical URL of the post. Append index.md-style twin by replacing the trailing slash with .md."
+          },
+          "title": {
+            "type": "string",
+            "description": "Headline."
+          },
+          "datePublished": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date",
+            "description": "First published, YYYY-MM-DD."
+          },
+          "section": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Blog section, such as Analysis or Guardrails."
+          },
+          "description": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "One- or two-sentence summary from the RSS feed. Null when the feed has not caught up with the post."
+          }
+        }
+      },
+      "PostPage": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "ok",
+          "data",
+          "page",
+          "total"
+        ],
+        "description": "One page of posts, newest first.",
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "const": true
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Post"
+            }
+          },
+          "page": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "limit",
+              "next_cursor",
+              "has_more"
+            ],
+            "properties": {
+              "limit": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 50,
+                "description": "Page size used."
+              },
+              "next_cursor": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "Opaque cursor for the next page. Null on the last page."
+              },
+              "has_more": {
+                "type": "boolean",
+                "description": "True when another page follows."
+              }
+            }
+          },
+          "total": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Number of posts across all pages."
+          }
+        }
+      },
+      "AskRequest": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": [
+          "query"
+        ],
+        "description": "NLWeb 0.55 structured request.",
+        "properties": {
+          "query": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": [
+              "text"
+            ],
+            "properties": {
+              "text": {
+                "type": "string",
+                "minLength": 2,
+                "maxLength": 500,
+                "description": "The question, in plain language."
+              },
+              "site": {
+                "type": "string",
+                "enum": [
+                  "supergood.solutions"
+                ],
+                "description": "Optional. Only supergood.solutions is answered."
+              }
+            }
+          },
+          "top_k": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10,
+            "default": 5,
+            "description": "How many posts to return."
+          },
+          "prefer": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "streaming": {
+                "type": "boolean",
+                "default": false,
+                "description": "True returns text/event-stream."
+              },
+              "mode": {
+                "type": "string",
+                "enum": [
+                  "list"
+                ],
+                "description": "Only list mode is served."
+              }
+            }
+          },
+          "meta": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "version": {
+                "type": "string",
+                "enum": [
+                  "0.55"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "AskResult": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "@type",
+          "url",
+          "name",
+          "site",
+          "score",
+          "description",
+          "schema_object"
+        ],
+        "description": "One matching post, NLWeb result shape.",
+        "properties": {
+          "@type": {
+            "type": "string",
+            "const": "Article"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "name": {
+            "type": "string"
+          },
+          "site": {
+            "type": "string",
+            "const": "supergood.solutions"
+          },
+          "score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1,
+            "description": "Relevance relative to the best match (1)."
+          },
+          "description": {
+            "type": "string"
+          },
+          "schema_object": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "description": "schema.org BlogPosting."
+            }
+          }
+        }
+      },
+      "AskResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "query_id",
+          "query",
+          "site",
+          "mode",
+          "total_results",
+          "results",
+          "_meta"
+        ],
+        "description": "NLWeb 0.55 list-mode response. Ranked by keyword match; no generated answer.",
+        "properties": {
+          "query_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "query": {
+            "type": "string"
+          },
+          "site": {
+            "type": "string",
+            "const": "supergood.solutions"
+          },
+          "mode": {
+            "type": "string",
+            "const": "list"
+          },
+          "total_results": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Always equals results.length."
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AskResult"
+            }
+          },
+          "_meta": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "version",
+              "response_type",
+              "mode",
+              "site"
+            ],
+            "properties": {
+              "version": {
+                "type": "string",
+                "const": "0.55"
+              },
+              "response_type": {
+                "type": "string",
+                "const": "result"
+              },
+              "mode": {
+                "type": "string",
+                "const": "list"
+              },
+              "site": {
+                "type": "string",
+                "const": "supergood.solutions"
+              }
             }
           }
         }

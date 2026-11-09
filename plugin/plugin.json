@@ -1,0 +1,15 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "supergood-solutions",
+  "version": "1.0.0",
+  "description": "Read Supergood Solutions' AI consulting rate card and services, and send one fit check, through skills and the hosted MCP server. No key needed.",
+  "author": {
+    "name": "Ryan Sandoval",
+    "email": "ryan@supergood.solutions",
+    "url": "https://supergood.solutions/about/"
+  },
+  "homepage": "https://supergood.solutions/developers/",
+  "repository": "https://github.com/RyanSandoval/supergood",
+  "license": "MIT",
+  "keywords": ["ai-consulting", "ai-automation", "mcp", "agent-skills", "pricing"]
+}

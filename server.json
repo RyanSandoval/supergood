@@ -1,0 +1,18 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.ryansandoval/supergood",
+  "title": "Supergood Solutions",
+  "description": "Read Supergood's AI consulting rate card and services, or send one fit check.",
+  "version": "1.1.0",
+  "websiteUrl": "https://supergood.solutions/developers/",
+  "repository": {
+    "url": "https://github.com/RyanSandoval/supergood",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://api.supergood.solutions/api/mcp"
+    }
+  ]
+}
