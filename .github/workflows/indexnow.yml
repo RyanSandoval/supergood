@@ -1,0 +1,44 @@
+# After a push to main, wait until the production deploy is live and tell
+# IndexNow about index.html pages that changed. Production for this repo is
+# GitHub Pages (deployment environment github-pages). A Vercel Production
+# deployment of the same commit is also accepted.
+#
+# The IndexNow key is the 32-char hex file at the site root. It is served as a
+# static file. There is no vercel.json, rewrite, or redirect in this repo;
+# do not add one that sends /<key>.txt anywhere else.
+#
+# IndexNow errors are logged by scripts/indexnow.mjs and do not fail this job.
+
+name: IndexNow
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  deployments: read
+
+concurrency:
+  group: indexnow-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  submit:
+    name: Submit changed URLs
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Wait for production and notify IndexNow
+        env:
+          INDEXNOW_BEFORE: ${{ github.event.before }}
+          INDEXNOW_SHA: ${{ github.sha }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node scripts/indexnow.mjs --wait
