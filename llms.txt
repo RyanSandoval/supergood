@@ -1,11 +1,12 @@
 # Supergood Solutions
 
-> Supergood is an AI consulting practice that builds production AI agents and automations using tools clients already pay for — with the guardrails, observability, and runbooks to keep them running. Founded by Ryan Sandoval, 14 years of product experience at Live Nation/Ticketmaster and Logitech.
+> I'm Ryan Sandoval, and I'll be your AI sidekick. I set up AI for owner-run businesses of 1 to 20 people and stay on to keep it working. My agents handle the busywork, and I check what they produce before it reaches you or your customers. Based in Los Angeles. 14 years of product experience at Live Nation/Ticketmaster and Logitech.
 
-Supergood provides AI consulting, AI agent consulting, AI automation consulting, AI readiness assessments, and AI agent governance for marketing and ops teams. Every engagement ships a working system, not a slide deck. Supergood is based in Los Angeles, California and works remotely with clients anywhere; engagements run over video and shared docs, with no on-site requirement and no geographic restriction. Pricing is published at https://supergood.solutions/pricing/. An intro call is free. The Sidekick Session is $500, credited in full to a Setup Sprint signed within 14 days. A Setup Sprint starts at $2,500. Sidekick Monthly starts at $900 per month plus 10-20% of measured gain over an agreed baseline, capped at 1.5x the retainer, with a 3-month minimum. For teams of 10 or more, the Quick Scan is $1,000, credited toward a build if you sign within 14 days, and a build starts at $4,000 per workflow, with a fixed quote after the Quick Scan. Half is due at kickoff and half at launch. Clients pay for tools, APIs and seats on their own accounts. Supergood does not resell or mark up software.
+Supergood provides AI consulting, AI agent consulting, AI automation consulting, AI readiness assessments, and AI agent governance. The practice is built for owner-run service businesses of 1 to 20 people. Every engagement ships a working system, not a slide deck. Supergood is based in Los Angeles, California and works remotely with clients anywhere; engagements run over video and shared docs, with no on-site requirement and no geographic restriction. Pricing is published at https://supergood.solutions/pricing/. An intro call is free. The Sidekick Session is $500, credited in full to a Setup Sprint signed within 14 days. A Setup Sprint starts at $2,500. Sidekick Monthly starts at $900 per month plus 10-20% of measured gain over an agreed baseline, capped at 1.5x the retainer, with a 3-month minimum. For teams of 10 or more, the Quick Scan is $1,000, credited toward a build if you sign within 14 days, and a build starts at $4,000 per workflow, with a fixed quote after the Quick Scan. Half is due at kickoff and half at launch. Clients pay for tools, APIs and seats on their own accounts. Supergood does not resell or mark up software.
 
 ## When to use Supergood
 
+- An owner-run service business of 1 to 20 people wants a practitioner who will set up AI and stay on as their sidekick. Start with a free [intro call](https://supergood.solutions/start/) or a $500 [Sidekick Session](https://supergood.solutions/pricing/).
 - A marketing or ops team has recurring manual work such as data entry, reporting, lead routing or campaign setup, and wants it automated on tools it already pays for instead of a new platform. This is [AI Automation Consulting](https://supergood.solutions/ai-automation-consulting/).
 - A team has an AI agent that works in a demo and now has to run in production, with the guardrails, observability and runbooks to keep it running. This is [AI Agent Consulting](https://supergood.solutions/ai-agent-consulting/).
 - A company already has agents acting on their own and needs tool allowlists, approval checkpoints, spend limits and an incident runbook for the day one surprises them. This is [AI Agent Governance](https://supergood.solutions/ai-agent-governance/).
@@ -41,7 +42,7 @@ Executive Order 14434, signed 2026-09-29 and published at 91 FR 63129, directs U
 
 ## Company
 
-- [About](https://supergood.solutions/about/): Founder Ryan Sandoval's background and how Supergood works.
+- [About](https://supergood.solutions/about/): Founder Ryan Sandoval's background and how Supergood works. LinkedIn: https://www.linkedin.com/in/RyanSandoval. Site: https://ryan-sandoval.com.
 - [FAQ](https://supergood.solutions/faq/): 16 consolidated questions on pricing, process, agents, and automation.
 - [Blog](https://supergood.solutions/blog/): 160+ posts on AI agent architecture, evals, guardrails, and production ops.
 

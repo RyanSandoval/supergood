@@ -1,13 +1,13 @@
 {
   "provider": "Supergood Solutions",
   "url": "https://supergood.solutions/ai-consulting/",
-  "updated": "2026-10-29",
+  "updated": "2026-11-21",
   "services": [
     {
       "id": "ai-consulting",
       "name": "AI Consulting",
       "url": "https://supergood.solutions/ai-consulting/",
-      "summary": "Hub page. Practice overview, the rate card, and links to every service."
+      "summary": "Hub page. Practice overview for owner-run businesses, the rate card, and links to every service."
     },
     {
       "id": "ai-agent-consulting",
@@ -33,5 +33,6 @@
       "url": "https://supergood.solutions/ai-agent-governance/",
       "summary": "Guardrails, observability, and incident runbooks for agents that already run in production."
     }
-  ]
+  ],
+  "description": "AI consulting for owner-run businesses of 1 to 20 people. Offers and prices are in pricing.json."
 }

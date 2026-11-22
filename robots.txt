@@ -1,27 +1,49 @@
-# This site is intentionally crawlable by AI answer engines and assistants.
-# Being cited by ChatGPT, Perplexity, Claude, and Google AI Overviews is the
-# point of the AEO work here — see /llms.txt for a structured summary.
+# This site is intentionally crawlable by search engines and AI answer engines.
+# See /llms.txt for a structured summary. Planning docs under /docs/ are not for indexing.
 
 User-agent: *
 Allow: /
+Disallow: /docs/
+
+User-agent: Googlebot
+Allow: /
+Disallow: /docs/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /docs/
 
 User-agent: GPTBot
 Allow: /
+Disallow: /docs/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /docs/
 
 User-agent: ChatGPT-User
 Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: anthropic-ai
-Allow: /
+Disallow: /docs/
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /docs/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /docs/
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /docs/
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /docs/
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /docs/
 
 Sitemap: https://supergood.solutions/sitemap.xml
 

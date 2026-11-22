@@ -5,6 +5,7 @@ This repository is the static site for https://supergood.solutions. GitHub Pages
 ## Where machine-readable content lives
 
 - `/llms.txt` and `/llms-full.txt`: site summary and full text for language models.
+- `/docs/SEO-AEO-PLAN.md`: living SEO and AEO plan (positioning, what's set up, baseline, targets, rules, checklist). Supersedes `AI-CONSULTING-SEO-AEO-PLAN.md`.
 - `/openapi.json`: OpenAPI 3.1 description of the public API.
 - `/pricing.json` and `/services.json`: the rate card and the service list as JSON.
 - Each page has a Markdown twin next to it. `/pricing/` has `/pricing.md`, and `/developers/` has `/developers.md`.

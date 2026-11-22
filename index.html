@@ -45,16 +45,17 @@
       "@type": "ProfessionalService",
       "@id": "https://supergood.solutions/#organization",
       "name": "Supergood Solutions",
-      "alternateName": ["Supergood AI", "Supergood", "Supergood SI", "Supergood Super Intelligence"],
-      "description": "Supergood is an AI consulting practice that builds production AI agents and automations using tools clients already pay for — with the guardrails, observability, and runbooks to keep them running.",
+      "alternateName": [
+        "Supergood AI",
+        "Supergood",
+        "Supergood SI",
+        "Supergood Super Intelligence"
+      ],
+      "description": "Ryan Sandoval's AI consulting practice. He sets up AI for owner-run businesses of 1 to 20 people and stays on to keep it working.",
       "url": "https://supergood.solutions",
+      "image": "https://supergood.solutions/assets/img/ryan-sandoval.jpg",
       "founder": {
-        "@type": "Person",
-        "name": "Ryan Sandoval",
-        "jobTitle": "Founder & AI Automation Consultant",
-        "url": "https://linkedin.com/in/RyanSandoval",
-        "description": "Founder of Supergood Solutions. 14 years building digital products, including at Live Nation/Ticketmaster and Logitech.",
-        "sameAs": ["https://linkedin.com/in/RyanSandoval", "https://github.com/RyanSandoval"]
+        "@id": "https://supergood.solutions/about/#person"
       },
       "address": {
         "@type": "PostalAddress",
@@ -73,45 +74,154 @@
           "US"
         ]
       },
-      "areaServed": ["Worldwide", "US"],
-      "serviceType": ["AI Consulting", "AI Agent Consulting", "AI Automation Consulting", "AI Readiness Assessment", "AI Agent Governance", "Agent Ops", "AI Guardrails Implementation", "Marketing Automation AI", "LLM Ops Consulting", "Super Intelligence Consulting", "SI Agent Consulting", "SI Automation Consulting"],
-      "knowsAbout": ["AI Consulting", "AI Agents", "Agentic AI", "LLM Ops", "AI Guardrails", "Agent Observability", "Marketing Automation", "AI Workflow Design", "Super Intelligence", "SI Agents", "Executive Order 14434"],
-      "sameAs": ["https://linkedin.com/in/RyanSandoval", "https://github.com/RyanSandoval"],
+      "areaServed": [
+        "Worldwide",
+        "US"
+      ],
+      "serviceType": [
+        "AI Consulting",
+        "AI Agent Consulting",
+        "AI Automation Consulting",
+        "AI Readiness Assessment",
+        "AI Agent Governance",
+        "Agent Ops",
+        "AI Guardrails Implementation",
+        "Marketing Automation AI",
+        "LLM Ops Consulting",
+        "Super Intelligence Consulting",
+        "SI Agent Consulting",
+        "SI Automation Consulting"
+      ],
+      "knowsAbout": [
+        "AI Consulting",
+        "AI Agents",
+        "Agentic AI",
+        "LLM Ops",
+        "AI Guardrails",
+        "Agent Observability",
+        "Marketing Automation",
+        "AI Workflow Design",
+        "Super Intelligence",
+        "SI Agents",
+        "Executive Order 14434"
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/in/RyanSandoval",
+        "https://github.com/RyanSandoval"
+      ],
       "makesOffer": [
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "AI Consulting Services", "url": "https://supergood.solutions/ai-consulting/"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "AI Agent Consulting", "url": "https://supergood.solutions/ai-agent-consulting/"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "AI Automation Consulting", "url": "https://supergood.solutions/ai-automation-consulting/"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "AI Readiness Assessment", "url": "https://supergood.solutions/ai-readiness-assessment/"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "AI Agent Governance", "url": "https://supergood.solutions/ai-agent-governance/"}}
+        {
+          "@type": "Offer",
+          "name": "Intro call",
+          "price": "0",
+          "priceCurrency": "USD",
+          "url": "https://supergood.solutions/start/",
+          "description": "Free. 20 minutes. A straight answer on whether AI helps.",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Intro call"
+          }
+        },
+        {
+          "@type": "Offer",
+          "name": "Sidekick Session",
+          "price": "500",
+          "priceCurrency": "USD",
+          "url": "https://supergood.solutions/pricing/#session",
+          "description": "$500 for 90 minutes. One workflow set up live. Credited in full to a Setup Sprint signed within 14 days.",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Sidekick Session"
+          }
+        },
+        {
+          "@type": "Offer",
+          "name": "Setup Sprint",
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "minPrice": "2500",
+            "priceCurrency": "USD"
+          },
+          "description": "From $2,500. Two or three workflows in two to three weeks, written how-tos, and a one-page AI policy.",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Setup Sprint"
+          }
+        },
+        {
+          "@type": "Offer",
+          "name": "Sidekick Monthly",
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "minPrice": "900",
+            "priceCurrency": "USD",
+            "unitText": "MONTH"
+          },
+          "description": "From $900 per month. 3-month minimum. Optional 10-20% of measured gain on tracked workflows, capped at 1.5x the retainer.",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Sidekick Monthly"
+          }
+        },
+        {
+          "@type": "Offer",
+          "name": "Quick Scan",
+          "price": "1000",
+          "priceCurrency": "USD",
+          "description": "For teams of 10 or more. $1,000, credited toward a build if you sign within 14 days.",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Quick Scan",
+            "url": "https://supergood.solutions/ai-readiness-assessment/"
+          }
+        },
+        {
+          "@type": "Offer",
+          "name": "Build",
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "minPrice": "4000",
+            "priceCurrency": "USD"
+          },
+          "description": "For teams of 10 or more. From $4,000 per workflow. Fixed quote after the Quick Scan.",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Build"
+          }
+        }
       ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://supergood.solutions/about/#person",
+      "name": "Ryan Sandoval",
+      "jobTitle": "Founder & AI Automation Consultant",
+      "url": "https://supergood.solutions/about/",
+      "image": "https://supergood.solutions/assets/img/ryan-sandoval.jpg",
+      "description": "Founder of Supergood Solutions. 14 years building digital products, including at Live Nation/Ticketmaster and Logitech.",
+      "sameAs": [
+        "https://www.linkedin.com/in/RyanSandoval",
+        "https://ryan-sandoval.com",
+        "https://github.com/RyanSandoval"
+      ],
+      "worksFor": {
+        "@id": "https://supergood.solutions/#organization"
+      }
     },
     {
       "@type": "WebSite",
       "@id": "https://supergood.solutions/#website",
       "name": "Supergood Solutions",
-      "alternateName": ["Supergood AI", "Supergood", "Supergood SI", "Supergood Super Intelligence"],
+      "alternateName": [
+        "Supergood AI",
+        "Supergood",
+        "Supergood SI",
+        "Supergood Super Intelligence"
+      ],
       "url": "https://supergood.solutions",
-      "description": "Practical AI agent consulting — building, deploying, and governing AI agents in production.",
+      "description": "Ryan Sandoval, your AI sidekick. AI consulting for owner-run businesses of 1 to 20 people.",
       "publisher": {
-        "@type": "Organization",
-        "name": "Supergood Solutions",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Los Angeles",
-          "addressRegion": "CA",
-          "addressCountry": "US"
-        },
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "contactType": "sales",
-        "email": "ryan@supergood.solutions",
-          "url": "https://supergood.solutions/start/",
-          "availableLanguage": "English",
-          "areaServed": [
-            "Worldwide",
-            "US"
-          ]
-        }
+        "@id": "https://supergood.solutions/#organization"
       },
       "potentialAction": {
         "@type": "SearchAction",
@@ -128,20 +238,97 @@
       "url": "https://supergood.solutions/",
       "name": "I'm Ryan. I'll be your AI sidekick.",
       "description": "I set up AI for owner-run businesses and stay on to keep it working. My agents handle the busywork, and I check what they produce before it reaches you or your customers.",
-      "isPartOf": { "@id": "https://supergood.solutions/#website" },
-      "about": { "@id": "https://supergood.solutions/#organization" },
-      "dateModified": "2026-11-22"
+      "isPartOf": {
+        "@id": "https://supergood.solutions/#website"
+      },
+      "about": {
+        "@id": "https://supergood.solutions/#organization"
+      },
+      "primaryImageOfPage": "https://supergood.solutions/assets/img/ryan-sandoval.jpg",
+      "dateModified": "2026-11-21"
     },
     {
       "@type": "ItemList",
       "@id": "https://supergood.solutions/#services",
       "name": "Supergood services",
       "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "AI Consulting", "url": "https://supergood.solutions/ai-consulting/"},
-        {"@type": "ListItem", "position": 2, "name": "AI Agent Consulting", "url": "https://supergood.solutions/ai-agent-consulting/"},
-        {"@type": "ListItem", "position": 3, "name": "AI Automation Consulting", "url": "https://supergood.solutions/ai-automation-consulting/"},
-        {"@type": "ListItem", "position": 4, "name": "AI Readiness Assessment", "url": "https://supergood.solutions/ai-readiness-assessment/"},
-        {"@type": "ListItem", "position": 5, "name": "AI Agent Governance", "url": "https://supergood.solutions/ai-agent-governance/"}
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "AI Consulting",
+          "url": "https://supergood.solutions/ai-consulting/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AI Agent Consulting",
+          "url": "https://supergood.solutions/ai-agent-consulting/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "AI Automation Consulting",
+          "url": "https://supergood.solutions/ai-automation-consulting/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "AI Readiness Assessment",
+          "url": "https://supergood.solutions/ai-readiness-assessment/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "AI Agent Governance",
+          "url": "https://supergood.solutions/ai-agent-governance/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://supergood.solutions/#faq",
+      "url": "https://supergood.solutions/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do I need to be technical?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. If you can send an email and approve a draft, you can work with me. I set things up, show you how they work, and leave written steps."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who pays for the AI tools?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You do, on your own accounts, so you own everything and can leave any time. I'll tell you the monthly tool cost before we build anything."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my customer data safe?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It stays in your accounts, and nothing goes to a customer until you or I have checked it. Every Setup Sprint includes a one-page AI policy that says what can go into AI and what never does."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "You have a day job. How much of you do I get?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Supergood is my side business, and I cap it at four monthly clients so each one gets a weekly check-in and a reply within one business day."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if I only want the session?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "That's fine. You keep what we set up and the written list, and you can run with it yourself."
+          }
+        }
       ]
     }
   ]
