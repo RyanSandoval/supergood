@@ -1,6 +1,6 @@
 ---
 title: "About Ryan Sandoval | Supergood Solutions"
-description: "Ryan Sandoval, founder of Supergood Solutions — 14 years building products at Viking Cruises, Live Nation/Ticketmaster, and Logitech. Now AI consulting."
+description: "Ryan Sandoval, founder of Supergood Solutions — 14 years building products at Live Nation/Ticketmaster and Logitech. Now AI consulting."
 canonical: https://supergood.solutions/about/
 last-updated: 2026-10-30
 ---
@@ -21,11 +21,7 @@ I spent 14 years building digital products before I started Supergood — enough
 
 ## Where the experience comes from
 
-Product roles across travel, live entertainment, and consumer hardware — different industries, but the same underlying problem everywhere: good people, buried in process that outgrew its usefulness years ago.
-
-Viking Cruises
-
-Travel & hospitality product
+Product roles across live entertainment and consumer hardware. Different industries, the same underlying problem: good people, buried in process that outgrew its usefulness years ago.
 
 Live Nation / Ticketmaster
 
@@ -35,7 +31,7 @@ Logitech / Ultimate Ears
 
 Consumer hardware product
 
-What carries over from all three isn't a specific technology — it's judgment about which problems are actually worth solving. AI can automate a report. It can't tell you which reports matter, which workflow is a genuine bottleneck versus a symptom of something else, or when the honest answer is "don't build this." That judgment is the part of consulting that doesn't show up in a tools list.
+What carries over from both isn't a specific technology — it's judgment about which problems are actually worth solving. AI can automate a report. It can't tell you which reports matter, which workflow is a genuine bottleneck versus a symptom of something else, or when the honest answer is "don't build this." That judgment is the part of consulting that doesn't show up in a tools list.
 
 ## Why Supergood, and why now
 
@@ -47,7 +43,7 @@ Every engagement follows the same shape: **audit** honestly (including telling y
 
 ## What I write about
 
-The [blog](https://supergood.solutions/blog/) is where the actual expertise lives — 90+ posts on the stuff that determines whether an AI agent survives production: architecture decisions, eval design, guardrails, observability, cost control, and the failure modes nobody puts in the launch announcement.
+The [blog](https://supergood.solutions/blog/) is where the actual expertise lives — 160+ posts on the stuff that determines whether an AI agent survives production: architecture decisions, eval design, guardrails, observability, cost control, and the failure modes nobody puts in the launch announcement.
 
 Agent architecture
 Evals & observability
@@ -62,7 +58,7 @@ Let's talk
 
 ## Bring the problem. I'll tell you honestly what it needs.
 
-The fit check comes first. It is free and takes about 2 minutes. If it's a fit, Ryan follows up to schedule the paid Quick Scan ($1,000). If the honest answer is that you don't need a build, that's what you'll hear.
+The fit check comes first. It is free and takes about 2 minutes. If it's a fit, Ryan follows up to book a free 20-minute call or a Sidekick Session. If the honest answer is that you don't need a build, that's what you'll hear.
 
 [Start the fit check](https://supergood.solutions/start/)
 

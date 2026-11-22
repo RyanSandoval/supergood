@@ -17,7 +17,7 @@ This page is the official documentation for the Supergood API. The API has two r
 
 `GET https://supergood.solutions/pricing.json`
 
-Returns the rate card as JSON. The fit check is free. The Quick Scan is $1,000, credited toward a build if you sign within 14 days. A build starts at $4,000 per workflow. Run starts at $900 per month plus 10-20% of measured gain over an agreed baseline, capped at 1.5x the retainer, with a 3-month minimum. Same numbers as the [pricing page](https://supergood.solutions/pricing/).
+Returns the rate card as JSON. The intro call is free. The Sidekick Session is $500, credited in full to a Setup Sprint signed within 14 days. A Setup Sprint starts at $2,500. Sidekick Monthly starts at $900 per month plus 10-20% of measured gain over an agreed baseline, capped at 1.5x the retainer, with a 3-month minimum. For teams of 10 or more, the Quick Scan is $1,000, credited toward a build if you sign within 14 days, and a build starts at $4,000 per workflow. Same numbers as the [pricing page](https://supergood.solutions/pricing/).
 
 `GET https://supergood.solutions/services.json`
 
@@ -103,7 +103,7 @@ A breaking change ships as a new path, for example `/api/v2/intake`. The old pat
 
 The intake project hosts an MCP server. Streamable HTTP, stateless, no key: `https://api.supergood.solutions/api/mcp`.
 
-- `get_pricing`: the rate card. Optional `offer` (`fit-check`, `quick-scan`, `build`, `run`) returns one offer. Read-only.
+- `get_pricing`: the rate card. Optional `offer` (`fit-check`, `quick-scan`, `build`, `run`) returns one offer. Read-only. The hosted server still uses that enum. `fit-check` is the intro call. `pricing.json` also includes `sidekick-session`, `setup-sprint`, and `sidekick-monthly`. Omit `offer` to get the whole card. Filtering by those three ids is not accepted by the hosted server yet.
 - `get_services`: the service list. Optional `service` returns one service. Read-only.
 - `submit_fit_check`: emails Ryan one fit check. Takes `name`, `email`, `handoff`, and `paysForTools`, plus the optional fields above and an optional `idempotencyKey`. Each call sends one email unless a retry repeats the same `idempotencyKey`.
 

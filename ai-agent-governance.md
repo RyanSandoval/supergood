@@ -105,7 +105,7 @@ Evals are a quality gate: do the outputs stay correct as you change the system. 
 
 ### How much does this cost?
 
-Builds start at $4,000 per workflow. Run starts at $900 per month plus 10-20% of measured gain over an agreed baseline, capped at 1.5x the retainer, with a 3-month minimum. Governance work is often part of a build. See the [rate card](https://supergood.solutions/pricing/).
+The Sidekick Session is $500, credited in full to a Setup Sprint signed within 14 days. A Setup Sprint starts at $2,500. Sidekick Monthly starts at $900 per month plus 10-20% of measured gain over an agreed baseline, capped at 1.5x the retainer, with a 3-month minimum. For teams of 10 or more, builds start at $4,000 per workflow. Governance work is often part of a build. See the [rate card](https://supergood.solutions/pricing/).
 
 ### Who owns agent governance — engineering or ops?
 
@@ -135,7 +135,7 @@ Let's talk
 
 ## Get ahead of the incident, not behind it.
 
-The fit check comes first. Describe the agent you're worried about, or the one you haven't built yet, and you get a written answer on fit. If it's a fit, Ryan follows up to schedule the paid Quick Scan.
+The fit check comes first. Describe the agent you're worried about, or the one you haven't built yet, and you get a written answer on fit. If it's a fit, Ryan follows up to book a free 20-minute call or a Sidekick Session.
 
 [Start the fit check](https://supergood.solutions/start/)
 

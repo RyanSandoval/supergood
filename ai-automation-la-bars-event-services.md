@@ -37,19 +37,19 @@ What we do
 
 ## Audit, build, run.
 
-Supergood automates data entry, reporting and lead routing, and builds AI agents where a step needs judgment. For a bar or event business that usually means getting inquiries answered and event details moved between tools without retyping. The Quick Scan tells you which workflows are worth building first.
+Supergood automates data entry, reporting and lead routing, and builds AI agents where a step needs judgment. For a bar or event business that usually means getting inquiries answered and event details moved between tools without retyping. A free 20-minute call is the place to start. The Sidekick Session sets up one workflow. The Quick Scan is for teams of 10 or more.
 
-### Fit check, then Quick Scan
+### Intro call, then Sidekick Session
 
-The fit check is free. If it's a fit, the $1,000 Quick Scan is a live session on your actual workflows. It is credited toward a build if you sign within 14 days.
+The intro call is free, 20 minutes. The Sidekick Session is $500 and is credited in full to a Setup Sprint signed within 14 days. For teams of 10 or more, the $1,000 Quick Scan is credited toward a build if you sign within 14 days.
 
 ### Build
 
 Builds start at $4,000 per workflow, with a fixed quote after the Quick Scan. Half is due at kickoff and half at launch. You pay for tools on your own accounts.
 
-### Run
+### Sidekick Monthly
 
-Run keeps the workflow in production. From $900 per month plus 10-20% of measured gain over an agreed baseline, capped at 1.5x the retainer. 3-month minimum.
+Sidekick Monthly keeps the workflow in production. From $900 per month plus 10-20% of measured gain over an agreed baseline, capped at 1.5x the retainer. 3-month minimum.
 
 Proof
 
@@ -75,7 +75,7 @@ FAQ
 
 ### Do you work with bars and event companies in Los Angeles?
 
-Yes. Supergood is based in Los Angeles and works with bars, mobile bartending companies and event service businesses here. The first step is a free fit check, where you describe the manual work you want handed off.
+Yes. Supergood is based in Los Angeles and works with bars, mobile bartending companies and event service businesses here. The first step is a free 20-minute call. You describe the manual work you want handed off on the start form.
 
 ### Is Butler Service Bar in Los Angeles?
 
@@ -83,7 +83,7 @@ No. Butler Service Bar is a mobile bartending company in Tulsa. It is the closes
 
 ### How much does it cost?
 
-The fit check is free. The Quick Scan is $1,000, credited toward a build if you sign within 14 days. Builds start at $4,000 per workflow. Run starts at $900 per month plus 10-20% of measured gain over an agreed baseline, capped at 1.5x the retainer, with a 3-month minimum.
+The intro call is free. The Sidekick Session is $500, credited in full to a Setup Sprint signed within 14 days. A Setup Sprint starts at $2,500. Sidekick Monthly starts at $900 per month plus 10-20% of measured gain over an agreed baseline, capped at 1.5x the retainer, with a 3-month minimum. For teams of 10 or more, the Quick Scan is $1,000, credited toward a build if you sign within 14 days, and builds start at $4,000 per workflow.
 
 ### Do I need to buy new software?
 
@@ -97,7 +97,7 @@ Let's talk
 
 ## Start with the fit check.
 
-Tell us where the hours are going and you get a written answer on whether it's a fit. If it's a fit, Ryan follows up to schedule the paid Quick Scan.
+Tell us where the hours are going and you get a written answer on whether it's a fit. If it's a fit, Ryan follows up to book a free 20-minute call or a Sidekick Session.
 
 [Start the fit check](https://supergood.solutions/start/)
 

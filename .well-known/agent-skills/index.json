@@ -27,7 +27,7 @@
     },
     {
       "name": "read-rate-card",
-      "description": "Read Supergood's published rate card: the free fit check, the Quick Scan, per-workflow Builds and the monthly Run retainer.",
+      "description": "Read Supergood's published rate card: intro call, Sidekick Session, Setup Sprint, Sidekick Monthly, and Quick Scan and Build for teams of 10 or more.",
       "type": "skill-md",
       "url": "https://supergood.solutions/.well-known/agent-skills/read-rate-card.md",
       "digest": "sha256:279ba4e55390d26d95a5477fa619adb873d6b691cca65c29e2ab748ee045a4ab"

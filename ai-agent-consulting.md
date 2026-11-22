@@ -87,7 +87,7 @@ Agent build
 
 From $4,000
 
-Per workflow. Fixed quote after the Quick Scan. Half at kickoff, half at launch. Run starts at $900/month. See the [rate card](https://supergood.solutions/pricing/).
+Per workflow. Fixed quote after the Quick Scan. Half at kickoff, half at launch. Sidekick Monthly starts at $900 per month. The Sidekick Session is $500. See the [rate card](https://supergood.solutions/pricing/).
 
 FAQ
 
@@ -111,7 +111,7 @@ Build timeline is quoted after the Quick Scan.
 
 ### How much does AI agent consulting cost?
 
-Builds start at $4,000 per workflow. Run starts at $900 per month plus 10-20% of measured gain over an agreed baseline, capped at 1.5x the retainer, with a 3-month minimum. Industry-wide, custom agent builds run $15,000 to $500,000+ depending on scale.
+The Sidekick Session is $500, credited in full to a Setup Sprint signed within 14 days. A Setup Sprint starts at $2,500. Sidekick Monthly starts at $900 per month plus 10-20% of measured gain over an agreed baseline, capped at 1.5x the retainer, with a 3-month minimum. For teams of 10 or more, builds start at $4,000 per workflow. Industry-wide, custom agent builds run $15,000 to $500,000+ depending on scale.
 
 ### Do I need a multi-agent system?
 
@@ -121,7 +121,7 @@ Go deeper
 
 ## The blog is the real portfolio.
 
-90+ posts on agent architecture, evals, and production ops — no hype, just what actually broke and how it got fixed.
+160+ posts on agent architecture, evals, and production ops — no hype, just what actually broke and how it got fixed.
 
 Case Study
 
@@ -143,7 +143,7 @@ Let's talk
 
 ## Bring the workflow you want to turn into an agent.
 
-The fit check comes first. Describe the workflow you want to turn into an agent and you get a written answer on fit. If it's a fit, Ryan follows up to schedule the paid Quick Scan: a live working session, 3 prioritized recommendations, and a one-page summary the next business day. The $1,000 is credited toward a build if you sign within 14 days.
+The fit check comes first. Describe the workflow you want to turn into an agent and you get a written answer on fit. If it's a fit, Ryan follows up to book a free 20-minute call or a Sidekick Session ($500, credited in full to a Setup Sprint signed within 14 days). For teams of 10 or more, the Quick Scan is a live working session: 3 prioritized recommendations and a one-page summary the next business day. The $1,000 is credited toward a build if you sign within 14 days.
 
 [Start the fit check](https://supergood.solutions/start/)
 

@@ -1375,7 +1375,7 @@
           },
           "offers": {
             "type": "array",
-            "description": "Every offer, in order from the free fit check to the monthly Run retainer.",
+            "description": "Every offer, in the order published on the pricing page.",
             "items": {
               "$ref": "#/components/schemas/Offer"
             },
@@ -1400,7 +1400,7 @@
         "properties": {
           "id": {
             "type": "string",
-            "description": "Stable machine identifier, for example fit-check, quick-scan, build or run."
+            "description": "Stable machine identifier, for example fit-check, sidekick-session, setup-sprint, sidekick-monthly, quick-scan or build."
           },
           "name": {
             "type": "string",
@@ -1552,7 +1552,7 @@
             "type": "string",
             "minLength": 1,
             "format": "email",
-            "description": "Work email Ryan should reply to."
+            "description": "Email Ryan should reply to."
           },
           "handoff": {
             "type": "string",

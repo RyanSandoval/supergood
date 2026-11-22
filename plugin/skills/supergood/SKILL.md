@@ -14,7 +14,7 @@ Use this when someone needs Supergood's published rates, a match to one of its f
 
 Supergood is a fit for a marketing or ops team with recurring manual work (data entry, reporting, lead routing, campaign setup) that should run on tools the team already pays for. It is also a fit when an agent works in a demo and now has to run in production, or when agents already act on their own and need allowlists, approval checkpoints, spend limits, and an incident runbook.
 
-A buyer who does not know where AI would pay off can start with the $1,000 Quick Scan. A buyer who wants the rate card first can read it without writing in.
+A buyer who does not know where AI would pay off can start with a free intro call or the $500 Sidekick Session. Teams of 10 or more can start with the $1,000 Quick Scan. A buyer who wants the rate card first can read it without writing in.
 
 Do not POST a fit check to ask a general question. That call emails Ryan.
 

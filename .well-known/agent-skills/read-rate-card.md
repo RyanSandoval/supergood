@@ -1,6 +1,6 @@
 ---
 name: read-rate-card
-description: Read Supergood's published rate card: the free fit check, the Quick Scan, per-workflow Builds and the monthly Run retainer.
+description: Read Supergood's published rate card: intro call, Sidekick Session, Setup Sprint, Sidekick Monthly, and Quick Scan and Build for teams of 10 or more.
 title: Read the rate card
 canonical: https://supergood.solutions/.well-known/agent-skills/read-rate-card.md
 last-updated: 2026-10-30
@@ -18,10 +18,12 @@ Supergood publishes its pricing openly. These places carry it, all plain GETs wi
 
 The rate card has these tiers, in order:
 
-- **Fit check:** free, about two minutes, via the form at `https://supergood.solutions/start/`.
-- **Quick Scan:** a fixed price, credited toward a build if the client signs within 14 days.
-- **Build:** priced per workflow, starting at a stated minimum, with a fixed quote issued after the Quick Scan. Half is due at kickoff and half at launch.
-- **Run:** a monthly retainer plus a percentage of measured gain over an agreed baseline, capped at a multiple of the retainer, with a 3-month minimum.
+- **Intro call:** free, via the form at `https://supergood.solutions/start/`. The machine id is still `fit-check`.
+- **Sidekick Session:** a fixed price, credited in full to a Setup Sprint signed within 14 days.
+- **Setup Sprint:** a starting price for two or three workflows.
+- **Sidekick Monthly:** a monthly retainer, 3-month minimum, plus an optional percentage of measured gain capped at a multiple of the retainer.
+- **Quick Scan:** for teams of 10 or more. A fixed price, credited toward a build if the client signs within 14 days.
+- **Build:** for teams of 10 or more. Priced per workflow, starting at a stated minimum, with a fixed quote issued after the Quick Scan. Half is due at kickoff and half at launch.
 
 Clients pay for tools, APIs and seats on their own accounts. Supergood does not resell or mark up software.
 

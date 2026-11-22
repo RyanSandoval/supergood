@@ -40,7 +40,7 @@ Primary money terms (each needs a dedicated page — see Phase 2):
 
 AEO question targets (answer these verbatim in FAQ blocks + blog posts): "What does an AI consultant do?", "How much does AI consulting cost?", "What is an AI readiness assessment?", "How do I get AI agents into production?", "Do I need an AI consultant or can I use ChatGPT?", "What are AI agent guardrails?"
 
-Differentiation angle to repeat everywhere (this is what answer engines will quote): *Supergood is an AI consulting practice that builds production AI agents and automations using tools clients already pay for — with the guardrails, observability, and runbooks to keep them running. Founded by Ryan Sandoval, 14 years of product experience at Viking Cruises, Live Nation/Ticketmaster, and Logitech.*
+Differentiation angle to repeat everywhere (this is what answer engines will quote): *Supergood is an AI consulting practice that builds production AI agents and automations using tools clients already pay for — with the guardrails, observability, and runbooks to keep them running. Founded by Ryan Sandoval, 14 years of product experience at Live Nation/Ticketmaster and Logitech.*
 
 ---
 
@@ -62,9 +62,9 @@ Create the five pages from the keyword map. Shared requirements for **every** se
 - **Answer-first structure (AEO):** open with a 2–3 sentence direct definition/answer under the H1 that could be lifted verbatim into an AI answer. Then the sales content.
 - H1 contains the primary keyword naturally; one H1 per page; H2s phrased as questions where natural ("What does an AI agent consultant actually do?").
 - **FAQ section** (4–6 questions from the AEO list) with `FAQPage` JSON-LD.
-- **`Service` JSON-LD** with `provider` → Supergood Solutions Organization, `serviceType`, `areaServed`, and `offers` where a price exists (Quick Scan: $1,000, credited toward a build if you sign within 14 days. Builds from $4,000 per workflow. Run from $900 per month).
+- **`Service` JSON-LD** with `provider` → Supergood Solutions Organization, `serviceType`, `areaServed`, and `offers` where a price exists (Quick Scan: $1,000, credited toward a build if you sign within 14 days. Builds from $4,000 per workflow. Sidekick Monthly from $900 per month).
 - `BreadcrumbList` JSON-LD.
-- CTA to the fit check at `/start/`. If it is a fit, Ryan follows up to schedule the paid Quick Scan.
+- CTA to the fit check at `/start/`. If it's a fit, Ryan follows up to book a free 20-minute call or a Sidekick Session.
 - 3–5 contextual links to relevant blog posts, and cross-links between service pages.
 - Unique title (≤60 chars), meta description (≤155 chars), canonical, OG/Twitter tags.
 - 800–1,500 words of real substance each. Reuse the site's voice — no keyword-stuffed sludge. Draw content from existing blog posts (the expertise is already written; the service pages package it).

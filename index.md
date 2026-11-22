@@ -1,20 +1,16 @@
 ---
-title: "Supergood Solutions | AI Agent & Automation Consulting"
-description: "AI consulting for teams who need production AI agents, workflow automation, and the guardrails to keep them running. Founded by a 14-year product veteran."
+title: "Ryan Sandoval, your AI sidekick | Supergood Solutions"
+description: "I set up AI for owner-run businesses and stay on to keep it working. My agents handle the busywork, and I check what they produce before it reaches you or your customers."
 canonical: https://supergood.solutions/
-last-updated: 2026-10-30
+last-updated: 2026-11-22
 ---
 
-supergood.
+# I'm Ryan. I'll be your AI sidekick.
 
-AI consulting & agent engineering
+I set up AI for owner-run businesses and stay on to keep it working. My agents handle the busywork, and I check what they produce before it reaches you or your customers.
 
-# AI consulting for teams who need agents that work in production, not *another demo.*
-
-Somewhere on your team, a person is doing work an agent could do — and somewhere else, an AI pilot is stuck in demo purgatory. Supergood is an AI consulting practice that fixes both: workflow automation that runs today, and production AI agents built with the guardrails to keep running tomorrow.
-
-[Start the fit check](https://supergood.solutions/start/)
-[See how we help](https://supergood.solutions/#services)
+[Book a free 20-minute call](https://supergood.solutions/start/)
+[See the $500 Sidekick Session](https://supergood.solutions/#session)
 
 Built on experience from
 
@@ -24,172 +20,80 @@ Ticketmaster
 Logitech
 Ultimate Ears
 
-The problem
+## Intro
 
-## You're not behind on AI. You're stuck between two problems.
+![Ryan Sandoval](https://supergood.solutions/assets/img/ryan-sandoval.jpg)
 
-01
+I've spent 14 years building digital products, including at Live Nation, Ticketmaster and Logitech, and by day I lead AI work at a large travel company. Supergood is my side business, and I keep it small on purpose. I work with owners who answer their own inquiries, chase their own invoices and write the newsletter at 11 p.m. I use AI agents for my own work every day. They draft, research and keep the to-do list moving, and I make the calls. I'll set up the same kind of help for you, on your own accounts, and explain it in plain English.
 
-### Copy-paste purgatory
+[More about Ryan](https://supergood.solutions/about/)
 
-Someone brilliant on your team spends half their day moving numbers between spreadsheets and dashboards. By hand. That's not a job — that's a punishment.
+## Who it's for
 
-02
+Owner-run service businesses with 1 to 20 people. Coaches and consultants, event and hospitality services, small agencies, local trades. You've tried ChatGPT or Claude, you can tell there's more there, and you don't have the hours to figure it out.
 
-### Demo-ware that never ships
+Probably not a fit if every tool needs a vendor security review, or if you want AI writing to customers with nobody checking.
 
-Your AI pilot works great in the sandbox. Then it hits real data, real edge cases, real stakes — and quietly gets shelved. A demo isn't a system.
+## What the sidekick does
 
-03
+| What the sidekick does | What you do |
+| --- | --- |
+| Drafts a reply to every new inquiry within minutes | Approve it from your phone |
+| Drafts a nudge when a quote has had no answer for 3 days | Send it or skip it |
+| Turns a 5-minute voice memo into a newsletter and two social posts | Edit and post |
+| Sends a Monday email: bookings, payments in, open quotes, anything overdue | Read it with coffee |
+| Drafts replies to new Google reviews | Approve them |
+| Turns call notes into tasks in the tools you already use | Work the list |
 
-### Broken handoffs
+## How it works
 
-Your tools don't talk to each other — human or agent. So work gets stuck at every seam, and like a game of telephone, the message arrives completely wrong.
+1. **Free 20-minute call.** Tell me what eats your week. I'll tell you whether AI helps with it, and if it doesn't, I'll say so.
+2. **Sidekick Session, $500.** 90 minutes together on video. We set up one real thing before we hang up, and you get a written list of the next three.
+3. **Keep going if it's working.** A Setup Sprint builds the next two or three. Sidekick Monthly keeps me on as your AI person, with a weekly check-in.
 
-What we do
+## The offer
 
-## Five ways into AI consulting. Pick your problem.
+| Step | Price | What you get |
+| --- | --- | --- |
+| Intro call | Free | 20 minutes with me. A straight answer on whether AI helps. |
+| Sidekick Session | $500 | One thing set up live, a written list of the next three, a one-page summary the next business day. Credited in full to a Setup Sprint signed within 14 days. |
+| Setup Sprint | From $2,500 | Two or three workflows in two to three weeks, written how-tos, a one-page AI policy for your team. |
+| Sidekick Monthly | From $900/month | A 30-minute weekly check-in, a running list I work from the top down, a Friday one-page report. 3-month minimum. |
 
-Whether you're drowning in manual busywork or trying to get an AI pilot past the demo stage, it's the same AI consulting practice underneath: audit, build, govern.
+You pay for your own tools on your own accounts, and I don't resell or mark up software. Where a workflow has a number your systems already track, such as reply time or booked jobs, we can tie part of the monthly fee to it.
 
-Start here
+Bigger team? The Quick Scan and fixed-price builds are on the [pricing page](https://supergood.solutions/pricing/).
 
-### [AI Consulting](https://supergood.solutions/ai-consulting/)
+## Proof
 
-The hub: what we do, how we price it, and which service below fits your problem.
+**Butler Service Bar**, mobile bartending in Tulsa. Their site arrived as one 5 MB self-extracting HTML file. It's now 220 kB, with its own URLs, a page for each town they serve, and an FAQ. [See the site](https://butlerservicebar.com).
 
-[See the overview →](https://supergood.solutions/ai-consulting/)
+**Sell With Lo**, resale, listed on Poshmark, Depop, eBay, Mercari and Vinted. A nightly agent pulls inventory and orders, flips sold items on the public storefront so nothing shows as available after it ships, and publishes per-consignor reports. Nobody opens a spreadsheet. [See the storefront](https://sellwithlo.com).
 
-Flagship
+## FAQ
 
-### [AI Agent Consulting](https://supergood.solutions/ai-agent-consulting/)
+### Do I need to be technical?
 
-Production AI agents — architecture, evals, deployment, and the discipline to get past demo-ware.
+No. If you can send an email and approve a draft, you can work with me. I set things up, show you how they work, and leave written steps.
 
-[Learn more →](https://supergood.solutions/ai-agent-consulting/)
+### Who pays for the AI tools?
 
-Workflows
+You do, on your own accounts, so you own everything and can leave any time. I'll tell you the monthly tool cost before we build anything.
 
-### [AI Automation Consulting](https://supergood.solutions/ai-automation-consulting/)
+### Is my customer data safe?
 
-Workflow automation using tools you already pay for. No new platform, no rip-and-replace.
+It stays in your accounts, and nothing goes to a customer until you or I have checked it. Every Setup Sprint includes a one-page AI policy that says what can go into AI and what never does.
 
-[Learn more →](https://supergood.solutions/ai-automation-consulting/)
+### You have a day job. How much of you do I get?
 
-Quick Scan $1,000
+Supergood is my side business, and I cap it at four monthly clients so each one gets a weekly check-in and a reply within one business day.
 
-### [AI Readiness Assessment](https://supergood.solutions/ai-readiness-assessment/)
+### What if I only want the session?
 
-Know exactly where AI pays off before you spend a dollar building it.
+That's fine. You keep what we set up and the written list, and you can run with it yourself.
 
-[Learn more →](https://supergood.solutions/ai-readiness-assessment/)
+## Start here
 
-Guardrails
+Start with a 20-minute call. Tell me what's eating your week, and I'll tell you honestly whether AI helps.
 
-### [AI Agent Governance](https://supergood.solutions/ai-agent-governance/)
-
-Guardrails, observability, and incident runbooks so your agents don't become the incident.
-
-[Learn more →](https://supergood.solutions/ai-agent-governance/)
-
-Proof
-
-## Numbers, not promises.
-
-Supergood is new. Rather than describe work you can't check, here are two businesses running on systems we built, both of which you can go look at.
-
-5 marketplaces, 1 pipeline
-
-**Sell With Lo**, resale, listed on Poshmark, Depop, eBay, Mercari and Vinted. A nightly agent pulls inventory and orders, flips sold items on the public storefront so nothing shows as available after it ships, and publishes per-consignor reports. Nobody opens a spreadsheet.
-
-[See the storefront →](https://sellwithlo.com)
-
-5 MB → 220 kB
-
-**Butler Service Bar**, mobile bartending in Tulsa. It arrived as one self-extracting HTML file. It's now a real build with its own URLs, CMS-authored copy, a page per town in the service area, and an FAQ. That's the structure local search actually reads.
-
-[See the site →](https://butlerservicebar.com)
-
-How it works
-
-## Three steps. No mystery. No jargon.
-
-### Audit
-
-We embed with your team for a week. Watch the workflows, find the waste, identify every manual process that shouldn't exist. You get a prioritized hit list — not a 90-page deck that collects dust.
-
-### Build
-
-We build the automation or agent using your existing tools, with guardrails baked in from the start. No vendor lock-in, no proprietary black boxes, no "we'll need another 6 months." You own everything.
-
-### Run
-
-We stick around to make sure it works in the real world — not just in a demo. Monitor, adjust, train your team. Then hand over the keys and ride off into the sunset.
-
-Who's behind this
-
-## A PM who got tired of watching smart people do dumb work.
-
-RS
-
-### Ryan Sandoval
-
-Founder & AI Automation Consultant
-
-14 years building digital products at Viking Cruises, Live Nation, Ticketmaster, and Logitech. I've sat in enough standups to know that half the "work" people do isn't work — it's busywork wearing a lanyard. I started Supergood because I kept seeing the same problem everywhere: brilliant teams spending their days on tasks a well-configured flow — or a well-governed agent — could handle before breakfast. I don't sell AI hype. I find the manual processes killing your team and I make them disappear.
-
-[More about Ryan and how Supergood works →](https://supergood.solutions/about/)
-
-From the blog
-
-## Practical AI agent ops — no hype.
-
-Tech Tuesday · Agent Design
-
-[The Interrupt Pattern: How to Design AI Agents That Know When to Stop](https://supergood.solutions/blog/tech-tuesday-interrupt-pattern-agent-design-2026/)
-
-9 min read
-
-Systems Sunday · Ops
-
-[The AI Agent Ops Runbook: Guardrails, Logging, and Incident Response](https://supergood.solutions/blog/systems-sunday-agent-ops-runbook/)
-
-9 min read
-
-AI Wednesday · Decision Frameworks
-
-[RAG vs. Fine-Tuning: A Decision Framework for AI Teams in 2026](https://supergood.solutions/blog/ai-wednesday-rag-vs-fine-tuning-2026/)
-
-8 min read
-
-Tech Tuesday · AI Tooling
-
-[MCP Is Becoming the USB-C of AI Agents — Here's What That Means for Your Stack](https://supergood.solutions/blog/tech-tuesday-mcp-practical-guide-2026/)
-
-8 min read
-
-Case Study Thursday · Agent Architecture
-
-[What Actually Broke When We Deployed Our First AI Agent (And How We Fixed It)](https://supergood.solutions/blog/case-study-thursday-agent-guardrails-lessons-2026/)
-
-9 min read
-
-[Read all posts →](https://supergood.solutions/blog/)
-
-Let's talk
-
-## Let's find the hours you're losing.
-
-The fit check comes first. Describe the work you'd hand off and you get a written answer on whether it's a fit. Takes about two minutes, and Ryan reads every one. If it's a fit, Ryan follows up to schedule the paid Quick Scan.
-
-[Start the fit check](https://supergood.solutions/start/)
-
-[API docs for agents](https://supergood.solutions/developers/)
-
-### The paid Quick Scan
-
-A live working session on your actual workflows: 3 prioritized recommendations on the call, plus a one-page summary in your inbox the next business day, written to be forwarded to your boss. Think of it as a doctor's visit for your ops, except we won't make you wait 45 minutes in a paper gown.
-
-$1,000, credited toward a build if you sign within 14 days
-
-Source: https://supergood.solutions/
+[Book a free call](https://supergood.solutions/start/)

@@ -124,7 +124,7 @@ footer a:hover { color: var(--text-2); }
 
     <h2>Reads</h2>
     <p><code>GET https://supergood.solutions/pricing.json</code></p>
-    <p>Returns the rate card as JSON. The fit check is free. The Quick Scan is $1,000, credited toward a build if you sign within 14 days. A build starts at $4,000 per workflow. Run starts at $900 per month plus 10-20% of measured gain over an agreed baseline, capped at 1.5x the retainer, with a 3-month minimum. Same numbers as the <a href="/pricing/">pricing page</a>.</p>
+    <p>Returns the rate card as JSON. The intro call is free. The Sidekick Session is $500, credited in full to a Setup Sprint signed within 14 days. A Setup Sprint starts at $2,500. Sidekick Monthly starts at $900 per month plus 10-20% of measured gain over an agreed baseline, capped at 1.5x the retainer, with a 3-month minimum. For teams of 10 or more, the Quick Scan is $1,000, credited toward a build if you sign within 14 days, and a build starts at $4,000 per workflow. Same numbers as the <a href="/pricing/">pricing page</a>.</p>
     <p><code>GET https://supergood.solutions/services.json</code></p>
     <p>Returns the five service pages and a one-line summary of each.</p>
     <p>Both documents are the full list. They are not paged. A GET has no side effects.</p>
@@ -185,7 +185,7 @@ curl -sS https://supergood.solutions/services.json</code></pre>
     <h2>MCP server</h2>
     <p>The intake project hosts an MCP server. Streamable HTTP, stateless, no key: <code>https://api.supergood.solutions/api/mcp</code>.</p>
     <ul>
-      <li><code>get_pricing</code>: the rate card. Optional <code>offer</code> (<code>fit-check</code>, <code>quick-scan</code>, <code>build</code>, <code>run</code>) returns one offer. Read-only.</li>
+      <li><code>get_pricing</code>: the rate card. Optional <code>offer</code> (<code>fit-check</code>, <code>quick-scan</code>, <code>build</code>, <code>run</code>) returns one offer. Read-only. The hosted server still uses that enum. <code>fit-check</code> is the intro call. <code>pricing.json</code> also includes <code>sidekick-session</code>, <code>setup-sprint</code>, and <code>sidekick-monthly</code>. Omit <code>offer</code> to get the whole card. Filtering by those three ids is not accepted by the hosted server yet.</li>
       <li><code>get_services</code>: the service list. Optional <code>service</code> returns one service. Read-only.</li>
       <li><code>submit_fit_check</code>: emails Ryan one fit check. Takes <code>name</code>, <code>email</code>, <code>handoff</code>, and <code>paysForTools</code>, plus the optional fields above and an optional <code>idempotencyKey</code>. Each call sends one email unless a retry repeats the same <code>idempotencyKey</code>.</li>
     </ul>
