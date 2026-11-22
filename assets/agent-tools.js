@@ -49,7 +49,7 @@
   var getPricing = {
     name: 'get_pricing',
     title: 'Read the rate card',
-    description: 'Read Supergood\'s published rate card: the free fit check, the $1,000 Quick Scan, builds from $4,000 per workflow, and Run from $900 per month. Safe to call. No key.',
+    description: 'Read Supergood\'s published rate card: free intro call, $500 Sidekick Session, Setup Sprint from $2,500, Sidekick Monthly from $900 per month, and for teams of 10 or more a $1,000 Quick Scan and builds from $4,000 per workflow. Safe to call. No key.',
     annotations: { readOnlyHint: true, destructiveHint: false },
     inputSchema: {
       type: 'object',

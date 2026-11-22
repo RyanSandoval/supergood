@@ -18,7 +18,6 @@ AI automation consulting means auditing your marketing or ops workflows, then bu
 
 Built on experience from
 
-Viking Cruises
 Live Nation
 Ticketmaster
 Logitech
@@ -76,9 +75,9 @@ We map your ops, find the waste, and build automations that actually stick. Not 
 
 retainer_
 
-### Run
+### Sidekick Monthly
 
-After a build, Run keeps the workflow in production. From $900 per month plus 10-20% of measured gain over an agreed baseline, capped at 1.5x the retainer. 3-month minimum.
+After a build, Sidekick Monthly keeps the workflow in production. From $900 per month plus 10-20% of measured gain over an agreed baseline, capped at 1.5x the retainer. 3-month minimum.
 
 relationships_
 
@@ -162,7 +161,7 @@ Let's talk
 
 ## Let's find the hours you're losing.
 
-The fit check comes first. Tell us where the hours are going and you get a written answer on whether it's a fit. If it's a fit, Ryan follows up to schedule the paid Quick Scan.
+The fit check comes first. Tell us where the hours are going and you get a written answer on whether it's a fit. If it's a fit, Ryan follows up to book a free 20-minute call or a Sidekick Session.
 
 [Start the fit check](https://supergood.solutions/start/)
 

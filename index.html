@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Supergood Solutions | AI Agent &amp; Automation Consulting</title>
-<meta name="description" content="AI consulting for teams who need production AI agents, workflow automation, and the guardrails to keep them running. Founded by a 14-year product veteran.">
+<title>Ryan Sandoval, your AI sidekick | Supergood Solutions</title>
+<meta name="description" content="I set up AI for owner-run businesses and stay on to keep it working. My agents handle the busywork, and I check what they produce before it reaches you or your customers.">
 <meta name="keywords" content="AI consulting, AI consultant, AI agent consulting, AI automation consulting, AI readiness assessment, AI agent governance, agentic AI ops, AI guardrails, marketing automation AI, enterprise AI consulting">
 <meta name="author" content="Ryan Sandoval">
 <meta name="robots" content="index, follow">
@@ -15,9 +15,6 @@
 <link rel="service-doc" href="/developers/" type="text/html">
 <link rel="describedby" href="/auth.md" type="text/markdown">
 <link rel="api-catalog" href="/.well-known/api-catalog" type="application/linkset+json">
-<!-- TODO: Ryan pastes verification token — generate at https://search.google.com/search-console and https://www.bing.com/webmasters -->
-<!-- <meta name="google-site-verification" content="PASTE_TOKEN_HERE"> -->
-<!-- <meta name="msvalidate.01" content="PASTE_TOKEN_HERE"> -->
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -25,8 +22,8 @@
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="Supergood Solutions | AI Agent &amp; Automation Consulting">
-<meta property="og:description" content="AI consulting for teams who need production AI agents, workflow automation, and the guardrails to keep them running.">
+<meta property="og:title" content="Ryan Sandoval, your AI sidekick | Supergood Solutions">
+<meta property="og:description" content="I set up AI for owner-run businesses and stay on to keep it working. My agents handle the busywork, and I check what they produce before it reaches you or your customers.">
 <meta property="og:url" content="https://supergood.solutions/">
 <meta property="og:site_name" content="Supergood Solutions">
 <meta property="og:image" content="https://supergood.solutions/og-image.png">
@@ -35,8 +32,8 @@
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Supergood Solutions | AI Agent &amp; Automation Consulting">
-<meta name="twitter:description" content="AI consulting for teams who need production AI agents, workflow automation, and the guardrails to keep them running.">
+<meta name="twitter:title" content="Ryan Sandoval, your AI sidekick | Supergood Solutions">
+<meta name="twitter:description" content="I set up AI for owner-run businesses and stay on to keep it working. My agents handle the busywork, and I check what they produce before it reaches you or your customers.">
 <meta name="twitter:image" content="https://supergood.solutions/og-image.png">
 
 <!-- Structured Data -->
@@ -56,7 +53,7 @@
         "name": "Ryan Sandoval",
         "jobTitle": "Founder & AI Automation Consultant",
         "url": "https://linkedin.com/in/RyanSandoval",
-        "description": "Founder of Supergood Solutions. 14 years of product experience at Viking Cruises, Live Nation/Ticketmaster, and Logitech before starting an AI consulting practice focused on production AI agents, automation, and governance.",
+        "description": "Founder of Supergood Solutions. 14 years building digital products, including at Live Nation/Ticketmaster and Logitech.",
         "sameAs": ["https://linkedin.com/in/RyanSandoval", "https://github.com/RyanSandoval"]
       },
       "address": {
@@ -129,10 +126,11 @@
       "@type": "WebPage",
       "@id": "https://supergood.solutions/#webpage",
       "url": "https://supergood.solutions/",
-      "name": "AI consulting for teams who need agents that work in production",
+      "name": "I'm Ryan. I'll be your AI sidekick.",
+      "description": "I set up AI for owner-run businesses and stay on to keep it working. My agents handle the busywork, and I check what they produce before it reaches you or your customers.",
       "isPartOf": { "@id": "https://supergood.solutions/#website" },
       "about": { "@id": "https://supergood.solutions/#organization" },
-      "dateModified": "2026-10-29"
+      "dateModified": "2026-11-22"
     },
     {
       "@type": "ItemList",
@@ -299,7 +297,7 @@ nav a.cta-nav:hover { color: var(--text); border-color: var(--text-3); }
   text-decoration-thickness: 2px;
 }
 .hero p.sub {
-  font-size: 1.25rem; color: var(--text-2); max-width: 560px;
+  font-size: 1.25rem; color: var(--text-2); max-width: 680px;
   margin-top: 28px; line-height: 1.6;
   opacity: 0; animation: fadeUp 0.6s 0.35s forwards;
 }
@@ -486,6 +484,59 @@ footer a:hover { color: var(--text-2); }
 }
 .logos-row span:hover { color: var(--text); }
 
+/* Intro and offer tables */
+.intro-layout {
+  display: grid;
+  grid-template-columns: 168px 1fr;
+  gap: 36px;
+  align-items: center;
+}
+.intro-photo {
+  width: 168px; height: 168px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--border);
+  display: block;
+}
+.prose {
+  font-size: 1.0625rem; color: var(--text-2);
+  line-height: 1.7; max-width: 720px;
+}
+.prose + .prose { margin-top: 16px; }
+.prose a { color: var(--green); }
+.table-wrap {
+  margin-top: 32px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow-x: auto;
+  background: var(--surface);
+}
+.compare { width: 100%; border-collapse: collapse; }
+.compare th, .compare td {
+  text-align: left;
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.compare tr:last-child td { border-bottom: none; }
+.compare th {
+  font-family: var(--mono); font-size: 0.75rem; font-weight: 500;
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-3);
+}
+.compare td { font-size: 0.9375rem; color: var(--text-2); line-height: 1.55; }
+.compare td:first-child { color: var(--text); font-weight: 600; }
+.note {
+  margin-top: 20px;
+  font-size: 1.0625rem; color: var(--text-2);
+  line-height: 1.7; max-width: 720px;
+}
+.note a { color: var(--green); }
+.faq-list { margin-top: 8px; max-width: 760px; }
+.faq-item { padding: 22px 0; border-top: 1px solid var(--border); }
+.faq-item:last-child { border-bottom: 1px solid var(--border); }
+.faq-item h3 { font-size: 1.0625rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.01em; }
+.faq-item p { font-size: 0.9375rem; color: var(--text-2); line-height: 1.7; }
+
 /* About */
 .about-section { padding: 80px 0; }
 .about-inner {
@@ -524,6 +575,7 @@ footer a:hover { color: var(--text-2); }
 @media (max-width: 768px) {
   .about-inner { flex-direction: column; text-align: center; padding: 32px 24px; }
   .logos-row { gap: 32px; }
+  .intro-layout { grid-template-columns: 1fr; justify-items: center; text-align: center; }
 }
 
 /* Animations */
@@ -573,7 +625,7 @@ footer a:hover { color: var(--text-2); }
       <a href="/ai-consulting/" style="font-size:0.875rem;color:var(--text-3);text-decoration:none;">Services</a>
       <a href="/pricing/" style="font-size:0.875rem;color:var(--text-3);text-decoration:none;">Pricing</a>
       <a href="/blog/" style="font-size:0.875rem;color:var(--text-3);text-decoration:none;">Blog</a>
-      <a href="/start/" class="cta-nav">Get in touch</a>
+      <a href="/start/" class="cta-nav">Book a call</a>
     </div>
   </div>
 </nav>
@@ -581,13 +633,12 @@ footer a:hover { color: var(--text-2); }
 <main id="main-content">
 <header class="hero" role="banner">
   <div class="container">
-    <div class="hero-logo" aria-label="Supergood">superg<span class="oo-wrap"><span class="oo-dot" id="hd1"></span><span class="oo-dot" id="hd2"></span></span>d<span class="dot-period">.</span></div>
-    <div class="hero-label">AI consulting &amp; agent engineering</div>
-    <h1>AI consulting for teams who need agents that work in production, not <em>another demo.</em></h1>
-    <p class="sub">Somewhere on your team, a person is doing work an agent could do — and somewhere else, an AI pilot is stuck in demo purgatory. Supergood is an AI consulting practice that fixes both: workflow automation that runs today, and production AI agents built with the guardrails to keep running tomorrow.</p>
+    <div class="hero-label">AI sidekick</div>
+    <h1>I'm Ryan. I'll be your AI sidekick.</h1>
+    <p class="sub">I set up AI for owner-run businesses and stay on to keep it working. My agents handle the busywork, and I check what they produce before it reaches you or your customers.</p>
     <div class="hero-cta">
-      <a href="/start/" class="btn btn-primary">Start the fit check</a>
-      <a href="#services" class="btn btn-ghost">See how we help</a>
+      <a href="/start/" class="btn btn-primary">Book a free 20-minute call</a>
+      <a href="#session" class="btn btn-ghost">See the $500 Sidekick Session</a>
     </div>
   </div>
 </header>
@@ -607,25 +658,15 @@ footer a:hover { color: var(--text-2); }
 
 <div class="divider"></div>
 
-<section id="problem">
+<section id="intro">
   <div class="container">
-    <div class="section-label reveal">The problem</div>
-    <h2 class="reveal">You're not behind on AI.<br>You're stuck between two problems.</h2>
-    <div class="problem-grid reveal">
-      <div class="problem-card">
-        <div class="num">01</div>
-        <h3>Copy-paste purgatory</h3>
-        <p>Someone brilliant on your team spends half their day moving numbers between spreadsheets and dashboards. By hand. That's not a job — that's a punishment.</p>
-      </div>
-      <div class="problem-card">
-        <div class="num">02</div>
-        <h3>Demo-ware that never ships</h3>
-        <p>Your AI pilot works great in the sandbox. Then it hits real data, real edge cases, real stakes — and quietly gets shelved. A demo isn't a system.</p>
-      </div>
-      <div class="problem-card">
-        <div class="num">03</div>
-        <h3>Broken handoffs</h3>
-        <p>Your tools don't talk to each other — human or agent. So work gets stuck at every seam, and like a game of telephone, the message arrives completely wrong.</p>
+    <div class="intro-layout reveal">
+      <img class="intro-photo" src="/assets/img/ryan-sandoval.jpg" alt="Ryan Sandoval" width="800" height="800">
+      <div>
+        <div class="section-label">Intro</div>
+        <h2 style="margin-bottom:16px;">Ryan Sandoval</h2>
+        <p class="prose">I've spent 14 years building digital products, including at Live Nation, Ticketmaster and Logitech, and by day I lead AI work at a large travel company. Supergood is my side business, and I keep it small on purpose. I work with owners who answer their own inquiries, chase their own invoices and write the newsletter at 11 p.m. I use AI agents for my own work every day. They draft, research and keep the to-do list moving, and I make the calls. I'll set up the same kind of help for you, on your own accounts, and explain it in plain English.</p>
+        <p class="prose" style="margin-top:16px;"><a href="/about/">More about Ryan</a></p>
       </div>
     </div>
   </div>
@@ -633,64 +674,35 @@ footer a:hover { color: var(--text-2); }
 
 <div class="divider"></div>
 
-<section id="services">
+<section id="who">
   <div class="container">
-    <div class="section-label reveal">What we do</div>
-    <h2 class="reveal">Five ways into AI consulting. Pick your problem.</h2>
-    <p class="reveal" style="font-size:1.0625rem;color:var(--text-2);max-width:680px;margin-top:20px;line-height:1.7;">Whether you're drowning in manual busywork or trying to get an AI pilot past the demo stage, it's the same AI consulting practice underneath: audit, build, govern.</p>
-    <div class="services-grid reveal">
-      <a href="/ai-consulting/" class="service-card hub">
-        <div class="num">Start here</div>
-        <h3>AI Consulting</h3>
-        <p>The hub: what we do, how we price it, and which service below fits your problem.</p>
-        <div class="go">See the overview →</div>
-      </a>
-      <a href="/ai-agent-consulting/" class="service-card">
-        <div class="num">Flagship</div>
-        <h3>AI Agent Consulting</h3>
-        <p>Production AI agents — architecture, evals, deployment, and the discipline to get past demo-ware.</p>
-        <div class="go">Learn more →</div>
-      </a>
-      <a href="/ai-automation-consulting/" class="service-card">
-        <div class="num">Workflows</div>
-        <h3>AI Automation Consulting</h3>
-        <p>Workflow automation using tools you already pay for. No new platform, no rip-and-replace.</p>
-        <div class="go">Learn more →</div>
-      </a>
-      <a href="/ai-readiness-assessment/" class="service-card">
-        <div class="num">Quick Scan $1,000</div>
-        <h3>AI Readiness Assessment</h3>
-        <p>Know exactly where AI pays off before you spend a dollar building it.</p>
-        <div class="go">Learn more →</div>
-      </a>
-      <a href="/ai-agent-governance/" class="service-card">
-        <div class="num">Guardrails</div>
-        <h3>AI Agent Governance</h3>
-        <p>Guardrails, observability, and incident runbooks so your agents don't become the incident.</p>
-        <div class="go">Learn more →</div>
-      </a>
-    </div>
+    <div class="section-label reveal">Who it's for</div>
+    <h2 class="reveal">Owner-run service businesses, 1 to 20 people.</h2>
+    <p class="prose reveal" style="margin-top:20px;">Coaches and consultants, event and hospitality services, small agencies, local trades. You've tried ChatGPT or Claude, you can tell there's more there, and you don't have the hours to figure it out.</p>
+    <p class="prose reveal">Probably not a fit if every tool needs a vendor security review, or if you want AI writing to customers with nobody checking.</p>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<section id="proof">
+<section id="sidekick">
   <div class="container">
-    <div class="section-label reveal">Proof</div>
-    <h2 class="reveal">Numbers, not promises.</h2>
-    <p class="reveal" style="font-size:1.0625rem;color:var(--text-2);max-width:680px;line-height:1.7;margin-top:20px;margin-bottom:8px;">Supergood is new. Rather than describe work you can't check, here are two businesses running on systems we built, both of which you can go look at.</p>
-    <div class="proof-secondary reveal">
-      <a href="https://sellwithlo.com" class="proof-mini" rel="noopener">
-        <div class="proof-mini-stat">5 marketplaces, 1 pipeline</div>
-        <p><strong>Sell With Lo</strong>, resale, listed on Poshmark, Depop, eBay, Mercari and Vinted. A nightly agent pulls inventory and orders, flips sold items on the public storefront so nothing shows as available after it ships, and publishes per-consignor reports. Nobody opens a spreadsheet.</p>
-        <div class="go" style="margin-top:12px;">See the storefront →</div>
-      </a>
-      <a href="https://butlerservicebar.com" class="proof-mini" rel="noopener">
-        <div class="proof-mini-stat">5 MB → 220 kB</div>
-        <p><strong>Butler Service Bar</strong>, mobile bartending in Tulsa. It arrived as one self-extracting HTML file. It's now a real build with its own URLs, CMS-authored copy, a page per town in the service area, and an FAQ. That's the structure local search actually reads.</p>
-        <div class="go" style="margin-top:12px;">See the site →</div>
-      </a>
+    <div class="section-label reveal">What the sidekick does</div>
+    <h2 class="reveal">The busywork, with you still in charge.</h2>
+    <div class="table-wrap reveal">
+      <table class="compare">
+        <thead>
+          <tr><th>What the sidekick does</th><th>What you do</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Drafts a reply to every new inquiry within minutes</td><td>Approve it from your phone</td></tr>
+          <tr><td>Drafts a nudge when a quote has had no answer for 3 days</td><td>Send it or skip it</td></tr>
+          <tr><td>Turns a 5-minute voice memo into a newsletter and two social posts</td><td>Edit and post</td></tr>
+          <tr><td>Sends a Monday email: bookings, payments in, open quotes, anything overdue</td><td>Read it with coffee</td></tr>
+          <tr><td>Drafts replies to new Google reviews</td><td>Approve them</td></tr>
+          <tr><td>Turns call notes into tasks in the tools you already use</td><td>Work the list</td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
@@ -700,19 +712,19 @@ footer a:hover { color: var(--text-2); }
 <section id="how">
   <div class="container">
     <div class="section-label reveal">How it works</div>
-    <h2 class="reveal">Three steps. No mystery. No jargon.</h2>
+    <h2 class="reveal">Three steps. You can stop after any of them.</h2>
     <div class="steps reveal">
       <div class="step">
-        <h3>Audit</h3>
-        <p>We embed with your team for a week. Watch the workflows, find the waste, identify every manual process that shouldn't exist. You get a prioritized hit list — not a 90-page deck that collects dust.</p>
+        <h3>Free 20-minute call</h3>
+        <p>Tell me what eats your week. I'll tell you whether AI helps with it, and if it doesn't, I'll say so.</p>
       </div>
       <div class="step">
-        <h3>Build</h3>
-        <p>We build the automation or agent using your existing tools, with guardrails baked in from the start. No vendor lock-in, no proprietary black boxes, no "we'll need another 6 months." You own everything.</p>
+        <h3>Sidekick Session, $500</h3>
+        <p>90 minutes together on video. We set up one real thing before we hang up, and you get a written list of the next three.</p>
       </div>
       <div class="step">
-        <h3>Run</h3>
-        <p>We stick around to make sure it works in the real world — not just in a demo. Monitor, adjust, train your team. Then hand over the keys and ride off into the sunset.</p>
+        <h3>Keep going if it's working</h3>
+        <p>A Setup Sprint builds the next two or three. Sidekick Monthly keeps me on as your AI person, with a weekly check-in.</p>
       </div>
     </div>
   </div>
@@ -720,17 +732,75 @@ footer a:hover { color: var(--text-2); }
 
 <div class="divider"></div>
 
-<section class="about-section">
+<section id="session">
   <div class="container">
-    <div class="section-label reveal">Who's behind this</div>
-    <h2 class="reveal" style="margin-bottom: 32px;">A PM who got tired of watching smart people do dumb work.</h2>
-    <div class="about-inner reveal">
-      <div class="about-avatar">RS</div>
-      <div class="about-text">
-        <h3>Ryan Sandoval</h3>
-        <div class="about-title">Founder &amp; AI Automation Consultant</div>
-        <p>14 years building digital products at Viking Cruises, Live Nation, Ticketmaster, and Logitech. I've sat in enough standups to know that half the "work" people do isn't work — it's busywork wearing a lanyard. I started Supergood because I kept seeing the same problem everywhere: brilliant teams spending their days on tasks a well-configured flow — or a well-governed agent — could handle before breakfast. I don't sell AI hype. I find the manual processes killing your team and I make them disappear.</p>
-        <p style="margin-top:16px;"><a href="/about/" style="color:var(--green);text-decoration:underline;text-underline-offset:3px;">More about Ryan and how Supergood works →</a></p>
+    <div class="section-label reveal">The offer</div>
+    <h2 class="reveal">Start small. Stay on only if it's working.</h2>
+    <div class="table-wrap reveal">
+      <table class="compare">
+        <thead>
+          <tr><th>Step</th><th>Price</th><th>What you get</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Intro call</td><td>Free</td><td>20 minutes with me. A straight answer on whether AI helps.</td></tr>
+          <tr><td>Sidekick Session</td><td>$500</td><td>One thing set up live, a written list of the next three, a one-page summary the next business day. Credited in full to a Setup Sprint signed within 14 days.</td></tr>
+          <tr><td>Setup Sprint</td><td>From $2,500</td><td>Two or three workflows in two to three weeks, written how-tos, a one-page AI policy for your team.</td></tr>
+          <tr><td>Sidekick Monthly</td><td>From $900/month</td><td>A 30-minute weekly check-in, a running list I work from the top down, a Friday one-page report. 3-month minimum.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note reveal">You pay for your own tools on your own accounts, and I don't resell or mark up software. Where a workflow has a number your systems already track, such as reply time or booked jobs, we can tie part of the monthly fee to it.</p>
+    <p class="note reveal">Bigger team? The Quick Scan and fixed-price builds are on the <a href="/pricing/">pricing page</a>.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="proof">
+  <div class="container">
+    <div class="section-label reveal">Proof</div>
+    <h2 class="reveal">Work you can go look at.</h2>
+    <div class="proof-secondary reveal">
+      <a href="https://butlerservicebar.com" class="proof-mini" rel="noopener">
+        <div class="proof-mini-stat">5 MB → 220 kB</div>
+        <p><strong>Butler Service Bar</strong>, mobile bartending in Tulsa. Their site arrived as one 5 MB self-extracting HTML file. It's now 220 kB, with its own URLs, a page for each town they serve, and an FAQ.</p>
+        <div class="go" style="margin-top:12px;">See the site →</div>
+      </a>
+      <a href="https://sellwithlo.com" class="proof-mini" rel="noopener">
+        <div class="proof-mini-stat">5 marketplaces, 1 pipeline</div>
+        <p><strong>Sell With Lo</strong>, resale, listed on Poshmark, Depop, eBay, Mercari and Vinted. A nightly agent pulls inventory and orders, flips sold items on the public storefront so nothing shows as available after it ships, and publishes per-consignor reports. Nobody opens a spreadsheet.</p>
+        <div class="go" style="margin-top:12px;">See the storefront →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="faq">
+  <div class="container">
+    <div class="section-label reveal">FAQ</div>
+    <h2 class="reveal">Straight answers.</h2>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <h3>Do I need to be technical?</h3>
+        <p>No. If you can send an email and approve a draft, you can work with me. I set things up, show you how they work, and leave written steps.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Who pays for the AI tools?</h3>
+        <p>You do, on your own accounts, so you own everything and can leave any time. I'll tell you the monthly tool cost before we build anything.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is my customer data safe?</h3>
+        <p>It stays in your accounts, and nothing goes to a customer until you or I have checked it. Every Setup Sprint includes a one-page AI policy that says what can go into AI and what never does.</p>
+      </div>
+      <div class="faq-item">
+        <h3>You have a day job. How much of you do I get?</h3>
+        <p>Supergood is my side business, and I cap it at four monthly clients so each one gets a weekly check-in and a reply within one business day.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What if I only want the session?</h3>
+        <p>That's fine. You keep what we set up and the written list, and you can run with it yourself.</p>
       </div>
     </div>
   </div>
@@ -777,16 +847,11 @@ footer a:hover { color: var(--text-2); }
 
 <section id="contact" class="cta-section">
   <div class="container">
-    <div class="section-label reveal">Let's talk</div>
-    <h2 class="reveal">Let's find the hours you're losing.</h2>
-    <p class="reveal">The fit check comes first. Describe the work you'd hand off and you get a written answer on whether it's a fit. Takes about two minutes, and Ryan reads every one. If it's a fit, Ryan follows up to schedule the paid Quick Scan.</p>
-    <a href="/start/" class="btn btn-primary reveal">Start the fit check</a>
+    <div class="section-label reveal">Start here</div>
+    <h2 class="reveal">Start with a 20-minute call.</h2>
+    <p class="reveal">Tell me what's eating your week, and I'll tell you honestly whether AI helps.</p>
+    <a href="/start/" class="btn btn-primary reveal">Book a free call</a>
     <p class="reveal" style="margin-top:16px;font-size:0.875rem;"><a href="/developers/" style="color:var(--text-3);">API docs for agents</a></p>
-    <div class="quick-scan reveal">
-      <h3>The paid Quick Scan</h3>
-      <p>A live working session on your actual workflows: 3 prioritized recommendations on the call, plus a one-page summary in your inbox the next business day, written to be forwarded to your boss. Think of it as a doctor's visit for your ops, except we won't make you wait 45 minutes in a paper gown.</p>
-      <span class="price">$1,000, credited toward a build if you sign within 14 days</span>
-    </div>
   </div>
 </section>
 

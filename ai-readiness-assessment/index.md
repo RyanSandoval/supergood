@@ -11,7 +11,7 @@ AI readiness assessment
 
 # Know where AI actually pays off — before you spend a dollar building it.
 
-An AI readiness assessment is a structured audit of your workflows, data, and systems that identifies which processes are worth automating or turning into an AI agent, which aren't, and what order to tackle them in. The fit check comes first. If it's a fit, Ryan follows up to schedule the paid Quick Scan ($1,000, credited toward a build if you sign within 14 days). A build starts at $4,000 per workflow, with a fixed quote after the scan.
+An AI readiness assessment is a structured audit of your workflows, data, and systems that identifies which processes are worth automating or turning into an AI agent, which aren't, and what order to tackle them in. The fit check comes first. If it's a fit, Ryan follows up to book a free 20-minute call or a Sidekick Session. For teams of 10 or more, the Quick Scan is $1,000, credited toward a build if you sign within 14 days. A build starts at $4,000 per workflow, with a fixed quote after the scan.
 
 [Start the fit check](https://supergood.solutions/start/)
 [Compare tiers](https://supergood.solutions/ai-readiness-assessment/#tiers)
@@ -93,7 +93,7 @@ On the Quick Scan: 3 prioritized recommendations on the call, and a one-page wri
 
 ### How long does it take?
 
-The fit check takes about 2 minutes. Build length is quoted after the Quick Scan. Run has a 3-month minimum and continues monthly after that.
+The intro call is 20 minutes. Sidekick Monthly has a 3-month minimum and continues monthly after that. For teams of 10 or more, build length is quoted after the Quick Scan.
 
 ### Do I have to hire Supergood to build after the assessment?
 
@@ -127,7 +127,7 @@ Start here
 
 ## One working session to know where you stand.
 
-The fit check comes first. If it's a fit, Ryan follows up to schedule the paid Quick Scan. If the scan says you don't need a build, that's what you'll hear.
+The fit check comes first. If it's a fit, Ryan follows up to book a free 20-minute call or a Sidekick Session. If the scan says you don't need a build, that's what you'll hear.
 
 [Start the fit check](https://supergood.solutions/start/)
 

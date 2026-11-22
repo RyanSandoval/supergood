@@ -11,7 +11,7 @@ AI consulting
 
 # AI consulting for teams who need agents that work, not a strategy deck.
 
-Supergood is an AI consulting practice that builds production AI agents and automations using tools clients already pay for — with the guardrails, observability, and runbooks to keep them running. Founded by Ryan Sandoval, 14 years of product experience at Viking Cruises, Live Nation/Ticketmaster, and Logitech.
+Supergood is an AI consulting practice that builds production AI agents and automations using tools clients already pay for — with the guardrails, observability, and runbooks to keep them running. Founded by Ryan Sandoval, 14 years of product experience at Live Nation/Ticketmaster and Logitech.
 
 [Start the fit check](https://supergood.solutions/start/)
 [See what we do](https://supergood.solutions/ai-consulting/#services)
@@ -64,35 +64,47 @@ Rate card
 
 ## How much does AI consulting cost?
 
-A fit check is free. The Quick Scan is $1,000. A build starts at $4,000 per workflow. The same rates are on the [pricing page](https://supergood.solutions/pricing/).
+The intro call is free. The Sidekick Session is $500. A Setup Sprint starts at $2,500. Sidekick Monthly starts at $900 per month. For teams of 10 or more, the Quick Scan is $1,000 and a build starts at $4,000 per workflow. The same rates are on the [pricing page](https://supergood.solutions/pricing/).
 
-### Fit check
+### Intro call
 
 Free
 
-About 2 minutes. [Start the fit check](https://supergood.solutions/start/). If it's a fit, Ryan follows up to schedule the paid Quick Scan.
+20 minutes. [Book a free call](https://supergood.solutions/start/). A straight answer on whether AI helps.
+
+### Sidekick Session
+
+$500
+
+90 minutes. One workflow set up in your accounts, a one-page summary the next business day, and one week of email follow-up. Credited in full to a Setup Sprint signed within 14 days.
+
+### Setup Sprint
+
+From $2,500
+
+Two or three workflows in two to three weeks, written how-tos, and a one-page AI policy.
+
+### Sidekick Monthly
+
+From $900/mo
+
+Weekly check-in, a running list, and a Friday report. 3-month minimum. Optional 10-20% of measured gain, capped at 1.5x the retainer.
 
 ### Quick Scan
 
 $1,000
 
-Credited toward a build if you sign within 14 days.
+For teams of 10 or more. Credited toward a build if you sign within 14 days.
 
 ### Build
 
 From $4,000
 
-Per workflow. Fixed quote after the Quick Scan. Half at kickoff, half at launch.
-
-### Run
-
-From $900/mo
-
-Plus 10-20% of measured gain over an agreed baseline, capped at 1.5x the retainer. 3-month minimum.
+For teams of 10 or more. Per workflow. Fixed quote after the Quick Scan. Half at kickoff, half at launch.
 
 You pay for all tools, APIs and seats directly on your own accounts. We never resell or mark up software.
 
-Limited founding-client spots available for businesses willing to be a published case study. Ask during the fit check.
+Limited founding-client spots available for businesses willing to be a published case study. Ask during the intro call.
 
 Why Supergood
 
@@ -114,7 +126,7 @@ judgment_
 
 ### 14 years of product judgment
 
-AI can automate a report. It can't tell you which reports matter. That's the part that comes from shipping real products at Viking Cruises, Live Nation, Ticketmaster, and Logitech.
+AI can automate a report. It can't tell you which reports matter. That's the part that comes from shipping real products at Live Nation, Ticketmaster, and Logitech.
 
 RS
 
@@ -138,7 +150,7 @@ No committee, no army of junior analysts, no six-figure floor. One senior practi
 
 ### How long does an engagement take?
 
-The fit check takes about 2 minutes. Build length is quoted after the Quick Scan. Run has a 3-month minimum and continues monthly after that.
+The intro call is 20 minutes. Sidekick Monthly has a 3-month minimum and continues monthly after that. For teams of 10 or more, build length is quoted after the Quick Scan.
 
 ### What industries does Supergood work with?
 
@@ -152,7 +164,7 @@ From the blog
 
 ## The engineering behind the pitch.
 
-The blog is where the actual expertise lives — 90+ posts on agent architecture, evals, guardrails, and production ops. Start here:
+The blog is where the actual expertise lives — 160+ posts on agent architecture, evals, guardrails, and production ops. Start here:
 
 Ops
 
@@ -174,11 +186,11 @@ Let's talk
 
 ## Let's find out what you actually need.
 
-The fit check comes first. Describe the work you'd hand off and you get a written answer on whether it's a fit. If it's a fit, Ryan follows up to schedule the paid Quick Scan. If the answer is no, you'll hear that too.
+Start with a free 20-minute call. If you want one thing set up, the Sidekick Session is $500. If the answer is that AI does not help, you'll hear that too.
 
-[Start the fit check](https://supergood.solutions/start/)
+[Book a free call](https://supergood.solutions/start/)
 
-### The paid Quick Scan
+### Quick Scan, for teams of 10 or more
 
 A live working session on your actual workflows: 3 prioritized recommendations on the call, plus a one-page summary in your inbox the next business day, written to be forwarded to your boss.
 

@@ -416,13 +416,13 @@ footer a:hover { color: var(--text-2); }
           </div>
 
           <div class="field">
-            <label for="email">Work email <span class="req" aria-hidden="true">*</span></label>
-            <input type="email" id="email" name="email" required aria-required="true" autocomplete="email" inputmode="email" spellcheck="false" placeholder="you@company.com">
+            <label for="email">Email <span class="req" aria-hidden="true">*</span></label>
+            <input type="email" id="email" name="email" required aria-required="true" autocomplete="email" inputmode="email" spellcheck="false" placeholder="you@email.com">
           </div>
 
           <div class="field-pair">
             <div class="field">
-              <label for="companyName">Company <span class="hint">Optional</span></label>
+              <label for="companyName">Company <span class="hint">Optional. Skip this if it's just you.</span></label>
               <input type="text" id="companyName" name="companyName" autocomplete="organization">
             </div>
             <div class="field">
@@ -492,7 +492,7 @@ footer a:hover { color: var(--text-2); }
           <div class="submit-area">
             <button type="submit" class="btn btn-primary" id="submit-btn">Send it over</button>
             <p class="fineprint" id="intake-fineprint">Your contact info is used to reply to this message. We don't send marketing email. <a href="/privacy/">Privacy</a> says where the note goes.</p>
-            <p class="alt-path">This form is the fit check. If it's a fit, Ryan follows up to schedule the paid Quick Scan ($1,000).</p>
+            <p class="alt-path">If it's a fit, Ryan follows up to book a free 20-minute call or a Sidekick Session.</p>
           </div>
         </form>
 
@@ -508,7 +508,7 @@ footer a:hover { color: var(--text-2); }
         <ol>
           <li>Ryan reads it. Not a form router, not an SDR sequence.</li>
           <li>You get a written reply within one business day: fit or no fit, and why.</li>
-          <li>If it's a fit, Ryan follows up to schedule the paid Quick Scan ($1,000), credited toward a build if you sign within 14 days. The build timeline is quoted after that.</li>
+          <li>If it's a fit, Ryan follows up to book a free 20-minute call or a Sidekick Session. For teams of 10 or more, the Quick Scan is $1,000, credited toward a build if you sign within 14 days. The build timeline is quoted after that.</li>
         </ol>
         <p class="aside-note">Not sure which service this falls under? That's fine, describe the work and we'll map it. The <a href="/ai-consulting/">services overview</a> has the full breakdown if you want to read first.</p>
       </aside>
@@ -611,7 +611,7 @@ form.addEventListener('submit', async (e) => {
       : !email ? document.getElementById('email')
       : !handoff ? document.getElementById('handoff')
       : document.querySelector('input[name="paysForTools"]');
-    showError('Name, work email, the work you\'d hand off, and whether you are OK paying for tools on your own accounts are all needed before we can reply to you.', missing);
+    showError('Name, email, the work you\'d hand off, and whether you are OK paying for tools on your own accounts are all needed before we can reply to you.', missing);
     return;
   }
 

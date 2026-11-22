@@ -2,22 +2,50 @@
   "provider": "Supergood Solutions",
   "url": "https://supergood.solutions/pricing/",
   "currency": "USD",
-  "updated": "2026-10-29",
+  "updated": "2026-11-22",
   "offers": [
     {
       "id": "fit-check",
-      "name": "Fit check",
+      "name": "Intro call",
       "price": 0,
       "unit": "one-time",
-      "summary": "Free. About 2 minutes. Describe the work and get a written answer on fit. If it is a fit, Ryan follows up to schedule the paid Quick Scan.",
+      "summary": "Free. 20 minutes with Ryan. A straight answer on whether AI helps. Request it on the start form.",
       "url": "https://supergood.solutions/start/"
+    },
+    {
+      "id": "sidekick-session",
+      "name": "Sidekick Session",
+      "price": 500,
+      "unit": "one-time",
+      "summary": "90 minutes on video. A 5-question form and access to one tool beforehand. One workflow set up in the client's accounts, a one-page summary the next business day with the next three jobs (effort and monthly tool cost), and one week of email follow-up. Credited in full to a Setup Sprint signed within 14 days. Tool subscriptions stay on the client's accounts.",
+      "url": "https://supergood.solutions/pricing/#session"
+    },
+    {
+      "id": "setup-sprint",
+      "name": "Setup Sprint",
+      "priceFrom": 2500,
+      "unit": "one-time",
+      "summary": "Two or three workflows in two to three weeks, written how-tos, and a one-page AI policy. For owner-run businesses."
+    },
+    {
+      "id": "sidekick-monthly",
+      "name": "Sidekick Monthly",
+      "priceFrom": 900,
+      "unit": "month",
+      "summary": "A 30-minute weekly check-in, a running list worked from the top down, and a Friday one-page report. 3-month minimum. Optional 10-20% of measured gain on workflows the client's systems already track, capped at 1.5x the retainer.",
+      "gainSharePercent": {
+        "min": 10,
+        "max": 20
+      },
+      "gainShareCapMultiple": 1.5,
+      "minimumMonths": 3
     },
     {
       "id": "quick-scan",
       "name": "Quick Scan",
       "price": 1000,
       "unit": "one-time",
-      "summary": "Scheduled after a fit. Credited toward a build if you sign within 14 days.",
+      "summary": "For teams of 10 or more. Scheduled after a fit. Credited toward a build if you sign within 14 days.",
       "creditedTowardBuildIfSignedWithinDays": 14
     },
     {
@@ -25,20 +53,7 @@
       "name": "Build",
       "priceFrom": 4000,
       "unit": "workflow",
-      "summary": "Per workflow. Fixed quote after the Quick Scan. Half due at kickoff and half at launch."
-    },
-    {
-      "id": "run",
-      "name": "Run",
-      "priceFrom": 900,
-      "unit": "month",
-      "summary": "Plus 10-20% of measured gain over an agreed baseline, capped at 1.5x the retainer. 3-month minimum.",
-      "gainSharePercent": {
-        "min": 10,
-        "max": 20
-      },
-      "gainShareCapMultiple": 1.5,
-      "minimumMonths": 3
+      "summary": "For teams of 10 or more. Per workflow. Fixed quote after the Quick Scan. Half due at kickoff and half at launch."
     }
   ],
   "tooling": "Clients pay for tools, APIs and seats on their own accounts. Supergood does not resell or mark up software."

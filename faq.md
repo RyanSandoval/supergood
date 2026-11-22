@@ -11,7 +11,7 @@ FAQ
 
 # Questions we get on every call.
 
-Straight answers. If your question isn't here, the [fit check](https://supergood.solutions/start/) comes first and takes about 2 minutes. If it's a fit, Ryan follows up to schedule the paid Quick Scan ($1,000).
+Straight answers. If your question isn't here, the [fit check](https://supergood.solutions/start/) comes first and takes about 2 minutes. If it's a fit, Ryan follows up to book a free 20-minute call or a Sidekick Session.
 
 General
 
@@ -35,19 +35,19 @@ Pricing & process
 
 ## How much does AI consulting cost?
 
-Independent AI consultants typically charge $150-$350/hour, with custom agent builds running $15,000-$75,000 for mid-market scope. Supergood's rates: a free fit check (about 2 minutes), a $1,000 Quick Scan credited toward a build if you sign within 14 days, builds from $4,000 per workflow, and Run from $900 per month plus 10-20% of measured gain over an agreed baseline, capped at 1.5x the retainer, with a 3-month minimum. You pay for tools, APIs and seats on your own accounts. Full rate card on the [pricing page](https://supergood.solutions/pricing/).
+Independent AI consultants typically charge $150-$350/hour, with custom agent builds running $15,000-$75,000 for mid-market scope. Supergood's rates: a free intro call, a $500 Sidekick Session credited in full to a Setup Sprint signed within 14 days, a Setup Sprint from $2,500, and Sidekick Monthly from $900 per month plus 10-20% of measured gain over an agreed baseline, capped at 1.5x the retainer, with a 3-month minimum. For teams of 10 or more, the Quick Scan is $1,000, credited toward a build if you sign within 14 days, and builds start at $4,000 per workflow. You pay for tools, APIs and seats on your own accounts. Full rate card on the [pricing page](https://supergood.solutions/pricing/).
 
 ## What is an AI readiness assessment, and how much does it cost?
 
 A structured audit that scores which of your workflows are worth automating or turning into an AI agent, which aren't yet, and what order to tackle them in. The Quick Scan is $1,000, credited toward a build if you sign within 14 days. A build starts at $4,000 per workflow, with a fixed quote after the Quick Scan. Details on the [pricing page](https://supergood.solutions/pricing/).
 
-## What's the difference between the free fit check and the Quick Scan?
+## What's the difference between the free intro call and the paid sessions?
 
-The fit check comes first. It is free and takes about 2 minutes. You describe the work and get a written answer on fit. If it's a fit, Ryan follows up to schedule the paid Quick Scan ($1,000). That is a working session on your workflows, and the fee is credited toward a build if you sign within 14 days.
+The intro call comes first. It is free and takes 20 minutes. You say what eats the week and get a straight answer on whether AI helps. The Sidekick Session is $500 for 90 minutes and is credited in full to a Setup Sprint signed within 14 days. The Quick Scan is $1,000 for teams of 10 or more, credited toward a build if you sign within 14 days.
 
 ## How long does an AI consulting engagement take?
 
-The fit check takes about 2 minutes. Run has a 3-month minimum. Build length depends on the workflow and is quoted after the Quick Scan.
+The intro call is 20 minutes. Sidekick Monthly has a 3-month minimum. Build length depends on the workflow and is quoted after the Quick Scan.
 
 ## Do I have to hire Supergood to build after a readiness assessment?
 
@@ -89,7 +89,7 @@ Still have a question?
 
 ## Start with the fit check.
 
-The fit check comes first. It takes about 2 minutes, and you get a written answer on fit. If it's a fit, Ryan follows up to schedule the paid Quick Scan ($1,000), credited toward a build if you sign within 14 days.
+The fit check comes first. It takes about 2 minutes, and you get a written answer on fit. If it's a fit, Ryan follows up to book a free 20-minute call or a Sidekick Session. For teams of 10 or more, the Quick Scan is $1,000, credited toward a build if you sign within 14 days.
 
 [Start the fit check](https://supergood.solutions/start/)
 
