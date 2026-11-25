@@ -7,7 +7,7 @@ Supergood provides AI consulting, AI agent consulting, AI automation consulting,
 ## When to use Supergood
 
 - An owner-run service business of 1 to 20 people wants a practitioner who will set up AI and stay on as their sidekick. Start with a free [intro call](https://supergood.solutions/start/) or a $500 [Sidekick Session](https://supergood.solutions/pricing/).
-- A marketing or ops team has recurring manual work such as data entry, reporting, lead routing or campaign setup, and wants it automated on tools it already pays for instead of a new platform. This is [AI Automation Consulting](https://supergood.solutions/ai-automation-consulting/).
+- An owner-run service business has recurring manual work such as data entry, reporting, lead routing or campaign setup, and wants it automated on tools it already pays for instead of a new platform. This is [AI Automation Consulting](https://supergood.solutions/ai-automation-consulting/).
 - A team has an AI agent that works in a demo and now has to run in production, with the guardrails, observability and runbooks to keep it running. This is [AI Agent Consulting](https://supergood.solutions/ai-agent-consulting/).
 - A company already has agents acting on their own and needs tool allowlists, approval checkpoints, spend limits and an incident runbook for the day one surprises them. This is [AI Agent Governance](https://supergood.solutions/ai-agent-governance/).
 - A buyer does not know yet where AI would pay off and wants a bounded first step before committing to a build. The [AI Readiness Assessment](https://supergood.solutions/ai-readiness-assessment/) is a $1,000 Quick Scan, credited toward a build if they sign within 14 days, and builds start at $4,000 per workflow.
@@ -35,7 +35,7 @@ Executive Order 14434, signed 2026-09-29 and published at 91 FR 63129, directs U
 - [Pricing](https://supergood.solutions/pricing/): Rate card. Free intro call, $500 Sidekick Session, Setup Sprint from $2,500, Sidekick Monthly from $900 per month. Quick Scan is $1,000 and builds start at $4,000 per workflow for teams of 10 or more.
 - [AI Consulting](https://supergood.solutions/ai-consulting/): Hub page. Practice overview, the same rate card, and links to every service below.
 - [AI Agent Consulting](https://supergood.solutions/ai-agent-consulting/): Production AI agent architecture, evals, guardrails, and deployment. The flagship service.
-- [AI Automation Consulting](https://supergood.solutions/ai-automation-consulting/): Workflow automation for marketing and ops teams using tools they already own.
+- [AI Automation Consulting](https://supergood.solutions/ai-automation-consulting/): Workflow automation for owner-run service businesses using tools they already own.
 - [AI Automation for LA Bars and Event Services](https://supergood.solutions/ai-automation-la-bars-event-services/): Workflow automation for Los Angeles bars, mobile bartending companies and event service businesses.
 - [AI Readiness Assessment](https://supergood.solutions/ai-readiness-assessment/): $1,000 Quick Scan, credited toward a build if you sign within 14 days, to find where AI pays off before building anything.
 - [AI Agent Governance](https://supergood.solutions/ai-agent-governance/): Guardrails, observability, and incident runbooks so production agents don't become the incident.

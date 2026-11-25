@@ -238,6 +238,9 @@ section { padding: 48px 0 100px; }
 .price-card .amount { font-family: var(--mono); font-size: 1.375rem; color: var(--green); margin-bottom: 12px; line-height: 1.3; }
 .price-card .amount span { font-size: 0.6em; color: var(--text-3); }
 .price-card p { font-size: 0.875rem; color: var(--text-2); line-height: 1.55; }
+.price-card .leave-label { font-family: var(--mono); font-size: 0.6875rem; font-weight: 500; color: var(--green); letter-spacing: 0.06em; text-transform: uppercase; margin: 16px 0 8px; }
+.price-card .leave-with { margin: 0; padding-left: 1.15em; font-size: 0.875rem; color: var(--text-2); line-height: 1.55; }
+.price-card .leave-with li + li { margin-top: 6px; }
 .price-card .btn { margin-top: auto; align-self: flex-start; }
 
 .btn { display: inline-flex; align-items: center; gap: 8px; font-family: 'Inter', sans-serif; font-size: 0.9375rem; font-weight: 600; padding: 14px 28px; border-radius: 8px; text-decoration: none; cursor: pointer; border: none; transition: all 0.2s; }
@@ -317,7 +320,15 @@ footer a:hover { color: var(--text-2); }
       <article class="price-card" id="session">
         <h2>Sidekick Session</h2>
         <div class="amount">$500</div>
-        <p>90 minutes on video. Beforehand, a 5-question form and access to the one tool you will work in. One workflow set up in your accounts before the call ends. A one-page summary the next business day with the next three jobs, each with effort and monthly tool cost. One week of email follow-up. Credited in full to a Setup Sprint signed within 14 days. Tools stay on your accounts.</p>
+        <p>90 minutes on video. Beforehand, a 5-question form and access to the one tool you will work in. Tools stay on your accounts.</p>
+        <p class="leave-label">What you leave with</p>
+        <ul class="leave-with">
+          <li>One workflow set up in your accounts</li>
+          <li>A one-page summary the next business day</li>
+          <li>The next three jobs, each with effort and monthly tool cost</li>
+          <li>One week of email follow-up</li>
+          <li>The $500 credited in full to a Setup Sprint signed within 14 days</li>
+        </ul>
       </article>
       <article class="price-card">
         <h2>Setup Sprint</h2>
