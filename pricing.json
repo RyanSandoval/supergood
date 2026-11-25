@@ -2,7 +2,7 @@
   "provider": "Supergood Solutions",
   "url": "https://supergood.solutions/pricing/",
   "currency": "USD",
-  "updated": "2026-11-22",
+  "updated": "2026-11-24",
   "offers": [
     {
       "id": "fit-check",
@@ -17,7 +17,14 @@
       "name": "Sidekick Session",
       "price": 500,
       "unit": "one-time",
-      "summary": "90 minutes on video. A 5-question form and access to one tool beforehand. One workflow set up in the client's accounts, a one-page summary the next business day with the next three jobs (effort and monthly tool cost), and one week of email follow-up. Credited in full to a Setup Sprint signed within 14 days. Tool subscriptions stay on the client's accounts.",
+      "summary": "90 minutes on video. A 5-question form and access to one tool beforehand. Tool subscriptions stay on the client's accounts.",
+      "leaveWith": [
+        "One workflow set up in the client's accounts",
+        "A one-page summary the next business day",
+        "The next three jobs, each with effort and monthly tool cost",
+        "One week of email follow-up",
+        "The $500 credited in full to a Setup Sprint signed within 14 days"
+      ],
       "url": "https://supergood.solutions/pricing/#session"
     },
     {

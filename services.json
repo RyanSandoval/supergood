@@ -1,7 +1,7 @@
 {
   "provider": "Supergood Solutions",
   "url": "https://supergood.solutions/ai-consulting/",
-  "updated": "2026-11-21",
+  "updated": "2026-11-24",
   "services": [
     {
       "id": "ai-consulting",
@@ -19,7 +19,7 @@
       "id": "ai-automation-consulting",
       "name": "AI Automation Consulting",
       "url": "https://supergood.solutions/ai-automation-consulting/",
-      "summary": "Workflow automation for marketing and ops teams using tools they already own."
+      "summary": "Workflow automation for owner-run service businesses using tools they already own."
     },
     {
       "id": "ai-readiness-assessment",

@@ -2,7 +2,7 @@
 title: "Pricing | Supergood Solutions"
 description: "Intro call is free. Sidekick Session is $500. Setup Sprint from $2,500. Sidekick Monthly from $900 a month. Quick Scan is $1,000 for teams of 10 or more."
 canonical: https://supergood.solutions/pricing/
-last-updated: 2026-11-22
+last-updated: 2026-11-24
 ---
 
 [Home](https://supergood.solutions/) / Pricing
@@ -25,7 +25,15 @@ Free
 
 $500
 
-90 minutes on video. Beforehand, a 5-question form and access to the one tool you will work in. One workflow set up in your accounts before the call ends. A one-page summary the next business day with the next three jobs, each with effort and monthly tool cost. One week of email follow-up. Credited in full to a Setup Sprint signed within 14 days. Tools stay on your accounts.
+90 minutes on video. Beforehand, a 5-question form and access to the one tool you will work in. Tools stay on your accounts.
+
+What you leave with:
+
+- One workflow set up in your accounts
+- A one-page summary the next business day
+- The next three jobs, each with effort and monthly tool cost
+- One week of email follow-up
+- The $500 credited in full to a Setup Sprint signed within 14 days
 
 ## Setup Sprint
 
